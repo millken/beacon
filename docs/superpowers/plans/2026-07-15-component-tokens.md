@@ -129,11 +129,11 @@
 
 ```bash
 cd /workspace/Codes/github.com/millken/beacon
-# 注册表条目数（含临时行 = 52）
+# 注册表条目数（54 旋钮 + 1 临时行 = 55）
 sed -n '/===== 4) 组件 COMPONENT/,/===== 5)/p' colors_and_type.css | grep -cE '^\s*--[a-z]'
 # 现有页面未破坏：浏览器打开 components/index.html 与 tokens.html 目检 light/dark
 ```
-Expected: 52；页面渲染无异常（此时组件层尚未消费新旋钮，纯增量）。
+Expected: 55；页面渲染无异常（此时组件层尚未消费新旋钮，纯增量）。
 
 - [ ] **Step 4: Commit**
 

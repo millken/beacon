@@ -1,0 +1,2269 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>zi · 工业级桌面 UI 设计规范</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body data-theme="light" data-preset="beacon">
+
+<div class="app">
+
+  <!-- ───────────── Sidebar TOC ───────────── -->
+  <aside class="toc">
+    <div class="toc-brand">
+      <div class="toc-mark">zi // industrial</div>
+      <div class="toc-title">工业级桌面 UI</div>
+      <div class="toc-sub">design system · v0.4</div>
+    </div>
+
+    <div class="toc-group">00 · overview</div>
+    <a class="toc-link" href="#overview"><span>设计原则</span><span class="num">00</span></a>
+
+    <div class="toc-group">10 · foundations</div>
+    <a class="toc-link" href="#presets"><span>主题 Preset</span><span class="num">10</span></a>
+    <a class="toc-link" href="#color"><span>颜色系统</span><span class="num">11</span></a>
+    <a class="toc-link" href="#typography"><span>排版</span><span class="num">12</span></a>
+    <a class="toc-link" href="#density"><span>密度与间距</span><span class="num">13</span></a>
+    <a class="toc-link" href="#shape"><span>形状与圆角</span><span class="num">14</span></a>
+    <a class="toc-link" href="#elevation"><span>阴影与焦点</span><span class="num">15</span></a>
+
+    <div class="toc-group">20 · components</div>
+    <a class="toc-link" href="#buttons"><span>按钮</span><span class="num">20</span></a>
+    <a class="toc-link" href="#forms"><span>输入控件</span><span class="num">21</span></a>
+    <a class="toc-link" href="#selection"><span>选择 / 旋钮 / 滑块</span><span class="num">22</span></a>
+    <a class="toc-link" href="#combobox"><span>Combobox 与 Tag input</span><span class="num">23</span></a>
+    <a class="toc-link" href="#tags"><span>Tags · Badges · Avatar</span><span class="num">24</span></a>
+    <a class="toc-link" href="#toolbar"><span>工具栏</span><span class="num">25</span></a>
+    <a class="toc-link" href="#tabs"><span>Tabs / Accordion / Stepper</span><span class="num">26</span></a>
+    <a class="toc-link" href="#breadcrumb"><span>面包屑 / 面包路径</span><span class="num">27</span></a>
+    <a class="toc-link" href="#tree"><span>树形视图</span><span class="num">28</span></a>
+    <a class="toc-link" href="#table"><span>数据表格</span><span class="num">29</span></a>
+    <a class="toc-link" href="#splitter"><span>分割面板</span><span class="num">30</span></a>
+    <a class="toc-link" href="#overlay"><span>浮层 / 对话框 / 抽屉</span><span class="num">31</span></a>
+    <a class="toc-link" href="#cmdp"><span>命令面板</span><span class="num">32</span></a>
+    <a class="toc-link" href="#colorpicker"><span>调色器</span><span class="num">33</span></a>
+    <a class="toc-link" href="#datepicker"><span>日期选择</span><span class="num">34</span></a>
+    <a class="toc-link" href="#indicator"><span>计量 · 进度 · 加载</span><span class="num">35</span></a>
+    <a class="toc-link" href="#feedback"><span>反馈</span><span class="num">36</span></a>
+    <a class="toc-link" href="#code"><span>代码与键盘</span><span class="num">37</span></a>
+    <a class="toc-link" href="#empty"><span>空态 / 空状态</span><span class="num">38</span></a>
+    <a class="toc-link" href="#window"><span>窗口控件</span><span class="num">39</span></a>
+    <a class="toc-link" href="#sidebarmenu"><span>侧栏导航</span><span class="num">40</span></a>
+
+    <div class="toc-group">41 · patterns</div>
+    <a class="toc-link" href="#shell"><span>应用骨架</span><span class="num">41</span></a>
+  </aside>
+
+  <!-- ───────────── Main content ───────────── -->
+  <main class="main">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-crumbs">
+        <strong>zi</strong>
+        <span class="sep">/</span>
+        <span>industrial-desktop</span>
+        <span class="sep">/</span>
+        <span>design-system.md</span>
+      </div>
+      <div class="topbar-spacer"></div>
+      <span class="topbar-label">Preset</span>
+      <div class="preset-select">
+        <select id="presetSelect">
+          <option value="beacon">Beacon · radix-blue</option>
+          <option value="chrome">Chrome · DevTools (blue)</option>
+          <option value="antd">Antd · Ant Design (blue)</option>
+          <option value="console">Console · DAW (amber)</option>
+          <option value="studio">Studio · NLE (cyan)</option>
+          <option value="workshop">Workshop · IDE (sage)</option>
+          <option value="iron">Iron · CAD (steel)</option>
+          <option value="refinery">Refinery · SCADA (orange)</option>
+          <option value="lab">Lab · scope (phosphor)</option>
+          <option value="mainframe">Mainframe · TN3270 (amber)</option>
+          <option value="foundry">Foundry · heavy (copper)</option>
+          <option value="helix">Helix · biotech (teal)</option>
+          <option value="atlas">Atlas · GIS (navy+amber)</option>
+          <option value="reactor">Reactor · safety (sodium)</option>
+        </select>
+      </div>
+      <span class="topbar-label">Theme</span>
+      <div class="theme-toggle">
+        <button data-theme-btn="light" data-active="true">Light</button>
+        <button data-theme-btn="dark">Dark</button>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <!-- ───────────── 00 Overview ───────────── -->
+      <section id="overview">
+        <p class="spec-kicker">// section 00 · overview</p>
+        <h1 class="spec-title" id="hero-title">Beacon</h1>
+        <p class="spec-lede" id="hero-desc">面向桌面级专业工具的设计系统。高密度、硬边层级、低彩中性基底，强调状态可读性而非装饰感。所有 token 通过 <code>applyPreset()</code> 挂载到 <code>:root</code>，7 个 preset × 明 / 暗双模式。</p>
+
+        <div class="spec-meta">
+          <span class="meta-pill"><span class="dot"></span><strong>Density</strong> 13px / 行高 20px</span>
+          <span class="meta-pill"><strong>Radius</strong> 2–6px 锐角</span>
+          <span class="meta-pill"><strong>Border</strong> 1px hairline</span>
+          <span class="meta-pill"><strong>Focus</strong> 2px keyboard ring</span>
+          <span class="meta-pill"><strong>Use</strong> DAW · CAD · IDE · SCADA</span>
+        </div>
+
+        <div class="metric-row" style="margin-top:8px">
+          <div class="metric"><div class="k">presets</div><div class="v">12</div><div class="sub">color profiles</div></div>
+          <div class="metric"><div class="k">modes</div><div class="v">2</div><div class="sub">light / dark</div></div>
+          <div class="metric"><div class="k">tokens</div><div class="v">36</div><div class="sub">per profile</div></div>
+          <div class="metric"><div class="k">components</div><div class="v">38</div><div class="sub">spec'd below</div></div>
+        </div>
+
+        <h3 class="sub-title">设计原则</h3>
+        <div class="rules">
+          <div class="rule rule--do">
+            <div class="head">DO · 紧凑信息密度</div>
+            <div class="body">行高 20px、字号 13px、1px 实线分隔。对标 VS Code / JetBrains / DaVinci。一屏内放得下 30+ 条记录是常态。</div>
+          </div>
+          <div class="rule rule--dont">
+            <div class="head">DON'T · 不模仿 iOS</div>
+            <div class="body">大圆角、毛玻璃、超大留白、阴影模糊都不属于工业桌面。半径上限 6px，阴影只为弹层服务。</div>
+          </div>
+          <div class="rule rule--do">
+            <div class="head">DO · 状态优先</div>
+            <div class="body">颜色服务于状态读取（成功 / 警告 / 危险 / 录制），而不是品牌装饰。Accent 用在可点击的关键焦点上。</div>
+          </div>
+          <div class="rule rule--dont">
+            <div class="head">DON'T · 不堆装饰元素</div>
+            <div class="body">不使用渐变背景、装饰性插画、emoji 状态。LED 圆点 + 等宽数字 + 1px 描边足以承担一切语义。</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ───────────── 10 Presets ───────────── -->
+      <section id="presets">
+        <h2 class="sect-title"><span class="num">10</span>主题 Preset<span class="tag">14 profiles</span></h2>
+        <p class="sect-intro">14 套色彩档位针对不同专业场景调校：底色温度、accent 饱和度、状态语义色都已平衡为可直接落地的成品。点击卡片切换全站预览。</p>
+
+        <div class="three-col" id="presetGallery"></div>
+      </section>
+
+      <!-- ───────────── 11 Color ───────────── -->
+      <section id="color">
+        <h2 class="sect-title"><span class="num">11</span>颜色系统<span class="tag">surface · text · accent · semantic</span></h2>
+        <p class="sect-intro">表面分 5 层（base → subtle → surface → hover → active），每层 ΔL ≈ 4–8。文本 3 级配套对应表面层级。Accent 与 4 种状态色独立，确保「色相不夺主、状态读得准」。</p>
+
+        <section class="panel">
+          <div class="panel-header"><span>color tokens · live</span><span class="right"><span class="led led--on"></span>preset: <strong id="colorPresetName">Beacon</strong></span></div>
+          <div class="panel-body">
+            <h3 class="sub-title">表面层级 · Surface Scale</h3>
+            <div class="swatch-grid" id="swatchesSurface"></div>
+
+            <h3 class="sub-title">边框与分隔 · Border / Divider</h3>
+            <div class="swatch-grid" id="swatchesBorder"></div>
+
+            <h3 class="sub-title">文本 · Text</h3>
+            <div class="swatch-grid" id="swatchesText"></div>
+
+            <h3 class="sub-title">强调与状态 · Accent / Semantic</h3>
+            <div class="swatch-grid" id="swatchesAccent"></div>
+          </div>
+        </section>
+
+        <h3 class="sub-title">表面层级用法</h3>
+        <div class="surface-ladder">
+          <div style="background:var(--bg-base)"><span class="label">--bg-base</span><span class="hint">→ &lt;body&gt; / 编辑区</span></div>
+          <div style="background:var(--bg-subtle)"><span class="label">--bg-subtle</span><span class="hint">→ 侧栏 / toolbar / 表头</span></div>
+          <div style="background:var(--bg-surface)"><span class="label">--bg-surface</span><span class="hint">→ 卡片 / 面板 / 按钮 / 输入框</span></div>
+          <div style="background:var(--bg-hover)"><span class="label">--bg-hover</span><span class="hint">→ hover 态</span></div>
+          <div style="background:var(--bg-active)"><span class="label">--bg-active</span><span class="hint">→ selected / pressed</span></div>
+        </div>
+
+        <h3 class="sub-title">文本对比度示意</h3>
+        <div class="contrast-grid">
+          <div class="contrast-cell" style="background:var(--bg-base); color:var(--text)">
+            <div class="label">text on base</div>
+            <div class="sample">主要文本 13px</div>
+            <div class="ratio">target ≥ 7:1</div>
+          </div>
+          <div class="contrast-cell" style="background:var(--bg-base); color:var(--text-muted)">
+            <div class="label">text-muted on base</div>
+            <div class="sample">次要文本 13px</div>
+            <div class="ratio">target ≥ 4.5:1</div>
+          </div>
+          <div class="contrast-cell" style="background:var(--bg-surface); color:var(--text-dim)">
+            <div class="label">text-dim on surface</div>
+            <div class="sample">辅助文本 12px</div>
+            <div class="ratio">target ≥ 3:1</div>
+          </div>
+          <div class="contrast-cell" style="background:var(--bg-inverse); color:var(--text-inverse)">
+            <div class="label">inverse on inverse</div>
+            <div class="sample">tooltip / toast</div>
+            <div class="ratio">target ≥ 7:1</div>
+          </div>
+        </div>
+
+        <div class="note">
+          <span class="note-tag">RULE</span>
+          <span>状态色（success / warning / danger）只用作前景或 1px 边框，不要作为大面积填充——填充态会破坏中性底色，降低告警在视觉上的辨识度。</span>
+        </div>
+      </section>
+
+      <!-- ───────────── 12 Typography ───────────── -->
+      <section id="typography">
+        <h2 class="sect-title"><span class="num">12</span>排版<span class="tag">2-stack · 6-step</span></h2>
+        <p class="sect-intro">两套字体栈：<code>--font-stack</code> 用于 UI 文本，<code>--mono-stack</code> 用于代码、数值、路径、token 名。字号阶梯只有 6 档，最大 24px——这是桌面工具，不是营销页。</p>
+
+        <div class="two-col">
+          <div>
+            <h3 class="sub-title">字号阶梯</h3>
+            <div class="type-table">
+              <div class="type-row"><span class="key">--f-xs</span><span class="val">12 / 1.4</span><span class="sample" style="font-size:12px">辅助文字、图注、状态栏</span></div>
+              <div class="type-row"><span class="key">--f-sm</span><span class="val">12 / 1.4</span><span class="sample" style="font-size:12px">小标签、badge、表头</span></div>
+              <div class="type-row"><span class="key">--f-md</span><span class="val">13 / 1.4</span><span class="sample" style="font-size:13px">正文默认字号</span></div>
+              <div class="type-row"><span class="key">--f-lg</span><span class="val">15 / 1.4</span><span class="sample" style="font-size:15px">二级标题、侧栏条目</span></div>
+              <div class="type-row"><span class="key">--f-xl</span><span class="val">18 / 1.3</span><span class="sample" style="font-size:18px">一级标题</span></div>
+              <div class="type-row"><span class="key">--f-2xl</span><span class="val">24 / 1.2</span><span class="sample" style="font-size:24px; font-weight:600">主页 / Hero</span></div>
+            </div>
+          </div>
+          <div>
+            <h3 class="sub-title">字体栈</h3>
+            <div class="panel">
+              <div class="panel-header"><span>--font-stack</span><span class="right">UI sans</span></div>
+              <div class="panel-body">
+                <div style="font-size:15px; margin-bottom:6px">桌面级中文 / English typography</div>
+                <div class="code-comment">"Segoe UI Variable Text", "SF Pro Text", "Noto Sans", Ubuntu, Cantarell, sans-serif</div>
+              </div>
+            </div>
+            <div class="panel" style="margin-top:8px">
+              <div class="panel-header"><span>--mono-stack</span><span class="right">monospace</span></div>
+              <div class="panel-body">
+                <div style="font-family:var(--mono-stack); font-size:13px; margin-bottom:6px">--accent: oklch(0.62 0.18 250) // 12345.67</div>
+                <div class="code-comment">"Iosevka Term", "JetBrains Mono", "SF Mono", "Cascadia Mono", Consolas, monospace</div>
+              </div>
+            </div>
+
+            <h3 class="sub-title">字重</h3>
+            <div class="row">
+              <span style="font-weight:400">Regular 400</span>
+              <span style="font-weight:500">Medium 500</span>
+              <span style="font-weight:600">Semibold 600</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="note note--warn">
+          <span class="note-tag">CAVEAT</span>
+          <span>桌面级工具优先考虑数字可读性。所有表格列、监测面板、坐标值都应使用 <code>--mono-stack</code> 并开启 <code>font-variant-numeric: tabular-nums</code>。</span>
+        </div>
+      </section>
+
+      <!-- ───────────── 13 Density ───────────── -->
+      <section id="density">
+        <h2 class="sect-title"><span class="num">13</span>密度与间距<span class="tag">base 8px</span></h2>
+        <p class="sect-intro">间距基本单元 <code>--gap: 8px</code>。按钮 / 输入框三档密度 (sm / md / lg)。整体节奏对标 VS Code 与 JetBrains，紧凑但留 1 行可读宽容。</p>
+
+        <h3 class="sub-title">间距单元</h3>
+        <div class="ruler-row">
+          <div class="ruler-cell"><div class="ruler-bar" style="width:2px"></div><span class="ruler-label">2</span></div>
+          <div class="ruler-cell"><div class="ruler-bar" style="width:4px"></div><span class="ruler-label">4</span></div>
+          <div class="ruler-cell"><div class="ruler-bar" style="width:6px"></div><span class="ruler-label">6</span></div>
+          <div class="ruler-cell"><div class="ruler-bar" style="width:8px"></div><span class="ruler-label">8 · gap</span></div>
+          <div class="ruler-cell"><div class="ruler-bar" style="width:12px"></div><span class="ruler-label">12</span></div>
+          <div class="ruler-cell"><div class="ruler-bar" style="width:16px"></div><span class="ruler-label">16</span></div>
+          <div class="ruler-cell"><div class="ruler-bar" style="width:24px"></div><span class="ruler-label">24</span></div>
+          <div class="ruler-cell"><div class="ruler-bar" style="width:32px"></div><span class="ruler-label">32</span></div>
+        </div>
+
+        <h3 class="sub-title">控件密度</h3>
+        <table class="token-table">
+          <thead><tr><th>Token</th><th>Value</th><th>用途</th></tr></thead>
+          <tbody>
+            <tr><td class="t-name">--btn-py / --btn-px</td><td class="t-val">5 / 13</td><td class="t-desc">默认按钮内边距</td></tr>
+            <tr><td class="t-name">--btn-py-sm / --btn-px-sm</td><td class="t-val">3 / 9</td><td class="t-desc">小按钮 — 工具栏 / 表格内</td></tr>
+            <tr><td class="t-name">--btn-py-lg / --btn-px-lg</td><td class="t-val">7 / 16</td><td class="t-desc">大按钮 — Hero / 对话框确认</td></tr>
+            <tr><td class="t-name">--input-py / --input-px</td><td class="t-val">4 / 8</td><td class="t-desc">输入框 / 选择器</td></tr>
+            <tr><td class="t-name">--gap</td><td class="t-val">8</td><td class="t-desc">默认间距单元（row / col / panel-body）</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ───────────── 14 Shape ───────────── -->
+      <section id="shape">
+        <h2 class="sect-title"><span class="num">14</span>形状与圆角<span class="tag">2–6 px</span></h2>
+        <p class="sect-intro">工业桌面 = 锐利圆角。最小 2px、最大 6px。不存在 8px / 12px / pill 之类的圆。Badge 例外（pill 形数字徽章）。</p>
+
+        <div class="radii-row">
+          <div class="radii-cell"><div class="radii-box" style="border-radius:0"></div><span class="radii-label">0 · 表格 / 列表行</span></div>
+          <div class="radii-cell"><div class="radii-box" style="border-radius:var(--r-sm)"></div><span class="radii-label">--r-sm · 2 · tag / 按钮 / 输入</span></div>
+          <div class="radii-cell"><div class="radii-box" style="border-radius:var(--r-md)"></div><span class="radii-label">--r-md · 3 · 面板</span></div>
+          <div class="radii-cell"><div class="radii-box" style="border-radius:var(--r-lg)"></div><span class="radii-label">--r-lg · 4 · 弹层</span></div>
+          <div class="radii-cell"><div class="radii-box" style="border-radius:var(--r-card)"></div><span class="radii-label">--r-card · 6 · 大卡片</span></div>
+          <div class="radii-cell"><div class="radii-box" style="border-radius:50%"></div><span class="radii-label">circle · LED / 头像 / radio</span></div>
+        </div>
+      </section>
+
+      <!-- ───────────── 15 Elevation ───────────── -->
+      <section id="elevation">
+        <h2 class="sect-title"><span class="num">15</span>阴影与焦点<span class="tag">double-layer + 1px ring</span></h2>
+        <p class="sect-intro">阴影格式：<code>&lt;depth shadow&gt;, 0 0 0 1px &lt;outline&gt;</code> 双层结构——既给深度感又保证扁平背景上的轮廓识别。</p>
+
+        <div class="three-col">
+          <div class="panel">
+            <div class="panel-header"><span>--shadow-card</span><span class="right">card / panel</span></div>
+            <div class="panel-body" style="height:140px; display:flex; align-items:center; justify-content:center; background:var(--bg-base)">
+              <div style="background:var(--bg-surface); border:1px solid var(--border); border-radius:var(--r-md); padding:14px 18px; box-shadow:var(--shadow-card); font-family:var(--mono-stack); font-size:11px; color:var(--text-muted);">card · shadow-card</div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-header"><span>--shadow-pop</span><span class="right">menu / dialog</span></div>
+            <div class="panel-body" style="height:140px; display:flex; align-items:center; justify-content:center; background:var(--bg-base)">
+              <div style="background:var(--bg-surface); border:1px solid var(--border-strong); border-radius:var(--r-md); padding:14px 18px; box-shadow:var(--shadow-pop); font-family:var(--mono-stack); font-size:11px; color:var(--text-muted);">popup · shadow-pop</div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-header"><span>--focus-ring</span><span class="right">keyboard focus</span></div>
+            <div class="panel-body" style="height:140px; display:flex; align-items:center; justify-content:center; background:var(--bg-base)">
+              <button class="btn btn--primary" style="box-shadow:var(--focus-ring)">focused button</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="note">
+          <span class="note-tag">RULE</span>
+          <span>除了浮层与对话框，UI 中不使用任何柔和阴影。卡片 / 面板用 1px 边框 + 微弱 box-shadow（已包含在 token 中）来表达层级。</span>
+        </div>
+      </section>
+
+      <!-- ───────────── 20 Buttons ───────────── -->
+      <section id="buttons">
+        <h2 class="sect-title"><span class="num">20</span>按钮<span class="tag">7 variants · 3 sizes · icon / loading</span></h2>
+        <p class="sect-intro">扁平设计:实色填充 + 1px 边框,不用高光 / 斜面 / 投影。层级只靠<strong>填充色 + 边框 + 文字色</strong>表达 —— Primary 实色 accent、Default 中性面、Ghost 无边框。交互态仅切换表面色,简洁克制。</p>
+
+        <section class="panel">
+          <div class="panel-header"><span>variants</span></div>
+          <div class="panel-body">
+            <div class="row">
+              <button class="btn">Default</button>
+              <button class="btn btn--primary">Primary</button>
+              <button class="btn btn--danger">Danger</button>
+              <button class="btn btn--ghost">Ghost</button>
+              <button class="btn btn--outline">Outline</button>
+              <button class="btn" disabled>Disabled</button>
+            </div>
+            <h3 class="sub-title">sizes</h3>
+            <div class="row">
+              <button class="btn btn--sm">Small · sm</button>
+              <button class="btn">Default · md</button>
+              <button class="btn btn--lg">Large · lg</button>
+            </div>
+            <h3 class="sub-title">states · rest / hover / pressed / focus / checked</h3>
+            <div class="row">
+              <button class="btn">Rest</button>
+              <button class="btn" style="background:var(--bg-hover); border-color:var(--border-strong)">Hover</button>
+              <button class="btn" data-state="pressed">Pressed</button>
+              <button class="btn" style="border-color:var(--accent); box-shadow:inset 0 1px 0 rgba(255,255,255,0.06), var(--focus-ring)">Focus</button>
+              <button class="btn" data-state="checked">Checked</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header"><span>icon · prefix / suffix / icon-only / loading</span></div>
+          <div class="panel-body">
+            <h3 class="sub-title">prefix &amp; suffix icon</h3>
+            <div class="row">
+              <button class="btn btn--primary"><svg class="btn-affix" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>New job</button>
+              <button class="btn"><svg class="btn-affix" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Export</button>
+              <button class="btn">Continue<svg class="btn-affix" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+              <button class="btn btn--outline">Filter<svg class="btn-affix" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+            </div>
+
+            <h3 class="sub-title">icon-only · 22 / 26 / 32</h3>
+            <div class="row">
+              <button class="btn btn--icon btn--sm" title="Add"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              <button class="btn btn--icon" title="Add"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              <button class="btn btn--icon btn--lg" title="Add"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              <span style="width:12px"></span>
+              <button class="btn btn--icon btn--primary" title="Play"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="6 4 20 12 6 20"/></svg></button>
+              <button class="btn btn--icon btn--danger" title="Delete"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14H7L5 6"/></svg></button>
+              <button class="btn btn--icon btn--ghost" title="More"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg></button>
+            </div>
+
+            <h3 class="sub-title">loading · width holds steady, label dims</h3>
+            <div class="row">
+              <button class="btn btn--primary" data-loading="true">Rendering</button>
+              <button class="btn" data-loading="true">Saving</button>
+              <button class="btn btn--icon" data-loading="true" title="Loading"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/></svg></button>
+              <button class="btn btn--lg btn--outline" data-loading="true">Connecting</button>
+            </div>
+          </div>
+        </section>
+
+        <div class="rules">
+          <div class="rule rule--do">
+            <div class="head">DO · 一个 primary</div>
+            <div class="body">任何对话框 / 表单底栏只允许 1 个 <code>btn--primary</code>，承担「主要意图」。其余动作用 default / ghost。affix 图标用 <code>.btn-affix</code> 降低不透明度,让文字主导。</div>
+          </div>
+          <div class="rule rule--dont">
+            <div class="head">DON'T · 不滥用 danger</div>
+            <div class="body">danger 红只用于「删除 / 解除 / 强制中断」类不可逆动作。确认对话框的「确定」用 primary。loading 态用 <code>data-loading="true"</code>,宽度不跳动。</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ───────────── 21 Forms ───────────── -->
+      <section id="forms">
+        <h2 class="sect-title"><span class="num">21</span>输入控件<span class="tag">text · number · select · textarea</span></h2>
+        <p class="sect-intro">所有输入框沉到 <code>--bg-base</code>（最深层），内嵌 1px 投影模拟「下沉孔」，区别于浮起的按钮。聚焦时边框变 accent + 焦点环。</p>
+
+        <section class="panel">
+          <div class="panel-header"><span>form controls</span></div>
+          <div class="panel-body">
+            <div class="two-col">
+              <div class="col">
+                <div class="field">
+                  <label>Project name</label>
+                  <input class="input" placeholder="project_v2" value="zi-default-theme" />
+                </div>
+                <div class="field">
+                  <label>Output path</label>
+                  <input class="input mono" value="/var/render/2026/05/" />
+                  <span class="hint">// supports tilde and env vars</span>
+                </div>
+                <div class="field">
+                  <label>Format</label>
+                  <select class="select">
+                    <option>ProRes 422 HQ</option>
+                    <option>DNxHR HQX</option>
+                    <option>H.264</option>
+                    <option>EXR sequence</option>
+                  </select>
+                </div>
+                <div class="row">
+                  <div class="field"><label>Frames</label><div class="num-input"><input value="1920" /><div class="spin"><button>▲</button><button>▼</button></div></div></div>
+                  <div class="field"><label>FPS</label><div class="num-input"><input value="29.97" /><div class="spin"><button>▲</button><button>▼</button></div></div></div>
+                  <div class="field"><label>Width</label><div class="num-input"><input value="3840" /><div class="spin"><button>▲</button><button>▼</button></div></div></div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="field">
+                  <label>Notes</label>
+                  <textarea class="textarea mono" rows="4">Reduce noise in shadow regions before grade pass.
+// task: bake LUT, render proxy, deliver to /var/share/</textarea>
+                </div>
+                <div class="field">
+                  <label>Disabled</label>
+                  <input class="input" disabled value="locked by upstream" />
+                </div>
+                <div class="field">
+                  <label>Focused (live)</label>
+                  <input class="input" value="tab to focus" style="border-color:var(--accent); box-shadow:var(--focus-ring), inset 0 1px 3px rgba(0,0,0,.25)" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ───────────── 22 Selection ───────────── -->
+      <section id="selection">
+        <h2 class="sect-title"><span class="num">22</span>选择 / 旋钮 / 滑块<span class="tag">checkbox · radio · switch · segment · slider · knob</span></h2>
+        <p class="sect-intro">勾选状态用 accent 实色填充；单选用 accent 边框 + 6px 实心点；开关沿用「凹槽 + 矩形滑块」形态，避免 iOS 风圆胶囊。分段控件做下沉凹槽 + 浮起当前项。</p>
+
+        <section class="panel">
+          <div class="panel-header"><span>selection</span></div>
+          <div class="panel-body">
+            <div class="two-col">
+              <div class="col">
+                <h3 class="sub-title">checkbox · 13px</h3>
+                <div class="row" style="gap:14px">
+                  <label class="row tight"><span class="cb" onclick="toggleCb(this)"></span> Render proxy</label>
+                  <label class="row tight"><span class="cb" data-state="checked" onclick="toggleCb(this)"></span> Anti-alias</label>
+                  <label class="row tight" style="opacity:.5"><span class="cb"></span> Disabled</label>
+                </div>
+
+                <h3 class="sub-title">radio · 14px</h3>
+                <div class="row" style="gap:14px">
+                  <label class="row tight"><span class="radio-ring" data-state="checked" onclick="toggleRadio(this)"></span> ProRes</label>
+                  <label class="row tight"><span class="radio-ring" onclick="toggleRadio(this)"></span> DNxHR</label>
+                  <label class="row tight"><span class="radio-ring" onclick="toggleRadio(this)"></span> H.264</label>
+                </div>
+
+                <h3 class="sub-title">switch · 26×14</h3>
+                <div class="row" style="gap:14px">
+                  <label class="row tight"><span class="sw" onclick="toggleSw(this)"></span> Cache</label>
+                  <label class="row tight"><span class="sw" data-state="checked" onclick="toggleSw(this)"></span> GPU</label>
+                  <label class="row tight"><span class="sw" data-state="checked" onclick="toggleSw(this)"></span> Mux</label>
+                </div>
+              </div>
+
+              <div class="col">
+                <h3 class="sub-title">segmented · toggle group</h3>
+                <div class="toggle-group">
+                  <button class="btn" onclick="tgSelect(this)">Draft</button>
+                  <button class="btn" data-state="checked" onclick="tgSelect(this)">Preview</button>
+                  <button class="btn" onclick="tgSelect(this)">Final</button>
+                </div>
+
+                <h3 class="sub-title">slider · custom (no native chrome)</h3>
+                <div class="row" style="gap:10px">
+                  <div class="slider" data-slider data-min="0" data-max="100" data-value="65" tabindex="0">
+                    <div class="slider-track"></div>
+                    <div class="slider-fill" style="width:65%"></div>
+                    <div class="slider-thumb" style="left:65%"></div>
+                  </div>
+                  <span class="slider-readout" style="font-family:var(--mono-stack); font-size:11px; color:var(--text-muted); min-width:48px">65 dB</span>
+                </div>
+                <div class="row" style="gap:10px; margin-top:8px">
+                  <div class="slider" data-slider data-min="0" data-max="10" data-step="1" data-value="4" tabindex="0" style="width:180px">
+                    <div class="slider-track"></div>
+                    <div class="slider-ticks">
+                      <i style="left:0%"></i><i style="left:10%"></i><i style="left:20%"></i><i style="left:30%"></i><i style="left:40%"></i><i style="left:50%"></i><i style="left:60%"></i><i style="left:70%"></i><i style="left:80%"></i><i style="left:90%"></i><i style="left:100%"></i>
+                    </div>
+                    <div class="slider-fill" style="width:40%"></div>
+                    <div class="slider-thumb" style="left:40%"></div>
+                  </div>
+                  <span class="slider-readout" style="font-family:var(--mono-stack); font-size:11px; color:var(--text-muted); min-width:48px">4 / 10</span>
+                </div>
+
+                <h3 class="sub-title">knob · rotary control (DAW)</h3>
+                <div class="row" style="gap:14px">
+                  <div class="knob-wrap">
+                    <div class="knob" data-knob data-min="-60" data-max="6" data-value="-12" tabindex="0">
+                      <svg class="knob-arc" viewBox="0 0 56 56">
+                        <circle cx="28" cy="28" r="24" fill="none" stroke="var(--border-strong)" stroke-width="2" stroke-dasharray="113 200" transform="rotate(135 28 28)" stroke-linecap="round"/>
+                        <circle class="knob-arc-fill" cx="28" cy="28" r="24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="82 200" transform="rotate(135 28 28)" stroke-linecap="round"/>
+                      </svg>
+                      <div class="knob-body" style="transform: rotate(72deg)">
+                        <div class="knob-pointer"></div>
+                      </div>
+                    </div>
+                    <span class="knob-label">GAIN</span>
+                    <span class="knob-value">-12.0 dB</span>
+                  </div>
+                  <div class="knob-wrap">
+                    <div class="knob" data-knob data-min="0" data-max="100" data-value="75" tabindex="0">
+                      <svg class="knob-arc" viewBox="0 0 56 56">
+                        <circle cx="28" cy="28" r="24" fill="none" stroke="var(--border-strong)" stroke-width="2" stroke-dasharray="113 200" transform="rotate(135 28 28)" stroke-linecap="round"/>
+                        <circle class="knob-arc-fill" cx="28" cy="28" r="24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="85 200" transform="rotate(135 28 28)" stroke-linecap="round"/>
+                      </svg>
+                      <div class="knob-body" style="transform: rotate(75deg)">
+                        <div class="knob-pointer"></div>
+                      </div>
+                    </div>
+                    <span class="knob-label">DRIVE</span>
+                    <span class="knob-value">75 %</span>
+                  </div>
+                  <div class="knob-wrap">
+                    <div class="knob" data-knob data-min="-50" data-max="50" data-value="-20" tabindex="0">
+                      <svg class="knob-arc" viewBox="0 0 56 56">
+                        <circle cx="28" cy="28" r="24" fill="none" stroke="var(--border-strong)" stroke-width="2" stroke-dasharray="113 200" transform="rotate(135 28 28)" stroke-linecap="round"/>
+                        <circle class="knob-arc-fill" cx="28" cy="28" r="24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="34 200" transform="rotate(180 28 28)" stroke-linecap="round"/>
+                      </svg>
+                      <div class="knob-body" style="transform: rotate(-54deg)">
+                        <div class="knob-pointer"></div>
+                      </div>
+                    </div>
+                    <span class="knob-label">PAN</span>
+                    <span class="knob-value">L 20</span>
+                  </div>
+                  <div class="knob-wrap">
+                    <div class="knob" data-knob data-min="20" data-max="20000" data-value="2400" tabindex="0">
+                      <svg class="knob-arc" viewBox="0 0 56 56">
+                        <circle cx="28" cy="28" r="24" fill="none" stroke="var(--border-strong)" stroke-width="2" stroke-dasharray="113 200" transform="rotate(135 28 28)" stroke-linecap="round"/>
+                        <circle class="knob-arc-fill" cx="28" cy="28" r="24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="55 200" transform="rotate(135 28 28)" stroke-linecap="round"/>
+                      </svg>
+                      <div class="knob-body" style="transform: rotate(40deg)">
+                        <div class="knob-pointer"></div>
+                      </div>
+                    </div>
+                    <span class="knob-label">FREQ</span>
+                    <span class="knob-value">2.4 kHz</span>
+                  </div>
+                </div>
+
+                <h3 class="sub-title">progress / vu</h3>
+                <div class="meter"><div></div></div>
+                <div style="font-size:10px; color:var(--text-muted); font-family:var(--mono-stack); margin-top:4px">RENDER · 65% · ETA 02:14</div>
+                <div style="margin-top:8px">
+                  <div class="meter-vu" title="vu"></div>
+                  <div style="font-size:10px; color:var(--text-muted); font-family:var(--mono-stack); margin-top:4px">VU · L -6.2 dB · R -5.8 dB</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ───────────── 23 Combobox / Tag input ───────────── -->
+      <section id="combobox">
+        <h2 class="sect-title"><span class="num">23</span>Combobox 与 Tag input<span class="tag">autocomplete · multi-select</span></h2>
+        <p class="sect-intro">原生 <code>&lt;select&gt;</code> 处理不了搜索、多选与异步加载——Combobox 是它的真正替代。Tag input 则把已选条目可视化为可关闭的 chip。</p>
+
+        <div class="two-col">
+          <section class="panel">
+            <div class="panel-header"><span>combobox · single-select with search</span></div>
+            <div class="panel-body" style="min-height:230px">
+              <div class="field" style="max-width:260px">
+                <label>Output codec</label>
+                <div class="combobox">
+                  <input class="combobox-input" value="ProRes" />
+                  <span class="combobox-chev">▾</span>
+                  <div class="combobox-list">
+                    <div class="combobox-option" data-state="selected">ProRes 422 HQ <span class="meta">.mov</span></div>
+                    <div class="combobox-option" data-state="highlighted">ProRes 4444 <span class="meta">.mov</span></div>
+                    <div class="combobox-option">DNxHR HQX <span class="meta">.mxf</span></div>
+                    <div class="combobox-option">H.264 <span class="meta">.mp4</span></div>
+                    <div class="combobox-option">EXR sequence <span class="meta">.exr</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="panel">
+            <div class="panel-header"><span>tag input · multi-select</span></div>
+            <div class="panel-body">
+              <div class="field">
+                <label>Tags</label>
+                <div class="tag-input">
+                  <span class="tag-chip">render <span class="tag-chip-x">×</span></span>
+                  <span class="tag-chip">queue <span class="tag-chip-x">×</span></span>
+                  <span class="tag-chip">prores-422 <span class="tag-chip-x">×</span></span>
+                  <input placeholder="add tag..." />
+                </div>
+                <span class="hint">// enter to add · backspace to remove last</span>
+              </div>
+              <h3 class="sub-title">filter bar · table-mounted</h3>
+              <div class="filter-bar">
+                <span class="label">FILTER</span>
+                <span class="filter-chip" data-state="active">status: render <span class="x">×</span></span>
+                <span class="filter-chip" data-state="active">codec: prores <span class="x">×</span></span>
+                <span class="filter-chip">+ add filter</span>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- ───────────── 24 Tags & Badges ───────────── -->
+      <section id="tags">
+        <h2 class="sect-title"><span class="num">24</span>标签 · 徽章 · Avatar<span class="tag">tag · badge · LED · avatar</span></h2>
+        <p class="sect-intro">三种状态指示元：<strong>tag</strong>（方形 1px 描边，用于表格状态列）·<strong>badge</strong>（pill 数字徽章，用于计数）·<strong>LED</strong>（7px 圆点 + 发光，用于设备状态）。</p>
+
+        <section class="panel">
+          <div class="panel-header"><span>tags · sharp 2px corners</span></div>
+          <div class="panel-body">
+            <div class="row">
+              <span class="tag">IDLE</span>
+              <span class="tag tag--accent">ACTIVE</span>
+              <span class="tag tag--success">OK</span>
+              <span class="tag tag--warning">WARN</span>
+              <span class="tag tag--danger">ERROR</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header"><span>badges · pill counters</span></div>
+          <div class="panel-body">
+            <div class="row" style="gap:4px">
+              <span class="badge">128</span>
+              <span class="badge badge--primary">3</span>
+              <span class="badge badge--success">OK</span>
+              <span class="badge badge--warning">Warn</span>
+              <span class="badge badge--danger">4</span>
+              <span class="badge badge--primary"><span class="badge-dot"></span>Live</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header"><span>LED indicators · industrial signal</span></div>
+          <div class="panel-body">
+            <div class="row" style="gap:14px">
+              <span class="row tight"><span class="led led--on"></span><span style="font-family:var(--mono-stack); font-size:10px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.06em">ONLINE</span></span>
+              <span class="row tight"><span class="led led--rec"></span><span style="font-family:var(--mono-stack); font-size:10px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.06em">REC</span></span>
+              <span class="row tight"><span class="led led--warn"></span><span style="font-family:var(--mono-stack); font-size:10px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.06em">CLIP</span></span>
+              <span class="row tight"><span class="led"></span><span style="font-family:var(--mono-stack); font-size:10px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.06em">OFFLINE</span></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header"><span>avatar · square 2px corners (industrial)</span></div>
+          <div class="panel-body">
+            <div class="row" style="gap:14px; align-items:center">
+              <div class="avatar avatar--lg">ZI</div>
+              <div class="avatar">JX</div>
+              <div class="avatar avatar--sm">A</div>
+              <div class="avatar avatar--accent">ZI<span class="avatar-presence"></span></div>
+              <div class="avatar-stack">
+                <div class="avatar">JX</div>
+                <div class="avatar">RM</div>
+                <div class="avatar">KL</div>
+                <div class="avatar" style="background:var(--bg-active); color:var(--text-muted)">+3</div>
+              </div>
+            </div>
+            <h3 class="sub-title">user chip · table / sidebar mounted</h3>
+            <div class="row" style="gap:6px">
+              <span class="user-chip">
+                <span class="avatar avatar--sm">JX</span>
+                <span>Jin Xu</span>
+                <span class="meta">node-3</span>
+              </span>
+              <span class="user-chip">
+                <span class="avatar avatar--sm avatar--accent">RM</span>
+                <span>R. Miller</span>
+                <span class="meta">node-7</span>
+              </span>
+              <span class="user-chip">
+                <span class="avatar avatar--sm">KL</span>
+                <span>K. Lin</span>
+                <span class="meta">offline</span>
+              </span>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ───────────── 24 Toolbar ───────────── -->
+      <section id="toolbar">
+        <h2 class="sect-title"><span class="num">25</span>工具栏与图标按钮<span class="tag">24×22 icon-btn</span></h2>
+        <p class="sect-intro">工具栏内图标按钮 24×22，描线宽 1.5px。分组之间用 1px 18px 高的分隔条 <code>.toolbar-sep</code>。激活态用 accent 实色填充——这是桌面工具最高的视觉强度。</p>
+
+        <section class="panel">
+          <div class="panel-header"><span>format toolbar</span></div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="toolbar">
+                <button class="icon-btn" data-state="checked" title="Bold"><svg viewBox="0 0 24 24"><path d="M6 4h8a4 4 0 0 1 0 8H6zM6 12h9a4 4 0 0 1 0 8H6z"/></svg></button>
+                <button class="icon-btn" title="Italic"><svg viewBox="0 0 24 24"><line x1="19" y1="4" x2="10" y2="4"/><line x1="14" y1="20" x2="5" y2="20"/><line x1="15" y1="4" x2="9" y2="20"/></svg></button>
+                <button class="icon-btn" title="Underline"><svg viewBox="0 0 24 24"><path d="M6 3v7a6 6 0 0 0 12 0V3"/><line x1="4" y1="21" x2="20" y2="21"/></svg></button>
+                <div class="toolbar-sep"></div>
+                <button class="icon-btn" title="Align L"><svg viewBox="0 0 24 24"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg></button>
+                <button class="icon-btn" data-state="checked" title="Align C"><svg viewBox="0 0 24 24"><line x1="18" y1="10" x2="6" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="18" y1="18" x2="6" y2="18"/></svg></button>
+                <button class="icon-btn" title="Align R"><svg viewBox="0 0 24 24"><line x1="21" y1="10" x2="7" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="21" y1="18" x2="7" y2="18"/></svg></button>
+                <div class="toolbar-sep"></div>
+                <button class="icon-btn" title="Link"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></button>
+                <button class="icon-btn" title="Image"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></button>
+                <button class="icon-btn" title="Code"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></button>
+              </div>
+            </div>
+
+            <h3 class="sub-title">transport · DAW / NLE</h3>
+            <div class="row">
+              <div class="toolbar">
+                <button class="icon-btn" title="Stop"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="6" y="6" width="12" height="12"/></svg></button>
+                <button class="icon-btn" title="Play"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="6 4 20 12 6 20"/></svg></button>
+                <button class="icon-btn" data-state="checked" title="Record"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="12" cy="12" r="6"/></svg></button>
+                <button class="icon-btn" title="Loop"><svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></button>
+              </div>
+              <div class="meter-vu"></div>
+              <span style="font-family:var(--mono-stack); font-size:11px; color:var(--text-muted)">00:42:18 / 04:21:00</span>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ───────────── 25 Tabs / Accordion ───────────── -->
+      <section id="tabs">
+        <h2 class="sect-title"><span class="num">26</span>Tabs · Accordion · Stepper<span class="tag">flat · bottom underline</span></h2>
+        <p class="sect-intro">Tab 不带圆角、不带背景填充——只用底部 2px accent 下划线表达激活。每个 tab 之间用 1px 短分隔，避免视觉粘连。</p>
+
+        <div class="two-col">
+          <section class="panel">
+            <div class="panel-header"><span>tabs</span></div>
+            <div class="panel-body" style="padding:0">
+              <div class="tabs-list">
+                <button class="tab" data-state="active" onclick="tabSelect(this)">Input</button>
+                <button class="tab" onclick="tabSelect(this)">EQ</button>
+                <button class="tab" onclick="tabSelect(this)">Comp</button>
+                <button class="tab" onclick="tabSelect(this)">Output</button>
+                <button class="tab" onclick="tabSelect(this)">Routing</button>
+              </div>
+              <div class="tab-panel">Set input gain, polarity, and routing path.</div>
+            </div>
+          </section>
+          <section class="panel">
+            <div class="panel-header"><span>accordion</span></div>
+            <div class="panel-body">
+              <div class="acc-item">
+                <button class="acc-trigger" data-state="open" onclick="accToggle(this)"><span>Hardware</span><span class="acc-chev">›</span></button>
+                <div class="acc-content">CPU · GPU · I/O · Sample rate · Block size</div>
+              </div>
+              <div class="acc-item">
+                <button class="acc-trigger" onclick="accToggle(this)"><span>Project</span><span class="acc-chev">›</span></button>
+              </div>
+              <div class="acc-item">
+                <button class="acc-trigger" onclick="accToggle(this)"><span>Keyboard shortcuts</span><span class="acc-chev">›</span></button>
+              </div>
+              <div class="acc-item">
+                <button class="acc-trigger" onclick="accToggle(this)"><span>Advanced</span><span class="acc-chev">›</span></button>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <section class="panel" style="margin-top:8px">
+          <div class="panel-header"><span>stepper · multi-step wizard</span></div>
+          <div class="panel-body">
+            <div class="stepper">
+              <div class="stepper-step" data-state="done"><span class="num">✓</span>Source</div>
+              <div class="stepper-sep"></div>
+              <div class="stepper-step" data-state="done"><span class="num">✓</span>Codec</div>
+              <div class="stepper-sep"></div>
+              <div class="stepper-step" data-state="current"><span class="num">3</span>Output</div>
+              <div class="stepper-sep"></div>
+              <div class="stepper-step"><span class="num">4</span>Review</div>
+              <div class="stepper-sep"></div>
+              <div class="stepper-step"><span class="num">5</span>Submit</div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ───────────── 27 Breadcrumb ───────────── -->
+      <section id="breadcrumb">
+        <h2 class="sect-title"><span class="num">27</span>面包屑 / 面包路径<span class="tag">mono · /-separator</span></h2>
+        <p class="sect-intro">桌面工具的面包屑用等宽字体 + 斜杠分隔——和文件路径同源。当前层级用 <code>--bg-active</code> 浅高亮，其余可点击。</p>
+        <section class="panel">
+          <div class="panel-header"><span>breadcrumb</span></div>
+          <div class="panel-body">
+            <nav class="crumb">
+              <a>workspace</a>
+              <span class="crumb-sep">/</span>
+              <a>projects</a>
+              <span class="crumb-sep">/</span>
+              <a>2026_q2</a>
+              <span class="crumb-sep">/</span>
+              <a>render_queue</a>
+              <span class="crumb-sep">/</span>
+              <span class="cur">scene_07_master.mov</span>
+            </nav>
+            <h3 class="sub-title">with chevron separators</h3>
+            <nav class="crumb">
+              <a>Files</a>
+              <span class="crumb-sep">›</span>
+              <a>shared</a>
+              <span class="crumb-sep">›</span>
+              <a>renders</a>
+              <span class="crumb-sep">›</span>
+              <span class="cur">final/</span>
+            </nav>
+          </div>
+        </section>
+      </section>
+
+      <!-- ───────────── 28 Tree view ───────────── -->
+      <section id="tree">
+        <h2 class="sect-title"><span class="num">28</span>树形视图<span class="tag">file browser · hierarchy</span></h2>
+        <p class="sect-intro">文件树 / 项目层级是工业桌面的高频组件。三角形展开符 + 14×14 图标 + 等宽行高。选中行用 accent 实色填充。子节点用 1px 虚线指示从属关系。</p>
+        <div class="two-col">
+          <section class="panel">
+            <div class="panel-header"><span>file tree</span><span class="right">project · render_queue</span></div>
+            <div class="panel-body" style="padding:6px">
+              <div class="tree">
+                <div class="tree-node" onclick="treeToggle(this)">
+                  <span class="tree-toggle open">▸</span>
+                  <span class="tree-ico">▣</span>render_queue<span class="tree-meta">2.4 GB</span>
+                </div>
+                <div class="tree-children" data-state="open">
+                  <div class="tree-node" onclick="treeToggle(this)">
+                    <span class="tree-toggle open">▸</span>
+                    <span class="tree-ico">▣</span>2026_q2
+                  </div>
+                  <div class="tree-children" data-state="open">
+                    <div class="tree-node" data-state="selected">
+                      <span class="tree-toggle empty">▸</span>
+                      <span class="tree-ico">▤</span>opening_v3.mov<span class="tree-meta">3.4 GB</span>
+                    </div>
+                    <div class="tree-node">
+                      <span class="tree-toggle empty">▸</span>
+                      <span class="tree-ico">▤</span>scene_07_master.mov<span class="tree-meta">—</span>
+                    </div>
+                    <div class="tree-node">
+                      <span class="tree-toggle empty">▸</span>
+                      <span class="tree-ico">▤</span>credits_v2.exr<span class="tree-meta">412 frames</span>
+                    </div>
+                  </div>
+                  <div class="tree-node" onclick="treeToggle(this)">
+                    <span class="tree-toggle">▸</span>
+                    <span class="tree-ico">▣</span>2026_q1<span class="tree-meta">archived</span>
+                  </div>
+                  <div class="tree-children">
+                    <div class="tree-node"><span class="tree-toggle empty">▸</span><span class="tree-ico">▤</span>nested.mov</div>
+                  </div>
+                </div>
+                <div class="tree-node" onclick="treeToggle(this)">
+                  <span class="tree-toggle">▸</span>
+                  <span class="tree-ico">▣</span>proxies<span class="tree-meta">12 files</span>
+                </div>
+                <div class="tree-children">
+                  <div class="tree-node"><span class="tree-toggle empty">▸</span><span class="tree-ico">▤</span>proxy_001.mp4</div>
+                </div>
+                <div class="tree-node" onclick="treeToggle(this)">
+                  <span class="tree-toggle">▸</span>
+                  <span class="tree-ico">▣</span>logs<span class="tree-meta">7 files</span>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="panel">
+            <div class="panel-header"><span>device tree</span><span class="right">cluster</span></div>
+            <div class="panel-body" style="padding:6px">
+              <div class="tree">
+                <div class="tree-node" onclick="treeToggle(this)">
+                  <span class="tree-toggle open">▸</span>
+                  <span class="tree-ico">▣</span>cluster-prod
+                </div>
+                <div class="tree-children" data-state="open">
+                  <div class="tree-node">
+                    <span class="tree-toggle empty">▸</span>
+                    <span class="tree-ico" style="color:var(--success)">●</span>NODE-3<span class="tree-meta">CPU 42%</span>
+                  </div>
+                  <div class="tree-node" data-state="selected">
+                    <span class="tree-toggle empty">▸</span>
+                    <span class="tree-ico">●</span>NODE-5<span class="tree-meta">CPU 18%</span>
+                  </div>
+                  <div class="tree-node">
+                    <span class="tree-toggle empty">▸</span>
+                    <span class="tree-ico" style="color:var(--warning)">●</span>NODE-7<span class="tree-meta">CPU 91%</span>
+                  </div>
+                  <div class="tree-node">
+                    <span class="tree-toggle empty">▸</span>
+                    <span class="tree-ico" style="color:var(--text-dim)">●</span>NODE-12<span class="tree-meta">offline</span>
+                  </div>
+                </div>
+                <div class="tree-node" onclick="treeToggle(this)">
+                  <span class="tree-toggle open">▸</span>
+                  <span class="tree-ico">▣</span>cluster-staging
+                </div>
+                <div class="tree-children" data-state="open">
+                  <div class="tree-node">
+                    <span class="tree-toggle empty">▸</span>
+                    <span class="tree-ico" style="color:var(--success)">●</span>STG-1
+                  </div>
+                  <div class="tree-node">
+                    <span class="tree-toggle empty">▸</span>
+                    <span class="tree-ico" style="color:var(--text-dim)">●</span>STG-2<span class="tree-meta">drained</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- ───────────── 29 Table ───────────── -->
+      <section id="table">
+        <h2 class="sect-title"><span class="num">29</span>数据表格<span class="tag">ruled · indexed · sortable · selectable</span></h2>
+        <p class="sect-intro">工业表格 = 电子表格 + syslog。垂直 1px 分隔列、左侧 row-num gutter、表头大写 mono + 排序卡尺、选中行 2px accent 左缘条。状态列用 LED + mono caps 替代彩色 pill。</p>
+
+        <div class="dt-wrapper">
+          <div class="dt-toolbar">
+            <span class="count">SHOWING <strong>6</strong> / 128 ROWS</span>
+            <span>·</span>
+            <span>SORT: <strong style="color:var(--accent)">ETA ↑</strong></span>
+            <div class="right">
+              <button class="btn btn--sm btn--ghost">filter</button>
+              <button class="btn btn--sm btn--ghost">columns</button>
+              <button class="btn btn--sm btn--ghost">export</button>
+            </div>
+          </div>
+          <table class="dt">
+            <thead>
+              <tr>
+                <th class="rownum">#</th>
+                <th class="sortable" style="width:34%">Job<span class="sort-caret"><i class="up">▲</i><i class="down">▼</i></span><span class="resize-handle"></span></th>
+                <th class="sortable">Codec<span class="sort-caret"><i class="up">▲</i><i class="down">▼</i></span><span class="resize-handle"></span></th>
+                <th class="sortable" style="text-align:right">FPS<span class="sort-caret"><i class="up">▲</i><i class="down">▼</i></span><span class="resize-handle"></span></th>
+                <th class="sortable" style="text-align:right">Size<span class="sort-caret"><i class="up">▲</i><i class="down">▼</i></span><span class="resize-handle"></span></th>
+                <th>Status<span class="resize-handle"></span></th>
+                <th class="sortable" data-sort="asc" style="text-align:right">ETA<span class="sort-caret"><i class="up">▲</i><i class="down">▼</i></span><span class="resize-handle"></span></th>
+                <th class="sortable">Owner<span class="resize-handle"></span></th>
+                <th style="width:24px"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="rownum">001</td>
+                <td>opening_v3.mov</td>
+                <td>ProRes 422</td>
+                <td class="num">23.976</td>
+                <td class="num">3.4 GB</td>
+                <td><span class="dt-status is-done"><span class="led"></span>DONE</span></td>
+                <td class="num">—</td>
+                <td><span class="user-chip" style="padding:0 6px 0 1px"><span class="avatar avatar--sm">JX</span>Jin Xu</span></td>
+                <td><button class="icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg></button></td>
+              </tr>
+              <tr data-state="selected">
+                <td class="rownum">002</td>
+                <td>scene_07_master.mov</td>
+                <td>DNxHR HQX</td>
+                <td class="num">29.97</td>
+                <td class="num">—</td>
+                <td>
+                  <span class="dt-status is-render"><span class="led"></span>RENDER</span>
+                  <span class="dt-progress" style="margin-left:8px"><span class="bar"><i style="width:65%"></i></span><span>65%</span></span>
+                </td>
+                <td class="num">02:14</td>
+                <td><span class="user-chip" style="padding:0 6px 0 1px"><span class="avatar avatar--sm avatar--accent">RM</span>R. Miller</span></td>
+                <td><button class="icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg></button></td>
+              </tr>
+              <tr>
+                <td class="rownum">003</td>
+                <td>scene_07_proxy.mp4</td>
+                <td>H.264</td>
+                <td class="num">29.97</td>
+                <td class="num">—</td>
+                <td><span class="dt-status is-queue"><span class="led"></span>QUEUE</span></td>
+                <td class="num">—</td>
+                <td><span class="user-chip" style="padding:0 6px 0 1px"><span class="avatar avatar--sm">RM</span>R. Miller</span></td>
+                <td><button class="icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg></button></td>
+              </tr>
+              <tr>
+                <td class="rownum">004</td>
+                <td>credits_v2.exr</td>
+                <td>EXR seq</td>
+                <td class="num">23.976</td>
+                <td class="num">412 fr</td>
+                <td><span class="dt-status is-warn"><span class="led"></span>WARN</span></td>
+                <td class="num">—</td>
+                <td><span class="user-chip" style="padding:0 6px 0 1px"><span class="avatar avatar--sm">KL</span>K. Lin</span></td>
+                <td><button class="icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg></button></td>
+              </tr>
+              <tr>
+                <td class="rownum">005</td>
+                <td>lower_third.mov</td>
+                <td>ProRes 4444</td>
+                <td class="num">29.97</td>
+                <td class="num">—</td>
+                <td><span class="dt-status is-error"><span class="led"></span>ERROR <span style="color:var(--text-dim); margin-left:4px">0x5f</span></span></td>
+                <td class="num">—</td>
+                <td><span class="user-chip" style="padding:0 6px 0 1px"><span class="avatar avatar--sm">JX</span>Jin Xu</span></td>
+                <td><button class="icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg></button></td>
+              </tr>
+              <tr>
+                <td class="rownum">006</td>
+                <td>shot_12_proxy.mp4</td>
+                <td>H.264</td>
+                <td class="num">29.97</td>
+                <td class="num">412 MB</td>
+                <td><span class="dt-status is-done"><span class="led"></span>DONE</span></td>
+                <td class="num">—</td>
+                <td><span class="user-chip" style="padding:0 6px 0 1px"><span class="avatar avatar--sm">KL</span>K. Lin</span></td>
+                <td><button class="icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg></button></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="dt-footer">
+            <span>1 SELECTED</span>
+            <span>·</span>
+            <span>3 ACTIVE</span>
+            <span>·</span>
+            <span>1 WARN</span>
+            <span>·</span>
+            <span>1 ERROR</span>
+            <span class="spacer"></span>
+            <span>PAGE 3 / 6</span>
+          </div>
+        </div>
+
+        <div style="margin-top:8px">
+          <div class="pagination">
+            <button class="page-arrow">‹</button>
+            <button class="page-cell" onclick="pageSelect(this)">1</button>
+            <button class="page-cell" onclick="pageSelect(this)">2</button>
+            <button class="page-cell" data-state="active" onclick="pageSelect(this)">3</button>
+            <button class="page-cell" onclick="pageSelect(this)">4</button>
+            <button class="page-cell" onclick="pageSelect(this)">5</button>
+            <button class="page-arrow">›</button>
+            <span style="font-family:var(--mono-stack); font-size:10px; color:var(--text-dim); margin-left:8px; text-transform:uppercase; letter-spacing:0.06em">128 rows · 25 per page</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ───────────── 30 Splitter / Resizable panes ───────────── -->
+      <section id="splitter">
+        <h2 class="sect-title"><span class="num">30</span>分割面板<span class="tag">resizable · dotted handle</span></h2>
+        <p class="sect-intro">DAW / IDE / NLE 必备的可拖拽分隔条。把手 6px 宽 + 中央 2×18 的圆点纹理。作为被动分隔条,hover / 拖动时只做中性加深,靠 grip 点提亮表达"正在操作",边框始终保持中性、不变 accent。</p>
+
+        <section class="panel">
+          <div class="panel-header"><span>vertical split · sidebar + main</span></div>
+          <div class="panel-body" style="padding:0">
+            <div class="split split--v" style="height:200px">
+              <div class="split-pane" style="flex:0 0 200px">
+                <div class="pane-header">explorer</div>
+                <div style="font-family:var(--mono-stack); font-size:11px; line-height:1.7; color:var(--text-muted)">
+                  ▸ renders<br>
+                  ▾ proxies<br>
+                  &nbsp;&nbsp;▤ proxy_001.mp4<br>
+                  &nbsp;&nbsp;▤ proxy_002.mp4<br>
+                  ▸ archive
+                </div>
+              </div>
+              <div class="split-handle" data-split-handle></div>
+              <div class="split-pane" style="flex:1">
+                <div class="pane-header">workspace</div>
+                <div>主工作区,占据剩余宽度。把手 6px,鼠标 hover 时变 <code>--bg-hover</code>,按下时 <code>--accent</code>。</div>
+              </div>
+              <div class="split-handle" data-split-handle></div>
+              <div class="split-pane" style="flex:0 0 180px">
+                <div class="pane-header">inspector</div>
+                <div style="font-family:var(--mono-stack); font-size:11px; color:var(--text-muted)">name<br>codec<br>fps<br>size<br>created</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" style="margin-top:8px">
+          <div class="panel-header"><span>horizontal split · timeline / preview</span></div>
+          <div class="panel-body" style="padding:0">
+            <div class="split split--h" style="height:220px">
+              <div class="split-pane" style="flex:1">
+                <div class="pane-header">preview</div>
+                <div>视频 / 3D 预览区,占据上半部分。</div>
+              </div>
+              <div class="split-handle" data-split-handle></div>
+              <div class="split-pane" style="flex:0 0 70px; background:var(--bg-base)">
+                <div class="pane-header">timeline · 24 fps</div>
+                <div style="font-family:var(--mono-stack); font-size:10px; color:var(--text-dim)">00:00 · 00:30 · 01:00 · 01:30 · 02:00 · 02:30 · 03:00</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ───────────── 31 Overlays ───────────── -->
+      <section id="overlay">
+        <h2 class="sect-title"><span class="num">31</span>浮层 · 对话框 · 抽屉<span class="tag">dialog · menu · popover · tooltip · drawer</span></h2>
+        <p class="sect-intro">所有浮层用 <code>--shadow-pop</code> + <code>--border-strong</code>，并通过 inverse 色制造贴近物理观感的「悬浮卡片」。</p>
+
+        <div class="two-col">
+          <div>
+            <h3 class="sub-title">dialog</h3>
+            <div class="dialog-stage">
+              <div class="dialog-surface">
+                <div class="dialog-head"><span>render queue · preferences</span><button class="btn btn--ghost btn--icon btn--sm" title="Close"><svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button></div>
+                <div class="dialog-body">
+                  <div class="dialog-title">Confirm overwrite</div>
+                  <div class="dialog-desc">Output file <code>master_v4.mov</code> exists. Overwrite or rename?</div>
+                  <div class="col" style="gap:6px">
+                    <input class="input" value="master_v5.mov" />
+                  </div>
+                </div>
+                <div class="dialog-actions">
+                  <button class="btn">Cancel</button>
+                  <button class="btn">Rename</button>
+                  <button class="btn btn--primary">Overwrite</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="sub-title">tooltip · 12px inverse</h3>
+            <div style="display:flex; align-items:center; justify-content:center; padding:12px; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--bg-base);">
+              <span class="tooltip"><kbd>⇧⌘R</kbd> &nbsp;Reload sample bank</span>
+            </div>
+
+            <h3 class="sub-title">popover</h3>
+            <div style="display:flex; align-items:center; justify-content:center; padding:14px; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--bg-base);">
+              <div class="popover">
+                <div style="font-weight:var(--fw-semibold); font-size:var(--f-sm); margin-bottom:4px">Render queue</div>
+                <div style="color:var(--text-muted); font-size:var(--f-sm)">3 jobs · 1 active · 2 pending</div>
+                <div class="row tight" style="margin-top:8px">
+                  <button class="btn btn--sm btn--primary">Start all</button>
+                  <button class="btn btn--sm">Pause</button>
+                </div>
+              </div>
+            </div>
+
+            <h3 class="sub-title">context menu</h3>
+            <div style="display:flex; align-items:center; justify-content:center; padding:14px; border:1px solid var(--border); border-radius:var(--r-sm); background:var(--bg-base);">
+              <div class="menu">
+                <div class="menu-label">Edit</div>
+                <div class="menu-item"><span>Cut</span><span class="shortcut">⌘X</span></div>
+                <div class="menu-item"><span>Copy</span><span class="shortcut">⌘C</span></div>
+                <div class="menu-item"><span>Paste</span><span class="shortcut">⌘V</span></div>
+                <div class="menu-sep"></div>
+                <div class="menu-item"><span>Find…</span><span class="shortcut">⌘F</span></div>
+                <div class="menu-item"><span>Find &amp; replace</span><span class="shortcut">⇧⌘F</span></div>
+                <div class="menu-sep"></div>
+                <div class="menu-item" style="color:var(--danger)"><span>Delete</span><span class="shortcut">⌫</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="sub-title">drawer · slide-in from right</h3>
+        <div class="drawer-stage">
+          <div class="drawer-backdrop"></div>
+          <div class="drawer">
+            <div class="drawer-head">
+              <span>inspector · scene_07_master</span>
+              <button class="btn btn--ghost btn--icon btn--sm" title="Close"><svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+            </div>
+            <div class="drawer-body">
+              <div class="field" style="margin-bottom:10px"><label>Name</label><input class="input" value="scene_07_master.mov" /></div>
+              <div class="field" style="margin-bottom:10px"><label>Codec</label><select class="select"><option>DNxHR HQX</option></select></div>
+              <div class="row">
+                <div class="field"><label>FPS</label><div class="num-input"><input value="29.97" /><div class="spin"><button>▲</button><button>▼</button></div></div></div>
+                <div class="field"><label>Width</label><div class="num-input"><input value="3840" /><div class="spin"><button>▲</button><button>▼</button></div></div></div>
+              </div>
+            </div>
+            <div class="drawer-foot">
+              <button class="btn btn--sm">Cancel</button>
+              <button class="btn btn--sm btn--primary">Apply</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ───────────── 32 Command palette ───────────── -->
+      <section id="cmdp">
+        <h2 class="sect-title"><span class="num">32</span>命令面板<span class="tag">⌘K · fuzzy · keyboard-first</span></h2>
+        <p class="sect-intro">所有专业工具的标配:全局搜索 + 命令执行 + 文件跳转。键盘优先,高亮项跟随 ↑↓,Enter 触发,Esc 关闭。分组用 mono uppercase 小标题。</p>
+        <section class="panel">
+          <div class="panel-header"><span>command palette · keyboard-driven</span><span class="right">⌘K</span></div>
+          <div class="panel-body" style="background:var(--bg-base); padding:24px; display:flex; justify-content:center;">
+            <div class="cmdp">
+              <div class="cmdp-input">
+                <span class="glyph">›</span>
+                <input value="render" />
+                <span class="esc">ESC</span>
+              </div>
+              <div class="cmdp-list">
+                <div class="cmdp-group-label">Commands</div>
+                <div class="cmdp-item" data-state="highlighted">
+                  <span class="cmdp-glyph">▸</span>
+                  <span>Render · start all jobs</span>
+                  <span class="cmdp-cat">queue</span>
+                  <span class="cmdp-shortcut">⇧⌘R</span>
+                </div>
+                <div class="cmdp-item">
+                  <span class="cmdp-glyph">▸</span>
+                  <span>Render · pause all</span>
+                  <span class="cmdp-cat">queue</span>
+                  <span class="cmdp-shortcut">⌘.</span>
+                </div>
+                <div class="cmdp-item">
+                  <span class="cmdp-glyph">▸</span>
+                  <span>Render · clear queue</span>
+                  <span class="cmdp-cat">queue</span>
+                  <span class="cmdp-shortcut">⇧⌘⌫</span>
+                </div>
+                <div class="cmdp-group-label">Files</div>
+                <div class="cmdp-item">
+                  <span class="cmdp-glyph">▤</span>
+                  <span>render_queue.zi</span>
+                  <span class="cmdp-cat">/projects/2026_q2</span>
+                </div>
+                <div class="cmdp-item">
+                  <span class="cmdp-glyph">▤</span>
+                  <span>render_log_05-24.txt</span>
+                  <span class="cmdp-cat">/logs</span>
+                </div>
+                <div class="cmdp-group-label">Settings</div>
+                <div class="cmdp-item">
+                  <span class="cmdp-glyph">⚙</span>
+                  <span>Render preferences</span>
+                  <span class="cmdp-cat">preferences</span>
+                  <span class="cmdp-shortcut">⌘,</span>
+                </div>
+              </div>
+              <div class="cmdp-footer">
+                <span class="kbd-hint"><span class="kbd-group"><kbd>↑</kbd><kbd>↓</kbd></span> navigate</span>
+                <span class="kbd-hint"><kbd style="background:var(--bg-active); border:1px solid var(--border); padding:0 4px; border-radius:2px;">↵</kbd> select</span>
+                <span class="kbd-hint"><kbd style="background:var(--bg-active); border:1px solid var(--border); padding:0 4px; border-radius:2px;">esc</kbd> close</span>
+                <span style="margin-left:auto">128 items</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ───────────── 33 Color picker ───────────── -->
+      <section id="colorpicker">
+        <h2 class="sect-title"><span class="num">33</span>调色器<span class="tag">HSV · RGB · hex · swatches</span></h2>
+        <p class="sect-intro">用于 Studio (NLE) preset 等色彩相关场景。SV 拾取区 + 色相条 + 4 通道数值 + 预设色板四件套。所有数值入口都是 mono 等宽。</p>
+        <div class="two-col">
+          <section class="panel">
+            <div class="panel-header"><span>color picker</span></div>
+            <div class="panel-body" style="display:flex; justify-content:center; background:var(--bg-base);">
+              <div class="colorpicker">
+                <div class="color-sat">
+                  <div class="color-sat-pin" style="left:72%; top:34%"></div>
+                </div>
+                <div class="color-hue">
+                  <div class="color-hue-pin" style="left:60%"></div>
+                </div>
+                <div class="color-readout">
+                  <div class="swatch-preview"></div>
+                  <div class="channels">
+                    <div class="ch"><label>R</label><input value="59" /></div>
+                    <div class="ch"><label>G</label><input value="158" /></div>
+                    <div class="ch"><label>B</label><input value="255" /></div>
+                    <div class="ch"><label>A</label><input value="100" /></div>
+                  </div>
+                </div>
+                <div class="row" style="margin-top:8px; gap:4px">
+                  <span style="font-family:var(--mono-stack); font-size:10px; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.06em;">HEX</span>
+                  <input class="input mono" value="#3B9EFF" style="text-align:right; font-size:11px; padding:2px 6px;" />
+                </div>
+                <div class="color-swatches">
+                  <div style="background:#3b9eff"></div>
+                  <div style="background:#d97a17"></div>
+                  <div style="background:#3fb6c4"></div>
+                  <div style="background:#94b46b"></div>
+                  <div style="background:#6da0e3"></div>
+                  <div style="background:#ff6a14"></div>
+                  <div style="background:#5bf08a"></div>
+                  <div style="background:#f87171"></div>
+                  <div style="background:#fbbf24"></div>
+                  <div style="background:#34d399"></div>
+                  <div style="background:#cfe2cf"></div>
+                  <div style="background:#1d1d1f"></div>
+                  <div style="background:#eaeaec"></div>
+                  <div style="background:#2a5da1"></div>
+                  <div style="background:#b86a0e"></div>
+                  <div style="background:#0b7b8a"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ───────────── 34 Date picker ───────────── -->
+          <section class="panel">
+            <div class="panel-header"><span>date picker · single + range</span></div>
+            <div class="panel-body" id="datepicker" style="display:flex; justify-content:center; background:var(--bg-base);">
+              <div class="datepicker">
+                <div class="dp-header">
+                  <div class="dp-month">MAY · 2026</div>
+                  <div class="dp-nav">
+                    <button>‹</button>
+                    <button>›</button>
+                  </div>
+                </div>
+                <div class="dp-grid">
+                  <span class="dow">Mo</span><span class="dow">Tu</span><span class="dow">We</span><span class="dow">Th</span><span class="dow">Fr</span><span class="dow">Sa</span><span class="dow">Su</span>
+                  <span class="dp-cell" data-state="dim">28</span>
+                  <span class="dp-cell" data-state="dim">29</span>
+                  <span class="dp-cell" data-state="dim">30</span>
+                  <span class="dp-cell">1</span>
+                  <span class="dp-cell">2</span>
+                  <span class="dp-cell">3</span>
+                  <span class="dp-cell">4</span>
+                  <span class="dp-cell">5</span>
+                  <span class="dp-cell">6</span>
+                  <span class="dp-cell">7</span>
+                  <span class="dp-cell">8</span>
+                  <span class="dp-cell">9</span>
+                  <span class="dp-cell">10</span>
+                  <span class="dp-cell">11</span>
+                  <span class="dp-cell" data-state="selected">12</span>
+                  <span class="dp-cell" data-state="in-range">13</span>
+                  <span class="dp-cell" data-state="in-range">14</span>
+                  <span class="dp-cell" data-state="in-range">15</span>
+                  <span class="dp-cell" data-state="in-range">16</span>
+                  <span class="dp-cell" data-state="in-range">17</span>
+                  <span class="dp-cell" data-state="in-range">18</span>
+                  <span class="dp-cell" data-state="selected">19</span>
+                  <span class="dp-cell">20</span>
+                  <span class="dp-cell">21</span>
+                  <span class="dp-cell">22</span>
+                  <span class="dp-cell">23</span>
+                  <span class="dp-cell" data-state="today">24</span>
+                  <span class="dp-cell">25</span>
+                  <span class="dp-cell">26</span>
+                  <span class="dp-cell">27</span>
+                  <span class="dp-cell">28</span>
+                  <span class="dp-cell">29</span>
+                  <span class="dp-cell">30</span>
+                  <span class="dp-cell">31</span>
+                  <span class="dp-cell" data-state="dim">1</span>
+                  <span class="dp-cell" data-state="dim">2</span>
+                  <span class="dp-cell" data-state="dim">3</span>
+                  <span class="dp-cell" data-state="dim">4</span>
+                  <span class="dp-cell" data-state="dim">5</span>
+                  <span class="dp-cell" data-state="dim">6</span>
+                  <span class="dp-cell" data-state="dim">7</span>
+                  <span class="dp-cell" data-state="dim">8</span>
+                </div>
+                <div class="dp-footer">
+                  <span>MAY 12 → MAY 19</span>
+                  <span class="spacer"></span>
+                  <button class="btn btn--sm">Clear</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- ───────────── 35 Indicator ───────────── -->
+      <section id="indicator">
+        <h2 class="sect-title"><span class="num">35</span>计量 · 进度 · 加载<span class="tag">meter · vu · spinner · skeleton</span></h2>
+        <p class="sect-intro">数据进度类元件都用「下沉凹槽 + 实色填充」的物理隐喻。VU 表使用渐变三段（绿→黄→红），是 DAW / 监测场景的标配。</p>
+
+        <div class="two-col">
+          <section class="panel">
+            <div class="panel-header"><span>progress &amp; meters</span></div>
+            <div class="panel-body">
+              <div class="field"><label>render</label><div class="meter"><div style="width:65%"></div></div><span class="hint">65% · ETA 02:14</span></div>
+              <div class="field" style="margin-top:10px"><label>vu · L</label><div class="meter-vu" style="width:100%"></div></div>
+              <div class="field" style="margin-top:6px"><label>vu · R</label><div class="meter-vu" style="width:100%"></div></div>
+              <div class="field" style="margin-top:10px"><label>cpu</label><div class="meter"><div style="width:42%; background:var(--success)"></div></div><span class="hint">42% · 8 cores</span></div>
+              <div class="field" style="margin-top:6px"><label>memory</label><div class="meter"><div style="width:78%; background:var(--warning)"></div></div><span class="hint">9.2 / 32 GB · pressure: nominal</span></div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-header"><span>skeleton · loading state</span></div>
+            <div class="panel-body">
+              <div style="display:flex; gap:10px; align-items:flex-start;">
+                <div class="skeleton skeleton--avatar"></div>
+                <div style="flex:1">
+                  <div class="skeleton skeleton--heading"></div>
+                  <div class="skeleton skeleton--text"></div>
+                  <div class="skeleton skeleton--text" style="width:80%"></div>
+                  <div class="skeleton skeleton--text" style="width:60%"></div>
+                </div>
+              </div>
+              <div class="note" style="margin-top:10px">
+                <span class="note-tag">USE</span>
+                <span>仅当请求 &gt; 200ms 且无法立刻给出 progressive UI 时再用骨架屏；其余情况用 spinner 或 nothing。</span>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <section class="panel" style="margin-top:8px">
+          <div class="panel-header"><span>spinners &amp; loaders · 200–2000ms</span></div>
+          <div class="panel-body">
+            <div class="three-col">
+              <div>
+                <h3 class="sub-title">circular spinner</h3>
+                <div class="row" style="gap:18px; align-items:center">
+                  <span class="spinner spinner--sm"></span>
+                  <span class="spinner"></span>
+                  <span class="spinner spinner--lg"></span>
+                  <span style="font-family:var(--mono-stack); font-size:11px; color:var(--text-muted)">sm · md · lg</span>
+                </div>
+                <div class="row" style="gap:6px; margin-top:10px">
+                  <button class="btn btn--primary"><span class="spinner spinner--sm" style="border-color:rgba(255,255,255,.25); border-top-color:var(--accent-fg)"></span>Rendering…</button>
+                </div>
+              </div>
+              <div>
+                <h3 class="sub-title">dots · inline status</h3>
+                <div class="row" style="gap:8px; align-items:center">
+                  <span class="dots-loader"><i></i><i></i><i></i></span>
+                  <span style="font-family:var(--mono-stack); font-size:11px; color:var(--text-muted)">connecting to node-3…</span>
+                </div>
+              </div>
+              <div>
+                <h3 class="sub-title">bar · indeterminate</h3>
+                <div class="bar-loader"></div>
+                <div style="font-family:var(--mono-stack); font-size:10px; color:var(--text-dim); margin-top:6px; text-transform:uppercase; letter-spacing:0.06em">INDEXING · 4,218 / ?</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ───────────── 36 Feedback ───────────── -->
+      <section id="feedback">
+        <h2 class="sect-title"><span class="num">36</span>反馈<span class="tag">toast · notes</span></h2>
+        <p class="sect-intro">Toast 用 1px 状态色边框 + 中性背景，避免大面积彩色填充。Note 用 3px 左边条 + 大写 tag 标识严重程度。</p>
+
+        <div class="two-col">
+          <section class="panel">
+            <div class="panel-header"><span>toast · syslog / SCADA alarm strip</span></div>
+            <div class="panel-body" style="display:flex; flex-direction:column; gap:8px;">
+
+              <div class="toast toast--info">
+                <div class="toast-bar"></div>
+                <div class="toast-content">
+                  <div class="toast-headline">
+                    <span class="toast-tag">INFO</span>
+                    <span class="toast-source">render.queue</span>
+                    <span class="toast-time">17:42:08.214</span>
+                  </div>
+                  <div class="toast-body">Render queue idle — 3 jobs finished, 0 pending.</div>
+                </div>
+                <span class="toast-close">×</span>
+              </div>
+
+              <div class="toast toast--success">
+                <div class="toast-bar"></div>
+                <div class="toast-content">
+                  <div class="toast-headline">
+                    <span class="toast-tag">OK</span>
+                    <span class="toast-source">export.v5</span>
+                    <span class="toast-time">17:42:09.001</span>
+                  </div>
+                  <div class="toast-body">Saved to <code>/var/render/2026/05/master_v5.mov</code></div>
+                </div>
+                <span class="toast-close">×</span>
+              </div>
+
+              <div class="toast toast--warning">
+                <div class="toast-bar"></div>
+                <div class="toast-content">
+                  <div class="toast-headline">
+                    <span class="toast-tag">WARN</span>
+                    <span class="toast-source">disk.var</span>
+                    <span class="toast-time">17:43:11.882</span>
+                  </div>
+                  <div class="toast-body">Disk space low — 2.1 GB remaining on <code>/var</code>. Auto-purge will trigger at 1.0 GB.</div>
+                </div>
+                <span class="toast-close">×</span>
+              </div>
+
+              <div class="toast toast--danger">
+                <div class="toast-bar"></div>
+                <div class="toast-content">
+                  <div class="toast-headline">
+                    <span class="toast-tag">CRIT</span>
+                    <span class="toast-source">encoder.005</span>
+                    <span class="toast-time">17:45:02.443</span>
+                  </div>
+                  <div class="toast-body">Frame 1842 failed — codec error <code>0x5f</code>. Retry queued.</div>
+                </div>
+                <span class="toast-close">×</span>
+              </div>
+
+            </div>
+          </section>
+          <section class="panel">
+            <div class="panel-header"><span>inline notes</span></div>
+            <div class="panel-body" style="display:flex; flex-direction:column; gap:6px;">
+              <div class="note"><span class="note-tag">RULE</span><span>所有破坏性动作（删除 / 解除关联 / 强制中断）必须有二次确认对话框。</span></div>
+              <div class="note note--warn"><span class="note-tag">CAVEAT</span><span>跨网段操作平均延迟 280ms — 表格刷新前请先 prefetch。</span></div>
+              <div class="note note--danger"><span class="note-tag">DANGER</span><span>该操作不可撤销，将清空 6 个会话与 1.2 GB 缓存。</span></div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- ───────────── 37 Code & Keyboard ───────────── -->
+      <section id="code">
+        <h2 class="sect-title"><span class="num">37</span>代码与键盘<span class="tag">code block · kbd group · inline</span></h2>
+        <p class="sect-intro">代码块用 mono + 1px 顶栏(显示语言 / 复制按钮)。键盘提示用 <code>kbd-group</code> 拼装多键组合,底部 2px 阴影模拟实体键帽。</p>
+
+        <div class="two-col">
+          <section class="panel">
+            <div class="panel-header"><span>code block · syntax highlight</span></div>
+            <div class="panel-body" style="padding:8px">
+              <div class="codeblock">
+                <div class="codeblock-head"><span>css · presets.beacon.dark</span><span class="copy">⎘ copy</span></div>
+<pre><span class="tok-com">/* zi · beacon · dark */</span>
+<span class="tok-pun">:</span><span class="tok-key">root</span> <span class="tok-pun">{</span>
+  <span class="tok-key">--bg-base</span><span class="tok-pun">:</span> <span class="tok-str">"#11151c"</span><span class="tok-pun">;</span>
+  <span class="tok-key">--accent</span><span class="tok-pun">:</span>  <span class="tok-str">"#4d9bff"</span><span class="tok-pun">;</span>
+  <span class="tok-key">--r-md</span><span class="tok-pun">:</span>   <span class="tok-num">3</span>px<span class="tok-pun">;</span>
+  <span class="tok-key">--gap</span><span class="tok-pun">:</span>    <span class="tok-num">8</span>px<span class="tok-pun">;</span>
+<span class="tok-pun">}</span></pre>
+              </div>
+
+              <h3 class="sub-title">inline code</h3>
+              <div style="font-size:var(--f-sm); color:var(--text-muted); line-height:1.7">
+                所有令牌挂到 <code>:root</code>。Hex 值同时支持 <code>oklch()</code> 与 <code>#rrggbb</code>,密度令牌如 <code>--gap</code> 默认 <code>8px</code>。
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-header"><span>keyboard hints</span></div>
+            <div class="panel-body">
+              <h3 class="sub-title">single keys</h3>
+              <div class="row" style="gap:4px">
+                <kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd>
+                <kbd>↵</kbd><kbd>⌫</kbd><kbd>esc</kbd><kbd>tab</kbd>
+              </div>
+
+              <h3 class="sub-title">combinations</h3>
+              <div class="col" style="gap:8px">
+                <div class="row" style="gap:12px; font-size:var(--f-sm); color:var(--text-muted)">
+                  <span class="kbd-group"><kbd>⌘</kbd><span class="plus">+</span><kbd>K</kbd></span>
+                  <span>Command palette</span>
+                </div>
+                <div class="row" style="gap:12px; font-size:var(--f-sm); color:var(--text-muted)">
+                  <span class="kbd-group"><kbd>⇧</kbd><span class="plus">+</span><kbd>⌘</kbd><span class="plus">+</span><kbd>R</kbd></span>
+                  <span>Render · start all jobs</span>
+                </div>
+                <div class="row" style="gap:12px; font-size:var(--f-sm); color:var(--text-muted)">
+                  <span class="kbd-group"><kbd>⌥</kbd><span class="plus">+</span><kbd>⌘</kbd><span class="plus">+</span><kbd>↑</kbd></span>
+                  <span>Move row up</span>
+                </div>
+                <div class="row" style="gap:12px; font-size:var(--f-sm); color:var(--text-muted)">
+                  <span class="kbd-group"><kbd>⌃</kbd><span class="plus">+</span><kbd>`</kbd></span>
+                  <span>Toggle console</span>
+                </div>
+                <div class="row" style="gap:12px; font-size:var(--f-sm); color:var(--text-muted)">
+                  <span class="kbd-group"><kbd>space</kbd></span>
+                  <span>Play / Pause transport</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- ───────────── 38 Empty state ───────────── -->
+      <section id="empty">
+        <h2 class="sect-title"><span class="num">38</span>空态<span class="tag">checker pattern · dashed border</span></h2>
+        <p class="sect-intro">空表格 / 空队列 / 空收件箱要传达「这里本应有东西,但现在没有」的语义。1px 虚线 + 棋盘格底纹 + 中央 48px 标志方块。</p>
+
+        <div class="two-col">
+          <section class="panel">
+            <div class="panel-header"><span>empty · no items</span></div>
+            <div class="panel-body">
+              <div class="empty">
+                <div class="empty-mark">∅</div>
+                <div class="empty-title">没有正在排队的渲染任务</div>
+                <div class="empty-desc">把素材拖到这里,或从命令面板 <span class="kbd-group"><kbd>⌘</kbd><span class="plus">+</span><kbd>K</kbd></span> 调用「New job」开始。</div>
+                <div class="empty-actions">
+                  <button class="btn btn--sm">Import folder</button>
+                  <button class="btn btn--sm btn--primary">+ New job</button>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="panel">
+            <div class="panel-header"><span>empty · filtered</span></div>
+            <div class="panel-body">
+              <div class="empty">
+                <div class="empty-mark">⌕</div>
+                <div class="empty-title">没有命中的结果</div>
+                <div class="empty-desc">当前筛选条件下没有匹配的行。试着移除一两个 filter chip 再看看。</div>
+                <div class="empty-actions">
+                  <button class="btn btn--sm">Clear filters</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- ───────────── 39 Window chrome ───────────── -->
+      <section id="window">
+        <h2 class="sect-title"><span class="num">39</span>窗口控件<span class="tag">minimize · maximize · restore · close · custom</span></h2>
+        <p class="sect-intro">桌面窗口的标准三联控件 —— 最小化 / 最大化(还原) / 关闭 —— 全部使用 SVG 线性图标,绝不用文字字符。按钮 26×22 紧凑型,关闭是唯一的破坏性控件,hover 时红色填充。自定义工具控件(置顶 / 主题 / 设置 / 帮助)排在标准三联左侧,色阶更弱。两套窗框范式并存:macOS 红绿灯 + Windows/Linux 方形按钮。</p>
+
+        <h3 class="sub-title">standard trio · SVG icons</h3>
+        <div class="panel">
+          <div class="panel-header"><span>window controls</span><span class="right">26×22 · close = danger</span></div>
+          <div class="panel-body" style="display:flex; justify-content:center; background:var(--bg-base); padding:24px;">
+            <div class="win-controls" style="border:1px solid var(--border); border-radius:var(--r-sm); background:var(--bg-surface); overflow:hidden;">
+              <button class="win-btn" title="Minimize" aria-label="Minimize">
+                <svg viewBox="0 0 12 12"><line x1="2" y1="6" x2="10" y2="6"/></svg>
+              </button>
+              <button class="win-btn" title="Maximize" aria-label="Maximize">
+                <svg viewBox="0 0 12 12"><rect x="2.5" y="2.5" width="7" height="7"/></svg>
+              </button>
+              <button class="win-btn win-btn--close" title="Close" aria-label="Close">
+                <svg viewBox="0 0 12 12"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="panel">
+            <div class="panel-header"><span>restore state</span><span class="right">maximized → restore</span></div>
+            <div class="panel-body" style="display:flex; justify-content:center; background:var(--bg-base); padding:18px;">
+              <div class="win-controls" style="border:1px solid var(--border); border-radius:var(--r-sm); background:var(--bg-surface); overflow:hidden;">
+                <button class="win-btn" title="Minimize">
+                  <svg viewBox="0 0 12 12"><line x1="2" y1="6" x2="10" y2="6"/></svg>
+                </button>
+                <button class="win-btn" title="Restore">
+                  <svg viewBox="0 0 12 12"><rect x="2.5" y="3.5" width="6" height="6"/><polyline points="4.5 3.5 4.5 1.5 10.5 1.5 10.5 7.5 8.5 7.5"/></svg>
+                </button>
+                <button class="win-btn win-btn--close" title="Close">
+                  <svg viewBox="0 0 12 12"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-header"><span>disabled maximize</span><span class="right">fixed-size window</span></div>
+            <div class="panel-body" style="display:flex; justify-content:center; background:var(--bg-base); padding:18px;">
+              <div class="win-controls" style="border:1px solid var(--border); border-radius:var(--r-sm); background:var(--bg-surface); overflow:hidden;">
+                <button class="win-btn" title="Minimize">
+                  <svg viewBox="0 0 12 12"><line x1="2" y1="6" x2="10" y2="6"/></svg>
+                </button>
+                <button class="win-btn" title="Maximize unavailable" disabled>
+                  <svg viewBox="0 0 12 12"><rect x="2.5" y="2.5" width="7" height="7"/></svg>
+                </button>
+                <button class="win-btn win-btn--close" title="Close">
+                  <svg viewBox="0 0 12 12"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="sub-title">custom utility controls + standard trio</h3>
+        <div class="panel">
+          <div class="panel-header"><span>full window bar</span><span class="right">util controls dim · standard trio right</span></div>
+          <div class="titlebar" style="border-radius:var(--r-sm); border-bottom-color:var(--border); padding:0 0 0 8px; height:36px;">
+            <div class="titlebar-traffic"><i></i><i></i><i></i></div>
+            <div class="titlebar-title" style="padding-left:6px;">zi · render queue — scene_07_master.mov</div>
+            <div class="titlebar-meta" style="padding-right:4px;">
+              <span class="kbd-group"><kbd>⌘</kbd><span class="plus">+</span><kbd>K</kbd></span>
+            </div>
+            <div class="win-controls">
+              <button class="win-btn win-btn--util" title="Always on top" data-state="active">
+                <svg viewBox="0 0 12 12"><line x1="6" y1="7.5" x2="6" y2="11"/><path d="M3 7.5h6l-1-2.2V2.5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v2.8z"/></svg>
+              </button>
+              <button class="win-btn win-btn--util" title="Theme">
+                <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="2.5"/><line x1="6" y1="0.5" x2="6" y2="2"/><line x1="6" y1="10" x2="6" y2="11.5"/><line x1="0.5" y1="6" x2="2" y2="6"/><line x1="10" y1="6" x2="11.5" y2="6"/><line x1="2.3" y1="2.3" x2="3.3" y2="3.3"/><line x1="8.7" y1="8.7" x2="9.7" y2="9.7"/><line x1="2.3" y1="9.7" x2="3.3" y2="8.7"/><line x1="8.7" y1="3.3" x2="9.7" y2="2.3"/></svg>
+              </button>
+              <button class="win-btn win-btn--util" title="Settings">
+                <svg viewBox="0 0 12 12"><circle cx="6" cy="6" r="1.6"/><path d="M6 1.2v1.4M6 9.4v1.4M1.2 6h1.4M9.4 6h1.4M2.6 2.6l1 1M8.4 8.4l1 1M2.6 9.4l1-1M8.4 3.6l1-1"/></svg>
+              </button>
+              <span style="width:1px; align-self:center; height:16px; background:var(--border); margin:0 2px;"></span>
+              <button class="win-btn" title="Minimize">
+                <svg viewBox="0 0 12 12"><line x1="2" y1="6" x2="10" y2="6"/></svg>
+              </button>
+              <button class="win-btn" title="Maximize">
+                <svg viewBox="0 0 12 12"><rect x="2.5" y="2.5" width="7" height="7"/></svg>
+              </button>
+              <button class="win-btn win-btn--close" title="Close">
+                <svg viewBox="0 0 12 12"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="note">
+          <span class="note-tag">RULE</span>
+          <span>关闭按钮是唯一带状态色的窗口控件(hover 红填充),用以阻止误触。自定义工具控件统一比标准控件暗一档(<code>--text-dim</code>),激活态变 <code>--accent</code>。所有图标必须是 SVG 描边,禁止 <code>×</code> <code>—</code> <code>□</code> 文字符号——它们在不同字体下渲染不一致。</span>
+        </div>
+      </section>
+
+      <!-- ───────────── 40 SidebarMenu ───────────── -->
+      <section id="sidebarmenu">
+        <h2 class="sect-title"><span class="num">40</span>侧栏导航<span class="tag">wide · narrow · icon · 2-level · window controls</span></h2>
+        <p class="sect-intro">可折叠侧栏导航,三档宽度(宽 232 / 窄 132 / 图标 52px,由单一 <code>--sb-w</code> 驱动),支持二级展开菜单,并整合窗口控件(交通灯)于头部。点下方按钮切换模式。</p>
+
+        <div class="row" style="margin-bottom:10px; gap:6px">
+          <button class="btn btn--sm" onclick="sbMode('wide')" data-sb-mode-btn="wide" data-state="checked">宽 · wide</button>
+          <button class="btn btn--sm" onclick="sbMode('narrow')" data-sb-mode-btn="narrow">窄 · narrow</button>
+          <button class="btn btn--sm" onclick="sbMode('icon')" data-sb-mode-btn="icon">图标 · icon</button>
+        </div>
+
+        <div style="display:flex; height:520px; border:1px solid var(--color-border); border-radius:var(--radius-md); overflow:hidden;">
+          <aside class="sidebar" id="demoSidebar" data-mode="wide">
+            <div class="sidebar-head">
+              <div class="sidebar-traffic"><i></i><i></i><i></i></div>
+              <span class="sidebar-brand">zi · console</span>
+              <button class="sidebar-collapse" onclick="sbCycle()" title="Toggle width"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+            </div>
+            <div class="sidebar-body">
+              <div class="sidebar-section-label">workspace</div>
+
+              <div class="sb-item" data-state="active">
+                <span class="sb-item-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg></span>
+                <span class="sb-item-label">Dashboard</span>
+              </div>
+
+              <div class="sb-group" data-open="true">
+                <div class="sb-item" data-badge onclick="sbToggle(this)">
+                  <span class="sb-item-ico"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+                  <span class="sb-item-label">Render queue</span>
+                  <span class="sb-item-badge">7</span>
+                  <span class="sb-caret"></span>
+                </div>
+                <div class="sb-sub">
+                  <div class="sb-item" data-state="active"><span class="sb-item-label">Active · 3</span></div>
+                  <div class="sb-item"><span class="sb-item-label">Queued · 2</span></div>
+                  <div class="sb-item"><span class="sb-item-label">Failed · 1</span></div>
+                  <div class="sb-item"><span class="sb-item-label">Archive</span></div>
+                </div>
+              </div>
+
+              <div class="sb-group">
+                <div class="sb-item" onclick="sbToggle(this)">
+                  <span class="sb-item-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/></svg></span>
+                  <span class="sb-item-label">Cluster</span>
+                  <span class="sb-caret"></span>
+                </div>
+                <div class="sb-sub">
+                  <div class="sb-item"><span class="sb-item-label">Nodes</span></div>
+                  <div class="sb-item"><span class="sb-item-label">Scheduler</span></div>
+                  <div class="sb-item"><span class="sb-item-label">Throughput</span></div>
+                </div>
+              </div>
+
+              <div class="sb-item">
+                <span class="sb-item-ico"><svg viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span>
+                <span class="sb-item-label">Console</span>
+              </div>
+
+              <div class="sidebar-section-label">library</div>
+
+              <div class="sb-item" data-badge>
+                <span class="sb-item-ico"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+                <span class="sb-item-label">Presets</span>
+                <span class="sb-item-badge">12</span>
+              </div>
+              <div class="sb-item">
+                <span class="sb-item-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span>
+                <span class="sb-item-label">Media</span>
+              </div>
+
+              <div class="sidebar-section-label">system</div>
+              <div class="sb-item">
+                <span class="sb-item-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+                <span class="sb-item-label">Settings</span>
+              </div>
+            </div>
+            <div class="sidebar-foot">
+              <span class="avatar avatar--sm avatar--accent">ZI</span>
+              <span class="sb-user-meta"><div class="nm">Alex Zhou</div><div class="rl">admin · node-3</div></span>
+            </div>
+          </aside>
+          <div style="flex:1; background:var(--color-bg); padding:18px; color:var(--color-text-dim); font-family:var(--font-family-mono); font-size:11px;">workspace · 切换左侧三档宽度查看自适应</div>
+        </div>
+      </section>
+
+      <!-- ───────────── 41 App shell ───────────── -->
+      <section id="shell">
+        <h2 class="sect-title"><span class="num">41</span>应用骨架<span class="tag">titlebar · sidebar · toolbar · workspace · statusbar</span></h2>
+        <p class="sect-intro">桌面应用的标准框架：左侧导航（<code>--bg-subtle</code>）、顶部工具栏、主工作区（<code>--bg-base</code>）、底部状态栏（mono + 字号 10）。状态栏是工业桌面的「心跳条」——CPU/MEM/GPU/Network 永远在线。</p>
+
+        <section class="panel">
+          <div class="panel-header"><span>workspace</span><span class="right">render-queue.zi · <span class="led led--on" style="vertical-align:middle"></span> ONLINE</span></div>
+          <div class="titlebar" style="border-radius:0; border-left:none; border-right:none">
+            <div class="titlebar-traffic"><i></i><i></i><i></i></div>
+            <div class="titlebar-title">zi · render queue — scene_07_master.mov</div>
+            <div class="titlebar-meta">
+              <span class="kbd-group"><kbd>⌘</kbd><span class="plus">+</span><kbd>K</kbd></span>
+              <span style="margin-left:4px">· v0.4.2-rc1</span>
+            </div>
+          </div>
+          <div class="app-shell" style="border-radius:0; border-top:none">
+            <div class="app-side">
+              <div class="app-side-label">Sessions</div>
+              <div class="nav-item" data-state="active">▸ Inbox <span class="tag" style="margin-left:auto">3</span></div>
+              <div class="nav-item">▸ Projects</div>
+              <div class="nav-item">▸ Renders</div>
+              <div class="nav-item">▸ Archive</div>
+              <div class="app-side-label">Tools</div>
+              <div class="nav-item">▸ Monitor</div>
+              <div class="nav-item">▸ Console</div>
+              <div class="nav-item">▸ Macros</div>
+              <div class="nav-item">▸ Settings</div>
+              <div class="app-side-label">Devices</div>
+              <div class="nav-item"><span class="led led--on"></span> NODE-3</div>
+              <div class="nav-item"><span class="led led--warn"></span> NODE-7</div>
+              <div class="nav-item"><span class="led"></span> NODE-12</div>
+            </div>
+            <div class="app-main">
+              <div class="toolbar" style="margin-bottom:6px">
+                <button class="icon-btn" title="New"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+                <button class="icon-btn" title="Refresh"><svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></button>
+                <div class="toolbar-sep"></div>
+                <button class="icon-btn" title="Filter"><svg viewBox="0 0 24 24"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></button>
+                <button class="icon-btn" title="Sort"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="11" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="19" y2="18"/></svg></button>
+                <div style="flex:1"></div>
+                <input class="input" placeholder="search..." style="width:160px; padding:2px 6px; font-size:11px" />
+                <button class="btn btn--sm btn--primary">+ New job</button>
+              </div>
+              <div class="dt-wrapper">
+                <table class="dt">
+                  <thead>
+                    <tr>
+                      <th class="rownum">#</th>
+                      <th class="sortable">Job<span class="sort-caret"><i class="up">▲</i><i class="down">▼</i></span></th>
+                      <th class="sortable">Codec<span class="sort-caret"><i class="up">▲</i><i class="down">▼</i></span></th>
+                      <th class="sortable" style="text-align:right">FPS<span class="sort-caret"><i class="up">▲</i><i class="down">▼</i></span></th>
+                      <th>Status</th>
+                      <th class="sortable" data-sort="asc" style="text-align:right">ETA<span class="sort-caret"><i class="up">▲</i><i class="down">▼</i></span></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="rownum">001</td><td>opening_v3.mov</td><td>ProRes 422</td><td class="num">23.976</td><td><span class="dt-status is-done"><span class="led"></span>DONE</span></td><td class="num">—</td></tr>
+                    <tr data-state="selected"><td class="rownum">002</td><td>scene_07_master.mov</td><td>DNxHR HQX</td><td class="num">29.97</td><td><span class="dt-status is-render"><span class="led"></span>RENDER</span> <span class="dt-progress"><span class="bar"><i style="width:65%"></i></span><span>65%</span></span></td><td class="num">02:14</td></tr>
+                    <tr><td class="rownum">003</td><td>scene_07_proxy.mp4</td><td>H.264</td><td class="num">29.97</td><td><span class="dt-status is-queue"><span class="led"></span>QUEUE</span></td><td class="num">—</td></tr>
+                    <tr><td class="rownum">004</td><td>credits_v2.exr</td><td>EXR seq</td><td class="num">23.976</td><td><span class="dt-status is-warn"><span class="led"></span>WARN</span></td><td class="num">—</td></tr>
+                    <tr><td class="rownum">005</td><td>lower_third.mov</td><td>ProRes 4444</td><td class="num">29.97</td><td><span class="dt-status is-error"><span class="led"></span>ERROR</span></td><td class="num">—</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div style="flex:1"></div>
+              <div class="statusbar">
+                <span class="led led--on"></span>
+                <span>ONLINE</span>
+                <span>·</span>
+                <span>NODE-3</span>
+                <span>·</span>
+                <span>CPU 42%</span>
+                <span>·</span>
+                <span>MEM 9.2/32 GB</span>
+                <span>·</span>
+                <span>GPU 78%</span>
+                <span>·</span>
+                <span>NET 124 MB/s</span>
+                <span style="flex:1"></span>
+                <span>v0.4.2-rc1 · zi</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <div class="footnote">
+        <span>zi · industrial-desktop · v0.4.2-rc1</span>
+        <span class="sep">/</span>
+        <span>tokens: 36 × 14 profiles × 2 modes</span>
+        <span class="sep">/</span>
+        <span>last build · 2026-05-24</span>
+        <span class="sep">/</span>
+        <span>docs/design-system.html</span>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="presets.js"></script>
+<script>
+  // ─── Toggles (interactive demo controls) ───
+  function toggleCb(el){ el.setAttribute("data-state", el.getAttribute("data-state")==="checked"?"":"checked"); }
+  function toggleRadio(el){
+    el.parentElement.parentElement.querySelectorAll(".radio-ring")
+      .forEach(r => r.setAttribute("data-state", r===el?"checked":""));
+  }
+  function toggleSw(el){ el.setAttribute("data-state", el.getAttribute("data-state")==="checked"?"":"checked"); }
+  function tgSelect(btn){ btn.parentElement.querySelectorAll(".btn").forEach(b => b.setAttribute("data-state", b===btn?"checked":"")); }
+  function tabSelect(btn){ btn.parentElement.querySelectorAll(".tab").forEach(b => b.setAttribute("data-state", b===btn?"active":"")); }
+  function accToggle(btn){ btn.setAttribute("data-state", btn.getAttribute("data-state")==="open"?"":"open"); }
+  function pageSelect(btn){ btn.parentElement.querySelectorAll(".page-cell").forEach(b => b.setAttribute("data-state", b===btn?"active":"")); }
+
+  // ─── SidebarMenu demo ───
+  function sbMode(m){
+    document.getElementById("demoSidebar").setAttribute("data-mode", m);
+    document.querySelectorAll("[data-sb-mode-btn]").forEach(b => b.setAttribute("data-state", b.getAttribute("data-sb-mode-btn")===m?"checked":""));
+  }
+  function sbCycle(){
+    const sb = document.getElementById("demoSidebar");
+    const order = ["wide","narrow","icon"];
+    const cur = order.indexOf(sb.getAttribute("data-mode"));
+    sbMode(order[(cur+1)%order.length]);
+  }
+  function sbToggle(item){
+    const g = item.closest(".sb-group");
+    g.setAttribute("data-open", g.getAttribute("data-open")==="true"?"false":"true");
+  }
+
+  // ─── Tree toggle ───
+  function treeToggle(node) {
+    const toggle = node.querySelector(".tree-toggle");
+    if (!toggle || toggle.classList.contains("empty")) return;
+    const next = node.nextElementSibling;
+    if (next && next.classList.contains("tree-children")) {
+      const open = next.getAttribute("data-state") === "open";
+      next.setAttribute("data-state", open ? "" : "open");
+      toggle.classList.toggle("open", !open);
+    }
+  }
+
+  // ─── Custom slider drag ───
+  function initSliders() {
+    document.querySelectorAll("[data-slider]").forEach(slider => {
+      const min = parseFloat(slider.dataset.min || "0");
+      const max = parseFloat(slider.dataset.max || "100");
+      const step = parseFloat(slider.dataset.step || "1");
+      let value = parseFloat(slider.dataset.value || "0");
+      const fill = slider.querySelector(".slider-fill");
+      const thumb = slider.querySelector(".slider-thumb");
+      const readout = slider.parentElement.querySelector(".slider-readout");
+
+      function setValue(v) {
+        v = Math.max(min, Math.min(max, v));
+        if (step) v = Math.round(v / step) * step;
+        value = v;
+        const pct = ((v - min) / (max - min)) * 100;
+        fill.style.width = pct + "%";
+        thumb.style.left = pct + "%";
+        if (readout) {
+          // Best-effort format
+          if (readout.textContent.includes("/")) readout.textContent = `${v} / ${max}`;
+          else if (readout.textContent.includes("dB")) readout.textContent = `${v} dB`;
+          else readout.textContent = `${v}`;
+        }
+        slider.dataset.value = v;
+      }
+      function update(clientX) {
+        const r = slider.getBoundingClientRect();
+        const pct = Math.max(0, Math.min(1, (clientX - r.left) / r.width));
+        setValue(min + pct * (max - min));
+      }
+      function onMove(e) {
+        const x = e.touches ? e.touches[0].clientX : e.clientX;
+        update(x);
+      }
+      function onUp() {
+        slider.removeAttribute("data-focus");
+        window.removeEventListener("mousemove", onMove);
+        window.removeEventListener("mouseup", onUp);
+        window.removeEventListener("touchmove", onMove);
+        window.removeEventListener("touchend", onUp);
+      }
+      slider.addEventListener("mousedown", e => {
+        slider.setAttribute("data-focus", "true");
+        update(e.clientX);
+        window.addEventListener("mousemove", onMove);
+        window.addEventListener("mouseup", onUp);
+      });
+      slider.addEventListener("touchstart", e => {
+        slider.setAttribute("data-focus", "true");
+        update(e.touches[0].clientX);
+        window.addEventListener("touchmove", onMove);
+        window.addEventListener("touchend", onUp);
+      }, { passive: true });
+      slider.addEventListener("keydown", e => {
+        if (e.key === "ArrowLeft" || e.key === "ArrowDown") { setValue(value - step); e.preventDefault(); }
+        if (e.key === "ArrowRight" || e.key === "ArrowUp") { setValue(value + step); e.preventDefault(); }
+      });
+      setValue(value);
+    });
+  }
+
+  // ─── Knob drag (vertical = value change) ───
+  function initKnobs() {
+    document.querySelectorAll("[data-knob]").forEach(knob => {
+      const min = parseFloat(knob.dataset.min || "0");
+      const max = parseFloat(knob.dataset.max || "100");
+      let value = parseFloat(knob.dataset.value || "0");
+      const body = knob.querySelector(".knob-body");
+      const arcFill = knob.querySelector(".knob-arc-fill");
+      const valueEl = knob.parentElement.querySelector(".knob-value");
+      const label = knob.parentElement.querySelector(".knob-label")?.textContent || "";
+
+      // Angles: 135° (left-bottom) → 405° (right-bottom) sweep = 270°
+      function setValue(v) {
+        v = Math.max(min, Math.min(max, v));
+        value = v;
+        const pct = (v - min) / (max - min);
+        const angle = -135 + pct * 270;  // body rotation: -135 to +135
+        body.style.transform = `rotate(${angle}deg)`;
+        if (arcFill) {
+          const arcLen = pct * 113;  // ~113 is the dash length for full 270°
+          arcFill.setAttribute("stroke-dasharray", `${arcLen} 200`);
+        }
+        if (valueEl) {
+          if (label === "GAIN") valueEl.textContent = `${v.toFixed(1)} dB`;
+          else if (label === "DRIVE") valueEl.textContent = `${Math.round(v)} %`;
+          else if (label === "PAN") {
+            if (v < 0) valueEl.textContent = `L ${Math.abs(v).toFixed(0)}`;
+            else if (v > 0) valueEl.textContent = `R ${v.toFixed(0)}`;
+            else valueEl.textContent = `C`;
+          } else if (label === "FREQ") {
+            if (v >= 1000) valueEl.textContent = `${(v/1000).toFixed(1)} kHz`;
+            else valueEl.textContent = `${Math.round(v)} Hz`;
+          } else valueEl.textContent = `${v.toFixed(1)}`;
+        }
+        knob.dataset.value = v;
+      }
+      let startY = 0, startVal = 0;
+      function onMove(e) {
+        const y = e.touches ? e.touches[0].clientY : e.clientY;
+        const dy = startY - y;  // up = positive
+        const range = max - min;
+        setValue(startVal + (dy / 100) * range);
+      }
+      function onUp() {
+        knob.removeAttribute("data-focus");
+        window.removeEventListener("mousemove", onMove);
+        window.removeEventListener("mouseup", onUp);
+        window.removeEventListener("touchmove", onMove);
+        window.removeEventListener("touchend", onUp);
+      }
+      knob.addEventListener("mousedown", e => {
+        knob.setAttribute("data-focus", "true");
+        startY = e.clientY;
+        startVal = value;
+        window.addEventListener("mousemove", onMove);
+        window.addEventListener("mouseup", onUp);
+        e.preventDefault();
+      });
+      knob.addEventListener("touchstart", e => {
+        knob.setAttribute("data-focus", "true");
+        startY = e.touches[0].clientY;
+        startVal = value;
+        window.addEventListener("touchmove", onMove);
+        window.addEventListener("touchend", onUp);
+      }, { passive: true });
+      knob.addEventListener("dblclick", () => {
+        // Reset to default (mid-point or 0 if range crosses)
+        if (min < 0 && max > 0) setValue(0);
+        else setValue((min + max) / 2);
+      });
+      setValue(value);
+    });
+  }
+
+  // ─── Splitter drag ───
+  function initSplitters() {
+    document.querySelectorAll("[data-split-handle]").forEach(handle => {
+      const parent = handle.parentElement;
+      const isV = parent.classList.contains("split--v");
+      function onDown(e) {
+        const rect = parent.getBoundingClientRect();
+        const prev = handle.previousElementSibling;
+        const next = handle.nextElementSibling;
+        const prevStart = isV ? prev.getBoundingClientRect().width : prev.getBoundingClientRect().height;
+        const nextStart = isV ? next.getBoundingClientRect().width : next.getBoundingClientRect().height;
+        const startPos = isV ? e.clientX : e.clientY;
+        function move(ev) {
+          const cur = isV ? ev.clientX : ev.clientY;
+          const delta = cur - startPos;
+          const newPrev = Math.max(60, prevStart + delta);
+          const newNext = Math.max(60, nextStart - delta);
+          prev.style.flex = `0 0 ${newPrev}px`;
+          next.style.flex = `0 0 ${newNext}px`;
+        }
+        function up() {
+          handle.classList.remove("dragging");
+          window.removeEventListener("mousemove", move);
+          window.removeEventListener("mouseup", up);
+        }
+        handle.classList.add("dragging");
+        window.addEventListener("mousemove", move);
+        window.addEventListener("mouseup", up);
+        e.preventDefault();
+      }
+      handle.addEventListener("mousedown", onDown);
+    });
+  }
+
+  // ─── State ───
+  let currentPreset = "beacon";
+  let currentTheme = "light";
+
+  // ─── Swatches renderer ───
+  function renderSwatches() {
+    const p = PRESETS[currentPreset];
+    const colors = currentTheme === "light" ? p.light : p.dark;
+    const groups = {
+      swatchesSurface: ["--bg-base","--bg-subtle","--bg-surface","--bg-hover","--bg-active","--bg-inverse"],
+      swatchesBorder: ["--border","--border-strong","--divider"],
+      swatchesText: ["--text","--text-muted","--text-dim","--text-inverse"],
+      swatchesAccent: ["--accent","--accent-hover","--accent-fg","--success","--warning","--danger","--danger-hover"],
+    };
+    for (const [id, keys] of Object.entries(groups)) {
+      const html = keys.map(k => {
+        const v = colors[k] || "";
+        const name = k.replace(/^--/,"");
+        return `<div class="swatch"><div class="chip" style="background:${v}"></div><div class="meta"><div class="name">${name}</div><div class="hex">${v}</div></div></div>`;
+      }).join("");
+      document.getElementById(id).innerHTML = html;
+    }
+    document.getElementById("hero-title").textContent = p.title;
+    document.getElementById("hero-desc").innerHTML = p.desc + ` — 适用于 <strong style="color:var(--text)">${p.useCase}</strong>。所有 token 通过 <code>applyPreset()</code> 挂载到 <code>:root</code>。`;
+    document.getElementById("colorPresetName").textContent = p.title;
+  }
+
+  // ─── Preset gallery cards ───
+  function renderGallery() {
+    const wrap = document.getElementById("presetGallery");
+    wrap.innerHTML = PRESET_KEYS.map(key => {
+      const p = PRESETS[key];
+      const c = currentTheme === "light" ? p.light : p.dark;
+      return `<div class="preset-card" data-preset-key="${key}" data-active="${key===currentPreset}">
+        <div class="preset-head">
+          <span class="marker" style="background:${c["--accent"]}"></span>
+          <span class="name">${p.title}</span>
+          <span class="tagline">${p.tagline}</span>
+        </div>
+        <div class="preset-body" style="background:${c["--bg-base"]}; color:${c["--text"]}">
+          <div class="preset-strip">
+            <div style="background:${c["--bg-base"]}"></div>
+            <div style="background:${c["--bg-subtle"]}"></div>
+            <div style="background:${c["--bg-surface"]}"></div>
+            <div style="background:${c["--bg-hover"]}"></div>
+            <div style="background:${c["--bg-active"]}"></div>
+          </div>
+          <div class="preset-mini">
+            <span class="btn-mini" style="background:${c["--accent"]}; color:${c["--accent-fg"]}; border-color:${c["--accent"]}">Primary</span>
+            <span class="btn-mini" style="background:${c["--bg-surface"]}; color:${c["--text"]}; border-color:${c["--border"]}">Default</span>
+            <span style="width:7px; height:7px; border-radius:50%; background:${c["--success"]}; box-shadow:0 0 6px ${c["--success"]}"></span>
+            <span style="width:7px; height:7px; border-radius:50%; background:${c["--warning"]}; box-shadow:0 0 5px ${c["--warning"]}"></span>
+            <span style="width:7px; height:7px; border-radius:50%; background:${c["--danger"]}; box-shadow:0 0 6px ${c["--danger"]}"></span>
+            <span style="margin-left:auto; font-size:10px; color:${c["--text-dim"]}">${p.useCase.split(" / ")[0]}</span>
+          </div>
+          <div style="font-family:var(--mono-stack); font-size:10px; color:${c["--text-dim"]}; line-height:1.4">${p.desc}</div>
+        </div>
+      </div>`;
+    }).join("");
+    wrap.querySelectorAll(".preset-card").forEach(card => {
+      card.addEventListener("click", () => {
+        const k = card.getAttribute("data-preset-key");
+        setPreset(k);
+      });
+    });
+  }
+
+  // ─── Apply preset + refresh ───
+  function setPreset(key) {
+    currentPreset = key;
+    applyPreset(key, currentTheme);
+    document.getElementById("presetSelect").value = key;
+    renderSwatches();
+    document.querySelectorAll(".preset-card").forEach(c => {
+      c.setAttribute("data-active", c.getAttribute("data-preset-key") === key);
+    });
+  }
+  function setTheme(theme) {
+    currentTheme = theme;
+    applyPreset(currentPreset, theme);
+    document.querySelectorAll("[data-theme-btn]").forEach(b => {
+      b.setAttribute("data-active", b.getAttribute("data-theme-btn") === theme ? "true" : "false");
+    });
+    renderSwatches();
+    renderGallery();
+  }
+
+  // ─── Wire up controls ───
+  document.getElementById("presetSelect").addEventListener("change", e => setPreset(e.target.value));
+  document.querySelectorAll("[data-theme-btn]").forEach(b => {
+    b.addEventListener("click", () => setTheme(b.getAttribute("data-theme-btn")));
+  });
+
+  // ─── TOC scroll spy ───
+  const tocLinks = document.querySelectorAll(".toc-link");
+  const sections = Array.from(document.querySelectorAll(".content section[id]"));
+  function updateActiveToc() {
+    const scrollY = window.scrollY + 120;
+    let active = sections[0]?.id;
+    for (const s of sections) {
+      if (s.offsetTop <= scrollY) active = s.id;
+    }
+    tocLinks.forEach(link => {
+      const href = link.getAttribute("href").slice(1);
+      link.setAttribute("data-active", href === active ? "true" : "false");
+    });
+  }
+  window.addEventListener("scroll", updateActiveToc, { passive: true });
+  tocLinks.forEach(l => l.addEventListener("click", e => {
+    e.preventDefault();
+    const id = l.getAttribute("href").slice(1);
+    const target = document.getElementById(id);
+    if (target) window.scrollTo({ top: target.offsetTop - 60, behavior: "smooth" });
+  }));
+
+  // ─── Init ───
+  applyPreset("beacon", "light");
+  renderSwatches();
+  renderGallery();
+  updateActiveToc();
+  initSliders();
+  initKnobs();
+  initSplitters();
+</script>
+</body>
+</html>

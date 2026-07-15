@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>zi · content — CMS</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+  html, body { height: 100%; overflow: hidden; background: var(--bg-base); }
+  .cms-window {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 28px 32px 1fr 22px;
+    overflow: hidden;
+  }
+  .cms-body {
+    display: grid;
+    grid-template-columns: 200px 1fr 312px;
+    overflow: hidden; min-height: 0;
+  }
+
+  /* ── Sidebar nav ── */
+  .nav-col {
+    background: var(--bg-subtle);
+    border-right: 1px solid var(--border);
+    box-shadow: inset -1px 0 0 rgba(0,0,0,0.18);
+    overflow-y: auto; min-height: 0;
+    padding: 6px 0;
+    display: flex; flex-direction: column;
+  }
+  .nav-label {
+    padding: 8px 14px 3px;
+    font-family: var(--mono-stack); font-size: 9px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-dim);
+  }
+  .nav-link {
+    display: flex; align-items: center; gap: 8px;
+    padding: 4px 14px; margin: 0 4px;
+    border-radius: var(--r-sm);
+    color: var(--text); font-size: 12px; cursor: pointer;
+    line-height: 1.7;
+  }
+  .nav-link svg { width: 14px; height: 14px; stroke-width: 1.6; fill: none; stroke: currentColor; flex: none; color: var(--text-dim); }
+  .nav-link:hover { background: var(--bg-hover); }
+  .nav-link[data-state="active"] { background: var(--accent); color: var(--accent-fg); }
+  .nav-link[data-state="active"] svg { color: var(--accent-fg); }
+  .nav-link .count {
+    margin-left: auto; font-family: var(--mono-stack); font-size: 10px;
+    color: var(--text-dim);
+  }
+  .nav-link[data-state="active"] .count { color: var(--accent-fg); opacity: 0.8; }
+  .nav-spacer { flex: 1; }
+
+  /* ── Menubar ── */
+  .menubar {
+    display: flex; align-items: center;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border);
+    border-top-color: rgba(255,255,255,0.05);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), inset 0 -1px 0 rgba(0,0,0,0.3);
+    padding: 0 8px; height: 32px; gap: 8px;
+  }
+  .mb-title { font-size: 13px; font-weight: var(--fw-semibold); color: var(--text); }
+  .mb-title .sub { font-family: var(--mono-stack); font-size: 10px; color: var(--text-dim); font-weight: 400; margin-left: 6px; }
+  .mb-spacer { flex: 1; }
+
+  /* ── Center: content list ── */
+  .content-col {
+    background: var(--bg-base);
+    overflow: hidden; display: flex; flex-direction: column; min-height: 0;
+  }
+  .content-scroll { flex: 1; overflow-y: auto; min-height: 0; }
+  .content-scroll table { width: 100%; }
+  .content-scroll .rownum { width: 30px; padding-right: 6px; }
+  .ct-title { display: flex; flex-direction: column; gap: 1px; }
+  .ct-title .h { color: var(--text); }
+  .ct-title .slug { font-family: var(--mono-stack); font-size: 10px; color: var(--text-dim); }
+  .ct-thumb {
+    width: 34px; height: 24px; border-radius: 2px;
+    border: 1px solid var(--border); flex: none;
+    background: var(--bg-active);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--mono-stack); font-size: 8px; color: var(--text-dim);
+  }
+
+  /* ── Right: editor/inspector ── */
+  .insp-col {
+    background: var(--bg-subtle);
+    border-left: 1px solid var(--border);
+    box-shadow: inset 1px 0 0 rgba(0,0,0,0.18);
+    overflow-y: auto; min-height: 0;
+    display: flex; flex-direction: column;
+  }
+  .insp-head {
+    padding: 4px 12px; flex: none;
+    font-family: var(--mono-stack); font-size: 10px;
+    text-transform: uppercase; letter-spacing: 0.07em;
+    color: var(--text-dim);
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), inset 0 -1px 0 rgba(0,0,0,0.22);
+    height: 24px; display: flex; align-items: center; justify-content: space-between;
+  }
+  .insp-pad { padding: 12px; }
+  .insp-cover {
+    width: 100%; height: 120px; border-radius: var(--r-sm);
+    border: 1px solid var(--border);
+    background:
+      repeating-linear-gradient(45deg, var(--bg-active) 0 8px, var(--bg-surface) 8px 16px);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono-stack); font-size: 10px; color: var(--text-dim);
+    margin-bottom: 10px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+  }
+  .field-mb { margin-bottom: 10px; }
+  .seg-label {
+    font-family: var(--mono-stack); font-size: 9px;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--text-dim); margin-bottom: 3px;
+  }
+
+  /* statusbar */
+  .cst {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--bg-subtle);
+    border-top: 1px solid var(--border);
+    box-shadow: inset 0 1px 0 rgba(0,0,0,0.25), inset 0 -1px 0 rgba(255,255,255,0.03);
+    padding: 0 10px; height: 22px; flex: none;
+    font-family: var(--mono-stack); font-size: 10px;
+    color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  .cst .spacer { flex: 1; }
+  .cst .sep { color: var(--border-strong); }
+</style>
+</head>
+<body data-theme="light" data-preset="beacon">
+
+<div class="cms-window">
+
+  <!-- titlebar -->
+  <div class="titlebar" style="border-radius:0; border-left:none; border-right:none; border-top:none">
+    <div class="titlebar-traffic"><i></i><i></i><i></i></div>
+    <div class="titlebar-title" style="flex:none">zi · content</div>
+    <span style="font-family:var(--mono-stack); font-size:10px; color:var(--text-dim); padding:0 6px;">—</span>
+    <nav class="crumb" style="font-size:11px; flex:1; min-width:0;">
+      <a>acme-media</a><span class="crumb-sep">/</span>
+      <a>Articles</a><span class="crumb-sep">/</span>
+      <span class="cur">All posts</span>
+    </nav>
+    <div class="titlebar-meta">
+      <span class="led led--on"></span><span>published</span>
+      <span style="color:var(--border-strong)">|</span>
+      <span class="avatar avatar--sm avatar--accent">EW</span>
+    </div>
+  </div>
+
+  <!-- menubar / page actions -->
+  <div class="menubar">
+    <div class="mb-title">Articles <span class="sub">142 posts · 8 drafts</span></div>
+    <div class="mb-spacer"></div>
+    <div class="combobox" style="width:220px">
+      <input class="combobox-input" placeholder="search posts…" />
+      <span class="combobox-chev">⌕</span>
+    </div>
+    <div class="toggle-group">
+      <button class="btn" data-state="checked">List</button>
+      <button class="btn">Grid</button>
+      <button class="btn">Calendar</button>
+    </div>
+    <button class="btn btn--sm">Filter</button>
+    <button class="btn btn--sm btn--primary">+ New post</button>
+  </div>
+
+  <div class="cms-body">
+
+    <!-- LEFT: nav -->
+    <div class="nav-col">
+      <div class="nav-label">Content</div>
+      <div class="nav-link" data-state="active"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg> Articles <span class="count">142</span></div>
+      <div class="nav-link"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg> Media <span class="count">2.4k</span></div>
+      <div class="nav-link"><svg viewBox="0 0 24 24"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg> Pages <span class="count">28</span></div>
+      <div class="nav-link"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.5 8.38 8.38 0 0 1-9-8.5A8.5 8.5 0 0 1 12 3a8.5 8.5 0 0 1 9 8.5z"/></svg> Comments <span class="count">312</span></div>
+
+      <div class="nav-label">Taxonomy</div>
+      <div class="nav-link"><svg viewBox="0 0 24 24"><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h6"/><path d="M14 4h6v6"/><line x1="10" y1="14" x2="20" y2="4"/></svg> Categories <span class="count">18</span></div>
+      <div class="nav-link"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7" y2="7"/></svg> Tags <span class="count">94</span></div>
+
+      <div class="nav-label">System</div>
+      <div class="nav-link"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg> Authors <span class="count">12</span></div>
+      <div class="nav-link"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Settings</div>
+
+      <div class="nav-spacer"></div>
+      <div class="nav-label">Storage</div>
+      <div style="padding:2px 14px 8px">
+        <div class="meter"><div style="width:64%"></div></div>
+        <div style="font-family:var(--mono-stack); font-size:9px; color:var(--text-dim); margin-top:4px; text-transform:uppercase; letter-spacing:0.04em">12.8 / 20 GB</div>
+      </div>
+    </div>
+
+    <!-- CENTER: content table -->
+    <div class="content-col">
+      <div class="dt-toolbar">
+        <span class="count">SHOWING <strong>1–12</strong> / 142</span>
+        <span class="sep" style="color:var(--border-strong)">|</span>
+        <span>SORT <strong style="color:var(--accent)">updated ↓</strong></span>
+        <span class="sep" style="color:var(--border-strong)">|</span>
+        <span class="filter-chip" data-state="active">status: published <span class="x">×</span></span>
+        <span class="filter-chip">+ filter</span>
+        <div class="right">
+          <button class="btn btn--sm btn--ghost">columns</button>
+          <button class="btn btn--sm btn--ghost">export</button>
+        </div>
+      </div>
+      <div class="content-scroll">
+        <table class="dt dt--grid">
+          <thead>
+            <tr>
+              <th class="dt-check"><span class="cb" onclick="toggleAll(this)"></span></th>
+              <th class="rownum">#</th>
+              <th class="sortable" style="width:auto; min-width:200px"><span class="th-inner">Title<span class="sort-caret"><i class="up">▲</i><i class="down">▼</i></span></span></th>
+              <th class="sortable" style="width:96px"><span class="th-inner">Author<span class="sort-caret"><i class="up">▲</i><i class="down">▼</i></span></span></th>
+              <th class="sortable" style="width:88px"><span class="th-inner">Category</span></th>
+              <th style="width:78px">Status</th>
+              <th class="sortable num" style="width:60px"><span class="th-inner">Views</span></th>
+              <th class="sortable" style="width:84px"><span class="th-inner" data-sort="desc">Updated</span></th>
+              <th class="col-actions"></th>
+            </tr>
+          </thead>
+          <tbody id="ctBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- RIGHT: editor / inspector -->
+    <div class="insp-col">
+      <div class="insp-head">
+        <span>edit post</span>
+        <span class="tag tag--warning">DRAFT</span>
+      </div>
+      <div class="insp-pad">
+        <div class="insp-cover">cover · 1600×900 · drop image</div>
+
+        <div class="field field-mb">
+          <label>Title</label>
+          <input class="input" value="The state of render farms in 2026" />
+        </div>
+        <div class="field field-mb">
+          <label>Slug</label>
+          <input class="input mono" value="/blog/render-farms-2026" />
+        </div>
+        <div class="field field-mb">
+          <label>Excerpt</label>
+          <textarea class="textarea" rows="3">A field report on distributed rendering, GPU scheduling, and the economics of the modern farm.</textarea>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px" class="field-mb">
+          <div class="field">
+            <label>Status</label>
+            <select class="select"><option>Draft</option><option>Published</option><option>Scheduled</option><option>Archived</option></select>
+          </div>
+          <div class="field">
+            <label>Visibility</label>
+            <select class="select"><option>Public</option><option>Members</option><option>Paid</option></select>
+          </div>
+        </div>
+
+        <div class="field field-mb">
+          <label>Author</label>
+          <div class="user-chip" style="width:100%">
+            <span class="avatar avatar--sm avatar--accent">EW</span>
+            <span>Elena Wright</span>
+            <span class="meta" style="margin-left:auto">editor</span>
+          </div>
+        </div>
+
+        <div class="seg-label">Category</div>
+        <div class="toggle-group field-mb" style="width:100%">
+          <button class="btn" data-state="checked" style="flex:1">Engineering</button>
+          <button class="btn" style="flex:1">Product</button>
+          <button class="btn" style="flex:1">News</button>
+        </div>
+
+        <div class="seg-label">Tags</div>
+        <div class="tag-input field-mb">
+          <span class="tag-chip">rendering <span class="tag-chip-x">×</span></span>
+          <span class="tag-chip">gpu <span class="tag-chip-x">×</span></span>
+          <span class="tag-chip">infra <span class="tag-chip-x">×</span></span>
+          <input placeholder="add…" />
+        </div>
+
+        <div class="seg-label">Schedule</div>
+        <div class="field field-mb">
+          <div class="row" style="gap:6px">
+            <input class="input mono" value="2026-06-02" style="flex:1" />
+            <input class="input mono" value="09:00" style="width:70px" />
+          </div>
+        </div>
+
+        <div class="row" style="gap:6px; margin-top:6px">
+          <button class="btn" style="flex:1">Preview</button>
+          <button class="btn" style="flex:1">Save draft</button>
+          <button class="btn btn--primary" style="flex:1">Publish</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- statusbar -->
+  <div class="cst">
+    <span class="led led--on"></span>
+    <span>connected · acme-media.cms</span>
+    <span class="sep">·</span>
+    <span>142 posts</span>
+    <span class="sep">·</span>
+    <span>8 drafts</span>
+    <span class="sep">·</span>
+    <span>autosave 14:22:08</span>
+    <span class="spacer"></span>
+    <span>editor: elena.wright</span>
+    <span class="sep">·</span>
+    <span>v4.2.1</span>
+  </div>
+</div>
+
+<script src="presets.js"></script>
+<script>
+  applyPreset("beacon", "light");
+
+  const posts = [
+    { t:"The state of render farms in 2026", slug:"/blog/render-farms-2026", au:"EW", auN:"E. Wright", cat:"Engineering", st:"draft",     views:"—",    upd:"2m ago",   sel:true },
+    { t:"Color pipelines for HDR delivery", slug:"/blog/hdr-color-pipelines", au:"KL", auN:"K. Lin",    cat:"Engineering", st:"published", views:"8.2k",  upd:"1h ago" },
+    { t:"Why we moved to WireGuard", slug:"/blog/wireguard-migration", au:"RM", auN:"R. Miller", cat:"Product", st:"published", views:"14.1k", upd:"3h ago" },
+    { t:"Q2 product roadmap", slug:"/blog/q2-roadmap", au:"EW", auN:"E. Wright", cat:"Product", st:"scheduled", views:"—",    upd:"5h ago" },
+    { t:"Interview: building the new encoder", slug:"/blog/encoder-interview", au:"JX", auN:"J. Xu",    cat:"News", st:"published", views:"5.7k",  upd:"1d ago" },
+    { t:"Benchmarking ProRes vs DNxHR", slug:"/blog/prores-dnxhr", au:"KL", auN:"K. Lin",   cat:"Engineering", st:"published", views:"22.4k", upd:"2d ago" },
+    { t:"Release notes · v4.2", slug:"/blog/release-v4-2", au:"RM", auN:"R. Miller", cat:"News", st:"published", views:"3.1k",  upd:"2d ago" },
+    { t:"A guide to split tunneling", slug:"/blog/split-tunnel-guide", au:"JX", auN:"J. Xu", cat:"Product", st:"review", views:"—",    upd:"3d ago" },
+    { t:"GPU scheduling deep-dive", slug:"/blog/gpu-scheduling", au:"KL", auN:"K. Lin",     cat:"Engineering", st:"published", views:"11.8k", upd:"4d ago" },
+    { t:"Customer story: Studio Mango", slug:"/blog/studio-mango", au:"EW", auN:"E. Wright", cat:"News", st:"published", views:"6.4k",  upd:"5d ago" },
+    { t:"The economics of cloud rendering", slug:"/blog/cloud-render-economics", au:"RM", auN:"R. Miller", cat:"Engineering", st:"draft", views:"—", upd:"6d ago" },
+    { t:"Onboarding redesign retrospective", slug:"/blog/onboarding-retro", au:"JX", auN:"J. Xu", cat:"Product", st:"archived", views:"2.0k", upd:"1w ago" },
+  ];
+  const stMap = {
+    draft:     ['is-warn','DRAFT'],
+    published: ['is-done','LIVE'],
+    scheduled: ['is-render','SCHED'],
+    review:    ['is-queue','REVIEW'],
+    archived:  ['is-queue','ARCH'],
+  };
+  document.getElementById("ctBody").innerHTML = posts.map((p,i)=>{
+    const [cls,label] = stMap[p.st];
+    return `<tr ${p.sel?'data-state="selected"':''}>
+      <td class="dt-check"><span class="cb" ${p.sel?'data-state="checked"':''} onclick="toggleRow(this)"></span></td>
+      <td class="rownum">${String(i+1).padStart(3,'0')}</td>
+      <td>
+        <div style="display:flex; align-items:center; gap:8px">
+          <span class="ct-thumb">IMG</span>
+          <span class="ct-title"><span class="h">${p.t}</span><span class="slug">${p.slug}</span></span>
+        </div>
+      </td>
+      <td><span class="user-chip" style="padding:0 6px 0 1px"><span class="avatar avatar--sm">${p.au}</span>${p.auN}</span></td>
+      <td>${p.cat}</td>
+      <td><span class="dt-status ${cls}"><span class="led"></span>${label}</span></td>
+      <td class="num">${p.views}</td>
+      <td class="mono" style="color:var(--text-muted)">${p.upd}</td>
+      <td class="col-actions-multi">
+        <span class="row-quick">
+          <button class="icon-btn" title="Edit"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+          <button class="icon-btn" title="View"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+        </span><button class="icon-btn" title="More…"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg></button>
+      </td>
+    </tr>`;
+  }).join("");
+
+  function toggleRow(cb){ cb.setAttribute("data-state", cb.getAttribute("data-state")==="checked"?"":"checked"); }
+  function toggleAll(cb){
+    const on = cb.getAttribute("data-state")!=="checked";
+    cb.setAttribute("data-state", on?"checked":"");
+    document.querySelectorAll(".content-scroll .dt-check .cb").forEach(c=>c.setAttribute("data-state", on?"checked":""));
+  }
+  function navPick(el){ document.querySelectorAll(".nav-link").forEach(n=>n.removeAttribute("data-state")); el.setAttribute("data-state","active"); }
+  document.querySelectorAll(".nav-link").forEach(n=>n.addEventListener("click",()=>navPick(n)));
+</script>
+</body>
+</html>

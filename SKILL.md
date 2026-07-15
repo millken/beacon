@@ -1,6 +1,6 @@
 ---
-name: gui-tokens-semi-beacon
-description: Use this skill to generate well-structured desktop-grade GUI interfaces and assets using a design-token system that borrows Semi Design's mature token architecture (functional color interaction-state matrix, semantic layering, one-switch theming) with the team's in-use "Beacon" palette & character (dense, hard-edged, mono-first, dark+light, radius ≤6px). For production or throwaway prototypes/mocks.
+name: beacon-design-system
+description: Use this skill to generate well-structured desktop-grade GUI interfaces and assets with the **Beacon** design system — a design-token + component library borrowing Semi Design's mature token architecture (functional color interaction-state matrix, semantic layering, one-switch theming) with Beacon's dense, hard-edged, mono-first, dark+light, radius-≤6px desktop-tool character. 59 components across 15 pages. For production or throwaway prototypes/mocks.
 user-invocable: true
 ---
 

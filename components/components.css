@@ -421,7 +421,7 @@
 .meter .seg.crit[data-on] { background: var(--color-danger); }
 
 /* circular ring (conic) */
-.ring { --val: 66; --ring-c: var(--color-primary); width: 56px; height: 56px; border-radius: 50%; background: conic-gradient(var(--ring-c) calc(var(--val) * 1%), var(--color-bg-active) 0); display: grid; place-items: center; }
+.ring { --val: 66; /* @kind other */ --ring-c: var(--color-primary); width: 56px; height: 56px; border-radius: 50%; background: conic-gradient(var(--ring-c) calc(var(--val) * 1%), var(--color-bg-active) 0); display: grid; place-items: center; }
 .ring::before { content: ""; position: absolute; width: 42px; height: 42px; border-radius: 50%; background: var(--color-bg); }
 .ring .val { position: relative; font-family: var(--font-family-mono); font-size: var(--font-size-xs); color: var(--color-text); font-weight: var(--font-weight-semibold); }
 .ring-wrap { position: relative; display: inline-grid; place-items: center; }
@@ -710,7 +710,7 @@
 .rating button[data-on] svg { fill: var(--color-warning); }
 
 /* ---------- Gauge (conic, reuses ring) ---------- */
-.gauge { --val: 50; --gc: var(--color-primary); width: 72px; height: 72px; border-radius: 50%; background: conic-gradient(from -135deg, var(--gc) calc(var(--val) * 2.7deg), var(--color-bg-active) 0 270deg, transparent 270deg); display: grid; place-items: center; position: relative; }
+.gauge { --val: 50; /* @kind other */ --gc: var(--color-primary); width: 72px; height: 72px; border-radius: 50%; background: conic-gradient(from -135deg, var(--gc) calc(var(--val) * 2.7deg), var(--color-bg-active) 0 270deg, transparent 270deg); display: grid; place-items: center; position: relative; }
 .gauge::before { content: ""; position: absolute; width: 54px; height: 54px; border-radius: 50%; background: var(--color-bg); }
 .gauge .gv { position: relative; font-family: var(--font-family-mono); font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); }
 .gauge .gl { position: relative; font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); }

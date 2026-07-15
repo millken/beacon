@@ -48,9 +48,9 @@
   --control-h-md: 28px;
   --control-h-lg: 34px;
   /* 动效 MOTION —— 桌面工具：快、硬、无弹性 */
-  --duration-fast: 80ms;
-  --duration-base: 140ms;
-  --ease-standard: cubic-bezier(.2, 0, 0, 1);
+  --duration-fast: 80ms;                         /* @kind other */
+  --duration-base: 140ms;                        /* @kind other */
+  --ease-standard: cubic-bezier(.2, 0, 0, 1);    /* @kind other */
 
   /* ===== 3) 排版 FONT —— 双字体栈 · 7 档字号 ===== */
   --font-family-sans: "Segoe UI Variable Text", "SF Pro Text", "Noto Sans", Ubuntu, Cantarell, sans-serif;

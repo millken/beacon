@@ -15,12 +15,13 @@
 |---|---|
 | `README.md` | 本文档 |
 | `SKILL.md` | Agent Skill 描述符（`gui-tokens-semi-beacon`）|
+| `styles.css` | **全局入口表（只 @import、零规则）**：按顺序装配 `colors_and_type.css` → `components/components.css`，是 token→组件→用法 三级架构的装配点 |
 | `colors_and_type.css` | **全部 Token 的 CSS 变量**：形状 / 密度 / 排版 / 组件 / 语义角色 / **Semi 式功能色矩阵** / Beacon 色盘（light + dark）。默认 preset = Beacon |
 | `tokens.html` | **GUI Token 规范页** —— 可视化全部 Token 的参考文档（左侧目录 + light/dark 切换 + Token 应用示例）。用浏览器打开即可浏览 |
 | `presets.js` | 14 套 preset × light/dark 色值 + `applyPreset(key, theme)`（色值事实来源；默认采用 Beacon）|
-| `theme-switch.js` | 悬浮的 preset / 明暗 / 圆角切换器，`presets.js` 之后引入即可 |
-| `styles.css` | 完整组件样式表（Token 消费参考）|
-| `components/` | 组件库（`*.html` 演示 + `components.css`）|
+| `components/` | 组件库（18 个 `*.html` 演示 + `components.css` 组件层，只消费 Token，绝不硬编码）|
+| `starting-points/` | 起步模板：`Desktop App — Render Farm.html`（完整桌面工具外壳，串联 9 个组件）|
+| `showcase/` | **前代 zi 工业桌面系统 + 项目展示**：`design-system.html` 总览页、5 个桌面应用 demo（渲染集群 / VPN / CMS / 数据表格 / 设置面板）、compressor-mall 商城（桌面+移动）、移动端 Token 体系（`mobile-design-system.html` + `mobile.css` + `mobile-tokens.md`），以及它们依赖的单体 `styles.css` / `presets.js` / `theme-switch.js` / `tokens.md` |
 | `RECONSTRUCTION.md` | 本系统的还原来源与版本说明 |
 
 ---
@@ -93,11 +94,11 @@
 </style>
 ```
 
-切换到其余 13 套 preset，引入 `presets.js` 并调用 `applyPreset('chrome', 'dark')`；或直接引入切换器：
+切换到其余 13 套 preset，引入 `presets.js` 并调用 `applyPreset('chrome', 'dark')`；或直接引入切换器（位于 `showcase/`）：
 
 ```html
 <script src="presets.js"></script>
-<script src="theme-switch.js" data-default-preset="beacon" data-default-theme="dark"></script>
+<script src="showcase/theme-switch.js" data-default-preset="beacon" data-default-theme="dark"></script>
 ```
 
 14 套 preset：`beacon` / `chrome` / `antd` / `console` / `studio` / `workshop` / `iron` / `refinery` / `lab` / `mainframe` / `foundry` / `helix` / `atlas` / `reactor`。

@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>zi · data grid — table editor</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+  html, body { height: 100%; overflow: hidden; background: var(--bg-base); }
+  .editor-window {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 28px auto 28px 1fr 22px;
+    overflow: hidden;
+  }
+
+  /* tabbar reuse */
+  .doc-tabs {
+    display: flex; align-items: stretch;
+    background: var(--bg-subtle);
+    border-bottom: 1px solid var(--border);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.03), inset 0 -1px 0 rgba(0,0,0,0.25);
+    height: 28px; flex: none; overflow: hidden; font-family: var(--mono-stack);
+  }
+  .doc-tab {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 0 10px 0 12px; height: 100%;
+    border-right: 1px solid var(--border);
+    color: var(--text-muted); font-size: 11px; cursor: pointer;
+    background: var(--bg-subtle); user-select: none;
+  }
+  .doc-tab:hover { background: var(--bg-hover); color: var(--text); }
+  .doc-tab[data-state="active"] {
+    background: var(--bg-base); color: var(--text);
+    box-shadow: inset 0 2px 0 var(--accent), inset 0 -1px 0 var(--bg-base);
+  }
+  .doc-tab .ico { color: var(--text-dim); font-size: 10px; }
+  .doc-tab[data-state="active"] .ico { color: var(--accent); }
+  .doc-tabs-spacer { flex: 1; background: var(--bg-subtle); }
+
+  /* query/filter bar */
+  .grid-bar {
+    display: flex; align-items: center; gap: 8px;
+    padding: 0 8px;
+    background: var(--bg-base);
+    border-bottom: 1px solid var(--border);
+    height: 28px; flex: none;
+    font-family: var(--mono-stack); font-size: 11px;
+    color: var(--text-muted);
+  }
+  .grid-bar .where {
+    flex: 1;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+    border-radius: var(--r-sm);
+    padding: 2px 8px;
+    height: 20px;
+    color: var(--text);
+  }
+  .grid-bar .where .kw { color: var(--accent); }
+  .grid-bar .where .str { color: var(--success); }
+  .grid-bar .where .cursor {
+    display: inline-block; width: 1px; height: 12px;
+    background: var(--accent); margin-left: 1px;
+    animation: led-blink 1s step-end infinite;
+  }
+
+  .grid-host { overflow: hidden; min-height: 0; display: flex; flex-direction: column; }
+  .dt-scroll { flex: 1; }
+
+  /* statusbar */
+  .gst {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--bg-subtle);
+    border-top: 1px solid var(--border);
+    box-shadow: inset 0 1px 0 rgba(0,0,0,0.25), inset 0 -1px 0 rgba(255,255,255,0.03);
+    padding: 0 10px; height: 22px; flex: none;
+    font-family: var(--mono-stack); font-size: 10px;
+    color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  .gst .spacer { flex: 1; }
+  .gst .sep { color: var(--border-strong); }
+  .gst .hot { color: var(--text); }
+</style>
+</head>
+<body data-theme="light" data-preset="beacon">
+
+<div class="editor-window">
+
+  <!-- titlebar -->
+  <div class="titlebar" style="border-radius:0; border-left:none; border-right:none; border-top:none">
+    <div class="titlebar-traffic"><i></i><i></i><i></i></div>
+    <div class="titlebar-title" style="flex:none">zi · data</div>
+    <span style="font-family:var(--mono-stack); font-size:10px; color:var(--text-dim); padding:0 6px;">—</span>
+    <nav class="crumb" style="font-size:11px; flex:1; min-width:0;">
+      <a>prod_db</a><span class="crumb-sep">/</span>
+      <a>public</a><span class="crumb-sep">/</span>
+      <span class="cur">render_jobs</span>
+    </nav>
+    <div class="titlebar-meta">
+      <span class="led led--on"></span><span>postgres · 14.2</span>
+      <span style="color:var(--border-strong)">|</span>
+      <span>34ms</span>
+    </div>
+  </div>
+
+  <!-- doc tabs -->
+  <div class="doc-tabs">
+    <div class="doc-tab" data-state="active"><span class="ico">▦</span> render_jobs</div>
+    <div class="doc-tab"><span class="ico">▦</span> nodes</div>
+    <div class="doc-tab"><span class="ico">▦</span> owners</div>
+    <div class="doc-tab"><span class="ico">⌖</span> query_3.sql</div>
+    <div class="doc-tabs-spacer"></div>
+  </div>
+
+  <!-- where / filter bar -->
+  <div class="grid-bar">
+    <span style="color:var(--text-dim)">WHERE</span>
+    <span class="where"><span class="kw">status</span> = <span class="str">'render'</span> <span class="kw">AND</span> fps &gt;= 24<span class="cursor"></span></span>
+    <button class="btn btn--sm">Apply</button>
+    <button class="btn btn--sm btn--ghost">Reset</button>
+    <span class="sep" style="color:var(--border-strong)">|</span>
+    <button class="btn btn--sm btn--ghost">+ Row</button>
+    <button class="btn btn--sm btn--ghost">⎘ Dup</button>
+    <button class="btn btn--sm btn--ghost">− Del</button>
+    <span class="sep" style="color:var(--border-strong)">|</span>
+    <button class="btn btn--sm btn--primary">Commit <span style="opacity:0.7; font-family:var(--mono-stack)">3</span></button>
+  </div>
+
+  <!-- grid -->
+  <div class="grid-host">
+    <div class="dt-toolbar">
+      <span class="count">ROWS <strong>1–14</strong> / 1,284</span>
+      <span class="sep" style="color:var(--border-strong)">|</span>
+      <span>SORT <strong style="color:var(--accent)">id ↑</strong></span>
+      <span class="sep" style="color:var(--border-strong)">|</span>
+      <span style="color:var(--success)">+1 new</span>
+      <span style="color:var(--warning)">~2 edited</span>
+      <span style="color:var(--danger)">−1 deleted</span>
+      <div class="right">
+        <button class="btn btn--sm btn--ghost">columns</button>
+        <button class="btn btn--sm btn--ghost">filter</button>
+        <button class="btn btn--sm btn--ghost">export</button>
+      </div>
+    </div>
+
+    <div class="dt-scroll">
+      <table class="dt dt--grid" id="grid">
+        <thead>
+          <tr>
+            <th class="dt-check"><span class="cb" onclick="toggleAll(this)"></span></th>
+            <th class="rownum">#</th>
+            <th class="col-frozen is-pk sortable" data-sort="asc" style="min-width:70px">
+              <span class="th-inner">id<span class="sort-caret"><i class="up">▲</i><i class="down">▼</i></span><span class="col-type">PK·int</span></span>
+            </th>
+            <th class="sortable" style="min-width:200px"><span class="th-inner">name<span class="sort-caret"><i class="up">▲</i><i class="down">▼</i></span><span class="col-type">varchar</span></span></th>
+            <th class="sortable" style="min-width:130px"><span class="th-inner">codec<span class="sort-caret"><i class="up">▲</i><i class="down">▼</i></span><span class="col-type">enum</span></span></th>
+            <th class="sortable num" style="min-width:70px"><span class="th-inner">fps<span class="sort-caret"><i class="up">▲</i><i class="down">▼</i></span><span class="col-type">num</span></span></th>
+            <th class="sortable num" style="min-width:90px"><span class="th-inner">size_mb<span class="sort-caret"><i class="up">▲</i><i class="down">▼</i></span><span class="col-type">int</span></span></th>
+            <th class="col-bool" style="min-width:64px"><span class="th-inner">hdr<span class="col-type">bool</span></span></th>
+            <th class="sortable" style="min-width:120px"><span class="th-inner">node_id<span class="sort-caret"><i class="up">▲</i><i class="down">▼</i></span><span class="col-type">FK</span></span></th>
+            <th class="sortable" style="min-width:150px"><span class="th-inner">created_at<span class="sort-caret"><i class="up">▲</i><i class="down">▼</i></span><span class="col-type">timestamp</span></span></th>
+            <th class="sortable" style="min-width:130px"><span class="th-inner">owner<span class="sort-caret"><i class="up">▲</i><i class="down">▼</i></span><span class="col-type">varchar</span></span></th>
+            <th class="col-actions"></th>
+          </tr>
+        </thead>
+        <tbody id="gridBody"></tbody>
+        <tfoot>
+          <tr>
+            <td class="dt-check"></td>
+            <td class="rownum"></td>
+            <td class="col-frozen"><span class="agg-label">count</span> <strong>1,284</strong></td>
+            <td><span class="agg-label">distinct</span> 1,284</td>
+            <td><span class="agg-label">modes</span> 5</td>
+            <td class="num"><span class="agg-label">avg</span> <strong>28.4</strong></td>
+            <td class="num"><span class="agg-label">sum</span> <strong>4.21 TB</strong></td>
+            <td class="col-bool"><span class="agg-label">true</span> 312</td>
+            <td><span class="agg-label">distinct</span> 6</td>
+            <td><span class="agg-label">range</span> 18d</td>
+            <td><span class="agg-label">distinct</span> 3</td>
+            <td class="col-actions"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+  <!-- statusbar -->
+  <div class="gst">
+    <span class="led led--on"></span>
+    <span>cell <span class="hot" id="cellAddr">R2 · name</span></span>
+    <span class="sep">·</span>
+    <span id="cellType">varchar(255)</span>
+    <span class="sep">·</span>
+    <span>SELECT 14 rows · 34 ms</span>
+    <span class="spacer"></span>
+    <span style="color:var(--success)">+1</span>
+    <span style="color:var(--warning)">~2</span>
+    <span style="color:var(--danger)">−1</span>
+    <span class="sep">·</span>
+    <span>UTF-8</span>
+    <span class="sep">·</span>
+    <span>txn: <span class="hot">OPEN</span></span>
+  </div>
+</div>
+
+<script src="presets.js"></script>
+<script>
+  applyPreset("beacon", "light");
+
+  // ── Dataset ──
+  const rows = [
+    { id:1001, name:"opening_v3.mov",        codec:"ProRes 422",  fps:23.976, size:3482,  hdr:false, node:"node-3",  created:"2026-05-12 09:14", owner:"jin.xu",   row:null },
+    { id:1002, name:"scene_07_master.mov",   codec:"DNxHR HQX",   fps:29.97,  size:null,  hdr:true,  node:"node-3",  created:"2026-05-12 11:02", owner:"r.miller", row:"edited", dirty:["fps"] },
+    { id:1003, name:"scene_07_proxy.mp4",    codec:"H.264",       fps:29.97,  size:412,   hdr:false, node:"node-5",  created:"2026-05-12 11:03", owner:"r.miller", row:null },
+    { id:1004, name:"credits_v2.exr",        codec:"EXR seq",     fps:23.976, size:null,  hdr:true,  node:null,      created:"2026-05-13 08:41", owner:"k.lin",    row:null },
+    { id:1005, name:"lower_third.mov",       codec:"ProRes 4444", fps:29.97,  size:null,  hdr:true,  node:"node-7",  created:"2026-05-13 14:22", owner:"jin.xu",   row:"deleted" },
+    { id:1006, name:"shot_12_proxy.mp4",     codec:"H.264",       fps:29.97,  size:412,   hdr:false, node:"node-8",  created:"2026-05-14 10:08", owner:"k.lin",    row:null },
+    { id:1007, name:"title_card.mov",        codec:"ProRes 422",  fps:24,     size:88,    hdr:false, node:"node-3",  created:"2026-05-14 16:30", owner:"jin.xu",   row:null },
+    { id:1008, name:"outro_v4.mov",          codec:"DNxHR HQX",   fps:60,     size:1820,  hdr:true,  node:"node-11", created:"2026-05-15 09:55", owner:"r.miller", row:"edited", dirty:["codec","hdr"] },
+    { id:1009, name:"logo_intro.exr",        codec:"EXR seq",     fps:23.976, size:null,  hdr:true,  node:"node-5",  created:"2026-05-15 13:12", owner:"k.lin",    row:null },
+    { id:1010, name:"bumper_v2.mov",         codec:"ProRes 422",  fps:29.97,  size:240,   hdr:false, node:"node-8",  created:"2026-05-16 11:44", owner:"jin.xu",   row:null },
+    { id:1011, name:"trailer_cut.mov",       codec:"ProRes 4444", fps:24,     size:5120,  hdr:true,  node:"node-3",  created:"2026-05-16 18:20", owner:"r.miller", row:null, invalid:["fps"] },
+    { id:1012, name:"cinematic_v8.mov",      codec:"DNxHR HQX",   fps:29.97,  size:9240,  hdr:true,  node:"node-11", created:"2026-05-17 08:03", owner:"k.lin",    row:null },
+    { id:null, name:"untitled_render.mov",   codec:"ProRes 422",  fps:29.97,  size:null,  hdr:false, node:"node-3",  created:"2026-05-17 09:30", owner:"jin.xu",   row:"new" },
+    { id:1013, name:"promo_short.mp4",       codec:"H.264",       fps:30,     size:680,   hdr:false, node:"node-5",  created:"2026-05-17 10:15", owner:"k.lin",    row:null },
+  ];
+
+  function fmtNum(v) { return v == null ? null : v.toLocaleString(); }
+  function nullCell() { return '<span class="cell-null">NULL</span>'; }
+
+  function render() {
+    const html = rows.map((r, i) => {
+      const rowAttr = r.row ? ` data-row="${r.row}"` : "";
+      const dirty = r.dirty || [];
+      const invalid = r.invalid || [];
+      function cls(col, base) {
+        let c = base ? [base] : [];
+        c.push("editable");
+        if (dirty.includes(col)) c.push("is-dirty");
+        if (invalid.includes(col)) c.push("is-invalid");
+        return c.length ? ` class="${c.join(' ')}"` : "";
+      }
+      const idCell = r.id == null
+        ? `<td class="col-frozen editable"><span class="cell-null">AUTO</span></td>`
+        : `<td class="col-frozen mono editable">${r.id}</td>`;
+      return `<tr${rowAttr}>
+        <td class="dt-check"><span class="cb" onclick="toggleRow(this)"></span></td>
+        <td class="rownum">${String(i+1).padStart(3,'0')}</td>
+        ${idCell}
+        <td${cls("name")}><span class="cell-clip">${r.name}</span></td>
+        <td${cls("codec")}>${r.codec}</td>
+        <td${cls("fps","num col-int")}>${r.fps}</td>
+        <td${cls("size","num col-int")}>${r.size == null ? nullCell() : fmtNum(r.size)}</td>
+        <td${cls("hdr","col-bool")}><span class="cell-bool" data-v="${r.hdr}"></span></td>
+        <td${cls("node")}>${r.node == null ? nullCell() : `<span class="cell-fk">${r.node}</span>`}</td>
+        <td${cls("created","mono")} style="color:var(--text-muted)">${r.created}</td>
+        <td${cls("owner")}><span class="cell-fk">${r.owner}</span></td>
+        <td class="col-actions-multi">
+          <span class="row-quick">
+            <button class="icon-btn" title="Edit row"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
+            <button class="icon-btn" title="Duplicate"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="1"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+            <button class="icon-btn" title="Delete"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14H7L5 6"/></svg></button>
+          </span><button class="icon-btn" title="More…"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg></button>
+        </td>
+      </tr>`;
+    }).join("");
+    document.getElementById("gridBody").innerHTML = html;
+    wireCells();
+  }
+
+  // ── Cell cursor + inline edit ──
+  let activeCell = null;
+  function wireCells() {
+    document.querySelectorAll("#grid tbody td.editable").forEach(td => {
+      td.addEventListener("click", () => setActive(td));
+      td.addEventListener("dblclick", () => editCell(td));
+    });
+  }
+  function setActive(td) {
+    if (activeCell) activeCell.classList.remove("is-active");
+    activeCell = td;
+    td.classList.add("is-active");
+    // statusbar address
+    const tr = td.parentElement;
+    const rowN = tr.querySelector(".rownum").textContent.replace(/^0+/, "");
+    const colIdx = Array.from(tr.children).indexOf(td);
+    const colName = document.querySelectorAll("#grid thead th")[colIdx]?.textContent.replace(/[▲▼].*/, "").replace(/PK·int|varchar|enum|num|int|bool|FK|timestamp/g, "").trim() || "";
+    document.getElementById("cellAddr").textContent = `R${rowN} · ${colName}`;
+  }
+  function editCell(td) {
+    if (td.classList.contains("col-bool")) {
+      const b = td.querySelector(".cell-bool");
+      b.dataset.v = b.dataset.v === "true" ? "false" : "true";
+      td.classList.add("is-dirty");
+      return;
+    }
+    const cur = td.querySelector(".cell-null") ? "" : td.textContent.trim();
+    const isNum = td.classList.contains("num");
+    td.classList.add("is-editing");
+    td.innerHTML = `<input class="dt-cell-input" value="${cur.replace(/"/g,'&quot;')}" />`;
+    const inp = td.querySelector("input");
+    inp.focus(); inp.select();
+    function commit() {
+      const v = inp.value;
+      td.classList.remove("is-editing");
+      td.classList.add("is-dirty");
+      if (v === "") td.innerHTML = nullCell();
+      else if (isNum) td.innerHTML = v;
+      else td.innerHTML = `<span class="cell-clip">${v}</span>`;
+      setActive(td);
+    }
+    inp.addEventListener("blur", commit);
+    inp.addEventListener("keydown", e => {
+      if (e.key === "Enter") { commit(); }
+      if (e.key === "Escape") { td.classList.remove("is-editing"); render(); }
+    });
+  }
+
+  // ── Keyboard nav ──
+  document.addEventListener("keydown", e => {
+    if (!activeCell || activeCell.querySelector("input")) return;
+    const tr = activeCell.parentElement;
+    const tds = Array.from(tr.children).filter(t => t.classList.contains("editable"));
+    const idx = tds.indexOf(activeCell);
+    const rowsEls = Array.from(document.querySelectorAll("#grid tbody tr"));
+    const rIdx = rowsEls.indexOf(tr);
+    let target = null;
+    if (e.key === "ArrowRight") target = tds[idx+1];
+    if (e.key === "ArrowLeft")  target = tds[idx-1];
+    if (e.key === "ArrowDown" && rowsEls[rIdx+1]) target = Array.from(rowsEls[rIdx+1].children).filter(t=>t.classList.contains("editable"))[idx];
+    if (e.key === "ArrowUp"   && rowsEls[rIdx-1]) target = Array.from(rowsEls[rIdx-1].children).filter(t=>t.classList.contains("editable"))[idx];
+    if (e.key === "Enter") { editCell(activeCell); e.preventDefault(); return; }
+    if (target) { setActive(target); e.preventDefault(); }
+  });
+
+  function toggleRow(cb){ cb.setAttribute("data-state", cb.getAttribute("data-state")==="checked"?"":"checked"); }
+  function toggleAll(cb){
+    const on = cb.getAttribute("data-state")!=="checked";
+    cb.setAttribute("data-state", on?"checked":"");
+    document.querySelectorAll("#grid tbody .dt-check .cb").forEach(c => c.setAttribute("data-state", on?"checked":""));
+  }
+
+  render();
+  // preselect a cell to show the cursor
+  setTimeout(() => {
+    const first = document.querySelector("#grid tbody tr:nth-child(2) td.editable:nth-child(4)");
+    if (first) setActive(first);
+  }, 50);
+</script>
+</body>
+</html>

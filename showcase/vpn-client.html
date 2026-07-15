@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>zi · secure tunnel — VPN</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+  html, body { height: 100%; overflow: hidden; background: var(--bg-base); }
+  .vpn-window { height: 100vh; display: grid; grid-template-rows: 28px 1fr 22px; overflow: hidden; }
+  .vpn-body { display: grid; grid-template-columns: 224px 1fr; overflow: hidden; min-height: 0; }
+
+  /* ── Sidebar ── */
+  .side {
+    background: var(--bg-subtle);
+    border-right: 1px solid var(--border);
+    box-shadow: inset -1px 0 0 rgba(0,0,0,0.18);
+    display: flex; flex-direction: column; overflow-y: auto; min-height: 0;
+    padding: 10px;
+  }
+  .status-card {
+    border: 1px solid var(--border);
+    border-top-color: rgba(255,255,255,0.05);
+    border-radius: var(--r-md);
+    background: var(--bg-surface);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 1px 2px rgba(0,0,0,0.2);
+    padding: 9px 10px; margin-bottom: 12px;
+  }
+  .status-card .st-row { display: flex; align-items: center; gap: 6px; font-family: var(--mono-stack); font-size: 9px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--success); }
+  .status-card .st-loc { font-size: 14px; font-weight: var(--fw-semibold); color: var(--text); margin-top: 3px; }
+  .status-card .st-ip { font-family: var(--mono-stack); font-size: 10px; color: var(--text-dim); margin-top: 1px; }
+
+  .nav-label { padding: 6px 6px 3px; font-family: var(--mono-stack); font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); }
+  .nav-link { display: flex; align-items: center; gap: 9px; padding: 5px 8px; border-radius: var(--r-sm); color: var(--text); font-size: 12px; cursor: pointer; line-height: 1.6; }
+  .nav-link svg { width: 15px; height: 15px; stroke-width: 1.6; fill: none; stroke: currentColor; flex: none; color: var(--text-dim); }
+  .nav-link:hover { background: var(--bg-hover); }
+  .nav-link[data-state="active"] { background: var(--accent); color: var(--accent-fg); }
+  .nav-link[data-state="active"] svg { color: var(--accent-fg); }
+  .nav-spacer { flex: 1; }
+
+  .plan-card {
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-md);
+    background: var(--bg-active);
+    padding: 9px 10px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+  }
+  .plan-card .pk { font-family: var(--mono-stack); font-size: 9px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--accent); }
+  .plan-card .pv { font-size: 12px; color: var(--text); margin: 2px 0 6px; }
+
+  /* ── Main dashboard ── */
+  .main { background: var(--bg-base); overflow-y: auto; min-height: 0; }
+  .dash-head {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    padding: 16px 18px 12px; gap: 12px;
+  }
+  .dash-head h1 { font-size: 22px; font-weight: var(--fw-semibold); margin: 0; letter-spacing: -0.01em; }
+  .dash-head .sub { color: var(--text-muted); font-size: 12px; margin-top: 2px; }
+  .alerts-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    border: 1px solid var(--border); border-top-color: rgba(255,255,255,0.05);
+    border-radius: var(--r-sm); background: var(--bg-surface);
+    padding: 4px 10px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 1px 1px rgba(0,0,0,0.15);
+    cursor: pointer;
+  }
+  .alerts-pill .n { font-family: var(--mono-stack); font-size: 13px; color: var(--warning); font-weight: var(--fw-semibold); }
+  .alerts-pill .l { font-family: var(--mono-stack); font-size: 9px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); }
+
+  .dash {
+    display: grid;
+    grid-template-columns: 312px 1fr 1fr 1fr;
+    gap: 10px; padding: 0 18px 18px;
+  }
+  .card {
+    border: 1px solid var(--border); border-top-color: rgba(255,255,255,0.05);
+    border-radius: var(--r-md); background: var(--bg-subtle);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.03), 0 1px 2px rgba(0,0,0,0.18);
+  }
+  .card-k { font-family: var(--mono-stack); font-size: 9px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-dim); display: flex; align-items: center; gap: 5px; }
+
+  /* power card */
+  .power-card { grid-column: 1; grid-row: 1 / span 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 24px; }
+  .power-ring {
+    width: 184px; height: 184px; border-radius: 50%;
+    border: 1px dashed var(--border-strong);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .power-ring[data-on="true"] { border-color: var(--success); border-style: solid; box-shadow: 0 0 24px color-mix(in oklab, var(--success) 28%, transparent); }
+  .power-btn {
+    width: 140px; height: 140px; border-radius: 50%;
+    border: 1px solid var(--accent);
+    background: var(--accent); color: var(--accent-fg);
+    cursor: pointer; font-family: var(--mono-stack);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -3px 8px rgba(0,0,0,0.3), 0 4px 14px rgba(0,0,0,0.3);
+    transition: transform 80ms ease, box-shadow 80ms ease;
+  }
+  .power-btn:active { transform: translateY(2px); box-shadow: inset 0 2px 0 rgba(255,255,255,0.15), inset 0 -1px 4px rgba(0,0,0,0.3); }
+  .power-btn svg { width: 40px; height: 40px; stroke: currentColor; stroke-width: 2; fill: none; }
+  .power-btn .lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: var(--fw-semibold); }
+  .power-btn[data-on="false"] { background: var(--bg-surface); color: var(--text-muted); border-color: var(--border-strong); }
+  .power-time { font-family: var(--mono-stack); font-size: 28px; color: var(--text); letter-spacing: 0.04em; font-variant-numeric: tabular-nums; }
+  .power-time-lbl { font-family: var(--mono-stack); font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); margin-top: -10px; }
+
+  /* location card */
+  .loc-card { grid-column: 2 / 5; grid-row: 1; padding: 14px 16px; display: flex; align-items: center; gap: 14px; }
+  .loc-flag-lg { width: 34px; height: 24px; border: 1px solid var(--border-strong); border-radius: 2px; display: flex; align-items: center; justify-content: center; font-family: var(--mono-stack); font-size: 10px; font-weight: var(--fw-semibold); background: var(--bg-active); flex: none; }
+  .loc-card .lc-name { font-size: 18px; font-weight: var(--fw-semibold); color: var(--text); }
+  .loc-card .lc-meta { font-family: var(--mono-stack); font-size: 11px; color: var(--text-dim); margin-top: 1px; }
+
+  /* stat cards */
+  .stat-card { grid-row: 2; padding: 12px 14px; display: flex; flex-direction: column; gap: 3px; }
+  .stat-card .sv { font-family: var(--mono-stack); font-size: 24px; color: var(--text); display: flex; align-items: baseline; gap: 4px; }
+  .stat-card .sv .u { font-size: 11px; color: var(--text-dim); }
+  .stat-card .ss { font-family: var(--mono-stack); font-size: 10px; color: var(--text-muted); }
+  .stat-card.accent { background: var(--accent); border-color: var(--accent); }
+  .stat-card.accent .card-k, .stat-card.accent .ss { color: var(--accent-fg); opacity: 0.85; }
+  .stat-card.accent .sv { color: var(--accent-fg); }
+  .stat-card.accent .sv .u { color: var(--accent-fg); opacity: 0.7; }
+
+  /* data chart card */
+  .data-card { grid-column: 1 / 3; grid-row: 3; padding: 14px 16px; }
+  .data-head { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 12px; }
+  .data-total { font-family: var(--mono-stack); font-size: 22px; color: var(--text); margin-top: 2px; }
+  .data-chart { display: flex; align-items: stretch; gap: 8px; height: 110px; }
+  .data-col { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+  .data-col .bars { flex: 1; display: flex; align-items: flex-end; justify-content: center; gap: 3px; }
+  .data-col .bars i { width: 11px; border-radius: 1px 1px 0 0; min-height: 2px; }
+  .data-col .bar-dn { background: var(--accent); }
+  .data-col .bar-up { background: color-mix(in oklab, var(--accent) 35%, var(--bg-active)); }
+  .data-col .day { font-family: var(--mono-stack); font-size: 8px; color: var(--text-dim); text-align: center; }
+  .legend { display: inline-flex; gap: 12px; font-family: var(--mono-stack); font-size: 9px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+  .legend i { display: inline-block; width: 8px; height: 8px; border-radius: 1px; vertical-align: middle; margin-right: 4px; }
+
+  /* recently used card */
+  .recent-card { grid-column: 3 / 5; grid-row: 3; padding: 0; overflow: hidden; }
+
+  /* row 4: devices + protection */
+  .dev-card { grid-column: 1 / 3; grid-row: 4; padding: 0; overflow: hidden; }
+  .sec-card { grid-column: 3 / 5; grid-row: 4; padding: 0; overflow: hidden; }
+  .mini-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; border-bottom: 1px solid var(--border); }
+  .mini-head a { font-family: var(--mono-stack); font-size: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; }
+  .dev-item { display: flex; align-items: center; gap: 10px; padding: 6px 14px; border-bottom: 1px solid var(--divider); }
+  .dev-item:last-child { border-bottom: none; }
+  .dev-item svg { width: 16px; height: 16px; stroke: var(--text-dim); stroke-width: 1.5; fill: none; flex: none; }
+  .dev-item .dn { flex: 1; font-size: 12px; color: var(--text); }
+  .dev-item .dn small { display: block; font-family: var(--mono-stack); font-size: 10px; color: var(--text-dim); }
+  .sec-item { display: flex; align-items: center; justify-content: space-between; padding: 6px 14px; border-bottom: 1px solid var(--divider); }
+  .sec-item:last-child { border-bottom: none; }
+  .sec-item .si-l { font-size: 12px; color: var(--text); }
+  .sec-item .si-l small { display: block; font-family: var(--mono-stack); font-size: 9px; color: var(--text-dim); }
+  .recent-head { display: flex; align-items: center; justify-content: space-between; padding: 8px 14px; border-bottom: 1px solid var(--border); }
+  .recent-head a { font-family: var(--mono-stack); font-size: 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; }
+  .recent-item { display: flex; align-items: center; gap: 10px; padding: 6px 14px; border-bottom: 1px solid var(--divider); cursor: pointer; }
+  .recent-item:last-child { border-bottom: none; }
+  .recent-item:hover { background: var(--bg-hover); }
+  .recent-item .ri-name { flex: 1; }
+  .recent-item .ri-city { font-size: 12px; color: var(--text); }
+  .recent-item .ri-co { font-family: var(--mono-stack); font-size: 10px; color: var(--text-dim); text-transform: uppercase; }
+  .recent-item .ri-ping { font-family: var(--mono-stack); font-size: 10px; }
+
+  .vst { display: flex; align-items: center; gap: 10px; background: var(--bg-subtle); border-top: 1px solid var(--border); box-shadow: inset 0 1px 0 rgba(0,0,0,0.25), inset 0 -1px 0 rgba(255,255,255,0.03); padding: 0 10px; height: 22px; flex: none; font-family: var(--mono-stack); font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  .vst .spacer { flex: 1; }
+  .vst .sep { color: var(--border-strong); }
+</style>
+</head>
+<body data-theme="dark" data-preset="atlas">
+<div class="vpn-window">
+
+  <div class="titlebar" style="border-radius:0; border-left:none; border-right:none; border-top:none">
+    <div class="titlebar-traffic"><i></i><i></i><i></i></div>
+    <div class="titlebar-title" style="flex:1">zi · secure tunnel</div>
+    <div class="titlebar-meta"><span class="led led--on"></span><span id="tbState">PROTECTED</span><span style="color:var(--border-strong)">|</span><span class="kbd-group"><kbd>⌘</kbd><span class="plus">+</span><kbd>K</kbd></span></div>
+  </div>
+
+  <div class="vpn-body">
+    <!-- sidebar -->
+    <div class="side">
+      <div class="status-card">
+        <div class="st-row"><span class="led led--on" style="width:6px; height:6px"></span> protected</div>
+        <div class="st-loc">Tokyo, JP</div>
+        <div class="st-ip">203.0.113.42 · 38 ms</div>
+      </div>
+      <div class="nav-label">menu</div>
+      <div class="nav-link" data-state="active"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg> Dashboard</div>
+      <div class="nav-link"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/></svg> Servers</div>
+      <div class="nav-link"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg> Devices</div>
+      <div class="nav-link"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> Activity</div>
+      <div class="nav-link"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Settings</div>
+      <div class="nav-spacer"></div>
+      <div class="plan-card">
+        <div class="pk">pro plan</div>
+        <div class="pv">2 months left</div>
+        <button class="btn btn--sm" style="width:100%">Manage</button>
+      </div>
+    </div>
+
+    <!-- main -->
+    <div class="main">
+      <div class="dash-head">
+        <div>
+          <h1>Welcome back, Alex</h1>
+          <div class="sub">Your connection is protected.</div>
+        </div>
+        <div class="row" style="gap:8px">
+          <button class="btn btn--sm">↻ Refresh</button>
+          <div class="alerts-pill"><span class="n">3</span><span class="l">alerts</span></div>
+        </div>
+      </div>
+
+      <div class="dash">
+        <!-- power -->
+        <div class="card power-card">
+          <div class="power-ring" id="ring" data-on="true">
+            <button class="power-btn" id="powerBtn" data-on="true" onclick="togglePower()">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="12"/><path d="M5 7a9 9 0 1 0 14 0"/></svg>
+              <span class="lbl" id="powerLbl">tap to stop</span>
+            </button>
+          </div>
+          <div class="power-time" id="sessTime">00:42:37</div>
+          <div class="power-time-lbl">session time</div>
+        </div>
+
+        <!-- location -->
+        <div class="card loc-card">
+          <span class="loc-flag-lg">JP</span>
+          <div style="flex:1">
+            <div class="card-k">current location</div>
+            <div class="lc-name">Japan</div>
+            <div class="lc-meta">Tokyo · 38 ms · IKEv2</div>
+          </div>
+          <button class="btn"><svg viewBox="0 0 24 24" style="width:13px; height:13px; stroke:currentColor; fill:none; stroke-width:1.6; margin-right:4px"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>Change</button>
+        </div>
+
+        <!-- stats -->
+        <div class="card stat-card">
+          <div class="card-k">download ↓</div>
+          <div class="sv">124.6<span class="u">Mbps</span></div>
+          <div class="ss">72% of line</div>
+        </div>
+        <div class="card stat-card">
+          <div class="card-k">upload ↑</div>
+          <div class="sv">58.2<span class="u">Mbps</span></div>
+          <div class="ss">41% of line</div>
+        </div>
+        <div class="card stat-card accent">
+          <div class="card-k">used today</div>
+          <div class="sv">2.4<span class="u">GB</span></div>
+          <div class="ss">of unlimited</div>
+        </div>
+
+        <!-- data chart -->
+        <div class="card data-card">
+          <div class="data-head">
+            <div>
+              <div class="card-k">data this week</div>
+              <div class="data-total">14.8 GB</div>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px">
+              <div class="toggle-group" style="padding:1px">
+                <button class="btn" data-state="checked">week</button>
+                <button class="btn">month</button>
+                <button class="btn">year</button>
+              </div>
+              <div class="legend"><span><i style="background:var(--accent)"></i>down</span><span><i style="background:color-mix(in oklab, var(--accent) 35%, var(--bg-active))"></i>up</span></div>
+            </div>
+          </div>
+          <div class="data-chart" id="chart"></div>
+        </div>
+
+        <!-- recently used -->
+        <div class="card recent-card">
+          <div class="recent-head"><span class="card-k">recently used</span><a>see all</a></div>
+          <div id="recentList"></div>
+        </div>
+
+        <!-- devices -->
+        <div class="card dev-card">
+          <div class="mini-head"><span class="card-k">your devices · 3 of 6</span><a>manage</a></div>
+          <div class="dev-item">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span class="dn">MacBook Pro<small>this device · macOS</small></span>
+            <span class="dt-status is-done"><span class="led"></span>ACTIVE</span>
+          </div>
+          <div class="dev-item">
+            <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+            <span class="dn">iPhone 16<small>ios · last seen 2h ago</small></span>
+            <span class="dt-status is-queue"><span class="led"></span>IDLE</span>
+          </div>
+          <div class="dev-item">
+            <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+            <span class="dn">iPad Air<small>ipados · last seen 1d ago</small></span>
+            <span class="dt-status is-queue"><span class="led"></span>IDLE</span>
+          </div>
+        </div>
+
+        <!-- protection -->
+        <div class="card sec-card">
+          <div class="mini-head"><span class="card-k">protection</span><a>all settings</a></div>
+          <div class="sec-item"><span class="si-l">Kill switch<small>block traffic if tunnel drops</small></span><span class="sw" data-state="checked" onclick="tog(this)"></span></div>
+          <div class="sec-item"><span class="si-l">Auto-connect<small>on untrusted networks</small></span><span class="sw" data-state="checked" onclick="tog(this)"></span></div>
+          <div class="sec-item"><span class="si-l">LAN bypass<small>allow local devices</small></span><span class="sw" onclick="tog(this)"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vst">
+    <span class="led led--on"></span><span>tunnel up</span><span class="sep">·</span><span>tokyo jp</span><span class="sep">·</span><span>ikev2</span><span class="sep">·</span><span>ping 38ms</span>
+    <span class="spacer"></span>
+    <span style="color:var(--accent)">↓ 124.6</span><span style="color:var(--text-dim)">↑ 58.2 mbps</span><span class="sep">·</span><span>2.4 GB today</span>
+  </div>
+</div>
+
+<script src="presets.js"></script>
+<script>
+  applyPreset("atlas", "dark");
+
+  // chart
+  const week = [[60,30],[80,40],[55,28],[90,38],[72,45],[100,52],[78,30]];
+  const days = ["M","T","W","T","F","S","S"];
+  document.getElementById("chart").innerHTML = week.map(([d,u],i)=>`
+    <div class="data-col">
+      <div class="bars"><i class="bar-dn" style="height:${d}%"></i><i class="bar-up" style="height:${u}%"></i></div>
+      <div class="day">${days[i]}</div>
+    </div>`).join("");
+
+  // recent
+  const recent = [
+    { cc:"JP", city:"Japan",    co:"Tokyo",         ping:38, cls:"" },
+    { cc:"SG", city:"Singapore",co:"Singapore",     ping:56, cls:"" },
+    { cc:"US", city:"United States", co:"New York",  ping:92, cls:"warn" },
+    { cc:"US", city:"United States", co:"San Francisco", ping:78, cls:"" },
+  ];
+  document.getElementById("recentList").innerHTML = recent.map(r=>`
+    <div class="recent-item">
+      <span class="loc-flag-lg" style="width:26px; height:18px; font-size:9px">${r.cc}</span>
+      <span class="ri-name"><div class="ri-city">${r.city}</div><div class="ri-co">${r.co}</div></span>
+      <span class="ri-ping" style="color:var(--${r.cls==='warn'?'warning':'success'})">${r.ping} ms</span>
+    </div>`).join("");
+
+  let on = true;
+  function tog(el){ el.setAttribute("data-state", el.getAttribute("data-state")==="checked"?"":"checked"); }
+  function togglePower(){
+    on = !on;
+    const ring=document.getElementById("ring"), btn=document.getElementById("powerBtn"), lbl=document.getElementById("powerLbl"), tb=document.getElementById("tbState");
+    ring.dataset.on=on; btn.dataset.on=on; lbl.textContent= on?"tap to stop":"tap to start"; tb.textContent= on?"PROTECTED":"EXPOSED";
+  }
+</script>
+</body>
+</html>
