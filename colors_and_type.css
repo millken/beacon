@@ -135,7 +135,7 @@
   --toast-w: 320px;
   /* code */
   --codeblock-pad: var(--space-5);
-  --codeblock-bg: var(--color-bg);
+  --codeblock-bg: var(--color-bg-subtle);
   /* misc */
   --avatar-size-sm: 20px;
   --avatar-size-md: 28px;

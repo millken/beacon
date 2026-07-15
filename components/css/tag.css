@@ -26,7 +26,7 @@
 .chip .x { display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; border-radius: 2px; color: var(--color-text-dim); cursor: pointer; }
 .chip .x svg { width: 9px; height: 9px; stroke: currentColor; stroke-width: 2.2; fill: none; pointer-events: none; }
 .chip .x:hover { background: var(--color-bg-hover); color: var(--color-text); }
-.chip--accent { --tag-bg: var(--color-primary-light-default); --tag-fg: var(--color-primary); }
+.chip--accent { --tag-bg: var(--color-primary-light-default); --tag-fg: var(--color-primary); --tag-border: transparent; }
 .chip--accent .x:hover { background: color-mix(in oklab, var(--color-primary) 20%, transparent); color: var(--color-primary); }
 .chip .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex: none; }
 
