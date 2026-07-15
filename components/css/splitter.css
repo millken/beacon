@@ -1,6 +1,21 @@
-/* ---------- Split panel / resize handle ---------- */
-.split { display: flex; border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; background: var(--color-bg); }
-.split .pane { padding: 12px; font-size: var(--font-size-sm); color: var(--color-text-muted); }
-.split .handle { width: 6px; flex: none; background: var(--color-bg-subtle); border-left: 1px solid var(--color-border); border-right: 1px solid var(--color-border); cursor: col-resize; display: flex; align-items: center; justify-content: center; }
-.split .handle::before { content: ""; width: 2px; height: 18px; border-radius: 1px; background-image: radial-gradient(var(--color-text-dim) 40%, transparent 42%); background-size: 2px 4px; opacity: .6; }
-.split .handle:hover { background: var(--color-bg-hover); }
+/* ---------- Splitter / resizable panes —— 旋钮: --splitter-handle-size --splitter-grip-color (§4) ---------- */
+.splitter { display: flex; border: var(--control-border-w) solid var(--color-border);
+  border-radius: var(--radius-md); overflow: hidden; background: var(--color-bg); }
+.splitter--v { flex-direction: row; }
+.splitter--h { flex-direction: column; }
+.splitter-pane { overflow: auto; min-width: 0; min-height: 0; }
+.splitter-handle { flex: 0 0 var(--splitter-handle-size);
+  background: var(--color-bg-subtle); cursor: col-resize; position: relative; }
+.splitter--h > .splitter-handle { cursor: row-resize; }
+.splitter-handle::after { content: ""; position: absolute; left: 50%; top: 50%;
+  width: 2px; height: 18px; transform: translate(-50%, -50%);
+  background: repeating-linear-gradient(to bottom,
+    var(--splitter-grip-color) 0 2px, transparent 2px 5px); }
+.splitter--h > .splitter-handle::after { width: 18px; height: 2px;
+  background: repeating-linear-gradient(to right,
+    var(--splitter-grip-color) 0 2px, transparent 2px 5px); }
+.splitter-handle:hover { background: var(--color-bg-hover); }
+.splitter-handle:active { background: var(--color-bg-active); }
+.pane-header { height: 26px; display: flex; align-items: center; padding: 0 var(--space-4);
+  color: var(--color-text-dim); font: var(--font-weight-medium) var(--font-size-2xs)/1 var(--font-family-mono);
+  text-transform: uppercase; letter-spacing: .06em; }

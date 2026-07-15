@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Splitter · Beacon GUI 组件</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="stylesheet" href="components.css" />
+<style>
+  body { margin:0; padding:32px 40px 80px; background:var(--background); color:var(--foreground);
+         font:400 var(--font-size-md)/var(--leading-normal) var(--font-family-sans); }
+  .page-head { display:flex; align-items:center; gap:12px; margin-bottom:8px; }
+  .page-head h1 { font-size:var(--font-size-xl); margin:0; }
+  .page-head .crumb { color:var(--color-text-dim); font-family:var(--font-family-mono); font-size:var(--font-size-xs); }
+  .theme-toggle { margin-left:auto; }
+  .demo-section { margin-top:28px; }
+  .demo-section > h2 { font-size:var(--font-size-lg); border-bottom:1px solid var(--color-divider); padding-bottom:6px; }
+  .demo-row { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin:14px 0; }
+  .demo-note { color:var(--color-text-muted); font-size:var(--font-size-sm); max-width:74ch; }
+  .pane-content { padding:10px 12px; font-family:var(--font-family-mono); font-size:var(--font-size-xs); color:var(--color-text-muted); line-height:1.7; }
+</style>
+</head>
+<body>
+<header class="page-head">
+  <span class="crumb"><a href="index.html" style="color:inherit">components</a> / splitter</span>
+  <h1>Splitter</h1>
+  <button class="btn btn--sm theme-toggle" onclick="
+    var h=document.documentElement; h.dataset.theme=h.dataset.theme==='dark'?'light':'dark'">
+    Light / Dark</button>
+</header>
+
+<p class="demo-note">DAW / IDE / NLE 必备的可拖拽分隔条。把手宽 <b>6px</b>（<code>--splitter-handle-size</code>），中央 <b>2×18</b> 圆点纹理经 <code>--splitter-grip-color</code> 旋钮驱动。作为被动分隔条，hover / active 只做中性加深，靠 grip 纹理表达"可拖拽"，边框始终中性、不变 accent。</p>
+
+<section class="demo-section">
+  <h2>Vertical split · sidebar + main</h2>
+  <div class="demo-row" style="width:100%">
+    <div class="splitter splitter--v" style="height:220px; width:100%">
+      <div class="splitter-pane" style="flex:0 0 200px">
+        <div class="pane-header">explorer</div>
+        <div class="pane-content">▸ renders<br>▾ proxies<br>&nbsp;&nbsp;▤ proxy_001.mp4<br>&nbsp;&nbsp;▤ proxy_002.mp4<br>▸ archive</div>
+      </div>
+      <div class="splitter-handle" role="separator" aria-orientation="vertical"></div>
+      <div class="splitter-pane" style="flex:1">
+        <div class="pane-header">workspace</div>
+        <div class="pane-content">主工作区，占据剩余宽度。把手 hover 时变 <code>--color-bg-hover</code>，按下时变 <code>--color-bg-active</code>。</div>
+      </div>
+      <div class="splitter-handle" role="separator" aria-orientation="vertical"></div>
+      <div class="splitter-pane" style="flex:0 0 180px">
+        <div class="pane-header">inspector</div>
+        <div class="pane-content">name<br>codec<br>fps<br>size<br>created</div>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">.splitter--v 沿行方向排列（col-resize），三窗格 + 两把手，两侧栏固定宽、中间自适应。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Horizontal split · preview / timeline</h2>
+  <div class="demo-row" style="width:100%">
+    <div class="splitter splitter--h" style="height:240px; width:100%">
+      <div class="splitter-pane" style="flex:1">
+        <div class="pane-header">preview</div>
+        <div class="pane-content">视频 / 3D 预览区，占据上半部分。</div>
+      </div>
+      <div class="splitter-handle" role="separator" aria-orientation="horizontal"></div>
+      <div class="splitter-pane" style="flex:0 0 70px; background:var(--color-bg)">
+        <div class="pane-header">timeline · 24 fps</div>
+        <div class="pane-content" style="color:var(--color-text-dim)">00:00 · 00:30 · 01:00 · 01:30 · 02:00 · 02:30 · 03:00</div>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">.splitter--h 沿列方向排列（row-resize），把手 grip 纹理随之转为横向 2×18。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Nested split · explorer / (preview over timeline)</h2>
+  <div class="demo-row" style="width:100%">
+    <div class="splitter splitter--v" style="height:260px; width:100%">
+      <div class="splitter-pane" style="flex:0 0 190px">
+        <div class="pane-header">explorer</div>
+        <div class="pane-content">▾ scenes<br>&nbsp;&nbsp;▤ scene_07.blend<br>&nbsp;&nbsp;▤ scene_08.blend<br>▸ cache</div>
+      </div>
+      <div class="splitter-handle" role="separator" aria-orientation="vertical"></div>
+      <div class="splitter-pane" style="flex:1; padding:0">
+        <div class="splitter splitter--h" style="height:100%">
+          <div class="splitter-pane" style="flex:1">
+            <div class="pane-header">preview</div>
+            <div class="pane-content">嵌套分割：外层 vertical + 内层 horizontal。</div>
+          </div>
+          <div class="splitter-handle" role="separator" aria-orientation="horizontal"></div>
+          <div class="splitter-pane" style="flex:0 0 60px; background:var(--color-bg)">
+            <div class="pane-header">timeline</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">.splitter 可任意嵌套：外层 splitter-pane 内再放一个完整的 .splitter，把手 / grip 纹理规则保持一致。</p>
+</section>
+
+</body>
+</html>
