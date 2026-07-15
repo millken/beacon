@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Selection · Beacon GUI 组件</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="stylesheet" href="components.css" />
+<style>
+  body { margin:0; padding:32px 40px 80px; background:var(--background); color:var(--foreground);
+         font:400 var(--font-size-md)/var(--leading-normal) var(--font-family-sans); }
+  .page-head { display:flex; align-items:center; gap:12px; margin-bottom:8px; }
+  .page-head h1 { font-size:var(--font-size-xl); margin:0; }
+  .page-head .crumb { color:var(--color-text-dim); font-family:var(--font-family-mono); font-size:var(--font-size-xs); }
+  .theme-toggle { margin-left:auto; }
+  .demo-section { margin-top:28px; }
+  .demo-section > h2 { font-size:var(--font-size-lg); border-bottom:1px solid var(--color-divider); padding-bottom:6px; }
+  .demo-row { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin:14px 0; }
+  .demo-note { color:var(--color-text-muted); font-size:var(--font-size-sm); max-width:70ch; }
+  .knob-box { border:1px dashed var(--color-border-strong); border-radius:var(--radius-sm); padding:14px; }
+  .knob-box .knob-label { font-family:var(--font-family-mono); font-size:var(--font-size-2xs); color:var(--color-text-dim); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px; display:block; }
+  .choice.disabled { opacity: .45; pointer-events: none; }
+  /* page-local 卡片壳（非组件契约，仅演示 .choice 可包裹富文本） */
+  .choice-card { align-items:flex-start; gap:10px; border:1px solid var(--color-border); border-radius:var(--radius-md); padding:12px 14px; min-width:170px; max-width:220px; }
+  .choice-card:has(.radio[data-state="checked"]) { border-color: var(--color-primary); }
+  .choice-card .radio { margin-top: 2px; }
+  .choice-card .cc-title { font-weight: var(--font-weight-medium); color: var(--color-text); display:block; }
+  .choice-card .cc-desc { font-size: var(--font-size-2xs); color: var(--color-text-dim); }
+  .slider-cap { font-family: var(--font-family-mono); font-size: var(--font-size-xs); color: var(--color-text-muted); }
+</style>
+</head>
+<body>
+<header class="page-head">
+  <span class="crumb"><a href="index.html" style="color:inherit">components</a> / selection</span>
+  <h1>Selection</h1>
+  <button class="btn btn--sm theme-toggle" onclick="
+    var h=document.documentElement; h.dataset.theme=h.dataset.theme==='dark'?'light':'dark'">
+    Light / Dark</button>
+</header>
+
+<section class="demo-section">
+  <h2>Checkbox</h2>
+  <div class="demo-row">
+    <label class="choice"><span class="checkbox" data-toggle></span>未选 unchecked</label>
+    <label class="choice"><span class="checkbox" data-toggle data-state="checked"></span>已选 checked</label>
+    <label class="choice"><span class="checkbox" data-state="indeterminate"></span>半选 indeterminate</label>
+    <label class="choice disabled"><span class="checkbox" data-state="checked"></span>禁用 disabled</label>
+  </div>
+  <p class="demo-note">13px 方角 · 选中/半选一律经接线 --selection-checked-bg（默认 --color-primary）+ accent-fg 勾/杠 · hover 边框转 primary · --shadow-inset 内凹暗示可点。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Radio</h2>
+  <div class="demo-row" data-radio-group>
+    <label class="choice"><span class="radio" data-radio data-state="checked"></span>H.264</label>
+    <label class="choice"><span class="radio" data-radio></span>H.265</label>
+    <label class="choice"><span class="radio" data-radio></span>ProRes</label>
+    <label class="choice disabled"><span class="radio"></span>VP9（禁用）</label>
+  </div>
+  <p class="demo-note">14px 圆环 · 选中 = --selection-checked-bg 边框 + 同色圆点 · 单选组内互斥。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Switch</h2>
+  <div class="demo-row">
+    <label class="choice"><span class="switch" data-toggle></span>关 off</label>
+    <label class="choice"><span class="switch" data-toggle data-state="checked"></span>开 on</label>
+    <label class="choice disabled"><span class="switch" data-state="checked"></span>禁用 disabled</label>
+  </div>
+  <p class="demo-note">方形滑块（硬边，非 iOS 胶囊）· 轨宽/高 = 旋钮 --switch-w/-h · 开 = --selection-checked-bg 轨 + accent-fg 滑块 · 关 = --shadow-well 凹槽。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Segmented</h2>
+  <div class="demo-row">
+    <div class="segmented" data-segmented>
+      <button data-state="checked">Fit</button>
+      <button>Fill</button>
+      <button>Stretch</button>
+    </div>
+    <div class="segmented" data-segmented>
+      <button data-state="checked">1x</button>
+      <button>2x</button>
+      <button>4x</button>
+    </div>
+  </div>
+  <p class="demo-note">内嵌式「琴键」槽（--shadow-inset）· 选中段 = bg-surface + --control-selected-ring 环（非 accent 实色）· 间距 = 旋钮 --segmented-gap。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Choice · 卡片选择</h2>
+  <div class="demo-row" data-radio-group>
+    <label class="choice choice-card"><span class="radio" data-radio data-state="checked"></span>
+      <span><span class="cc-title">Proxy</span><span class="cc-desc">低分辨率代理，快速回放</span></span>
+    </label>
+    <label class="choice choice-card"><span class="radio" data-radio></span>
+      <span><span class="cc-title">Original</span><span class="cc-desc">原始分辨率，最高质量</span></span>
+    </label>
+    <label class="choice choice-card"><span class="radio" data-radio></span>
+      <span><span class="cc-title">Optimized</span><span class="cc-desc">编码优化，均衡体积与速度</span></span>
+    </label>
+  </div>
+  <p class="demo-note">.choice 不限于单行 label，也可包裹卡片式富文本；卡片壳（边框/圆角/留白）为页面本地样式，非组件契约 —— 选中态仍完全由内部 .radio 呈现。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Slider</h2>
+  <div class="demo-row" style="flex-direction:column; align-items:stretch">
+    <div class="slider-row"><span class="slider-cap" style="width:70px">Quality</span><div class="slider" data-slider data-val="72"></div><span class="val">72</span></div>
+    <div class="slider-row"><span class="slider-cap" style="width:70px">Threads</span><div class="slider" data-slider data-val="40"></div><span class="val">40</span></div>
+    <div class="slider-row"><span class="slider-cap" style="width:70px">Gamma</span><div class="slider" data-slider data-val="18"></div><span class="val">18</span></div>
+  </div>
+  <p class="demo-note">轨道 = --track-bg + --shadow-well 凹槽，高 = 旋钮 --slider-track-h · 填充 = --selection-checked-bg · knob = 方形（2px 圆角）+ 同色边框，hover/拖拽显 --focus-ring。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Rating</h2>
+  <div class="demo-row">
+    <div class="rating" id="rating">
+      <button data-on aria-label="1"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .8-4.4 4.2 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.4 9.4l6-.8z"/></svg></button>
+      <button data-on aria-label="2"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .8-4.4 4.2 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.4 9.4l6-.8z"/></svg></button>
+      <button data-on aria-label="3"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .8-4.4 4.2 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.4 9.4l6-.8z"/></svg></button>
+      <button data-on aria-label="4"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .8-4.4 4.2 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.4 9.4l6-.8z"/></svg></button>
+      <button aria-label="5"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6 .8-4.4 4.2 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.4 9.4l6-.8z"/></svg></button>
+    </div>
+  </div>
+  <p class="demo-note">.rating 局部覆盖 --selection-checked-bg = --color-warning（族默认 primary），选中星标 color/fill 皆经此接线。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Stepper / wizard</h2>
+  <div class="demo-row">
+    <div class="stepper">
+      <div class="step" data-state="done"><span class="num">✓</span><span class="lbl">Source</span></div>
+      <div class="bar"></div>
+      <div class="step" data-state="done"><span class="num">✓</span><span class="lbl">Preset</span></div>
+      <div class="bar"></div>
+      <div class="step" data-state="active"><span class="num">3</span><span class="lbl">Output</span></div>
+      <div class="bar"></div>
+      <div class="step"><span class="num">4</span><span class="lbl">Review</span></div>
+    </div>
+  </div>
+  <p class="demo-note">已完成段 = --color-success 实色 · 当前段 = --selection-checked-bg 实色 · 未达段中性环 · 连接条随完成转 success。</p>
+</section>
+
+<section class="demo-section">
+  <h2>旋钮演示 · Structural knobs</h2>
+  <div class="demo-row">
+    <div class="knob-box">
+      <span class="knob-label">--switch-w: 44px</span>
+      <div class="demo-row" style="--switch-w:44px; margin:0">
+        <label class="choice"><span class="switch" data-toggle data-state="checked"></span>宽轨 wide track</label>
+      </div>
+    </div>
+    <div class="knob-box">
+      <span class="knob-label">--slider-track-h: 8px</span>
+      <div class="demo-row" style="--slider-track-h:8px; margin:0">
+        <div class="slider" data-slider data-val="55" style="min-width:140px"></div>
+      </div>
+    </div>
+    <div class="knob-box">
+      <span class="knob-label">--segmented-gap: 6px</span>
+      <div class="demo-row" style="--segmented-gap:6px; margin:0">
+        <div class="segmented" data-segmented><button data-state="checked">A</button><button>B</button><button>C</button></div>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">容器级 style="--switch-w:44px" 等局部覆盖 §4 结构旋钮，selection.css 中不声明这些变量，只引用——证明皮肤覆盖生效（R3）。</p>
+</section>
+
+<script>
+  // checkbox / switch toggle
+  document.querySelectorAll('[data-toggle]').forEach(el => el.addEventListener('click', () => {
+    el.dataset.state = el.dataset.state === 'checked' ? '' : 'checked';
+  }));
+  // radio single-select within group
+  document.querySelectorAll('[data-radio-group]').forEach(g => g.querySelectorAll('[data-radio]').forEach(r =>
+    r.addEventListener('click', () => { g.querySelectorAll('[data-radio]').forEach(x => x.dataset.state = ''); r.dataset.state = 'checked'; })
+  ));
+  // segmented single-select
+  document.querySelectorAll('[data-segmented]').forEach(g => g.querySelectorAll('button').forEach(b =>
+    b.addEventListener('click', () => { g.querySelectorAll('button').forEach(x => x.dataset.state = ''); b.dataset.state = 'checked'; })
+  ));
+  // rating
+  const stars = [...document.querySelectorAll('#rating button')];
+  stars.forEach((s, i) => s.addEventListener('click', () => stars.forEach((x, j) => j <= i ? x.setAttribute('data-on','') : x.removeAttribute('data-on'))));
+  // sliders — click + drag
+  document.querySelectorAll('[data-slider]').forEach(sl => {
+    sl.innerHTML = '<div class="track"></div><div class="fill"></div><div class="knob"></div>';
+    const fill = sl.querySelector('.fill'), knob = sl.querySelector('.knob');
+    const valEl = sl.closest('.slider-row') ? sl.closest('.slider-row').querySelector('.val') : null;
+    let val = +sl.dataset.val;
+    function render(){ fill.style.width = val + '%'; knob.style.left = val + '%'; if (valEl) valEl.textContent = val; }
+    render();
+    function setFromX(clientX){ const r = sl.getBoundingClientRect(); val = Math.round(Math.min(100, Math.max(0, (clientX - r.left) / r.width * 100))); render(); }
+    let dragging = false;
+    sl.addEventListener('pointerdown', e => { dragging = true; sl.classList.add('is-active'); sl.setPointerCapture(e.pointerId); setFromX(e.clientX); });
+    sl.addEventListener('pointermove', e => { if (dragging) setFromX(e.clientX); });
+    sl.addEventListener('pointerup', () => { dragging = false; sl.classList.remove('is-active'); });
+  });
+</script>
+</body>
+</html>

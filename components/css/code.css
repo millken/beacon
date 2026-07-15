@@ -9,3 +9,6 @@
 .codeblock pre { margin: 0; padding: 10px 12px; line-height: 1.6; overflow-x: auto; }
 .codeblock .ln { opacity: .4; user-select: none; display: inline-block; width: 22px; }
 .codeblock .tok-key { color: #6aa1ef; } .codeblock .tok-str { color: #45c081; } .codeblock .tok-num { color: #e6ad45; } .codeblock .tok-com { opacity: .5; }
+.codeblock .cb-head { display: flex; align-items: center; gap: 6px; padding: 5px 10px; background: color-mix(in oklab, var(--color-bg-inverse) 90%, var(--color-text-inverse)); border-bottom: 1px solid color-mix(in oklab, var(--color-bg-inverse) 70%, var(--color-text-inverse)); }
+.codeblock .cb-head .dot { width: 8px; height: 8px; border-radius: 50%; background: color-mix(in oklab, var(--color-text-inverse) 30%, transparent); }
+.codeblock .cb-head .name { margin-left: 4px; opacity: .7; font-size: var(--font-size-2xs); }

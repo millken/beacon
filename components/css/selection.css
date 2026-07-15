@@ -1,56 +1,60 @@
-/* ---------- Checkbox / Radio / Switch ---------- */
-.cb { width: 13px; height: 13px; border: 1px solid var(--color-border-strong); background: var(--color-bg); box-shadow: var(--shadow-inset); border-radius: var(--radius-sm); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; vertical-align: middle; flex: none; transition: background var(--duration-fast) ease, border-color var(--duration-fast) ease; }
-.cb:hover { border-color: var(--color-primary); }
-.cb[data-state="checked"] { background: var(--color-primary); border-color: var(--color-primary); }
-.cb[data-state="checked"]::after { content: ""; width: 6px; height: 3px; border-left: 1.5px solid var(--color-accent-fg); border-bottom: 1.5px solid var(--color-accent-fg); transform: rotate(-45deg) translate(.5px,-.5px); }
-.cb[data-state="indeterminate"] { background: var(--color-primary); border-color: var(--color-primary); }
-.cb[data-state="indeterminate"]::after { content: ""; width: 8px; height: 2.5px; border-radius: 1px; background: var(--color-accent-fg); }
+/* selection —— 接线: --selection-checked-bg（族共用，默认 var(--color-primary)）· 旋钮: --switch-w/-h --slider-track-h --segmented-gap */
+.checkbox, .radio, .switch, .segmented, .choice, .slider, .rating, .stepper {
+  --selection-checked-bg: var(--color-primary);
+}
 
-.radio-ring { width: 14px; height: 14px; border: 1px solid var(--color-border-strong); background: var(--color-bg); box-shadow: var(--shadow-inset); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; vertical-align: middle; flex: none; }
-.radio-ring:hover { border-color: var(--color-primary); }
-.radio-ring[data-state="checked"] { border-color: var(--color-primary); }
-.radio-ring[data-state="checked"]::after { content: ""; width: 6px; height: 6px; background: var(--color-primary); border-radius: 50%; box-shadow: inset 0 0 0 .5px rgba(0,0,0,0.22); transform: scale(0.92); }
+/* ---------- Checkbox ---------- */
+.checkbox { width: 13px; height: 13px; border: 1px solid var(--color-border-strong); background: var(--color-bg); box-shadow: var(--shadow-inset); border-radius: var(--radius-sm); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; vertical-align: middle; flex: none; transition: background var(--duration-fast) ease, border-color var(--duration-fast) ease; }
+.checkbox:hover { border-color: var(--color-primary); }
+.checkbox[data-state="checked"] { background: var(--selection-checked-bg); border-color: var(--selection-checked-bg); }
+.checkbox[data-state="checked"]::after { content: ""; width: 6px; height: 3px; border-left: 1.5px solid var(--color-accent-fg); border-bottom: 1.5px solid var(--color-accent-fg); transform: rotate(-45deg) translate(.5px,-.5px); }
+.checkbox[data-state="indeterminate"] { background: var(--selection-checked-bg); border-color: var(--selection-checked-bg); }
+.checkbox[data-state="indeterminate"]::after { content: ""; width: 8px; height: 2.5px; border-radius: 1px; background: var(--color-accent-fg); }
 
-.sw { width: 26px; height: 14px; background: var(--color-bg-active); border: 1px solid var(--color-border); border-radius: 2px; position: relative; cursor: pointer; vertical-align: middle; flex: none; box-shadow: inset 0 1px 2px rgba(0,0,0,0.10); transition: background var(--duration-base) ease, box-shadow var(--duration-base) ease; }
-.sw::after { content: ""; width: 10px; height: 10px; background: var(--color-text-muted); position: absolute; top: 1px; left: 1px; border-radius: 1px; transition: left var(--duration-base) ease, background var(--duration-base) ease; }
-.sw[data-state="checked"] { background: var(--color-primary); border-color: var(--color-primary); box-shadow: inset 0 1px 2px rgba(0,0,0,0.16); }
-.sw[data-state="checked"]::after { left: 13px; background: var(--color-accent-fg); }
+/* ---------- Radio ---------- */
+.radio { width: 14px; height: 14px; border: 1px solid var(--color-border-strong); background: var(--color-bg); box-shadow: var(--shadow-inset); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; vertical-align: middle; flex: none; }
+.radio:hover { border-color: var(--color-primary); }
+.radio[data-state="checked"] { border-color: var(--selection-checked-bg); }
+.radio[data-state="checked"]::after { content: ""; width: 6px; height: 6px; background: var(--selection-checked-bg); border-radius: 50%; box-shadow: var(--shadow-inset); transform: scale(0.92); }
+
+/* ---------- Switch —— 方形滑块(硬边,非 iOS 胶囊)；轨宽随 --switch-w 变化，滑块随 --switch-h 定尺寸 ---------- */
+.switch { width: var(--switch-w); height: var(--switch-h); background: var(--color-bg-active); border: 1px solid var(--color-border); border-radius: 2px; position: relative; cursor: pointer; vertical-align: middle; flex: none; box-shadow: var(--shadow-well); transition: background var(--duration-base) ease, box-shadow var(--duration-base) ease; }
+.switch::after { content: ""; width: calc(var(--switch-h) - 4px); height: calc(var(--switch-h) - 4px); background: var(--color-text-muted); position: absolute; top: 1px; left: 1px; border-radius: 1px; transition: left var(--duration-base) ease, background var(--duration-base) ease; }
+.switch[data-state="checked"] { background: var(--selection-checked-bg); border-color: var(--selection-checked-bg); }
+.switch[data-state="checked"]::after { left: calc(var(--switch-w) - (var(--switch-h) - 4px) - 1px); background: var(--color-accent-fg); }
 
 .choice { display: inline-flex; align-items: center; gap: 7px; font-size: var(--font-size-sm); color: var(--color-text); cursor: pointer; }
 
-/* Segmented / toggle group —— 内凹「琴键」槽，选中段抬起 */
-.segmented { display: inline-flex; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 2px; gap: 2px; box-shadow: var(--shadow-inset); }
+/* Segmented / toggle group —— 内凹「琴键」槽，选中段抬起（bg-surface + 环，非 accent 实色） */
+.segmented { display: inline-flex; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 2px; gap: var(--segmented-gap); box-shadow: var(--shadow-inset); }
 .segmented button { background: transparent; border: none; color: var(--color-text-muted); padding: var(--control-pad-y-sm) var(--control-pad-x-sm); border-radius: var(--radius-sm); font-size: var(--font-size-xs); font-family: var(--font-family-mono); font-variant-numeric: tabular-nums; cursor: pointer; transition: background var(--duration-fast) ease, color var(--duration-fast) ease; }
 .segmented button:hover { background: var(--color-bg-hover); color: var(--color-text); }
-.segmented button[data-state="checked"] { background: var(--color-bg-surface); color: var(--color-text); font-weight: var(--font-weight-medium); box-shadow: 0 1px 2px rgba(0,0,0,0.16), 0 0 0 1px var(--control-selected-ring); }
+.segmented button[data-state="checked"] { background: var(--color-bg-surface); color: var(--color-text); font-weight: var(--font-weight-medium); box-shadow: 0 0 0 1px var(--control-selected-ring); }
 
-/* ---------- Slider ---------- */
+/* ---------- Slider —— 凹槽(--track-bg/--shadow-well) + 实色 fill + 方形 thumb ---------- */
 .slider { position: relative; height: 20px; display: flex; align-items: center; cursor: pointer; min-width: 180px; }
-.slider .track { position: absolute; left: 0; right: 0; height: 4px; background: var(--color-bg-active); border-radius: var(--radius-full); box-shadow: var(--shadow-inset); }
-.slider .fill { position: absolute; left: 0; height: 4px; background: var(--color-primary); border-radius: var(--radius-full); }
-.slider .knob { position: absolute; width: 14px; height: 14px; background: var(--color-bg-surface); border: 1px solid var(--color-primary); border-radius: 2px; transform: translateX(-50%); box-shadow: var(--shadow-card); transition: border-color var(--duration-fast) ease, transform var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) ease; }
+.slider .track { position: absolute; left: 0; right: 0; height: var(--slider-track-h); background: var(--track-bg); border-radius: var(--radius-full); box-shadow: var(--shadow-well); }
+.slider .fill { position: absolute; left: 0; height: var(--slider-track-h); background: var(--selection-checked-bg); border-radius: var(--radius-full); }
+.slider .knob { position: absolute; width: 14px; height: 14px; background: var(--color-bg-surface); border: 1px solid var(--selection-checked-bg); border-radius: 2px; transform: translateX(-50%); box-shadow: var(--shadow-card); transition: border-color var(--duration-fast) ease, transform var(--duration-fast) var(--ease-standard), box-shadow var(--duration-fast) ease; }
 .slider .knob:hover { border-color: var(--color-accent-hover); box-shadow: var(--focus-ring); }
 .slider.is-active .knob { border-color: var(--color-accent-hover); box-shadow: var(--focus-ring), var(--shadow-card); transform: translateX(-50%) scale(1.15); }
 .slider-row { display: flex; align-items: center; gap: 12px; }
 .slider-row .val { font-family: var(--font-family-mono); font-size: var(--font-size-xs); color: var(--color-text); min-width: 36px; text-align: center; flex: none; display: inline-flex; align-items: center; justify-content: center; padding: 2px 6px; background: var(--color-bg-subtle); border: 1px solid var(--color-border); border-radius: var(--radius-sm); box-shadow: var(--shadow-inset); }
-.codeblock .cb-head { display: flex; align-items: center; gap: 6px; padding: 5px 10px; background: color-mix(in oklab, var(--color-bg-inverse) 90%, var(--color-text-inverse)); border-bottom: 1px solid color-mix(in oklab, var(--color-bg-inverse) 70%, var(--color-text-inverse)); }
-.codeblock .cb-head .dot { width: 8px; height: 8px; border-radius: 50%; background: color-mix(in oklab, var(--color-text-inverse) 30%, transparent); }
-.codeblock .cb-head .name { margin-left: 4px; opacity: .7; font-size: var(--font-size-2xs); }
 
-/* ---------- Stepper / wizard ---------- */
+/* ---------- Stepper / wizard —— active = 选中(接线) · done = 完成状态(语义 success，非选中) ---------- */
 .stepper { display: flex; align-items: center; }
 .stepper .step { display: inline-flex; align-items: center; gap: 8px; }
 .stepper .num { width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--color-border-strong); display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-muted); flex: none; }
 .stepper .step .lbl { font-size: var(--font-size-sm); color: var(--color-text-muted); }
-.stepper .step[data-state="active"] .num { background: var(--color-primary); border-color: var(--color-primary); color: var(--color-accent-fg); }
+.stepper .step[data-state="active"] .num { background: var(--selection-checked-bg); border-color: var(--selection-checked-bg); color: var(--color-accent-fg); }
 .stepper .step[data-state="active"] .lbl { color: var(--color-text); font-weight: var(--font-weight-medium); }
-.stepper .step[data-state="done"] .num { background: var(--color-success); border-color: var(--color-success); color: #fff; }
+.stepper .step[data-state="done"] .num { background: var(--color-success); border-color: var(--color-success); color: var(--color-accent-fg); }
 .stepper .bar { width: 32px; height: 1px; background: var(--color-border); margin: 0 8px; }
 .stepper .step[data-state="done"] + .bar { background: var(--color-success); }
 
-/* ---------- Rating ---------- */
-.rating { display: inline-flex; gap: 2px; }
+/* ---------- Rating —— 星标选中色覆盖为 warning（非族默认 primary） ---------- */
+.rating { --selection-checked-bg: var(--color-warning); display: inline-flex; gap: 2px; }
 .rating button { background: none; border: none; padding: 0; cursor: pointer; color: var(--color-text-dim); line-height: 0; }
 .rating button svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 1.6; fill: none; }
-.rating button[data-on] { color: var(--color-warning); }
-.rating button[data-on] svg { fill: var(--color-warning); }
+.rating button[data-on] { color: var(--selection-checked-bg); }
+.rating button[data-on] svg { fill: var(--selection-checked-bg); }
