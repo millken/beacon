@@ -1,5 +1,6 @@
-/* ---------- Menu / Popover ---------- */
-.popover { background: var(--popover); color: var(--popover-foreground); border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); padding: 10px; box-shadow: var(--shadow-pop); width: 240px; }
+/* ---------- Overlay 族 —— 接线: --dialog-icon-color（primary/warning/danger 改写）
+   旋钮(§4 参考位): --dialog-w --dialog-pad --dialog-radius --drawer-w --popover-min-w ---------- */
+.popover { background: var(--popover); color: var(--popover-foreground); border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); padding: 10px; box-shadow: var(--shadow-pop); min-width: var(--popover-min-w); }
 
 /* ---------- Tooltip ---------- */
 .tooltip { display: inline-block; background: var(--color-bg-inverse); color: var(--color-text-inverse); padding: 3px 7px; border-radius: var(--radius-sm); font-size: var(--font-size-xs); box-shadow: var(--shadow-pop); }
@@ -7,35 +8,35 @@
 
 /* ---------- Dialog / Modal ---------- */
 .dialog-stage { padding: 28px 16px; background: var(--color-bg); background-image: linear-gradient(45deg, var(--color-divider) 25%, transparent 25%, transparent 75%, var(--color-divider) 75%), linear-gradient(45deg, var(--color-divider) 25%, transparent 25%, transparent 75%, var(--color-divider) 75%); background-size: 16px 16px; background-position: 0 0, 8px 8px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); }
-.dialog-surface { background: var(--popover); color: var(--popover-foreground); border: 1px solid var(--color-border-strong); border-radius: var(--radius-md); box-shadow: var(--shadow-pop); max-width: 420px; margin: 0 auto; overflow: hidden; }
+.dialog-surface { width: var(--dialog-w); max-width: calc(100vw - 48px); background: var(--popover); color: var(--popover-foreground); border: var(--control-border-w) solid var(--color-border); border-radius: var(--dialog-radius); box-shadow: var(--shadow-pop); margin: 0 auto; overflow: hidden; }
 .dialog-head { background: var(--color-bg-subtle); border-bottom: 1px solid var(--color-border); padding: 6px 12px; font-size: var(--font-size-xs); text-transform: uppercase; letter-spacing: .06em; color: var(--color-text-muted); display: flex; justify-content: space-between; align-items: center; gap: 8px; white-space: nowrap; font-family: var(--font-family-mono); }
-.dialog-body { padding: 14px; }
+.dialog-body { padding: var(--dialog-pad); }
 .dialog-title { font-size: var(--font-size-md); font-weight: var(--font-weight-semibold); margin: 0 0 4px; }
 .dialog-desc { color: var(--color-text-muted); font-size: var(--font-size-sm); margin: 0; line-height: 1.55; }
 .dialog-actions { display: flex; gap: 6px; justify-content: flex-end; padding: 10px 14px; background: var(--color-bg-subtle); border-top: 1px solid var(--color-border); }
 .dialog-x { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; padding: 0; background: transparent; border: none; color: var(--color-text-dim); cursor: pointer; border-radius: var(--radius-sm); flex: none; }
 .dialog-x svg { width: 12px; height: 12px; stroke: currentColor; stroke-width: 2; fill: none; pointer-events: none; }
 .dialog-x:hover { background: var(--color-bg-hover); color: var(--color-text); }
-.dialog-icon { width: 28px; height: 28px; border-radius: var(--radius-sm); display: inline-flex; align-items: center; justify-content: center; flex: none; }
+.dialog-icon { --dialog-icon-color: var(--color-primary); width: 28px; height: 28px; border-radius: var(--radius-sm); display: inline-flex; align-items: center; justify-content: center; flex: none; color: var(--dialog-icon-color); background: color-mix(in oklab, var(--dialog-icon-color) 14%, var(--popover)); }
 .dialog-icon svg { width: 16px; height: 16px; stroke-width: 1.8; fill: none; }
-.dialog-icon--danger { background: var(--color-danger-light-default); color: var(--color-danger); }
-.dialog-icon--warning { background: var(--color-warning-light-default); color: var(--color-warning); }
-.dialog-icon--primary { background: var(--color-primary-light-default); color: var(--color-primary); }
+.dialog-icon--warning { --dialog-icon-color: var(--color-warning); }
+.dialog-icon--danger  { --dialog-icon-color: var(--color-danger); }
+.dialog-icon--primary { --dialog-icon-color: var(--color-primary); }
 .dialog-body--icon { display: flex; gap: 12px; align-items: flex-start; }
 
 /* live modal overlay */
-.modal-overlay { position: fixed; inset: 0; z-index: var(--z-modal, 1000); background: var(--color-overlay); display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity var(--duration-base) ease; }
+.modal-overlay { position: fixed; inset: 0; z-index: 1000; background: var(--color-overlay); display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity var(--duration-base) ease; }
 .modal-overlay[data-state="open"] { opacity: 1; pointer-events: auto; }
 .modal-overlay .dialog-surface { transform: translateY(4px) scale(.99); transition: transform var(--duration-base) var(--ease-standard); width: 100%; }
 .modal-overlay[data-state="open"] .dialog-surface { transform: none; }
 
 /* ---------- Drawer ---------- */
-.drawer { width: 280px; height: 100%; background: var(--color-bg-subtle); border-left: 1px solid var(--color-border); display: flex; flex-direction: column; }
+.drawer { width: var(--drawer-w); height: 100%; background: var(--color-bg-subtle); border-left: 1px solid var(--color-border); display: flex; flex-direction: column; }
 .drawer-head { display: flex; align-items: center; padding: 10px 12px; border-bottom: 1px solid var(--color-border); font-weight: var(--font-weight-semibold); font-size: var(--font-size-sm); }
 .drawer-head .x { margin-left: auto; }
 .drawer-body { padding: 12px; flex: 1; overflow-y: auto; }
 
 /* ---------- Popover (general) ---------- */
-.popover-panel { background: var(--popover); border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); box-shadow: var(--shadow-pop); padding: 12px; max-width: 260px; font-size: var(--font-size-sm); color: var(--color-text); }
+.popover-panel { background: var(--popover); border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); box-shadow: var(--shadow-pop); padding: 12px; min-width: var(--popover-min-w); max-width: 260px; font-size: var(--font-size-sm); color: var(--color-text); }
 .popover-panel .pp-title { font-weight: var(--font-weight-semibold); margin: 0 0 4px; }
 .popover-panel .pp-body { color: var(--color-text-muted); line-height: 1.5; }

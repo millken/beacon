@@ -1,12 +1,14 @@
-.menu { background: var(--popover); color: var(--popover-foreground); border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); padding: 2px; box-shadow: var(--shadow-pop); width: 220px; }
-.menu-item { display: flex; align-items: center; gap: 8px; justify-content: space-between; padding: 4px 8px; font-size: var(--font-size-sm); cursor: pointer; color: var(--color-text); border-radius: calc(var(--radius-sm) - 1px); }
+/* ---------- Menu 族 —— 接线: --menu-item-fg（danger 改写）
+   旋钮(§4 参考位): --menu-item-h --menu-pad --menu-min-w ---------- */
+.menu { min-width: var(--menu-min-w); padding: var(--menu-pad); background: var(--popover); color: var(--popover-foreground); border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); box-shadow: var(--shadow-pop); }
+.menu-item { --menu-item-fg: var(--popover-foreground); display: flex; align-items: center; gap: 8px; justify-content: space-between; height: var(--menu-item-h); padding: 0 8px; font-size: var(--font-size-sm); cursor: pointer; color: var(--menu-item-fg); border-radius: calc(var(--radius-sm) - 1px); }
 .menu-item .lead { display: inline-flex; align-items: center; gap: 8px; }
 .menu-item svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 1.6; fill: none; flex: none; }
 .menu-item:hover { background: var(--color-primary); color: var(--color-accent-fg); }
 .menu-item:hover .shortcut { color: var(--color-accent-fg); opacity: .85; }
 .menu-item .shortcut { color: var(--color-text-dim); font-size: var(--font-size-xs); font-family: var(--font-family-mono); }
-.menu-item--danger { color: var(--color-danger); }
-.menu-item--danger:hover { background: var(--color-danger); color: #fff; }
+.menu-item--danger { --menu-item-fg: var(--color-danger); }
+.menu-item--danger:hover { background: var(--color-danger); color: var(--destructive-foreground); }
 .menu-item[aria-disabled="true"] { color: var(--color-text-dim); pointer-events: none; }
 .menu-sep { height: 1px; background: var(--color-border); margin: 2px 0; }
 .menu-label { padding: 4px 8px 2px; font-size: var(--font-size-2xs); color: var(--color-text-dim); text-transform: uppercase; letter-spacing: .06em; font-weight: var(--font-weight-medium); font-family: var(--font-family-mono); }
