@@ -5,26 +5,26 @@
 .row.tight { gap: var(--space-2); }
 .col { display: flex; flex-direction: column; gap: var(--space-4); }
 
-/* ---------- Accordion ——克制：1px 分隔的行，展开仅靠 chevron 旋转 + 内容显隐；
-   无填充块 / 无圆角 / 无位移（内边距恒定，文字不跳） ---------- */
-.acc-item { border-bottom: 1px solid var(--color-divider); }
-.acc-item:last-child { border-bottom: none; }
-.acc-trigger { width: 100%; text-align: left; background: transparent; border: none; padding: 9px 8px; font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 8px; font-family: inherit; }
-.acc-trigger:hover { background: var(--color-bg-hover); }
-.acc-chev { color: var(--color-text-dim); transform: rotate(0deg); transition: transform var(--duration-base) ease; display: inline-flex; align-items: center; flex: none; }
-.acc-chev svg { width: 11px; height: 11px; stroke: currentColor; stroke-width: 2; fill: none; display: block; }
-.acc-item[data-state="open"] .acc-chev,
-.acc-trigger[data-state="open"] .acc-chev { transform: rotate(90deg); }
-.acc-item[data-state="open"] .acc-chev { color: var(--color-text-muted); }
-.acc-content { padding: 2px 8px 11px; color: var(--color-text-muted); font-size: var(--font-size-sm); line-height: 1.55; }
-.acc-content[hidden] { display: none; }
+/* ---------- Accordion —— 克制：1px 分隔的行，展开仅靠 chevron 旋转 + 内容显隐；
+   无填充块 / 无圆角 / 无位移（内边距恒定，文字不跳）。类名全词：accordion-item/-trigger/-chevron/-content ---------- */
+.accordion-item { border-bottom: 1px solid var(--color-divider); }
+.accordion-item:last-child { border-bottom: none; }
+.accordion-trigger { width: 100%; text-align: left; background: transparent; border: none; padding: 9px 8px; font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 8px; font-family: inherit; }
+.accordion-trigger:hover { background: var(--color-bg-hover); }
+.accordion-chevron { color: var(--color-text-dim); transform: rotate(0deg); transition: transform var(--duration-base) ease; display: inline-flex; align-items: center; flex: none; }
+.accordion-chevron svg { width: 11px; height: 11px; stroke: currentColor; stroke-width: 2; fill: none; display: block; }
+.accordion-item[data-state="open"] .accordion-chevron,
+.accordion-trigger[data-state="open"] .accordion-chevron { transform: rotate(90deg); }
+.accordion-item[data-state="open"] .accordion-chevron { color: var(--color-text-muted); }
+.accordion-content { padding: 2px 8px 11px; color: var(--color-text-muted); font-size: var(--font-size-sm); line-height: 1.55; }
+.accordion-content[hidden] { display: none; }
 @keyframes cmp-indet { 0% { margin-left: -35%; } 100% { margin-left: 100%; } }
 
-/* ---------- Avatar ---------- */
-.avatar { width: 28px; height: 28px; border-radius: var(--radius-sm); background: var(--color-bg-active); color: var(--color-text); display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-family-mono); font-size: var(--font-size-2xs); font-weight: var(--font-weight-semibold); flex: none; overflow: hidden; position: relative; text-transform: uppercase; letter-spacing: .02em; }
+/* ---------- Avatar —— 旋钮: --avatar-size-sm / -md / -lg ---------- */
+.avatar { width: var(--avatar-size-md); height: var(--avatar-size-md); border-radius: var(--radius-sm); background: var(--color-bg-active); color: var(--color-text); display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-family-mono); font-size: var(--font-size-2xs); font-weight: var(--font-weight-semibold); flex: none; overflow: hidden; position: relative; text-transform: uppercase; letter-spacing: .02em; }
 .avatar img { width: 100%; height: 100%; object-fit: cover; }
-.avatar--sm { width: 22px; height: 22px; }
-.avatar--lg { width: 36px; height: 36px; font-size: var(--font-size-xs); }
+.avatar--sm { width: var(--avatar-size-sm); height: var(--avatar-size-sm); }
+.avatar--lg { width: var(--avatar-size-lg); height: var(--avatar-size-lg); font-size: var(--font-size-xs); }
 .avatar--circle { border-radius: var(--radius-full); }
 .avatar--accent { background: var(--color-primary-light-default); color: var(--color-primary); }
 .avatar .status { position: absolute; right: -2px; bottom: -2px; width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid var(--color-bg); background: var(--color-text-dim); }
