@@ -9,8 +9,7 @@ tok=open('colors_and_type.css').read()
 sec4=re.search(r'===== 4\) 组件 COMPONENT.*?(?==+ 5\) 语义)',tok,re.S).group(0)
 knobs=set(re.findall(r'(--[a-z][a-z0-9-]*)\s*:',sec4))
 globals_=set(re.findall(r'(--[a-z][a-z0-9-]*)\s*:',tok))
-def strip(css): return re.sub(r'/\*.*?\*/','',css,flags=re.S)
-decl={f:set(re.findall(r'(--[a-z][a-z0-9-]*)\s*:',strip(open(f).read()))) for f in files}
+def strip(css): return re.sub(r'/\*.*?\*/', lambda m: '\n'*m.group(0).count('\n'), css, flags=re.S)
 allfiles=sorted(glob.glob('components/css/*.css'))
 decl_all={f:set(re.findall(r'(--[a-z][a-z0-9-]*)\s*:',strip(open(f).read()))) for f in allfiles}
 err=0;warn=0
@@ -20,10 +19,10 @@ for f in files:
         # R1 字面量
         if re.search(r'#[0-9a-fA-F]{3,8}\b|rgba?\(',line):
             print(f'R1 {f}:{n}: 颜色字面量: {line.strip()[:80]}');err+=1
-        # R3 旋钮声明位
-        m=re.match(r'\s*(--[a-z][a-z0-9-]*)\s*:',line)
-        if m and m.group(1) in knobs:
-            print(f'R3 {f}:{n}: 旋钮 {m.group(1)} 出现在声明位');err+=1
+        # R3 旋钮声明位（行首或 { / ; 之后；var() 引用位不匹配）
+        for m in re.finditer(r'(?:^|[{;])\s*(--[a-z][a-z0-9-]*)\s*:',line):
+            if m.group(1) in knobs:
+                print(f'R3 {f}:{n}: 旋钮 {m.group(1)} 出现在声明位');err+=1
     # R2 引用他组件接线 token
     refs=set(re.findall(r'var\((--[a-z][a-z0-9-]*)',css))
     mine=decl_all.get(f,set())
