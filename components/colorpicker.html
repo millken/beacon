@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Colorpicker · Beacon GUI 组件</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="stylesheet" href="components.css" />
+<style>
+  body { margin:0; padding:32px 40px 80px; background:var(--background); color:var(--foreground);
+         font:400 var(--font-size-md)/var(--leading-normal) var(--font-family-sans); }
+  .page-head { display:flex; align-items:center; gap:12px; margin-bottom:8px; }
+  .page-head h1 { font-size:var(--font-size-xl); margin:0; }
+  .page-head .crumb { color:var(--color-text-dim); font-family:var(--font-family-mono); font-size:var(--font-size-xs); }
+  .theme-toggle { margin-left:auto; }
+  .demo-section { margin-top:28px; }
+  .demo-section > h2 { font-size:var(--font-size-lg); border-bottom:1px solid var(--color-divider); padding-bottom:6px; }
+  .demo-row { display:flex; flex-wrap:wrap; align-items:flex-start; gap:22px; margin:14px 0; }
+  .demo-note { color:var(--color-text-muted); font-size:var(--font-size-sm); max-width:70ch; }
+  .knob-box { border:1px dashed var(--color-border-strong); border-radius:var(--radius-sm); padding:14px; }
+  .knob-box .knob-label { font-family:var(--font-family-mono); font-size:var(--font-size-2xs); color:var(--color-text-dim); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px; display:block; }
+  .cap { font-family:var(--font-family-mono); font-size:var(--font-size-2xs); color:var(--color-text-dim); margin-bottom:8px; }
+  .swatches { max-width:220px; }
+</style>
+</head>
+<body>
+<header class="page-head">
+  <span class="crumb"><a href="index.html" style="color:inherit">components</a> / colorpicker</span>
+  <h1>Colorpicker · Swatches</h1>
+  <button class="btn btn--sm theme-toggle" onclick="
+    var h=document.documentElement; h.dataset.theme=h.dataset.theme==='dark'?'light':'dark'">
+    Light / Dark</button>
+</header>
+
+<section class="demo-section">
+  <h2>Swatches</h2>
+  <div class="demo-row">
+    <div>
+      <div class="cap">.swatches / .swatch（演示色值内联于 HTML，非组件 CSS）</div>
+      <div class="swatches" id="swatches">
+        <div class="swatch" style="background:#6aa1ef" data-color="#6aa1ef" aria-selected="true"></div>
+        <div class="swatch" style="background:#45c081" data-color="#45c081"></div>
+        <div class="swatch" style="background:#e6ad45" data-color="#e6ad45"></div>
+        <div class="swatch" style="background:#e8736e" data-color="#e8736e"></div>
+        <div class="swatch" style="background:#b98af0" data-color="#b98af0"></div>
+        <div class="swatch" style="background:#4fc3f7" data-color="#4fc3f7"></div>
+        <div class="swatch" style="background:#ffffff" data-color="#ffffff"></div>
+        <div class="swatch" style="background:#11151c" data-color="#11151c"></div>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">尺寸/间距/圆角经旋钮 <b>--swatch-size</b> / <b>--swatch-gap</b> / <b>--swatch-radius</b> 驱动 · 选中态 <code>[aria-selected="true"]</code> 用 <b>--ring</b> 描环。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Colorpicker panel</h2>
+  <div class="demo-row">
+    <div class="colorpicker">
+      <div class="cap">选择颜色</div>
+      <div class="swatches">
+        <div class="swatch" style="background:#6aa1ef" aria-selected="true"></div>
+        <div class="swatch" style="background:#45c081"></div>
+        <div class="swatch" style="background:#e6ad45"></div>
+        <div class="swatch" style="background:#e8736e"></div>
+        <div class="swatch" style="background:#b98af0"></div>
+        <div class="swatch" style="background:#4fc3f7"></div>
+      </div>
+      <div class="colorpicker-input">
+        <span class="swatch" style="background:#6aa1ef; width:22px; height:22px; cursor:default"></span>
+        <input class="input mono" value="#6aa1ef" style="width:120px" />
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">弹层表面沿用 <b>--popover</b> + <b>--shadow-pop</b>（与 dialog/popover/menu 同族），内边距/间距用全局 <b>--space-4</b>/<b>--space-2</b> · 底部 .colorpicker-input 组合当前色块 + hex 文本输入（复用 field.css 的 .input）。</p>
+</section>
+
+<section class="demo-section">
+  <h2>旋钮演示 · Structural knobs</h2>
+  <div class="demo-row">
+    <div class="knob-box">
+      <span class="knob-label">--swatch-size: 30px · --swatch-gap: var(--space-6) · --swatch-radius: var(--radius-full)</span>
+      <div class="swatches" style="--swatch-size:30px; --swatch-gap:var(--space-6); --swatch-radius:var(--radius-full)">
+        <div class="swatch" style="background:#6aa1ef" aria-selected="true"></div>
+        <div class="swatch" style="background:#45c081"></div>
+        <div class="swatch" style="background:#e6ad45"></div>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">容器级 style="--swatch-size:…" 等局部覆盖 §4 结构旋钮，colorpicker.css 中不声明这些变量，只引用——证明皮肤覆盖生效（R3）。</p>
+</section>
+
+<script>
+  document.querySelectorAll('.swatches').forEach(group => {
+    group.querySelectorAll('.swatch').forEach(sw => sw.addEventListener('click', () => {
+      group.querySelectorAll('.swatch').forEach(x => x.removeAttribute('aria-selected'));
+      sw.setAttribute('aria-selected', 'true');
+    }));
+  });
+</script>
+</body>
+</html>

@@ -1,5 +1,12 @@
-/* ---------- Color swatch picker ---------- */
-.swatches { display: inline-flex; gap: 5px; }
-.swatches button { width: 22px; height: 22px; border-radius: var(--radius-sm); border: 1px solid var(--color-border); cursor: pointer; padding: 0; position: relative; }
-.swatches button[data-state="active"] { box-shadow: var(--focus-ring); border-color: var(--color-bg); }
-.swatches button[data-state="active"]::after { content: ""; position: absolute; inset: 0; margin: auto; width: 6px; height: 6px; border-radius: 50%; background: #fff; mix-blend-mode: difference; }
+/* colorpicker —— 旋钮: --swatch-size --swatch-gap --swatch-radius */
+.swatches { display: flex; flex-wrap: wrap; gap: var(--swatch-gap); }
+.swatch { width: var(--swatch-size); height: var(--swatch-size);
+  border-radius: var(--swatch-radius);
+  border: var(--control-border-w) solid var(--color-border);
+  cursor: pointer; }
+.swatch[aria-selected="true"] { box-shadow: 0 0 0 2px var(--ring); }
+.colorpicker { display: inline-flex; flex-direction: column; gap: var(--space-4);
+  padding: var(--space-4); background: var(--popover);
+  border: var(--control-border-w) solid var(--color-border);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-pop); }
+.colorpicker-input { display: flex; gap: var(--space-2); align-items: center; }

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Code · Beacon GUI 组件</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="stylesheet" href="components.css" />
+<style>
+  body { margin:0; padding:32px 40px 80px; background:var(--background); color:var(--foreground);
+         font:400 var(--font-size-md)/var(--leading-normal) var(--font-family-sans); }
+  .page-head { display:flex; align-items:center; gap:12px; margin-bottom:8px; }
+  .page-head h1 { font-size:var(--font-size-xl); margin:0; }
+  .page-head .crumb { color:var(--color-text-dim); font-family:var(--font-family-mono); font-size:var(--font-size-xs); }
+  .theme-toggle { margin-left:auto; }
+  .demo-section { margin-top:28px; }
+  .demo-section > h2 { font-size:var(--font-size-lg); border-bottom:1px solid var(--color-divider); padding-bottom:6px; }
+  .demo-row { display:flex; flex-wrap:wrap; align-items:flex-start; gap:22px; margin:14px 0; }
+  .demo-note { color:var(--color-text-muted); font-size:var(--font-size-sm); max-width:70ch; }
+  .knob-box { border:1px dashed var(--color-border-strong); border-radius:var(--radius-sm); padding:14px; }
+  .knob-box .knob-label { font-family:var(--font-family-mono); font-size:var(--font-size-2xs); color:var(--color-text-dim); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px; display:block; }
+  .cap { font-family:var(--font-family-mono); font-size:var(--font-size-2xs); color:var(--color-text-dim); margin-bottom:8px; }
+  .col { max-width:360px; width:100%; }
+</style>
+</head>
+<body>
+<header class="page-head">
+  <span class="crumb"><a href="index.html" style="color:inherit">components</a> / code</span>
+  <h1>Code · Key-value</h1>
+  <button class="btn btn--sm theme-toggle" onclick="
+    var h=document.documentElement; h.dataset.theme=h.dataset.theme==='dark'?'light':'dark'">
+    Light / Dark</button>
+</header>
+
+<section class="demo-section">
+  <h2>Code block / terminal</h2>
+  <div class="demo-row">
+    <div class="col">
+      <div class="cap">.codeblock</div>
+      <div class="codeblock">
+        <div class="cb-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="name">render.config.json</span></div>
+        <pre><span class="ln">1</span><span class="tok-com">// output preset</span>
+<span class="ln">2</span><span class="tok-key">"codec"</span>: <span class="tok-str">"prores_422"</span>,
+<span class="ln">3</span><span class="tok-key">"threads"</span>: <span class="tok-num">32</span>,
+<span class="ln">4</span><span class="tok-key">"gpu"</span>: <span class="tok-num">true</span></pre>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">窗口圆点 + 行号 + 语法着色（tok-key/tok-str/tok-num 分别接语义色 --color-info/--color-success/--color-warning，非专属 token）· 容器 <code>padding</code>/<code>background</code>/<code>font-family</code> 经旋钮 <b>--codeblock-pad</b> / <b>--codeblock-bg</b> / <b>--font-family-mono</b> 驱动。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Key-value / description list</h2>
+  <div class="demo-row">
+    <div class="col">
+      <div class="cap">.kv</div>
+      <dl class="kv">
+        <dt>Job</dt><dd>nightly-bake-04</dd>
+        <dt>Codec</dt><dd>ProRes 422 · 4K</dd>
+        <dt>Frames</dt><dd>1024 / 2400</dd>
+        <dt>Owner</dt><dd>R. Miller</dd>
+        <dt>Started</dt><dd>2026-06-04 02:14</dd>
+      </dl>
+    </div>
+  </div>
+  <p class="demo-note">左列 mono 标签底色 bg-subtle · 右列值 · 1px 网格分隔。</p>
+</section>
+
+<section class="demo-section">
+  <h2>旋钮演示 · Structural knobs</h2>
+  <div class="demo-row">
+    <div class="knob-box">
+      <span class="knob-label">--codeblock-pad: var(--space-7)</span>
+      <div style="--codeblock-pad:var(--space-7)">
+        <div class="codeblock" style="width:200px"><pre><span class="tok-key">"pad"</span>: <span class="tok-str">"24px"</span></pre></div>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">容器级 style="--codeblock-pad:…" 局部覆盖 §4 结构旋钮，code.css 中不声明该变量，只引用——证明皮肤覆盖生效（R3）。</p>
+</section>
+</body>
+</html>
