@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Command Palette · Beacon GUI 组件</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="stylesheet" href="components.css" />
+<style>
+  body { margin:0; padding:32px 40px 80px; background:var(--background); color:var(--foreground);
+         font:400 var(--font-size-md)/var(--leading-normal) var(--font-family-sans); }
+  .page-head { display:flex; align-items:center; gap:12px; margin-bottom:8px; }
+  .page-head h1 { font-size:var(--font-size-xl); margin:0; }
+  .page-head .crumb { color:var(--color-text-dim); font-family:var(--font-family-mono); font-size:var(--font-size-xs); }
+  .theme-toggle { margin-left:auto; }
+  .demo-section { margin-top:28px; }
+  .demo-section > h2 { font-size:var(--font-size-lg); border-bottom:1px solid var(--color-divider); padding-bottom:6px; }
+  .demo-row { display:flex; flex-wrap:wrap; align-items:flex-start; gap:20px; margin:14px 0; }
+  .demo-note { color:var(--color-text-muted); font-size:var(--font-size-sm); max-width:78ch; }
+  .cap { font-family:var(--font-family-mono); font-size:var(--font-size-2xs); color:var(--color-text-dim); margin-bottom:8px; }
+  .knob-row { display:flex; flex-wrap:wrap; gap:14px; margin:14px 0; align-items:flex-start; }
+  .knob-box { border:1px dashed var(--color-border-strong); border-radius:var(--radius-sm); padding:14px; }
+  .knob-box .knob-label { font-family:var(--font-family-mono); font-size:var(--font-size-2xs); color:var(--color-text-dim); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px; display:block; }
+</style>
+</head>
+<body>
+<header class="page-head">
+  <span class="crumb"><a href="index.html" style="color:inherit">components</a> / cmdp</span>
+  <h1>Command Palette</h1>
+  <button class="btn btn--sm theme-toggle" onclick="
+    var h=document.documentElement; h.dataset.theme=h.dataset.theme==='dark'?'light':'dark'">
+    Light / Dark</button>
+</header>
+
+<p class="demo-note">.cmdp 是 ⌘K 风格的命令面板：容器表面沿用浮层契约（--popover / --shadow-pop / --dialog-radius），宽度与列表高度经 §4 参考旋钮 <b>--cmdp-w</b> / <b>--cmdp-list-h</b> 驱动；item 高度与内边距复用 menu 旋钮 <b>--menu-item-h</b> / <b>--menu-pad</b>（同一套「行高节奏」跨组件保持一致）；当前高亮行经接线 <b>--subtle</b> / <b>--subtle-foreground</b>，比 menu 的实色 hover 更克制——命令面板停留时间短，不需要抢眼的强反色。</p>
+
+<section class="demo-section">
+  <h2>Command palette · 分组 / 选中 / 快捷键</h2>
+  <div class="demo-row">
+    <div class="cmdp">
+      <div class="cmdp-input">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+        <input value="ren" placeholder="Type a command or search…" readonly />
+      </div>
+      <div class="cmdp-list">
+        <div class="cmdp-group">Actions</div>
+        <div class="cmdp-item" aria-selected="true">
+          <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+          New render job
+          <span class="sc"><span class="kbd">⌘</span><span class="kbd">N</span></span>
+        </div>
+        <div class="cmdp-item">
+          <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg>
+          Reload sample bank
+          <span class="sc"><span class="kbd">⌘</span><span class="kbd">R</span></span>
+        </div>
+        <div class="cmdp-item">
+          <svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M8 11l4 4 4-4"/><path d="M5 21h14"/></svg>
+          Export current preset…
+          <span class="sc"><span class="kbd">⇧</span><span class="kbd">⌘</span><span class="kbd">E</span></span>
+        </div>
+        <div class="cmdp-group">Navigate</div>
+        <div class="cmdp-item">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="7" rx="1"/><rect x="3" y="14" width="18" height="7" rx="1"/></svg>
+          Go to render queue
+          <span class="sc"><span class="kbd">G</span><span class="kbd">Q</span></span>
+        </div>
+        <div class="cmdp-item">
+          <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20"/></svg>
+          Go to nodes
+          <span class="sc"><span class="kbd">G</span><span class="kbd">N</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">输入行图标 + placeholder 走 --color-text-dim；分组标题 mono uppercase 小号灰字（.cmdp-group）；行内 svg 默认继承 --color-text-dim，选中/hover 时随文字色变为 currentColor；行尾 <code>.sc</code> 承载右对齐的 <code>.kbd</code> 键帽（复用 tag.css 的 .kbd，Tier-2 直连，不参与 --cmdp 接线）。</p>
+</section>
+
+<section class="demo-section">
+  <h2>旋钮演示 · Structural knobs</h2>
+  <div class="knob-row">
+    <div class="knob-box">
+      <span class="knob-label">--cmdp-w: 560px（默认）· --cmdp-list-h: 280px</span>
+      <div class="cmdp">
+        <div class="cmdp-input">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+          <input placeholder="Search…" readonly />
+        </div>
+        <div class="cmdp-list">
+          <div class="cmdp-item">Go to render queue<span class="sc"><span class="kbd">G</span><span class="kbd">Q</span></span></div>
+          <div class="cmdp-item">Go to nodes<span class="sc"><span class="kbd">G</span><span class="kbd">N</span></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="knob-box" style="--cmdp-w:360px;--cmdp-list-h:120px">
+      <span class="knob-label">--cmdp-w: 360px · --cmdp-list-h: 120px（容器覆盖）</span>
+      <div class="cmdp">
+        <div class="cmdp-input">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>
+          <input placeholder="Search…" readonly />
+        </div>
+        <div class="cmdp-list">
+          <div class="cmdp-item">Go to render queue<span class="sc"><span class="kbd">G</span><span class="kbd">Q</span></span></div>
+          <div class="cmdp-item">Go to nodes<span class="sc"><span class="kbd">G</span><span class="kbd">N</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">旋钮只在容器上以内联 <code>style</code> 覆盖；<code>cmdp.css</code> 中不出现声明位（R3 校验：<code>tools/check-tokens.sh components/css/cmdp.css</code> 保持 0 errors）。</p>
+</section>
+</body>
+</html>
