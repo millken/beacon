@@ -1,0 +1,11 @@
+/* ---------- Key-value / description list ---------- */
+.kv { display: grid; grid-template-columns: max-content 1fr; gap: 0; border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; font-size: var(--font-size-sm); }
+.kv dt { background: var(--color-bg-subtle); padding: 6px 12px; font-family: var(--font-family-mono); font-size: var(--font-size-2xs); text-transform: uppercase; letter-spacing: .04em; color: var(--color-text-dim); border-bottom: 1px solid var(--color-divider); display: flex; align-items: center; }
+.kv dd { margin: 0; padding: 6px 12px; color: var(--color-text); font-family: var(--font-family-mono); border-bottom: 1px solid var(--color-divider); border-left: 1px solid var(--color-divider); }
+.kv dt:last-of-type, .kv dd:last-of-type { border-bottom: none; }
+
+/* ---------- Code block / terminal ---------- */
+.codeblock { background: var(--color-bg-inverse); color: var(--color-text-inverse); border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); overflow: hidden; font-family: var(--font-family-mono); font-size: var(--font-size-xs); }
+.codeblock pre { margin: 0; padding: 10px 12px; line-height: 1.6; overflow-x: auto; }
+.codeblock .ln { opacity: .4; user-select: none; display: inline-block; width: 22px; }
+.codeblock .tok-key { color: #6aa1ef; } .codeblock .tok-str { color: #45c081; } .codeblock .tok-num { color: #e6ad45; } .codeblock .tok-com { opacity: .5; }

@@ -1,0 +1,6 @@
+/* ---------- Window controls ---------- */
+.win-controls { display: inline-flex; border: 1px solid var(--color-border); border-radius: var(--radius-sm); overflow: hidden; background: var(--color-bg-subtle); }
+.win-controls button { width: 28px; height: 22px; display: inline-flex; align-items: center; justify-content: center; border: none; background: transparent; color: var(--color-text-dim); cursor: pointer; }
+.win-controls button svg { width: 11px; height: 11px; stroke: currentColor; stroke-width: 1.5; fill: none; }
+.win-controls button:hover { background: var(--color-bg-hover); color: var(--color-text); }
+.win-controls button.close:hover { background: var(--color-danger); color: #fff; }

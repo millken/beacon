@@ -1,0 +1,6 @@
+/* ---------- Split panel / resize handle ---------- */
+.split { display: flex; border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; background: var(--color-bg); }
+.split .pane { padding: 12px; font-size: var(--font-size-sm); color: var(--color-text-muted); }
+.split .handle { width: 6px; flex: none; background: var(--color-bg-subtle); border-left: 1px solid var(--color-border); border-right: 1px solid var(--color-border); cursor: col-resize; display: flex; align-items: center; justify-content: center; }
+.split .handle::before { content: ""; width: 2px; height: 18px; border-radius: 1px; background-image: radial-gradient(var(--color-text-dim) 40%, transparent 42%); background-size: 2px 4px; opacity: .6; }
+.split .handle:hover { background: var(--color-bg-hover); }

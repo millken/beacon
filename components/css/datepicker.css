@@ -1,0 +1,14 @@
+/* ---------- Calendar / date ---------- */
+.calendar { width: 224px; background: var(--popover); border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); box-shadow: var(--shadow-pop); padding: 8px; }
+.cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.cal-head .m { font-family: var(--font-family-mono); font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); white-space: nowrap; }
+.cal-nav { width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; border: none; background: transparent; color: var(--color-text-muted); cursor: pointer; border-radius: var(--radius-sm); }
+.cal-nav:hover { background: var(--color-bg-hover); color: var(--color-text); }
+.cal-nav svg { width: 13px; height: 13px; stroke: currentColor; stroke-width: 1.8; fill: none; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; }
+.cal-grid .dow { text-align: center; font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); padding: 3px 0; }
+.cal-grid .day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text); border-radius: var(--radius-sm); cursor: pointer; }
+.cal-grid .day:hover { background: var(--color-bg-hover); }
+.cal-grid .day.muted { color: var(--color-text-dim); }
+.cal-grid .day[data-state="selected"] { background: var(--color-primary); color: var(--color-accent-fg); }
+.cal-grid .day.today { box-shadow: inset 0 0 0 1px var(--color-primary); }

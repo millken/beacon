@@ -1,0 +1,9 @@
+/* ---------- Combobox / autocomplete list ---------- */
+.listbox { background: var(--popover); border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); box-shadow: var(--shadow-pop); padding: 2px; max-width: 280px; }
+.listbox .opt { display: flex; align-items: center; gap: 8px; padding: 4px 8px; border-radius: calc(var(--radius-sm) - 1px); font-size: var(--font-size-sm); color: var(--color-text); cursor: pointer; }
+.listbox .opt .mono { color: var(--color-text-dim); margin-left: auto; font-size: var(--font-size-2xs); }
+.listbox .opt svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 1.6; fill: none; flex: none; }
+.listbox .opt:hover, .listbox .opt[data-active] { background: var(--color-primary); color: var(--color-accent-fg); }
+.listbox .opt:hover .mono, .listbox .opt[data-active] .mono { color: var(--color-accent-fg); opacity: .8; }
+.listbox .opt[aria-selected="true"] { color: var(--color-primary); }
+.listbox .opt[aria-selected="true"]:hover { color: var(--color-accent-fg); }

@@ -1,0 +1,13 @@
+/* ---------- Command palette ---------- */
+.cmdk { width: 420px; background: var(--popover); border: 1px solid var(--color-border-strong); border-radius: var(--radius-md); box-shadow: var(--shadow-pop); overflow: hidden; }
+.cmdk-input { display: flex; align-items: center; gap: 8px; padding: 9px 12px; border-bottom: 1px solid var(--color-border); }
+.cmdk-input svg { width: 15px; height: 15px; stroke: var(--color-text-dim); stroke-width: 1.6; fill: none; }
+.cmdk-input input { flex: 1; border: none; background: transparent; outline: none; color: var(--color-text); font-size: var(--font-size-md); font-family: var(--font-family-sans); }
+.cmdk-input input::placeholder { color: var(--color-text-dim); }
+.cmdk-list { padding: 4px; max-height: 280px; overflow-y: auto; }
+.cmdk-group { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); text-transform: uppercase; letter-spacing: .06em; color: var(--color-text-dim); padding: 8px 8px 3px; }
+.cmdk-item { display: flex; align-items: center; gap: 10px; padding: 6px 8px; border-radius: var(--radius-sm); font-size: var(--font-size-sm); color: var(--color-text); cursor: pointer; }
+.cmdk-item svg { width: 15px; height: 15px; stroke: currentColor; stroke-width: 1.6; fill: none; flex: none; color: var(--color-text-dim); }
+.cmdk-item .sc { margin-left: auto; display: inline-flex; gap: 3px; }
+.cmdk-item[data-active] { background: var(--color-primary); color: var(--color-accent-fg); }
+.cmdk-item[data-active] svg { color: var(--color-accent-fg); }

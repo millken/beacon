@@ -1,0 +1,5 @@
+/* ---------- Color swatch picker ---------- */
+.swatches { display: inline-flex; gap: 5px; }
+.swatches button { width: 22px; height: 22px; border-radius: var(--radius-sm); border: 1px solid var(--color-border); cursor: pointer; padding: 0; position: relative; }
+.swatches button[data-state="active"] { box-shadow: var(--focus-ring); border-color: var(--color-bg); }
+.swatches button[data-state="active"]::after { content: ""; position: absolute; inset: 0; margin: auto; width: 6px; height: 6px; border-radius: 50%; background: #fff; mix-blend-mode: difference; }

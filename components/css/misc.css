@@ -1,0 +1,68 @@
+@keyframes cmp-spin { to { transform: rotate(360deg); } }
+
+/* ---------- Layout helpers ---------- */
+.row { display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center; }
+.row.tight { gap: var(--space-2); }
+.col { display: flex; flex-direction: column; gap: var(--space-4); }
+
+/* ---------- Accordion ——克制：1px 分隔的行，展开仅靠 chevron 旋转 + 内容显隐；
+   无填充块 / 无圆角 / 无位移（内边距恒定，文字不跳） ---------- */
+.acc-item { border-bottom: 1px solid var(--color-divider); }
+.acc-item:last-child { border-bottom: none; }
+.acc-trigger { width: 100%; text-align: left; background: transparent; border: none; padding: 9px 8px; font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 8px; font-family: inherit; }
+.acc-trigger:hover { background: var(--color-bg-hover); }
+.acc-chev { color: var(--color-text-dim); transform: rotate(0deg); transition: transform var(--duration-base) ease; display: inline-flex; align-items: center; flex: none; }
+.acc-chev svg { width: 11px; height: 11px; stroke: currentColor; stroke-width: 2; fill: none; display: block; }
+.acc-item[data-state="open"] .acc-chev,
+.acc-trigger[data-state="open"] .acc-chev { transform: rotate(90deg); }
+.acc-item[data-state="open"] .acc-chev { color: var(--color-text-muted); }
+.acc-content { padding: 2px 8px 11px; color: var(--color-text-muted); font-size: var(--font-size-sm); line-height: 1.55; }
+.acc-content[hidden] { display: none; }
+@keyframes cmp-indet { 0% { margin-left: -35%; } 100% { margin-left: 100%; } }
+
+/* ---------- Avatar ---------- */
+.avatar { width: 28px; height: 28px; border-radius: var(--radius-sm); background: var(--color-bg-active); color: var(--color-text); display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-family-mono); font-size: var(--font-size-2xs); font-weight: var(--font-weight-semibold); flex: none; overflow: hidden; position: relative; text-transform: uppercase; letter-spacing: .02em; }
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.avatar--sm { width: 22px; height: 22px; }
+.avatar--lg { width: 36px; height: 36px; font-size: var(--font-size-xs); }
+.avatar--circle { border-radius: var(--radius-full); }
+.avatar--accent { background: var(--color-primary-light-default); color: var(--color-primary); }
+.avatar .status { position: absolute; right: -2px; bottom: -2px; width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid var(--color-bg); background: var(--color-text-dim); }
+.avatar .status--on { background: var(--color-success); }
+.avatar .status--busy { background: var(--color-danger); }
+.avatar-stack { display: inline-flex; }
+.avatar-stack .avatar { margin-left: -7px; box-shadow: 0 0 0 1.5px var(--color-bg); }
+.avatar-stack .avatar:first-child { margin-left: 0; }
+@keyframes cmp-shimmer { 100% { transform: translateX(100%); } }
+@media (prefers-reduced-motion: reduce) { .skeleton::after { animation: none; } }
+
+/* ---------- List ---------- */
+.list { border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--card); overflow: hidden; }
+.list-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-bottom: 1px solid var(--color-divider); cursor: pointer; }
+.list-item:last-child { border-bottom: none; }
+.list-item:hover { background: var(--color-bg-hover); }
+.list-item[data-state="selected"] { background: var(--color-bg-active); box-shadow: inset 2px 0 0 var(--color-primary); }
+.list-item .li-title { font-size: var(--font-size-sm); color: var(--color-text); }
+.list-item .li-sub { font-size: var(--font-size-2xs); color: var(--color-text-dim); font-family: var(--font-family-mono); }
+.list-item .li-meta { margin-left: auto; font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-muted); }
+.tl-item { position: relative; padding: 0 0 14px 0; }
+.tl-item:last-child { padding-bottom: 0; }
+.tl-item .node { position: absolute; left: -18px; top: 2px; width: 9px; height: 9px; border-radius: 50%; background: var(--color-bg); border: 2px solid var(--color-text-dim); }
+.tl-item.ok .node { border-color: var(--color-success); } .tl-item.run .node { border-color: var(--color-primary); } .tl-item.err .node { border-color: var(--color-danger); }
+.tl-item .when { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); }
+.tl-item .what { font-size: var(--font-size-sm); color: var(--color-text); }
+
+/* ---------- Divider ---------- */
+.divider { height: 1px; background: var(--color-border); border: none; margin: var(--space-4) 0; }
+.divider--label { display: flex; align-items: center; gap: 10px; color: var(--color-text-dim); font-family: var(--font-family-mono); font-size: var(--font-size-2xs); text-transform: uppercase; letter-spacing: .06em; margin: var(--space-4) 0; }
+.divider--label::before, .divider--label::after { content: ""; flex: 1; height: 1px; background: var(--color-border); }
+.divider--v { width: 1px; align-self: stretch; background: var(--color-border); margin: 0 var(--space-3); }
+
+/* ---------- Collapsible (panel) ---------- */
+.collapsible { border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; }
+.collapsible-trigger { width: 100%; display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: var(--muted); border: none; cursor: pointer; font-family: inherit; font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-text); }
+.collapsible-trigger .chev { color: var(--color-text-dim); transition: transform var(--duration-fast) ease; transform: rotate(0deg); margin-left: auto; font-size: var(--font-size-2xs); display: inline-flex; align-items: center; }
+.collapsible-trigger .chev svg { width: 11px; height: 11px; stroke: currentColor; stroke-width: 2; fill: none; display: block; }
+.collapsible[data-state="open"] .collapsible-trigger .chev { transform: rotate(90deg); }
+.collapsible-body { padding: 12px; font-size: var(--font-size-sm); color: var(--color-text-muted); border-top: 1px solid var(--color-border); }
+.collapsible-body[hidden] { display: none; }
