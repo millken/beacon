@@ -1,4 +1,4 @@
-<!-- @startingPoint section="App Shells" subtitle="完整桌面工具外壳 · 窗口/工具栏/侧栏/数据表/状态栏/对话框 · 串联 9 个组件" viewport="920x540" -->
+<!-- @startingPoint section="App Shells" subtitle="完整桌面工具外壳 · .shell 网格装配 titlebar/toolbar/sidebar/.shell-main/statusbar · .datagrid 数据区 · 串联 10+ 个组件" viewport="920x540" -->
 <!DOCTYPE html>
 <html lang="zh-CN" data-theme="dark">
 <head>
@@ -11,61 +11,14 @@
   html, body { height: 100%; margin: 0; }
   body { background: var(--color-bg-subtle); color: var(--color-text); font-family: var(--font-family-sans); font-size: var(--font-size-md); font-variant-numeric: tabular-nums; -webkit-font-smoothing: antialiased; display: flex; height: 100vh; overflow: hidden; padding: 28px; }
   ::selection { background: var(--color-accent); color: var(--color-accent-fg); }
-
-  /* ---- window shell (Firefox-style floating window) ---- */
-  .window {flex: 1;min-width: 0;display: flex;flex-direction: column;overflow: hidden;background: var(--color-bg);border: 1px solid var(--color-border);border-radius: 12px;box-shadow: 0 0 0 1px rgba(0,0,0,0.04), 0 24px 64px -12px rgba(0,0,0,0.55), 0 8px 24px -8px rgba(0,0,0,0.4);}
-  .window > .titlebar { border-radius: 12px 12px 0 0; }
   .mono { font-family: var(--font-family-mono); }
 
-  /* ---- title bar (window component chrome) ---- */
-  .titlebar { height: 38px; flex: none; display: flex; align-items: center; gap: 12px; padding: 0 12px; background: var(--color-bg-subtle); border-bottom: 1px solid var(--color-border); }
-  .titlebar .traffic { display: flex; gap: 8px; }
-  .titlebar .traffic i { width: 12px; height: 12px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
-  .titlebar .traffic .c { background: #ec6a5e; } .titlebar .traffic .m { background: #f4bf4f; } .titlebar .traffic .x { background: #61c554; }
-  .titlebar .traffic i svg { width: 7px; height: 7px; stroke: rgba(0,0,0,0.5); stroke-width: 2; fill: none; opacity: 0; transition: opacity .1s; }
-  .titlebar .traffic:hover i svg { opacity: 1; }
-  .titlebar .brand { display: flex; align-items: center; gap: 7px; font-weight: var(--font-weight-semibold); font-size: var(--font-size-sm); }
-  .titlebar .brand .led { width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent); box-shadow: 0 0 6px var(--color-accent); }
-  .titlebar .path { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); }
-  .titlebar .sp { flex: 1; }
-  .titlebar .winctl { display: flex; gap: 2px; }
-  .titlebar .winctl button { width: 26px; height: 22px; display: inline-flex; align-items: center; justify-content: center; border: none; background: transparent; color: var(--color-text-dim); cursor: pointer; border-radius: var(--radius-sm); }
-  .titlebar .winctl button svg { width: 11px; height: 11px; stroke: currentColor; stroke-width: 1.5; fill: none; }
-  .titlebar .winctl button:hover { background: var(--color-bg-hover); color: var(--color-text); }
-  .titlebar .winctl button.close:hover { background: var(--color-danger); color: #fff; }
+  /* ---- floating window frame (page-specific chrome; wraps the token-driven .shell grid) ---- */
+  .window { flex: 1; min-width: 0; display: flex; flex-direction: column; overflow: hidden; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: 12px; box-shadow: 0 0 0 1px rgba(0,0,0,0.04), 0 24px 64px -12px rgba(0,0,0,0.55), 0 8px 24px -8px rgba(0,0,0,0.4); }
+  .window .shell { border-radius: 12px; overflow: hidden; }
+  .window .shell > .titlebar { border-radius: 12px 12px 0 0; }
 
-  /* ---- toolbar ---- */
-  .apptoolbar { height: 40px; flex: none; display: flex; align-items: center; gap: 8px; padding: 0 12px; background: var(--color-bg); border-bottom: 1px solid var(--color-border); }
-  .apptoolbar .vsep { width: 1px; height: 20px; background: var(--color-border); margin: 0 4px; }
-  .apptoolbar .sp { flex: 1; }
-  .apptoolbar .search { position: relative; }
-  .apptoolbar .search svg { position: absolute; left: 8px; top: 50%; transform: translateY(-50%); width: 13px; height: 13px; stroke: var(--color-text-dim); stroke-width: 1.6; fill: none; }
-  .apptoolbar .search .input { width: 220px; padding-left: 27px; height: 26px; }
-
-  /* ---- body layout ---- */
-  .workspace { flex: 1; display: flex; min-height: 0; }
-  .sidebar { width: 210px; flex: none; background: var(--color-bg-subtle); border-right: 1px solid var(--color-border); display: flex; flex-direction: column; overflow-y: auto; }
-  .side-sec { padding: 10px 8px 4px; font-family: var(--font-family-mono); font-size: var(--font-size-2xs); text-transform: uppercase; letter-spacing: .07em; color: var(--color-text-dim); }
-  .nav-item { display: flex; align-items: center; gap: 8px; padding: 5px 10px; margin: 1px 6px; border-radius: var(--radius-sm); color: var(--color-text-muted); cursor: pointer; font-size: var(--font-size-sm); }
-  .nav-item svg { width: 15px; height: 15px; stroke: currentColor; stroke-width: 1.6; fill: none; flex: none; }
-  .nav-item .count { margin-left: auto; font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); }
-  .nav-item:hover { background: var(--color-bg-hover); color: var(--color-text); }
-  .nav-item[data-state="active"] { background: var(--color-bg-active); color: var(--color-text); box-shadow: inset 2px 0 0 var(--color-primary); }
-  .nav-item[data-state="active"] .count { color: var(--color-text-muted); }
-
-  .sidebar .spacer { flex: 1; }
-  .side-card { margin: 8px; padding: 10px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-bg); }
-  .side-card .lbl { display: flex; justify-content: space-between; font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); margin-bottom: 6px; }
-  .side-card .lbl b { color: var(--color-text); font-weight: var(--font-weight-semibold); }
-
-  .main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-  .content { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 14px; }
-  .panelcard { border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--card); overflow: hidden; }
-  .pc-head { display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: var(--muted); border-bottom: 1px solid var(--color-border); }
-  .pc-head h2 { font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); margin: 0; }
-  .pc-head .sp { flex: 1; }
-  .pc-body { padding: 12px; }
-
+  /* ---- page-specific content composition (stat cards / panel card wrapper) ---- */
   .statcards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
   .stat { border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--card); padding: 11px 13px; }
   .stat .k { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); text-transform: uppercase; letter-spacing: .05em; color: var(--color-text-dim); }
@@ -73,75 +26,109 @@
   .stat .sub { font-size: var(--font-size-2xs); color: var(--color-text-muted); margin-top: 2px; }
   .stat .v.ok { color: var(--color-success); } .stat .v.wn { color: var(--color-warning); }
 
-  /* ---- status bar ---- */
-  .statusbar { height: 24px; flex: none; display: flex; align-items: center; gap: 14px; padding: 0 12px; background: var(--color-bg-subtle); border-top: 1px solid var(--color-border); font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); }
-  .statusbar .seg { display: inline-flex; align-items: center; gap: 5px; }
-  .statusbar .sp { flex: 1; }
+  .panelcard { border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--card); overflow: hidden; }
+  .pc-head { display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: var(--muted); border-bottom: 1px solid var(--color-border); }
+  .pc-head h2 { font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); margin: 0; }
+  .pc-head .sp { flex: 1; }
+  .pc-body { padding: 12px; }
+
+  .sidebar-widget { display: flex; flex-direction: column; align-items: stretch; gap: 6px; width: 100%; }
+  .sidebar-widget .lbl { display: flex; justify-content: space-between; font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); }
+  .sidebar-widget .lbl b { color: var(--color-text); font-weight: var(--font-weight-semibold); }
 
   .toast-stack { bottom: 36px; }
 </style>
 </head>
 <body>
 <div class="window">
-<!-- TITLE BAR -->
-<div class="titlebar">
-  <div class="brand"><span class="led"></span>Beacon</div>
-  <span class="path">render-farm / production / nightly</span>
-  <span class="sp"></span>
-  <div class="segmented" id="themeSeg" style="text-transform:uppercase">
-    <button data-theme-val="light">light</button>
-    <button data-theme-val="dark">dark</button>
-  </div>
-  <div class="winctl">
-    <button aria-label="minimize"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
-    <button aria-label="maximize"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14"/></svg></button>
-    <button class="close" aria-label="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-  </div>
-</div>
+<div class="shell" style="height:100%">
 
-<!-- TOOLBAR -->
-<div class="apptoolbar">
-  <button class="btn btn--primary btn--sm" data-toast="info"><span class="btn-affix"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>New job</button>
-  <button class="btn btn--sm" id="reloadBtn">Reload</button>
-  <div class="vsep"></div>
-  <div class="toolbar">
+  <!-- TITLE BAR -->
+  <div class="titlebar">
+    <div class="titlebar-traffic"><i></i><i></i><i></i></div>
+    <div class="titlebar-title">Beacon · render-farm / production / nightly</div>
+    <div class="titlebar-meta">
+      <div class="segmented" id="themeSeg">
+        <button data-theme-val="light">light</button>
+        <button data-theme-val="dark" data-state="checked">dark</button>
+      </div>
+      <div class="win-controls">
+        <button class="win-btn" aria-label="minimize"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
+        <button class="win-btn" aria-label="maximize"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14"/></svg></button>
+        <button class="win-btn win-btn--close" aria-label="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar" style="border:none; border-radius:0; border-bottom:1px solid var(--color-border); padding:0 var(--space-4)">
+    <button class="btn btn--primary btn--sm" data-toast="info"><span class="btn-affix"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>New job</button>
+    <button class="btn btn--sm" id="reloadBtn">Reload</button>
+    <div class="toolbar-sep"></div>
     <button class="icon-btn" data-state="checked" aria-label="List"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></button>
     <button class="icon-btn" aria-label="Grid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></button>
+    <div class="toolbar-sep"></div>
+    <div class="segmented" data-segmented>
+      <button data-state="checked">All</button>
+      <button>Active</button>
+      <button>Failed</button>
+    </div>
+    <span class="sp" style="flex:1"></span>
+    <div class="search-input"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><input class="input" placeholder="filter nodes…" /></div>
+    <button class="btn btn--icon btn--sm btn--ghost" data-open="m-settings" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1.3l2-1.6-2-3.4-2.4 1a7 7 0 0 0-2.2-1.3L14 1h-4l-.3 2.1a7 7 0 0 0-2.2 1.3l-2.4-1-2 3.4 2 1.6A7 7 0 0 0 5 12a7 7 0 0 0 .1 1.3l-2 1.6 2 3.4 2.4-1a7 7 0 0 0 2.2 1.3L10 23h4l.3-2.1a7 7 0 0 0 2.2-1.3l2.4 1 2-3.4-2-1.6A7 7 0 0 0 19 12z"/></svg></button>
   </div>
-  <div class="segmented" data-segmented>
-    <button data-state="checked">All</button>
-    <button>Active</button>
-    <button>Failed</button>
-  </div>
-  <span class="sp"></span>
-  <span class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><input class="input" placeholder="filter nodes…" /></span>
-  <button class="btn btn--icon btn--sm btn--ghost" data-open="m-settings" aria-label="Settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1.3l2-1.6-2-3.4-2.4 1a7 7 0 0 0-2.2-1.3L14 1h-4l-.3 2.1a7 7 0 0 0-2.2 1.3l-2.4-1-2 3.4 2 1.6A7 7 0 0 0 5 12a7 7 0 0 0 .1 1.3l-2 1.6 2 3.4 2.4-1a7 7 0 0 0 2.2 1.3L10 23h4l.3-2.1a7 7 0 0 0 2.2-1.3l2.4 1 2-3.4-2-1.6A7 7 0 0 0 19 12z"/></svg></button>
-</div>
 
-<!-- WORKSPACE -->
-<div class="workspace">
   <!-- SIDEBAR -->
   <aside class="sidebar">
-    <div class="side-sec">Farm</div>
-    <div class="nav-item" data-state="active"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="7" rx="1"/><rect x="3" y="14" width="18" height="7" rx="1"/><path d="M7 6.5h.01M7 17.5h.01"/></svg>Render queue<span class="count">128</span></div>
-    <div class="nav-item"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20"/></svg>Nodes<span class="count">8</span></div>
-    <div class="nav-item"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>Output<span class="count">42</span></div>
-    <div class="nav-item"><svg viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h10"/></svg>Logs</div>
-    <div class="side-sec">Library</div>
-    <div class="nav-item"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/></svg>Presets<span class="count">16</span></div>
-    <div class="nav-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>History</div>
-    <div class="spacer"></div>
-    <div class="side-card">
-      <div class="lbl"><span>FARM LOAD</span><b>72%</b></div>
-      <div class="progress progress--thin"><div class="bar" style="width:72%"></div></div>
-      <div class="lbl" style="margin:8px 0 6px"><span>DISK</span><b class="mono" style="color:var(--color-warning)">91%</b></div>
-      <div class="progress progress--warning progress--thin"><div class="bar" style="width:91%"></div></div>
+    <div class="sidebar-body">
+      <div class="sidebar-section-label">Farm</div>
+      <div class="sidebar-group">
+        <div class="sidebar-item is-selected" data-nav>
+          <span class="sidebar-item-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="7" rx="1"/><rect x="3" y="14" width="18" height="7" rx="1"/><path d="M7 6.5h.01M7 17.5h.01"/></svg></span>
+          <span class="sidebar-item-label">Render queue</span>
+          <span class="badge sidebar-item-badge">128</span>
+        </div>
+        <div class="sidebar-item" data-nav>
+          <span class="sidebar-item-ico"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20"/></svg></span>
+          <span class="sidebar-item-label">Nodes</span>
+          <span class="badge sidebar-item-badge">8</span>
+        </div>
+        <div class="sidebar-item" data-nav>
+          <span class="sidebar-item-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>
+          <span class="sidebar-item-label">Output</span>
+          <span class="badge sidebar-item-badge">42</span>
+        </div>
+        <div class="sidebar-item" data-nav>
+          <span class="sidebar-item-ico"><svg viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h10"/></svg></span>
+          <span class="sidebar-item-label">Logs</span>
+        </div>
+      </div>
+      <div class="sidebar-section-label">Library</div>
+      <div class="sidebar-group">
+        <div class="sidebar-item" data-nav>
+          <span class="sidebar-item-ico"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/></svg></span>
+          <span class="sidebar-item-label">Presets</span>
+          <span class="badge sidebar-item-badge">16</span>
+        </div>
+        <div class="sidebar-item" data-nav>
+          <span class="sidebar-item-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <span class="sidebar-item-label">History</span>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-foot">
+      <div class="sidebar-widget">
+        <div class="lbl"><span>FARM LOAD</span><b>72%</b></div>
+        <div class="progress progress--thin"><i style="width:72%"></i></div>
+        <div class="lbl" style="margin-top:2px"><span>DISK</span><b class="mono" style="color:var(--color-warning)">91%</b></div>
+        <div class="progress progress--warning progress--thin"><i style="width:91%"></i></div>
+      </div>
     </div>
   </aside>
 
   <!-- MAIN -->
-  <div class="main">
-    <div class="content">
+  <div class="shell-main">
+    <div class="shell-main-pad" style="display:flex; flex-direction:column; gap:14px">
       <!-- stat cards -->
       <div class="statcards">
         <div class="stat"><div class="k">In queue</div><div class="v">128</div><div class="sub">4 running now</div></div>
@@ -153,7 +140,7 @@
       <!-- warning banner -->
       <div class="note-banner note-banner--warning"><span class="t-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span><p>磁盘空间不足 10%。<span class="t-desc">建议清理缓存或更换输出卷,否则新任务将排队等待。</span></p></div>
 
-      <!-- queue table -->
+      <!-- queue data grid -->
       <div class="panelcard">
         <div class="pc-head">
           <h2>Render queue</h2>
@@ -162,40 +149,43 @@
           <span class="mono" style="font-size:var(--font-size-2xs);color:var(--color-text-dim)">showing 6 / 128</span>
           <button class="btn btn--sm btn--ghost">columns</button>
         </div>
-        <table class="dt" id="dt">
-          <thead><tr>
-            <th class="rownum">#</th><th class="sortable">Node</th><th class="sortable">Job</th><th class="sortable">Status</th>
-            <th class="sortable num">CPU</th><th class="sortable num" data-sort="asc">ETA</th><th>Progress</th>
-          </tr></thead>
-          <tbody>
-            <tr><td class="rownum">01</td><td class="mono">node-03</td><td>nightly-bake</td><td><span class="badge badge--success"><i></i>running</span></td><td class="num">42%</td><td class="num">00:48</td><td><div class="progress progress--thin" style="min-width:90px"><div class="bar" style="width:64%"></div></div></td></tr>
-            <tr data-state="selected"><td class="rownum">02</td><td class="mono">node-05</td><td>hero-shot-04</td><td><span class="badge badge--success"><i></i>running</span></td><td class="num">63%</td><td class="num">01:02</td><td><div class="progress progress--thin" style="min-width:90px"><div class="bar" style="width:48%"></div></div></td></tr>
-            <tr><td class="rownum">03</td><td class="mono">node-07</td><td>fluid-sim-02</td><td><span class="badge badge--warning"><i></i>throttled</span></td><td class="num">91%</td><td class="num">02:14</td><td><div class="progress progress--warning progress--thin" style="min-width:90px"><div class="bar" style="width:22%"></div></div></td></tr>
-            <tr><td class="rownum">04</td><td class="mono">stage-01</td><td>comp-final</td><td><span class="badge badge--neutral"><i></i>idle</span></td><td class="num">04%</td><td class="num">—</td><td><div class="progress progress--thin" style="min-width:90px"><div class="bar" style="width:0%"></div></div></td></tr>
-            <tr><td class="rownum">05</td><td class="mono">stage-02</td><td>denoise-pass</td><td><span class="badge badge--danger"><i></i>failed</span></td><td class="num">—</td><td class="num">—</td><td><div class="progress progress--danger progress--thin" style="min-width:90px"><div class="bar" style="width:43%"></div></div></td></tr>
-            <tr><td class="rownum">06</td><td class="mono">archive-01</td><td>export-mov</td><td><span class="badge badge--success"><i></i>done</span></td><td class="num">00%</td><td class="num">00:00</td><td><div class="progress progress--success progress--thin" style="min-width:90px"><div class="bar" style="width:100%"></div></div></td></tr>
-          </tbody>
-        </table>
-        <div class="dt-foot">
-          <span class="dt-status"><span class="led"></span>4 running</span>
-          <span class="dt-status is-warn"><span class="led"></span>1 throttled</span>
+        <div class="datagrid-scroll">
+          <table class="datagrid" id="datagrid">
+            <thead><tr>
+              <th class="rownum">#</th><th class="sortable">Node</th><th class="sortable">Job</th><th class="sortable">Status</th>
+              <th class="sortable num">CPU</th><th class="sortable num" data-sort="asc">ETA</th><th>Progress</th>
+            </tr></thead>
+            <tbody>
+              <tr><td class="rownum">01</td><td class="mono">node-03</td><td>nightly-bake</td><td><span class="badge badge--success"><i></i>running</span></td><td class="num">42%</td><td class="num">00:48</td><td><div class="progress progress--thin" style="min-width:90px"><i style="width:64%"></i></div></td></tr>
+              <tr data-state="selected"><td class="rownum">02</td><td class="mono">node-05</td><td>hero-shot-04</td><td><span class="badge badge--success"><i></i>running</span></td><td class="num">63%</td><td class="num">01:02</td><td><div class="progress progress--thin" style="min-width:90px"><i style="width:48%"></i></div></td></tr>
+              <tr><td class="rownum">03</td><td class="mono">node-07</td><td>fluid-sim-02</td><td><span class="badge badge--warning"><i></i>throttled</span></td><td class="num">91%</td><td class="num">02:14</td><td><div class="progress progress--warning progress--thin" style="min-width:90px"><i style="width:22%"></i></div></td></tr>
+              <tr><td class="rownum">04</td><td class="mono">stage-01</td><td>comp-final</td><td><span class="badge"><i></i>idle</span></td><td class="num">04%</td><td class="num">—</td><td><div class="progress progress--thin" style="min-width:90px"><i style="width:0%"></i></div></td></tr>
+              <tr><td class="rownum">05</td><td class="mono">stage-02</td><td>denoise-pass</td><td><span class="badge badge--danger"><i></i>failed</span></td><td class="num">—</td><td class="num">—</td><td><div class="progress progress--danger progress--thin" style="min-width:90px"><i style="width:43%"></i></div></td></tr>
+              <tr><td class="rownum">06</td><td class="mono">archive-01</td><td>export-mov</td><td><span class="badge badge--success"><i></i>done</span></td><td class="num">00%</td><td class="num">00:00</td><td><div class="progress progress--success progress--thin" style="min-width:90px"><i style="width:100%"></i></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="datagrid-foot">
+          <span class="datagrid-status"><span class="led"></span>4 running</span>
+          <span class="datagrid-status is-warn"><span class="led"></span>1 throttled</span>
           <span class="sp"></span>
           <button class="btn btn--sm btn--ghost">cancel</button>
           <button class="btn btn--sm btn--danger" data-open="m-delete">Delete selected</button>
         </div>
       </div>
     </div>
-
-    <!-- STATUS BAR -->
-    <div class="statusbar">
-      <span class="seg"><span class="led led--on"></span>farm online</span>
-      <span class="seg">6/8 nodes</span>
-      <span class="seg">queue 128</span>
-      <span class="sp"></span>
-      <span class="seg">cpu 78%</span>
-      <span class="seg">v2.4.1</span>
-    </div>
   </div>
+
+  <!-- STATUS BAR -->
+  <div class="statusbar">
+    <span><span class="led led--on"></span> farm online</span>
+    <span>6/8 nodes</span>
+    <span>queue 128</span>
+    <span class="sp" style="flex:1"></span>
+    <span>cpu 78%</span>
+    <span>v2.4.1</span>
+  </div>
+
 </div>
 </div><!-- /window -->
 
@@ -217,9 +207,9 @@
     <div class="dialog-body">
       <div class="col">
         <div class="field"><label>Default preset</label><select class="select"><option>ProRes 422 · 4K</option><option>H.264 · 1080p</option></select></div>
-        <div class="slider-row"><span class="mono" style="font-size:var(--font-size-2xs);color:var(--color-text-muted);width:70px">Concurrency</span><div class="slider" data-slider data-val="60"></div><span class="val mono" style="font-size:var(--font-size-xs);color:var(--color-text-muted);width:40px;text-align:right">60</span></div>
-        <label class="choice"><span class="cb" data-toggle data-state="checked"></span>失败时自动重试</label>
-        <label class="choice"><span class="sw" data-toggle data-state="checked"></span>完成后发送通知</label>
+        <div class="slider-row"><span class="slider-cap mono" style="font-size:var(--font-size-2xs);color:var(--color-text-muted);width:70px">Concurrency</span><div class="slider" data-slider data-val="60"></div><span class="val mono" style="font-size:var(--font-size-xs);color:var(--color-text-muted);width:40px;text-align:right">60</span></div>
+        <label class="choice"><span class="checkbox" data-toggle data-state="checked"></span>失败时自动重试</label>
+        <label class="choice"><span class="switch" data-toggle data-state="checked"></span>完成后发送通知</label>
       </div>
     </div>
     <div class="dialog-actions"><button class="btn btn--sm" data-close>取消</button><button class="btn btn--sm btn--primary" data-close data-toast="success">保存设置</button></div>
@@ -236,28 +226,25 @@
   setTheme(localStorage.getItem('gui-theme') || 'dark');
 
   // sidebar nav
-  document.querySelectorAll('.nav-item').forEach(n => n.addEventListener('click', () => {
-    document.querySelectorAll('.nav-item').forEach(x => x.removeAttribute('data-state')); n.setAttribute('data-state','active');
+  document.querySelectorAll('.sidebar-item[data-nav]').forEach(n => n.addEventListener('click', () => {
+    document.querySelectorAll('.sidebar-item[data-nav]').forEach(x => x.classList.remove('is-selected')); n.classList.add('is-selected');
   }));
   // toolbar / segmented single-select
   document.querySelectorAll('.toolbar, [data-segmented]').forEach(g => g.querySelectorAll('button').forEach(b =>
     b.addEventListener('click', () => { g.querySelectorAll('button').forEach(x => x.removeAttribute('data-state')); b.setAttribute('data-state','checked'); })));
   // table row select
-  document.querySelectorAll('#dt tbody tr').forEach(tr => tr.addEventListener('click', () => {
-    document.querySelectorAll('#dt tbody tr').forEach(x => x.removeAttribute('data-state')); tr.setAttribute('data-state','selected');
+  document.querySelectorAll('#datagrid tbody tr').forEach(tr => tr.addEventListener('click', () => {
+    document.querySelectorAll('#datagrid tbody tr').forEach(x => x.removeAttribute('data-state')); tr.setAttribute('data-state','selected');
   }));
-  // sort header
   // ============ data table: enhance head (sort · resize · reorder) ============
   (function enhanceTable(){
-    const table = document.getElementById('dt');
+    const table = document.getElementById('datagrid');
     if (!table) return;
     const headRow = table.querySelector('thead tr');
     const ths = [...headRow.children];
     const idx = th => [...headRow.children].indexOf(th);
 
-    // wrap the table in a horizontal scroller so resized/reordered columns never clip
-    const scroll = document.createElement('div'); scroll.className = 'dt-scroll';
-    table.parentNode.insertBefore(scroll, table); scroll.appendChild(table);
+    const scroll = table.closest('.datagrid-scroll');
 
     function paintSort(th){
       const s = th.querySelector('.th-sort'); if (!s) return;
@@ -301,7 +288,6 @@
     let rz = null;
     function lockWidths(){
       if (table.dataset.locked) return;
-      // let the table size to its content first, then measure natural widths WITH glyphs present
       table.style.width = 'max-content';
       void table.offsetWidth;                                   // force reflow
       const w = ths.map(th => Math.ceil(th.getBoundingClientRect().width) + 6);  // +6 headroom so the sort arrow never clips the label
@@ -329,7 +315,6 @@
       grip.addEventListener('pointermove', e => {
         if (!rz) return;
         let dx = e.clientX - rz.startX;
-        // clamp so neither column drops below MIN
         dx = Math.max(MIN - rz.w0, Math.min(dx, rz.c0 - MIN));
         rz.th.style.width = (rz.w0 + dx) + 'px';
         rz.comp.style.width = (rz.c0 - dx) + 'px';
