@@ -1,5 +1,5 @@
-/* ---------- Breadcrumb ---------- */
-.breadcrumb { display: inline-flex; align-items: center; gap: 2px; font-size: var(--font-size-sm); flex-wrap: wrap; }
+/* ---------- Breadcrumb —— 旋钮: --breadcrumb-gap (§4) ---------- */
+.breadcrumb { display: inline-flex; align-items: center; gap: var(--breadcrumb-gap); font-size: var(--font-size-sm); flex-wrap: wrap; }
 .breadcrumb a, .breadcrumb span.crumb { display: inline-flex; align-items: center; gap: 5px; padding: 2px 6px; border-radius: var(--radius-sm); color: var(--color-text-muted); text-decoration: none; cursor: pointer; font-family: var(--font-family-mono); white-space: nowrap; }
 .breadcrumb a:hover { background: var(--color-bg-hover); color: var(--color-text); }
 .breadcrumb .sep { color: var(--color-text-dim); font-family: var(--font-family-mono); user-select: none; }
