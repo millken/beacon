@@ -147,7 +147,6 @@
   --sidebar-w-collapsed: 48px;
   --sidebar-item-h: 28px;
   --statusbar-h: 24px;
-  --btn-border-width: var(--control-border-w);
 
   /* ===== 5) 语义角色 ROLES —— role + -foreground 配对（shadcn 式） ===== */
   --background:             var(--color-bg);

@@ -1,94 +1,58 @@
-/* =====================================================================
-   components.css —— Beacon GUI 组件层
-   ---------------------------------------------------------------------
-   ★ 本文件只消费 colors_and_type.css 暴露的设计 Token，绝不硬编码色值，
-     也不依赖 Beacon 原始 styles.css。这是「token → 组件层 → 用法」三级
-     架构的中间层：换 token / 切 light·dark / 套 preset，组件全部自动跟随。
-
-   刻意大量使用我们 token 体系的两处增值：
-     · Semi 式功能色矩阵：--color-primary-hover / -active / -disabled
-       / -light-default / -light-hover（danger / success 同构）
-     · 语义角色 ROLES：--primary / --card / --muted / --destructive / --ring
-   ===================================================================== */
-
-/* ---------- Button ---------- */
+/* button —— 接线: --btn-bg/-fg/-border(+hover/active) · 旋钮: --btn-shadow/-active-shadow/-radius */
 .btn {
-  appearance: none; position: relative;
+  --btn-bg: var(--secondary);
+  --btn-fg: var(--secondary-foreground);
+  --btn-border: var(--color-border);
+  --btn-bg-hover: var(--color-secondary-hover);
+  --btn-border-hover: var(--color-border-strong);
+  --btn-bg-active: var(--color-secondary-active);
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-  font-family: var(--font-family-sans);
-  font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); line-height: 1.35;
+  height: var(--control-h-md);
   padding: var(--control-pad-y) var(--control-pad-x);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  background: var(--color-bg-surface);
-  color: var(--color-text);
-  cursor: pointer; white-space: nowrap;
-  transition: background var(--duration-fast) ease, border-color var(--duration-fast) ease, color var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+  background: var(--btn-bg); color: var(--btn-fg);
+  border: var(--control-border-w) solid var(--btn-border);
+  border-radius: var(--btn-radius);
+  box-shadow: var(--btn-shadow);
+  font: var(--font-weight-medium) var(--font-size-sm)/1 var(--font-family-sans);
+  cursor: pointer; user-select: none;
+  transition: background var(--duration-fast) var(--ease-standard),
+              border-color var(--duration-fast) var(--ease-standard);
 }
-.btn svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 1.6; fill: none; flex: none; }
-.btn .btn-affix { opacity: .7; display: inline-flex; }
-.btn:hover { background: var(--color-bg-hover); border-color: var(--color-border-strong); }
-.btn:active, .btn[data-state="pressed"] {
-  background: var(--color-bg-active); border-color: var(--color-border-strong);
-  box-shadow: var(--btn-active-shadow);          /* 顶边内凹，footprint 不变 */
-}
-.btn:focus-visible { outline: none; border-color: var(--color-primary); box-shadow: var(--focus-ring); }
-.btn[disabled] { opacity: .45; cursor: not-allowed; pointer-events: none; }
+.btn:hover  { background: var(--btn-bg-hover); border-color: var(--btn-border-hover); }
+.btn:active { background: var(--btn-bg-active); box-shadow: var(--btn-active-shadow); }
+.btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+.btn:disabled { opacity: .55; cursor: not-allowed; }
 
-/* Primary —— 用功能色矩阵的 default/hover/active/disabled */
-.btn--primary { background: var(--color-primary); border-color: var(--color-primary); color: var(--color-accent-fg); }
-.btn--primary:hover { background: var(--color-primary-hover); border-color: var(--color-primary-hover); }
-.btn--primary:active, .btn--primary[data-state="pressed"] { background: var(--color-primary-active); border-color: var(--color-primary-active); }
-.btn--primary[disabled] { opacity: 1; background: var(--color-primary-disabled); border-color: transparent; color: var(--color-text-dim); }
-.btn--primary .btn-affix { opacity: .85; }
-
-/* Soft —— 浅版功能色（matrix 的 light 三态），桌面里常用作「弱主操作」 */
-.btn--soft { background: var(--color-primary-light-default); border-color: transparent; color: var(--color-primary); }
-.btn--soft:hover { background: var(--color-primary-light-hover); border-color: transparent; }
-.btn--soft:active, .btn--soft[data-state="pressed"] { background: var(--color-primary-light-active); }
-
-/* Danger —— 功能色矩阵 */
-.btn--danger { background: var(--color-danger); border-color: var(--color-danger); color: #fff; }
-.btn--danger:hover { background: var(--color-danger-hover); border-color: var(--color-danger-hover); }
-.btn--danger:active, .btn--danger[data-state="pressed"] { background: var(--color-danger-active); border-color: var(--color-danger-active); }
-.btn--danger[disabled] { opacity: 1; background: var(--color-danger-disabled); border-color: transparent; color: var(--color-text-dim); }
-
-/* Ghost —— 无静息边框/填充，只靠表面色；不参与内凹 */
-.btn--ghost { background: transparent; border-color: transparent; color: var(--color-text-muted); }
-.btn--ghost:hover { background: var(--color-bg-hover); border-color: transparent; color: var(--color-text); }
-.btn--ghost:active, .btn--ghost[data-state="pressed"] { background: var(--color-bg-active); border-color: transparent; box-shadow: none; }
-
-/* Outline —— 次强调，无填充 */
-.btn--outline { background: transparent; border-color: var(--color-border-strong); }
-.btn--outline:hover { background: var(--color-bg-hover); border-color: var(--color-text-muted); }
-
-/* Checked toggle = 实色 accent */
-.btn[data-state="checked"] { background: var(--color-primary); border-color: var(--color-primary); color: var(--color-accent-fg); }
-
-/* Sizes */
-.btn--sm { padding: var(--control-pad-y-sm) var(--control-pad-x-sm); font-size: var(--font-size-xs); gap: 4px; }
-.btn--sm svg { width: 12px; height: 12px; }
-.btn--lg { padding: var(--control-pad-y-lg) var(--control-pad-x-lg); font-size: var(--font-size-md); gap: 7px; }
-.btn--lg svg { width: 16px; height: 16px; }
-
-/* Icon-only —— 正方形 */
-.btn--icon { padding: 0; width: var(--control-h-md); height: var(--control-h-md); gap: 0; }
-.btn--icon.btn--sm { width: var(--control-h-sm); height: var(--control-h-sm); }
-.btn--icon.btn--lg { width: var(--control-h-lg); height: var(--control-h-lg); }
-.btn--icon svg { width: 15px; height: 15px; }
-.btn--icon.btn--sm svg { width: 13px; height: 13px; }
-.btn--icon.btn--lg svg { width: 18px; height: 18px; }
+.btn--primary { --btn-bg: var(--color-primary); --btn-fg: var(--primary-foreground);
+  --btn-border: var(--color-primary); --btn-bg-hover: var(--color-primary-hover);
+  --btn-border-hover: var(--color-primary-hover); --btn-bg-active: var(--color-primary-active); }
+.btn--soft { --btn-bg: var(--color-primary-light-default); --btn-fg: var(--color-primary);
+  --btn-border: transparent; --btn-bg-hover: var(--color-primary-light-hover);
+  --btn-border-hover: transparent; --btn-bg-active: var(--color-primary-light-active); }
+.btn--danger { --btn-bg: var(--destructive); --btn-fg: var(--destructive-foreground);
+  --btn-border: var(--destructive); --btn-bg-hover: var(--destructive-hover);
+  --btn-border-hover: var(--destructive-hover); --btn-bg-active: var(--color-danger-active); }
+.btn--ghost { --btn-bg: transparent; --btn-border: transparent;
+  --btn-bg-hover: var(--subtle); --btn-border-hover: transparent; --btn-bg-active: var(--color-bg-active); }
+.btn--ghost:active { box-shadow: none; }
+.btn--outline { --btn-bg: transparent; --btn-fg: var(--color-primary); --btn-border: var(--color-primary);
+  --btn-bg-hover: var(--color-primary-light-default); --btn-border-hover: var(--color-primary); }
+.btn--sm { height: var(--control-h-sm); padding: var(--control-pad-y-sm) var(--control-pad-x-sm); font-size: var(--font-size-2xs); }
+.btn--lg { height: var(--control-h-lg); padding: var(--control-pad-y-lg) var(--control-pad-x-lg); font-size: var(--font-size-md); }
+.btn--icon { width: var(--control-h-md); padding: 0; }
+.btn--icon.btn--sm { width: var(--control-h-sm); }
+.btn--icon.btn--lg { width: var(--control-h-lg); }
 
 /* Loading —— spinner 取代图标，label 变暗，宽度不变 */
 .btn[data-loading="true"] { cursor: progress; pointer-events: none; color: color-mix(in oklab, currentColor 82%, transparent); }
-.btn--primary[data-loading="true"], .btn--danger[data-loading="true"], .btn[data-loading="true"][data-state="checked"] { color: var(--color-accent-fg); }
-.btn--danger[data-loading="true"] { color: #fff; }
+.btn--primary[data-loading="true"], .btn--danger[data-loading="true"] { color: var(--btn-fg); }
 .btn[data-loading="true"] .btn-affix, .btn[data-loading="true"] > svg { display: none; }
 .btn[data-loading="true"]::before {
   content: ""; width: 13px; height: 13px; flex: none;
   border: 2px solid currentColor; border-top-color: transparent; border-radius: 50%;
   opacity: .9; animation: cmp-spin 700ms linear infinite;
 }
+
 .icon-btn { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 20px; border: none; background: transparent; color: var(--color-text-dim); border-radius: var(--radius-sm); cursor: pointer; }
 .icon-btn:hover { background: var(--color-bg-active); color: var(--color-text); }
 .icon-btn svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 1.6; fill: none; }
