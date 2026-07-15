@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nav · Beacon GUI 组件</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="stylesheet" href="components.css" />
+<style>
+  body { background: var(--color-bg); color: var(--color-text); padding: 0 0 80px; font-family: var(--font-family-sans); font-size: var(--font-size-md); }
+  .bx-top { position: sticky; top: 0; z-index: 50; height: 44px; display: flex; align-items: center; gap: 12px; padding: 0 20px; background: var(--color-bg-subtle); border-bottom: 1px solid var(--color-border); }
+  .bx-top .logo { display: flex; align-items: center; gap: 8px; font-weight: var(--font-weight-semibold); }
+  .bx-top .logo i { width: 9px; height: 9px; border-radius: var(--radius-full); background: var(--color-accent); box-shadow: 0 0 7px var(--color-accent); }
+  .bx-top .kicker { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); text-transform: uppercase; letter-spacing: .06em; }
+  .bx-top .sp { flex: 1; }
+  .bx-seg { display: flex; border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); overflow: hidden; }
+  .bx-seg button { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); background: var(--color-bg-surface); color: var(--color-text-muted); border: 0; padding: 5px 12px; cursor: pointer; text-transform: uppercase; }
+  .bx-seg button[data-on="true"] { background: var(--color-accent); color: var(--color-accent-fg); }
+  .bx-wrap { max-width: 1080px; margin: 0 auto; padding: 28px 28px 0; }
+  .bx-kicker { font-family: var(--font-family-mono); font-size: var(--font-size-xs); color: var(--color-text-dim); }
+  .bx-wrap h1 { font-size: var(--font-size-2xl); line-height: var(--leading-tight); font-weight: var(--font-weight-semibold); margin: 6px 0 10px; }
+  .bx-note { color: var(--color-text-muted); max-width: 760px; margin: 0; line-height: 1.55; }
+  .bx-sec { border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--card); margin-top: 18px; overflow: hidden; }
+  .bx-sechead { padding: 9px 16px; background: var(--muted); border-bottom: 1px solid var(--color-border); font-family: var(--font-family-mono); font-size: var(--font-size-xs); text-transform: uppercase; letter-spacing: .05em; color: var(--color-text-muted); }
+  .bx-secbody { padding: 18px; }
+  .bx-spec { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); margin-top: 16px; line-height: 1.7; border-top: 1px dashed var(--color-border); padding-top: 12px; }
+  .bx-cap { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); margin-bottom: 10px; }
+  .bx-row { display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start; }
+</style>
+</head>
+<body>
+<div class="bx-top">
+  <div class="logo"><i></i>Beacon</div>
+  <span class="kicker">components / nav</span>
+  <span class="sp"></span>
+  <span class="kicker">theme</span>
+  <div class="bx-seg" id="themeSeg"><button data-theme-val="light">light</button><button data-theme-val="dark">dark</button></div>
+</div>
+<div class="bx-wrap">
+  <p class="bx-kicker">// components · navigation · layout</p>
+  <h1>Command · Stepper · Drawer · Split · Window · Divider</h1>
+  <p class="bx-note">导航与布局族:命令面板(⌘K)、步骤向导、抽屉、可拖拽分割面板、窗口控件、分隔线、折叠区。全 mono 快捷键,icon 一律 SVG,窗口关闭键 hover 红。</p>
+
+  <div class="bx-sec">
+    <div class="bx-sechead">Command palette · ⌘K</div>
+    <div class="bx-secbody">
+      <div class="cmdk">
+        <div class="cmdk-input"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><input value="render" /></div>
+        <div class="cmdk-list">
+          <div class="cmdk-group">Actions</div>
+          <div class="cmdk-item" data-active><svg viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></svg>Render queue<span class="sc"><span class="kbd">⌘</span><span class="kbd">R</span></span></div>
+          <div class="cmdk-item"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New job<span class="sc"><span class="kbd">⌘</span><span class="kbd">N</span></span></div>
+          <div class="cmdk-group">Navigate</div>
+          <div class="cmdk-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="7" rx="1"/><rect x="3" y="14" width="18" height="7" rx="1"/></svg>Go to Nodes<span class="sc"><span class="kbd">G</span><span class="kbd">N</span></span></div>
+        </div>
+      </div>
+      <div class="bx-spec">输入框 + 分组列表,active 实色 accent + mono kbd 快捷键 · icon 全 SVG</div>
+    </div>
+  </div>
+
+  <div class="bx-sec">
+    <div class="bx-sechead">Stepper / wizard</div>
+    <div class="bx-secbody">
+      <div class="stepper">
+        <div class="step" data-state="done"><span class="num">✓</span><span class="lbl">Source</span></div>
+        <div class="bar"></div>
+        <div class="step" data-state="done"><span class="num">✓</span><span class="lbl">Preset</span></div>
+        <div class="bar"></div>
+        <div class="step" data-state="active"><span class="num">3</span><span class="lbl">Output</span></div>
+        <div class="bar"></div>
+        <div class="step"><span class="num">4</span><span class="lbl">Review</span></div>
+      </div>
+      <div class="bx-spec">已完成段 success 实色,当前段 accent 实色,未达段中性环 · 连接条随完成转 success</div>
+    </div>
+  </div>
+
+  <div class="bx-sec">
+    <div class="bx-sechead">Split panel · window controls</div>
+    <div class="bx-secbody">
+      <div class="bx-row">
+        <div style="flex:1;min-width:320px"><div class="bx-cap">resizable split</div>
+          <div class="split" style="height:120px">
+            <div class="pane" style="width:42%">左侧面板<br/><span style="font-family:var(--font-family-mono);font-size:var(--font-size-2xs);color:var(--color-text-dim)">explorer</span></div>
+            <div class="handle" title="drag to resize"></div>
+            <div class="pane" style="flex:1">主编辑区<br/><span style="font-family:var(--font-family-mono);font-size:var(--font-size-2xs);color:var(--color-text-dim)">editor</span></div>
+          </div>
+        </div>
+        <div><div class="bx-cap">window controls</div>
+          <div class="win-controls">
+            <button aria-label="minimize"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
+            <button aria-label="maximize"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14"/></svg></button>
+            <button class="close" aria-label="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <div class="bx-spec">split:6px 圆点纹理把手,hover 高亮,col-resize 光标 · window:26×22,close hover 红填充(防误触)· 全 SVG 图标</div>
+    </div>
+  </div>
+
+  <div class="bx-sec">
+    <div class="bx-sechead">Divider · collapsible</div>
+    <div class="bx-secbody">
+      <div class="bx-row">
+        <div style="width:300px">
+          <div class="bx-cap">dividers</div>
+          <div style="color:var(--color-text-muted);font-size:var(--font-size-sm)">上方内容</div>
+          <hr class="divider" />
+          <div class="divider--label">or</div>
+          <div style="color:var(--color-text-muted);font-size:var(--font-size-sm)">下方内容</div>
+        </div>
+        <div style="flex:1;min-width:300px">
+          <div class="bx-cap">collapsible section</div>
+          <div class="collapsible" data-state="open" id="coll">
+            <button class="collapsible-trigger">Advanced options<span class="chev"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></span></button>
+            <div class="collapsible-body">并发线程、GPU 选择、缓存路径、失败重试策略等高级渲染参数。点击标题折叠 / 展开,chevron 旋转。</div>
+          </div>
+        </div>
+      </div>
+      <div class="bx-spec">divider:水平 1px / 带标签(mono)/ 垂直 · collapsible:trigger + chevron 旋转 + 内容区,与 accordion 同族但独立卡片</div>
+    </div>
+  </div>
+</div>
+<script>
+  const root = document.documentElement;
+  function setTheme(t){ root.setAttribute('data-theme', t); localStorage.setItem('gui-theme', t);
+    document.querySelectorAll('#themeSeg button').forEach(b=>b.setAttribute('data-on', b.dataset.themeVal===t)); }
+  document.querySelectorAll('#themeSeg button').forEach(b=> b.onclick = ()=> setTheme(b.dataset.themeVal));
+  setTheme(localStorage.getItem('gui-theme') || 'dark');
+  // cmdk active follow hover
+  document.querySelectorAll('.cmdk-item').forEach(it => it.addEventListener('mouseenter', () => {
+    document.querySelectorAll('.cmdk-item').forEach(x => x.removeAttribute('data-active')); it.setAttribute('data-active','');
+  }));
+  // collapsible
+  const coll = document.getElementById('coll');
+  coll.querySelector('.collapsible-trigger').addEventListener('click', () => {
+    const open = coll.getAttribute('data-state') === 'open';
+    coll.setAttribute('data-state', open ? '' : 'open');
+    coll.querySelector('.collapsible-body').hidden = open;
+  });
+</script>
+</body>
+</html>

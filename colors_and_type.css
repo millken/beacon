@@ -1,0 +1,217 @@
+/* =====================================================================
+   Beacon · GUI Design Tokens  —  canonical token sheet
+   ---------------------------------------------------------------------
+   方法论借鉴 Semi Design 的 Design Token 体系（基础元素与样式解耦、语义化
+   命名、一处改动驱动全站迭代、一键明暗切换）。调性与色盘为团队现行的
+   「Beacon」桌面级工业系统：高密度、硬边、低彩中性基底、mono 优先、
+   状态色服务于读取而非装饰、半径上限 6px、阴影只为弹层服务。
+
+   分层（与 presets.js 对齐）：
+     1) 形状 SHAPE       —— 单旋钮 --radius 派生整套圆角
+     2) 密度 DENSITY     —— 8px 基（--space-4）+ 控件三档内边距
+     3) 排版 FONT        —— 双字体栈 · 7 档字号
+     4) 组件 COMPONENT   —— 按钮等结构默认（可被 preset 覆盖）
+     5) 语义角色 ROLES   —— shadcn 式 role + -foreground 配对
+     6) 色盘 LADDER      —— 6 级表面 / 4 级文本 / 3 级描边 / accent / 状态
+
+   本表内置 Beacon 的 dark（:root 默认）与 light（[data-theme=light]）。
+   全部 14 套 preset 的实时切换由 presets.js 的 applyPreset(key, theme) 驱动。
+   ===================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* ===== 1) 形状 SHAPE —— 单旋钮驱动 ===== */
+  --radius: 3px;                                       /* ← 唯一旋钮：2px 锐利 / 8px 圆润 */
+  --radius-sm:   max(0px, calc(var(--radius) - 1px));  /* tag / 按钮 / 输入 */
+  --radius-md:   var(--radius);                        /* 面板 */
+  --radius-lg:   calc(var(--radius) + 1px);            /* 弹层 */
+  --radius-card: calc(var(--radius) + 3px);            /* 大卡片 */
+  --radius-full: 9999px;                               /* 胶囊 / 圆点 */
+  --shadow-inset: inset 0 1px 2px rgba(0,0,0,0.05);    /* 输入内凹「井」—— 可编辑暗示 */
+  --shadow-well:  inset 0 1px 2px rgba(0,0,0,0.5);     /* slider / meter / vu 凹槽 */
+  --track-bg: rgba(0,0,0,0.4);
+
+  /* ===== 2) 密度 DENSITY —— base = --space-4 = 8px ===== */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;    /* 默认间距单元 */
+  --space-5: 12px;
+  --space-6: 16px;
+  --space-7: 24px;
+  --control-pad-y: 5px;    --control-pad-x: 13px;    /* 默认按钮 */
+  --control-pad-y-sm: 3px; --control-pad-x-sm: 9px;  /* 工具栏 / 表格内 */
+  --control-pad-y-lg: 7px; --control-pad-x-lg: 16px; /* Hero / 对话框确认 */
+  --input-pad-y: 4px;      --input-pad-x: 8px;       /* 输入框 / 选择器 */
+  --control-h-sm: 24px;    /* 控件高度（icon-only 正方形边长用） */
+  --control-h-md: 28px;
+  --control-h-lg: 34px;
+  /* 动效 MOTION —— 桌面工具：快、硬、无弹性 */
+  --duration-fast: 80ms;
+  --duration-base: 140ms;
+  --ease-standard: cubic-bezier(.2, 0, 0, 1);
+
+  /* ===== 3) 排版 FONT —— 双字体栈 · 7 档字号 ===== */
+  --font-family-sans: "Segoe UI Variable Text", "SF Pro Text", "Noto Sans", Ubuntu, Cantarell, sans-serif;
+  --font-family-mono: "JetBrains Mono", "Iosevka Term", "SF Mono", "Cascadia Mono", Consolas, monospace;
+  --font-size-2xs: 11px;  /* 角标 / kbd / 极小标签 */
+  --font-size-xs:  12px;  /* 辅助 / 状态栏 */
+  --font-size-sm:  12px;  /* 小标签 / badge / 表头 */
+  --font-size-md:  13px;  /* 正文默认 */
+  --font-size-lg:  15px;  /* 二级标题 / 侧栏条目 */
+  --font-size-xl:  18px;  /* 一级标题 */
+  --font-size-2xl: 24px;  /* 主页 / Hero */
+  --font-weight-regular:  400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --leading-tight:  1.2;
+  --leading-snug:   1.35;
+  --leading-normal: 1.4;
+
+  /* ===== 4) 组件 COMPONENT —— 结构默认（preset 可覆盖） ===== */
+  --btn-shadow: none;                                       /* 按钮默认扁平 */
+  --btn-border-width: 1px;
+  --btn-active-shadow: inset 0 1px 2px 0 rgba(0,0,0,0.15);/* 按下：紧贴顶边的物理刻痕，任意底色通用 */
+
+  /* ===== 5) 语义角色 ROLES —— role + -foreground 配对（shadcn 式） ===== */
+  --background:             var(--color-bg);
+  --foreground:             var(--color-text);
+  --card:                   var(--color-bg);
+  --card-foreground:        var(--color-text);
+  --popover:                var(--color-bg-surface);  /* light preset 会改写为 bg */
+  --popover-foreground:     var(--color-text);
+  --primary:                var(--color-accent);
+  --primary-foreground:     var(--color-accent-fg);
+  --primary-hover:          var(--color-accent-hover);
+  --secondary:              var(--color-bg-surface);
+  --secondary-foreground:   var(--color-text);
+  --muted:                  var(--color-bg-subtle);
+  --muted-foreground:       var(--color-text-muted);
+  --subtle:                 var(--color-bg-hover);    /* hover / selected 表面 */
+  --subtle-foreground:      var(--color-text);
+  --destructive:            var(--color-danger);
+  --destructive-foreground: #ffffff;
+  --destructive-hover:      var(--color-danger-hover);
+  --success:                var(--color-success);
+  --warning:                var(--color-warning);
+  --border-role:            var(--color-border);
+  --input:                  var(--color-border);
+  --ring:                   var(--color-accent);
+
+  /* ===== 5.5) 功能色 FUNCTIONAL —— 借鉴 Semi 的交互态矩阵（取值来自 Beacon 色盘）
+     Semi 的成熟之处：每个语义色都展开为 默认 / 悬浮 / 激活 / 禁用 + 浅版(light)三态，
+     供按钮、标签、背景、描边等不同元素引用。此处保留该结构，用 color-mix 从 Beacon
+     基础色派生，明暗主题下自动重算——结构是 Semi 的，颜色是 Beacon 的。 ===== */
+
+  /* primary —— 主强调（= accent） */
+  --color-primary:               var(--color-accent);
+  --color-primary-hover:         var(--color-accent-hover);
+  --color-primary-active:        color-mix(in oklab, var(--color-accent) 82%, #000);
+  --color-primary-disabled:      color-mix(in oklab, var(--color-accent) 40%, var(--color-bg));
+  --color-primary-light-default: color-mix(in oklab, var(--color-accent) 12%, var(--color-bg));
+  --color-primary-light-hover:   color-mix(in oklab, var(--color-accent) 18%, var(--color-bg));
+  --color-primary-light-active:  color-mix(in oklab, var(--color-accent) 26%, var(--color-bg));
+
+  /* secondary —— 次强调（中性表面态） */
+  --color-secondary:               var(--color-bg-surface);
+  --color-secondary-hover:         var(--color-bg-hover);
+  --color-secondary-active:        var(--color-bg-active);
+  --color-secondary-light-default: var(--color-bg-subtle);
+
+  /* tertiary —— 非强调（ghost / 中性文本态） */
+  --color-tertiary:               var(--color-text-muted);
+  --color-tertiary-hover:         var(--color-text);
+  --color-tertiary-light-default: var(--color-bg-hover);
+
+  /* info —— 客观中立（单 accent 体系下复用 primary） */
+  --color-info:               var(--color-accent);
+  --color-info-light-default: color-mix(in oklab, var(--color-accent) 12%, var(--color-bg));
+
+  /* success */
+  --color-success-hover:         color-mix(in oklab, var(--color-success) 86%, #fff);
+  --color-success-active:        color-mix(in oklab, var(--color-success) 82%, #000);
+  --color-success-disabled:      color-mix(in oklab, var(--color-success) 40%, var(--color-bg));
+  --color-success-light-default: color-mix(in oklab, var(--color-success) 14%, var(--color-bg));
+  --color-success-light-hover:   color-mix(in oklab, var(--color-success) 20%, var(--color-bg));
+
+  /* warning */
+  --color-warning-hover:         color-mix(in oklab, var(--color-warning) 86%, #fff);
+  --color-warning-active:        color-mix(in oklab, var(--color-warning) 82%, #000);
+  --color-warning-disabled:      color-mix(in oklab, var(--color-warning) 40%, var(--color-bg));
+  --color-warning-light-default: color-mix(in oklab, var(--color-warning) 14%, var(--color-bg));
+  --color-warning-light-hover:   color-mix(in oklab, var(--color-warning) 20%, var(--color-bg));
+
+  /* danger（-hover 由 preset 给出，其余派生） */
+  --color-danger-active:        color-mix(in oklab, var(--color-danger) 82%, #000);
+  --color-danger-disabled:      color-mix(in oklab, var(--color-danger) 40%, var(--color-bg));
+  --color-danger-light-default: color-mix(in oklab, var(--color-danger) 14%, var(--color-bg));
+  --color-danger-light-hover:   color-mix(in oklab, var(--color-danger) 20%, var(--color-bg));
+
+  /* 文本四级 —— 对齐 Semi text-0..3 命名（别名指向 Beacon 文本层级） */
+  --color-text-0: var(--color-text);        /* 最主要 */
+  --color-text-1: var(--color-text-muted);  /* 稍次要 */
+  --color-text-2: var(--color-text-dim);    /* 次要 */
+  --color-text-3: var(--color-text-inverse);/* 反相 */
+
+  /* ===== 6) 色盘 LADDER —— 默认 preset: Beacon · dark ===== */
+  --color-bg:         #11151c;  /* <body> / 编辑区 */
+  --color-bg-subtle:  #161b24;  /* 侧栏 / toolbar / 表头 */
+  --color-bg-surface: #1d2532;  /* 卡片 / 面板 / 按钮 / 输入 */
+  --color-bg-hover:   #263040;  /* hover */
+  --color-bg-active:  #32404f;  /* selected / pressed */
+  --color-bg-inverse: #e6ebf2;  /* tooltip / toast（反相） */
+  --color-border:        #2a3340;
+  --color-border-strong: #414d5e;
+  --color-divider:       #1e2530;
+  --color-text:         #dde4ee;  /* ≥ 7:1 · 冷调off-white，避免纯白在近黑上产生光晕 */
+  --color-text-muted:   #9aa5b6;  /* ≥ 4.5:1 */
+  --color-text-dim:     #677387;  /* ≥ 3:1 */
+  --color-text-inverse: #11151c;
+  --color-accent:       #6aa1ef;  /* 软化后的蓝：抬绿降饱和，消除暗背景上的剥离/光晕感 */
+  --color-accent-hover: #82b2f2;
+  --color-accent-fg:    #06101e;
+  --color-success: #45c081;
+  --color-warning: #e6ad45;
+  --color-danger:  #e8736e;       /* 去霓虹的红，降低暗模式刺眼感 */
+  --color-danger-hover: #ef8b86;
+  --shadow-card: 0 6px 20px rgba(0,6,20,0.55), 0 0 0 1px rgba(0,6,20,0.65);
+  --shadow-pop:  0 8px 28px rgba(0,6,20,0.65), 0 0 0 1px rgba(0,6,20,0.72);
+  --focus-ring:  0 0 0 2px rgba(106,161,239,0.45);
+  --color-overlay:  rgba(5,8,13,0.62);   /* 模态遮罩：暗模式用近黑深色加深层级 */
+  --color-input-bg: var(--color-bg);     /* 输入井：比面板(surface)更深，自然内凹 */
+  --control-selected-ring: var(--color-border-strong);/* 分段选中段描边：暗模式需强环托出 */
+}
+
+/* ===== preset: Beacon · light =====
+   平面模型(plane model)：浅色下抬升容器共用同一内容平面，层级靠 shadow +
+   强描边承载，而非更灰的填充。故 --popover 改写为 bg。 */
+[data-theme="light"] {
+  --color-bg:         #ffffff;
+  --color-bg-subtle:  #edf0f6;
+  --color-bg-surface: #e1e6ef;
+  --color-bg-hover:   #d2dae7;
+  --color-bg-active:  #c0cbda;
+  --color-bg-inverse: #11151c;
+  --color-border:        #d3d9e3;
+  --color-border-strong: #959eb0;
+  --color-divider:       #e7ebf2;
+  --color-text:         #11151c;
+  --color-text-muted:   #49515f;
+  --color-text-dim:     #5e6573;  /* 反向补偿：在白/浅灰卡片上均 ≥4.5:1（不浅于 slate-500） */
+  --color-text-inverse: #ffffff;
+  --color-accent:       #1a6fe0;
+  --color-accent-hover: #1561c8;
+  --color-accent-fg:    #ffffff;
+  --color-success: #1a7a3e;
+  --color-warning: #b06200;
+  --color-danger:  #c41c1c;
+  --color-danger-hover: #a51515;
+  --popover: var(--color-bg);
+  --shadow-card: 0 4px 14px rgba(10,30,80,0.12), 0 0 0 1px rgba(10,30,80,0.07);
+  --shadow-pop:  0 12px 24px -4px rgba(28,36,52,0.10), 0 4px 12px -2px rgba(28,36,52,0.05);/* 蓝灰双层：浅色下浮起通透不发脏 */
+  --focus-ring:  0 0 0 2px rgba(26,111,224,0.45);
+  --color-overlay:  rgba(28,36,52,0.42);  /* 模态遮罩：浅色用蓝灰 slate，避免纯黑盖白发脏 */
+  --color-input-bg: var(--color-bg-subtle);/* 输入井：在纯白弹窗/卡片上下沉一阶，拉开质感 */
+  --control-selected-ring: var(--color-border);/* 分段选中段描边：浅色靠填充对比即可，环要轻 */
+}

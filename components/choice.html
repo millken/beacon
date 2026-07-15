@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Choice · Beacon GUI 组件</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="stylesheet" href="components.css" />
+<style>
+  body { background: var(--color-bg); color: var(--color-text); padding: 0 0 80px; }
+  .bx-top { position: sticky; top: 0; z-index: 50; height: 44px; display: flex; align-items: center; gap: 12px; padding: 0 20px; background: var(--color-bg-subtle); border-bottom: 1px solid var(--color-border); }
+  .bx-top .logo { display: flex; align-items: center; gap: 8px; font-weight: var(--font-weight-semibold); }
+  .bx-top .logo i { width: 9px; height: 9px; border-radius: var(--radius-full); background: var(--color-accent); box-shadow: 0 0 7px var(--color-accent); }
+  .bx-top .kicker { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); text-transform: uppercase; letter-spacing: .06em; }
+  .bx-top .sp { flex: 1; }
+  .bx-seg { display: flex; border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); overflow: hidden; }
+  .bx-seg button { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); background: var(--color-bg-surface); color: var(--color-text-muted); border: 0; padding: 5px 12px; cursor: pointer; text-transform: uppercase; }
+  .bx-seg button[data-on="true"] { background: var(--color-accent); color: var(--color-accent-fg); }
+
+  .bx-wrap { max-width: 1080px; margin: 0 auto; padding: 28px 28px 0; }
+  .bx-kicker { font-family: var(--font-family-mono); font-size: var(--font-size-xs); color: var(--color-text-dim); }
+  .bx-wrap h1 { font-size: var(--font-size-2xl); line-height: var(--leading-tight); font-weight: var(--font-weight-semibold); margin: 6px 0 10px; }
+  .bx-note { color: var(--color-text-muted); max-width: 760px; margin: 0; line-height: 1.55; }
+  .bx-note b { color: var(--color-text); font-weight: var(--font-weight-semibold); }
+
+  .bx-sec { border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--card); margin-top: 18px; overflow: hidden; }
+  .bx-sechead { padding: 9px 16px; background: var(--muted); border-bottom: 1px solid var(--color-border); font-family: var(--font-family-mono); font-size: var(--font-size-xs); text-transform: uppercase; letter-spacing: .05em; color: var(--color-text-muted); }
+  .bx-secbody { padding: 18px; }
+  .bx-rowx { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; }
+  .bx-spec { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); margin-top: 16px; line-height: 1.7; border-top: 1px dashed var(--color-border); padding-top: 12px; }
+  .bx-spec b { color: var(--color-text-muted); font-weight: var(--font-weight-medium); }
+  .choice.disabled { opacity: .45; pointer-events: none; }
+</style>
+</head>
+<body>
+<div class="bx-top">
+  <div class="logo"><i></i>Beacon</div>
+  <span class="kicker">components / choice</span>
+  <span class="sp"></span>
+  <span class="kicker">theme</span>
+  <div class="bx-seg" id="themeSeg">
+    <button data-theme-val="light">light</button>
+    <button data-theme-val="dark">dark</button>
+  </div>
+</div>
+
+<div class="bx-wrap">
+  <p class="bx-kicker">// components · choice</p>
+  <h1>Checkbox · Radio · Switch · Segmented</h1>
+  <p class="bx-note">选择控件:小尺寸(13–14px)、内凹 inset、<b>选中态实色 accent</b>(<span style="font-family:var(--font-family-mono)">--color-primary</span>)。复选用方角勾、单选用圆点、开关用方形滑块(硬边,非 iOS 胶囊)。可点击交互。</p>
+
+  <!-- CHECKBOX -->
+  <div class="bx-sec">
+    <div class="bx-sechead">Checkbox</div>
+    <div class="bx-secbody">
+      <div class="bx-rowx">
+        <label class="choice"><span class="cb" data-toggle></span>未选 unchecked</label>
+        <label class="choice"><span class="cb" data-toggle data-state="checked"></span>已选 checked</label>
+        <label class="choice"><span class="cb" data-state="indeterminate"></span>半选 indeterminate</label>
+        <label class="choice disabled"><span class="cb" data-state="checked"></span>禁用 disabled</label>
+      </div>
+      <div class="bx-spec"><div>13px 方角 · 选中 = 实色 --color-primary + accent-fg 勾 · hover 边框转 primary · 内凹 inset 暗示可点</div></div>
+    </div>
+  </div>
+
+  <!-- RADIO -->
+  <div class="bx-sec">
+    <div class="bx-sechead">Radio group</div>
+    <div class="bx-secbody">
+      <div class="bx-rowx" data-radio-group>
+        <label class="choice"><span class="radio-ring" data-radio data-state="checked"></span>H.264</label>
+        <label class="choice"><span class="radio-ring" data-radio></span>H.265</label>
+        <label class="choice"><span class="radio-ring" data-radio></span>ProRes</label>
+        <label class="choice disabled"><span class="radio-ring"></span>VP9（禁用）</label>
+      </div>
+      <div class="bx-spec"><div>14px 圆环 · 选中 = primary 边框 + primary 圆点 · 单选组内互斥</div></div>
+    </div>
+  </div>
+
+  <!-- SWITCH -->
+  <div class="bx-sec">
+    <div class="bx-sechead">Switch</div>
+    <div class="bx-secbody">
+      <div class="bx-rowx">
+        <label class="choice"><span class="sw" data-toggle></span>关 off</label>
+        <label class="choice"><span class="sw" data-toggle data-state="checked"></span>开 on</label>
+        <label class="choice disabled"><span class="sw" data-state="checked"></span>禁用 disabled</label>
+      </div>
+      <div class="bx-spec"><div>26×14 方形滑块(2px 圆角,硬边)· 开 = 实色 --color-primary + accent-fg 滑块 · 关 = bg-active 轨道</div></div>
+    </div>
+  </div>
+
+  <!-- SEGMENTED -->
+  <div class="bx-sec">
+    <div class="bx-sechead">Segmented · toggle group</div>
+    <div class="bx-secbody">
+      <div class="bx-rowx">
+        <div class="segmented" data-segmented>
+          <button data-state="checked">Fit</button>
+          <button>Fill</button>
+          <button>Stretch</button>
+        </div>
+        <div class="segmented" data-segmented>
+          <button data-state="checked">1x</button>
+          <button>2x</button>
+          <button>4x</button>
+        </div>
+      </div>
+      <div class="bx-spec"><div>内嵌式分段控件 · 选中段 = bg-surface + 1px 环 · 用于 2–4 个短选项的视图切换</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const root = document.documentElement;
+  function setTheme(t){ root.setAttribute('data-theme', t); localStorage.setItem('gui-theme', t);
+    document.querySelectorAll('#themeSeg button').forEach(b=>b.setAttribute('data-on', b.dataset.themeVal===t)); }
+  document.querySelectorAll('#themeSeg button').forEach(b=> b.onclick = ()=> setTheme(b.dataset.themeVal));
+  setTheme(localStorage.getItem('gui-theme') || 'light');
+
+  // checkbox / switch toggle
+  document.querySelectorAll('[data-toggle]').forEach(el => el.addEventListener('click', () => {
+    el.dataset.state = el.dataset.state === 'checked' ? '' : 'checked';
+  }));
+  // radio single-select within group
+  document.querySelectorAll('[data-radio-group]').forEach(g => g.querySelectorAll('[data-radio]').forEach(r =>
+    r.addEventListener('click', () => { g.querySelectorAll('[data-radio]').forEach(x => x.dataset.state = ''); r.dataset.state = 'checked'; })
+  ));
+  // segmented single-select
+  document.querySelectorAll('[data-segmented]').forEach(g => g.querySelectorAll('button').forEach(b =>
+    b.addEventListener('click', () => { g.querySelectorAll('button').forEach(x => x.dataset.state = ''); b.dataset.state = 'checked'; })
+  ));
+</script>
+</body>
+</html>

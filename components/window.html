@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Beacon · Desktop App Window</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="stylesheet" href="components.css" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    font-family: var(--font-family-sans);
+    color: var(--color-text);
+    /* desktop wallpaper — deep neutral + faint technical dot grid + soft vignette */
+    background-color: #090c12;
+    background-image:
+      radial-gradient(rgba(120,150,200,0.05) 1px, transparent 1.4px),
+      radial-gradient(1200px 700px at 50% -10%, rgba(77,155,255,0.06), transparent 70%);
+    background-size: 24px 24px, 100% 100%;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ---- desktop menubar ---- */
+  .menubar { height: 26px; flex: none; display: flex; align-items: center; gap: 16px; padding: 0 14px; background: rgba(14,18,25,0.92); border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 12px; color: rgba(226,233,241,0.85); }
+  .menubar .brand { display: flex; align-items: center; gap: 7px; font-weight: 600; }
+  .menubar .brand i { width: 8px; height: 8px; border-radius: 50%; background: #4d9bff; box-shadow: 0 0 6px #4d9bff; }
+  .menubar .mi { color: rgba(226,233,241,0.62); font-size: 12px; }
+  .menubar .mi:first-of-type { color: rgba(226,233,241,0.85); }
+  .menubar .sp { flex: 1; }
+  .menubar .tray { display: flex; align-items: center; gap: 14px; font-family: var(--font-family-mono); font-size: 11px; color: rgba(226,233,241,0.55); }
+  .menubar .tray svg { width: 13px; height: 13px; stroke: currentColor; stroke-width: 1.6; fill: none; vertical-align: middle; }
+
+  /* ---- desktop stage ---- */
+  .stage { flex: 1; display: flex; align-items: center; justify-content: center; padding: 30px; min-height: 0; }
+
+  /* ---- app window ---- */
+  .window { width: min(1080px, 88vw); height: min(720px, calc(100vh - 96px)); display: flex; flex-direction: column;
+    background: var(--color-bg); border: 1px solid rgba(255,255,255,0.08); border-radius: 11px; overflow: hidden;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 30px 70px -20px rgba(0,0,0,0.75), 0 12px 30px -12px rgba(0,0,0,0.6); }
+
+  /* window title bar (the OS chrome — app's own header lives inside the iframe) */
+  .titlebar { height: 34px; flex: none; display: flex; align-items: center; gap: 10px; padding: 0 12px; background: var(--color-bg-subtle); border-bottom: 1px solid var(--color-border); }
+  .traffic { display: flex; gap: 8px; }
+  .traffic i { width: 12px; height: 12px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+  .traffic .c { background: #ec6a5e; } .traffic .m { background: #f4bf4f; } .traffic .x { background: #61c554; }
+  .traffic i svg { width: 7px; height: 7px; stroke: rgba(0,0,0,0.5); stroke-width: 2; fill: none; opacity: 0; transition: opacity .1s; }
+  .traffic:hover i svg { opacity: 1; }
+  .titlebar .title { flex: 1; text-align: center; font-size: var(--font-size-sm); color: var(--color-text-muted); font-weight: var(--font-weight-medium); display: flex; align-items: center; justify-content: center; gap: 7px; }
+  .titlebar .title .led { width: 7px; height: 7px; border-radius: 50%; background: var(--color-accent); box-shadow: 0 0 5px var(--color-accent); }
+  .titlebar .winctl { display: flex; gap: 2px; }
+  .titlebar .winctl button { width: 26px; height: 22px; display: inline-flex; align-items: center; justify-content: center; border: none; background: transparent; color: var(--color-text-dim); cursor: pointer; border-radius: var(--radius-sm); }
+  .titlebar .winctl button svg { width: 11px; height: 11px; stroke: currentColor; stroke-width: 1.5; fill: none; }
+  .titlebar .winctl button:hover { background: var(--color-bg-hover); color: var(--color-text); }
+  .titlebar .winctl button.close:hover { background: var(--color-danger); color: #fff; }
+
+  /* the live app */
+  .window iframe { flex: 1; width: 100%; border: 0; display: block; background: var(--color-bg); }
+
+  /* ---- second floating window (peek, behind) ---- */
+  .window.peek { position: absolute; width: 360px; height: 240px; right: 46px; bottom: 52px; transform: rotate(0deg); z-index: 1; }
+  .window.peek .codeblock { border: 0; border-radius: 0; height: 100%; }
+  .window.peek .codeblock pre { height: 100%; }
+
+  .hint { position: fixed; left: 14px; bottom: 10px; font-family: var(--font-family-mono); font-size: 11px; color: rgba(226,233,241,0.4); }
+  @media (max-width: 720px) { .window.peek { display: none; } }
+</style>
+</head>
+<body>
+<!-- desktop menubar -->
+<div class="menubar">
+  <span class="brand"><i></i>Beacon</span>
+  <span class="mi">File</span><span class="mi">Edit</span><span class="mi">View</span><span class="mi">Render</span><span class="mi">Help</span>
+  <span class="sp"></span>
+  <span class="tray">
+    <span><svg viewBox="0 0 24 24"><path d="M5 12.5a7 7 0 0 1 14 0"/><path d="M2 9a11 11 0 0 1 20 0"/><circle cx="12" cy="17" r="1.5" fill="currentColor" stroke="none"/></svg></span>
+    <span><svg viewBox="0 0 24 24"><rect x="2" y="7" width="18" height="10" rx="2"/><path d="M22 10v4"/><rect x="4" y="9" width="11" height="6" rx="1" fill="currentColor" stroke="none"/></svg> 86%</span>
+    <span id="clock">02:14</span>
+  </span>
+</div>
+
+<!-- desktop stage with floating app window -->
+<div class="stage">
+  <!-- background peek window -->
+  <div class="window peek">
+    <div class="titlebar">
+      <div class="traffic"><i class="c"></i><i class="m"></i><i class="x"></i></div>
+      <span class="title" style="font-family:var(--font-family-mono);font-size:var(--font-size-2xs)">render.log</span>
+      <div class="winctl"></div>
+    </div>
+    <div class="codeblock" style="flex:1;background:var(--color-bg-inverse)">
+      <pre style="margin:0;padding:10px 12px;font-size:11px;line-height:1.7;color:var(--color-text-inverse);font-family:var(--font-family-mono)"><span style="opacity:.5">[02:14:51]</span> node-3 frame 1024 <span style="color:#45c081">ok</span>
+<span style="opacity:.5">[02:15:02]</span> node-5 frame 1088 <span style="color:#45c081">ok</span>
+<span style="opacity:.5">[02:16:38]</span> stage-2 <span style="color:#e8736e">fail · exit 137</span>
+<span style="opacity:.5">[02:17:10]</span> retry queued…
+<span style="opacity:.5">[02:17:44]</span> node-7 throttled <span style="color:#e6ad45">91%</span></pre>
+    </div>
+  </div>
+
+  <!-- main app window -->
+  <div class="window" style="position:relative;z-index:2">
+    <div class="titlebar">
+      <div class="traffic">
+        <i class="c" aria-label="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></i>
+        <i class="m" aria-label="minimize"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></i>
+        <i class="x" aria-label="zoom"><svg viewBox="0 0 24 24"><path d="M8 8h8v8"/></svg></i>
+      </div>
+      <span class="title"><span class="led"></span>Beacon — Render Farm</span>
+      <div class="winctl">
+        <button aria-label="minimize"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
+        <button aria-label="maximize"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14"/></svg></button>
+        <button class="close" aria-label="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </div>
+    </div>
+    <iframe src="index.html" title="Beacon Render Farm"></iframe>
+  </div>
+</div>
+
+<div class="hint">// 浮动窗口演示 · 主窗口为 index.html 实时嵌入</div>
+
+<script>
+  // live clock in menubar
+  function tick(){ const d = new Date(); document.getElementById('clock').textContent = String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0'); }
+  tick(); setInterval(tick, 10000);
+</script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dialog · Beacon GUI 组件</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="stylesheet" href="components.css" />
+<style>
+  body { background: var(--color-bg); color: var(--color-text); padding: 0 0 80px; }
+  .bx-top { position: sticky; top: 0; z-index: 50; height: 44px; display: flex; align-items: center; gap: 12px; padding: 0 20px; background: var(--color-bg-subtle); border-bottom: 1px solid var(--color-border); }
+  .bx-top .logo { display: flex; align-items: center; gap: 8px; font-weight: var(--font-weight-semibold); }
+  .bx-top .logo i { width: 9px; height: 9px; border-radius: var(--radius-full); background: var(--color-accent); box-shadow: 0 0 7px var(--color-accent); }
+  .bx-top .kicker { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); text-transform: uppercase; letter-spacing: .06em; }
+  .bx-top .sp { flex: 1; }
+  .bx-seg { display: flex; border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); overflow: hidden; }
+  .bx-seg button { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); background: var(--color-bg-surface); color: var(--color-text-muted); border: 0; padding: 5px 12px; cursor: pointer; text-transform: uppercase; }
+  .bx-seg button[data-on="true"] { background: var(--color-accent); color: var(--color-accent-fg); }
+
+  .bx-wrap { max-width: 1080px; margin: 0 auto; padding: 28px 28px 0; }
+  .bx-kicker { font-family: var(--font-family-mono); font-size: var(--font-size-xs); color: var(--color-text-dim); }
+  .bx-wrap h1 { font-size: var(--font-size-2xl); line-height: var(--leading-tight); font-weight: var(--font-weight-semibold); margin: 6px 0 10px; }
+  .bx-note { color: var(--color-text-muted); max-width: 760px; margin: 0; line-height: 1.55; }
+  .bx-note b { color: var(--color-text); font-weight: var(--font-weight-semibold); }
+
+  .bx-sec { border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--card); margin-top: 18px; overflow: hidden; }
+  .bx-sechead { padding: 9px 16px; background: var(--muted); border-bottom: 1px solid var(--color-border); font-family: var(--font-family-mono); font-size: var(--font-size-xs); text-transform: uppercase; letter-spacing: .05em; color: var(--color-text-muted); }
+  .bx-secbody { padding: 18px; }
+  .bx-spec { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); margin-top: 16px; line-height: 1.7; border-top: 1px dashed var(--color-border); padding-top: 12px; }
+  .bx-spec b { color: var(--color-text-muted); font-weight: var(--font-weight-medium); }
+  .bx-cap { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); margin-bottom: 10px; }
+  .bx-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  @media (max-width: 760px) { .bx-grid2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="bx-top">
+  <div class="logo"><i></i>Beacon</div>
+  <span class="kicker">components / dialog</span>
+  <span class="sp"></span>
+  <span class="kicker">theme</span>
+  <div class="bx-seg" id="themeSeg">
+    <button data-theme-val="light">light</button>
+    <button data-theme-val="dark">dark</button>
+  </div>
+</div>
+
+<div class="bx-wrap">
+  <p class="bx-kicker">// components · dialog · modal</p>
+  <h1>Dialog · Modal</h1>
+  <p class="bx-note">浮层对话框:<b>--shadow-pop + border-strong</b> 抬离背景,<b>mono 标题栏</b>带关闭键,主体可带语义图标(danger / warning / primary),底部操作区右对齐。遮罩用反相色半透明。扁平、硬边、无圆角溢出。</p>
+
+  <!-- LIVE MODAL TRIGGERS -->
+  <div class="bx-sec">
+    <div class="bx-sechead">Live · click to open</div>
+    <div class="bx-secbody">
+      <div class="row">
+        <button class="btn btn--primary" data-open="m-confirm">Confirm dialog</button>
+        <button class="btn btn--danger" data-open="m-danger">Delete (destructive)</button>
+        <button class="btn" data-open="m-form">Form dialog</button>
+      </div>
+      <div class="bx-spec"><div>点击打开真实模态:遮罩淡入 + 卡片轻微上移定格 · Esc / 点遮罩 / 关闭键均可关 · 遮罩 = bg-inverse 55% 半透明</div></div>
+    </div>
+  </div>
+
+  <!-- STATIC SHOWCASE -->
+  <div class="bx-sec">
+    <div class="bx-sechead">Static · variants on checkerboard</div>
+    <div class="bx-secbody">
+      <div class="bx-grid2">
+        <div>
+          <div class="bx-cap">destructive · with icon</div>
+          <div class="dialog-stage">
+            <div class="dialog-surface" style="max-width:none">
+              <div class="dialog-head"><span>Confirm · delete</span><button class="dialog-x" aria-label="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+              <div class="dialog-body dialog-body--icon">
+                <span class="dialog-icon dialog-icon--danger"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg></span>
+                <div><p class="dialog-title">删除渲染节点?</p><p class="dialog-desc">node-07 上 3 个运行中任务将被中止,此操作不可撤销。</p></div>
+              </div>
+              <div class="dialog-actions"><button class="btn btn--sm">取消</button><button class="btn btn--sm btn--danger">删除节点</button></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="bx-cap">primary · plain</div>
+          <div class="dialog-stage">
+            <div class="dialog-surface" style="max-width:none">
+              <div class="dialog-head"><span>New render job</span><button class="dialog-x" aria-label="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+              <div class="dialog-body">
+                <p class="dialog-title">创建渲染任务</p>
+                <p class="dialog-desc" style="margin-bottom:12px">选择输出预设并加入队列。</p>
+                <div class="field"><label>Preset</label><select class="select"><option>ProRes 422 · 4K</option><option>H.264 · 1080p</option></select></div>
+              </div>
+              <div class="dialog-actions"><button class="btn btn--sm">取消</button><button class="btn btn--sm btn--primary">加入队列</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bx-spec"><div>棋盘格底用于展示浮层边界与阴影 · 标题栏 mono uppercase + ✕ · 图标槽用浅版功能色(--color-danger-light-default 等)· 操作区 bg-subtle 右对齐</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- LIVE MODALS -->
+<div class="modal-overlay" id="m-confirm" data-modal>
+  <div class="dialog-surface">
+    <div class="dialog-head"><span>Confirm · reload</span><button class="dialog-x" data-close aria-label="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="dialog-body dialog-body--icon">
+      <span class="dialog-icon dialog-icon--primary"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg></span>
+      <div><p class="dialog-title">重新加载样本库?</p><p class="dialog-desc">未保存的筛选条件将丢失。重新加载约需 2 秒。</p></div>
+    </div>
+    <div class="dialog-actions"><button class="btn btn--sm" data-close>取消</button><button class="btn btn--sm btn--primary" data-close>重新加载</button></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="m-danger" data-modal>
+  <div class="dialog-surface">
+    <div class="dialog-head"><span>Confirm · delete</span><button class="dialog-x" data-close aria-label="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="dialog-body dialog-body--icon">
+      <span class="dialog-icon dialog-icon--danger"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span>
+      <div><p class="dialog-title">永久删除 5 个任务?</p><p class="dialog-desc">已选中的任务及其渲染产物将被永久删除,无法恢复。</p></div>
+    </div>
+    <div class="dialog-actions"><button class="btn btn--sm" data-close>取消</button><button class="btn btn--sm btn--danger" data-close>永久删除</button></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="m-form" data-modal>
+  <div class="dialog-surface">
+    <div class="dialog-head"><span>New render job</span><button class="dialog-x" data-close aria-label="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="dialog-body">
+      <p class="dialog-title">创建渲染任务</p>
+      <p class="dialog-desc" style="margin-bottom:14px">配置输出并加入渲染队列。</p>
+      <div class="col">
+        <div class="field"><label>Job name</label><input class="input" value="nightly-bake-04" /></div>
+        <div class="field"><label>Preset</label><select class="select"><option>ProRes 422 · 4K</option><option>H.264 · 1080p</option><option>VP9 · 1440p</option></select></div>
+        <label class="choice"><span class="cb" data-toggle data-state="checked"></span>完成后发送通知</label>
+      </div>
+    </div>
+    <div class="dialog-actions"><button class="btn btn--sm" data-close>取消</button><button class="btn btn--sm btn--primary" data-close>加入队列</button></div>
+  </div>
+</div>
+
+<script>
+  const root = document.documentElement;
+  function setTheme(t){ root.setAttribute('data-theme', t); localStorage.setItem('gui-theme', t);
+    document.querySelectorAll('#themeSeg button').forEach(b=>b.setAttribute('data-on', b.dataset.themeVal===t)); }
+  document.querySelectorAll('#themeSeg button').forEach(b=> b.onclick = ()=> setTheme(b.dataset.themeVal));
+  setTheme(localStorage.getItem('gui-theme') || 'light');
+
+  // modal open/close
+  function openModal(id){ const m = document.getElementById(id); if (m) m.setAttribute('data-state','open'); }
+  function closeAll(){ document.querySelectorAll('[data-modal]').forEach(m => m.removeAttribute('data-state')); }
+  document.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', () => openModal(b.dataset.open)));
+  document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', closeAll));
+  document.querySelectorAll('[data-modal]').forEach(m => m.addEventListener('click', e => { if (e.target === m) closeAll(); }));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
+  // checkbox toggle (form modal)
+  document.querySelectorAll('[data-toggle]').forEach(el => el.addEventListener('click', () => {
+    el.dataset.state = el.dataset.state === 'checked' ? '' : 'checked';
+  }));
+</script>
+</body>
+</html>

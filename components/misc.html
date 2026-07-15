@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Avatar · Chip · Empty · Skeleton · Beacon GUI 组件</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="stylesheet" href="components.css" />
+<style>
+  body { background: var(--color-bg); color: var(--color-text); padding: 0 0 80px; font-family: var(--font-family-sans); font-size: var(--font-size-md); }
+  .bx-top { position: sticky; top: 0; z-index: 50; height: 44px; display: flex; align-items: center; gap: 12px; padding: 0 20px; background: var(--color-bg-subtle); border-bottom: 1px solid var(--color-border); }
+  .bx-top .logo { display: flex; align-items: center; gap: 8px; font-weight: var(--font-weight-semibold); }
+  .bx-top .logo i { width: 9px; height: 9px; border-radius: var(--radius-full); background: var(--color-accent); box-shadow: 0 0 7px var(--color-accent); }
+  .bx-top .kicker { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); text-transform: uppercase; letter-spacing: .06em; }
+  .bx-top .sp { flex: 1; }
+  .bx-seg { display: flex; border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); overflow: hidden; }
+  .bx-seg button { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); background: var(--color-bg-surface); color: var(--color-text-muted); border: 0; padding: 5px 12px; cursor: pointer; text-transform: uppercase; }
+  .bx-seg button[data-on="true"] { background: var(--color-accent); color: var(--color-accent-fg); }
+
+  .bx-wrap { max-width: 1080px; margin: 0 auto; padding: 28px 28px 0; }
+  .bx-kicker { font-family: var(--font-family-mono); font-size: var(--font-size-xs); color: var(--color-text-dim); }
+  .bx-wrap h1 { font-size: var(--font-size-2xl); line-height: var(--leading-tight); font-weight: var(--font-weight-semibold); margin: 6px 0 10px; }
+  .bx-note { color: var(--color-text-muted); max-width: 760px; margin: 0; line-height: 1.55; }
+  .bx-note b { color: var(--color-text); font-weight: var(--font-weight-semibold); }
+
+  .bx-sec { border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--card); margin-top: 18px; overflow: hidden; }
+  .bx-sechead { padding: 9px 16px; background: var(--muted); border-bottom: 1px solid var(--color-border); font-family: var(--font-family-mono); font-size: var(--font-size-xs); text-transform: uppercase; letter-spacing: .05em; color: var(--color-text-muted); }
+  .bx-secbody { padding: 18px; }
+  .bx-spec { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); margin-top: 16px; line-height: 1.7; border-top: 1px dashed var(--color-border); padding-top: 12px; }
+  .bx-spec b { color: var(--color-text-muted); font-weight: var(--font-weight-medium); }
+  .bx-cap { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); margin-bottom: 12px; }
+  .bx-row { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; }
+  .bx-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 760px) { .bx-grid2 { grid-template-columns: 1fr; } }
+  .sk-card { border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-bg); padding: 14px; max-width: 320px; }
+  .sk-head { display: flex; gap: 10px; align-items: center; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+<div class="bx-top">
+  <div class="logo"><i></i>Beacon</div>
+  <span class="kicker">components / avatar · chip · empty · skeleton</span>
+  <span class="sp"></span>
+  <span class="kicker">theme</span>
+  <div class="bx-seg" id="themeSeg">
+    <button data-theme-val="light">light</button>
+    <button data-theme-val="dark">dark</button>
+  </div>
+</div>
+
+<div class="bx-wrap">
+  <p class="bx-kicker">// components · avatar · chip · empty · skeleton</p>
+  <h1>Avatar · Chip · Empty · Skeleton</h1>
+  <p class="bx-note">展示与反馈:头像(方角默认 + 状态点 + 堆叠)、可移除 chip(过滤标签)、空状态(虚线 glyph + 引导)、骨架屏(shimmer 加载占位)。方角硬边,mono 缩写,与桌面工具一致。</p>
+
+  <!-- AVATAR -->
+  <div class="bx-sec">
+    <div class="bx-sechead">Avatar · initials / status / stack</div>
+    <div class="bx-secbody">
+      <div class="bx-row">
+        <div><div class="bx-cap">sizes · 方角</div><div class="bx-row" style="gap:10px"><span class="avatar avatar--sm">JX</span><span class="avatar">RM</span><span class="avatar avatar--lg">AP</span></div></div>
+        <div><div class="bx-cap">circle · accent</div><div class="bx-row" style="gap:10px"><span class="avatar avatar--circle">SY</span><span class="avatar avatar--accent">DK</span><span class="avatar avatar--circle avatar--accent avatar--lg">ZL</span></div></div>
+        <div><div class="bx-cap">with status</div><div class="bx-row" style="gap:12px"><span class="avatar">JX<span class="status status--on"></span></span><span class="avatar">RM<span class="status status--busy"></span></span><span class="avatar">AP<span class="status"></span></span></div></div>
+        <div><div class="bx-cap">stack +N</div><div class="avatar-stack"><span class="avatar">JX</span><span class="avatar">RM</span><span class="avatar">AP</span><span class="avatar avatar--accent">+5</span></div></div>
+      </div>
+      <div class="bx-spec"><div>默认方角(radius-sm)· mono 缩写 · 状态点:on=success / busy=danger / 灰=离线,1.5px bg 描边 · 堆叠 -7px 叠 + bg 描边环</div></div>
+    </div>
+  </div>
+
+  <!-- CHIP -->
+  <div class="bx-sec">
+    <div class="bx-sechead">Chip · removable filter token</div>
+    <div class="bx-secbody">
+      <div class="bx-row" id="chips">
+        <span class="chip">node-03<span class="x" aria-label="remove"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
+        <span class="chip">status: running<span class="x" aria-label="remove"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
+        <span class="chip chip--accent"><span class="dot"></span>cpu &gt; 80%<span class="x" aria-label="remove"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
+        <span class="chip">owner: R. Miller<span class="x" aria-label="remove"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
+        <span class="chip chip--accent">preset: 4K<span class="x" aria-label="remove"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
+      </div>
+      <div class="bx-spec"><div>用于过滤条件 / 多选标签 · 默认中性表面 / accent 浅版 · 尾部 ✕ 可移除(hover 高亮)· 可带前导语义点 · 点 ✕ 实时删除</div></div>
+    </div>
+  </div>
+
+  <!-- EMPTY + SKELETON -->
+  <div class="bx-sec">
+    <div class="bx-sechead">Empty state · Skeleton loading</div>
+    <div class="bx-secbody">
+      <div class="bx-grid2">
+        <div>
+          <div class="bx-cap">empty state</div>
+          <div class="empty" style="border:1px solid var(--color-border);border-radius:var(--radius-sm);background:var(--color-bg)">
+            <div class="glyph"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 13h6"/></svg></div>
+            <div class="title">队列为空</div>
+            <div class="desc">当前没有渲染任务。新建一个任务或从预设导入开始。</div>
+            <button class="btn btn--primary btn--sm">New job</button>
+          </div>
+        </div>
+        <div>
+          <div class="bx-cap">skeleton · shimmer</div>
+          <div class="sk-card">
+            <div class="sk-head">
+              <span class="skeleton skeleton--circle" style="width:32px;height:32px"></span>
+              <div style="flex:1">
+                <div class="skeleton skeleton--line" style="width:55%"></div>
+                <div class="skeleton skeleton--line" style="width:35%;margin-top:6px"></div>
+              </div>
+            </div>
+            <div class="skeleton skeleton--text" style="width:100%"></div>
+            <div class="skeleton skeleton--text" style="width:92%"></div>
+            <div class="skeleton skeleton--text" style="width:74%"></div>
+            <div class="skeleton" style="width:100%;height:48px;margin-top:12px"></div>
+          </div>
+        </div>
+      </div>
+      <div class="bx-spec"><div>empty:虚线 glyph + 标题 + 引导文 + 主操作,居中 · skeleton:bg-active 占位 + 极淡 shimmer 平移(prefers-reduced-motion 下静止)· 圆形 / 文本行 / 块多种形状</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const root = document.documentElement;
+  function setTheme(t){ root.setAttribute('data-theme', t); localStorage.setItem('gui-theme', t);
+    document.querySelectorAll('#themeSeg button').forEach(b=>b.setAttribute('data-on', b.dataset.themeVal===t)); }
+  document.querySelectorAll('#themeSeg button').forEach(b=> b.onclick = ()=> setTheme(b.dataset.themeVal));
+  setTheme(localStorage.getItem('gui-theme') || 'dark');
+
+  // chip remove
+  document.querySelectorAll('#chips .x').forEach(x => x.addEventListener('click', e => {
+    e.stopPropagation(); const chip = x.closest('.chip');
+    chip.style.transition = 'opacity .12s ease'; chip.style.opacity = '0';
+    setTimeout(() => chip.remove(), 120);
+  }));
+</script>
+</body>
+</html>

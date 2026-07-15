@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Forms · Beacon GUI 组件</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="stylesheet" href="components.css" />
+<style>
+  body { background: var(--color-bg); color: var(--color-text); padding: 0 0 80px; font-family: var(--font-family-sans); font-size: var(--font-size-md); }
+  .bx-top { position: sticky; top: 0; z-index: 50; height: 44px; display: flex; align-items: center; gap: 12px; padding: 0 20px; background: var(--color-bg-subtle); border-bottom: 1px solid var(--color-border); }
+  .bx-top .logo { display: flex; align-items: center; gap: 8px; font-weight: var(--font-weight-semibold); }
+  .bx-top .logo i { width: 9px; height: 9px; border-radius: var(--radius-full); background: var(--color-accent); box-shadow: 0 0 7px var(--color-accent); }
+  .bx-top .kicker { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); text-transform: uppercase; letter-spacing: .06em; }
+  .bx-top .sp { flex: 1; }
+  .bx-seg { display: flex; border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); overflow: hidden; }
+  .bx-seg button { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); background: var(--color-bg-surface); color: var(--color-text-muted); border: 0; padding: 5px 12px; cursor: pointer; text-transform: uppercase; }
+  .bx-seg button[data-on="true"] { background: var(--color-accent); color: var(--color-accent-fg); }
+  .bx-wrap { max-width: 1080px; margin: 0 auto; padding: 28px 28px 0; }
+  .bx-kicker { font-family: var(--font-family-mono); font-size: var(--font-size-xs); color: var(--color-text-dim); }
+  .bx-wrap h1 { font-size: var(--font-size-2xl); line-height: var(--leading-tight); font-weight: var(--font-weight-semibold); margin: 6px 0 10px; }
+  .bx-note { color: var(--color-text-muted); max-width: 760px; margin: 0; line-height: 1.55; }
+  .bx-note b { color: var(--color-text); font-weight: var(--font-weight-semibold); }
+  .bx-sec { border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--card); margin-top: 18px; overflow: hidden; }
+  .bx-sechead { padding: 9px 16px; background: var(--muted); border-bottom: 1px solid var(--color-border); font-family: var(--font-family-mono); font-size: var(--font-size-xs); text-transform: uppercase; letter-spacing: .05em; color: var(--color-text-muted); }
+  .bx-secbody { padding: 18px; }
+  .bx-spec { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); margin-top: 16px; line-height: 1.7; border-top: 1px dashed var(--color-border); padding-top: 12px; }
+  .bx-cap { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); margin-bottom: 10px; }
+  .bx-row { display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start; }
+</style>
+</head>
+<body>
+<div class="bx-top">
+  <div class="logo"><i></i>Beacon</div>
+  <span class="kicker">components / forms</span>
+  <span class="sp"></span>
+  <span class="kicker">theme</span>
+  <div class="bx-seg" id="themeSeg"><button data-theme-val="light">light</button><button data-theme-val="dark">dark</button></div>
+</div>
+<div class="bx-wrap">
+  <p class="bx-kicker">// components · forms</p>
+  <h1>Search · Token input · Combobox · Color · Dropzone · Date</h1>
+  <p class="bx-note">高级输入族:带 icon 的搜索框(可清除)、标签/令牌输入、自动补全列表、色板选择、文件拖放区、日历日期选择。全部 token 驱动,icon 一律 SVG。</p>
+
+  <div class="bx-sec">
+    <div class="bx-sechead">Search · token input</div>
+    <div class="bx-secbody">
+      <div class="bx-row">
+        <div><div class="bx-cap">search · clearable</div>
+          <div class="search-input"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><input class="input" value="render-node" /><button class="clear" aria-label="clear"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+        </div>
+        <div style="min-width:280px;flex:1"><div class="bx-cap">token / tag input</div>
+          <div class="token-input" id="tokin">
+            <span class="chip chip--accent">render<span class="x" aria-label="remove"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
+            <span class="chip chip--accent">prores-422<span class="x" aria-label="remove"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
+            <input placeholder="add tag…" />
+          </div>
+        </div>
+      </div>
+      <div class="bx-spec">search:icon 内嵌 + 尾部清除(SVG)· token-input:focus-within 边框转 accent,chip 可移除 · 占位 mono</div>
+    </div>
+  </div>
+
+  <div class="bx-sec">
+    <div class="bx-sechead">Combobox / autocomplete</div>
+    <div class="bx-secbody">
+      <div class="bx-row">
+        <div style="width:280px"><div class="bx-cap">codec · filterable</div>
+          <input class="input" value="pro" style="margin-bottom:4px" />
+          <div class="listbox">
+            <div class="opt" data-active>ProRes 422 <span class="mono">avc</span></div>
+            <div class="opt" aria-selected="true">ProRes 4444 <span class="mono">hq</span></div>
+            <div class="opt">ProRes RAW <span class="mono">raw</span></div>
+          </div>
+        </div>
+        <div><div class="bx-cap">color swatch</div>
+          <div class="swatches" id="sw">
+            <button data-state="active" style="background:#6aa1ef"></button>
+            <button style="background:#45c081"></button>
+            <button style="background:#e6ad45"></button>
+            <button style="background:#e8736e"></button>
+            <button style="background:#9aa5b6"></button>
+          </div>
+        </div>
+      </div>
+      <div class="bx-spec">combobox:输入框 + 浮层列表,active 高亮实色 accent,已选 accent 文字 · 色板:方角,选中显聚焦环 + 差值混合圆点</div>
+    </div>
+  </div>
+
+  <div class="bx-sec">
+    <div class="bx-sechead">Dropzone · calendar</div>
+    <div class="bx-secbody">
+      <div class="bx-row">
+        <div style="width:280px"><div class="bx-cap">file dropzone</div>
+          <div class="dropzone"><svg viewBox="0 0 24 24"><path d="M12 15V3M8 7l4-4 4 4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg><span class="dz-title">拖放文件到此</span><span class="dz-sub">或点击浏览 · .blend .nk .exr</span></div>
+        </div>
+        <div><div class="bx-cap">date picker</div>
+          <div class="calendar" id="cal">
+            <div class="cal-head"><button class="cal-nav" aria-label="prev"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><span class="m">June 2026</span><button class="cal-nav" aria-label="next"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button></div>
+            <div class="cal-grid" id="calgrid"></div>
+          </div>
+        </div>
+      </div>
+      <div class="bx-spec">dropzone:虚线框,hover/拖入转 accent 浅版 · calendar:mono 日期,今日描边环,选中实色 accent,跨月日期 dim</div>
+    </div>
+  </div>
+</div>
+<script>
+  const root = document.documentElement;
+  function setTheme(t){ root.setAttribute('data-theme', t); localStorage.setItem('gui-theme', t);
+    document.querySelectorAll('#themeSeg button').forEach(b=>b.setAttribute('data-on', b.dataset.themeVal===t)); }
+  document.querySelectorAll('#themeSeg button').forEach(b=> b.onclick = ()=> setTheme(b.dataset.themeVal));
+  setTheme(localStorage.getItem('gui-theme') || 'dark');
+
+  // token input remove + focus
+  const tok = document.getElementById('tokin');
+  tok.addEventListener('click', () => tok.querySelector('input').focus());
+  tok.querySelectorAll('.x').forEach(x => x.addEventListener('click', e => { e.stopPropagation(); x.closest('.chip').remove(); }));
+  document.querySelector('.search-input .clear').addEventListener('click', () => { document.querySelector('.search-input .input').value = ''; });
+  // swatches
+  document.querySelectorAll('#sw button').forEach(b => b.addEventListener('click', () => { document.querySelectorAll('#sw button').forEach(x => x.removeAttribute('data-state')); b.setAttribute('data-state','active'); }));
+  // listbox
+  document.querySelectorAll('.listbox .opt').forEach(o => o.addEventListener('click', () => { document.querySelectorAll('.listbox .opt').forEach(x => x.removeAttribute('aria-selected')); o.setAttribute('aria-selected','true'); }));
+  // calendar (June 2026 starts Mon; 30 days)
+  const grid = document.getElementById('calgrid');
+  ['M','T','W','T','F','S','S'].forEach(d => { const e = document.createElement('div'); e.className='dow'; e.textContent=d; grid.appendChild(e); });
+  for (let i=0;i<1;i++){ const e=document.createElement('div'); e.className='day muted'; e.textContent=31+i; grid.appendChild(e); }
+  for (let d=1; d<=30; d++){ const e=document.createElement('div'); e.className='day'+(d===4?' today':''); if(d===18)e.setAttribute('data-state','selected'); e.textContent=d; e.addEventListener('click',()=>{ grid.querySelectorAll('.day').forEach(x=>x.removeAttribute('data-state')); e.setAttribute('data-state','selected'); }); grid.appendChild(e); }
+  for (let d=1; d<=5; d++){ const e=document.createElement('div'); e.className='day muted'; e.textContent=d; grid.appendChild(e); }
+</script>
+</body>
+</html>

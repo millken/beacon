@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Data · Beacon GUI 组件</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="stylesheet" href="components.css" />
+<style>
+  body { background: var(--color-bg); color: var(--color-text); padding: 0 0 80px; font-family: var(--font-family-sans); font-size: var(--font-size-md); }
+  .bx-top { position: sticky; top: 0; z-index: 50; height: 44px; display: flex; align-items: center; gap: 12px; padding: 0 20px; background: var(--color-bg-subtle); border-bottom: 1px solid var(--color-border); }
+  .bx-top .logo { display: flex; align-items: center; gap: 8px; font-weight: var(--font-weight-semibold); }
+  .bx-top .logo i { width: 9px; height: 9px; border-radius: var(--radius-full); background: var(--color-accent); box-shadow: 0 0 7px var(--color-accent); }
+  .bx-top .kicker { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); text-transform: uppercase; letter-spacing: .06em; }
+  .bx-top .sp { flex: 1; }
+  .bx-seg { display: flex; border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); overflow: hidden; }
+  .bx-seg button { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); background: var(--color-bg-surface); color: var(--color-text-muted); border: 0; padding: 5px 12px; cursor: pointer; text-transform: uppercase; }
+  .bx-seg button[data-on="true"] { background: var(--color-accent); color: var(--color-accent-fg); }
+  .bx-wrap { max-width: 1080px; margin: 0 auto; padding: 28px 28px 0; }
+  .bx-kicker { font-family: var(--font-family-mono); font-size: var(--font-size-xs); color: var(--color-text-dim); }
+  .bx-wrap h1 { font-size: var(--font-size-2xl); line-height: var(--leading-tight); font-weight: var(--font-weight-semibold); margin: 6px 0 10px; }
+  .bx-note { color: var(--color-text-muted); max-width: 760px; margin: 0; line-height: 1.55; }
+  .bx-sec { border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--card); margin-top: 18px; overflow: hidden; }
+  .bx-sechead { padding: 9px 16px; background: var(--muted); border-bottom: 1px solid var(--color-border); font-family: var(--font-family-mono); font-size: var(--font-size-xs); text-transform: uppercase; letter-spacing: .05em; color: var(--color-text-muted); }
+  .bx-secbody { padding: 18px; }
+  .bx-spec { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); margin-top: 16px; line-height: 1.7; border-top: 1px dashed var(--color-border); padding-top: 12px; }
+  .bx-cap { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); margin-bottom: 10px; }
+  .bx-grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .bx-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
+  @media (max-width: 760px) { .bx-grid4 { grid-template-columns: 1fr 1fr; } .bx-grid2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="bx-top">
+  <div class="logo"><i></i>Beacon</div>
+  <span class="kicker">components / data</span>
+  <span class="sp"></span>
+  <span class="kicker">theme</span>
+  <div class="bx-seg" id="themeSeg"><button data-theme-val="light">light</button><button data-theme-val="dark">dark</button></div>
+</div>
+<div class="bx-wrap">
+  <p class="bx-kicker">// components · data display</p>
+  <h1>Stat · List · Key-Value · Code · Timeline</h1>
+  <p class="bx-note">数据展示族:KPI 统计卡(带迷你柱 + 涨跌)、可选列表、键值描述表、代码块/终端(语法着色)、活动时间线。mono 数值、硬边、信息密度优先。</p>
+
+  <div class="bx-sec">
+    <div class="bx-sechead">Stat / KPI cards</div>
+    <div class="bx-secbody">
+      <div class="bx-grid4">
+        <div class="stat-card"><div class="k">Throughput</div><div class="v">1.2K<span style="font-size:var(--font-size-xs);color:var(--color-text-dim)">/s</span></div><div class="delta up">▲ 8.4%</div><div class="spark"><i style="height:40%"></i><i style="height:55%"></i><i style="height:45%"></i><i style="height:70%"></i><i style="height:60%"></i><i style="height:85%"></i><i style="height:100%"></i></div></div>
+        <div class="stat-card"><div class="k">Avg CPU</div><div class="v">78%</div><div class="delta down">▼ 3.1%</div><div class="spark"><i style="height:90%"></i><i style="height:75%"></i><i style="height:80%"></i><i style="height:60%"></i><i style="height:65%"></i><i style="height:55%"></i><i style="height:50%"></i></div></div>
+        <div class="stat-card"><div class="k">Queue</div><div class="v">128</div><div class="delta up">▲ 12</div><div class="spark"><i style="height:30%"></i><i style="height:40%"></i><i style="height:55%"></i><i style="height:50%"></i><i style="height:70%"></i><i style="height:80%"></i><i style="height:95%"></i></div></div>
+        <div class="stat-card"><div class="k">Errors</div><div class="v" style="color:var(--color-danger)">3</div><div class="delta up" style="color:var(--color-danger)">▲ 2</div><div class="spark"><i style="height:10%"></i><i style="height:5%"></i><i style="height:20%"></i><i style="height:15%"></i><i style="height:30%"></i><i style="height:25%"></i><i style="height:45%"></i></div></div>
+      </div>
+      <div class="bx-spec">k(mono uppercase)+ v(大号 mono)+ delta(涨绿 / 跌红 + 箭头)+ spark 迷你柱(primary 浅版)</div>
+    </div>
+  </div>
+
+  <div class="bx-sec">
+    <div class="bx-sechead">List · key-value</div>
+    <div class="bx-secbody">
+      <div class="bx-grid2">
+        <div><div class="bx-cap">selectable list</div>
+          <div class="list" id="list">
+            <div class="list-item"><div><div class="li-title">render-node-03</div><div class="li-sub">192.168.0.103 · 24 core</div></div><span class="li-meta">42%</span></div>
+            <div class="list-item" data-state="selected"><div><div class="li-title">render-node-05</div><div class="li-sub">192.168.0.105 · 32 core</div></div><span class="li-meta">63%</span></div>
+            <div class="list-item"><div><div class="li-title">render-node-07</div><div class="li-sub">192.168.0.107 · 32 core</div></div><span class="li-meta">91%</span></div>
+          </div>
+        </div>
+        <div><div class="bx-cap">key-value / metadata</div>
+          <dl class="kv">
+            <dt>Job</dt><dd>nightly-bake-04</dd>
+            <dt>Codec</dt><dd>ProRes 422 · 4K</dd>
+            <dt>Frames</dt><dd>1024 / 2400</dd>
+            <dt>Owner</dt><dd>R. Miller</dd>
+            <dt>Started</dt><dd>2026-06-04 02:14</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="bx-spec">list:行 hover/选中(accent 左缘)+ 右侧 mono meta · kv:左列 mono 标签底色 bg-subtle,右列值,1px 网格</div>
+    </div>
+  </div>
+
+  <div class="bx-sec">
+    <div class="bx-sechead">Code block · timeline</div>
+    <div class="bx-secbody">
+      <div class="bx-grid2">
+        <div><div class="bx-cap">code / terminal</div>
+          <div class="codeblock">
+            <div class="cb-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="name">render.config.json</span></div>
+            <pre><span class="ln">1</span><span class="tok-com">// output preset</span>
+<span class="ln">2</span><span class="tok-key">"codec"</span>: <span class="tok-str">"prores_422"</span>,
+<span class="ln">3</span><span class="tok-key">"threads"</span>: <span class="tok-num">32</span>,
+<span class="ln">4</span><span class="tok-key">"gpu"</span>: <span class="tok-num">true</span></pre>
+          </div>
+        </div>
+        <div><div class="bx-cap">activity timeline</div>
+          <div class="timeline">
+            <div class="tl-item ok"><div class="node"></div><div class="when">02:14:51</div><div class="what">渲染任务加入队列</div></div>
+            <div class="tl-item run"><div class="node"></div><div class="when">02:15:02</div><div class="what">node-05 开始渲染 frame 1024</div></div>
+            <div class="tl-item err"><div class="node"></div><div class="when">02:16:38</div><div class="what">stage-02 失败 · exit 137</div></div>
+            <div class="tl-item"><div class="node"></div><div class="when">02:17:10</div><div class="what">自动重试已排队</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="bx-spec">codeblock:反相底 + 窗口圆点 + 行号 + 语法着色(token 色)· timeline:左竖线 + 语义节点(ok/run/err 描边色)+ mono 时间</div>
+    </div>
+  </div>
+</div>
+<script>
+  const root = document.documentElement;
+  function setTheme(t){ root.setAttribute('data-theme', t); localStorage.setItem('gui-theme', t);
+    document.querySelectorAll('#themeSeg button').forEach(b=>b.setAttribute('data-on', b.dataset.themeVal===t)); }
+  document.querySelectorAll('#themeSeg button').forEach(b=> b.onclick = ()=> setTheme(b.dataset.themeVal));
+  setTheme(localStorage.getItem('gui-theme') || 'dark');
+  document.querySelectorAll('#list .list-item').forEach(it => it.addEventListener('click', () => {
+    document.querySelectorAll('#list .list-item').forEach(x => x.removeAttribute('data-state')); it.setAttribute('data-state','selected');
+  }));
+</script>
+</body>
+</html>
