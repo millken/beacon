@@ -47,6 +47,8 @@
   --control-h-sm: 24px;    /* 控件高度（icon-only 正方形边长用） */
   --control-h-md: 28px;
   --control-h-lg: 34px;
+  --control-radius: var(--radius-sm);   /* 控件统一圆角：按钮/输入/分段/标签共用 */
+  --control-border-w: 1px;              /* 控件统一描边宽 */
   /* 动效 MOTION —— 桌面工具：快、硬、无弹性 */
   --duration-fast: 80ms;                         /* @kind other */
   --duration-base: 140ms;                        /* @kind other */
@@ -69,10 +71,83 @@
   --leading-snug:   1.35;
   --leading-normal: 1.4;
 
-  /* ===== 4) 组件 COMPONENT —— 结构默认（preset 可覆盖） ===== */
-  --btn-shadow: none;                                       /* 按钮默认扁平 */
-  --btn-border-width: 1px;
-  --btn-active-shadow: inset 0 1px 2px 0 rgba(0,0,0,0.15);/* 按下：紧贴顶边的物理刻痕，任意底色通用 */
+  /* ===== 4) 组件 COMPONENT —— 结构旋钮注册表（skin API · 唯一默认值来源）
+     规则：组件 CSS 中只允许出现这些名字的「引用位」var(--x)，绝不允许声明位。
+     皮肤在 :root 覆盖 = 全局生效；容器 style="--x: …" = 局部生效。 ===== */
+  /* button */
+  --btn-shadow: none;
+  --btn-active-shadow: inset 0 1px 2px 0 rgba(0,0,0,0.15);
+  --btn-radius: var(--control-radius);
+  /* field */
+  --field-radius: var(--control-radius);
+  --field-shadow: var(--shadow-inset);
+  /* selection */
+  --switch-w: 34px;
+  --switch-h: 18px;
+  --slider-track-h: 4px;
+  --segmented-gap: 2px;
+  /* menu / combobox / cmdp（弹出选择族共用 menu 解剖） */
+  --menu-item-h: 26px;
+  --menu-pad: 4px;
+  --menu-min-w: 160px;
+  --cmdp-w: 560px;
+  --cmdp-list-h: 280px;
+  /* tag */
+  --tag-radius: var(--control-radius);
+  /* toolbar */
+  --toolbar-h: 36px;
+  --toolbar-gap: var(--space-2);
+  --toolbar-bg: var(--color-bg-subtle);
+  /* tabs */
+  --tab-h: 32px;
+  --tab-indicator-w: 2px;
+  /* breadcrumb */
+  --breadcrumb-gap: var(--space-2);
+  /* tree */
+  --tree-indent: 16px;
+  --tree-row-h: 24px;
+  /* table（标准表与 datagrid 共用） */
+  --table-row-h: 32px;
+  --table-head-h: 30px;
+  --table-cell-pad-x: 10px;
+  --table-zebra-bg: var(--color-bg-subtle);
+  --datagrid-toolbar-h: var(--toolbar-h);
+  /* splitter */
+  --splitter-handle-size: 6px;
+  --splitter-grip-color: var(--color-border-strong);
+  /* overlay */
+  --dialog-w: 440px;
+  --dialog-pad: var(--space-6);
+  --dialog-radius: var(--radius-lg);
+  --drawer-w: 320px;
+  --popover-min-w: 200px;
+  /* colorpicker */
+  --swatch-size: 18px;
+  --swatch-gap: var(--space-2);
+  --swatch-radius: var(--radius-sm);
+  /* datepicker */
+  --cal-cell-size: 28px;
+  /* indicator */
+  --led-size: 8px;
+  --progress-h: 6px;
+  --meter-h: 10px;
+  /* feedback */
+  --toast-w: 320px;
+  /* code */
+  --codeblock-pad: var(--space-5);
+  --codeblock-bg: var(--color-bg);
+  /* misc */
+  --avatar-size-sm: 20px;
+  --avatar-size-md: 28px;
+  --avatar-size-lg: 40px;
+  /* window / sidebar / shell */
+  --titlebar-h: 38px;
+  --win-btn-size: 12px;
+  --sidebar-w: 220px;
+  --sidebar-w-collapsed: 48px;
+  --sidebar-item-h: 28px;
+  --statusbar-h: 24px;
+  --btn-border-width: var(--control-border-w);
 
   /* ===== 5) 语义角色 ROLES —— role + -foreground 配对（shadcn 式） ===== */
   --background:             var(--color-bg);
