@@ -264,7 +264,7 @@ python3 - "$@" <<'PY'
 import re,sys,glob
 files=sys.argv[1:] or sorted(glob.glob('components/css/*.css'))
 tok=open('colors_and_type.css').read()
-sec4=re.search(r'===== 4\) 组件 COMPONENT.*?(?======= 5\))',tok,re.S).group(0)
+sec4=re.search(r'===== 4\) 组件 COMPONENT.*?(?==+ 5\) 语义)',tok,re.S).group(0)
 knobs=set(re.findall(r'(--[a-z][a-z0-9-]*)\s*:',sec4))
 globals_=set(re.findall(r'(--[a-z][a-z0-9-]*)\s*:',tok))
 def strip(css): return re.sub(r'/\*.*?\*/','',css,flags=re.S)
