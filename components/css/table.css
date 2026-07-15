@@ -1,107 +1,113 @@
 /* ---------- Standard table (content / records) ----------
-   对比 .dt：可读优先、行更松、sans 正文、表头句首大小写填充条、
+   对比 .datagrid：可读优先、行更松、sans 正文、表头句首大小写填充条、
    行选 = 前导复选框（无索引轨）、单元可含头像/副行/操作按钮、表头静态不可排序。 */
-.tbl-card { border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; background: var(--card); }
-.tbl-cap { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-bottom: 1px solid var(--color-border); }
-.tbl-cap h3 { margin: 0; font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); }
-.tbl-cap .sub { font-size: var(--font-size-xs); color: var(--color-text-dim); }
-.tbl-cap .sp { flex: 1; }
+.table-card { border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; background: var(--card); }
+.table-cap { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-bottom: 1px solid var(--color-border); }
+.table-cap h3 { margin: 0; font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); }
+.table-cap .sub { font-size: var(--font-size-xs); color: var(--color-text-dim); }
+.table-cap .sp { flex: 1; }
 
-.tbl { width: 100%; border-collapse: separate; border-spacing: 0; font-size: var(--font-size-md); }
-.tbl th, .tbl td { text-align: left; padding: 9px 14px; border-bottom: 1px solid var(--color-divider); vertical-align: middle; }
-.tbl thead th { background: var(--color-bg-subtle); color: var(--color-text-muted); font-weight: var(--font-weight-medium); font-size: var(--font-size-xs); border-bottom: 1px solid var(--color-border); white-space: nowrap; }
-.tbl tbody tr:last-child td { border-bottom: none; }
-.tbl tbody tr { transition: background var(--duration-fast) var(--ease-standard); }
-.tbl tbody tr:hover td { background: var(--color-bg-hover); }
-.tbl tbody tr[data-state="selected"] td { background: var(--color-primary-light-default); }
-.tbl tbody tr[data-state="selected"] td:first-child { box-shadow: inset 2px 0 0 0 var(--color-primary); }
+.table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: var(--font-size-md); }
+.table th, .table td { text-align: left; border-bottom: 1px solid var(--color-divider); vertical-align: middle; }
+.table td, .datagrid td { height: var(--table-row-h); padding: 0 var(--table-cell-pad-x); }
+.table th, .datagrid th { height: var(--table-head-h); padding: 0 var(--table-cell-pad-x); }
+.table thead th { background: var(--color-bg-subtle); color: var(--color-text-muted); font-weight: var(--font-weight-medium); font-size: var(--font-size-xs); border-bottom: 1px solid var(--color-border); white-space: nowrap; }
+.table tbody tr:last-child td { border-bottom: none; }
+.table tbody tr { transition: background var(--duration-fast) var(--ease-standard); }
+.table tbody tr:hover td { background: var(--subtle); }
+.table tbody tr[data-state="selected"] td { background: var(--color-bg-active); }
+.table tbody tr[data-state="selected"] td:first-child { box-shadow: inset 2px 0 0 0 var(--color-primary); }
 
 /* alignment helpers */
-.tbl .right { text-align: right; }
-.tbl .num   { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--font-family-mono); color: var(--color-text); }
-.tbl .dim   { color: var(--color-text-muted); }
+.table .right { text-align: right; }
+.table .num   { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--font-family-mono); color: var(--color-text); }
+.table .dim   { color: var(--color-text-muted); }
 
 /* leading select column */
-.tbl .sel { width: 1%; white-space: nowrap; padding-right: 4px; }
-.tbl thead .sel, .tbl tbody .sel { vertical-align: middle; }
+.table .sel { width: 1%; white-space: nowrap; padding-right: 4px; }
+.table thead .sel, .table tbody .sel { vertical-align: middle; }
 
 /* primary cell — icon/avatar + name (+ optional sub-line) */
-.tbl .lead { display: flex; align-items: center; gap: 10px; min-width: 0; }
-.tbl .lead .t-ico { width: 26px; height: 26px; flex: none; display: inline-flex; align-items: center; justify-content: center; border-radius: var(--radius-sm); background: var(--color-bg-active); color: var(--color-text-muted); }
-.tbl .lead .t-ico svg { width: 15px; height: 15px; stroke: currentColor; stroke-width: 1.6; fill: none; }
-.tbl .lead .nm { font-weight: var(--font-weight-medium); color: var(--color-text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.tbl .lead .meta { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); margin-top: 1px; }
+.table .lead { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.table .lead .t-ico { width: 26px; height: 26px; flex: none; display: inline-flex; align-items: center; justify-content: center; border-radius: var(--radius-sm); background: var(--color-bg-active); color: var(--color-text-muted); }
+.table .lead .t-ico svg { width: 15px; height: 15px; stroke: currentColor; stroke-width: 1.6; fill: none; }
+.table .lead .nm { font-weight: var(--font-weight-medium); color: var(--color-text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.table .lead .meta { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); margin-top: 1px; }
 
 /* trailing row actions — reveal on hover */
-.tbl .row-act { display: inline-flex; gap: 2px; justify-content: flex-end; opacity: 0; transition: opacity var(--duration-fast) var(--ease-standard); }
-.tbl tbody tr:hover .row-act, .tbl tbody tr[data-state="selected"] .row-act { opacity: 1; }
+.table .row-act { display: inline-flex; gap: 2px; justify-content: flex-end; opacity: 0; transition: opacity var(--duration-fast) var(--ease-standard); }
+.table tbody tr:hover .row-act, .table tbody tr[data-state="selected"] .row-act { opacity: 1; }
 
 /* variants */
-.tbl--zebra tbody tr:nth-child(even) td { background: color-mix(in oklab, var(--color-bg-subtle) 50%, transparent); }
-.tbl--zebra tbody tr:hover td { background: var(--color-bg-hover); }
-.tbl--zebra tbody tr[data-state="selected"] td { background: var(--color-primary-light-default); }
-.tbl--compact th, .tbl--compact td { padding: 5px 12px; }
+.table--zebra tbody tr:nth-child(2n) td { background: var(--table-zebra-bg); }
+.table--zebra tbody tr:hover td { background: var(--subtle); }
+.table--zebra tbody tr[data-state="selected"] td { background: var(--color-bg-active); }
+/* --table-row-h/--table-head-h are §4 knobs — never redeclare them here (R3).
+   Compact density is a direct override on the cells themselves. */
+.table--compact th, .table--compact td { padding: 0 8px; }
+.table--compact td { height: 26px; }
+.table--compact th { height: 24px; }
 
 /* simple footer — pagination, not telemetry */
-.tbl-foot { display: flex; align-items: center; gap: 8px; padding: 8px 14px; border-top: 1px solid var(--color-border); font-size: var(--font-size-xs); color: var(--color-text-muted); }
-.tbl-foot .sp { flex: 1; }
-.tbl-foot .pg { display: inline-flex; gap: 2px; }
+.table-foot { display: flex; align-items: center; gap: 8px; padding: 8px 14px; border-top: 1px solid var(--color-border); font-size: var(--font-size-xs); color: var(--color-text-muted); }
+.table-foot .sp { flex: 1; }
+.table-foot .pg { display: inline-flex; gap: 2px; }
 
 /* ---------- Data table (high-density telemetry) ---------- */
-.dt-wrapper { border: 1px solid var(--color-border); border-radius: var(--radius-sm); overflow: hidden; background: var(--color-bg); }
-.dt-toolbar { display: flex; align-items: center; gap: 10px; padding: 7px 12px; background: var(--color-bg-subtle); border-bottom: 1px solid var(--color-border); font-family: var(--font-family-mono); font-size: var(--font-size-2xs); letter-spacing: .03em; color: var(--color-text-dim); white-space: nowrap; }
-.dt-toolbar .sp { flex: 1; }
-.dt-toolbar strong { color: var(--color-text-muted); font-weight: var(--font-weight-semibold); }
-.dt-scroll { overflow-x: auto; }
-.dt-scroll::-webkit-scrollbar { height: 9px; }
-.dt-scroll::-webkit-scrollbar-thumb { background: var(--color-border-strong); border-radius: 5px; }
-.dt { width: 100%; border-collapse: separate; border-spacing: 0; font-size: var(--font-size-sm); font-variant-numeric: tabular-nums; }
+.datagrid-wrapper { border: 1px solid var(--color-border); border-radius: var(--radius-sm); overflow: hidden; background: var(--color-bg); }
+.datagrid-toolbar { display: flex; align-items: center; gap: 10px; padding: 0 12px; height: var(--datagrid-toolbar-h); background: var(--color-bg-subtle); border-bottom: 1px solid var(--color-border); font-family: var(--font-family-mono); font-size: var(--font-size-2xs); letter-spacing: .03em; color: var(--color-text-dim); white-space: nowrap; }
+.datagrid-toolbar .sp { flex: 1; }
+.datagrid-toolbar strong { color: var(--color-text-muted); font-weight: var(--font-weight-semibold); }
+.datagrid-scroll { overflow-x: auto; }
+.datagrid-scroll::-webkit-scrollbar { height: 9px; }
+.datagrid-scroll::-webkit-scrollbar-thumb { background: var(--color-border-strong); border-radius: 5px; }
+.datagrid { width: 100%; border-collapse: separate; border-spacing: 0; font-size: var(--font-size-sm); font-variant-numeric: tabular-nums; }
 /* full gridlines — every cell carries a right + bottom border so the matrix reads as a clear grid */
-.dt th, .dt td { text-align: left; padding: 4px 12px; border-bottom: 1px solid var(--color-border); line-height: 1.45; white-space: nowrap; position: relative; overflow: hidden; text-overflow: ellipsis; }
-.dt th:not(:last-child), .dt td:not(:last-child) { border-right: 1px solid var(--color-border); }
-.dt tbody tr:last-child td { border-bottom: none; }
-.dt thead th { background: var(--color-bg); color: var(--color-text-muted); font-weight: var(--font-weight-semibold); font-size: var(--font-size-2xs); text-transform: uppercase; letter-spacing: .07em; font-family: var(--font-family-mono); border-bottom: 1px solid var(--color-border-strong); padding: 0; height: 32px; user-select: none; }
+.datagrid th, .datagrid td { text-align: left; border-bottom: 1px solid var(--color-border); line-height: 1.45; white-space: nowrap; position: relative; overflow: hidden; text-overflow: ellipsis; }
+.datagrid th:not(:last-child), .datagrid td:not(:last-child) { border-right: 1px solid var(--color-border); }
+.datagrid tbody tr:last-child td { border-bottom: none; }
+.datagrid thead th { background: var(--color-bg); color: var(--color-text-muted); font-weight: var(--font-weight-semibold); font-size: var(--font-size-2xs); text-transform: uppercase; letter-spacing: .07em; font-family: var(--font-family-mono); border-bottom: 1px solid var(--color-border-strong); padding: 0; user-select: none; }
 /* header inner flex cell — holds label, sort glyph; resize handle sits outside it */
-.dt thead th .th-c { display: flex; align-items: center; gap: 6px; height: 100%; padding: 0 10px; }
-.dt thead th.num .th-c { justify-content: flex-end; }
-.dt thead th .th-label { overflow: hidden; text-overflow: ellipsis; min-width: 0; flex: 0 1 auto; }
-.dt.is-measuring thead th .th-label { flex: 0 0 auto; overflow: visible; }
-.dt.is-measuring th, .dt.is-measuring td { overflow: visible; }   /* don't let overflow:hidden collapse intrinsic width while measuring */
-.dt thead th.sortable .th-c { cursor: pointer; }
-.dt thead th.sortable:hover { color: var(--color-text); background: var(--color-bg-subtle); }
+.datagrid thead th .th-c { display: flex; align-items: center; gap: 6px; height: 100%; padding: 0 10px; }
+.datagrid thead th.num .th-c { justify-content: flex-end; }
+.datagrid thead th .th-label { overflow: hidden; text-overflow: ellipsis; min-width: 0; flex: 0 1 auto; }
+.datagrid.is-measuring thead th .th-label { flex: 0 0 auto; overflow: visible; }
+.datagrid.is-measuring th, .datagrid.is-measuring td { overflow: visible; }   /* don't let overflow:hidden collapse intrinsic width while measuring */
+.datagrid thead th.sortable .th-c { cursor: pointer; }
+.datagrid thead th.sortable:hover { color: var(--color-text); background: var(--color-bg-subtle); }
 /* sort glyph: reserved space, faint chevrons by default, active = single accent arrow */
 /* sort glyph: nothing until the column is the active sort; faint hint on hover */
-.dt thead th .th-sort { flex: none; min-width: 9px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; color: var(--color-primary); }
-.dt thead th.num .th-sort { order: -1; }
-.dt thead th.sortable:not([data-sort]):hover .th-sort::after { content: "↕"; color: var(--color-text-dim); opacity: .55; }
-.dt thead th[data-sort] { color: var(--color-text); background: var(--color-primary-light-default); }
-.dt thead th[data-sort]::after { display: none; }
+.datagrid thead th .th-sort { flex: none; min-width: 9px; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; color: var(--color-primary); }
+.datagrid thead th.num .th-sort { order: -1; }
+.datagrid thead th.sortable:not([data-sort]):hover .th-sort::after { content: "↕"; color: var(--color-text-dim); opacity: .55; }
+.datagrid thead th[data-sort] { color: var(--color-text); background: var(--color-primary-light-default); }
+.datagrid thead th[data-sort]::after { display: none; }
 /* column-resize grip on the right edge of each header cell */
-.dt thead th .th-grip { position: absolute; top: 0; right: -4px; width: 9px; height: 100%; cursor: col-resize; z-index: 3; }
-.dt thead th .th-grip::after { content: ""; position: absolute; top: 6px; bottom: 6px; left: 4px; width: 2px; border-radius: 1px; background: var(--color-border-strong); opacity: 0; transition: opacity .12s; }
-.dt thead th .th-grip:hover::after, .dt.is-resizing .th-grip.is-active::after { opacity: 1; background: var(--color-primary); }
-.dt.is-resizing { cursor: col-resize; }
-.dt.is-resizing * { user-select: none !important; }
+.datagrid thead th .th-grip { position: absolute; top: 0; right: -4px; width: 9px; height: 100%; cursor: col-resize; z-index: 3; }
+.datagrid thead th .th-grip::after { content: ""; position: absolute; top: 6px; bottom: 6px; left: 4px; width: 2px; border-radius: 1px; background: var(--color-border-strong); opacity: 0; transition: opacity .12s; }
+.datagrid thead th .th-grip:hover::after, .datagrid.is-resizing .th-grip.is-active::after { opacity: 1; background: var(--color-primary); }
+.datagrid.is-resizing { cursor: col-resize; }
+.datagrid.is-resizing * { user-select: none !important; }
 /* drag-to-reorder states */
-.dt thead th.is-dragging { background: var(--color-bg-active); color: var(--color-text); opacity: .55; }
-.dt thead th.drop-before::before, .dt thead th.drop-after::after { content: ""; position: absolute; top: 0; bottom: 0; width: 3px; background: var(--color-primary); z-index: 4; box-shadow: 0 0 6px var(--color-primary); }
-.dt thead th.drop-before::before { left: -1px; }
-.dt thead th.drop-after::after { right: -1px; }
-.dt.is-reordering .th-c { cursor: grabbing; }
-.dt thead th.rownum .th-c { justify-content: flex-end; padding-right: 8px; }
+.datagrid thead th.is-dragging { background: var(--color-bg-active); color: var(--color-text); opacity: .55; }
+.datagrid thead th.drop-before::before, .datagrid thead th.drop-after::after { content: ""; position: absolute; top: 0; bottom: 0; width: 3px; background: var(--color-primary); z-index: 4; box-shadow: 0 0 6px var(--color-primary); }
+.datagrid thead th.drop-before::before { left: -1px; }
+.datagrid thead th.drop-after::after { right: -1px; }
+.datagrid.is-reordering .th-c { cursor: grabbing; }
+.datagrid thead th.rownum .th-c { justify-content: flex-end; padding-right: 8px; }
 /* index rail — dim mono numbers, no seam; blends into the body */
-.dt .rownum { width: 46px; text-align: right; color: var(--color-text-dim); font-family: var(--font-family-mono); font-size: var(--font-size-2xs); padding-right: 10px; user-select: none; }
-.dt td.num { text-align: right; font-family: var(--font-family-mono); color: var(--color-text); }
-.dt td.mono { font-family: var(--font-family-mono); }
-.dt tbody tr { transition: background var(--duration-fast) var(--ease-standard); }
-.dt tbody tr:hover td { background: var(--color-primary-light-default); }
-.dt tbody tr:hover .rownum { color: var(--color-text-muted); }
+.datagrid .rownum { width: 46px; text-align: right; color: var(--color-text-dim); font-family: var(--font-family-mono); font-size: var(--font-size-2xs); padding-right: 10px; user-select: none; }
+.datagrid td.num { text-align: right; font-family: var(--font-family-mono); color: var(--color-text); }
+.datagrid td.mono { font-family: var(--font-family-mono); }
+.datagrid tbody tr { transition: background var(--duration-fast) var(--ease-standard); }
+.datagrid tbody tr:hover td { background: var(--subtle); }
+.datagrid tbody tr:hover .rownum { color: var(--color-text-muted); }
 /* selected: one clean signal — accent rail on the index gutter + soft tonal tint */
-.dt tbody tr[data-state="selected"] td { background: var(--color-primary-light-hover); }
-.dt tbody tr[data-state="selected"] .rownum { color: var(--color-primary); font-weight: var(--font-weight-semibold); box-shadow: inset 3px 0 0 0 var(--color-primary); }
-.dt-foot { display: flex; align-items: center; gap: 10px; padding: 6px 12px; background: var(--color-bg-subtle); border-top: 1px solid var(--color-border); font-family: var(--font-family-mono); font-size: var(--font-size-2xs); letter-spacing: .03em; color: var(--color-text-dim); white-space: nowrap; }
-.dt-foot .sp { flex: 1; }
-.dt-status { display: inline-flex; align-items: center; gap: 5px; }
-.dt-status .led { width: 7px; height: 7px; border-radius: 50%; background: var(--color-success); box-shadow: 0 0 5px var(--color-success); }
-.dt-status.is-warn { color: var(--color-warning); }
-.dt-status.is-warn .led { background: var(--color-warning); box-shadow: 0 0 5px var(--color-warning); }
+.datagrid tbody tr[data-state="selected"] td { background: var(--color-bg-active); }
+.datagrid tbody tr[data-state="selected"] .rownum { color: var(--color-primary); font-weight: var(--font-weight-semibold); box-shadow: inset 3px 0 0 0 var(--color-primary); }
+.datagrid-foot { display: flex; align-items: center; gap: 10px; padding: 6px 12px; background: var(--color-bg-subtle); border-top: 1px solid var(--color-border); font-family: var(--font-family-mono); font-size: var(--font-size-2xs); letter-spacing: .03em; color: var(--color-text-dim); white-space: nowrap; }
+.datagrid-foot .sp { flex: 1; }
+.datagrid-status { display: inline-flex; align-items: center; gap: 5px; }
+.datagrid-status .led { width: 7px; height: 7px; border-radius: 50%; background: var(--color-success); box-shadow: 0 0 5px var(--color-success); }
+.datagrid-status.is-warn { color: var(--color-warning); }
+.datagrid-status.is-warn .led { background: var(--color-warning); box-shadow: 0 0 5px var(--color-warning); }
