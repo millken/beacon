@@ -43,6 +43,9 @@
 .btn--icon.btn--sm { width: var(--control-h-sm); }
 .btn--icon.btn--lg { width: var(--control-h-lg); }
 
+/* 按钮内图标 —— 线性 stroke 随 --btn-fg 取色（与 .icon-btn svg 同规格） */
+.btn svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 1.6; fill: none; flex: none; }
+
 /* Loading —— spinner 取代图标，label 变暗，宽度不变 */
 .btn[data-loading="true"] { cursor: progress; pointer-events: none; color: color-mix(in oklab, currentColor 82%, transparent); }
 .btn--primary[data-loading="true"], .btn--danger[data-loading="true"] { color: var(--btn-fg); }

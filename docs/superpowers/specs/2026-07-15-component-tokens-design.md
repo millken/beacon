@@ -182,7 +182,7 @@ Tier 3b 组件层    每组件分化点 token            components/css/<组件>
 - 旋钮：`--avatar-size-sm/-md/-lg: 20/28/40px`（empty 无旋钮，纯语义层消费）
 
 ### window.css
-- 旋钮：`--titlebar-h: 38px` · `--win-btn-size: 12px`
+- 旋钮：`--titlebar-h: 38px` · `--win-btn-size: 12px`（traffic 圆点直径；方形 win-btn 为 26×20 固定命中区）
 
 ### sidebar.css
 - 接线：`--sidebar-item-fg`（selected 改写）

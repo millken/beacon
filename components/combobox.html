@@ -22,7 +22,8 @@
   .cbx-stage { position:relative; width:240px; }
   .cbx-stage .combobox { width:100%; }
   .cbx-stage .combobox-input { width:100%; box-sizing:border-box; cursor:pointer; }
-  .cbx-stage .listbox { position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:1; }
+  /* 静态演示用常流布局（margin 贴在触发器下方），不用 absolute —— 避免盖住后续说明文字 */
+  .cbx-stage .listbox { margin-top:6px; }
   .cbx-multi .combobox-input { display:flex; flex-wrap:wrap; align-items:center; gap:5px; min-height:calc(var(--input-pad-y) * 2 + 16px); cursor:text; }
   .cbx-multi .combobox-input input { flex:1; min-width:70px; border:none; background:transparent; outline:none; color:var(--foreground); font-family:var(--font-family-sans); font-size:var(--font-size-sm); padding:2px; }
 </style>

@@ -1,4 +1,4 @@
-/* ---------- Window / titlebar / win-controls —— 旋钮: --titlebar-h --win-btn-size (§4) ---------- */
+/* ---------- Window / titlebar / win-controls —— 旋钮: --titlebar-h --win-btn-size(traffic 圆点直径) (§4) ---------- */
 .titlebar { display: flex; align-items: center; gap: var(--space-4);
   height: var(--titlebar-h); padding: 0 var(--space-5);
   background: var(--color-bg-subtle);
@@ -22,12 +22,14 @@
 .titlebar-meta { display: flex; align-items: center; gap: var(--space-2);
   color: var(--color-text-dim); font: 400 var(--font-size-2xs)/1 var(--font-family-mono); }
 
-/* Windows/Linux-style square controls + custom utility controls (theme / pin / settings…) */
+/* Windows/Linux-style square controls + custom utility controls (theme / pin / settings…)
+   方形命中区（26×20 · radius-sm），glyph 14px —— 视觉基准 showcase 的 26×22 方形范式；
+   --win-btn-size 只驱动 traffic 圆点直径，不参与方形控件。 */
 .win-controls { display: inline-flex; align-items: center; gap: 2px; }
-.win-btn { width: var(--win-btn-size); height: var(--win-btn-size); border-radius: var(--radius-full);
+.win-btn { width: 26px; height: 20px; border-radius: var(--radius-sm);
   display: inline-flex; align-items: center; justify-content: center; border: none; padding: 0;
   background: transparent; color: var(--color-text-dim); cursor: pointer; }
-.win-btn svg { width: 70%; height: 70%; stroke: currentColor; stroke-width: 1.5; fill: none; }
+.win-btn svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 1.5; fill: none; }
 .win-btn:hover { background: var(--color-bg-hover); color: var(--color-text); }
 .win-btn--close:hover { background: var(--color-danger); color: var(--color-bg); }
 .win-btn--util[data-state="active"] { color: var(--color-accent); }
