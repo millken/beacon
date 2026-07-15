@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Indicator · Beacon GUI 组件</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="stylesheet" href="components.css" />
+<style>
+  body { margin:0; padding:32px 40px 80px; background:var(--background); color:var(--foreground);
+         font:400 var(--font-size-md)/var(--leading-normal) var(--font-family-sans); }
+  .page-head { display:flex; align-items:center; gap:12px; margin-bottom:8px; }
+  .page-head h1 { font-size:var(--font-size-xl); margin:0; }
+  .page-head .crumb { color:var(--color-text-dim); font-family:var(--font-family-mono); font-size:var(--font-size-xs); }
+  .theme-toggle { margin-left:auto; }
+  .demo-section { margin-top:28px; }
+  .demo-section > h2 { font-size:var(--font-size-lg); border-bottom:1px solid var(--color-divider); padding-bottom:6px; }
+  .demo-row { display:flex; flex-wrap:wrap; align-items:center; gap:16px; margin:14px 0; }
+  .demo-note { color:var(--color-text-muted); font-size:var(--font-size-sm); max-width:70ch; }
+  .knob-box { border:1px dashed var(--color-border-strong); border-radius:var(--radius-sm); padding:14px; }
+  .knob-box .knob-label { font-family:var(--font-family-mono); font-size:var(--font-size-2xs); color:var(--color-text-dim); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px; display:block; }
+  .cap { font-family:var(--font-family-mono); font-size:var(--font-size-2xs); color:var(--color-text-dim); margin-bottom:8px; }
+  .col { display:flex; flex-direction:column; gap:12px; max-width:460px; width:100%; }
+  .grid4 { display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; width:100%; }
+  @media (max-width:760px) { .grid4 { grid-template-columns:1fr 1fr; } }
+</style>
+</head>
+<body>
+<header class="page-head">
+  <span class="crumb"><a href="index.html" style="color:inherit">components</a> / indicator</span>
+  <h1>Indicator</h1>
+  <button class="btn btn--sm theme-toggle" onclick="
+    var h=document.documentElement; h.dataset.theme=h.dataset.theme==='dark'?'light':'dark'">
+    Light / Dark</button>
+</header>
+
+<section class="demo-section">
+  <h2>LED</h2>
+  <div class="demo-row">
+    <span class="led"></span><span>idle 离线</span>
+    <span class="led led--on" style="margin-left:16px"></span><span>on 在线</span>
+    <span class="led led--warn" style="margin-left:16px"></span><span>warn 警戒</span>
+    <span class="led led--rec" style="margin-left:16px"></span><span>rec 录制中</span>
+  </div>
+  <p class="demo-note">尺寸 = 旋钮 --led-size（默认 8px）· 族默认接线 --indicator-color = --color-primary，闲置态直接用 --color-text-dim（非族接线，代表「无状态」）· on/warn/rec 各自改写 --indicator-color 为语义色，光晕随之同色。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Progress bar</h2>
+  <div class="demo-row" style="flex-direction:column; align-items:stretch">
+    <div class="col">
+      <div class="progress-row"><div class="progress"><i style="width:24%"></i></div><span class="pct">24%</span></div>
+      <div class="progress-row"><div class="progress"><i style="width:68%"></i></div><span class="pct">68%</span></div>
+      <div class="progress-row"><div class="progress progress--success"><i style="width:100%"></i></div><span class="pct">100%</span></div>
+      <div class="progress-row"><div class="progress progress--warning"><i style="width:88%"></i></div><span class="pct">88%</span></div>
+      <div class="progress-row"><div class="progress progress--danger"><i style="width:43%"></i></div><span class="pct">err</span></div>
+      <div class="cap" style="margin:6px 0 0">indeterminate · thin</div>
+      <div class="progress progress--indeterminate"><i></i></div>
+      <div class="progress progress--thin"><i style="width:55%"></i></div>
+    </div>
+  </div>
+  <p class="demo-note">槽 = --track-bg + --shadow-well 凹槽，高 = 旋钮 --progress-h · 填充 <code>.progress &gt; i</code> = --indicator-color（success/warning/danger 改写接线）· 不定态 35% 块循环平移 · pct 用 mono 右对齐。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Meter · Ring · Gauge</h2>
+  <div class="demo-row" style="gap:40px">
+    <div>
+      <div class="cap">VU / load meter</div>
+      <div class="meter" id="meter"></div>
+    </div>
+    <div>
+      <div class="cap">conic ring</div>
+      <div class="demo-row" style="margin:0; gap:14px">
+        <div class="ring-wrap"><div class="ring" style="--val:66"><span class="val">66%</span></div></div>
+        <div class="ring-wrap"><div class="ring" style="--val:92;--indicator-color:var(--color-warning)"><span class="val">92%</span></div></div>
+        <div class="ring-wrap"><div class="ring" style="--val:100;--indicator-color:var(--color-success)"><span class="val">100</span></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="cap">gauge</div>
+      <div class="demo-row" style="margin:0; gap:14px">
+        <div class="gauge" style="--val:50"><span class="gv">50</span><span class="gl">rpm ×100</span></div>
+        <div class="gauge" style="--val:82;--indicator-color:var(--color-danger)"><span class="gv">82°</span><span class="gl">temp</span></div>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">meter 容器本身即 --track-bg/--shadow-well 凹槽，高 = 旋钮 --meter-h · 各段自身语义着色（非单态指示，故不接 --indicator-color）· ring/gauge 的 conic 主段颜色即族接线 --indicator-color，容器级覆盖同选择器即可改色（无需专属变量）。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Spinner</h2>
+  <div class="demo-row">
+    <span class="spinner"></span>
+    <span class="spinner spinner--lg"></span>
+    <span style="color:var(--color-text-muted); font-size:var(--font-size-sm)">加载中…</span>
+  </div>
+  <p class="demo-note">非族成员：恒为 --color-primary，无状态变体（旋转本身即状态）。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Stat / KPI card</h2>
+  <div class="demo-row">
+    <div class="grid4">
+      <div class="stat-card"><div class="k">Throughput</div><div class="v">1.2K<span style="font-size:var(--font-size-xs);color:var(--color-text-dim)">/s</span></div><div class="delta up">▲ 8.4%</div><div class="spark"><i style="height:40%"></i><i style="height:55%"></i><i style="height:45%"></i><i style="height:70%"></i><i style="height:60%"></i><i style="height:85%"></i><i style="height:100%"></i></div></div>
+      <div class="stat-card"><div class="k">Avg CPU</div><div class="v">78%</div><div class="delta down">▼ 3.1%</div><div class="spark"><i style="height:90%"></i><i style="height:75%"></i><i style="height:80%"></i><i style="height:60%"></i><i style="height:65%"></i><i style="height:55%"></i><i style="height:50%"></i></div></div>
+      <div class="stat-card"><div class="k">Queue</div><div class="v">128</div><div class="delta up">▲ 12</div><div class="spark"><i style="height:30%"></i><i style="height:40%"></i><i style="height:55%"></i><i style="height:50%"></i><i style="height:70%"></i><i style="height:80%"></i><i style="height:95%"></i></div></div>
+      <div class="stat-card"><div class="k">Errors</div><div class="v" style="color:var(--color-danger)">3</div><div class="delta up" style="color:var(--color-danger)">▲ 2</div><div class="spark"><i style="height:10%"></i><i style="height:5%"></i><i style="height:20%"></i><i style="height:15%"></i><i style="height:30%"></i><i style="height:25%"></i><i style="height:45%"></i></div></div>
+    </div>
+  </div>
+  <p class="demo-note">非族成员：k(mono uppercase) + v(大号 mono) + delta(涨绿/跌红 + 箭头) + spark 迷你柱(primary 浅版)。</p>
+</section>
+
+<section class="demo-section">
+  <h2>旋钮演示 · Structural knobs</h2>
+  <div class="demo-row">
+    <div class="knob-box">
+      <span class="knob-label">--led-size: 14px</span>
+      <div class="demo-row" style="--led-size:14px; margin:0">
+        <span class="led led--on"></span>
+      </div>
+    </div>
+    <div class="knob-box">
+      <span class="knob-label">--progress-h: 12px</span>
+      <div class="demo-row" style="--progress-h:12px; margin:0; min-width:160px">
+        <div class="progress progress--success" style="width:100%"><i style="width:70%"></i></div>
+      </div>
+    </div>
+    <div class="knob-box">
+      <span class="knob-label">--meter-h: 26px</span>
+      <div class="demo-row" style="--meter-h:26px; margin:0">
+        <div class="meter"><div class="seg" data-on style="height:16px"></div><div class="seg" data-on style="height:20px"></div><div class="seg warn" data-on style="height:23px"></div><div class="seg crit" style="height:26px"></div></div>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">容器级 style="--led-size:…" 等局部覆盖 §4 结构旋钮，indicator.css 中不声明这些变量，只引用——证明皮肤覆盖生效（R3）。</p>
+</section>
+
+<script>
+  // meter — 14 segments, level 9 (heights scaled to sit near the --meter-h groove)
+  const meter = document.getElementById('meter');
+  const N = 14, level = 9;
+  for (let i = 0; i < N; i++){
+    const s = document.createElement('div');
+    s.className = 'seg' + (i >= 11 ? ' crit' : i >= 8 ? ' warn' : '');
+    s.style.height = (6 + i * 0.9) + 'px';
+    if (i < level) s.setAttribute('data-on', '');
+    meter.appendChild(s);
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Overlay · Beacon GUI 组件</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="stylesheet" href="components.css" />
+<style>
+  body { margin:0; padding:32px 40px 80px; background:var(--background); color:var(--foreground);
+         font:400 var(--font-size-md)/var(--leading-normal) var(--font-family-sans); }
+  .page-head { display:flex; align-items:center; gap:12px; margin-bottom:8px; }
+  .page-head h1 { font-size:var(--font-size-xl); margin:0; }
+  .page-head .crumb { color:var(--color-text-dim); font-family:var(--font-family-mono); font-size:var(--font-size-xs); }
+  .theme-toggle { margin-left:auto; }
+  .demo-section { margin-top:28px; }
+  .demo-section > h2 { font-size:var(--font-size-lg); border-bottom:1px solid var(--color-divider); padding-bottom:6px; }
+  .demo-row { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin:14px 0; }
+  .demo-note { color:var(--color-text-muted); font-size:var(--font-size-sm); max-width:78ch; }
+  .knob-box { border:1px dashed var(--color-border-strong); border-radius:var(--radius-sm); padding:14px; }
+  .knob-box .knob-label { font-family:var(--font-family-mono); font-size:var(--font-size-2xs); color:var(--color-text-dim); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px; display:block; }
+  .knob-row { display:flex; flex-wrap:wrap; gap:14px; margin:14px 0; align-items:flex-start; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:22px; }
+  @media (max-width: 900px) { .grid2 { grid-template-columns:1fr; } }
+  .cap { font-family:var(--font-family-mono); font-size:var(--font-size-2xs); color:var(--color-text-dim); margin-bottom:10px; }
+  .stack { display:flex; flex-wrap:wrap; gap:40px; align-items:flex-start; }
+  .backdrop-demo { position:relative; width:260px; height:140px; border:1px solid var(--color-border); border-radius:var(--radius-sm); overflow:hidden;
+    background-image: linear-gradient(45deg, var(--color-divider) 25%, transparent 25%, transparent 75%, var(--color-divider) 75%), linear-gradient(45deg, var(--color-divider) 25%, transparent 25%, transparent 75%, var(--color-divider) 75%);
+    background-size:16px 16px; background-position:0 0, 8px 8px; background-color:var(--color-bg); }
+  .backdrop-demo .tint { position:absolute; inset:0; background:var(--color-overlay); display:flex; align-items:center; justify-content:center; }
+  .backdrop-demo .tint span { font-family:var(--font-family-mono); font-size:var(--font-size-2xs); color:var(--color-text-inverse); }
+  .drawer-stage { width:340px; height:220px; border:1px solid var(--color-border); border-radius:var(--radius-sm); overflow:hidden; display:flex; justify-content:flex-end; background:var(--color-bg); }
+</style>
+</head>
+<body>
+<header class="page-head">
+  <span class="crumb"><a href="index.html" style="color:inherit">components</a> / overlay</span>
+  <h1>Overlay</h1>
+  <button class="btn btn--sm theme-toggle" onclick="
+    var h=document.documentElement; h.dataset.theme=h.dataset.theme==='dark'?'light':'dark'">
+    Light / Dark</button>
+</header>
+
+<p class="demo-note">浮层一族:Dialog / Drawer / Popover / Tooltip / Menu 共用同一套浮起语言 —— 表面 <b>--popover</b> + <b>--popover-foreground</b>、阴影 <b>--shadow-pop</b>、遮罩 <b>--color-overlay</b>。Dialog 图标色经接线 <b>--dialog-icon-color</b>(primary/warning/danger 改写),Menu 项文字经接线 <b>--menu-item-fg</b>(danger 改写)。尺寸类结构由 §4 旋钮驱动,组件 CSS 内只引用、不重声明。</p>
+
+<section class="demo-section">
+  <h2>Dialog · 信息 / 确认 / 危险</h2>
+  <div class="demo-row">
+    <button class="btn btn--primary" data-open="m-confirm">Confirm dialog（primary）</button>
+    <button class="btn" data-open="m-warning">Reload dialog（warning）</button>
+    <button class="btn btn--danger" data-open="m-danger">Delete（danger）</button>
+    <button class="btn" data-open="m-form">Form dialog（无图标）</button>
+  </div>
+  <p class="demo-note">点击打开真实模态:遮罩淡入 + 卡片轻微上移定格 · Esc / 点遮罩 / 关闭键均可关。</p>
+
+  <div class="grid2" style="margin-top:16px">
+    <div>
+      <div class="cap">.dialog-icon--danger</div>
+      <div class="dialog-stage">
+        <div class="dialog-surface" style="width:100%">
+          <div class="dialog-head"><span>Confirm · delete</span><button class="dialog-x" aria-label="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+          <div class="dialog-body dialog-body--icon">
+            <span class="dialog-icon dialog-icon--danger"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg></span>
+            <div><p class="dialog-title">删除渲染节点?</p><p class="dialog-desc">node-07 上 3 个运行中任务将被中止,此操作不可撤销。</p></div>
+          </div>
+          <div class="dialog-actions"><button class="btn btn--sm">取消</button><button class="btn btn--sm btn--danger">删除节点</button></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="cap">.dialog-icon--warning</div>
+      <div class="dialog-stage">
+        <div class="dialog-surface" style="width:100%">
+          <div class="dialog-head"><span>Confirm · overwrite</span><button class="dialog-x" aria-label="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+          <div class="dialog-body dialog-body--icon">
+            <span class="dialog-icon dialog-icon--warning"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span>
+            <div><p class="dialog-title">覆盖已存在的预设?</p><p class="dialog-desc">"H.264 · 1080p" 预设将被当前设置覆盖。</p></div>
+          </div>
+          <div class="dialog-actions"><button class="btn btn--sm">取消</button><button class="btn btn--sm btn--primary">覆盖</button></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="cap">.dialog-icon--primary · plain</div>
+      <div class="dialog-stage">
+        <div class="dialog-surface" style="width:100%">
+          <div class="dialog-head"><span>New render job</span><button class="dialog-x" aria-label="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+          <div class="dialog-body">
+            <p class="dialog-title">创建渲染任务</p>
+            <p class="dialog-desc" style="margin-bottom:12px">选择输出预设并加入队列。</p>
+            <div class="field"><label>Preset</label><select class="select"><option>ProRes 422 · 4K</option><option>H.264 · 1080p</option></select></div>
+          </div>
+          <div class="dialog-actions"><button class="btn btn--sm">取消</button><button class="btn btn--sm btn--primary">加入队列</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">棋盘格底用于展示浮层边界与阴影 · 标题栏 mono uppercase + ✕ · 图标槽色只经 <b>--dialog-icon-color</b> 一个接线 token 改写(底色由该 token 派生 color-mix,不再单独声明) · 操作区 bg-subtle 右对齐。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Drawer</h2>
+  <div class="demo-row">
+    <div class="drawer-stage">
+      <div class="drawer">
+        <div class="drawer-head">Notifications<button class="dialog-x x" aria-label="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+        <div class="drawer-body">
+          <p class="dialog-desc">3 条未读通知 · node-05 完成渲染 · node-07 已降频 · 磁盘剩余 9%。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">从右侧贴边滑出的侧栏浮层,宽度经旋钮 <b>--drawer-w</b>(默认 320px)驱动;表面沿用 bg-subtle,与 dialog/popover 的 --popover 表面区分(侧栏常驻感更强)。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Popover</h2>
+  <div class="stack">
+    <div>
+      <div class="cap">.popover · compact</div>
+      <div class="popover">
+        <p class="dialog-desc" style="margin:0 0 6px">快速筛选</p>
+        <label class="choice"><span class="checkbox" data-toggle data-state="checked"></span>仅显示运行中</label>
+      </div>
+    </div>
+    <div>
+      <div class="cap">.popover-panel · info card</div>
+      <div class="popover-panel">
+        <p class="pp-title">节点详情</p>
+        <p class="pp-body">node-07 · 32 核 · 当前负载 91%,已自动降频以控制温度。</p>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">两种浮层容器共用表面 token(--popover / --shadow-pop),最小宽度经旋钮 <b>--popover-min-w</b> 驱动;.popover 用于轻量操作,.popover-panel 用于信息卡片。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Tooltip</h2>
+  <div class="demo-row">
+    <span class="tooltip">Reload sample bank</span>
+    <span class="tooltip"><kbd>⇧⌘R</kbd>&nbsp; Render all</span>
+  </div>
+  <p class="demo-note">反相色(--color-bg-inverse / --color-text-inverse)+ 极小内边距,用于瞬时的元素级说明,不参与 --popover 表面族。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Menu · 分组 / 分隔 / danger / 禁用</h2>
+  <div class="stack">
+    <div>
+      <div class="cap">dropdown · with icons</div>
+      <div class="menu">
+        <div class="menu-item"><span class="lead"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New job</span><span class="shortcut">⌘N</span></div>
+        <div class="menu-item"><span class="lead"><svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M8 11l4 4 4-4"/><path d="M5 21h14"/></svg>Export…</span><span class="shortcut">⇧⌘E</span></div>
+        <div class="menu-item"><span class="lead"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg>Reload</span><span class="shortcut">⌘R</span></div>
+        <div class="menu-sep"></div>
+        <div class="menu-item menu-item--danger"><span class="lead"><svg viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>Delete</span><span class="shortcut">⌫</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="cap">context menu · with label &amp; disabled state</div>
+      <div class="menu">
+        <div class="menu-label">Edit</div>
+        <div class="menu-item"><span class="lead">Cut</span><span class="shortcut">⌘X</span></div>
+        <div class="menu-item"><span class="lead">Copy</span><span class="shortcut">⌘C</span></div>
+        <div class="menu-item"><span class="lead">Paste</span><span class="shortcut">⌘V</span></div>
+        <div class="menu-item" aria-disabled="true"><span class="lead">Paste special</span><span class="shortcut">⇧⌘V</span></div>
+        <div class="menu-sep"></div>
+        <div class="menu-item"><span class="lead">Find &amp; replace</span><span class="shortcut">⇧⌘F</span></div>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">容器 = --popover + border-strong + --shadow-pop,最小宽度 / 内边距经旋钮 <b>--menu-min-w</b> / <b>--menu-pad</b> 驱动 · item 高度经旋钮 <b>--menu-item-h</b> 驱动,文字色经接线 <b>--menu-item-fg</b>(默认 --popover-foreground,危险项改写为 --color-danger) · hover = 实色 accent 整条 · 禁用项 text-dim 不可点。</p>
+</section>
+
+<section class="demo-section">
+  <h2>遮罩 · z-layer</h2>
+  <div class="demo-row">
+    <div class="backdrop-demo">
+      <div class="tint"><span>--color-overlay</span></div>
+    </div>
+  </div>
+  <p class="demo-note">.modal-overlay 固定定位覆盖视口,背景取 <b>--color-overlay</b>(半透明,明暗主题各自取值),z-index 固定为 1000 高于页面其余层级;上方 Dialog 分区的按钮触发的即是真实 .modal-overlay + .dialog-surface 组合,可用 Esc / 点遮罩关闭。</p>
+</section>
+
+<section class="demo-section">
+  <h2>旋钮演示 · Structural knobs</h2>
+  <div class="knob-row">
+    <div class="knob-box">
+      <span class="knob-label">--dialog-w: 440px（默认）</span>
+      <div class="dialog-stage">
+        <div class="dialog-surface">
+          <div class="dialog-head"><span>Default width</span></div>
+          <div class="dialog-body"><p class="dialog-desc" style="margin:0">--dialog-w 默认 440px。</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="knob-box" style="--dialog-w:560px">
+      <span class="knob-label">--dialog-w: 560px（容器覆盖）</span>
+      <div class="dialog-stage">
+        <div class="dialog-surface">
+          <div class="dialog-head"><span>Wider dialog</span></div>
+          <div class="dialog-body"><p class="dialog-desc" style="margin:0">容器 style="--dialog-w:560px" 局部覆盖,组件 CSS 内不重声明该旋钮。</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">旋钮只在容器上以内联 <code>style</code> 覆盖;<code>overlay.css</code> 中不出现声明位(R3 校验:<code>tools/check-tokens.sh components/css/overlay.css</code> 保持 0 errors)。</p>
+</section>
+
+<!-- LIVE MODALS -->
+<div class="modal-overlay" id="m-confirm" data-modal>
+  <div class="dialog-surface">
+    <div class="dialog-head"><span>Confirm · reload</span><button class="dialog-x" data-close aria-label="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="dialog-body dialog-body--icon">
+      <span class="dialog-icon dialog-icon--primary"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg></span>
+      <div><p class="dialog-title">重新加载样本库?</p><p class="dialog-desc">未保存的筛选条件将丢失。重新加载约需 2 秒。</p></div>
+    </div>
+    <div class="dialog-actions"><button class="btn btn--sm" data-close>取消</button><button class="btn btn--sm btn--primary" data-close>重新加载</button></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="m-warning" data-modal>
+  <div class="dialog-surface">
+    <div class="dialog-head"><span>Confirm · overwrite</span><button class="dialog-x" data-close aria-label="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="dialog-body dialog-body--icon">
+      <span class="dialog-icon dialog-icon--warning"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span>
+      <div><p class="dialog-title">覆盖已存在的预设?</p><p class="dialog-desc">"H.264 · 1080p" 预设将被当前设置覆盖,此操作不可撤销。</p></div>
+    </div>
+    <div class="dialog-actions"><button class="btn btn--sm" data-close>取消</button><button class="btn btn--sm btn--primary" data-close>覆盖</button></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="m-danger" data-modal>
+  <div class="dialog-surface">
+    <div class="dialog-head"><span>Confirm · delete</span><button class="dialog-x" data-close aria-label="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="dialog-body dialog-body--icon">
+      <span class="dialog-icon dialog-icon--danger"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span>
+      <div><p class="dialog-title">永久删除 5 个任务?</p><p class="dialog-desc">已选中的任务及其渲染产物将被永久删除,无法恢复。</p></div>
+    </div>
+    <div class="dialog-actions"><button class="btn btn--sm" data-close>取消</button><button class="btn btn--sm btn--danger" data-close>永久删除</button></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="m-form" data-modal>
+  <div class="dialog-surface">
+    <div class="dialog-head"><span>New render job</span><button class="dialog-x" data-close aria-label="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="dialog-body">
+      <p class="dialog-title">创建渲染任务</p>
+      <p class="dialog-desc" style="margin-bottom:14px">配置输出并加入渲染队列。</p>
+      <div class="col">
+        <div class="field"><label>Job name</label><input class="input" value="nightly-bake-04" /></div>
+        <div class="field"><label>Preset</label><select class="select"><option>ProRes 422 · 4K</option><option>H.264 · 1080p</option><option>VP9 · 1440p</option></select></div>
+        <label class="choice"><span class="checkbox" data-toggle data-state="checked"></span>完成后发送通知</label>
+      </div>
+    </div>
+    <div class="dialog-actions"><button class="btn btn--sm" data-close>取消</button><button class="btn btn--sm btn--primary" data-close>加入队列</button></div>
+  </div>
+</div>
+
+<script>
+  // modal open/close
+  function openModal(id){ const m = document.getElementById(id); if (m) m.setAttribute('data-state','open'); }
+  function closeAll(){ document.querySelectorAll('[data-modal]').forEach(m => m.removeAttribute('data-state')); }
+  document.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', () => openModal(b.dataset.open)));
+  document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', closeAll));
+  document.querySelectorAll('[data-modal]').forEach(m => m.addEventListener('click', e => { if (e.target === m) closeAll(); }));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
+  // checkbox toggle (form modal + popover demo)
+  document.querySelectorAll('[data-toggle]').forEach(el => el.addEventListener('click', () => {
+    el.dataset.state = el.dataset.state === 'checked' ? '' : 'checked';
+  }));
+</script>
+</body>
+</html>

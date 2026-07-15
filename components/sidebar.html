@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sidebar · Beacon GUI 组件</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="stylesheet" href="components.css" />
+<style>
+  body { margin:0; padding:32px 40px 80px; background:var(--background); color:var(--foreground);
+         font:400 var(--font-size-md)/var(--leading-normal) var(--font-family-sans); }
+  .page-head { display:flex; align-items:center; gap:12px; margin-bottom:8px; }
+  .page-head h1 { font-size:var(--font-size-xl); margin:0; }
+  .page-head .crumb { color:var(--color-text-dim); font-family:var(--font-family-mono); font-size:var(--font-size-xs); }
+  .theme-toggle { margin-left:auto; }
+  .demo-section { margin-top:28px; }
+  .demo-section > h2 { font-size:var(--font-size-lg); border-bottom:1px solid var(--color-divider); padding-bottom:6px; }
+  .demo-row { display:flex; flex-wrap:wrap; align-items:flex-start; gap:16px; margin:14px 0; }
+  .demo-note { color:var(--color-text-muted); font-size:var(--font-size-sm); max-width:74ch; }
+  .stage { display:flex; height:480px; border:1px solid var(--color-border); border-radius:var(--radius-md); overflow:hidden; }
+  .stage .work { flex:1; background:var(--color-bg); padding:18px; color:var(--color-text-dim); font-family:var(--font-family-mono); font-size:11px; }
+</style>
+</head>
+<body>
+<header class="page-head">
+  <span class="crumb"><a href="index.html" style="color:inherit">components</a> / sidebar</span>
+  <h1>Sidebar</h1>
+  <button class="btn btn--sm theme-toggle" onclick="
+    var h=document.documentElement; h.dataset.theme=h.dataset.theme==='dark'?'light':'dark'">
+    Light / Dark</button>
+</header>
+
+<p class="demo-note">可折叠侧栏导航：宽度由单一旋钮 <code>--sidebar-w</code>（默认 220px）驱动，折叠态切至 <code>--sidebar-w-collapsed</code>（48px，仅图标）。分组用 <b>.sidebar-section-label</b>，条目 <b>.sidebar-item</b> 接线前景色 <code>--sidebar-item-fg</code>，选中态（<code>aria-current</code> / <code>.is-selected</code>）反转为 <code>--foreground</code> + <code>--color-bg-active</code> 底。</p>
+
+<section class="demo-section">
+  <h2>Expanded · brand / groups / selected / badge</h2>
+  <div class="demo-row">
+    <div class="stage">
+      <aside class="sidebar">
+        <div class="sidebar-head">
+          <span class="sidebar-brand">zi · console</span>
+        </div>
+        <div class="sidebar-body">
+          <div class="sidebar-section-label">workspace</div>
+          <div class="sidebar-group">
+            <div class="sidebar-item is-selected">
+              <span class="sidebar-item-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg></span>
+              <span class="sidebar-item-label">Dashboard</span>
+            </div>
+            <div class="sidebar-item">
+              <span class="sidebar-item-ico"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+              <span class="sidebar-item-label">Render queue</span>
+              <span class="badge badge--primary sidebar-item-badge">7</span>
+            </div>
+            <div class="sidebar-item">
+              <span class="sidebar-item-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"/></svg></span>
+              <span class="sidebar-item-label">Cluster</span>
+            </div>
+            <div class="sidebar-item">
+              <span class="sidebar-item-ico"><svg viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span>
+              <span class="sidebar-item-label">Console</span>
+            </div>
+          </div>
+
+          <div class="sidebar-section-label">library</div>
+          <div class="sidebar-group">
+            <div class="sidebar-item">
+              <span class="sidebar-item-ico"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
+              <span class="sidebar-item-label">Presets</span>
+              <span class="badge sidebar-item-badge">12</span>
+            </div>
+            <div class="sidebar-item">
+              <span class="sidebar-item-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></span>
+              <span class="sidebar-item-label">Media</span>
+            </div>
+          </div>
+
+          <div class="sidebar-section-label">system</div>
+          <div class="sidebar-group">
+            <div class="sidebar-item" aria-current="page">
+              <span class="sidebar-item-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+              <span class="sidebar-item-label">Settings</span>
+            </div>
+          </div>
+        </div>
+        <div class="sidebar-foot">
+          <span class="avatar avatar--sm avatar--accent">ZI</span>
+          <span class="sidebar-item-label">Alex Zhou</span>
+        </div>
+      </aside>
+      <div class="work">workspace · 宽态 220px（--sidebar-w）</div>
+    </div>
+  </div>
+  <p class="demo-note">选中态两种写法等价：<code>.is-selected</code>（脚本切换）与 <code>[aria-current="page"]</code>（路由态，语义化）。二者都反转 <code>--sidebar-item-fg</code> → <code>--foreground</code> 并铺 <code>--color-bg-active</code> 底。徽标 <code>.sidebar-item-badge</code> 只贡献 <code>margin-left:auto</code>，视觉外观借用 <code>.badge</code> 族。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Collapsed · icon-only</h2>
+  <div class="demo-row">
+    <div class="stage" style="height:360px">
+      <aside class="sidebar" data-collapsed id="sidebarCollapseDemo">
+        <div class="sidebar-head">
+          <span class="sidebar-brand">zi</span>
+          <button class="sidebar-collapse" title="Expand" onclick="document.getElementById('sidebarCollapseDemo').removeAttribute('data-collapsed')">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+        <div class="sidebar-body">
+          <div class="sidebar-section-label">workspace</div>
+          <div class="sidebar-group">
+            <div class="sidebar-item is-selected">
+              <span class="sidebar-item-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg></span>
+              <span class="sidebar-item-label">Dashboard</span>
+            </div>
+            <div class="sidebar-item">
+              <span class="sidebar-item-ico"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+              <span class="sidebar-item-label">Render queue</span>
+              <span class="badge badge--primary sidebar-item-badge">7</span>
+            </div>
+          </div>
+        </div>
+        <div class="sidebar-foot">
+          <span class="avatar avatar--sm avatar--accent">ZI</span>
+          <span class="sidebar-item-label">Alex Zhou</span>
+        </div>
+      </aside>
+      <div class="work">workspace · 折叠态 48px（--sidebar-w-collapsed），点击箭头展开</div>
+    </div>
+  </div>
+  <p class="demo-note"><code>[data-collapsed]</code> 把宽度切到 <code>--sidebar-w-collapsed</code>，同时隐藏 brand 文本 / 条目 label / 徽标 / 分组标签，只留图标轨与折叠按钮。</p>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+/* ---------- Tree —— 旋钮: --tree-indent / --tree-row-h ---------- */
+.tree { font-size: var(--font-size-sm); user-select: none; }
+.tree-row { display: flex; align-items: center; gap: 5px; height: var(--tree-row-h); padding: 0 6px; border-radius: var(--radius-sm); cursor: pointer; color: var(--color-text); white-space: nowrap; }
+.tree-row:hover { background: var(--color-bg-hover); }
+.tree-row[data-state="selected"] { background: var(--color-bg-active); box-shadow: inset 2px 0 0 var(--color-primary); }
+.tree-row .twist { width: 14px; height: 14px; display: inline-flex; align-items: center; justify-content: center; color: var(--color-text-dim); font-family: var(--font-family-mono); font-size: var(--font-size-2xs); transition: transform var(--duration-fast) ease; flex: none; transform: rotate(0deg); }
+.tree-row .twist svg { width: 10px; height: 10px; stroke: currentColor; stroke-width: 2.2; fill: none; display: block; }
+.tree-row[data-open="true"] .twist { transform: rotate(90deg); }
+.tree-row .twist.leaf { visibility: hidden; }
+.tree-row .ico { width: 14px; height: 14px; flex: none; color: var(--color-text-dim); }
+.tree-row .ico svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 1.6; fill: none; }
+.tree-row[data-state="selected"] .ico { color: var(--color-primary); }
+.tree-row .label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1 1 auto; min-width: 0; font-family: var(--font-family-mono); }
+.tree-row .meta { margin-left: auto; font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); padding-left: 8px; }
+.tree-children { padding-left: var(--tree-indent); }
+.tree-children[hidden] { display: none; }

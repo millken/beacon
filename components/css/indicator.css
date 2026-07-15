@@ -1,0 +1,54 @@
+/* indicator —— 接线: --indicator-color（led/progress/meter/ring/gauge 族共用，默认 --color-primary）· 旋钮: --led-size --progress-h --meter-h */
+.led, .progress, .meter, .ring, .gauge { --indicator-color: var(--color-primary); }
+
+/* ---------- LED ---------- */
+.led { display: inline-block; width: var(--led-size); height: var(--led-size); border-radius: var(--radius-full); background: var(--color-text-dim); flex: none; }
+.led--on   { --indicator-color: var(--color-success); background: var(--indicator-color); box-shadow: 0 0 6px var(--indicator-color); }
+.led--warn { --indicator-color: var(--color-warning); background: var(--indicator-color); box-shadow: 0 0 5px var(--indicator-color); }
+.led--rec  { --indicator-color: var(--color-danger);  background: var(--indicator-color); box-shadow: 0 0 6px var(--indicator-color); }
+
+/* ---------- Progress ---------- */
+.progress { height: var(--progress-h); background: var(--track-bg); box-shadow: var(--shadow-well); border-radius: var(--radius-full); overflow: hidden; }
+.progress > i { display: block; height: 100%; background: var(--indicator-color); border-radius: var(--radius-full); transition: width var(--duration-base) var(--ease-standard); }
+.progress--success { --indicator-color: var(--color-success); }
+.progress--warning { --indicator-color: var(--color-warning); }
+.progress--danger  { --indicator-color: var(--color-danger); }
+.progress--thin { height: 3px; }
+.progress--indeterminate > i { width: 35% !important; animation: cmp-indet 1.1s var(--ease-standard) infinite; }
+.progress-row { display: flex; align-items: center; gap: 10px; }
+.progress-row .progress { flex: 1; }
+.progress-row .pct { font-family: var(--font-family-mono); font-size: var(--font-size-xs); color: var(--color-text-muted); width: 40px; text-align: right; flex: none; }
+
+/* segmented meter (VU / load) —— 族默认接线, 但每段按自身 warn/crit 语义着色（非单态指示） */
+.meter { display: flex; gap: 2px; align-items: flex-end; height: var(--meter-h); background: var(--track-bg); box-shadow: var(--shadow-well); border-radius: var(--radius-sm); padding: 2px; }
+.meter .seg { width: 4px; background: color-mix(in oklab, var(--color-success) 8%, var(--color-bg-active)); border-radius: 1px; box-shadow: var(--shadow-inset); }
+.meter .seg.warn { background: color-mix(in oklab, var(--color-warning) 8%, var(--color-bg-active)); }
+.meter .seg.crit { background: color-mix(in oklab, var(--color-danger) 8%, var(--color-bg-active)); }
+.meter .seg[data-on] { background: var(--color-success); box-shadow: none; }
+.meter .seg.warn[data-on] { background: var(--color-warning); }
+.meter .seg.crit[data-on] { background: var(--color-danger); }
+
+/* circular ring (conic) */
+.ring { --val: 66; /* @kind other */ width: 56px; height: 56px; border-radius: var(--radius-full); background: conic-gradient(var(--indicator-color) calc(var(--val) * 1%), var(--color-bg-active) 0); display: grid; place-items: center; position: relative; }
+.ring::before { content: ""; position: absolute; width: 42px; height: 42px; border-radius: var(--radius-full); background: var(--color-bg); }
+.ring .val { position: relative; font-family: var(--font-family-mono); font-size: var(--font-size-xs); color: var(--color-text); font-weight: var(--font-weight-semibold); }
+.ring-wrap { position: relative; display: inline-grid; place-items: center; }
+
+/* ---------- Spinner —— 非族成员：无状态变体，恒为 primary ---------- */
+.spinner { width: 16px; height: 16px; border: 2px solid var(--color-border-strong); border-top-color: var(--color-primary); border-radius: var(--radius-full); animation: cmp-spin 700ms linear infinite; display: inline-block; vertical-align: middle; }
+.spinner--lg { width: 24px; height: 24px; border-width: 3px; }
+
+/* ---------- Stat / KPI card —— 非族成员：数值展示，非状态指示 ---------- */
+.stat-card { border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--card); padding: 12px 14px; }
+.stat-card .k { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); text-transform: uppercase; letter-spacing: .05em; color: var(--color-text-dim); display: flex; align-items: center; gap: 6px; }
+.stat-card .v { font-size: var(--font-size-xl); font-weight: var(--font-weight-semibold); font-family: var(--font-family-mono); margin-top: 4px; }
+.stat-card .delta { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); margin-top: 3px; display: inline-flex; align-items: center; gap: 3px; }
+.stat-card .delta.up { color: var(--color-success); } .stat-card .delta.down { color: var(--color-danger); }
+.stat-card .spark { display: flex; align-items: flex-end; gap: 2px; height: 24px; margin-top: 8px; }
+.stat-card .spark i { flex: 1; background: var(--color-primary-light-active); border-radius: 1px; }
+
+/* ---------- Gauge (conic, reuses ring) ---------- */
+.gauge { --val: 50; /* @kind other */ width: 72px; height: 72px; border-radius: var(--radius-full); background: conic-gradient(from -135deg, var(--indicator-color) calc(var(--val) * 2.7deg), var(--color-bg-active) 0 270deg, transparent 270deg); display: grid; place-items: center; position: relative; }
+.gauge::before { content: ""; position: absolute; width: 54px; height: 54px; border-radius: var(--radius-full); background: var(--color-bg); }
+.gauge .gv { position: relative; font-family: var(--font-family-mono); font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); }
+.gauge .gl { position: relative; font-family: var(--font-family-mono); font-size: var(--font-size-2xs); color: var(--color-text-dim); }

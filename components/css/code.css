@@ -1,0 +1,14 @@
+/* ---------- Key-value / description list ---------- */
+.kv { display: grid; grid-template-columns: max-content 1fr; gap: 0; border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; font-size: var(--font-size-sm); }
+.kv dt { background: var(--color-bg-subtle); padding: 6px 12px; font-family: var(--font-family-mono); font-size: var(--font-size-2xs); text-transform: uppercase; letter-spacing: .04em; color: var(--color-text-dim); border-bottom: 1px solid var(--color-divider); display: flex; align-items: center; }
+.kv dd { margin: 0; padding: 6px 12px; color: var(--color-text); font-family: var(--font-family-mono); border-bottom: 1px solid var(--color-divider); border-left: 1px solid var(--color-divider); }
+.kv dt:last-of-type, .kv dd:last-of-type { border-bottom: none; }
+
+/* ---------- Code block / terminal —— 旋钮: --codeblock-pad --codeblock-bg ---------- */
+.codeblock { padding: var(--codeblock-pad); background: var(--codeblock-bg); font-family: var(--font-family-mono); color: var(--color-text); border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); overflow: hidden; font-size: var(--font-size-xs); }
+.codeblock pre { margin: 0; padding: 10px 12px; line-height: 1.6; overflow-x: auto; }
+.codeblock .ln { opacity: .4; user-select: none; display: inline-block; width: 22px; }
+.codeblock .tok-key { color: var(--color-info); } .codeblock .tok-str { color: var(--color-success); } .codeblock .tok-num { color: var(--color-warning); } .codeblock .tok-com { opacity: .5; }
+.codeblock .cb-head { display: flex; align-items: center; gap: 6px; margin: calc(-1 * var(--codeblock-pad)) calc(-1 * var(--codeblock-pad)) 0; padding: 5px 10px; background: color-mix(in oklab, var(--codeblock-bg) 90%, var(--color-text)); border-bottom: 1px solid color-mix(in oklab, var(--codeblock-bg) 70%, var(--color-text)); }
+.codeblock .cb-head .dot { width: 8px; height: 8px; border-radius: 50%; background: color-mix(in oklab, var(--color-text) 30%, transparent); }
+.codeblock .cb-head .name { margin-left: 4px; opacity: .7; font-size: var(--font-size-2xs); }

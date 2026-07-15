@@ -1,0 +1,45 @@
+/* feedback —— 接线: --feedback-accent（alert/note-banner/toast 族共用，默认 --color-primary）· 旋钮: --toast-w */
+.alert, .note-banner, .toast { --feedback-accent: var(--color-primary); }
+.alert--success, .note-banner--success, .toast--success { --feedback-accent: var(--color-success); }
+.alert--warning, .note-banner--warning, .toast--warning { --feedback-accent: var(--color-warning); }
+.alert--danger,  .note-banner--danger,  .toast--danger  { --feedback-accent: var(--color-danger); }
+
+/* ---------- Alert ---------- */
+.alert { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 1px solid var(--color-border); border-left: 3px solid var(--feedback-accent); border-radius: var(--radius-sm); background: var(--card); }
+.alert svg { width: 16px; height: 16px; stroke-width: 1.8; fill: none; stroke: var(--feedback-accent); flex: none; margin-top: 1px; }
+.alert .a-title { font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); margin: 0 0 2px; }
+.alert .a-body { font-size: var(--font-size-xs); color: var(--color-text-muted); margin: 0; line-height: 1.5; }
+
+/* ---------- Toast / Notification —— 反相底(--color-bg-inverse/--color-text-inverse)，2px 左缘接线色 ---------- */
+.toast { display: flex; align-items: flex-start; gap: 10px; width: var(--toast-w); background: var(--color-bg-inverse); color: var(--color-text-inverse); border: 1px solid var(--color-border-strong); border-left: 2px solid var(--feedback-accent); border-radius: var(--radius-sm); box-shadow: var(--shadow-pop); padding: 9px 11px; }
+.toast .t-ico { width: 16px; height: 16px; flex: none; margin-top: 1px; color: var(--feedback-accent); }
+.toast .t-ico svg { width: 16px; height: 16px; stroke-width: 1.8; fill: none; stroke: currentColor; }
+.toast .t-body { flex: 1; min-width: 0; }
+.toast .t-title { font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); margin: 0 0 1px; }
+.toast .t-desc { font-size: var(--font-size-xs); opacity: .7; margin: 0; line-height: 1.45; }
+.toast .t-time { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); opacity: .55; margin-left: auto; flex: none; }
+.toast .t-x { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; flex: none; background: transparent; border: none; color: inherit; opacity: .55; cursor: pointer; border-radius: var(--radius-sm); padding: 0; }
+.toast .t-x svg { width: 11px; height: 11px; stroke: currentColor; stroke-width: 2; fill: none; pointer-events: none; }
+.toast .t-x:hover { opacity: 1; }
+.toast-stack { position: fixed; right: 16px; bottom: 16px; z-index: 1010; display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+.toast-stack .toast { transform: translateX(8px); opacity: 0; transition: transform var(--duration-base) var(--ease-standard), opacity var(--duration-base) ease; }
+.toast-stack .toast[data-state="open"] { transform: translateX(0); opacity: 1; }
+
+/* inline notification banner —— 常驻,极淡接线色底 */
+.note-banner { display: flex; align-items: flex-start; gap: 9px; border: 1px solid var(--color-border); border-left: 2px solid var(--feedback-accent); border-radius: var(--radius-sm); padding: 8px 11px; background: color-mix(in oklab, var(--feedback-accent) 7%, var(--color-bg)); }
+.note-banner .t-ico { width: 15px; height: 15px; flex: none; margin-top: 1px; color: var(--feedback-accent); }
+.note-banner .t-ico svg { width: 15px; height: 15px; stroke-width: 1.8; fill: none; stroke: currentColor; }
+.note-banner p { margin: 0; font-size: var(--font-size-sm); }
+.note-banner .t-desc { color: var(--color-text-muted); font-size: var(--font-size-xs); }
+
+/* ---------- Skeleton —— 非族成员：加载占位，非状态指示 ---------- */
+.skeleton { background: var(--color-bg-active); border-radius: var(--radius-sm); position: relative; overflow: hidden; }
+.skeleton::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--color-text) 6%, transparent), transparent); transform: translateX(-100%); animation: cmp-shimmer 1.3s ease-in-out infinite; }
+.skeleton--text { height: 9px; margin: 5px 0; }
+.skeleton--line { height: 9px; }
+.skeleton--circle { border-radius: var(--radius-full); }
+.skeleton--block { height: 100%; }
+
+/* ---------- Timeline / activity —— 非族成员：容器竖线，节点语义色由 misc.css .tl-item 承载 ---------- */
+.timeline { position: relative; padding-left: 18px; }
+.timeline::before { content: ""; position: absolute; left: 4px; top: 4px; bottom: 4px; width: 1px; background: var(--color-border); }

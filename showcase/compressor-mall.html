@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>工业压缩机商城 · App Demo</title>
+<link rel="stylesheet" href="mobile.css" />
+<link rel="stylesheet" href="mall.css" />
+<style>
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: #e7eaef;
+    background-image: radial-gradient(circle at 30% 20%, #eef1f5, #dfe3ea 70%);
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 28px 16px;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  }
+  .demo-wrap { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .demo-cap { font-size: 12px; color: #6b7480; letter-spacing: 0.04em; font-family: "SF Mono", "JetBrains Mono", Consolas, monospace; }
+  .demo-cap b { color: #2a3340; }
+
+  /* app header (home) — custom chrome */
+  .app-head { flex: none; padding: 4px 12px 10px; background: var(--m-bg); display: flex; flex-direction: column; gap: 9px; }
+  .app-head .ah-top { display: flex; align-items: center; gap: 8px; }
+  .app-head .ah-loc { display: flex; align-items: center; gap: 3px; font-size: var(--m-text-sm); font-weight: var(--m-weight-semibold); color: var(--m-text); }
+  .app-head .ah-loc svg { width: 16px; height: 16px; stroke: var(--m-text); stroke-width: 2; fill: none; }
+  .app-head .ah-spacer { flex: 1; }
+  .app-head .ah-search { flex: 1; }
+
+  .screen-nav { flex: none; min-height: 48px; display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; padding: 4px 6px; background: var(--m-bg); border-bottom: 1px solid var(--m-separator); }
+  .screen-nav .sn-title { text-align: center; font-size: var(--m-text-md); font-weight: var(--m-weight-semibold); }
+  .screen-nav .sn-right { display: flex; justify-content: flex-end; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .c-prodcard { background: var(--m-bg); border-radius: var(--m-radius-md); overflow: hidden; cursor: pointer; box-shadow: var(--m-shadow-card); -webkit-tap-highlight-color: transparent; }
+  .c-prodcard:active { transform: scale(0.985); }
+  .c-prodcard .c-imgslot { width: 100%; height: 130px; border-radius: 0; }
+  .c-prodcard .c-pc-b { padding: 9px 10px 11px; display: flex; flex-direction: column; gap: 6px; }
+  .c-prodcard .c-pc-t { font-size: var(--m-text-sm); color: var(--m-text); line-height: 1.32; height: 2.64em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+</style>
+</head>
+<body>
+<div class="demo-wrap">
+  <div class="m-device mobile">
+    <div class="m-screen" style="height:760px">
+      <div class="m-statusbar"><span>9:41</span><span class="sb-right"><span class="sb-net">5G</span><span class="m-batt"><i></i></span></span></div>
+
+      <div class="app-shell">
+      <div class="app-viewport">
+
+        <!-- ════════ TAB 1 · 首页 ════════ -->
+        <section class="tab-screen" data-screen="home" data-screen-label="首页">
+          <div class="app-head">
+            <div class="ah-top">
+              <div class="ah-loc"><i data-ic="pin"></i>上海 · 浦东</div>
+              <div class="ah-spacer"></div>
+              <button class="m-iconbtn" data-ic-btn="scan"></button>
+              <button class="m-iconbtn" data-ic-btn="bell"></button>
+            </div>
+            <div class="m-search ah-search"><i data-ic="search"></i><input placeholder="搜型号 / 功率 / 品类,如 75kW 螺杆机" /></div>
+          </div>
+          <div class="scroll-body">
+            <div class="pad stack">
+              <!-- 类目快捷格 -->
+              <div class="c-catgrid">
+                <button class="c-cattile" data-go-cat="0"><span class="c-cat-ic"><i data-ic="box"></i></span><span class="c-cat-lb">螺杆机</span></button>
+                <button class="c-cattile" data-go-cat="1"><span class="c-cat-ic"><i data-ic="gauge"></i></span><span class="c-cat-lb">活塞机</span></button>
+                <button class="c-cattile" data-go-cat="2"><span class="c-cat-ic"><i data-ic="drop"></i></span><span class="c-cat-lb">无油机</span></button>
+                <button class="c-cattile" data-go-cat="3"><span class="c-cat-ic"><i data-ic="gear"></i></span><span class="c-cat-lb">离心机</span></button>
+                <button class="c-cattile" data-go-cat="4"><span class="c-cat-ic"><i data-ic="truck"></i></span><span class="c-cat-lb">移动式</span></button>
+                <button class="c-cattile" data-go-cat="5"><span class="c-cat-ic"><i data-ic="snow"></i></span><span class="c-cat-lb">冷干机</span></button>
+                <button class="c-cattile" data-go-cat="6"><span class="c-cat-ic"><i data-ic="filter"></i></span><span class="c-cat-lb">过滤器</span></button>
+                <button class="c-cattile" data-go-cat="7"><span class="c-cat-ic"><i data-ic="tank"></i></span><span class="c-cat-lb">储气罐</span></button>
+                <button class="c-cattile" data-go-cat="8"><span class="c-cat-ic"><i data-ic="wrench"></i></span><span class="c-cat-lb">配件耗材</span></button>
+                <button class="c-cattile" data-go-cat="0"><span class="c-cat-ic"><i data-ic="grid"></i></span><span class="c-cat-lb">全部</span></button>
+              </div>
+
+              <!-- banner -->
+              <div class="c-banner">
+                <div class="c-bn-art"></div>
+                <div class="c-bn-k">工厂直供 · 限时</div>
+                <div class="c-bn-t">整机质保 2 年 · 安装到厂</div>
+                <div class="c-bn-d">满 5 万返耗材礼包 · 含一年滤芯</div>
+              </div>
+
+              <!-- 现货闪购 -->
+              <div>
+                <div class="c-secthead"><span class="c-sect-t">现货闪购</span><span class="c-sect-sub">24h 发货</span><span class="c-sect-more">更多<span class="m-chevron"></span></span></div>
+                <div class="c-hscroll" style="margin-top:8px">
+                  <div class="c-minicard" data-go-prod="2"><div class="c-imgslot"><span>活塞机</span></div><div class="c-mini-b"><div class="c-mini-t">活塞式空压机 7.5kW PT-7.5</div><span class="c-price c-price--sm"><span class="cur">¥</span><span class="int">6,980</span></span></div></div>
+                  <div class="c-minicard" data-go-prod="7"><div class="c-imgslot"><span>储气罐</span></div><div class="c-mini-b"><div class="c-mini-t">储气罐 2.0m³ / 8bar AT-2008</div><span class="c-price c-price--sm"><span class="cur">¥</span><span class="int">4,500</span></span></div></div>
+                  <div class="c-minicard" data-go-prod="5"><div class="c-imgslot"><span>冷干机</span></div><div class="c-mini-b"><div class="c-mini-t">冷冻式干燥机 13.5m³ RD-135</div><span class="c-price c-price--sm"><span class="cur">¥</span><span class="int">9,800</span></span></div></div>
+                  <div class="c-minicard" data-go-prod="8"><div class="c-imgslot"><span>配件</span></div><div class="c-mini-b"><div class="c-mini-t">螺杆主机大修包 KIT-37</div><span class="c-price c-price--sm"><span class="cur">¥</span><span class="int">3,200</span></span></div></div>
+                </div>
+              </div>
+
+              <!-- 整机推荐 -->
+              <div>
+                <div class="c-secthead"><span class="c-sect-t">整机推荐</span><span class="c-sect-sub">按工况选型</span></div>
+                <div class="m-list" style="margin-top:8px" data-prodlist="home"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ════════ TAB 2 · 分类 ════════ -->
+        <section class="tab-screen" data-screen="category" data-screen-label="分类" hidden>
+          <div class="screen-nav"><span></span><span class="sn-title">分类选型</span><span class="sn-right"><button class="m-iconbtn" data-ic-btn="search"></button></span></div>
+          <div style="display:flex;gap:10px;align-items:center;margin:10px 12px 6px">
+            <div class="m-segmented" role="tablist" data-sort style="flex:1">
+              <button role="tab" aria-selected="true">综合</button>
+              <button role="tab" aria-selected="false">销量</button>
+              <button role="tab" aria-selected="false">价格</button>
+            </div>
+            <button class="m-btn m-btn--outline m-btn--sm" data-open-filter style="gap:6px;flex:none"><i data-ic="filter"></i>筛选</button>
+          </div>
+          <div class="c-catbrowse">
+            <div class="c-catrail" data-catrail>
+              <button aria-selected="true">螺杆机</button>
+              <button aria-selected="false">活塞机</button>
+              <button aria-selected="false">无油机</button>
+              <button aria-selected="false">离心机</button>
+              <button aria-selected="false">移动式</button>
+              <button aria-selected="false">冷干机</button>
+              <button aria-selected="false">过滤器</button>
+              <button aria-selected="false">储气罐</button>
+              <button aria-selected="false">配件耗材</button>
+            </div>
+            <div class="c-catpane">
+              <div class="m-list" data-prodlist="category" style="box-shadow:none;border:1px solid var(--m-separator)"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ════════ TAB 3 · 购物车 ════════ -->
+        <section class="tab-screen" data-screen="cart" data-screen-label="购物车" hidden>
+          <div class="screen-nav"><span></span><span class="sn-title">购物车</span><span class="sn-right"><button class="m-iconbtn" style="font-size:13px;color:var(--m-accent);font-weight:600;width:auto;padding:0 8px">管理</button></span></div>
+          <div class="scroll-body" data-cart-body>
+            <div class="pad stack">
+              <div class="c-cartgroup">
+                <div class="c-cartgroup-head"><span class="m-check" role="checkbox" aria-checked="true" tabindex="0"></span><i data-ic="building"></i>鼎力机电 · 自营旗舰</div>
+                <div class="c-cartrow" data-cart-item="0">
+                  <span class="m-check" role="checkbox" aria-checked="true" tabindex="0"></span>
+                  <div class="c-imgslot"><span>螺杆机</span></div>
+                  <div class="c-ct-main">
+                    <div class="c-ct-title">永磁变频螺杆空压机 75kW SC-75VF</div>
+                    <div class="c-tagrow"><span class="c-tag c-tag--accent">变频</span><span class="c-tag">0.8MPa</span></div>
+                    <div class="c-ct-foot"><span class="c-price c-price--sm"><span class="cur">¥</span><span class="int">128,600</span></span><span class="c-stepper" data-stepper><button data-step="-1">−</button><span class="c-step-val">1</span><button data-step="1">+</button></span></div>
+                  </div>
+                </div>
+                <div class="c-cartrow" data-cart-item="1">
+                  <span class="m-check" role="checkbox" aria-checked="true" tabindex="0"></span>
+                  <div class="c-imgslot"><span>冷干机</span></div>
+                  <div class="c-ct-main">
+                    <div class="c-ct-title">冷冻式干燥机 13.5m³ RD-135</div>
+                    <div class="c-tagrow"><span class="c-tag c-tag--stock">现货</span><span class="c-tag">后处理</span></div>
+                    <div class="c-ct-foot"><span class="c-price c-price--sm"><span class="cur">¥</span><span class="int">9,800</span></span><span class="c-stepper" data-stepper><button data-step="-1">−</button><span class="c-step-val">1</span><button data-step="1">+</button></span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="c-cartgroup">
+                <div class="c-cartgroup-head"><span class="m-check" role="checkbox" aria-checked="false" tabindex="0"></span><i data-ic="building"></i>北元配件 · 官方</div>
+                <div class="c-cartrow" data-cart-item="2">
+                  <span class="m-check" role="checkbox" aria-checked="false" tabindex="0"></span>
+                  <div class="c-imgslot"><span>配件</span></div>
+                  <div class="c-ct-main">
+                    <div class="c-ct-title">精密过滤器组 FT-076(三级)</div>
+                    <div class="c-tagrow"><span class="c-tag c-tag--stock">现货</span><span class="c-tag">包邮</span></div>
+                    <div class="c-ct-foot"><span class="c-price c-price--sm"><span class="cur">¥</span><span class="int">1,280</span></span><span class="c-stepper" data-stepper><button data-step="-1">−</button><span class="c-step-val">2</span><button data-step="1">+</button></span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 结算粘底栏 -->
+          <div class="c-actionbar" data-cart-bar>
+            <span class="m-check" role="checkbox" aria-checked="false" tabindex="0" data-cart-all></span>
+            <span style="font-size:var(--m-text-sm);color:var(--m-text)">全选</span>
+            <div style="margin-left:auto;text-align:right;margin-right:10px">
+              <div style="font-size:var(--m-text-xs);color:var(--m-text-tertiary)">合计</div>
+              <span class="c-price"><span class="cur">¥</span><span class="int" data-cart-total>138,400</span></span>
+            </div>
+            <button class="m-btn m-btn--primary m-btn--lg" data-cart-checkout>结算 (3)</button>
+          </div>
+        </section>
+
+        <!-- ════════ TAB 4 · 订单 ════════ -->
+        <section class="tab-screen" data-screen="orders" data-screen-label="订单" hidden>
+          <div class="screen-nav"><span></span><span class="sn-title">我的订单</span><span class="sn-right"><button class="m-iconbtn" data-ic-btn="search"></button></span></div>
+          <div class="m-segmented" role="tablist" style="margin:10px 12px 4px" data-orderfilter>
+            <button role="tab" aria-selected="true">全部</button>
+            <button role="tab" aria-selected="false">待付款</button>
+            <button role="tab" aria-selected="false">待发货</button>
+            <button role="tab" aria-selected="false">待收货</button>
+          </div>
+          <div class="scroll-body">
+            <div class="pad stack">
+              <div class="c-ordercard">
+                <div class="c-order-head"><i data-ic="building" style="width:15px;height:15px;stroke:var(--m-text-secondary);stroke-width:1.9;fill:none"></i><span style="font-size:var(--m-text-sm);color:var(--m-text)">鼎力机电 · 自营</span><span class="c-order-no" style="margin-left:6px">No.2406180931</span><span class="c-order-status c-order-status--pay">待付款</span></div>
+                <div class="c-order-item" data-go-order="0"><div class="c-imgslot"><span>螺杆机</span></div><div style="flex:1;min-width:0"><div style="font-size:var(--m-text-sm);color:var(--m-text);line-height:1.3">永磁变频螺杆空压机 75kW SC-75VF</div><div style="font-size:var(--m-text-xs);color:var(--m-text-tertiary);margin-top:4px">变频 · 0.8MPa · ×1</div></div><span class="c-price c-price--sm"><span class="cur">¥</span><span class="int">128,600</span></span></div>
+                <div class="c-order-foot"><span class="c-order-total">合计 <b><span style="font-size:11px">¥</span>128,600</b></span><button class="m-btn m-btn--outline m-btn--sm">取消</button><button class="m-btn m-btn--primary m-btn--sm" data-go-order="0">去付款</button></div>
+              </div>
+              <div class="c-ordercard">
+                <div class="c-order-head"><i data-ic="building" style="width:15px;height:15px;stroke:var(--m-text-secondary);stroke-width:1.9;fill:none"></i><span style="font-size:var(--m-text-sm);color:var(--m-text)">鼎力机电 · 自营</span><span class="c-order-no" style="margin-left:6px">No.2406121144</span><span class="c-order-status c-order-status--ship">运输中</span></div>
+                <div class="c-order-item" data-go-order="1"><div class="c-imgslot"><span>活塞机</span></div><div style="flex:1;min-width:0"><div style="font-size:var(--m-text-sm);color:var(--m-text);line-height:1.3">活塞式空压机 7.5kW PT-7.5</div><div style="font-size:var(--m-text-xs);color:var(--m-text-tertiary);margin-top:4px">现货 · 0.8MPa · ×2</div></div><span class="c-price c-price--sm"><span class="cur">¥</span><span class="int">13,960</span></span></div>
+                <div class="c-order-foot"><span class="c-order-total">合计 <b><span style="font-size:11px">¥</span>13,960</b></span><button class="m-btn m-btn--outline m-btn--sm" data-go-order="1">查看物流</button><button class="m-btn m-btn--primary m-btn--sm" data-go-order="1">确认收货</button></div>
+              </div>
+              <div class="c-ordercard">
+                <div class="c-order-head"><i data-ic="building" style="width:15px;height:15px;stroke:var(--m-text-secondary);stroke-width:1.9;fill:none"></i><span style="font-size:var(--m-text-sm);color:var(--m-text)">北元配件 · 官方</span><span class="c-order-no" style="margin-left:6px">No.2405290617</span><span class="c-order-status c-order-status--done">已完成</span></div>
+                <div class="c-order-item" data-go-order="2"><div class="c-imgslot"><span>配件</span></div><div style="flex:1;min-width:0"><div style="font-size:var(--m-text-sm);color:var(--m-text);line-height:1.3">精密过滤器组 FT-076(三级)</div><div style="font-size:var(--m-text-xs);color:var(--m-text-tertiary);margin-top:4px">包邮 · ×2</div></div><span class="c-price c-price--sm"><span class="cur">¥</span><span class="int">2,560</span></span></div>
+                <div class="c-order-foot"><span class="c-order-total">实付 <b><span style="font-size:11px">¥</span>2,560</b></span><button class="m-btn m-btn--outline m-btn--sm" data-go-order="2">查看物流</button><button class="m-btn m-btn--primary m-btn--sm">再次购买</button></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ════════ TAB 5 · 我的 ════════ -->
+        <section class="tab-screen" data-screen="account" data-screen-label="我的" hidden>
+          <div class="scroll-body">
+            <div class="c-cohead">
+              <div class="c-co-top">
+                <div class="c-co-logo">沪</div>
+                <div style="flex:1;min-width:0">
+                  <div class="c-co-name">上海沪东机电设备</div>
+                  <div class="c-co-meta"><span class="c-co-vtag">已认证企业</span>采购账户 · 王工</div>
+                </div>
+                <button class="m-iconbtn" data-ic-btn="gear" style="color:#fff"></button>
+              </div>
+              <div class="c-co-credit">
+                <div><div class="v">¥80万</div><div class="k">授信额度</div></div>
+                <div><div class="v">¥23.6万</div><div class="k">本月采购</div></div>
+                <div><div class="v">12</div><div class="k">询价中</div></div>
+              </div>
+            </div>
+            <div class="pad stack">
+              <!-- 订单 -->
+              <div>
+                <div class="c-secthead" style="padding-bottom:10px"><span class="c-sect-t" style="font-size:17px">我的订单</span><span class="c-sect-more" data-go-tab="orders">全部订单<span class="m-chevron"></span></span></div>
+                <div class="c-statusrow">
+                  <button data-go-tab="orders"><i data-ic="wallet"></i><span class="c-st-lb">待付款</span><span class="c-st-badge">2</span></button>
+                  <button data-go-tab="orders"><i data-ic="box"></i><span class="c-st-lb">待发货</span><span class="c-st-badge">1</span></button>
+                  <button data-go-tab="orders"><i data-ic="truck"></i><span class="c-st-lb">待收货</span></button>
+                  <button><i data-ic="headset"></i><span class="c-st-lb">售后/退换</span></button>
+                </div>
+              </div>
+
+              <!-- 我的设备 · 维保提醒 -->
+              <div>
+                <div class="c-secthead" style="padding-bottom:10px"><span class="c-sect-t" style="font-size:17px">我的设备</span><span class="c-sect-sub">3 台在运 · 1 待保养</span><span class="c-sect-more">维保日历<span class="m-chevron"></span></span></div>
+                <div class="m-list">
+                  <div class="m-row m-row--inset"><div class="m-row-icon m-row-icon--accent"><i data-ic="box"></i></div><div class="m-row-main"><div class="m-row-title">永磁变频螺杆 75kW</div><div class="m-row-sub">SC-75VF · 已运行 4,120 h · 下次保养 剩 880 h</div></div><span class="m-statustag m-statustag--success"><span class="dot"></span>正常</span></div>
+                  <div class="m-row m-row--inset"><div class="m-row-icon m-row-icon--warning"><i data-ic="wrench"></i></div><div class="m-row-main"><div class="m-row-title">活塞机 7.5kW</div><div class="m-row-sub" style="color:var(--m-warning)">PT-7.5 · 保养已到期,建议更换空滤/油滤</div></div><button class="m-btn m-btn--secondary m-btn--sm">预约保养</button></div>
+                  <div class="m-row m-row--inset"><div class="m-row-icon"><i data-ic="snow"></i></div><div class="m-row-main"><div class="m-row-title">冷冻式干燥机</div><div class="m-row-sub">RD-135 · 已运行 1,260 h</div></div><span class="m-statustag m-statustag--success"><span class="dot"></span>正常</span></div>
+                </div>
+              </div>
+
+              <!-- 专属工程师 -->
+              <div class="c-engineer">
+                <div class="c-eng-av">李</div>
+                <div class="c-eng-main">
+                  <div class="c-eng-name">李工 · 专属工程师</div>
+                  <div class="c-eng-role">选型 · 安装调试 · 维保 · 7×24 响应</div>
+                </div>
+                <button class="m-iconbtn c-eng-call" data-ic-btn="phone"></button>
+                <button class="m-btn m-btn--primary m-btn--sm">咨询</button>
+              </div>
+
+              <!-- 常用工具 -->
+              <div>
+                <div class="m-grouplabel" style="padding:0 6px 8px">常用工具</div>
+                <div class="c-quadgrid">
+                  <button><i data-ic="clipboard"></i><span class="c-q-lb">采购清单</span></button>
+                  <button><i data-ic="tag"></i><span class="c-q-lb">我的询价</span></button>
+                  <button><i data-ic="file"></i><span class="c-q-lb">发票管理</span></button>
+                  <button data-open-address><i data-ic="pin"></i><span class="c-q-lb">收货地址</span></button>
+                </div>
+              </div>
+
+              <!-- 企业 / 账务 -->
+              <div>
+                <div class="m-grouplabel" style="padding:0 6px 8px">企业与账务</div>
+                <div class="m-list">
+                  <div class="m-row m-row--inset"><div class="m-row-icon m-row-icon--accent"><i data-ic="building"></i></div><div class="m-row-main"><div class="m-row-title">企业认证与资质</div></div><span class="m-row-value" style="color:var(--m-success)">已认证</span><div class="m-chevron"></div></div>
+                  <div class="m-row m-row--inset"><div class="m-row-icon"><i data-ic="wallet"></i></div><div class="m-row-main"><div class="m-row-title">授信额度明细</div></div><span class="m-row-value">可用 ¥56.4万</span><div class="m-chevron"></div></div>
+                  <div class="m-row m-row--inset"><div class="m-row-icon"><i data-ic="card"></i></div><div class="m-row-main"><div class="m-row-title">对公账期与结算</div></div><span class="m-row-value">月结 30 天</span><div class="m-chevron"></div></div>
+                </div>
+              </div>
+
+              <!-- 设置 -->
+              <div>
+                <div class="m-grouplabel" style="padding:0 6px 8px">设置</div>
+                <div class="m-list">
+                  <div class="m-row m-row--inset"><div class="m-row-icon"><i data-ic="bell"></i></div><div class="m-row-main"><div class="m-row-title">订单与维保推送</div></div><span class="m-switch" role="switch" aria-checked="true" tabindex="0"></span></div>
+                  <div class="m-row m-row--inset"><div class="m-row-icon"><i data-ic="headset"></i></div><div class="m-row-main"><div class="m-row-title">联系客服</div></div><span class="m-row-value">400-820-1958</span><div class="m-chevron"></div></div>
+                  <div class="m-row m-row--inset"><div class="m-row-icon"><i data-ic="file"></i></div><div class="m-row-main"><div class="m-row-title">帮助与选型指南</div></div><div class="m-chevron"></div></div>
+                  <div class="m-row m-row--inset"><div class="m-row-icon"><i data-ic="gear"></i></div><div class="m-row-main"><div class="m-row-title">设置</div></div><span class="m-row-value">v1.0.0</span><div class="m-chevron"></div></div>
+                </div>
+              </div>
+
+              <div class="m-list"><div class="m-row m-row--danger" style="justify-content:center"><div class="m-row-title" style="flex:none">退出登录</div></div></div>
+            </div>
+          </div>
+        </section>
+
+      </div><!-- /app-viewport -->
+
+      <!-- ════════ Tab bar ════════ -->
+      <div class="m-tabbar" data-tabbar style="padding-bottom:8px">
+        <button class="m-tab" aria-selected="true" data-tab="home"><i data-ic="home"></i><span class="m-tab-label">首页</span></button>
+        <button class="m-tab" aria-selected="false" data-tab="category"><i data-ic="grid"></i><span class="m-tab-label">分类</span></button>
+        <button class="m-tab" aria-selected="false" data-tab="cart"><span class="m-tab-badge" data-cart-badge>3</span><i data-ic="cart"></i><span class="m-tab-label">购物车</span></button>
+        <button class="m-tab" aria-selected="false" data-tab="orders"><i data-ic="clipboard"></i><span class="m-tab-label">订单</span></button>
+        <button class="m-tab" aria-selected="false" data-tab="account"><i data-ic="user"></i><span class="m-tab-label">我的</span></button>
+      </div>
+
+      <!-- ════════ PUSH · 商品详情(覆盖 Tab 栏,全屏) ════════ -->
+      <section class="push-screen" data-screen="product" data-screen-label="商品详情">
+        <div class="screen-nav" style="background:color-mix(in oklab,var(--m-bg) 88%,transparent);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)">
+          <button class="m-iconbtn" data-back><i data-ic="back"></i></button>
+          <span class="sn-title" data-pd-navtitle>商品详情</span>
+          <span class="sn-right"><button class="m-iconbtn" data-ic-btn="share"></button></span>
+        </div>
+        <div class="scroll-body" data-pd-body><!-- filled by JS --></div>
+        <div class="c-actionbar">
+          <div class="c-ab-icon" data-go-tab="cart"><i data-ic="headset"></i>客服</div>
+          <div class="c-ab-icon" data-go-tab="cart"><i data-ic="cart"></i><span class="c-ab-badge" data-cart-badge>3</span>购物车</div>
+          <div class="c-ab-grow">
+            <button class="m-btn m-btn--secondary m-btn--lg" style="flex:1" data-open-spec="cart">加入购物车</button>
+            <button class="m-btn m-btn--primary m-btn--lg" style="flex:1" data-open-spec="buy">立即购买</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════ PUSH · 订单详情 + 物流时间线 ════════ -->
+      <section class="push-screen" data-screen="order" data-screen-label="订单详情">
+        <div class="screen-nav" style="background:color-mix(in oklab,var(--m-bg) 88%,transparent);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)">
+          <button class="m-iconbtn" data-back><i data-ic="back"></i></button>
+          <span class="sn-title">订单详情</span>
+          <span class="sn-right"><button class="m-iconbtn" data-ic-btn="headset"></button></span>
+        </div>
+        <div class="scroll-body" data-od-body><!-- filled by JS --></div>
+        <div class="c-actionbar" data-od-actions><!-- filled by JS --></div>
+      </section>
+
+      <!-- ════════ PUSH · 收货地址簿 ════════ -->
+      <section class="push-screen" data-screen="address" data-screen-label="收货地址">
+        <div class="screen-nav" style="background:var(--m-bg)">
+          <button class="m-iconbtn" data-back><i data-ic="back"></i></button>
+          <span class="sn-title">收货地址</span>
+          <span></span>
+        </div>
+        <div class="scroll-body"><div class="pad stack" data-addr-list><!-- filled by JS --></div></div>
+        <div class="c-actionbar"><div class="m-ab-grow"><button class="m-btn m-btn--primary m-btn--lg" style="flex:1" data-add-addr><i data-ic="plus"></i>新增收货地址</button></div></div>
+      </section>
+
+      <!-- ════════ PUSH · 新增/编辑地址 ════════ -->
+      <section class="push-screen" data-screen="addraddr" data-screen-label="新增地址">
+        <div class="screen-nav" style="background:var(--m-bg)">
+          <button class="m-iconbtn" data-back><i data-ic="back"></i></button>
+          <span class="sn-title" data-af-title>新增收货地址</span>
+          <span class="sn-right"><button class="m-iconbtn" data-af-del style="display:none;color:var(--m-danger)"><i data-ic="x"></i></button></span>
+        </div>
+        <div class="scroll-body"><div class="pad stack">
+          <div class="c-form">
+            <div class="c-formrow"><label>收货人</label><input data-af="name" placeholder="姓名" /></div>
+            <div class="c-formrow"><label>手机号</label><input data-af="phone" placeholder="手机号码" inputmode="numeric" /></div>
+            <div class="c-formrow c-formrow--tap" data-af-region><label>所在地区</label><span class="c-fr-val placeholder" data-af="region">省 / 市 / 区</span><span class="m-chevron"></span></div>
+            <div class="c-formrow"><label>详细地址</label><textarea data-af="detail" rows="2" placeholder="街道、门牌号、厂房 / 收货口"></textarea></div>
+          </div>
+          <div>
+            <div class="m-grouplabel" style="padding:0 6px 8px">地址标签</div>
+            <div class="m-chiprow" style="padding:0 2px" data-af-tag>
+              <button class="m-chip" aria-selected="true">公司</button>
+              <button class="m-chip">工厂</button>
+              <button class="m-chip">仓库</button>
+              <button class="m-chip">工地</button>
+            </div>
+          </div>
+          <div class="c-form"><div class="c-formrow c-formrow--switch"><span class="c-fr-label">设为默认地址</span><span class="m-switch" role="switch" aria-checked="false" tabindex="0" data-af-def></span></div></div>
+        </div></div>
+        <div class="c-actionbar"><div class="m-ab-grow"><button class="m-btn m-btn--primary m-btn--lg" style="flex:1" data-af-save>保存</button></div></div>
+      </section>
+
+      </div><!-- /app-shell -->
+      <div class="m-home"></div>
+
+      <!-- ════════ 规格选择 sheet ════════ -->
+      <div class="m-sheet-host" data-sheet="spec">
+        <div class="m-scrim" data-close-sheet></div>
+        <div class="m-sheet">
+          <div class="m-grabber"></div>
+          <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:14px">
+            <div class="c-imgslot" style="width:84px;height:84px"><span>产品图</span></div>
+            <div style="flex:1;min-width:0">
+              <span class="c-price"><span class="cur">¥</span><span class="int" data-spec-price>128,600</span></span>
+              <div style="font-size:var(--m-text-xs);color:var(--m-text-tertiary);margin-top:6px" data-spec-model>SC-75VF · 库存 12 台</div>
+            </div>
+            <button class="m-iconbtn" data-close-sheet><i data-ic="x"></i></button>
+          </div>
+          <div class="m-field" style="margin-bottom:14px">
+            <label style="margin-bottom:8px">工作压力</label>
+            <div class="m-chiprow">
+              <button class="m-chip" aria-selected="true">0.8 MPa</button>
+              <button class="m-chip">1.0 MPa</button>
+              <button class="m-chip">1.3 MPa</button>
+            </div>
+          </div>
+          <div class="m-field" style="margin-bottom:18px">
+            <label style="margin-bottom:8px">电压</label>
+            <div class="m-chiprow">
+              <button class="m-chip" aria-selected="true">380V</button>
+              <button class="m-chip">220V</button>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+            <span style="font-size:var(--m-text-md);color:var(--m-text)">数量</span>
+            <span class="c-stepper c-stepper--lg" data-stepper><button data-step="-1">−</button><span class="c-step-val">1</span><button data-step="1">+</button></span>
+          </div>
+          <div class="m-sheet-actions"><button class="m-btn m-btn--primary m-btn--block m-btn--lg" data-spec-confirm>确认</button></div>
+        </div>
+      </div>
+
+      <!-- ════════ 筛选 sheet ════════ -->
+      <div class="m-sheet-host" data-sheet="filter">
+        <div class="m-scrim" data-close-sheet></div>
+        <div class="m-sheet">
+          <div class="m-grabber"></div>
+          <div class="m-sheet-title">筛选</div>
+          <div class="m-field" style="margin:6px 0 16px"><label style="margin-bottom:8px">驱动方式</label><div class="m-chiprow"><button class="m-chip" aria-selected="true">不限</button><button class="m-chip">工频</button><button class="m-chip">永磁变频</button><button class="m-chip">两级压缩</button></div></div>
+          <div class="m-field" style="margin:0 0 16px"><label style="margin-bottom:8px">功率区间</label><div class="m-chiprow"><button class="m-chip">7.5–15kW</button><button class="m-chip" aria-selected="true">22–55kW</button><button class="m-chip">75–160kW</button><button class="m-chip">200kW+</button></div></div>
+          <div class="m-field" style="margin:0 0 18px"><label style="margin-bottom:8px">服务</label><div class="m-chiprow"><button class="m-chip" aria-selected="true">现货</button><button class="m-chip">包邮</button><button class="m-chip">上门安装</button><button class="m-chip">质保2年</button></div></div>
+          <div class="m-sheet-actions" style="flex-direction:row"><button class="m-btn m-btn--neutral m-btn--lg" style="flex:1" data-close-sheet>重置</button><button class="m-btn m-btn--primary m-btn--lg" style="flex:2" data-close-sheet>查看 36 件结果</button></div>
+        </div>
+      </div>
+
+      <!-- snackbar -->
+      <div class="m-snack-host" data-show="false" style="bottom:84px">
+        <div class="m-snackbar" data-snack-el><span class="snack-msg" data-snack-msg>已加入购物车</span><button class="snack-action" data-go-tab="cart">查看</button></div>
+      </div>
+
+    </div>
+  </div>
+  <div class="demo-cap">工业压缩机商城 · <b>App Demo</b> · 用 zi 移动规范构建</div>
+</div>
+
+<script src="mall-data.js"></script>
+<script src="mall-app.js"></script>
+</body>
+</html>

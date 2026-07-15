@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>zi · settings</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+  html, body { height: 100%; overflow: hidden; background: var(--bg-base); }
+  .set-window { height: 100vh; display: grid; grid-template-rows: 28px 1fr; overflow: hidden; }
+  .set-body { display: grid; grid-template-columns: 220px 1fr; overflow: hidden; min-height: 0; }
+
+  /* sidebar */
+  .set-side {
+    background: var(--bg-subtle);
+    border-right: 1px solid var(--border);
+    padding: 12px 8px;
+    overflow-y: auto; min-height: 0;
+  }
+  .set-side-label {
+    padding: 6px 8px 4px;
+    font-family: var(--mono-stack);
+    font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-dim);
+  }
+  .set-nav {
+    display: flex; align-items: center; gap: 10px;
+    padding: 7px 10px;
+    border-radius: var(--r-sm);
+    color: var(--text); font-size: 13px;
+    cursor: pointer; line-height: 1.4;
+    margin-bottom: 1px;
+  }
+  .set-nav svg { width: 16px; height: 16px; stroke: var(--text-dim); stroke-width: 1.6; fill: none; flex: none; }
+  .set-nav:hover { background: var(--bg-hover); }
+  .set-nav[data-state="active"] { background: var(--accent); color: var(--accent-fg); }
+  .set-nav[data-state="active"] svg { stroke: var(--accent-fg); }
+  .set-nav .chev { margin-left: auto; display: inline-flex; color: var(--text-dim); }
+  .set-nav .chev svg { width: 16px; height: 16px; fill: currentColor; stroke: none; }
+  .set-nav[data-state="active"] .chev { color: var(--accent-fg); opacity: 0.7; }
+
+  /* content */
+  .set-main { background: var(--bg-base); overflow-y: auto; min-height: 0; padding: 18px 22px 40px; }
+  .set-page-head { margin-bottom: 16px; }
+  .set-page-head h1 { font-size: 20px; font-weight: var(--fw-semibold); margin: 0; letter-spacing: -0.01em; }
+  .set-page-head .crumb { margin-top: 5px; }
+
+  .set-group {
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    background: var(--bg-subtle);
+    margin-bottom: 14px;
+    overflow: hidden;
+    max-width: 720px;
+  }
+  .set-group-head {
+    display: flex; align-items: center; gap: 8px;
+    padding: 5px 14px;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border);
+    font-family: var(--mono-stack);
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.07em;
+    color: var(--text-muted);
+  }
+  .set-group-head .tail { margin-left: auto; color: var(--text-dim); font-size: 9px; }
+
+  .set-row {
+    display: flex; align-items: center; gap: 16px;
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--divider);
+    background: var(--bg-base);
+  }
+  .set-row:last-child { border-bottom: none; }
+  .set-row:hover { background: var(--bg-subtle); }
+  .set-row .rl { flex: 1; min-width: 0; }
+  .set-row .rl .rt { font-size: 13px; color: var(--text); }
+  .set-row .rl .rd { font-size: 11px; color: var(--text-muted); margin-top: 2px; line-height: 1.45; max-width: 420px; }
+  .set-row .rl .rd code { font-size: 10px; }
+  .set-row .rc { flex: none; display: flex; align-items: center; gap: 8px; }
+  .set-row .rc .select { min-width: 168px; }
+
+  /* a settings-grade switch is slightly larger for touch ergonomics */
+  .sw.sw--lg { width: 34px; height: 18px; }
+  .sw.sw--lg::after { width: 14px; height: 14px; }
+  .sw.sw--lg[data-state="checked"]::after { left: 17px; }
+
+  /* slider w/ end labels */
+  .set-slider-wrap { display: flex; flex-direction: column; gap: 3px; width: 280px; }
+  .set-slider-scale { display: flex; justify-content: space-between; font-family: var(--mono-stack); font-size: 10px; color: var(--text-dim); }
+  .set-slider-scale .mid { color: var(--accent); }
+
+  .set-statusbar {
+    grid-column: 1 / -1;
+  }
+  .kbd-pair { display: inline-flex; gap: 3px; }
+</style>
+</head>
+<body data-theme="light" data-preset="beacon">
+<div class="set-window">
+
+  <div class="titlebar" style="border-radius:0; border-left:none; border-right:none; border-top:none">
+    <div class="titlebar-traffic"><i></i><i></i><i></i></div>
+    <div class="titlebar-title" style="flex:1">zi · settings — 通用</div>
+    <div class="titlebar-meta"><span class="kbd-group"><kbd>⌘</kbd><span class="plus">+</span><kbd>,</kbd></span></div>
+  </div>
+
+  <div class="set-body">
+    <!-- sidebar -->
+    <nav class="set-side">
+      <div class="set-side-label">preferences</div>
+      <div class="set-nav">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+        账号与存储 <span class="chev">›</span>
+      </div>
+      <div class="set-nav" data-state="active">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        通用
+      </div>
+      <div class="set-nav">
+        <svg viewBox="0 0 24 24"><path d="M12 3l3 6 6 1-4.5 4 1 6L12 17l-5.5 3 1-6L3 10l6-1z"/></svg>
+        快捷键 <span class="chev">›</span>
+      </div>
+      <div class="set-nav">
+        <svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+        通知 <span class="chev">›</span>
+      </div>
+      <div class="set-nav">
+        <svg viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V18h6v-1.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg>
+        插件 <span class="chev">›</span>
+      </div>
+      <div class="set-nav">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        关于 zi <span class="chev">›</span>
+      </div>
+    </nav>
+
+    <!-- main -->
+    <div class="set-main">
+      <div class="set-page-head">
+        <h1>通用</h1>
+        <nav class="crumb"><a>settings</a><span class="crumb-sep">/</span><span class="cur">general</span></nav>
+      </div>
+
+      <!-- group: language -->
+      <div class="set-group">
+        <div class="set-group-head">语言与翻译<span class="tail">language</span></div>
+        <div class="set-row">
+          <div class="rl"><div class="rt">语言</div></div>
+          <div class="rc">
+            <select class="select"><option>跟随系统</option><option>简体中文</option><option>English</option><option>日本語</option></select>
+          </div>
+        </div>
+        <div class="set-row">
+          <div class="rl">
+            <div class="rt">将文字翻译为</div>
+            <div class="rd">在聊天、网页及图片中使用翻译功能时，文字会被翻译为所选语言。</div>
+          </div>
+          <div class="rc">
+            <select class="select"><option>当前使用的语言</option><option>简体中文</option><option>English</option></select>
+          </div>
+        </div>
+        <div class="set-row">
+          <div class="rl">
+            <div class="rt">自动翻译聊天中收到的消息</div>
+            <div class="rd">开启后，所有聊天收到的消息会被自动翻译。</div>
+          </div>
+          <div class="rc"><span class="sw sw--lg" onclick="tog(this)"></span></div>
+        </div>
+      </div>
+
+      <!-- group: appearance -->
+      <div class="set-group">
+        <div class="set-group-head">外观<span class="tail">appearance</span></div>
+        <div class="set-row">
+          <div class="rl"><div class="rt">主题</div></div>
+          <div class="rc">
+            <div class="toggle-group" style="padding:2px">
+              <button class="btn" data-state="checked" onclick="seg(this)">跟随系统</button>
+              <button class="btn" onclick="seg(this)">浅色</button>
+              <button class="btn" onclick="seg(this)">深色</button>
+            </div>
+          </div>
+        </div>
+        <div class="set-row">
+          <div class="rl"><div class="rt">字体大小</div></div>
+          <div class="rc">
+            <div class="set-slider-wrap">
+              <div class="slider" data-slider data-min="0" data-max="4" data-step="1" data-value="1" tabindex="0" style="width:280px">
+                <div class="slider-track"></div>
+                <div class="slider-ticks"><i style="left:0%"></i><i style="left:25%"></i><i style="left:50%"></i><i style="left:75%"></i><i style="left:100%"></i></div>
+                <div class="slider-fill" style="width:25%"></div>
+                <div class="slider-thumb" style="left:25%"></div>
+              </div>
+              <div class="set-slider-scale"><span>小</span><span class="mid">标准</span><span>大</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="set-row">
+          <div class="rl"><div class="rt">强调色</div></div>
+          <div class="rc">
+            <div class="row tight" style="gap:6px">
+              <span style="width:18px; height:18px; border-radius:2px; background:#1a7fe8; border:1px solid var(--border); box-shadow:0 0 0 2px var(--accent)"></span>
+              <span style="width:18px; height:18px; border-radius:2px; background:#1f8a5b; border:1px solid var(--border)"></span>
+              <span style="width:18px; height:18px; border-radius:2px; background:#b86a0e; border:1px solid var(--border)"></span>
+              <span style="width:18px; height:18px; border-radius:2px; background:#8a5cf6; border:1px solid var(--border)"></span>
+              <span style="width:18px; height:18px; border-radius:2px; background:#c41c1c; border:1px solid var(--border)"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- group: chat -->
+      <div class="set-group">
+        <div class="set-group-head">聊天与文件<span class="tail">chat</span></div>
+        <div class="set-row">
+          <div class="rl">
+            <div class="rt">以只读方式打开聊天中的文件</div>
+            <div class="rd">开启后，可保护聊天中的文件不被修改。</div>
+          </div>
+          <div class="rc"><span class="sw sw--lg" data-state="checked" onclick="tog(this)"></span></div>
+        </div>
+        <div class="set-row">
+          <div class="rl"><div class="rt">显示网络搜索历史</div></div>
+          <div class="rc"><span class="sw sw--lg" data-state="checked" onclick="tog(this)"></span></div>
+        </div>
+        <div class="set-row">
+          <div class="rl"><div class="rt">聊天中的语音消息自动转成文字</div></div>
+          <div class="rc"><span class="sw sw--lg" onclick="tog(this)"></span></div>
+        </div>
+        <div class="set-row">
+          <div class="rl"><div class="rt">使用系统默认浏览器打开第三方网页</div></div>
+          <div class="rc"><span class="sw sw--lg" data-state="checked" onclick="tog(this)"></span></div>
+        </div>
+        <div class="set-row">
+          <div class="rl">
+            <div class="rt">点击截图按钮时保留当前窗口</div>
+            <div class="rd">快捷键 <span class="kbd-pair"><kbd>⌘</kbd><kbd>⇧</kbd><kbd>A</kbd></span></div>
+          </div>
+          <div class="rc"><span class="sw sw--lg" data-state="checked" onclick="tog(this)"></span></div>
+        </div>
+      </div>
+
+      <!-- group: storage -->
+      <div class="set-group">
+        <div class="set-group-head">存储<span class="tail">storage · 24.6 GB</span></div>
+        <div class="set-row">
+          <div class="rl">
+            <div class="rt">缓存占用</div>
+            <div class="rd">图片、视频与文件缓存，可安全清除。</div>
+          </div>
+          <div class="rc">
+            <span style="font-family:var(--mono-stack); font-size:12px; color:var(--text-muted)">8.2 GB</span>
+            <button class="btn btn--sm">清除缓存</button>
+          </div>
+        </div>
+        <div class="set-row">
+          <div class="rl"><div class="rt">自动下载</div></div>
+          <div class="rc">
+            <select class="select"><option>仅 Wi-Fi</option><option>始终</option><option>从不</option></select>
+          </div>
+        </div>
+        <div class="set-row">
+          <div class="rl">
+            <div class="rt">清空全部聊天记录</div>
+            <div class="rd">此操作不可撤销，将永久删除本地全部聊天记录与文件。</div>
+          </div>
+          <div class="rc"><button class="btn btn--sm btn--danger">清空…</button></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="presets.js"></script>
+<script>
+  applyPreset("beacon", "light");
+  function tog(el){ el.setAttribute("data-state", el.getAttribute("data-state")==="checked"?"":"checked"); }
+  function seg(b){ b.parentElement.querySelectorAll(".btn").forEach(x=>x.setAttribute("data-state", x===b?"checked":"")); }
+
+  // slider drag
+  document.querySelectorAll("[data-slider]").forEach(s=>{
+    const min=+s.dataset.min, max=+s.dataset.max, step=+s.dataset.step||1;
+    const fill=s.querySelector(".slider-fill"), thumb=s.querySelector(".slider-thumb");
+    let v=+s.dataset.value;
+    function set(nv){ nv=Math.max(min,Math.min(max,Math.round(nv/step)*step)); v=nv; const p=(v-min)/(max-min)*100; fill.style.width=p+"%"; thumb.style.left=p+"%"; s.dataset.value=v; }
+    function upd(x){ const r=s.getBoundingClientRect(); set(min+(Math.max(0,Math.min(1,(x-r.left)/r.width)))*(max-min)); }
+    function mv(e){ upd(e.touches?e.touches[0].clientX:e.clientX); }
+    function up(){ s.removeAttribute("data-focus"); window.removeEventListener("mousemove",mv); window.removeEventListener("mouseup",up); }
+    s.addEventListener("mousedown",e=>{ s.setAttribute("data-focus","true"); upd(e.clientX); window.addEventListener("mousemove",mv); window.addEventListener("mouseup",up); });
+    s.addEventListener("keydown",e=>{ if(e.key==="ArrowLeft"||e.key==="ArrowDown"){set(v-step);e.preventDefault();} if(e.key==="ArrowRight"||e.key==="ArrowUp"){set(v+step);e.preventDefault();} });
+    set(v);
+  });
+</script>
+</body>
+</html>

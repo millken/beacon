@@ -1,0 +1,18 @@
+/* combobox —— 输入 + 弹出 listbox；解剖复用 menu 旋钮 */
+.combobox { position: relative; display: inline-flex; }
+.combobox-input { background: var(--color-input-bg); border: var(--control-border-w) solid var(--input);
+  border-radius: var(--field-radius); box-shadow: var(--shadow-inset);
+  padding: var(--input-pad-y) var(--input-pad-x); padding-right: 26px;
+  color: var(--foreground); font: 400 var(--font-size-sm)/1.4 var(--font-family-sans); }
+.combobox-caret { position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+  color: var(--color-text-dim); pointer-events: none; }
+.combobox[data-open] .combobox-caret { color: var(--color-text); }
+.listbox { min-width: var(--menu-min-w); padding: var(--menu-pad);
+  background: var(--popover); color: var(--popover-foreground);
+  border: var(--control-border-w) solid var(--color-border);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-pop); }
+.listbox-item { height: var(--menu-item-h); display: flex; align-items: center;
+  padding: 0 var(--input-pad-x); border-radius: var(--radius-sm); cursor: pointer;
+  font-size: var(--font-size-sm); }
+.listbox-item:hover { background: var(--subtle); }
+.listbox-item[aria-selected="true"] { background: var(--color-primary-light-default); color: var(--color-primary); }

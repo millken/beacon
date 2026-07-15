@@ -129,11 +129,11 @@
 
 ```bash
 cd /workspace/Codes/github.com/millken/beacon
-# 注册表条目数（含临时行 = 52）
+# 注册表条目数（54 旋钮 + 1 临时行 = 55）
 sed -n '/===== 4) 组件 COMPONENT/,/===== 5)/p' colors_and_type.css | grep -cE '^\s*--[a-z]'
 # 现有页面未破坏：浏览器打开 components/index.html 与 tokens.html 目检 light/dark
 ```
-Expected: 52；页面渲染无异常（此时组件层尚未消费新旋钮，纯增量）。
+Expected: 55；页面渲染无异常（此时组件层尚未消费新旋钮，纯增量）。
 
 - [ ] **Step 4: Commit**
 
@@ -264,10 +264,10 @@ python3 - "$@" <<'PY'
 import re,sys,glob
 files=sys.argv[1:] or sorted(glob.glob('components/css/*.css'))
 tok=open('colors_and_type.css').read()
-sec4=re.search(r'===== 4\) 组件 COMPONENT.*?(?======= 5\))',tok,re.S).group(0)
+sec4=re.search(r'===== 4\) 组件 COMPONENT.*?(?==+ 5\) 语义)',tok,re.S).group(0)
 knobs=set(re.findall(r'(--[a-z][a-z0-9-]*)\s*:',sec4))
 globals_=set(re.findall(r'(--[a-z][a-z0-9-]*)\s*:',tok))
-def strip(css): return re.sub(r'/\*.*?\*/','',css,flags=re.S)
+def strip(css): return re.sub(r'/\*.*?\*/', lambda m: '\n'*m.group(0).count('\n'), css, flags=re.S)
 decl={f:set(re.findall(r'(--[a-z][a-z0-9-]*)\s*:',strip(open(f).read()))) for f in files}
 allfiles=sorted(glob.glob('components/css/*.css'))
 decl_all={f:set(re.findall(r'(--[a-z][a-z0-9-]*)\s*:',strip(open(f).read()))) for f in allfiles}
@@ -278,10 +278,10 @@ for f in files:
         # R1 字面量
         if re.search(r'#[0-9a-fA-F]{3,8}\b|rgba?\(',line):
             print(f'R1 {f}:{n}: 颜色字面量: {line.strip()[:80]}');err+=1
-        # R3 旋钮声明位
-        m=re.match(r'\s*(--[a-z][a-z0-9-]*)\s*:',line)
-        if m and m.group(1) in knobs:
-            print(f'R3 {f}:{n}: 旋钮 {m.group(1)} 出现在声明位');err+=1
+        # R3 旋钮声明位（行首或 { / ; 之后；var() 引用位不匹配）
+        for m in re.finditer(r'(?:^|[{;])\s*(--[a-z][a-z0-9-]*)\s*:',line):
+            if m.group(1) in knobs:
+                print(f'R3 {f}:{n}: 旋钮 {m.group(1)} 出现在声明位');err+=1
     # R2 引用他组件接线 token
     refs=set(re.findall(r'var\((--[a-z][a-z0-9-]*)',css))
     mine=decl_all.get(f,set())

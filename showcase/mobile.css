@@ -1,0 +1,658 @@
+/* zi · mobile — design system stylesheet (companion to industrial desktop)
+   Touch-first, airy, system-typeface. ≥44px targets, soft radii, press not hover.
+   Everything is scoped under .mobile so it never collides with the desktop
+   styles.css that dresses the surrounding spec document.
+
+   Accent discipline (inherited from CLAUDE.md): the blue accent only appears on
+   an element's own selected / checked / active / current terminal state. Press
+   stays NEUTRAL unless the element's terminal state already IS accent (then
+   press merely previews that value). */
+
+.mobile {
+  /* ════════ TOKENS · light (dark interface reserved → [data-m-theme="dark"]) ════════ */
+
+  /* surfaces — airier than the desktop's grey chrome: white content floats on a
+     light grouped base; elevation comes from soft shadow + hairline, not greyer fill */
+  --m-bg:            #ffffff;   /* card / row / field / content surface */
+  --m-bg-grouped:    #f2f4f7;   /* screen base BEHIND grouped cards */
+  --m-bg-secondary:  #eceff4;   /* secondary fill: segmented track, chips, wells */
+  --m-bg-tertiary:   #e4e8ef;   /* deeper fill / neutral pressed */
+  --m-press:         rgba(17,21,28,0.05);  /* neutral press overlay (rows, ghost) */
+  --m-press-strong:  rgba(17,21,28,0.09);
+  --m-scrim:         rgba(17,21,28,0.40);   /* sheet / dialog backdrop */
+
+  /* separators / borders — hairline */
+  --m-separator:     #e6e9ef;   /* row dividers inside cards */
+  --m-border:        #d7dce4;   /* field borders, outlines */
+  --m-border-strong: #b9c0cc;
+
+  /* text ramp (mirrors desktop contrast targets) */
+  --m-text:           #11151c;  /* primary  ≥7:1  */
+  --m-text-secondary: #59616f;  /* secondary ≥4.5:1 */
+  --m-text-tertiary:  #8b93a1;  /* placeholder / caption / unit ≥3:1 */
+  --m-text-inverse:   #ffffff;
+
+  /* accent — REUSED from desktop "Beacon" blue, kept restrained */
+  --m-accent:         #1a6fe0;
+  --m-accent-press:   #1561c8;
+  --m-accent-fg:      #ffffff;
+  --m-accent-tint:        color-mix(in oklab, var(--m-accent) 10%, #ffffff); /* selected row bg */
+  --m-accent-tint-press:  color-mix(in oklab, var(--m-accent) 16%, #ffffff);
+
+  /* status (front / hairline only, never large fills) */
+  --m-success: #1a7a3e;
+  --m-warning: #b06200;
+  --m-danger:  #c41c1c;
+  --m-danger-press: #a51515;
+
+  /* ── type · pure system stack, mobile sizes ── */
+  --m-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto,
+            "Helvetica Neue", "Noto Sans", Arial, sans-serif;
+  --m-text-2xs: 11px;  /* overline labels / status bar / tab labels */
+  --m-text-xs:  13px;  /* caption / footnote / row value */
+  --m-text-sm:  15px;  /* secondary / subhead / button-sm */
+  --m-text-md:  17px;  /* BODY — default */
+  --m-text-lg:  20px;  /* row title large / sheet title */
+  --m-text-xl:  24px;  /* screen title (inline) */
+  --m-text-2xl: 32px;  /* large title */
+  --m-weight-regular:  400;
+  --m-weight-medium:   500;
+  --m-weight-semibold: 600;
+  --m-weight-bold:     700;
+
+  /* ── spacing · 4px base, generous ── */
+  --m-space-1: 4px;
+  --m-space-2: 8px;
+  --m-space-3: 12px;
+  --m-space-4: 16px;   /* base gap / screen gutter */
+  --m-space-5: 20px;
+  --m-space-6: 24px;
+  --m-space-7: 32px;
+  --m-space-8: 40px;
+  --m-gutter:  16px;   /* horizontal screen margin */
+
+  /* ── radius · softer than desktop's 2–6px ── */
+  --m-radius:       12px;   /* the base knob */
+  --m-radius-sm:     8px;   /* chips, small controls */
+  --m-radius-md:    12px;   /* buttons, fields */
+  --m-radius-lg:    16px;   /* cards */
+  --m-radius-card:  16px;
+  --m-radius-sheet: 22px;   /* bottom-sheet top corners */
+  --m-radius-full:  9999px; /* switch, pill, FAB */
+
+  /* ── touch targets ── */
+  --m-touch-min: 44px;  /* absolute minimum hit area (WCAG/Apple/Material floor) */
+  --m-touch:     48px;  /* comfortable default control height */
+  --m-touch-lg:  56px;  /* primary CTA / large row */
+  --m-row:       56px;  /* list-row min height */
+
+  /* ── elevation · soft & sparse ── */
+  --m-shadow-card:  0 1px 3px rgba(17,21,28,0.06), 0 1px 1px rgba(17,21,28,0.04);
+  --m-shadow-pop:   0 8px 28px rgba(17,21,28,0.16), 0 2px 8px rgba(17,21,28,0.08);
+  --m-shadow-sheet: 0 -8px 40px rgba(17,21,28,0.18);
+  --m-shadow-fab:   0 6px 16px rgba(26,111,224,0.32), 0 2px 6px rgba(17,21,28,0.18);
+
+  /* ── motion ── */
+  --m-ease:     cubic-bezier(0.4, 0.0, 0.2, 1);
+  --m-ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
+  --m-dur-press: 120ms;
+  --m-dur:       240ms;
+
+  /* ── safe-area passthrough (notch / home indicator) ── */
+  --m-safe-top:    env(safe-area-inset-top, 0px);
+  --m-safe-bottom: env(safe-area-inset-bottom, 0px);
+
+  font-family: var(--m-font);
+  color: var(--m-text);
+  font-size: var(--m-text-md);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.mobile *, .mobile *::before, .mobile *::after { box-sizing: border-box; }
+@media (prefers-reduced-motion: reduce) {
+  .mobile *, .mobile *::before, .mobile *::after { transition: none !important; animation: none !important; }
+}
+
+/* ═══════════════════════════ DEVICE SHELL ═══════════════════════════
+   Neutral, brand-agnostic phone (no HIG/Material chrome). Screen = 360px
+   logical width — true mobile metrics so components render at real scale. */
+
+.m-device {
+  width: 384px;                 /* 360 screen + 12 bezel ×2 */
+  flex: none;
+  background: linear-gradient(160deg, #2a2e37, #15181e);
+  border-radius: 46px;
+  padding: 12px;
+  box-shadow: 0 18px 50px rgba(17,21,28,0.28), inset 0 0 0 1px rgba(255,255,255,0.06);
+}
+.m-screen {
+  width: 360px;
+  height: 720px;
+  border-radius: 34px;
+  overflow: hidden;
+  background: var(--m-bg-grouped);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+}
+.m-screen--auto { height: auto; }
+
+/* status bar — neutral: time + carrier text + simple battery shape */
+.m-statusbar {
+  height: 44px; flex: none;
+  padding: 0 24px 0 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: var(--m-text-sm);
+  font-weight: var(--m-weight-semibold);
+  color: var(--m-text);
+  letter-spacing: -0.01em;
+}
+.m-statusbar .sb-right { display: flex; align-items: center; gap: 7px; }
+.m-statusbar .sb-net {
+  font-size: var(--m-text-2xs); font-weight: var(--m-weight-bold);
+  letter-spacing: 0.02em;
+}
+.m-batt { width: 26px; height: 13px; border: 1.5px solid var(--m-text); border-radius: 4px; position: relative; padding: 1.5px; }
+.m-batt::after { content: ""; position: absolute; right: -3px; top: 4px; width: 2px; height: 5px; background: var(--m-text); border-radius: 0 1px 1px 0; }
+.m-batt > i { display: block; height: 100%; width: 72%; background: var(--m-text); border-radius: 1px; }
+
+/* home indicator (gesture bar) */
+.m-home { height: 24px; flex: none; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 8px; }
+.m-home::after { content: ""; width: 134px; height: 5px; border-radius: 3px; background: var(--m-text); opacity: 0.85; }
+
+/* scroll body of a screen */
+.m-body { flex: 1 1 auto; overflow: hidden; position: relative; }
+.m-body--scroll { overflow-y: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.m-body--scroll::-webkit-scrollbar { display: none; }
+.m-body--pad { padding: var(--m-gutter); }
+
+/* a lighter "screen excerpt" frame for component galleries (no full bezel) */
+.m-stage {
+  width: 360px; flex: none;
+  background: var(--m-bg-grouped);
+  border: 1px solid var(--m-separator);
+  border-radius: 26px;
+  padding: var(--m-gutter);
+  display: flex; flex-direction: column; gap: var(--m-space-4);
+  box-shadow: var(--m-shadow-card);
+}
+.m-stage--tight { gap: var(--m-space-3); }
+.m-stagewrap { display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start; }
+.m-caption {
+  font-size: var(--m-text-2xs); font-weight: var(--m-weight-semibold);
+  text-transform: uppercase; letter-spacing: 0.07em;
+  color: var(--m-text-tertiary); margin: 0 0 2px 2px;
+}
+
+/* group label above a grouped list (screen-level overline) */
+.m-grouplabel {
+  font-size: var(--m-text-xs); font-weight: var(--m-weight-semibold);
+  text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--m-text-tertiary);
+  padding: 0 6px 8px;
+}
+
+/* ═══════════════════════════ TYPOGRAPHY helpers ═══════════════════════════ */
+.m-largetitle { font-size: var(--m-text-2xl); font-weight: var(--m-weight-bold); letter-spacing: -0.02em; line-height: 1.12; }
+.m-title      { font-size: var(--m-text-xl); font-weight: var(--m-weight-bold); letter-spacing: -0.015em; }
+.m-headline   { font-size: var(--m-text-md); font-weight: var(--m-weight-semibold); }
+.m-bodytext   { font-size: var(--m-text-md); font-weight: var(--m-weight-regular); }
+.m-subhead    { font-size: var(--m-text-sm); color: var(--m-text-secondary); }
+.m-caption2   { font-size: var(--m-text-xs); color: var(--m-text-tertiary); }
+
+/* ═══════════════════════════ BUTTONS ═══════════════════════════
+   Press model (touch): NO hover. Rest = resting look. Press (:active) =
+     · accent / danger fills  → deepen to their -press color (previews own value)
+     · neutral / outline / text → neutral darken (bg-tertiary / press overlay)
+   plus a subtle scale(0.97). Accent never appears on a neutral control's press. */
+.m-btn {
+  appearance: none; -webkit-appearance: none;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: var(--m-touch);
+  padding: 0 20px;
+  border: 1px solid transparent;
+  border-radius: var(--m-radius-md);
+  font-family: inherit; font-size: var(--m-text-md);
+  font-weight: var(--m-weight-semibold);
+  line-height: 1; cursor: pointer; white-space: nowrap;
+  background: var(--m-bg-secondary);
+  color: var(--m-text);
+  user-select: none; -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: transform var(--m-dur-press) var(--m-ease),
+              background-color var(--m-dur-press) var(--m-ease),
+              border-color var(--m-dur-press) var(--m-ease);
+}
+.m-btn svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 1.9; fill: none; flex: none; }
+.m-btn:active { transform: scale(0.97); background: var(--m-bg-tertiary); }
+
+/* full-width CTA (the dominant mobile button) */
+.m-btn--block { width: 100%; }
+.m-btn--lg { min-height: var(--m-touch-lg); font-size: var(--m-text-md); border-radius: var(--m-radius-md); }
+.m-btn--sm { min-height: var(--m-touch-min); padding: 0 14px; font-size: var(--m-text-sm); }
+
+/* primary — solid accent (terminal value IS accent → press previews accent-press) */
+.m-btn--primary { background: var(--m-accent); color: var(--m-accent-fg); }
+.m-btn--primary:active { background: var(--m-accent-press); }
+
+/* secondary — accent tint, accent label (still an accent control) */
+.m-btn--secondary { background: var(--m-accent-tint); color: var(--m-accent); }
+.m-btn--secondary:active { background: var(--m-accent-tint-press); }
+
+/* neutral / grey — filled, no accent anywhere (press = neutral) */
+.m-btn--neutral { background: var(--m-bg-secondary); color: var(--m-text); }
+
+/* outline — hairline, neutral. Press firms border + neutral fill, NOT accent */
+.m-btn--outline { background: transparent; border-color: var(--m-border-strong); color: var(--m-text); }
+.m-btn--outline:active { background: var(--m-press); border-color: var(--m-border-strong); }
+
+/* text / tertiary — accent label, no chrome until press */
+.m-btn--text { background: transparent; color: var(--m-accent); font-weight: var(--m-weight-semibold); }
+.m-btn--text:active { background: var(--m-accent-tint); transform: scale(0.97); }
+
+/* destructive */
+.m-btn--danger { background: var(--m-danger); color: #fff; }
+.m-btn--danger:active { background: var(--m-danger-press); }
+.m-btn--danger-text { background: transparent; color: var(--m-danger); }
+.m-btn--danger-text:active { background: color-mix(in oklab, var(--m-danger) 10%, #fff); }
+
+.m-btn[disabled], .m-btn[aria-disabled="true"] { opacity: 0.4; pointer-events: none; }
+
+/* icon-only button — square, ≥44 hit area, ghost rest */
+.m-iconbtn {
+  appearance: none; -webkit-appearance: none;
+  width: var(--m-touch-min); height: var(--m-touch-min);
+  display: inline-flex; align-items: center; justify-content: center;
+  border: none; background: transparent; color: var(--m-text);
+  border-radius: var(--m-radius-full); cursor: pointer;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+  transition: background-color var(--m-dur-press) var(--m-ease), transform var(--m-dur-press) var(--m-ease);
+}
+.m-iconbtn svg { width: 24px; height: 24px; stroke: currentColor; stroke-width: 1.8; fill: none; }
+.m-iconbtn:active { background: var(--m-press); transform: scale(0.92); }
+.m-iconbtn--accent { color: var(--m-accent); }
+
+/* ═══════════════════════════ FIELDS / INPUTS ═══════════════════════════ */
+.m-field { display: flex; flex-direction: column; gap: 7px; }
+.m-field > label {
+  font-size: var(--m-text-sm); font-weight: var(--m-weight-medium);
+  color: var(--m-text-secondary); padding-left: 2px;
+}
+.m-input, .m-textarea {
+  appearance: none; -webkit-appearance: none; width: 100%;
+  min-height: var(--m-touch);
+  padding: 0 14px;
+  background: var(--m-bg);
+  border: 1px solid var(--m-border);
+  border-radius: var(--m-radius-md);
+  font-family: inherit; font-size: var(--m-text-md); color: var(--m-text);
+  outline: none;
+  transition: border-color var(--m-dur-press) var(--m-ease), box-shadow var(--m-dur-press) var(--m-ease);
+}
+.m-textarea { padding: 12px 14px; min-height: 96px; line-height: 1.45; resize: none; }
+.m-input::placeholder, .m-textarea::placeholder { color: var(--m-text-tertiary); }
+/* focus = active editing (keyboard up). Accent ring is the element's own active
+   state, so accent here is legal. */
+.m-input:focus, .m-textarea:focus {
+  border-color: var(--m-accent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--m-accent) 18%, transparent);
+}
+.m-field .m-hint { font-size: var(--m-text-xs); color: var(--m-text-tertiary); padding-left: 2px; }
+.m-field .m-hint--error { color: var(--m-danger); }
+.m-input--error { border-color: var(--m-danger); }
+.m-input--error:focus { box-shadow: 0 0 0 3px color-mix(in oklab, var(--m-danger) 18%, transparent); }
+
+/* search field — pill, leading glyph, trailing clear */
+.m-search {
+  display: flex; align-items: center; gap: 8px;
+  min-height: var(--m-touch);
+  padding: 0 12px;
+  background: var(--m-bg-secondary);
+  border-radius: var(--m-radius-full);
+  color: var(--m-text-tertiary);
+}
+.m-search svg { width: 19px; height: 19px; stroke: currentColor; stroke-width: 1.9; fill: none; flex: none; }
+.m-search input {
+  flex: 1; border: none; background: transparent; outline: none;
+  font-family: inherit; font-size: var(--m-text-md); color: var(--m-text);
+  min-width: 0;
+}
+.m-search input::placeholder { color: var(--m-text-tertiary); }
+
+/* ═══════════════════════════ GROUPED LIST + ROWS ═══════════════════════════
+   The core mobile surface. White card on grouped bg; rows split by inset hairline. */
+.m-list {
+  background: var(--m-bg);
+  border-radius: var(--m-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--m-shadow-card);
+}
+.m-list + .m-grouplabel { margin-top: 22px; }
+.m-row {
+  display: flex; align-items: center; gap: 14px;
+  min-height: var(--m-row);
+  padding: 10px 16px;
+  background: var(--m-bg);
+  position: relative;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color var(--m-dur-press) var(--m-ease);
+}
+/* inset hairline between rows (skips the leading icon column) */
+.m-row + .m-row::before {
+  content: ""; position: absolute; top: 0; left: 16px; right: 0; height: 1px;
+  background: var(--m-separator);
+}
+.m-row--inset + .m-row--inset::before { left: 62px; }   /* align under text past a leading icon */
+.m-row:active { background: var(--m-press); }
+.m-row[aria-disabled="true"] { opacity: 0.45; pointer-events: none; }
+
+/* leading icon tile */
+.m-row-icon {
+  width: 32px; height: 32px; flex: none;
+  border-radius: var(--m-radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  background: var(--m-bg-secondary); color: var(--m-text-secondary);
+}
+.m-row-icon svg { width: 19px; height: 19px; stroke: currentColor; stroke-width: 1.9; fill: none; }
+.m-row-icon--accent { background: var(--m-accent-tint); color: var(--m-accent); }
+.m-row-icon--danger { background: color-mix(in oklab, var(--m-danger) 10%, #fff); color: var(--m-danger); }
+.m-row-icon--warning { background: color-mix(in oklab, var(--m-warning) 12%, #fff); color: var(--m-warning); }
+.m-row-icon--success { background: color-mix(in oklab, var(--m-success) 12%, #fff); color: var(--m-success); }
+
+.m-row-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.m-row-title { font-size: var(--m-text-md); color: var(--m-text); line-height: 1.25; }
+.m-row-sub { font-size: var(--m-text-xs); color: var(--m-text-tertiary); line-height: 1.3;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.m-row-value { font-size: var(--m-text-md); color: var(--m-text-tertiary); flex: none; }
+.m-row--danger .m-row-title { color: var(--m-danger); }
+
+/* trailing chevron (CSS, no SVG) */
+.m-chevron { width: 9px; height: 9px; flex: none;
+  border-right: 2px solid var(--m-text-tertiary); border-bottom: 2px solid var(--m-text-tertiary);
+  transform: rotate(-45deg); margin-left: 2px; opacity: 0.7; }
+
+/* selected row — accent (terminal selection state) */
+.m-row[aria-selected="true"] { background: var(--m-accent-tint); }
+.m-row[aria-selected="true"]:active { background: var(--m-accent-tint-press); }
+.m-row[aria-selected="true"] .m-row-title { color: var(--m-accent); font-weight: var(--m-weight-semibold); }
+.m-row-check { width: 22px; flex: none; color: var(--m-accent); display: flex; align-items: center; justify-content: center; }
+.m-row-check svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 2.4; fill: none; }
+
+/* ═══════════════════════════ SWITCH / CHECK / RADIO ═══════════════════════════ */
+/* Switch — terminal ON state IS accent, so accent on press/checked is legal */
+.m-switch {
+  appearance: none; -webkit-appearance: none;
+  width: 52px; height: 32px; flex: none;
+  border-radius: var(--m-radius-full);
+  background: var(--m-bg-tertiary);
+  position: relative; cursor: pointer;
+  transition: background-color 200ms var(--m-ease);
+  -webkit-tap-highlight-color: transparent;
+}
+.m-switch::after {
+  content: ""; position: absolute; top: 2px; left: 2px;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: #fff; box-shadow: 0 2px 4px rgba(17,21,28,0.25), 0 0 1px rgba(17,21,28,0.2);
+  transition: transform 200ms var(--m-ease);
+}
+.m-switch[aria-checked="true"] { background: var(--m-accent); }
+.m-switch[aria-checked="true"]::after { transform: translateX(20px); }
+
+/* Checkbox */
+.m-check {
+  appearance: none; -webkit-appearance: none;
+  width: 24px; height: 24px; flex: none;
+  border: 2px solid var(--m-border-strong); border-radius: 7px;
+  background: var(--m-bg); cursor: pointer; position: relative;
+  transition: background-color var(--m-dur-press) var(--m-ease), border-color var(--m-dur-press) var(--m-ease);
+}
+.m-check[aria-checked="true"] { background: var(--m-accent); border-color: var(--m-accent); }
+.m-check[aria-checked="true"]::after {
+  content: ""; position: absolute; left: 7px; top: 3px;
+  width: 6px; height: 11px;
+  border-right: 2.5px solid #fff; border-bottom: 2.5px solid #fff;
+  transform: rotate(45deg);
+}
+
+/* Radio */
+.m-radio {
+  appearance: none; -webkit-appearance: none;
+  width: 24px; height: 24px; flex: none;
+  border: 2px solid var(--m-border-strong); border-radius: 50%;
+  background: var(--m-bg); cursor: pointer; position: relative;
+  transition: border-color var(--m-dur-press) var(--m-ease);
+}
+.m-radio[aria-checked="true"] { border-color: var(--m-accent); }
+.m-radio[aria-checked="true"]::after {
+  content: ""; position: absolute; inset: 4px; border-radius: 50%; background: var(--m-accent);
+}
+
+/* ═══════════════════════════ SEGMENTED CONTROL ═══════════════════════════
+   Selection = which view. Carried by an ELEVATED NEUTRAL pill (like the desktop
+   toggle-group), NOT accent — accent stays reserved for tab bar / switches /
+   selection. Press of an unselected segment = neutral text darken. */
+.m-segmented {
+  display: flex; gap: 2px;
+  padding: 3px; background: var(--m-bg-secondary);
+  border-radius: var(--m-radius-md);
+}
+.m-segmented button {
+  flex: 1; min-height: 38px;
+  border: none; background: transparent; cursor: pointer;
+  border-radius: calc(var(--m-radius-md) - 3px);
+  font-family: inherit; font-size: var(--m-text-sm); font-weight: var(--m-weight-medium);
+  color: var(--m-text-secondary);
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+  transition: color var(--m-dur-press) var(--m-ease);
+}
+.m-segmented button:active { color: var(--m-text); }
+.m-segmented button[aria-selected="true"] {
+  background: var(--m-bg);
+  color: var(--m-text); font-weight: var(--m-weight-semibold);
+  box-shadow: var(--m-shadow-card);
+}
+
+/* chip / pill (filter) — selected = accent (selectable-item idiom) */
+.m-chiprow { display: flex; gap: 8px; flex-wrap: wrap; }
+.m-chip {
+  min-height: 34px; padding: 0 14px;
+  display: inline-flex; align-items: center; gap: 6px;
+  border-radius: var(--m-radius-full);
+  background: var(--m-bg-secondary); color: var(--m-text-secondary);
+  font-size: var(--m-text-sm); font-weight: var(--m-weight-medium);
+  border: 1px solid transparent; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color var(--m-dur-press) var(--m-ease), color var(--m-dur-press) var(--m-ease);
+}
+.m-chip:active { background: var(--m-bg-tertiary); }
+.m-chip[aria-selected="true"] { background: var(--m-accent); color: var(--m-accent-fg); }
+
+/* ═══════════════════════════ NAV BAR (top) ═══════════════════════════ */
+.m-navbar {
+  flex: none;
+  min-height: var(--m-touch-min);
+  padding: 4px 8px;
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  background: color-mix(in oklab, var(--m-bg) 88%, transparent);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--m-separator);
+}
+.m-navbar .nav-lead { justify-self: start; display: flex; align-items: center; }
+.m-navbar .nav-trail { justify-self: end; display: flex; align-items: center; gap: 2px; }
+.m-navbar .nav-title { font-size: var(--m-text-md); font-weight: var(--m-weight-semibold); text-align: center; white-space: nowrap; }
+.m-navbar .nav-back { display: inline-flex; align-items: center; gap: 2px; color: var(--m-accent); font-size: var(--m-text-md); font-weight: var(--m-weight-regular); }
+.m-navbar .nav-back svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2.2; fill: none; }
+.m-navbar .nav-action { color: var(--m-accent); font-weight: var(--m-weight-semibold); font-size: var(--m-text-md); padding: 0 8px; }
+/* large-title variant */
+.m-navbar--large { grid-template-columns: 1fr; padding-bottom: 4px; }
+.m-largetitle-bar { padding: 4px 16px 12px; background: var(--m-bg); }
+
+/* ═══════════════════════════ TAB BAR (bottom) ═══════════════════════════
+   Selectable-item idiom: active item = accent (legal terminal state). */
+.m-tabbar {
+  flex: none;
+  display: flex;
+  padding: 6px 4px calc(6px + var(--m-safe-bottom));
+  background: color-mix(in oklab, var(--m-bg) 90%, transparent);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-top: 1px solid var(--m-separator);
+}
+.m-tab {
+  flex: 1; min-height: var(--m-touch-min);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+  border: none; background: transparent; cursor: pointer;
+  color: var(--m-text-tertiary);
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+  position: relative;
+}
+.m-tab svg { width: 26px; height: 26px; stroke: currentColor; stroke-width: 1.8; fill: none; }
+.m-tab .m-tab-label { font-size: var(--m-text-2xs); font-weight: var(--m-weight-medium); letter-spacing: 0.01em; }
+.m-tab[aria-selected="true"] { color: var(--m-accent); }
+.m-tab[aria-selected="true"] .m-tab-label { font-weight: var(--m-weight-semibold); }
+.m-tab .m-tab-badge {
+  position: absolute; top: -2px; left: calc(50% + 8px);
+  min-width: 17px; height: 17px; padding: 0 5px;
+  border-radius: var(--m-radius-full);
+  background: var(--m-danger); color: #fff;
+  font-size: 10px; font-weight: var(--m-weight-bold);
+  display: flex; align-items: center; justify-content: center;
+  border: 2px solid var(--m-bg);
+}
+
+/* ═══════════════════════════ BOTTOM SHEET ═══════════════════════════ */
+.m-sheet-host { position: absolute; inset: 0; z-index: 30; pointer-events: none; }
+.m-scrim {
+  position: absolute; inset: 0; background: var(--m-scrim);
+  opacity: 0; transition: opacity var(--m-dur) var(--m-ease); pointer-events: none;
+}
+.m-sheet {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  background: var(--m-bg);
+  border-radius: var(--m-radius-sheet) var(--m-radius-sheet) 0 0;
+  box-shadow: var(--m-shadow-sheet);
+  padding: 8px 16px calc(16px + var(--m-safe-bottom));
+  transform: translateY(100%);
+  transition: transform var(--m-dur) var(--m-ease-out);
+  pointer-events: auto;
+}
+.m-sheet-host[data-open="true"] { pointer-events: auto; }
+.m-sheet-host[data-open="true"] .m-scrim { opacity: 1; pointer-events: auto; }
+.m-sheet-host[data-open="true"] .m-sheet { transform: translateY(0); }
+.m-grabber { width: 38px; height: 5px; border-radius: 3px; background: var(--m-border-strong); margin: 0 auto 12px; }
+.m-sheet-title { font-size: var(--m-text-lg); font-weight: var(--m-weight-bold); letter-spacing: -0.01em; margin: 2px 2px 4px; }
+.m-sheet-desc { font-size: var(--m-text-sm); color: var(--m-text-secondary); margin: 0 2px 16px; line-height: 1.45; }
+.m-sheet-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+
+/* ═══════════════════════════ FAB ═══════════════════════════ */
+.m-fab {
+  width: 56px; height: 56px; border-radius: var(--m-radius-full);
+  border: none; background: var(--m-accent); color: var(--m-accent-fg);
+  display: inline-flex; align-items: center; justify-content: center;
+  box-shadow: var(--m-shadow-fab); cursor: pointer;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+  transition: transform var(--m-dur-press) var(--m-ease), background-color var(--m-dur-press) var(--m-ease);
+}
+.m-fab svg { width: 26px; height: 26px; stroke: currentColor; stroke-width: 2.2; fill: none; }
+.m-fab:active { transform: scale(0.92); background: var(--m-accent-press); }
+.m-fab--abs { position: absolute; right: 16px; z-index: 20; }
+
+/* ═══════════════════════════ SNACKBAR / TOAST ═══════════════════════════
+   Inverse (dark) floating pill near the bottom. Action uses a light accent. */
+.m-snackbar {
+  display: flex; align-items: center; gap: 12px;
+  min-height: 48px;
+  padding: 10px 12px 10px 16px;
+  background: #1c2129; color: #f3f5f8;
+  border-radius: var(--m-radius-md);
+  box-shadow: var(--m-shadow-pop);
+  font-size: var(--m-text-sm);
+}
+.m-snackbar .snack-msg { flex: 1; min-width: 0; line-height: 1.35; }
+.m-snackbar .snack-action {
+  flex: none; border: none; background: transparent; cursor: pointer;
+  color: #7db4ff; font-family: inherit; font-size: var(--m-text-sm); font-weight: var(--m-weight-semibold);
+  padding: 6px 8px; border-radius: var(--m-radius-sm);
+  -webkit-tap-highlight-color: transparent;
+}
+.m-snackbar .snack-action:active { background: rgba(255,255,255,0.08); }
+.m-snackbar--success { box-shadow: var(--m-shadow-pop), inset 3px 0 0 var(--m-success); }
+.m-snackbar--danger  { box-shadow: var(--m-shadow-pop), inset 3px 0 0 #ff6b6b; }
+.m-snack-host { position: absolute; left: 16px; right: 16px; bottom: 0; z-index: 25;
+  transition: transform var(--m-dur) var(--m-ease-out), opacity var(--m-dur) var(--m-ease); }
+.m-snack-host[data-show="false"] { transform: translateY(140%); opacity: 0; pointer-events: none; }
+
+/* ═══════════════════════════ misc inline bits ═══════════════════════════ */
+.m-divider { height: 1px; background: var(--m-separator); margin: 0; border: none; }
+.m-badge {
+  display: inline-flex; align-items: center; min-width: 20px; height: 20px; padding: 0 6px;
+  border-radius: var(--m-radius-full); background: var(--m-danger); color: #fff;
+  font-size: var(--m-text-2xs); font-weight: var(--m-weight-bold); justify-content: center;
+}
+.m-statustag {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: var(--m-text-xs); font-weight: var(--m-weight-medium);
+}
+.m-statustag .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.m-statustag--success { color: var(--m-success); }
+.m-statustag--warning { color: var(--m-warning); }
+.m-statustag--danger  { color: var(--m-danger); }
+
+/* ═══════════════════════════ GRADUATED COMPONENTS ═══════════════════════════
+   Surfaced by the compressor-mall dogfood: four genuinely-general mobile patterns
+   the spec lacked. Promoted here from the app's prototype .c-* layer. */
+
+/* Image placeholder — striped slot + mono label for user-supplied imagery.
+   The spec said "use placeholders"; this is the canonical one. */
+.m-imgslot {
+  background: repeating-linear-gradient(135deg, var(--m-bg-secondary), var(--m-bg-secondary) 9px, var(--m-bg-tertiary) 9px, var(--m-bg-tertiary) 18px);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--m-text-tertiary); font-size: var(--m-text-2xs); font-weight: var(--m-weight-semibold);
+  letter-spacing: 0.04em; text-transform: uppercase; border-radius: var(--m-radius-md);
+  overflow: hidden; flex: none;
+}
+.m-imgslot span { background: color-mix(in oklab, var(--m-bg) 78%, transparent); padding: 2px 7px; border-radius: var(--m-radius-full); }
+
+/* Quantity stepper — − [n] +. No accent terminal state → press is NEUTRAL
+   (bg-tertiary). Whole control ≥36 tall, ≥44 hit area when wrapped in a row. */
+.m-stepper { display: inline-flex; align-items: stretch; height: 36px; background: var(--m-bg); border: 1px solid var(--m-border); border-radius: var(--m-radius-sm); overflow: hidden; }
+.m-stepper button {
+  width: 38px; border: none; background: var(--m-bg); color: var(--m-text); font-size: 20px; line-height: 1;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+}
+.m-stepper button:active { background: var(--m-bg-tertiary); }   /* neutral press — no accent */
+.m-stepper button[disabled] { color: var(--m-text-tertiary); pointer-events: none; }
+.m-stepper input, .m-stepper .m-step-val {
+  width: 44px; border: none; border-left: 1px solid var(--m-border); border-right: 1px solid var(--m-border);
+  background: var(--m-bg); text-align: center; font-family: inherit; font-size: var(--m-text-sm);
+  color: var(--m-text); font-variant-numeric: tabular-nums; outline: none;
+  display: flex; align-items: center; justify-content: center;
+}
+.m-stepper--lg { height: 40px; }
+.m-stepper--lg button { width: 42px; }
+
+/* Sticky bottom action bar — page-level pinned CTA(s). The bottom inset uses the
+   abstract --m-inset-bottom container token (see §14). Lives at the bottom of a
+   full-screen view; a pushed detail screen carrying this bar must cover the tab
+   bar (see Layering note in the spec), or the two bottom bars stack. */
+.m-actionbar {
+  flex: none; display: flex; align-items: center; gap: 10px;
+  padding: 8px 12px; padding-bottom: var(--m-inset-bottom);
+  background: color-mix(in oklab, var(--m-bg) 94%, transparent);
+  -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px);
+  border-top: 1px solid var(--m-separator);
+}
+.m-actionbar .m-ab-grow { flex: 1; display: flex; gap: 8px; }
+
+/* Empty state — neutral icon medallion + title + hint. */
+.m-empty { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 56px 24px; text-align: center; }
+.m-empty .m-empty-ic { width: 72px; height: 72px; border-radius: 50%; background: var(--m-bg-secondary); display: flex; align-items: center; justify-content: center; color: var(--m-text-tertiary); }
+.m-empty .m-empty-ic svg { width: 34px; height: 34px; stroke: currentColor; stroke-width: 1.5; fill: none; }
+.m-empty .m-empty-t { font-size: var(--m-text-md); color: var(--m-text); font-weight: var(--m-weight-medium); }
+.m-empty .m-empty-d { font-size: var(--m-text-sm); color: var(--m-text-tertiary); max-width: 240px; line-height: 1.5; }

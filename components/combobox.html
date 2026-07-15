@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Combobox · Beacon GUI 组件</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="stylesheet" href="components.css" />
+<style>
+  body { margin:0; padding:32px 40px 80px; background:var(--background); color:var(--foreground);
+         font:400 var(--font-size-md)/var(--leading-normal) var(--font-family-sans); }
+  .page-head { display:flex; align-items:center; gap:12px; margin-bottom:8px; }
+  .page-head h1 { font-size:var(--font-size-xl); margin:0; }
+  .page-head .crumb { color:var(--color-text-dim); font-family:var(--font-family-mono); font-size:var(--font-size-xs); }
+  .theme-toggle { margin-left:auto; }
+  .demo-section { margin-top:28px; }
+  .demo-section > h2 { font-size:var(--font-size-lg); border-bottom:1px solid var(--color-divider); padding-bottom:6px; }
+  .demo-row { display:flex; flex-wrap:wrap; align-items:flex-start; gap:28px; margin:14px 0; }
+  .demo-note { color:var(--color-text-muted); font-size:var(--font-size-sm); max-width:78ch; }
+  .cap { font-family:var(--font-family-mono); font-size:var(--font-size-2xs); color:var(--color-text-dim); margin-bottom:8px; }
+  /* ---- demo staging only: positions the listbox under its trigger for a static screenshot ---- */
+  .cbx-stage { position:relative; width:240px; }
+  .cbx-stage .combobox { width:100%; }
+  .cbx-stage .combobox-input { width:100%; box-sizing:border-box; cursor:pointer; }
+  .cbx-stage .listbox { position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:1; }
+  .cbx-multi .combobox-input { display:flex; flex-wrap:wrap; align-items:center; gap:5px; min-height:calc(var(--input-pad-y) * 2 + 16px); cursor:text; }
+  .cbx-multi .combobox-input input { flex:1; min-width:70px; border:none; background:transparent; outline:none; color:var(--foreground); font-family:var(--font-family-sans); font-size:var(--font-size-sm); padding:2px; }
+</style>
+</head>
+<body>
+<header class="page-head">
+  <span class="crumb"><a href="index.html" style="color:inherit">components</a> / combobox</span>
+  <h1>Combobox</h1>
+  <button class="btn btn--sm theme-toggle" onclick="
+    var h=document.documentElement; h.dataset.theme=h.dataset.theme==='dark'?'light':'dark'">
+    Light / Dark</button>
+</header>
+
+<p class="demo-note">.combobox 是「输入 + 弹出 .listbox」的复合控件：输入井外观与 .input 同构（--color-input-bg / --input / --shadow-inset），但通过自身接线读取，不引用 field.css 的私有 <b>--field-bg</b> / <b>--field-border</b>（field 契约仅供 .input/.select/.token-input 内部改写，跨组件消费会耦合两族的变体切换）。.listbox 复用 menu 的 §4 旋钮 <b>--menu-min-w</b> / <b>--menu-pad</b> / <b>--menu-item-h</b>，表面沿用浮层契约（--popover / --shadow-pop）；hover 用 --subtle，已选中项用 --color-primary-light-default + --color-primary（比 hover 更持久的「勾选态」提示）。</p>
+
+<section class="demo-section">
+  <h2>闭合状态</h2>
+  <div class="demo-row">
+    <div class="cbx-stage">
+      <div class="cap">.combobox（闭合）</div>
+      <div class="combobox">
+        <input class="combobox-input" placeholder="Select node…" readonly />
+        <span class="combobox-caret"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">未展开时插入符（caret）为 --color-text-dim；展开态（下节）经 <code>.combobox[data-open]</code> 转 --color-text，与选中态无关，只反映「当前是否展开」。</p>
+</section>
+
+<section class="demo-section">
+  <h2>展开状态 · listbox</h2>
+  <div class="demo-row">
+    <div class="cbx-stage" id="cbxOpen">
+      <div class="cap">.combobox[data-open] + .listbox</div>
+      <div class="combobox" data-open>
+        <input class="combobox-input" value="node-05" />
+        <span class="combobox-caret"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="listbox" role="listbox">
+        <div class="listbox-item" role="option">node-01</div>
+        <div class="listbox-item" role="option">node-03</div>
+        <div class="listbox-item" role="option" aria-selected="true">node-05</div>
+        <div class="listbox-item" role="option">node-07</div>
+        <div class="listbox-item" role="option">stage-01</div>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">.listbox 最小宽度 / 内边距经旋钮 <b>--menu-min-w</b> / <b>--menu-pad</b> 驱动，item 高度经 <b>--menu-item-h</b> 驱动——与 menu / cmdp 共享同一套行高节奏；点击一项即可切换选中态（演示用 JS，非契约的一部分）。</p>
+</section>
+
+<section class="demo-section">
+  <h2>多选 · chips</h2>
+  <div class="demo-row">
+    <div class="cbx-stage cbx-multi">
+      <div class="cap">.combobox（多选，chip 复用 tag.css）</div>
+      <div class="combobox" data-open>
+        <div class="combobox-input" id="chipInput">
+          <span class="chip chip--accent">node-03<span class="x" aria-label="remove"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
+          <span class="chip chip--accent">node-05<span class="x" aria-label="remove"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
+          <input placeholder="add node…" />
+        </div>
+        <span class="combobox-caret"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="listbox" role="listbox">
+        <div class="listbox-item" role="option" aria-selected="true">node-03</div>
+        <div class="listbox-item" role="option" aria-selected="true">node-05</div>
+        <div class="listbox-item" role="option">node-07</div>
+        <div class="listbox-item" role="option">stage-01</div>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">多选时 .combobox-input 内联排列 .chip（tag.css 的 chip--accent，Tier-2 直连），已选项在 listbox 中同步标记 aria-selected；点 chip 尾部 ✕ 可移除。</p>
+</section>
+
+<section class="demo-section">
+  <h2>禁用状态</h2>
+  <div class="demo-row">
+    <div class="cbx-stage">
+      <div class="cap">.combobox[aria-disabled]</div>
+      <div class="combobox" aria-disabled="true" style="opacity:.5">
+        <input class="combobox-input" value="node-05" disabled />
+        <span class="combobox-caret"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">禁用态整体 opacity 降低并禁止交互（cursor: not-allowed 由 disabled 属性的用户代理默认行为处理），与 field.css 的 <code>.input[disabled]</code> 视觉语言一致，但通过 combobox 自身样式表达，不跨组件借用 --field-* 接线。</p>
+</section>
+
+<script>
+  // 展开态 listbox：点击项切换选中态（演示交互，非契约的一部分）
+  document.querySelectorAll('#cbxOpen .listbox-item').forEach(item => item.addEventListener('click', () => {
+    document.querySelectorAll('#cbxOpen .listbox-item').forEach(x => x.removeAttribute('aria-selected'));
+    item.setAttribute('aria-selected', 'true');
+    document.querySelector('#cbxOpen .combobox-input').value = item.textContent;
+  }));
+  // chip 移除
+  document.querySelectorAll('#chipInput .x').forEach(x => x.addEventListener('click', e => {
+    e.stopPropagation();
+    const chip = x.closest('.chip');
+    chip.style.transition = 'opacity .12s ease'; chip.style.opacity = '0';
+    setTimeout(() => chip.remove(), 120);
+  }));
+</script>
+</body>
+</html>

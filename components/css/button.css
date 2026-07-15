@@ -1,0 +1,61 @@
+/* button —— 接线: --btn-bg/-fg/-border(+hover/active) · 旋钮: --btn-shadow/-active-shadow/-radius */
+.btn {
+  --btn-bg: var(--secondary);
+  --btn-fg: var(--secondary-foreground);
+  --btn-border: var(--color-border);
+  --btn-bg-hover: var(--color-secondary-hover);
+  --btn-border-hover: var(--color-border-strong);
+  --btn-bg-active: var(--color-secondary-active);
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  height: var(--control-h-md);
+  padding: var(--control-pad-y) var(--control-pad-x);
+  background: var(--btn-bg); color: var(--btn-fg);
+  border: var(--control-border-w) solid var(--btn-border);
+  border-radius: var(--btn-radius);
+  box-shadow: var(--btn-shadow);
+  font: var(--font-weight-medium) var(--font-size-sm)/1 var(--font-family-sans);
+  cursor: pointer; user-select: none;
+  transition: background var(--duration-fast) var(--ease-standard),
+              border-color var(--duration-fast) var(--ease-standard);
+}
+.btn:hover  { background: var(--btn-bg-hover); border-color: var(--btn-border-hover); }
+.btn:active { background: var(--btn-bg-active); box-shadow: var(--btn-active-shadow); }
+.btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+.btn:disabled { opacity: .55; cursor: not-allowed; }
+
+.btn--primary { --btn-bg: var(--color-primary); --btn-fg: var(--primary-foreground);
+  --btn-border: var(--color-primary); --btn-bg-hover: var(--color-primary-hover);
+  --btn-border-hover: var(--color-primary-hover); --btn-bg-active: var(--color-primary-active); }
+.btn--soft { --btn-bg: var(--color-primary-light-default); --btn-fg: var(--color-primary);
+  --btn-border: transparent; --btn-bg-hover: var(--color-primary-light-hover);
+  --btn-border-hover: transparent; --btn-bg-active: var(--color-primary-light-active); }
+.btn--danger { --btn-bg: var(--destructive); --btn-fg: var(--destructive-foreground);
+  --btn-border: var(--destructive); --btn-bg-hover: var(--destructive-hover);
+  --btn-border-hover: var(--destructive-hover); --btn-bg-active: var(--color-danger-active); }
+.btn--ghost { --btn-bg: transparent; --btn-border: transparent;
+  --btn-bg-hover: var(--subtle); --btn-border-hover: transparent; --btn-bg-active: var(--color-bg-active); }
+.btn--ghost:active { box-shadow: none; }
+.btn--outline { --btn-bg: transparent; --btn-fg: var(--color-primary); --btn-border: var(--color-primary);
+  --btn-bg-hover: var(--color-primary-light-default); --btn-border-hover: var(--color-primary); }
+.btn--sm { height: var(--control-h-sm); padding: var(--control-pad-y-sm) var(--control-pad-x-sm); font-size: var(--font-size-2xs); }
+.btn--lg { height: var(--control-h-lg); padding: var(--control-pad-y-lg) var(--control-pad-x-lg); font-size: var(--font-size-md); }
+.btn--icon { width: var(--control-h-md); padding: 0; }
+.btn--icon.btn--sm { width: var(--control-h-sm); }
+.btn--icon.btn--lg { width: var(--control-h-lg); }
+
+/* Loading —— spinner 取代图标，label 变暗，宽度不变 */
+.btn[data-loading="true"] { cursor: progress; pointer-events: none; color: color-mix(in oklab, currentColor 82%, transparent); }
+.btn--primary[data-loading="true"], .btn--danger[data-loading="true"] { color: var(--btn-fg); }
+.btn[data-loading="true"] .btn-affix, .btn[data-loading="true"] > svg { display: none; }
+.btn[data-loading="true"]::before {
+  content: ""; width: 13px; height: 13px; flex: none;
+  border: 2px solid currentColor; border-top-color: transparent; border-radius: 50%;
+  opacity: .9; animation: cmp-spin 700ms linear infinite;
+}
+
+.icon-btn { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 20px; border: none; background: transparent; color: var(--color-text-dim); border-radius: var(--radius-sm); cursor: pointer; }
+.icon-btn:hover { background: var(--color-bg-active); color: var(--color-text); }
+.icon-btn svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 1.6; fill: none; }
+.toolbar .icon-btn { width: 26px; height: 24px; border-color: transparent; color: var(--color-text-muted); }
+.toolbar .icon-btn:hover { background: var(--color-bg-active); color: var(--color-text); }
+.toolbar .icon-btn[data-state="checked"] { background: var(--color-primary); color: var(--color-accent-fg); }

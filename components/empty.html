@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Empty · Beacon GUI 组件</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="stylesheet" href="components.css" />
+<style>
+  body { margin:0; padding:32px 40px 80px; background:var(--background); color:var(--foreground);
+         font:400 var(--font-size-md)/var(--leading-normal) var(--font-family-sans); }
+  .page-head { display:flex; align-items:center; gap:12px; margin-bottom:8px; }
+  .page-head h1 { font-size:var(--font-size-xl); margin:0; }
+  .page-head .crumb { color:var(--color-text-dim); font-family:var(--font-family-mono); font-size:var(--font-size-xs); }
+  .theme-toggle { margin-left:auto; }
+  .demo-section { margin-top:28px; }
+  .demo-section > h2 { font-size:var(--font-size-lg); border-bottom:1px solid var(--color-divider); padding-bottom:6px; }
+  .demo-row { display:flex; flex-wrap:wrap; align-items:flex-start; gap:22px; margin:14px 0; }
+  .demo-note { color:var(--color-text-muted); font-size:var(--font-size-sm); max-width:70ch; }
+  .frame { border:1px solid var(--color-border); border-radius:var(--radius-md); background:var(--card); width:280px; }
+</style>
+</head>
+<body>
+<header class="page-head">
+  <span class="crumb"><a href="index.html" style="color:inherit">components</a> / empty</span>
+  <h1>Empty state</h1>
+  <button class="btn btn--sm theme-toggle" onclick="
+    var h=document.documentElement; h.dataset.theme=h.dataset.theme==='dark'?'light':'dark'">
+    Light / Dark</button>
+</header>
+
+<section class="demo-section">
+  <h2>Empty · no data / no results / no search results</h2>
+  <div class="demo-row">
+    <div class="frame">
+      <div class="empty">
+        <div class="glyph"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16"/></svg></div>
+        <div class="title">暂无数据</div>
+        <div class="desc">还没有任何渲染任务，创建一个任务后将在这里显示。</div>
+        <button class="btn btn--sm btn--primary">新建任务</button>
+      </div>
+    </div>
+    <div class="frame">
+      <div class="empty">
+        <div class="glyph"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+        <div class="title">未找到结果</div>
+        <div class="desc">调整筛选条件或清空搜索关键字后重试。</div>
+        <button class="btn btn--sm">清空筛选</button>
+      </div>
+    </div>
+    <div class="frame">
+      <div class="empty">
+        <div class="glyph"><svg viewBox="0 0 24 24"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.9L2.5 18a2 2 0 0 0 1.7 3h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></div>
+        <div class="title">加载失败</div>
+        <div class="desc">连接节点超时，请检查网络后重试。</div>
+        <button class="btn btn--sm">重试</button>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">纯语义层：无 §4 结构旋钮 —— glyph（虚线方框图标位）+ title（mono 无，语义粗体）+ desc（约束宽度换行）+ 可选操作按钮。三个变体共用同一套 .empty/.glyph/.title/.desc 类名，仅替换图标/文案。</p>
+</section>
+</body>
+</html>

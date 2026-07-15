@@ -1,0 +1,15 @@
+/* ---------- Command palette —— 旋钮(§4 参考位): --cmdp-w --cmdp-list-h（尺寸复用 menu 旋钮 --menu-item-h --menu-pad） ---------- */
+.cmdp { width: var(--cmdp-w); max-width: calc(100vw - 48px);
+  background: var(--popover); border: var(--control-border-w) solid var(--color-border);
+  border-radius: var(--dialog-radius); box-shadow: var(--shadow-pop); overflow: hidden; }
+.cmdp-input { display: flex; align-items: center; gap: 8px; padding: 9px 12px; border-bottom: 1px solid var(--color-border); }
+.cmdp-input svg { width: 15px; height: 15px; stroke: var(--color-text-dim); stroke-width: 1.6; fill: none; }
+.cmdp-input input { flex: 1; border: none; background: transparent; outline: none; color: var(--color-text); font-size: var(--font-size-md); font-family: var(--font-family-sans); }
+.cmdp-input input::placeholder { color: var(--color-text-dim); }
+.cmdp-list { max-height: var(--cmdp-list-h); overflow-y: auto; padding: var(--menu-pad); }
+.cmdp-group { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); text-transform: uppercase; letter-spacing: .06em; color: var(--color-text-dim); padding: 8px 8px 3px; }
+.cmdp-item { display: flex; align-items: center; gap: 10px; height: var(--menu-item-h); padding: 0 8px; border-radius: var(--radius-sm); font-size: var(--font-size-sm); color: var(--color-text); cursor: pointer; }
+.cmdp-item svg { width: 15px; height: 15px; stroke: currentColor; stroke-width: 1.6; fill: none; flex: none; color: var(--color-text-dim); }
+.cmdp-item .sc { margin-left: auto; display: inline-flex; gap: 3px; }
+.cmdp-item:hover { background: var(--subtle); color: var(--subtle-foreground); }
+.cmdp-item[aria-selected="true"] { background: var(--subtle); color: var(--subtle-foreground); }

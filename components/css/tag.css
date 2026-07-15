@@ -1,0 +1,45 @@
+/* ---------- tag 族 —— 接线: --tag-bg/-fg/-border（.tag .chip .badge .pill 同构共用）· 旋钮: --tag-radius (§4) ---------- */
+.tag, .chip, .badge, .pill {
+  --tag-bg: var(--muted);
+  --tag-fg: var(--muted-foreground);
+  --tag-border: var(--color-border);
+  background: var(--tag-bg); color: var(--tag-fg);
+  border: var(--control-border-w) solid var(--tag-border);
+  border-radius: var(--tag-radius);
+}
+
+/* ---------- Badge ---------- */
+.badge { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); padding: 1px 7px; display: inline-flex; align-items: center; gap: 5px; text-transform: uppercase; letter-spacing: .04em; }
+.badge i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex: none; }
+.badge--primary { --tag-bg: var(--color-primary-light-default); --tag-fg: var(--color-primary); --tag-border: transparent; }
+.badge--success { --tag-bg: var(--color-success-light-default); --tag-fg: var(--color-success); --tag-border: transparent; }
+.badge--warning { --tag-bg: var(--color-warning-light-default); --tag-fg: var(--color-warning); --tag-border: transparent; }
+.badge--danger  { --tag-bg: var(--color-danger-light-default);  --tag-fg: var(--color-danger);  --tag-border: transparent; }
+
+/* ---------- Tag ---------- */
+.tag { font-family: var(--font-family-mono); font-size: var(--font-size-2xs); text-transform: uppercase; letter-spacing: .04em; padding: 1px 6px; }
+.tag--primary { --tag-bg: var(--color-primary-light-default); --tag-fg: var(--color-primary); --tag-border: transparent; }
+.tag--danger  { --tag-bg: var(--color-danger-light-default);  --tag-fg: var(--color-danger);  --tag-border: transparent; }
+
+/* ---------- Chip (removable token) ---------- */
+.chip { display: inline-flex; align-items: center; gap: 5px; height: 20px; padding: 0 4px 0 8px; font-size: var(--font-size-xs); }
+.chip .x { display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; border-radius: 2px; color: var(--color-text-dim); cursor: pointer; }
+.chip .x svg { width: 9px; height: 9px; stroke: currentColor; stroke-width: 2.2; fill: none; pointer-events: none; }
+.chip .x:hover { background: var(--color-bg-hover); color: var(--color-text); }
+.chip--accent { --tag-bg: var(--color-primary-light-default); --tag-fg: var(--color-primary); --tag-border: transparent; }
+.chip--accent .x:hover { background: color-mix(in oklab, var(--color-primary) 20%, transparent); color: var(--color-primary); }
+.chip .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex: none; }
+
+/* ---------- Status pill ---------- */
+.pill { display: inline-flex; align-items: center; gap: 5px; padding: 1px 8px 1px 6px; font-family: var(--font-family-mono); font-size: var(--font-size-2xs); text-transform: uppercase; letter-spacing: .04em; }
+.pill { border-radius: var(--radius-full); }
+.pill .led { width: 7px; height: 7px; border-radius: 50%; background: var(--color-text-dim); flex: none; }
+.pill--on { color: var(--color-success); border-color: color-mix(in oklab, var(--color-success) 40%, transparent); }
+.pill--on .led { background: var(--color-success); box-shadow: 0 0 5px var(--color-success); }
+.pill--busy { color: var(--color-warning); border-color: color-mix(in oklab, var(--color-warning) 40%, transparent); }
+.pill--busy .led { background: var(--color-warning); }
+.pill--err { color: var(--color-danger); border-color: color-mix(in oklab, var(--color-danger) 40%, transparent); }
+.pill--err .led { background: var(--color-danger); }
+
+/* ---------- Kbd —— 语义层直连, 无接线需求 ---------- */
+.kbd { display: inline-flex; align-items: center; justify-content: center; min-width: 18px; height: 18px; padding: 0 5px; font-family: var(--font-family-mono); font-size: var(--font-size-2xs); background: var(--color-bg-active); border: 1px solid var(--color-border-strong); border-bottom-width: 2px; border-radius: 3px; color: var(--color-text-muted); }

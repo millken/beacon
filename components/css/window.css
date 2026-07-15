@@ -1,0 +1,35 @@
+/* ---------- Window / titlebar / win-controls —— 旋钮: --titlebar-h --win-btn-size (§4) ---------- */
+.titlebar { display: flex; align-items: center; gap: var(--space-4);
+  height: var(--titlebar-h); padding: 0 var(--space-5);
+  background: var(--color-bg-subtle);
+  border-bottom: var(--control-border-w) solid var(--color-border);
+  user-select: none; }
+
+/* macOS-style traffic-light trio */
+.titlebar-traffic { display: flex; align-items: center; gap: var(--space-2); }
+.titlebar-traffic i { display: inline-flex; align-items: center; justify-content: center;
+  width: var(--win-btn-size); height: var(--win-btn-size); border-radius: var(--radius-full);
+  cursor: pointer; }
+.titlebar-traffic i:nth-child(1) { background: var(--color-danger); }
+.titlebar-traffic i:nth-child(2) { background: var(--color-warning); }
+.titlebar-traffic i:nth-child(3) { background: var(--color-success); }
+.titlebar-traffic i svg { width: 60%; height: 60%; stroke: var(--color-bg); stroke-width: 2; fill: none;
+  opacity: 0; transition: opacity var(--duration-fast) var(--ease-standard); }
+.titlebar-traffic:hover i svg { opacity: 1; }
+
+.titlebar-title { flex: 1; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font: var(--font-weight-medium) var(--font-size-sm)/1 var(--font-family-sans); }
+.titlebar-meta { display: flex; align-items: center; gap: var(--space-2);
+  color: var(--color-text-dim); font: 400 var(--font-size-2xs)/1 var(--font-family-mono); }
+
+/* Windows/Linux-style square controls + custom utility controls (theme / pin / settings…) */
+.win-controls { display: inline-flex; align-items: center; gap: 2px; }
+.win-btn { width: var(--win-btn-size); height: var(--win-btn-size); border-radius: var(--radius-full);
+  display: inline-flex; align-items: center; justify-content: center; border: none; padding: 0;
+  background: transparent; color: var(--color-text-dim); cursor: pointer; }
+.win-btn svg { width: 70%; height: 70%; stroke: currentColor; stroke-width: 1.5; fill: none; }
+.win-btn:hover { background: var(--color-bg-hover); color: var(--color-text); }
+.win-btn--close:hover { background: var(--color-danger); color: var(--color-bg); }
+.win-btn--util[data-state="active"] { color: var(--color-accent); }
+.win-btn:disabled { opacity: .4; cursor: default; }
+.win-btn:disabled:hover { background: transparent; color: var(--color-text-dim); }

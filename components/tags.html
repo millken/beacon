@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tags · Beacon GUI 组件</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<link rel="stylesheet" href="components.css" />
+<style>
+  body { margin:0; padding:32px 40px 80px; background:var(--background); color:var(--foreground);
+         font:400 var(--font-size-md)/var(--leading-normal) var(--font-family-sans); }
+  .page-head { display:flex; align-items:center; gap:12px; margin-bottom:8px; }
+  .page-head h1 { font-size:var(--font-size-xl); margin:0; }
+  .page-head .crumb { color:var(--color-text-dim); font-family:var(--font-family-mono); font-size:var(--font-size-xs); }
+  .theme-toggle { margin-left:auto; }
+  .demo-section { margin-top:28px; }
+  .demo-section > h2 { font-size:var(--font-size-lg); border-bottom:1px solid var(--color-divider); padding-bottom:6px; }
+  .demo-row { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin:14px 0; }
+  .demo-note { color:var(--color-text-muted); font-size:var(--font-size-sm); max-width:70ch; }
+  .knob-box { border:1px dashed var(--color-border-strong); border-radius:var(--radius-sm); padding:14px; }
+  .knob-box .knob-label { font-family:var(--font-family-mono); font-size:var(--font-size-2xs); color:var(--color-text-dim); text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px; display:block; }
+</style>
+</head>
+<body>
+<header class="page-head">
+  <span class="crumb"><a href="index.html" style="color:inherit">components</a> / tags</span>
+  <h1>Tags</h1>
+  <button class="btn btn--sm theme-toggle" onclick="
+    var h=document.documentElement; h.dataset.theme=h.dataset.theme==='dark'?'light':'dark'">
+    Light / Dark</button>
+</header>
+
+<section class="demo-section">
+  <h2>Tag</h2>
+  <div class="demo-row">
+    <span class="tag">default</span>
+    <span class="tag tag--primary">primary</span>
+    <span class="tag tag--danger">danger</span>
+  </div>
+  <p class="demo-note">默认接线到 --muted / --muted-foreground / --color-border；变体只切换 --tag-bg/-fg/-border（背景改为浅色系语义色，描边转 transparent）。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Badge</h2>
+  <div class="demo-row">
+    <span class="badge"><i></i>default</span>
+    <span class="badge badge--primary"><i></i>primary</span>
+    <span class="badge badge--success"><i></i>success</span>
+    <span class="badge badge--warning"><i></i>warning</span>
+    <span class="badge badge--danger"><i></i>danger</span>
+    <span class="badge badge--neutral"><i></i>neutral</span>
+  </div>
+  <p class="demo-note">badge--neutral 与无修饰的默认态视觉一致（同属家族根接线的 --muted 默认值），保留该类名只为向后兼容既有页面。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Chip · removable filter token</h2>
+  <div class="demo-row" id="chips">
+    <span class="chip">node-03<span class="x" aria-label="remove"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
+    <span class="chip">status: running<span class="x" aria-label="remove"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
+    <span class="chip chip--accent"><span class="dot"></span>cpu &gt; 80%<span class="x" aria-label="remove"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
+    <span class="chip">owner: R. Miller<span class="x" aria-label="remove"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
+    <span class="chip chip--accent">preset: 4K<span class="x" aria-label="remove"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></span></span>
+  </div>
+  <p class="demo-note">用于过滤条件 / 多选标签 · 默认中性表面 / accent 浅版（chip--accent 只覆盖 --tag-bg/-fg）· 尾部 ✕ 可移除（hover 高亮）· 可带前导语义点 · 点 ✕ 实时删除。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Pill · status</h2>
+  <div class="demo-row">
+    <span class="pill"><span class="led"></span>idle</span>
+    <span class="pill pill--on"><span class="led"></span>online</span>
+    <span class="pill pill--busy"><span class="led"></span>throttled</span>
+    <span class="pill pill--err"><span class="led"></span>offline</span>
+  </div>
+  <p class="demo-note">.pill 在家族根之后追加 border-radius: var(--radius-full) 覆盖为胶囊形；pill--on/busy/err 是独立的语义状态（led + border-color），不属于 --tag- 接线变体。</p>
+</section>
+
+<section class="demo-section">
+  <h2>Kbd</h2>
+  <div class="demo-row">
+    <span class="kbd">⌘</span><span class="kbd">⇧</span><span class="kbd">R</span>
+    <span class="kbd">Ctrl</span><span class="kbd">Alt</span><span class="kbd">Del</span>
+  </div>
+  <p class="demo-note">.kbd 保持语义层直连（Tier-2），不参与 --tag- 接线——键帽视觉固定，不随 tag 族变体联动。</p>
+</section>
+
+<section class="demo-section">
+  <h2>旋钮演示 · Structural knobs</h2>
+  <div class="demo-row">
+    <div class="knob-box">
+      <span class="knob-label">--tag-radius: 0px</span>
+      <div class="demo-row" style="--tag-radius:0px; margin:0">
+        <span class="tag">default</span>
+        <span class="badge badge--primary"><i></i>primary</span>
+      </div>
+    </div>
+    <div class="knob-box">
+      <span class="knob-label">--tag-radius: 8px</span>
+      <div class="demo-row" style="--tag-radius:8px; margin:0">
+        <span class="tag">default</span>
+        <span class="badge badge--primary"><i></i>primary</span>
+      </div>
+    </div>
+  </div>
+  <p class="demo-note">容器级 style="--tag-radius:…" 局部覆盖 §4 结构旋钮，tag.css 中不声明该变量，只引用（R3）。.pill 因追加了 --radius-full 的第二条规则不受此旋钮影响，符合胶囊形语义。</p>
+</section>
+
+<script>
+  document.querySelectorAll('#chips .x').forEach(x => x.addEventListener('click', e => {
+    e.stopPropagation(); const chip = x.closest('.chip');
+    chip.style.transition = 'opacity .12s ease'; chip.style.opacity = '0';
+    setTimeout(() => chip.remove(), 120);
+  }));
+</script>
+</body>
+</html>
