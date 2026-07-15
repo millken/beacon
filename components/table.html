@@ -169,7 +169,16 @@
       <span class="datagrid-status"><span class="led"></span>4 running</span>
       <span class="datagrid-status is-warn"><span class="led"></span>1 throttled</span>
       <span class="sp"></span>
-      <span>updated 0.4s ago</span>
+      <span style="font-family:var(--font-family-mono);font-size:var(--font-size-xs);color:var(--color-text-dim)">1–25 of 128</span>
+      <nav class="pagination" aria-label="datagrid pages">
+        <button aria-label="prev" disabled><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button data-state="active">1</button>
+        <button>2</button>
+        <button>3</button>
+        <span class="ellipsis">…</span>
+        <button>6</button>
+        <button aria-label="next"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
+      </nav>
     </div>
   </div>
   <p class="demo-note">表头 = 纯底 + 强底边，全网格线（每格右 + 下 border）；行号索引轨 = dim mono；数值列 <b>.num</b> 右对齐 mono tabular。点击表头排序（单箭头标记当前列）、拖右缘调列宽、拖表头重排列序。行 hover → <b>--subtle</b>，选中 → 索引轨 accent 条 + <b>--color-bg-active</b> 底；工具栏高度接 <b>--datagrid-toolbar-h</b>；状态用 badge + 底部 LED。</p>
