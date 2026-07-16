@@ -69,6 +69,25 @@
   .mem-drawer-id { display: flex; align-items: center; gap: var(--space-3); }
   .mem-drawer-id .nm { font-weight: var(--font-weight-semibold); color: var(--color-text); }
   .mem-drawer-id .em { font-size: var(--font-size-xs); color: var(--color-text-dim); }
+
+  /* ---- page-local composition: Billing plan cards ---- */
+  .plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+  .plan-card { background: var(--card); border: 1px solid var(--color-border); border-radius: var(--radius-card); padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-4); }
+  .plan-card--current { border-color: var(--color-accent); }
+  .plan-card .pc-head { display: flex; align-items: center; gap: var(--space-3); }
+  .plan-card .pc-head .sp { flex: 1; }
+  .plan-card .pc-name { font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); }
+  .plan-card .pc-price { font-size: var(--font-size-3xl); font-family: var(--font-family-mono); font-weight: var(--font-weight-semibold); color: var(--color-text); }
+  .plan-card .pc-price .pc-period { font-size: var(--font-size-xs); font-family: var(--font-family-sans); font-weight: var(--font-weight-normal); color: var(--color-text-dim); }
+  .plan-card .pc-features { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-3); flex: 1; }
+  .plan-card .pc-features li { display: flex; align-items: center; gap: var(--space-3); font-size: var(--font-size-sm); color: var(--color-text-muted); }
+  .plan-card .pc-features svg { width: 15px; height: 15px; stroke: var(--color-success); stroke-width: 2; fill: none; flex: none; }
+
+  /* ---- page-local composition: Billing usage rows + invoices ---- */
+  .usage-row { display: flex; flex-direction: column; gap: 6px; }
+  .usage-row .usage-cap { display: flex; align-items: baseline; font-size: var(--font-size-sm); color: var(--color-text-muted); }
+  .usage-row .usage-cap .sp { flex: 1; }
+  .usage-row .usage-cap .usage-num { font-family: var(--font-family-mono); font-size: var(--font-size-xs); color: var(--color-text-dim); }
 </style>
 </head>
 <body data-view="dashboard">
@@ -415,8 +434,130 @@
 
       </section>
 
-      <!-- ============ BILLING VIEW (filled in Task 6) ============ -->
-      <section class="view" id="view-billing"></section>
+      <!-- ============ BILLING VIEW ============ -->
+      <section class="view" id="view-billing">
+
+        <!-- Plan / pricing cards -->
+        <div class="plan-grid">
+          <div class="plan-card">
+            <div class="pc-head"><span class="pc-name">Starter</span></div>
+            <div class="pc-price">$19<span class="pc-period">/mo</span></div>
+            <ul class="pc-features">
+              <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Up to 5 seats</li>
+              <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>10K API calls/mo</li>
+              <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>5 GB storage</li>
+              <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Community support</li>
+            </ul>
+            <button class="btn">Downgrade</button>
+          </div>
+
+          <div class="plan-card plan-card--current">
+            <div class="pc-head"><span class="pc-name">Pro</span><span class="sp"></span><span class="badge badge--primary"><i></i>Current</span></div>
+            <div class="pc-price">$49<span class="pc-period">/mo</span></div>
+            <ul class="pc-features">
+              <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Up to 25 seats</li>
+              <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>100K API calls/mo</li>
+              <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>50 GB storage</li>
+              <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Priority email support</li>
+            </ul>
+            <button class="btn btn--primary">Manage plan</button>
+          </div>
+
+          <div class="plan-card">
+            <div class="pc-head"><span class="pc-name">Business</span></div>
+            <div class="pc-price">$149<span class="pc-period">/mo</span></div>
+            <ul class="pc-features">
+              <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Unlimited seats</li>
+              <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>1M API calls/mo</li>
+              <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>500 GB storage</li>
+              <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>Dedicated Slack channel</li>
+            </ul>
+            <button class="btn btn--primary">Upgrade</button>
+          </div>
+        </div>
+
+        <!-- Usage this cycle -->
+        <div class="chart-card" style="margin-top:var(--space-5)">
+          <div class="cc-head">
+            <h3>Usage this cycle</h3>
+            <span class="sub">resets in 12 days</span>
+          </div>
+
+          <div class="usage-row">
+            <div class="usage-cap"><span>Seats</span><span class="sp"></span><span class="usage-num">18 / 25</span></div>
+            <div class="progress-row"><div class="progress"><i style="width:72%"></i></div><span class="pct">72%</span></div>
+          </div>
+
+          <div class="usage-row">
+            <div class="usage-cap"><span>API calls</span><span class="sp"></span><span class="usage-num">94.2K / 100K</span></div>
+            <div class="progress-row"><div class="progress progress--warning"><i style="width:94%"></i></div><span class="pct">94%</span></div>
+          </div>
+
+          <div class="usage-row">
+            <div class="usage-cap"><span>Storage</span><span class="sp"></span><span class="usage-num">31 GB / 50 GB</span></div>
+            <div class="progress-row"><div class="progress"><i style="width:62%"></i></div><span class="pct">62%</span></div>
+          </div>
+
+          <div class="usage-row">
+            <div class="usage-cap"><span>Monthly quota</span><span class="sp"></span><span class="usage-num">9 / 14 segments</span></div>
+            <div class="meter" id="billingMeter"></div>
+          </div>
+        </div>
+
+        <!-- Invoices -->
+        <div class="table-card table-card--wide" style="margin-top:var(--space-5)">
+          <div class="table-cap">
+            <h3>Invoices</h3>
+            <span class="sub">last 6 months</span>
+            <span class="sp"></span>
+            <button class="btn btn--sm btn--ghost">View all</button>
+          </div>
+          <table class="table">
+            <thead><tr>
+              <th>Date</th><th class="right">Amount</th><th>Status</th><th class="right"></th>
+            </tr></thead>
+            <tbody>
+              <tr>
+                <td class="mono dim">2026-07-01</td>
+                <td class="mono num">$49.00</td>
+                <td><span class="badge badge--success"><i></i>Paid</span></td>
+                <td class="right"><button class="btn btn--icon btn--sm btn--ghost" aria-label="download invoice"><svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M6 11l6 6 6-6"/><path d="M5 21h14"/></svg></button></td>
+              </tr>
+              <tr>
+                <td class="mono dim">2026-06-01</td>
+                <td class="mono num">$49.00</td>
+                <td><span class="badge badge--success"><i></i>Paid</span></td>
+                <td class="right"><button class="btn btn--icon btn--sm btn--ghost" aria-label="download invoice"><svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M6 11l6 6 6-6"/><path d="M5 21h14"/></svg></button></td>
+              </tr>
+              <tr>
+                <td class="mono dim">2026-05-01</td>
+                <td class="mono num">$49.00</td>
+                <td><span class="badge badge--success"><i></i>Paid</span></td>
+                <td class="right"><button class="btn btn--icon btn--sm btn--ghost" aria-label="download invoice"><svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M6 11l6 6 6-6"/><path d="M5 21h14"/></svg></button></td>
+              </tr>
+              <tr>
+                <td class="mono dim">2026-04-01</td>
+                <td class="mono num">$49.00</td>
+                <td><span class="badge badge--warning"><i></i>Due</span></td>
+                <td class="right"><button class="btn btn--icon btn--sm btn--ghost" aria-label="download invoice"><svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M6 11l6 6 6-6"/><path d="M5 21h14"/></svg></button></td>
+              </tr>
+              <tr>
+                <td class="mono dim">2026-03-01</td>
+                <td class="mono num">$49.00</td>
+                <td><span class="badge badge--success"><i></i>Paid</span></td>
+                <td class="right"><button class="btn btn--icon btn--sm btn--ghost" aria-label="download invoice"><svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M6 11l6 6 6-6"/><path d="M5 21h14"/></svg></button></td>
+              </tr>
+              <tr>
+                <td class="mono dim">2026-02-01</td>
+                <td class="mono num">$29.00</td>
+                <td><span class="badge badge--success"><i></i>Paid</span></td>
+                <td class="right"><button class="btn btn--icon btn--sm btn--ghost" aria-label="download invoice"><svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M6 11l6 6 6-6"/><path d="M5 21h14"/></svg></button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </section>
 
     </div>
   </div>
@@ -484,6 +625,19 @@
   document.querySelectorAll('[data-toggle]').forEach(el => el.addEventListener('click', () => {
     el.dataset.state = el.dataset.state === 'checked' ? '' : 'checked';
   }));
+
+  // Billing: monthly quota meter — same segmented-meter build as components/indicator.html
+  const billingMeter = document.getElementById('billingMeter');
+  if (billingMeter) {
+    const N = 14, level = 9;
+    for (let i = 0; i < N; i++) {
+      const s = document.createElement('div');
+      s.className = 'seg' + (i >= 11 ? ' crit' : i >= 8 ? ' warn' : '');
+      s.style.height = (6 + i * 0.9) + 'px';
+      if (i < level) s.setAttribute('data-on', '');
+      billingMeter.appendChild(s);
+    }
+  }
 </script>
 </body>
 </html>
