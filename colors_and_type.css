@@ -262,6 +262,17 @@
   --color-overlay:  rgba(5,8,13,0.62);   /* 模态遮罩：暗模式用近黑深色加深层级 */
   --color-input-bg: var(--color-bg);     /* 输入井：比面板(surface)更深，自然内凹 */
   --control-selected-ring: var(--color-border-strong);/* 分段选中段描边：暗模式需强环托出 */
+  /* 图表分类色 —— dataviz 已验证的固定分类序（前 6 色）。有意与 preset 无关：
+     校验只对这组固定值成立，故不引用 accent/status（复用状态色会破坏色盲可分辨性）。
+     dark 表面 = 卡片 --card = #1d2532。grid/axis 属图表 chrome，复用中性层。 */
+  --chart-1: #3987e5;   /* blue（accent 家族，图表调优步进） */
+  --chart-2: #008300;   /* green */
+  --chart-3: #d55181;   /* magenta */
+  --chart-4: #c98500;   /* yellow */
+  --chart-5: #199e70;   /* aqua */
+  --chart-6: #d95926;   /* orange */
+  --chart-grid: var(--color-divider);
+  --chart-axis: var(--color-text-dim);
 }
 
 /* ===== preset: Beacon · light =====
@@ -302,4 +313,11 @@
   --color-overlay:  rgba(28,36,52,0.42);  /* 模态遮罩：浅色用蓝灰 slate，避免纯黑盖白发脏 */
   --color-input-bg: var(--color-bg-subtle);/* 输入井：在纯白弹窗/卡片上下沉一阶，拉开质感 */
   --control-selected-ring: var(--color-border);/* 分段选中段描边：浅色靠填充对比即可，环要轻 */
+  /* 图表分类色 light 步进（表面 = 白卡片 #ffffff）。同一组已验证色的浅色步进。 */
+  --chart-1: #2a78d6;   /* blue */
+  --chart-2: #008300;   /* green（明暗同值） */
+  --chart-3: #e87ba4;   /* magenta */
+  --chart-4: #eda100;   /* yellow */
+  --chart-5: #1baf7a;   /* aqua */
+  --chart-6: #eb6834;   /* orange */
 }
