@@ -26,6 +26,7 @@
   --radius-sm:   max(0px, calc(var(--radius) - 1px));  /* tag / 按钮 / 输入 */
   --radius-md:   var(--radius);                        /* 面板 */
   --radius-lg:   calc(var(--radius) + 1px);            /* 弹层 */
+  /* 有意：md=面板、lg=弹层，差 1px 用于弹层比面板略柔一档；两者均被消费（table/overlay 等） */
   --radius-card: calc(var(--radius) + 3px);            /* 大卡片 */
   --radius-full: 9999px;                               /* 胶囊 / 圆点 */
   --shadow-inset: inset 0 1px 2px rgba(0,0,0,0.05);    /* 输入内凹「井」—— 可编辑暗示 */
@@ -59,7 +60,7 @@
   --font-family-mono: "JetBrains Mono", "Iosevka Term", "SF Mono", "Cascadia Mono", Consolas, monospace;
   --font-size-2xs: 11px;  /* 角标 / kbd / 极小标签 */
   --font-size-xs:  12px;  /* 辅助 / 状态栏 */
-  --font-size-sm:  12px;  /* 小标签 / badge / 表头 */
+  --font-size-sm:  12px;  /* 小标签 / badge / 表头（与 xs 同值不同义：xs=辅助/状态栏，sm=标签/表头，勿合并） */
   --font-size-md:  13px;  /* 正文默认 */
   --font-size-lg:  15px;  /* 二级标题 / 侧栏条目 */
   --font-size-xl:  18px;  /* 一级标题 */
@@ -204,6 +205,7 @@
 
   /* info —— 客观中立（单 accent 体系下复用 primary） */
   --color-info:               var(--color-accent);
+  /* 有意：单 accent 体系下 info=primary=accent；info 语气差异由 --color-info-light-default 浅底承担，勿另立 info 主色 */
   --color-info-light-default: color-mix(in oklab, var(--color-accent) 12%, var(--color-bg));
 
   /* success */
@@ -230,7 +232,8 @@
   --color-text-0: var(--color-text);        /* 最主要 */
   --color-text-1: var(--color-text-muted);  /* 稍次要 */
   --color-text-2: var(--color-text-dim);    /* 次要 */
-  --color-text-3: var(--color-text-inverse);/* 反相 */
+  --color-text-3: color-mix(in oklab, var(--color-text-dim) 60%, var(--color-bg)); /* 最弱：占位符/禁用（比 dim 更淡；明暗自动重算） */
+  /* 注：色上文字请直接用 --color-text-inverse 本名（原 text-3 借用该值属语义错配，已纠正） */
 
   /* ===== 6) 色盘 LADDER —— 默认 preset: Beacon · dark ===== */
   --color-bg:         #11151c;  /* <body> / 编辑区 */
@@ -291,6 +294,10 @@
   --surface-raised: var(--color-bg);           /* 抬升卡片：留在白平面 */
   --shadow-card: 0 4px 14px rgba(10,30,80,0.12), 0 0 0 1px rgba(10,30,80,0.07);
   --shadow-pop:  0 12px 24px -4px rgba(28,36,52,0.10), 0 4px 12px -2px rgba(28,36,52,0.05);/* 蓝灰双层：浅色下浮起通透不发脏 */
+  /* 井/内凹阴影 light 覆盖：暗模式用近黑，浅模式改蓝灰低 alpha，避免刺眼近黑内阴影 */
+  --shadow-inset: inset 0 1px 2px rgba(28,36,52,0.06);
+  --shadow-well:  inset 0 1px 2px rgba(28,36,52,0.12);
+  --track-bg: rgba(28,36,52,0.08);
   --focus-ring:  0 0 0 2px rgba(26,111,224,0.45);
   --color-overlay:  rgba(28,36,52,0.42);  /* 模态遮罩：浅色用蓝灰 slate，避免纯黑盖白发脏 */
   --color-input-bg: var(--color-bg-subtle);/* 输入井：在纯白弹窗/卡片上下沉一阶，拉开质感 */
