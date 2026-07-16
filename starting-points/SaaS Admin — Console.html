@@ -52,6 +52,23 @@
 
   /* ---- page-local composition: recent activity table card ---- */
   .table-card--wide { width: 100%; }
+
+  /* ---- page-local composition: Members filter toolbar (flat, border-bottom, not the floating pill) ---- */
+  .mem-toolbar { width: 100%; height: auto; border: none; border-radius: 0; padding: 0 0 var(--space-4); background: transparent; border-bottom: var(--control-border-w) solid var(--color-border); }
+  .mem-toolbar .sp { flex: 1; }
+
+  /* ---- page-local composition: Members table pagination footer ---- */
+  .pager { display: flex; justify-content: space-between; align-items: center; padding: var(--space-3) var(--space-4); color: var(--color-text-muted); font-size: var(--font-size-xs); border-top: 1px solid var(--color-border); }
+  .pager .pg-pages { display: flex; align-items: center; gap: 4px; }
+  .pager .pg-ellipsis { color: var(--color-text-dim); padding: 0 2px; }
+
+  /* ---- page-local composition: member-detail drawer — slides in from the right edge over .modal-overlay ---- */
+  .mem-drawer-overlay { justify-content: flex-end; padding: 0; }
+  .mem-drawer-overlay .drawer { transform: translateX(12px); transition: transform var(--duration-base) var(--ease-standard); }
+  .mem-drawer-overlay[data-state="open"] .drawer { transform: none; }
+  .mem-drawer-id { display: flex; align-items: center; gap: var(--space-3); }
+  .mem-drawer-id .nm { font-weight: var(--font-weight-semibold); color: var(--color-text); }
+  .mem-drawer-id .em { font-size: var(--font-size-xs); color: var(--color-text-dim); }
 </style>
 </head>
 <body data-view="dashboard">
@@ -287,7 +304,116 @@
       </section>
 
       <!-- ============ MEMBERS VIEW (filled in Task 5) ============ -->
-      <section class="view" id="view-members"></section>
+      <section class="view" id="view-members">
+
+        <!-- Filter toolbar -->
+        <div class="toolbar mem-toolbar">
+          <div class="search-input"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><input class="input" placeholder="Search members…" /></div>
+          <div class="segmented" id="memberStatusSeg">
+            <button data-status-val="all" data-state="checked">All</button>
+            <button data-status-val="active">Active</button>
+            <button data-status-val="invited">Invited</button>
+            <button data-status-val="suspended">Suspended</button>
+          </div>
+          <span class="sp"></span>
+          <button class="btn btn--primary">Invite member</button>
+        </div>
+
+        <!-- Members table -->
+        <div class="table-card table-card--wide" style="margin-top:var(--space-5)">
+          <table class="table" id="membersTable">
+            <thead>
+              <tr>
+                <th class="sel"><span class="checkbox" data-toggle aria-label="select all"></span></th>
+                <th>Member</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Last active</th>
+                <th class="right"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-open="drawer-member">
+                <td class="sel"><span class="checkbox" data-toggle></span></td>
+                <td><div class="lead"><span class="avatar avatar--sm">AK</span><div><div class="nm">Anna Kim</div><div class="meta">anna.kim@acme.io</div></div></div></td>
+                <td>Admin</td>
+                <td><span class="badge badge--success"><i></i>Active</span></td>
+                <td class="mono dim">2m ago</td>
+                <td class="right"><span class="row-act"><button class="btn btn--icon btn--sm btn--ghost" aria-label="more"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></button></span></td>
+              </tr>
+              <tr data-open="drawer-member">
+                <td class="sel"><span class="checkbox" data-toggle></span></td>
+                <td><div class="lead"><span class="avatar avatar--sm">MR</span><div><div class="nm">Marco Rossi</div><div class="meta">marco.rossi@acme.io</div></div></div></td>
+                <td>Editor</td>
+                <td><span class="badge badge--warning"><i></i>Invited</span></td>
+                <td class="mono dim">18m ago</td>
+                <td class="right"><span class="row-act"><button class="btn btn--icon btn--sm btn--ghost" aria-label="more"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></button></span></td>
+              </tr>
+              <tr data-open="drawer-member">
+                <td class="sel"><span class="checkbox" data-toggle></span></td>
+                <td><div class="lead"><span class="avatar avatar--sm">SL</span><div><div class="nm">Sara Lund</div><div class="meta">sara.lund@acme.io</div></div></div></td>
+                <td>Member</td>
+                <td><span class="badge badge--danger"><i></i>Suspended</span></td>
+                <td class="mono dim">41m ago</td>
+                <td class="right"><span class="row-act"><button class="btn btn--icon btn--sm btn--ghost" aria-label="more"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></button></span></td>
+              </tr>
+              <tr data-open="drawer-member">
+                <td class="sel"><span class="checkbox" data-toggle></span></td>
+                <td><div class="lead"><span class="avatar avatar--sm">DP</span><div><div class="nm">David Park</div><div class="meta">david.park@acme.io</div></div></div></td>
+                <td>Editor</td>
+                <td><span class="badge badge--danger"><i></i>Suspended</span></td>
+                <td class="mono dim">1h ago</td>
+                <td class="right"><span class="row-act"><button class="btn btn--icon btn--sm btn--ghost" aria-label="more"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></button></span></td>
+              </tr>
+              <tr data-open="drawer-member">
+                <td class="sel"><span class="checkbox" data-toggle></span></td>
+                <td><div class="lead"><span class="avatar avatar--sm">NW</span><div><div class="nm">Nina Weber</div><div class="meta">nina.weber@acme.io</div></div></div></td>
+                <td>Admin</td>
+                <td><span class="badge badge--success"><i></i>Active</span></td>
+                <td class="mono dim">2h ago</td>
+                <td class="right"><span class="row-act"><button class="btn btn--icon btn--sm btn--ghost" aria-label="more"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></button></span></td>
+              </tr>
+              <tr data-open="drawer-member">
+                <td class="sel"><span class="checkbox" data-toggle></span></td>
+                <td><div class="lead"><span class="avatar avatar--sm">TC</span><div><div class="nm">Tom Chen</div><div class="meta">tom.chen@acme.io</div></div></div></td>
+                <td>Member</td>
+                <td><span class="badge badge--success"><i></i>Active</span></td>
+                <td class="mono dim">3h ago</td>
+                <td class="right"><span class="row-act"><button class="btn btn--icon btn--sm btn--ghost" aria-label="more"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></button></span></td>
+              </tr>
+              <tr data-open="drawer-member">
+                <td class="sel"><span class="checkbox" data-toggle></span></td>
+                <td><div class="lead"><span class="avatar avatar--sm">PN</span><div><div class="nm">Priya Nair</div><div class="meta">priya.nair@acme.io</div></div></div></td>
+                <td>Editor</td>
+                <td><span class="badge badge--warning"><i></i>Invited</span></td>
+                <td class="mono dim">5h ago</td>
+                <td class="right"><span class="row-act"><button class="btn btn--icon btn--sm btn--ghost" aria-label="more"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></button></span></td>
+              </tr>
+              <tr data-open="drawer-member">
+                <td class="sel"><span class="checkbox" data-toggle></span></td>
+                <td><div class="lead"><span class="avatar avatar--sm">YD</span><div><div class="nm">Yusuf Demir</div><div class="meta">yusuf.demir@acme.io</div></div></div></td>
+                <td>Member</td>
+                <td><span class="badge badge--success"><i></i>Active</span></td>
+                <td class="mono dim">1d ago</td>
+                <td class="right"><span class="row-act"><button class="btn btn--icon btn--sm btn--ghost" aria-label="more"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></button></span></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="pager">
+            <span class="mono">Showing <strong style="color:var(--color-text)">1–8</strong> of 248 members</span>
+            <div class="pg-pages">
+              <button class="btn btn--icon btn--sm btn--ghost" aria-label="previous page"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+              <button class="btn btn--sm btn--primary">1</button>
+              <button class="btn btn--sm btn--ghost">2</button>
+              <button class="btn btn--sm btn--ghost">3</button>
+              <span class="pg-ellipsis">…</span>
+              <button class="btn btn--sm btn--ghost">31</button>
+              <button class="btn btn--icon btn--sm btn--ghost" aria-label="next page"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></button>
+            </div>
+          </div>
+        </div>
+
+      </section>
 
       <!-- ============ BILLING VIEW (filled in Task 6) ============ -->
       <section class="view" id="view-billing"></section>
@@ -295,6 +421,27 @@
     </div>
   </div>
 
+</div>
+
+<!-- Member-detail drawer — reuses .modal-overlay backdrop + .drawer surface from components/overlay.html, slid to the right edge via .mem-drawer-overlay -->
+<div class="modal-overlay mem-drawer-overlay" id="drawer-member" data-modal>
+  <div class="drawer">
+    <div class="drawer-head">
+      <div class="mem-drawer-id"><span class="avatar avatar--lg">AK</span><div><div class="nm">Anna Kim</div><div class="em mono">anna.kim@acme.io</div></div></div>
+      <button class="dialog-x x" data-close aria-label="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="drawer-body">
+      <div class="col">
+        <div class="field"><label>Name</label><input class="input" value="Anna Kim" /></div>
+        <div class="field"><label>Role</label><select class="select"><option>Admin</option><option>Editor</option><option>Member</option></select></div>
+        <div class="field"><label>Status</label><label class="choice"><span class="switch" data-toggle data-state="checked"></span>Active</label></div>
+      </div>
+    </div>
+    <div class="dialog-actions">
+      <button class="btn" data-close>Cancel</button>
+      <button class="btn btn--primary" data-close>Save changes</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -314,6 +461,29 @@
   }
   document.querySelectorAll('.sidebar-item[data-nav]').forEach(n => n.addEventListener('click', () => setView(n.dataset.viewTarget)));
   setView('dashboard');
+
+  // Members status segmented filter (visual state only, same data-state convention as themeSeg)
+  document.querySelectorAll('#memberStatusSeg button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#memberStatusSeg button').forEach(x => x.removeAttribute('data-state'));
+    b.setAttribute('data-state', 'checked');
+  }));
+
+  // overlay open/close — same [data-open]/[data-close]/[data-modal] mechanism as components/overlay.html,
+  // extended with a guard so a row's own checkbox / row-act button doesn't also trigger the row's data-open
+  function openOverlay(id){ const m = document.getElementById(id); if (m) m.setAttribute('data-state', 'open'); }
+  function closeAllOverlays(){ document.querySelectorAll('[data-modal]').forEach(m => m.removeAttribute('data-state')); }
+  document.querySelectorAll('[data-open]').forEach(el => el.addEventListener('click', e => {
+    if (e.target.closest('.checkbox') || e.target.closest('.row-act')) return;
+    openOverlay(el.dataset.open);
+  }));
+  document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', closeAllOverlays));
+  document.querySelectorAll('[data-modal]').forEach(m => m.addEventListener('click', e => { if (e.target === m) closeAllOverlays(); }));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAllOverlays(); });
+
+  // simple standalone checkbox/switch toggle — same data-toggle convention as components/overlay.html
+  document.querySelectorAll('[data-toggle]').forEach(el => el.addEventListener('click', () => {
+    el.dataset.state = el.dataset.state === 'checked' ? '' : 'checked';
+  }));
 </script>
 </body>
 </html>
