@@ -217,9 +217,12 @@ git commit -m "fix(tokens): light 井阴影适配 + text-3 梯度纠正 + 审计
 **Interfaces:**
 - Produces：`--chart-1..6`（分类系列色）、`--chart-grid`（网格线）、`--chart-axis`（坐标轴/刻度文字）。供 Task 4 Dashboard 图表消费。
 
-- [ ] **Step 1: 调用 dataviz skill**
+- [ ] **Step 1: 采用已校验的分类调色板（dataviz 校验已由控制器完成）**
 
-调用 `dataviz` skill，阅读其 `references/palette.md` 与配色方法/校验器。用途：确认下方候选的 series-5（violet）、series-6（teal）与 series-1..4（accent/success/warning/danger）在暗底 `#11151c` 与亮底 `#fff` 上相邻可区分、且与低彩 Beacon 身份一致。若校验不达标，按 dataviz 指引调整 5/6 的取值（1..4 复用系统既有语义色，不改）。
+> ⚠ 计划修订（2026-07-16）：原方案让 `--chart-1..4` 复用 `--color-accent/success/warning/danger`。控制器用 dataviz `validate_palette.js` 实测**该方案不达标**——green↔amber、red↔amber 在色盲甚至常色视觉下都无法区分（「状态色是保留色，绝不复用为系列色」是 dataviz 铁律）。经用户确认，改用 dataviz `references/palette.md` 的**已验证 8 序前 6 色**。本步无需再跑 dataviz，值已最终确定并在下方给出；实现即照抄。
+>
+> 实测结论（Beacon 卡片表面：dark `#1d2532` / light `#ffffff`）：dark 全项 PASS；light 全项 PASS，仅 contrast 对 magenta/yellow/aqua 给 WARN → 触发「relief 规则」：图表须带直接标签/图例 + 存在表格视图（Dashboard 的活动表已满足），故合规。
+> 语义：这是**独立、固定的已验证分类色**，**有意与 preset 无关**（不随 14 套 preset 翻转）——校验只对这组固定值成立。`--chart-1` 为「图表调优蓝」，属 accent 家族但需更高 chroma 方能过闸，故不等同 `--color-accent`。
 
 - [ ] **Step 2: 状态断言（改前）**
 
@@ -230,25 +233,32 @@ grep -n "chart-" colors_and_type.css; echo "exit=$?"
 ```
 Expected：无输出（尚无 chart token）。
 
-- [ ] **Step 3: 在 :root(dark) 的 LADDER 段末尾（`--control-selected-ring` 行之后、`}` 之前）新增图表色**
+- [ ] **Step 3: 在 :root(dark) 的 LADDER 段末尾（`--control-selected-ring` 行之后、`}` 之前）新增图表色（dark 步进，已校验）**
 
 ```css
-  /* 图表分类色 —— 1..4 复用系统语义色（随 preset/主题自动重算），5/6 为补充低彩色相；grid/axis 复用中性层 */
-  --chart-1: var(--color-accent);
-  --chart-2: var(--color-success);
-  --chart-3: var(--color-warning);
-  --chart-4: var(--color-danger);
-  --chart-5: #a789e8;   /* 柔紫（dark）——经 dataviz 校验，可按需微调 */
-  --chart-6: #4fb6c9;   /* 静青（dark）——经 dataviz 校验，可按需微调 */
+  /* 图表分类色 —— dataviz 已验证的固定分类序（前 6 色）。有意与 preset 无关：
+     校验只对这组固定值成立，故不引用 accent/status（复用状态色会破坏色盲可分辨性）。
+     dark 表面 = 卡片 --card = #1d2532。grid/axis 属图表 chrome，复用中性层。 */
+  --chart-1: #3987e5;   /* blue（accent 家族，图表调优步进） */
+  --chart-2: #008300;   /* green */
+  --chart-3: #d55181;   /* magenta */
+  --chart-4: #c98500;   /* yellow */
+  --chart-5: #199e70;   /* aqua */
+  --chart-6: #d95926;   /* orange */
   --chart-grid: var(--color-divider);
   --chart-axis: var(--color-text-dim);
 ```
 
-- [ ] **Step 4: 在 [data-theme="light"] 块末尾覆盖 5/6（1..4 与 grid/axis 为 var 引用，自动随主题翻转，无需重声明）**
+- [ ] **Step 4: 在 [data-theme="light"] 块末尾覆盖全部 6 系列（light 步进；grid/axis 为 var 引用自动翻转，无需重声明）**
 
 ```css
-  --chart-5: #7c53c9;   /* 柔紫（light）——白底需更深更饱和 */
-  --chart-6: #1f8a9e;   /* 静青（light） */
+  /* 图表分类色 light 步进（表面 = 白卡片 #ffffff）。同一组已验证色的浅色步进。 */
+  --chart-1: #2a78d6;   /* blue */
+  --chart-2: #008300;   /* green（明暗同值） */
+  --chart-3: #e87ba4;   /* magenta */
+  --chart-4: #eda100;   /* yellow */
+  --chart-5: #1baf7a;   /* aqua */
+  --chart-6: #eb6834;   /* orange */
 ```
 
 - [ ] **Step 5: 机器 gate**
@@ -259,11 +269,11 @@ Expected：`== 0 error(s), N warning(s) ==`，退出码 0。
 - [ ] **Step 6: 状态断言（改后）**
 
 Run: `grep -n "chart-" colors_and_type.css`
-Expected：`--chart-1..6` + `--chart-grid` + `--chart-axis` 在 :root 出现一组；`--chart-5`/`--chart-6` 在 light 块再出现一次。
+Expected：`--chart-1..6` 在 :root 出现一组（+ `--chart-grid`/`--chart-axis`）；`--chart-1..6` 在 light 块再出现一组（light 步进）。grid/axis 只在 :root。
 
-- [ ] **Step 7: 备注 preset 限制（写入注释即可，无需改 presets.js）**
+- [ ] **Step 7: 备注 preset 无关性（写入注释即可，无需改 presets.js）**
 
-确认 Step 3 的注释已说明：`--chart-1..4` 为 `var()` 引用（随 14 套 preset 自动翻转），`--chart-5/6` 为 Beacon 固定色（非 Beacon preset 下回落到本 :root/light 值）。此为已知且有意的限制，符合「不改 presets.js」红线。
+确认 Step 3 的注释已说明：`--chart-1..6` 为 dataviz 已验证的固定分类色，**有意与 preset 无关**（非 Beacon preset 下不翻转，仍用这组已验证值）；`--chart-grid`/`--chart-axis` 为中性层 `var()` 引用，随主题翻转。符合「不改 presets.js」红线。
 
 - [ ] **Step 8: Commit**
 
@@ -313,6 +323,7 @@ Read: `starting-points/Desktop App — Render Farm.html`（复用其 `@startingP
 - 两张 `.chart-card`（本地类，`background:var(--card);border:1px solid var(--color-border);border-radius:var(--radius-card)`）：
   - 图 A 趋势面积/折线：内联 `<svg>`，折线 `stroke:var(--chart-1)`、面积 `fill` 用 `color-mix(in oklab, var(--chart-1) 18%, transparent)`、网格线 `stroke:var(--chart-grid)`、轴文字 `fill:var(--chart-axis)`。
   - 图 B 分类柱状：内联 `<svg>`，各柱 `fill:var(--chart-1..6)` 轮替，网格/轴同上。
+  - **dataviz relief 规则（light 模式合规必需）**：图表 chrome 用文本 token（`--chart-axis`/`--color-text-muted`），不用系列色写文字；≥2 系列须有图例（图例色块 + 文字标签，标识不靠颜色单独承担）；柱/关键点带直接数值标签。Dashboard 的活动表即「表格视图」兜底。
 - `.table-card` + `.table` 近期活动表：状态列用 `.tag`（success/warning/danger 变体），数值列 `.mono`。
 
 - [ ] **Step 4: 状态断言 —— 模板消费新 token 且无违规硬编码色**
@@ -485,7 +496,7 @@ git commit -m "docs: 同步 SaaS Admin 模板与新 token（chart/surface/3xl/te
 - 验证（gate=0 / 组件回归 / 模板双态 / 文档同步）→ 每任务的 gate+状态断言+reviewer 检查点，Task 7 汇总。✅
 - 非目标（不改 presets.js / 不加密度层 / 无 JS 图表库 / 不提升组件）→ Global Constraints 红线 + Task 3 Step 7 备注。✅
 
-**占位符扫查：** 无 TBD/TODO；每个改动步骤含具体 CSS/HTML 内容或精确命令与预期。图表 5/6 色给了具体候选值 + dataviz 校验兜底，非占位。✅
+**占位符扫查：** 无 TBD/TODO；每个改动步骤含具体 CSS/HTML 内容或精确命令与预期。图表色为 dataviz 已验证的最终固定值（非占位、非候选），dark/light 全项过闸（light contrast WARN 由 relief 规则化解）。✅
 
 **类型/命名一致性：** `--surface-page`/`--surface-raised`/`--card`/`--font-size-3xl`/`--chart-1..6`/`--chart-grid`/`--chart-axis` 在 Task 1/3 定义、Task 4–6 消费，名称全程一致；视图 id `view-dashboard/members/billing` 在 Task 4 定义、5/6 复用一致。✅
 

@@ -74,8 +74,10 @@ Beacon 是桌面级工业设计系统（Semi 结构 × Beacon 色盘）：高密
 
 **GAP-1 图表/可视化调色板（头号缺口）。**
 现状：唯一 chart-ish token 是单色 sparkline（`indicator.css:48` → `--color-primary-light-active`），无任何分类/多系列色系。
-方案：在单 accent、低彩身份约束下，新增一组克制的分类色：`--chart-1..6`（accent + 三个状态色 + 两个带微色相的中性），外加 `--chart-grid` / `--chart-axis`；light/dark 各自重算。
-纪律：图表配色属 dataviz 范畴，**实现时必须先调用 dataviz skill**，用其配色公式/校验器确认相邻系列的可区分度，并保证明暗两态均达标。
+方案（经 dataviz 实测修订）：新增 `--chart-1..6` + `--chart-grid`/`--chart-axis`。**初始设想（复用 accent/success/warning/danger 作前 4 系列）经 dataviz `validate_palette.js` 实测不达标**——状态色 green↔amber、red↔amber 在色盲甚至常色视觉下不可分（违反「状态色保留、不复用为系列」铁律）。经用户确认，改用 dataviz `references/palette.md` 已验证 8 序的前 6 色（blue/green/magenta/yellow/aqua/orange），dark+light 各自步进。
+- 语义：这是**独立、固定的已验证分类色，有意与 preset 无关**（校验只对固定值成立）；仅用于图表 mark 内，UI chrome 仍纯 Beacon。`--chart-1` 属 accent 家族但 chroma 更高以过闸，不等同 `--color-accent`。
+- 实测（Beacon 卡片表面 dark `#1d2532` / light `#ffffff`）：dark 全 PASS；light 全 PASS，contrast 对 magenta/yellow/aqua 给 WARN → 触发 relief 规则（图表带图例/直接标签 + 活动表兜底），合规。
+- 消费纪律：图表 chrome/文字用文本 token，不用系列色写字；≥2 系列必有图例，标识不靠颜色单独承担。
 
 **GAP-2 大号 KPI 数字缺显示级字号。**
 现状：最大字号 `--font-size-2xl: 24px`（Hero）；`.stat-card .v` 仅用 `--font-size-xl`(18px)。
