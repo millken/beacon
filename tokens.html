@@ -151,8 +151,10 @@
     <a href="#density">07 密度与间距</a>
     <a href="#radius">08 圆角</a>
     <a href="#elevation">09 阴影与聚焦</a>
+    <div class="grp">数据可视化</div>
+    <a href="#chart">10 图表色板</a>
     <div class="grp">应用</div>
-    <a href="#inuse">10 Token 应用</a>
+    <a href="#inuse">11 Token 应用</a>
   </nav>
   <main id="main">
     <section id="overview" style="padding-top:28px">
@@ -183,12 +185,12 @@
 
     <section id="text">
       <h2><span class="num">02</span>文本<span class="tag">4-step · 对齐 Semi text-0..3</span></h2>
-      <p class="intro">四级文本按对比度目标分层:主要 ≥ 7:1、次要 ≥ 4.5:1、辅助 ≥ 3:1、反相用于浮层。命名同时提供 Beacon(<span class="mono">text / text-muted / text-dim</span>)与 Semi(<span class="mono">text-0..3</span>)两套别名。</p>
+      <p class="intro">四级文本按对比度目标分层:主要 ≥ 7:1、次要 ≥ 4.5:1、辅助 ≥ 3:1、text-3 最弱(占位符/禁用)。命名同时提供 Beacon(<span class="mono">text / text-muted / text-dim</span>)与 Semi(<span class="mono">text-0..3</span>)两套别名。<b>纠正</b>:<span class="mono">--color-text-3</span> 曾误借用 <span class="mono">--color-text-inverse</span> 的值,已改为从 <span class="mono">--color-text-dim</span> 淡出派生的独立弱化阶;<span class="mono">--color-text-inverse</span> 单独用于反相浮层(tooltip/toast),不属于本页四级淡出序列,见上「01 表面层级」的 <span class="mono">--color-bg-inverse</span> 一行。</p>
       <div class="contrast">
         <div class="cc" style="background:var(--color-bg);color:var(--color-text)"><div class="l">text · text-0 · on bg</div><div class="s">主要文本 13px</div><div class="r">≥ 7:1</div></div>
         <div class="cc" style="background:var(--color-bg);color:var(--color-text-muted)"><div class="l">text-muted · text-1</div><div class="s">次要文本 13px</div><div class="r">≥ 4.5:1</div></div>
         <div class="cc" style="background:var(--color-bg-surface);color:var(--color-text-dim)"><div class="l">text-dim · text-2 · on surface</div><div class="s">辅助文本 12px</div><div class="r">≥ 3:1</div></div>
-        <div class="cc" style="background:var(--color-bg-inverse);color:var(--color-text-inverse)"><div class="l">text-inverse · text-3</div><div class="s">tooltip / toast</div><div class="r">overlay</div></div>
+        <div class="cc" style="background:var(--color-bg);color:var(--color-text-3)"><div class="l">text-3 · 最弱阶</div><div class="s">占位符 / 禁用文本</div><div class="r">&lt; dim（已纠正）</div></div>
       </div>
     </section>
 
@@ -250,7 +252,9 @@
       <p class="intro">在色盘之上再抽象一层<b>语义角色</b>:每个表面 role 都与 <span class="mono">-foreground</span> 配对,保证其上文字永远合法。组件优先引用 role(如 <span class="mono">--primary</span> / <span class="mono">--card</span> / <span class="mono">--muted</span> / <span class="mono">--destructive</span>)而非裸色阶。该层在所有 preset × 明暗间静态映射。</p>
       <div class="panel"><table class="tok"><thead><tr><th>role</th><th>预览</th><th>映射</th></tr></thead><tbody>
         <tr><td class="tname">--primary / -foreground</td><td><span class="sw" style="background:var(--primary)"></span></td><td class="tdesc">accent / accent-fg · 主操作</td></tr>
-        <tr><td class="tname">--card / -foreground</td><td><span class="sw" style="background:var(--card)"></span></td><td class="tdesc">bg / text · 卡片表面</td></tr>
+        <tr><td class="tname">--surface-page</td><td><span class="sw" style="background:var(--surface-page)"></span></td><td class="tdesc">满视口应用的页面底（比 --surface-raised 低一阶）</td></tr>
+        <tr><td class="tname">--surface-raised</td><td><span class="sw" style="background:var(--surface-raised)"></span></td><td class="tdesc">抬升卡片表面；--card 由此派生</td></tr>
+        <tr><td class="tname">--card / -foreground</td><td><span class="sw" style="background:var(--card)"></span></td><td class="tdesc">surface-raised / text · 卡片表面（抬升）</td></tr>
         <tr><td class="tname">--popover</td><td><span class="sw" style="background:var(--popover)"></span></td><td class="tdesc">dark=surface · light=bg(平面模型)</td></tr>
         <tr><td class="tname">--muted / -foreground</td><td><span class="sw" style="background:var(--muted)"></span></td><td class="tdesc">bg-subtle / text-muted · 弱表面</td></tr>
         <tr><td class="tname">--subtle</td><td><span class="sw" style="background:var(--subtle)"></span></td><td class="tdesc">bg-hover · hover / selected 表面</td></tr>
@@ -260,13 +264,14 @@
     </section>
 
     <section id="type">
-      <h2><span class="num">06</span>排版<span class="tag">2-stack · 7-step</span></h2>
+      <h2><span class="num">06</span>排版<span class="tag">2-stack · 8-step</span></h2>
       <p class="intro">两套字体栈:<span class="mono">--font-family-sans</span>(Segoe UI Variable / SF Pro)用于 UI,<span class="mono">--font-family-mono</span>(Iosevka Term / JetBrains Mono)用于代码、数值、路径、token 名。字重仅 regular 400 / medium 500 / semibold 600。</p>
       <div class="panel" style="margin-bottom:14px">
         <div class="panel-h"><span>--font-family-mono</span><span>monospace · tabular-nums</span></div>
         <div class="panel-b mono" style="font-size:13px;color:var(--color-text-muted)">--color-accent: #4d9bff;&nbsp;&nbsp;cpu 42.6%&nbsp;&nbsp;eta 02:14&nbsp;&nbsp;192.168.0.1</div>
       </div>
       <div class="panel"><div class="panel-b">
+        <div class="trow"><span class="k">--font-size-3xl</span><span class="v">30 / 1.2</span><span style="font-size:30px;font-weight:600">高密度桌面 Desktop Aa 永</span></div>
         <div class="trow"><span class="k">--font-size-2xl</span><span class="v">24 / 1.2</span><span style="font-size:24px;font-weight:600">高密度桌面 Desktop Aa 永</span></div>
         <div class="trow"><span class="k">--font-size-xl</span><span class="v">18 / 1.35</span><span style="font-size:18px;font-weight:600">高密度桌面 Desktop Aa 永</span></div>
         <div class="trow"><span class="k">--font-size-lg</span><span class="v">15 / 1.4</span><span style="font-size:15px;font-weight:500">高密度桌面 Desktop Aa 永</span></div>
@@ -322,8 +327,25 @@
       </div>
     </section>
 
+    <section id="chart">
+      <h2><span class="num">10</span>图表色板<span class="tag">dataviz · preset-independent</span></h2>
+      <p class="intro">面向图表数据序列的分类调色板 <span class="mono">--chart-1..6</span>，经色盲 + 正常视觉可分辨性验证后采用；最初复用 accent/success/warning/danger 作为图表色系的方案未通过验证（可分辨性不足），故改用这组独立的固定值。<b>有意与 14 套 preset 无关</b>——图表色不随换肤变化，仅明暗主题各有一版；只用于图表数据标记本身，UI chrome 仍消费纯 Beacon token。</p>
+      <div class="panel"><table class="tok"><thead><tr><th>token</th><th>预览</th><th>用途</th></tr></thead><tbody>
+        <tr><td class="tname">--chart-1..6</td><td>
+          <span class="sw" style="background:var(--chart-1)"></span>
+          <span class="sw" style="background:var(--chart-2)"></span>
+          <span class="sw" style="background:var(--chart-3)"></span>
+          <span class="sw" style="background:var(--chart-4)"></span>
+          <span class="sw" style="background:var(--chart-5)"></span>
+          <span class="sw" style="background:var(--chart-6)"></span>
+        </td><td class="tdesc">blue / green / magenta / yellow / aqua / orange · 分类序列（dataviz 已验证）</td></tr>
+        <tr><td class="tname">--chart-grid</td><td><span class="sw" style="background:var(--chart-grid)"></span></td><td class="tdesc">图表网格线（= --color-divider）</td></tr>
+        <tr><td class="tname">--chart-axis</td><td><span class="sw" style="background:var(--chart-axis)"></span></td><td class="tdesc">坐标轴 / 刻度文字（= --color-text-dim）</td></tr>
+      </tbody></table></div>
+    </section>
+
     <section id="inuse">
-      <h2><span class="num">10</span>Token 应用示例<span class="tag">tokens in use</span></h2>
+      <h2><span class="num">11</span>Token 应用示例<span class="tag">tokens in use</span></h2>
       <p class="intro">所有控件只引用 token / role,无任何硬编码色值。按钮的实色 / 浅色 / 禁用态直接来自上面的功能色矩阵。切换上方 light / dark,整套界面同步换肤。</p>
       <div class="demo">
         <div class="row">

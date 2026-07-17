@@ -20,7 +20,7 @@
 | `tokens.html` | **GUI Token 规范页** —— 可视化全部 Token 的参考文档（左侧目录 + light/dark 切换 + Token 应用示例）。用浏览器打开即可浏览 |
 | `presets.js` | 14 套 preset × light/dark 色值 + `applyPreset(key, theme)`（色值事实来源；默认采用 Beacon）|
 | `components/` | 组件库——两级契约（Tier-3a 共享控件解剖层 + Tier-3b 组件私有接线/结构旋钮）：24 个组件 CSS 文件（`components/css/*.css`）+ 聚合器 `components.css`（纯 `@import`、零规则）+ 23 个演示页（22 分区 + misc，`index.html` 分组导航）。只消费 Token，绝不硬编码；机器可校验四条铁律见 `tools/check-tokens.sh`。规范文档：`docs/superpowers/specs/2026-07-15-component-tokens-design.md` |
-| `starting-points/` | 起步模板：`Desktop App — Render Farm.html`（完整桌面工具外壳，串联 9 个组件）|
+| `starting-points/` | 起步模板：`Desktop App — Render Farm.html`（完整桌面工具外壳，串联 9 个组件）+ `SaaS Admin — Console.html`（满视口 SaaS 控制台，三视图 Dashboard / Members / Billing，侧栏切换）|
 | `showcase/` | **前代 zi 工业桌面系统 + 项目展示**：`design-system.html` 总览页、5 个桌面应用 demo（渲染集群 / VPN / CMS / 数据表格 / 设置面板）、compressor-mall 商城（桌面+移动）、移动端 Token 体系（`mobile-design-system.html` + `mobile.css` + `mobile-tokens.md`），以及它们依赖的单体 `styles.css` / `presets.js` / `theme-switch.js` / `tokens.md` |
 | `RECONSTRUCTION.md` | 本系统的还原来源与版本说明 |
 
@@ -29,14 +29,14 @@
 ## Token 分层（colors_and_type.css）
 
 ```
-1) 形状 SHAPE       单旋钮 --radius (3px) 派生 sm/md/lg/card/full；--shadow-inset/well
+1) 形状 SHAPE       单旋钮 --radius (3px) 派生 sm/md/lg/card/full；--shadow-inset/well/--track-bg 已补齐 light 主题独立覆盖值（原仅 dark 一份，套用到 light 下内凹过重发黑，现已修正）
 2) 密度 DENSITY     --space-1..7（base --space-4 = 8px）+ 控件三档内边距 + 控件三档高度
-3) 排版 FONT        双字体栈（sans = Segoe UI Variable/SF Pro；mono = JetBrains/Iosevka）· 7 档字号 · 三档字重
+3) 排版 FONT        双字体栈（sans = Segoe UI Variable/SF Pro；mono = JetBrains/Iosevka）· 7 档字号 · 三档字重 + --font-size-3xl（30px，超出 7 档正文体系的展示级，供 dashboard 等 hero KPI 数字使用）
 4) 组件 COMPONENT   --btn-shadow / -border-width / -active-shadow
 5) 语义角色 ROLES   shadcn 式 --primary/-foreground · --card · --muted · --subtle · --destructive · --ring …
 5.5) 功能色 FUNCTIONAL（★ Semi 结构）  primary/secondary/tertiary/info/success/warning/danger
      每个语义展开 默认/悬浮/激活/禁用 + 浅版(light)三态，用 color-mix 从 Beacon 基础色派生
-6) 色盘 LADDER      6 级表面 / 4 级文本 / 3 级描边 / accent / 状态 —— :root = Beacon dark，[data-theme=light] = Beacon light
+6) 色盘 LADDER      6 级表面 / 4 级文本 / 3 级描边 / accent / 状态 —— :root = Beacon dark，[data-theme=light] = Beacon light；新增 --surface-page/--surface-raised 表达满视口应用的页面↔卡片两级抬升，--card 现由 --surface-raised 派生；新增 --chart-1..6 + --chart-grid/--chart-axis 图表分类调色板（dataviz 已验证，与 preset 无关的固定值，仅供图表数据标记消费，UI chrome 仍用纯 Beacon token）；--color-text-3 已从误指向 --color-text-inverse 纠正为真正的最弱文本阶（color-mix 淡出，占位符/禁用专用）
 ```
 
 **功能色矩阵**是借鉴 Semi 最核心的部分：`--color-primary` / `-hover` / `-active` / `-disabled` / `-light-default` / `-light-hover` / `-light-active`，success / warning / danger 同构。值由 `color-mix` 从 Beacon 的 accent / success / warning / danger 派生，**明暗主题下自动重算**——结构是 Semi 的，颜色是 Beacon 的。
