@@ -478,7 +478,11 @@ const PRESET_KEYS = ["beacon","chrome","antd","console","studio","workshop","iro
 const COMMON_ROLES = {
   "--background":            "var(--color-bg)",
   "--foreground":            "var(--color-text)",
-  "--card":                  "var(--color-bg)",
+  // 表面抬升（满视口应用的页面↔卡片契约）——dark 默认，light 由 COMMON_ROLES_LIGHT 覆盖。
+  // 与 colors_and_type.css 的 :root / [data-theme=light] 结构对齐。
+  "--surface-page":          "var(--color-bg)",          // 页面底：dark 最深
+  "--surface-raised":        "var(--color-bg-surface)",  // 抬升卡片：dark 比页面高一阶
+  "--card":                  "var(--surface-raised)",
   "--card-foreground":       "var(--color-text)",
   "--popover":               "var(--color-bg-surface)",
   "--popover-foreground":    "var(--color-text)",
@@ -501,6 +505,13 @@ const COMMON_ROLES = {
   "--ring":                  "var(--color-accent)",
 };
 
+// light 平面模型覆盖（对齐 colors_and_type.css 的 [data-theme=light]）：卡片留在内容平面(bg)，
+// 靠更灰的页面底 + 描边/阴影抬升。对所有 preset 的 light 模式统一生效。
+const COMMON_ROLES_LIGHT = {
+  "--surface-page":   "var(--color-bg-subtle)",  // 页面底：灰，令 light 卡片浮起
+  "--surface-raised": "var(--color-bg)",          // 抬升卡片：留在白平面（--card 随之解析为 bg）
+};
+
 function applyPreset(key, theme) {
   const p = PRESETS[key];
   const colors = theme === "light" ? p.light : p.dark;
@@ -513,7 +524,12 @@ function applyPreset(key, theme) {
   // NOTE: colors apply AFTER COMMON_ROLES so a preset MAY override a semantic
   // role for itself (e.g. beacon light remaps --popover to the white content
   // plane). Role + color key sets are otherwise disjoint, so order is safe.
-  for (const obj of [COMMON_SHAPE, COMMON_DENSITY, COMMON_FONT, COMMON_COMPONENT, COMMON_ROLES, colors]) {
+  // light 时追加 COMMON_ROLES_LIGHT（在 colors 之后），令 --surface-* 走平面模型；
+  // dark 时 COMMON_ROLES 的默认值即正确，无需覆盖。
+  const sets = theme === "light"
+    ? [COMMON_SHAPE, COMMON_DENSITY, COMMON_FONT, COMMON_COMPONENT, COMMON_ROLES, colors, COMMON_ROLES_LIGHT]
+    : [COMMON_SHAPE, COMMON_DENSITY, COMMON_FONT, COMMON_COMPONENT, COMMON_ROLES, colors];
+  for (const obj of sets) {
     for (const [k,v] of Object.entries(obj)) root.setProperty(k, v);
   }
   rootEl.setAttribute("data-preset", key);
