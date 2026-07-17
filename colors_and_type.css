@@ -78,7 +78,7 @@
      皮肤在 :root 覆盖 = 全局生效；容器 style="--x: …" = 局部生效。 ===== */
   /* button */
   --btn-shadow: none;
-  --btn-active-shadow: inset 0 1px 2px 0 rgba(0,0,0,0.15);
+  --btn-active-shadow: none; /* press = 颜色加深(L1),扁平系统不做 inset 凹陷;皮肤可覆盖此 token 开启 */
   --btn-radius: var(--control-radius);
   /* field */
   --field-radius: var(--control-radius);

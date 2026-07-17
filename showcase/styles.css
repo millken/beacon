@@ -529,7 +529,7 @@ h3.sub-title::before {
                        CONDITIONAL: only variants with a real surface/frame
                        opt in. Ghost sets --btn-active-shadow:none (no surface
                        for an inset to sit on → it reads as a smudge). */
-  box-shadow: var(--btn-active-shadow, inset 0 2px 3px -1px rgba(0,0,0,0.28));
+  box-shadow: var(--btn-active-shadow, none);
 }
 .btn:focus-visible {
   outline: none;
@@ -1012,7 +1012,7 @@ h3.sub-title::before {
 }
 .icon-btn:active {
   background: var(--color-bg-active);
-  box-shadow: var(--btn-active-shadow, inset 0 2px 3px -1px rgba(0,0,0,0.28));
+  box-shadow: var(--btn-active-shadow, none);
 }
 .icon-btn[data-state="checked"] {
   background: var(--primary); color: var(--primary-foreground); border-color: var(--primary);

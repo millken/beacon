@@ -46,7 +46,7 @@ const COMMON_DENSITY = {
 const COMMON_COMPONENT = {
   "--btn-shadow": "none",        // button elevation — flat by default
   "--btn-border-width": "1px",   // button border thickness
-  "--btn-active-shadow": "inset 0 2px 3px -1px rgba(0,0,0,0.28)", // press L2: TOP edge depresses (inset). Ghost opts out → none (no surface)
+  "--btn-active-shadow": "none", // press = L1 color-darken only (flat system). Skins may opt back in with a real inset here.
 };
 
 const COMMON_FONT = {
