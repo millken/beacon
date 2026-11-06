@@ -1,3 +1,100 @@
+/* Semantic Alert: flow/flex/grid only. The chrome is CSS, never SVG. */
+:root { --alert-light-surface:var(--light-gray-gray-13);--alert-light-border:var(--light-gray-gray-10);--alert-light-ink:var(--light-gray-gray-1-primary);--alert-light-button-border:var(--light-gray-gray-9);--alert-light-button-bg:var(--light-gray-gray-14-white);--alert-light-on-primary:var(--light-gray-gray-14-white);--alert-light-info:var(--light-blue-blue-5);--alert-light-primary:var(--light-blue-blue-4-primary);--alert-light-checkbox-border:var(--light-gray-gray-8);--alert-light-checkbox-bg:var(--light-gray-gray-14-white);--alert-light-help-bg:var(--light-gray-gray-14-white);--alert-light-help-border:var(--light-gray-gray-9);--alert-dark-surface:var(--dark-gray-gray-2);--alert-dark-border:var(--dark-gray-gray-4);--alert-dark-ink:var(--dark-gray-gray-12);--alert-dark-button-border:var(--dark-gray-gray-5);--alert-dark-button-bg:transparent;--alert-dark-on-primary:var(--dark-gray-gray-14-white);--alert-dark-info:var(--dark-blue-blue-6-primary);--alert-dark-primary:var(--dark-blue-blue-6-primary);--alert-dark-checkbox-border:var(--dark-gray-gray-6);--alert-dark-checkbox-bg:transparent;--alert-dark-help-bg:transparent;--alert-dark-help-border:var(--dark-gray-gray-5);--alert-shadow:var(--shadow-dialog);--alert-error:var(--light-red-red-4-primary);--alert-warning:var(--light-yellow-yellow-6-primary) }
+.window {
+  --alert-surface: var(--alert-light-surface);
+  --alert-border: var(--alert-light-border);
+  --alert-ink: var(--alert-light-ink);
+  --alert-button-border: var(--alert-light-button-border);
+  --alert-button-bg: var(--alert-light-button-bg);
+  --alert-on-primary: var(--alert-light-on-primary);
+  --alert-info: var(--alert-light-info);
+  --alert-primary: var(--alert-light-primary);
+  --alert-checkbox-border: var(--alert-light-checkbox-border);
+  --alert-checkbox-bg: var(--alert-light-checkbox-bg);
+  --alert-help-bg: var(--alert-light-help-bg);
+  --alert-help-border: var(--alert-light-help-border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  min-width: 0;
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  color: var(--alert-ink);
+  font: 13px/18px Inter, sans-serif;
+  background: var(--alert-surface);
+  box-shadow: var(--alert-shadow);
+}
+.window.dark, .dark-side .window {
+  --alert-surface: var(--alert-dark-surface);
+  --alert-border: var(--alert-dark-border);
+  --alert-ink: var(--alert-dark-ink);
+  --alert-button-border: var(--alert-dark-button-border);
+  --alert-button-bg: var(--alert-dark-button-bg);
+  --alert-on-primary: var(--alert-dark-on-primary);
+  --alert-info: var(--alert-dark-info);
+  --alert-primary: var(--alert-dark-primary);
+  --alert-checkbox-border: var(--alert-dark-checkbox-border);
+  --alert-checkbox-bg: var(--alert-dark-checkbox-bg);
+  --alert-help-bg: var(--alert-dark-help-bg);
+  --alert-help-border: var(--alert-dark-help-border);
+}
+.window, .window * { box-sizing: border-box; }
+.window-body { flex: 0 0 auto; min-width: 0; }
+.alert-title { display: flex; align-items: flex-start; min-width: 0; }
+.alert-content { display: flex; flex: 1 1 340px; flex-direction: column; align-items: flex-start; min-width: 0; }
+.alert-content h3, .alert-content p { align-self: stretch; margin: 0; }
+.status-dot { display: grid; flex-shrink: 0; place-items: center; border-radius: 50%; color: var(--alert-on-primary); font-size: 13px; font-weight: 500; line-height: 1; }
+.status-dot.info { background: var(--alert-info); }
+.status-dot.error { background: var(--alert-error); }
+.status-dot.warning { color: var(--alert-light-ink); background: var(--alert-warning); }
+.checkline { display: flex; align-items: center; gap: 8px; min-height: 32px; margin: 0; font-size: 13px; line-height: 16px; cursor: pointer; }
+.checkline input { appearance: none; flex: 0 0 16px; width: 16px; height: 16px; margin: 0; background: var(--alert-checkbox-bg); border: 1px solid var(--alert-checkbox-border); border-radius: 3px; }
+.checkline input:checked { background: var(--alert-primary); border-color: var(--alert-primary); }
+.checkline input:checked::after { content: "✓"; display: block; color: var(--alert-on-primary); font-size: 12px; line-height: 14px; text-align: center; }
+.window-actions { display: flex; align-items: center; justify-content: flex-end; }
+.window-actions .btn { display: inline-flex; align-items: center; justify-content: center; min-width: 72px; min-height: 28px; padding: 5px 12px; color: var(--alert-ink); background: var(--alert-button-bg); border: 1px solid var(--alert-button-border); border-radius: 4px; font-size: 13px; font-weight: 500; line-height: 16px; white-space: nowrap; cursor: pointer; }
+.window-actions .btn.primary { color: var(--alert-on-primary); background: var(--alert-primary); border-color: var(--alert-primary); }
+.window-help { display: grid; flex: 0 0 24px; place-items: center; width: 24px; height: 24px; margin-right: auto; padding: 0; color: var(--alert-ink); background: var(--alert-help-bg); border: 1px solid var(--alert-help-border); border-radius: 50%; font-size: 13px; line-height: 1; cursor: pointer; }
+
+.window {
+  width: min(420px, 100%);
+  padding: 19px 19px 13px 19px;
+  gap: 12px;
+  border: 1px solid var(--alert-border);
+  border-radius: 8px;
+}
+.doc-semantic-specimen .window, #specimen > .window { width: 420px; max-width: 100%; }
+.doc-semantic-specimen { width: 100%; max-width: 100%; }
+.window-body { padding: 0px 0; }
+.alert-title { gap: 12px; min-height: 86px; }
+.alert-content { gap: 8px; }
+.status-dot { flex-basis: 28px; width: 28px; height: 28px; margin-top: 0px; }
+.window-actions { gap: 12px; min-height: 40px; }
+/* Reference-archive demo sizes; never mistaken for additional source variants. */
+[data-alert-demo] { width: auto; max-width: 370px; }
+[data-page="alert"] .alert-matrix { display: block; overflow: hidden; }
+@media(min-width:1200px) { [data-page="alert"] .alert-matrix { display: grid; grid-template-columns: minmax(0, 1fr); } }
+.alert-matrix > div { display: grid; align-content: start; gap: 18px; min-width: 0; padding: 28px; }
+.alert-matrix .dark-side { color: var(--dark-gray-gray-12); background: var(--dark-gray-gray-2); }
+[data-page="alert"] .micro-alert .alert-title { min-height: 0; }
+.micro-alert .window-actions { min-height: 32px; }
+.micro-alert .alert-content h3 { font-size: 14px; line-height: 18px; }
+.micro-alert .alert-content p, .micro-alert .checkline { font-size: 11px; line-height: 16px; }
+.micro-alert .status-dot { width: 20px; height: 20px; flex-basis: 20px; margin: 0; font-size: 11px; }
+.micro-alert .window-actions .btn { min-width: 56px; min-height: 26px; padding: 4px 10px; }
+.alert-stack { display: grid; gap: 22px; margin-top: 20px; }
+[data-alert-demo].wide { max-width: 440px; }
+.alert-sizes { display: grid; justify-items: stretch; gap: 24px; margin-top: 24px; }
+.alert-sizes .note { max-width: 440px; margin: 0; }
+.alert-verified-masters { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 24px; }
+.alert-verified-masters .doc-semantic-specimen { width: 100%; max-width: 420px; }
+/* Ordinary documentation wrappers are flow containers, not coordinate scenes. */
+.doc-semantic-specimen { display: block; width: 100%; max-width: 100%; pointer-events: auto; }
+.doc-semantic-specimen h3, .doc-semantic-specimen p { margin: 0; }
+.doc-alert-card-layer { display: block; flex: 0 0 420px; transform: scale(.4); transform-origin: center; pointer-events: none; }
+.doc-catalog-semantic-alert { display: block; flex: 0 0 420px; transform: scale(.48); transform-origin: center; pointer-events: none; }
+@media (max-width:1000px) { .alert-matrix { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width:720px) { .alert-matrix > div { padding: 18px; } .window-actions { flex-wrap: wrap; } }
 @font-face{font-family:Inter;src:url('/tokens/Inter-Variable.ttf') format('truetype');font-weight:100 900;font-optical-sizing:auto}
 .doc-source-stage{padding:24px;overflow-x:auto;background:var(--surface-2);border-radius:7px}.doc-source-stage>.doc-specimen{max-width:none}.doc-fit-scene{position:relative;display:block;flex:0 0 auto;transform:scale(var(--fit));transform-origin:center}.doc-fit-scene>.doc-specimen{position:absolute;left:0;top:0;transform:none!important}.doc-card-preview:has(.doc-fit-scene){overflow:visible}.doc-card-preview>.doc-fit-scene{margin:0}/* Documentation architecture only. Component visuals come from inline generated partials. */
 :root{--bg:#f4f4f5;--surface:#fff;--surface-2:var(--light-grey-grey-12);--ink:var(--light-grey-grey-2);--muted:var(--light-grey-grey-6);--line:var(--light-grey-grey-10);--blue:var(--light-blue-blue-4-primary);--green:var(--light-green-green-4-primary);--red:var(--light-red-red-4-primary);--dark:var(--dark-grey-grey-2);--shadow:0 8px 24px #0000001a}

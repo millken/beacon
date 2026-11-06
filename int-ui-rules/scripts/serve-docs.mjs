@@ -3,6 +3,7 @@
 import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
+import { URL, fileURLToPath } from "node:url";
 
 const root = fs.realpathSync(process.cwd());
 const publicRoot = path.join(root, "public");
@@ -25,7 +26,7 @@ function resolveRequest(url) {
   return candidate;
 }
 
-const server = http.createServer((req, res) => {
+export const createDocsServer = () => http.createServer((req, res) => {
   const file = resolveRequest(req.url || "/");
   if (!file || !fs.existsSync(file) || !fs.statSync(file).isFile()) {
     res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
@@ -35,5 +36,20 @@ const server = http.createServer((req, res) => {
   res.writeHead(200, { "Content-Type": types[path.extname(file)] || "application/octet-stream", "Cache-Control": "no-store" });
   fs.createReadStream(file).on("error", () => res.destroy()).pipe(res);
 });
-server.on("error", (error) => { console.error(error.message); process.exitCode = 1; });
-server.listen(port, host, () => console.log(`Int UI docs: http://${host}:${port} (Ctrl+C to stop)`));
+// Importing the server does not reserve a port; npm run check uses an ephemeral port.
+export function listenDocs({listenHost = host, listenPort = 0, quiet = true} = {}) {
+  const server = createDocsServer();
+  return new Promise((resolve, reject) => {
+    server.once("error", reject);
+    server.listen(listenPort, listenHost, () => {
+      server.off("error", reject);
+      if (!quiet) console.log(`Int UI docs: http://${listenHost}:${listenPort} (Ctrl+C to stop)`);
+      resolve(server);
+    });
+  });
+}
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  const server = createDocsServer();
+  server.on("error", error => { console.error(error.message); process.exitCode = 1; });
+  server.listen(port, host, () => console.log(`Int UI docs: http://${host}:${port} (Ctrl+C to stop)`));
+}

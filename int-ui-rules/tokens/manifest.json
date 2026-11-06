@@ -5825,7 +5825,7 @@
   },
   "alert": {
     "source": "3342:83343",
-    "renderMode": "generated-dom",
+    "renderMode": "generated-semantic-dom",
     "sceneOrigin": null,
     "sourceName": "Theme=Light",
     "selectedVariant": {
@@ -5846,7 +5846,7 @@
   },
   "alert-dark": {
     "source": "3346:80911",
-    "renderMode": "generated-dom",
+    "renderMode": "generated-semantic-dom",
     "sceneOrigin": null,
     "sourceName": "Theme=Dark",
     "selectedVariant": {

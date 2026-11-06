@@ -139,9 +139,9 @@
       "variants": 2,
       "light": 1,
       "dark": 1,
-      "meanDiffPercent": 9.598,
-      "minDiffPercent": 9.439,
-      "maxDiffPercent": 9.756,
+      "meanDiffPercent": 9.6,
+      "minDiffPercent": 9.425,
+      "maxDiffPercent": 9.775,
       "geometryFailures": []
     },
     {

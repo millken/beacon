@@ -5,13 +5,14 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import { semanticAlertDemo } from "./semantic-alert.mjs";
 
 const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
 })[char]);
 
 const stateInventory = JSON.parse(fs.readFileSync(new URL("../source/state-inventory.json", import.meta.url), "utf8"));
-export function generateDocs({ tokens, manifest, root }) {
+export function generateDocs({ tokens, manifest, root, semanticAlertCss, alertMasters }) {
   const inventory = JSON.parse(fs.readFileSync(path.join(root, "tokens/inventory.json"), "utf8"));
   inventory.stateComponents = stateInventory;
   fs.writeFileSync(path.join(root,"tokens/inventory.json"), JSON.stringify(inventory, null, 2) + "\n");
@@ -87,7 +88,7 @@ export function generateDocs({ tokens, manifest, root }) {
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="${esc(title)} · Int UI Kit documentation"><title>${esc(title)} · Int UI Kit</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Crect width=%2716%27 height=%2716%27 rx=%274%27 fill=%27%233574F0%27/%3E%3C/svg%3E"><link rel="stylesheet" href="/dist/tokens.css"><link rel="stylesheet" href="/dist/tailwind.css"><link rel="stylesheet" href="/site.css"><script src="/site.js" defer></script></head>
-<body><header class="topbar"><a class="brand" href="/">Int UI Kit</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<body data-page="${active}"><header class="topbar"><a class="brand" href="/">Int UI Kit</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
 <nav id="site-nav" aria-label="Documentation">${navigation.map(([slug, label, href]) => `<a${active === slug ? ' class="active" aria-current="page"' : ""} href="${href}">${esc(label)}</a>`).join("")}</nav></header>
 <main class="doc">${body}</main><footer>Int UI Kit · <a href="/pages/components.html">Component library</a></footer></body></html>`;
   }
@@ -100,6 +101,7 @@ export function generateDocs({ tokens, manifest, root }) {
     const width = name === "dialog" ? 963 : item.width;
     const height = name === "dialog" ? 575 : item.height;
     const html = read(`components/${name}.html`);
+    if (["alert", "alert-dark"].includes(name)) return `<div class="doc-specimen doc-semantic-specimen ${extra}" data-generated-partial="/components/${name}.html" role="group" aria-label="${esc(title)}">${html}</div>`;
     return `<span class="doc-specimen ${extra}" data-generated-partial="/components/${name}.html" style="--specimen-width:${width}px;--specimen-height:${height}px" role="group" aria-label="${esc(title)}">${html}</span>`;
   }
   function overviewCard(item) {
@@ -107,7 +109,7 @@ export function generateDocs({ tokens, manifest, root }) {
     let preview = "";
     if (item.specimen && manifest[item.specimen]) {
       const m=manifest[item.specimen];
-      preview=`<span class="doc-card-preview"><span class="doc-fit-scene" style="--fit:${Math.min(240/m.width,70/m.height)};width:${m.width}px;height:${m.height}px">${inline(item.specimen,item.title,"doc-card-specimen")}</span></span>`;
+      preview=item.specimen === "alert" ? `<span class="doc-card-preview doc-alert-card-preview"><span class="doc-alert-card-layer">${inline("alert","Light Alert","doc-card-specimen")}</span></span>` : `<span class="doc-card-preview"><span class="doc-fit-scene" style="--fit:${Math.min(240/m.width,70/m.height)};width:${m.width}px;height:${m.height}px">${inline(item.specimen,item.title,"doc-card-specimen")}</span></span>`;
     } else throw new Error(`Catalog source specimen missing: ${item.title}`);
     return `<a class="doc-component-card" href="${href}">${preview}<strong>${esc(item.title)}</strong><small>${esc(item.caption)}</small><span class="doc-card-state">Verified source specimen ↗</span></a>`;
   }
@@ -140,7 +142,7 @@ export function generateDocs({ tokens, manifest, root }) {
 
   function catalogCard(item) {
     const m=item.specimen?manifest[item.specimen]:null;
-    const preview=m?`<span class="doc-fit-scene" style="--fit:${Math.min(300/m.width,125/m.height)};width:${m.width}px;height:${m.height}px">${inline(item.specimen,item.title,"doc-catalog-specimen")}</span>`:"";
+    const preview=m?item.specimen === "alert" ? `<span class="doc-catalog-semantic-alert">${inline(item.specimen,item.title,"doc-catalog-specimen")}</span>` : `<span class="doc-fit-scene" style="--fit:${Math.min(300/m.width,125/m.height)};width:${m.width}px;height:${m.height}px">${inline(item.specimen,item.title,"doc-catalog-specimen")}</span>`:"";
     return `<article class="catalog-item${item.specimen ? "" : " doc-catalog-pending"}" id="${item.slug}"><div><h2>${esc(item.title)}</h2><p>${esc(item.caption)}.</p></div><div class="catalog-demo">${item.specimen ? preview : "<span class=\"doc-missing\">No catalog preview</span>"}${item.slug === "radio-button" ? `<span class="sr-only">Radio off and on states</span>${inline("radio-button-off", "Unselected radio button", "doc-catalog-context-specimen")}` : ""}${item.slug === "shortcut-code" ? `<span class="sr-only">Shortcut and code states</span>${inline("code-sample", "Code sample", "doc-catalog-context-specimen")}` : ""}</div><footer class="doc-card-footer"><span>${item.specimen ? "Inline generated specimen" : "Catalog unavailable"}</span>${item.specimen && detailPages.some(({ slug }) => slug === item.slug) ? `<a href="/pages/${item.slug}.html">View states ↗</a>` : `<a href="/pages/${({ dialog: "dialog", "input-field": "input", toggle: "toggle" })[item.slug] || "components"}.html"${item.specimen ? "" : ' aria-label="Library entry; no detail page yet"'}>${item.specimen ? "View states ↗" : "Library entry"}</a>`}</footer></article>`;
   }
   const catalogBody = `${head("Components", "Browse the Int UI component catalog. Every entry shows a source-generated Light specimen with links to its measured design origin.", "Complete library")}<section class="catalog-grid">${library.map(catalogCard).join("")}</section>`;
@@ -221,7 +223,17 @@ export function generateDocs({ tokens, manifest, root }) {
   const segmentedBody = `${head("Segmented control","Segmented controls switch between related views.")}<section class="showcase" id="examples"><div><div class="sample-card">${["Light","Dark"].map((theme) => themePanel(`${theme} theme`,variantMatrixForTheme("Segmented Control",theme,["Active","Focused","Disabled"],[{label:"Control"}]),theme === "Dark")).join("")}</div>${provenance(["segmented-control","segmented-control-light-focused","segmented-control-light-disabled","segmented-control-dark-active"])}</div><article class="doc-panel"><h2>Measured states</h2><p>Active, Focused and Disabled are extracted for both Light and Dark.</p></article></section>`;
   const bannerMatrix = (theme,inlineValue) => `<div class="doc-banner-grid">${["Info","Success","Warning","Error"].map((Type) => `<div><span class="caption">${Type}</span>${inline(specimenKey("Banner",theme,{Type,Inline:inlineValue}),`${theme} ${Type} banner`)}</div>`).join("")}</div>`;
   const bannerBody = `${head("Banner","A banner notification informs the user about the state of a specific context.")}<section class="showcase" id="examples"><div><div class="sample-card">${["Light","Dark"].map((theme) => themePanel(`${theme} · floating`,bannerMatrix(theme,"False"),theme === "Dark")).join("")}</div>${provenance(["banner","banner-light-success-floating","banner-light-warning-floating","banner-light-error-floating","banner-dark-info-floating"])}</div><article class="doc-panel">${usageSection("Inline banners",bannerMatrix("Light","True"),"All four notification types exist in floating (600×40) and inline (400×64) sizes, with source-generated Dark equivalents.")}${usageSection("Dark · inline",bannerMatrix("Dark","True"))}</article></section>`;
-  const alertBody = `${head("Alert","An alert informs users about the status of user- or system-initiated operations.")}<section class="showcase single" id="examples"><article class="doc-panel"><h2>Alert themes</h2><div class="doc-alert-pair">${["Light","Dark"].map((theme) => `<div><span class="caption">${theme}</span>${inline(specimenKey("Alert",theme),`${theme} alert`)}</div>`).join("")}</div>${provenance(["alert","alert-dark"])}</article><article class="doc-panel"><h2>Source coverage</h2><p>The Alert master has Light and Dark themes. It does not expose Info/Warning/Error type axes; those axes belong to other masters and are not invented here.</p></article></section>`;
+  const alertDemoData=[
+    {status:"info",title:"Title",body:"Body text",check:true},
+    {status:"error",title:"Title",body:"Body text"},
+    {status:"warning",title:"Title",body:"Body text"},
+  ];
+  const verifiedAlertMasters = `<section class="alert-verified-masters" aria-labelledby="verified-alert-title"><h2 id="verified-alert-title">Verified source masters</h2><p class="caption">Only Theme=Light and Theme=Dark are Pixso masters; the examples above are semantic reference demos.</p>${["alert", "alert-dark"].map(name => inline(name, `Verified ${name === "alert" ? "Light" : "Dark"} source master`)).join("\n")}</section>`;
+  const alertBody = `${head("Alert","An alert informs users about the status of user- or system-initiated operations.")}<section class="showcase" id="examples"><article class="doc-panel"><h2>States</h2><div class="sample-card alert-matrix" style="margin-bottom:36px">${["Light","Dark"].map((theme)=>`<div${theme === "Dark" ? ' class="dark-side"' : ""}>${alertDemoData.map((data)=>semanticAlertDemo({...data,theme:theme.toLowerCase(),micro:true},`state-${theme.toLowerCase()}-${data.status}`)).join("")}</div>`).join("")}</div><h2>Types</h2><div class="alert-stack alert-types">${[
+    {title:"Select Home Directory for JDK",body:"The selected directory is not a valid home for JDK.",status:"error",actions:["OK"]},
+    {title:"Install Required Plugins",body:"The “HTTP Support” plugin is required to run the feature.",status:"warning",actions:["Cancel","Install"]},
+    {title:"Open Project",body:"Where would you like to open this project?",status:"info",check:true,actions:["Cancel","New Window","This Window"]},
+  ].map((data,i)=>semanticAlertDemo(data,`type-${i}`)).join("")}</div>${verifiedAlertMasters}${provenance(["alert","alert-dark"])}</article><article class="doc-panel"><h2>Sizes</h2><p class="caption">Default width: 370 px</p><div class="alert-sizes">${semanticAlertDemo({title:"Confirm Exit",body:"Are you sure you want to exit?",check:true},"size-default")}<div class="note">Use wider alerts only for longer explanatory text or more than two actions.</div>${semanticAlertDemo({title:"Trust Project?",body:"IntelliJ IDEA may execute build scripts from this folder. Open only projects from sources you trust.",status:"warning",actions:["Stay in Safe Mode","Trust Project"],wide:true},"size-wide")}${semanticAlertDemo({title:"Copy Files",body:"File “readme.md” already exists in the destination.",actions:["Skip for All","Overwrite for All","Skip","Overwrite"],wide:true},"size-actions")}</div><p class="caption" style="margin-top:28px">States / Types / Sizes mirror the reference demo architecture. The Pixso master has only Light and Dark; status, type and size examples are not claimed as additional verified masters.</p></article></section>`;
   const dialogBody = `${head("Dialog","Dialogs focus attention on a task or decision.")}<section class="showcase single" id="examples"><article class="doc-panel"><h2>Dialog themes</h2><div class="doc-dialog-themes">${["Light","Dark"].map((theme) => `<section><h3>${theme}</h3><div class="doc-doc">${inline(specimenKey("Dialog",theme),`${theme} dialog`)}</div></section>`).join("")}</div>${provenance(["dialog","dialog-dark"])}</article></section>`;
 
 
@@ -278,9 +290,10 @@ export function generateDocs({ tokens, manifest, root }) {
   fs.writeFileSync(path.join(out, "index.html"), overviewHtml);
   fs.writeFileSync(path.join(root, "index.html"), overviewHtml);
   fs.writeFileSync(path.join(out, "site.js"), siteJs);
-  fs.writeFileSync(path.join(out, "site.css"), siteCss(chrome));
+  fs.writeFileSync(path.join(out, "site.css"), semanticAlertCss(tokens, alertMasters) + fs.readFileSync(new URL("./semantic-alert-docs.css", import.meta.url), "utf8") + siteCss(chrome));
   console.log(`Docs: Overview + ${Object.keys(pages).length} pages; ${library.length} catalog entries; inline generated specimens.`);
 }
+
 
 const siteJs = `const navToggle=document.querySelector(".nav-toggle"),nav=document.querySelector("#site-nav");
 navToggle?.addEventListener("click",()=>{const open=nav.classList.toggle("open");navToggle.setAttribute("aria-expanded",String(open));});
@@ -306,3 +319,5 @@ function siteCss(c) {
 @media(max-width:430px){.doc-dialog-stage{--dialog-scale:calc(314/963)}.component-links{gap:10px}.doc-component-card{padding:14px}.doc-card-footer{align-items:flex-start;flex-direction:column}}
 `;
 }
+
+

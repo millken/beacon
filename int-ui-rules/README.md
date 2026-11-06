@@ -21,9 +21,10 @@ Pixso reports **no local variables** (`variables: {}`). The authoritative token 
 ## Current coverage
 
 - **172 measured state variants across 15 families (86 Light / 86 Dark) and 190 manifest entries** including aliases/legacy specimens. Family counts and strict pixel scores: [diff/state-coverage.md](diff/state-coverage.md), [diff/report.md](diff/report.md).
-- All state variants and legacy defaults use `renderMode: generated-dom`; whole-scene SVG and vector text remain diagnostic opt-ins. No zip HTML, raster specimens or invented missing-variant styles are used.
+- Alert uses `renderMode: generated-semantic-dom`; other state variants and legacy defaults use `renderMode: generated-dom`; whole-scene SVG and vector text remain diagnostic opt-ins. No zip HTML, raster specimens or invented missing-variant styles are used.
+- **Semantic Alert pilot:** extracted Pixso layers map to `window[role=alertdialog]` → `window-body` → `alert-title` (status, real heading, paragraph, labelled native checkbox) → `window-actions` (real buttons). The chrome is CSS flow/flex/grid—no absolute coordinates or SVG shell. Only the two leaf source glyph containers (status and Help) use inline SVG; their extracted paths are preserved. `scripts/semantic-alert.mjs` reads both extracted masters into the layer→semantic model; its CSS binds source paint and spacing; `npm run check` verifies actual browser layout. Apply this same rules → layer map → semantic DOM → browser/diff pattern to other components. Status/type/size reference demos are examples only and not claimed as extra verified masters.
 - All available Light state axes and Dark counterparts are shown. No visible `Additional state pending` / `Not extracted yet` cells remain in the docs. Some families deliberately have fewer variants because their masters expose no further axis (Toggle Off/On; Search Active/Invalid × Focus; Alert and Dialog Theme only).
-- Mean strict state diff is **5.393%**, with residual Radio/focus/invalid, text raster and composite/Dialog geometry differences. This does **not** mean pixel identity; every nonzero result is marked `needs-fix`. See [EXTRACTION-REPORT.md](EXTRACTION-REPORT.md) for current details.
+- The strict state mean is reproduced by `node scripts/summarize-states.mjs` from the current report (not a fixed historical score). The previous absolute-coordinate baseline was **5.393%**, with residual Radio/focus/invalid, text raster and composite/Dialog geometry differences. This does **not** mean pixel identity; every nonzero result is marked `needs-fix`. See [EXTRACTION-REPORT.md](EXTRACTION-REPORT.md) for current details.
 - Manifest keys are unique for all primary/secondary Button states. The historical `button-focused` and `link` aliases retain measured metadata and reference baselines.
 
 ## Commands
@@ -49,7 +50,7 @@ npm run preview
 | `npm run docs`         | Alias for `npm run generate`; docs are not authored or diffed independently       |
 | `npm run preview`      | Serve Overview, pages and shared generated assets at `http://127.0.0.1:3000` |
 | `npm run diff`         | Render each partial in isolated Chromium and compare against Pixso PNG    |
-| `npm run check`        | Verify all CSS token names resolve and token paint is actually rebindable |
+| `npm run check`        | Verify all CSS token names resolve, token paint is actually rebindable, and semantic Alert layout (static browser flow) |
 | `npm run build`        | Tokens → generated HTML → Tailwind utilities/theme                        |
 | `npm run extract:help` | Print the read-only Pixso Plugin API extraction script used by this run   |
 
@@ -69,7 +70,7 @@ npm run preview
 
 1. Extract fields that influence rendering: sizes, child x/y, auto-layout and padding, fills/strokes, `strokeAlign`, radii, effects, fonts and content. Keep source node IDs in HTML for auditing.
 2. Resolve fills, strokes and typography into generated CSS variables. Semantic HTML gets a `role`; these are non-interactive design specimens (`tabindex=-1`). Never infer Dark values by inverting Light.
-3. Generate independent HTML partials with Tailwind utilities such as `relative`, but exact sizes from measured geometry. Tailwind theme is generated from the same normalized tokens.
+3. Generate independent HTML partials with Tailwind utilities such as `relative`, but exact sizes from measured geometry. New semantic layer renderers use native HTML flex/grid instead of coordinate dumps; Tailwind theme is generated from the same normalized tokens.
 4. Render each component alone in headless Chrome at DPR 1 with Inter available locally. CSS/fonts still come from the generated token layer.
 5. Export the same Pixso node at scale 1. Compare RGBA pixels with `pixelmatch threshold=0.1, includeAA=true`. Compare against transparent originals. Canvas padding represents focused/Dialog native export bounds (`78px` focused Button, `226px` focused Input, `963x575px` Dialog).
 6. Inspect `diff/<name>-actual.png`, `diff/<name>-diff.png` and `diff/report.json`; update extraction/generator rather than hand-patching the HTML; rerun `npm run verify`. Keep `.mjs` probes only when they are reproducible diagnostics with declared output.

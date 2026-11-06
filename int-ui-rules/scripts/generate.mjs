@@ -2,6 +2,7 @@
  * Roots wrap measured primitive descendants. SVG is used only for exact source vectors. */
 import fs from "node:fs";
 import { generateDocs } from "./generate-docs.mjs";
+import { esc as escapeHtml, hex, readAlertMaster, semanticAlertCss, textStyle, assertSemanticAlert, renderSemanticAlert } from "./semantic-alert.mjs";
 const master = JSON.parse(fs.readFileSync("tokens/tokens.json", "utf8"));
 const catalog = JSON.parse(fs.readFileSync("source/component-catalog.json"));
 const sourceStyles = JSON.parse(
@@ -256,6 +257,7 @@ const refs = {
 };
 for (const family of Object.values(stateInventory)) for (const variant of family.variants) refs[variant.key]=variant.id;
 const stateRefs = Object.fromEntries(Object.entries(stateInventory).flatMap(([familyName, family]) => family.variants.map((variant) => [variant.key,{...variant,family:stateInventory[familyName]?.name || familyName,familyId:family.id,sourceName:variant.name}])));
+const alertMasters = ["3342:83343", "3346:80911"].map((id) => readAlertMaster(rules[id.replace(":", "-")], sourceStyles, master));
 const tokens = fs.readFileSync("dist/tokens.css", "utf8"),
   fonts = `@font-face{font-family:Inter;src:url('../tokens/Inter-Variable.ttf') format('truetype');font-weight:100 900;font-optical-sizing:auto}`;
 const manifest = {};
@@ -279,6 +281,7 @@ componentLoop: for (const [key, guid] of Object.entries(refs)) {
     continue;
   }
   rootTheme = isDarkName(n.name) ? "Dark" : "Light";
+  const semanticAlert = alertMasters.find((m, index) => (key === "alert" && index === 0) || (key === "alert-dark" && index === 1));
   const tag = "div";
   const type = key.startsWith("button") ? "button"
     : key.startsWith("input") ? "textbox" : key.startsWith("checkbox") ? "checkbox"
@@ -305,7 +308,7 @@ componentLoop: for (const [key, guid] of Object.entries(refs)) {
   const attrs = type
     ? `role="${type}" aria-label="${key === "dialog" ? "Title" : prompts[key.split("-")[0]] || "Design specimen"}" tabindex="-1" ${checked === null ? "" : `aria-checked="${checked}"`}`
     : "";
-  const html = `<${tag} ${attrs} data-component="${key}" data-source-node="${guid}" class="relative" style="width:${n.width}px;height:${n.height}px;padding:0;appearance:none;border:0;background:transparent">${render(n)}</${tag}>`;
+  const html = semanticAlert ? "" : `<${tag} ${attrs} data-component="${key}" data-source-node="${guid}" class="relative" style="width:${n.width}px;height:${n.height}px;padding:0;appearance:none;border:0;background:transparent">${render(n)}</${tag}>`;
   const accessibleText = [];
   function collectText(node) {
     if (node.visible !== false && node.type === "TEXT")
@@ -313,7 +316,7 @@ componentLoop: for (const [key, guid] of Object.entries(refs)) {
     for (const child of node.children || []) collectText(child);
   }
   collectText(n);
-  const nativeVector = sourceVectorExports[guid];
+  const nativeVector = semanticAlert ? null : sourceVectorExports[guid];
   const nativeSceneSvg = nativeVector
     ?.replace("customFrame=", "data-source-frame=")
     .replace(
@@ -323,7 +326,8 @@ componentLoop: for (const [key, guid] of Object.entries(refs)) {
   const vectorScene = vectorSceneRules.has(guid) && nativeScene;
   const sceneWidth = vectorScene ? Number(nativeVector?.match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/)?.[1]) : n.width;
   const sceneHeight = vectorScene ? Number(nativeVector?.match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/)?.[2]) : n.height;
-  const finalHtml = vectorScene
+  const semanticHtml = semanticAlert ? renderSemanticAlert({model:semanticAlert,key}) : "";
+  const finalHtml = semanticAlert ? semanticHtml : vectorScene
     ? `<div ${attrs} data-component="${key}" data-source-node="${guid}" class="relative" style="width:${sceneWidth}px;height:${sceneHeight}px;padding:0;border:0;background:transparent">${nativeSceneSvg}</div>`
     : html;
   fs.writeFileSync(`components/${key}.html`, finalHtml);
@@ -331,8 +335,7 @@ componentLoop: for (const [key, guid] of Object.entries(refs)) {
   manifest[key] = {
     ...(key === "link" || key === "button-focused" ? { aliasOf: key === "link" ? "link-light-default-default" : "button-light-primary-focused" } : {}),
     source: guid,
-    renderMode:
-      vectorSceneRules.has(guid) && nativeScene
+    renderMode: semanticAlert ? "generated-semantic-dom" : vectorSceneRules.has(guid) && nativeScene
         ? "source-svg-scene"
         : "generated-dom",
     sceneOrigin: vectorScene ? { x: 0, y: 0 } : null,
@@ -347,7 +350,7 @@ componentLoop: for (const [key, guid] of Object.entries(refs)) {
     })(),
     generated: `components/${key}.html`,
   };
-  const page = `<!doctype html><html lang="en"><head><meta charset="UTF-8"><title>${key} · Int UI</title><link rel="stylesheet" href="../dist/tokens.css"><link rel="stylesheet" href="../dist/tailwind.css"><style>${fonts}html,body{margin:0;background:transparent}body{display:inline-block;padding:0;min-width:0}#specimen{position:relative;display:inline-block}</style></head><body><main id="specimen">${finalHtml}</main></body></html>`;
+  const page = `<!doctype html><html lang="en"><head><meta charset="UTF-8"><title>${key} · Int UI</title><link rel="stylesheet" href="../dist/tokens.css"><link rel="stylesheet" href="../dist/tailwind.css"><style>${fonts}html,body{margin:0;background:transparent}body{display:inline-block;padding:0;min-width:0}#specimen{display:inline-block;max-width:100%}${semanticAlert ? semanticAlertCss(master, alertMasters) : ""}</style></head><body><main id="specimen">${finalHtml}</main></body></html>`;
   fs.mkdirSync("previews", { recursive: true });
   fs.writeFileSync(`previews/${key}.html`, page);
 }
@@ -363,7 +366,12 @@ fs.writeFileSync(
 fs.writeFileSync("dist/component-preview.css", `${fonts}`);
 // Overview is emitted at both index.html and public/index.html.
 // Pixel tests load the isolated specimen preview itself as their asset host.
-generateDocs({ tokens: master, manifest, root: process.cwd() });
+const semanticDocs = ["alert", "alert-dark"].flatMap((key) => [[`components/${key}.html`, readFile(`components/${key}.html`)], [`previews/${key}.html`, readFile(`previews/${key}.html`)]]);
+function readFile(file) { return fs.readFileSync(file, "utf8"); }
+generateDocs({ tokens: master, manifest, root: process.cwd(), semanticAlertCss, alertMasters });
+semanticDocs.push(["public/pages/alert.html", readFile("public/pages/alert.html")]);
+for (const [file, html] of semanticDocs) assertSemanticAlert(html, file);
+console.log("PASS: Alert Light and Dark are semantic flex/grid DOM, with no absolute positioning or SVG chrome.");
 // Tailwind is an additive utility layer; exact measurements stay tied to rule JSON.
 fs.writeFileSync(
   "dist/tailwind.input.css",

@@ -1,0 +1,58 @@
+/* Semantic Alert: flow/flex/grid only. The chrome is CSS, never SVG. */
+:root { /* SOURCE_TOKENS */ }
+.window {
+  --alert-surface: var(--alert-light-surface);
+  --alert-border: var(--alert-light-border);
+  --alert-ink: var(--alert-light-ink);
+  --alert-button-border: var(--alert-light-button-border);
+  --alert-button-bg: var(--alert-light-button-bg);
+  --alert-on-primary: var(--alert-light-on-primary);
+  --alert-info: var(--alert-light-info);
+  --alert-primary: var(--alert-light-primary);
+  --alert-checkbox-border: var(--alert-light-checkbox-border);
+  --alert-checkbox-bg: var(--alert-light-checkbox-bg);
+  --alert-help-bg: var(--alert-light-help-bg);
+  --alert-help-border: var(--alert-light-help-border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  min-width: 0;
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  color: var(--alert-ink);
+  font: 13px/18px Inter, sans-serif;
+  background: var(--alert-surface);
+  box-shadow: var(--alert-shadow);
+}
+.window.dark, .dark-side .window {
+  --alert-surface: var(--alert-dark-surface);
+  --alert-border: var(--alert-dark-border);
+  --alert-ink: var(--alert-dark-ink);
+  --alert-button-border: var(--alert-dark-button-border);
+  --alert-button-bg: var(--alert-dark-button-bg);
+  --alert-on-primary: var(--alert-dark-on-primary);
+  --alert-info: var(--alert-dark-info);
+  --alert-primary: var(--alert-dark-primary);
+  --alert-checkbox-border: var(--alert-dark-checkbox-border);
+  --alert-checkbox-bg: var(--alert-dark-checkbox-bg);
+  --alert-help-bg: var(--alert-dark-help-bg);
+  --alert-help-border: var(--alert-dark-help-border);
+}
+.window, .window * { box-sizing: border-box; }
+.window-body { flex: 0 0 auto; min-width: 0; }
+.alert-title { display: flex; align-items: flex-start; min-width: 0; }
+.alert-content { display: flex; flex: 1 1 340px; flex-direction: column; align-items: flex-start; min-width: 0; }
+.alert-content h3, .alert-content p { align-self: stretch; margin: 0; }
+.status-dot { display: grid; flex-shrink: 0; place-items: center; border-radius: 50%; color: var(--alert-on-primary); font-size: 13px; font-weight: 500; line-height: 1; }
+.status-dot.info { background: var(--alert-info); }
+.status-dot.error { background: var(--alert-error); }
+.status-dot.warning { color: var(--alert-light-ink); background: var(--alert-warning); }
+.checkline { display: flex; align-items: center; gap: 8px; min-height: 32px; margin: 0; font-size: 13px; line-height: 16px; cursor: pointer; }
+.checkline input { appearance: none; flex: 0 0 16px; width: 16px; height: 16px; margin: 0; background: var(--alert-checkbox-bg); border: 1px solid var(--alert-checkbox-border); border-radius: 3px; }
+.checkline input:checked { background: var(--alert-primary); border-color: var(--alert-primary); }
+.checkline input:checked::after { content: "✓"; display: block; color: var(--alert-on-primary); font-size: 12px; line-height: 14px; text-align: center; }
+.window-actions { display: flex; align-items: center; justify-content: flex-end; }
+.window-actions .btn { display: inline-flex; align-items: center; justify-content: center; min-width: 72px; min-height: 28px; padding: 5px 12px; color: var(--alert-ink); background: var(--alert-button-bg); border: 1px solid var(--alert-button-border); border-radius: 4px; font-size: 13px; font-weight: 500; line-height: 16px; white-space: nowrap; cursor: pointer; }
+.window-actions .btn.primary { color: var(--alert-on-primary); background: var(--alert-primary); border-color: var(--alert-primary); }
+.window-help { display: grid; flex: 0 0 24px; place-items: center; width: 24px; height: 24px; margin-right: auto; padding: 0; color: var(--alert-ink); background: var(--alert-help-bg); border: 1px solid var(--alert-help-border); border-radius: 50%; font-size: 13px; line-height: 1; cursor: pointer; }
+/* SOURCE_METRICS */

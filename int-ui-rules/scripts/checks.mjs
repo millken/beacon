@@ -1,12 +1,17 @@
 import fs from "node:fs";
 import assert from "node:assert/strict";
 import { chromium } from "playwright";
+import { assertSemanticAlert } from "./semantic-alert.mjs";
+import { listenDocs } from "./serve-docs.mjs";
+import { fileURLToPath } from "node:url";
+if(process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) process.chdir(fileURLToPath(new URL("..",import.meta.url)));
 for (const script of [
   "extract-component.mjs",
   "generate.mjs",
   "generate-docs.mjs",
   "normalize-tokens.mjs",
   "diff.mjs",
+  "semantic-alert.mjs",
 ]) {
   const source = fs.readFileSync("scripts/" + script, "utf8");
   assert.ok(source.length > 100, `Missing generator ${script}`);
@@ -25,7 +30,11 @@ for (const file of fs
   const html = fs.readFileSync("components/" + file, "utf8");
   assert.ok(!/\bfill:#fff(?:fff)?;?\b/i.test(html));
   for (const token of html.matchAll(/var\((--[\w-]+)\)/g))
-    assert.ok(used.has(token[1]), `${file}: unresolved ${token[1]}`);
+    if(/^--alert-/.test(token[1])) {
+      if(!["alert.html","alert-dark.html"].includes(file))throw new Error(`${file}: semantic theme variables are scoped to Alert only`);
+      const css=fs.readFileSync("public/site.css","utf8");
+      assert.ok(new RegExp(`\\${token[1]}\\s*:`).test(css), `${file}: Alert scoped token is not supplied by its semantic theme`);
+    } else assert.ok(used.has(token[1]), `${file}: unresolved ${token[1]}`);
 }
 const b = await chromium.launch({
   executablePath: "/usr/bin/google-chrome",
@@ -66,7 +75,8 @@ const docs = ["public/index.html", ...fs.readdirSync("public/pages").filter((f) 
 for (const file of docs) {
   const html = fs.readFileSync(file, "utf8");
   assert.ok(!html.includes("/workspace/ref-zip"), `${file}: depends on reference zip`);
-  assert.ok(!/\bclass="(?:btn|check|combo|banner|alert|mini-)/.test(html), `${file}: contains reference illustrative controls`);
+  assert.ok(!html.includes('class="alert"'), `${file}: contains legacy Alert shell rather than .window`);
+  if (/class="(?:btn|check|combo|banner|mini-)/.test(html)) assert.ok(html.includes('class="window '), `${file}: legacy illustrative controls outside semantic window`);
   assert.ok(!html.includes("<iframe"), `${file}: primary demos must be inline`);
   assert.ok(!/Additional state pending|Dark · pending/.test(html), `${file}: pending state cells remain`);
   for(const value of [...html.matchAll(/data-generated-partial="\/components\/([^"/]+)\.html"/g)]) assert.ok(fs.existsSync(`components/${value[1]}.html`), `${file}: absent embedded variant ${value[1]}`);
@@ -96,8 +106,13 @@ const familyPages = {
 const componentPage = (name, item) => `public/pages/${familyPages[item.variantSet?.name] || "components"}.html`;
 
 for (const [name, item] of Object.entries(manifest)) {
-  assert.equal(item.renderMode, "generated-dom", `${name}: whole-scene SVG must be strictly opt-in`);
   const partial = fs.readFileSync(item.generated, "utf8");
+  if (["alert","alert-dark"].includes(name)) {
+    assertSemanticAlert(partial, item.generated);
+    assert.ok(!/<svg(?![^>]*data-layer="small-icon")/i.test(partial), `${name}: no SVG dialog chrome; only small source glyphs`);
+    assert.ok(!/(?:left|top)\s*:/i.test(partial), `${name}: no coordinate layout`);
+    assert.ok(partial.includes("<h3") && partial.includes("<p") && partial.includes('type="checkbox"') && partial.includes("<button"), `${name}: semantic layer required`);
+  }
   assert.ok(!/role="img" aria-label="[^"]*(text|Text)/.test(partial), `${name}: text must remain real HTML`);
   assert.ok(fs.readFileSync(`previews/${name}.html`, "utf8").includes(partial), `${name}: preview is not its generated partial`);
   const sourceDoc = componentPage(name, item);
@@ -121,3 +136,39 @@ for (const [name, value] of Object.entries(tokens.color).filter(([name]) => name
 for (const style of Object.values(tokens.typography))
   assert.ok(fs.readFileSync("public/pages/typography.html", "utf8").includes(`font-size:${Math.min(style.fontSize, 40)}px`), `Missing source text style ${style.css}`);
 console.log(`PASS: ${variants.length} Light/Dark state masters mapped and embedded; no pending matrix cells.`);
+
+// Browser-level policy: the containing preview chrome is allowed to be static,
+// and every semantic Alert descendant must remain ordinary flex/grid flow.
+for (const name of ["alert", "alert-dark"]) {
+  const browser = await chromium.launch({ executablePath:"/usr/bin/google-chrome", headless:true, args:["--no-sandbox"] });
+  const page = await browser.newPage({ viewport:{width:500,height:260} });
+  await page.goto("file://" + process.cwd() + `/previews/${name}.html`);
+  const layout = await page.locator(".window").evaluate(root => ({
+    width:root.offsetWidth, height:root.offsetHeight, dialog:root.getAttribute("role"),
+    layers:Boolean(root.querySelector(".window-body .alert-title .status-dot") && root.querySelector(".window-body h3") && root.querySelector(".window-body p") && root.querySelector(".checkline input[type=checkbox]") && root.querySelector(".window-actions button.btn.primary")),
+    svg:[...root.querySelectorAll("svg")].some(icon=>!icon.closest(".status-dot")&&!icon.closest(".window-help")),
+    flow:[root,...root.querySelectorAll("*")].every(el=>getComputedStyle(el).position === "static"),
+  }));
+  assert.equal(layout.width,420,`${name}: measured root width`);
+  assert.equal(layout.height,172,`${name}: measured root height`);
+  assert.equal(layout.dialog,"alertdialog");
+  assert.ok(layout.layers && layout.flow && !layout.svg,`${name}: semantic flow-only browser verification`);
+  await browser.close();
+}
+console.log("PASS: Alert masters browser-verified at 420×172; semantic layers and every descendant use static flow-only layout.");
+await (async()=>{
+  const browser=await chromium.launch({executablePath:"/usr/bin/google-chrome",headless:true,args:["--no-sandbox"]});
+  const server = await listenDocs();
+  const docsBaseUrl = `http://127.0.0.1:${server.address().port}`;
+  try {
+  for(const width of [1440,390]){
+    const page=await browser.newPage({viewport:{width,height:900}});
+    await page.goto(`${docsBaseUrl}/pages/alert.html`);
+    const result=await page.evaluate(()=>({horizontalOverflow:document.documentElement.scrollWidth>innerWidth,alerts:[...document.querySelectorAll("main .window")].map(root=>({flow:[root,...root.querySelectorAll("*")].every(el=>getComputedStyle(el).position==="static"),overflow:root.scrollWidth>root.clientWidth,svg:[...root.querySelectorAll("svg")].some(icon=>!(icon.closest(".status-dot")||icon.closest(".window-help"))||!icon.hasAttribute("aria-hidden"))})).filter(result=>!result.flow||result.overflow||result.svg||result.right>innerWidth+1||result.left<0||result.statusWidth<18)}));
+    assert.equal(result.horizontalOverflow,false,`Alert docs ${width}px viewport must not overflow`);
+    assert.deepEqual(result.alerts,[],`All Alert docs descendants use flow at ${width}px`);
+    await page.close();
+  }
+  } finally { await new Promise(resolve => server.close(resolve)); await browser.close(); }
+})();
+console.log("PASS: Alert docs are responsive with no absolute/fixed/sticky Alert nodes or SVG shells.");

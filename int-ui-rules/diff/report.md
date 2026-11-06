@@ -186,8 +186,8 @@
 | banner-dark-success-floating | 600×40 | 3.925% | 942/24000 | needs-fix |
 | banner-dark-warning-floating | 600×40 | 4.838% | 1161/24000 | needs-fix |
 | banner-dark-error-floating | 600×40 | 3.783% | 908/24000 | needs-fix |
-| alert | 500×252 | 9.756% | 12293/126000 | needs-fix |
-| alert-dark | 500×252 | 9.439% | 11893/126000 | needs-fix |
+| alert | 500×252 | 9.775% | 12316/126000 | needs-fix |
+| alert-dark | 500×252 | 9.425% | 11876/126000 | needs-fix |
 | dialog | 963×575 | 3.182% | 17619/553725 | needs-fix |
 | dialog-dark | 963×575 | 3.265% | 18080/553725 | needs-fix |
 | link | 45×28 | 3.016% | 38/1260 | needs-fix |
@@ -240,8 +240,8 @@ The full score includes the source shadow export; it is not silently removed. Ad
 - **radio-button-dark-off-invalid:** 10.849% (184/1696); See source node and diff image.
 - **context-menu:** 10.699% (21128/197469); See source node and diff image.
 - **radio-button-light-off-invalid:** 10.495% (178/1696); See source node and diff image.
-- **alert:** 9.756% (12293/126000); See source node and diff image.
-- **alert-dark:** 9.439% (11893/126000); See source node and diff image.
+- **alert:** 9.775% (12316/126000); See source node and diff image.
+- **alert-dark:** 9.425% (11876/126000); See source node and diff image.
 - **link-dark-default-hovered:** 9.206% (116/1260); See source node and diff image.
 - **banner-light-error-floating:** 9.162% (2199/24000); See source node and diff image.
 - **radio-button-light-off-focused:** 8.903% (151/1696); See source node and diff image.

@@ -1,0 +1,25 @@
+/* Reference-archive demo sizes; never mistaken for additional source variants. */
+[data-alert-demo] { width: auto; max-width: 370px; }
+[data-page="alert"] .alert-matrix { display: block; overflow: hidden; }
+@media(min-width:1200px) { [data-page="alert"] .alert-matrix { display: grid; grid-template-columns: minmax(0, 1fr); } }
+.alert-matrix > div { display: grid; align-content: start; gap: 18px; min-width: 0; padding: 28px; }
+.alert-matrix .dark-side { color: var(--dark-gray-gray-12); background: var(--dark-gray-gray-2); }
+[data-page="alert"] .micro-alert .alert-title { min-height: 0; }
+.micro-alert .window-actions { min-height: 32px; }
+.micro-alert .alert-content h3 { font-size: 14px; line-height: 18px; }
+.micro-alert .alert-content p, .micro-alert .checkline { font-size: 11px; line-height: 16px; }
+.micro-alert .status-dot { width: 20px; height: 20px; flex-basis: 20px; margin: 0; font-size: 11px; }
+.micro-alert .window-actions .btn { min-width: 56px; min-height: 26px; padding: 4px 10px; }
+.alert-stack { display: grid; gap: 22px; margin-top: 20px; }
+[data-alert-demo].wide { max-width: 440px; }
+.alert-sizes { display: grid; justify-items: stretch; gap: 24px; margin-top: 24px; }
+.alert-sizes .note { max-width: 440px; margin: 0; }
+.alert-verified-masters { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 24px; }
+.alert-verified-masters .doc-semantic-specimen { width: 100%; max-width: 420px; }
+/* Ordinary documentation wrappers are flow containers, not coordinate scenes. */
+.doc-semantic-specimen { display: block; width: 100%; max-width: 100%; pointer-events: auto; }
+.doc-semantic-specimen h3, .doc-semantic-specimen p { margin: 0; }
+.doc-alert-card-layer { display: block; flex: 0 0 420px; transform: scale(.4); transform-origin: center; pointer-events: none; }
+.doc-catalog-semantic-alert { display: block; flex: 0 0 420px; transform: scale(.48); transform-origin: center; pointer-events: none; }
+@media (max-width:1000px) { .alert-matrix { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width:720px) { .alert-matrix > div { padding: 18px; } .window-actions { flex-wrap: wrap; } }
