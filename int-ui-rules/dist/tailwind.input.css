@@ -1,0 +1,5 @@
+@reference "tailwindcss";
+@reference "./tailwind.theme.css";
+@tailwind utilities;
+@source "../components/*.html";
+@source "../index.html";

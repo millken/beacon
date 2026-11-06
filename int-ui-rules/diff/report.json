@@ -1,0 +1,807 @@
+{
+  "renderer": "Chromium / Playwright",
+  "glyphMode": "source-svg-paths-with-accessible-labels",
+  "deviceScaleFactor": 1,
+  "pixelThreshold": 0.1,
+  "results": [
+    {
+      "name": "button-secondary",
+      "source": "146:52058",
+      "width": 72,
+      "height": 40,
+      "differentPixels": 21,
+      "totalPixels": 2880,
+      "diffPercent": 0.729,
+      "referenceNonTransparent": 2012,
+      "actualNonTransparent": 2012,
+      "geometry": {
+        "width": 72,
+        "height": 40,
+        "fonts": [
+          "Inter, sans-serif"
+        ],
+        "layout": [
+          {
+            "id": "146:52058",
+            "x": 0,
+            "y": 0,
+            "width": 72,
+            "height": 40
+          },
+          {
+            "id": "7260:46059",
+            "x": 0,
+            "y": 6,
+            "width": 72,
+            "height": 28
+          },
+          {
+            "id": "146:52059",
+            "x": 0,
+            "y": 0,
+            "width": 72,
+            "height": 28
+          },
+          {
+            "id": "146:52060",
+            "x": 15,
+            "y": 6,
+            "width": 42,
+            "height": 16
+          }
+        ]
+      },
+      "structural": {
+        "expectedVisualNodes": 2,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 4,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/button-secondary-actual.png",
+        "diff": "diff/button-secondary-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "button-primary",
+      "source": "146:52068",
+      "width": 72,
+      "height": 40,
+      "differentPixels": 2,
+      "totalPixels": 2880,
+      "diffPercent": 0.069,
+      "referenceNonTransparent": 2012,
+      "actualNonTransparent": 2012,
+      "geometry": {
+        "width": 72,
+        "height": 40,
+        "fonts": [
+          "Inter, sans-serif"
+        ],
+        "layout": [
+          {
+            "id": "146:52068",
+            "x": 0,
+            "y": 0,
+            "width": 72,
+            "height": 40
+          },
+          {
+            "id": "7260:49984",
+            "x": 0,
+            "y": 6,
+            "width": 72,
+            "height": 28
+          },
+          {
+            "id": "146:52069",
+            "x": 0,
+            "y": 0,
+            "width": 72,
+            "height": 28
+          },
+          {
+            "id": "146:52070",
+            "x": 15,
+            "y": 6,
+            "width": 42,
+            "height": 16
+          }
+        ]
+      },
+      "structural": {
+        "expectedVisualNodes": 2,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 4,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/button-primary-actual.png",
+        "diff": "diff/button-primary-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "button-primary-hovered",
+      "source": "146:52071",
+      "width": 72,
+      "height": 40,
+      "differentPixels": 2,
+      "totalPixels": 2880,
+      "diffPercent": 0.069,
+      "referenceNonTransparent": 2012,
+      "actualNonTransparent": 2012,
+      "geometry": {
+        "width": 72,
+        "height": 40,
+        "fonts": [
+          "Inter, sans-serif"
+        ],
+        "layout": [
+          {
+            "id": "146:52071",
+            "x": 0,
+            "y": 0,
+            "width": 72,
+            "height": 40
+          },
+          {
+            "id": "7260:51298",
+            "x": 0,
+            "y": 6,
+            "width": 72,
+            "height": 28
+          },
+          {
+            "id": "146:52073",
+            "x": 0,
+            "y": 0,
+            "width": 72,
+            "height": 28
+          },
+          {
+            "id": "146:52074",
+            "x": 15,
+            "y": 6,
+            "width": 42,
+            "height": 16
+          }
+        ]
+      },
+      "structural": {
+        "expectedVisualNodes": 2,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 4,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/button-primary-hovered-actual.png",
+        "diff": "diff/button-primary-hovered-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "button-primary-pressed",
+      "source": "733:47034",
+      "width": 72,
+      "height": 40,
+      "differentPixels": 3,
+      "totalPixels": 2880,
+      "diffPercent": 0.104,
+      "referenceNonTransparent": 2012,
+      "actualNonTransparent": 2012,
+      "geometry": {
+        "width": 72,
+        "height": 40,
+        "fonts": [
+          "Inter, sans-serif"
+        ],
+        "layout": [
+          {
+            "id": "733:47034",
+            "x": 0,
+            "y": 0,
+            "width": 72,
+            "height": 40
+          },
+          {
+            "id": "7260:51303",
+            "x": 0,
+            "y": 6,
+            "width": 72,
+            "height": 28
+          },
+          {
+            "id": "733:47035",
+            "x": 0,
+            "y": 0,
+            "width": 72,
+            "height": 28
+          },
+          {
+            "id": "733:47036",
+            "x": 15,
+            "y": 6,
+            "width": 42,
+            "height": 16
+          }
+        ]
+      },
+      "structural": {
+        "expectedVisualNodes": 2,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 4,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/button-primary-pressed-actual.png",
+        "diff": "diff/button-primary-pressed-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "button-primary-focused",
+      "source": "146:52092",
+      "width": 78,
+      "height": 40,
+      "differentPixels": 3,
+      "totalPixels": 3120,
+      "diffPercent": 0.096,
+      "referenceNonTransparent": 2460,
+      "actualNonTransparent": 2460,
+      "geometry": {
+        "width": 72,
+        "height": 40,
+        "fonts": [
+          "Inter, sans-serif"
+        ],
+        "layout": [
+          {
+            "id": "146:52092",
+            "x": 0,
+            "y": 0,
+            "width": 72,
+            "height": 40
+          },
+          {
+            "id": "6204:74319",
+            "x": -3,
+            "y": 3,
+            "width": 78,
+            "height": 34
+          },
+          {
+            "id": "7260:51310",
+            "x": 0,
+            "y": 6,
+            "width": 72,
+            "height": 28
+          },
+          {
+            "id": "146:52095",
+            "x": 0,
+            "y": 0,
+            "width": 72,
+            "height": 28
+          },
+          {
+            "id": "146:52096",
+            "x": 15,
+            "y": 6,
+            "width": 42,
+            "height": 16
+          }
+        ]
+      },
+      "structural": {
+        "expectedVisualNodes": 3,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 5,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/button-primary-focused-actual.png",
+        "diff": "diff/button-primary-focused-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "input",
+      "source": "7399:46819",
+      "width": 224,
+      "height": 40,
+      "differentPixels": 17,
+      "totalPixels": 8960,
+      "diffPercent": 0.19,
+      "referenceNonTransparent": 6268,
+      "actualNonTransparent": 6268,
+      "geometry": {
+        "width": 224,
+        "height": 40,
+        "fonts": [
+          "Inter, sans-serif"
+        ],
+        "layout": [
+          {
+            "id": "7399:46819",
+            "x": 0,
+            "y": 0,
+            "width": 224,
+            "height": 40
+          },
+          {
+            "id": "7399:46820",
+            "x": 0,
+            "y": 6,
+            "width": 224,
+            "height": 28
+          },
+          {
+            "id": "7399:46821",
+            "x": 9,
+            "y": 6,
+            "width": 206,
+            "height": 16
+          }
+        ]
+      },
+      "structural": {
+        "expectedVisualNodes": 2,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 3,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/input-actual.png",
+        "diff": "diff/input-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "input-focused",
+      "source": "7399:46991",
+      "width": 226,
+      "height": 40,
+      "differentPixels": 17,
+      "totalPixels": 9040,
+      "diffPercent": 0.188,
+      "referenceNonTransparent": 6768,
+      "actualNonTransparent": 6768,
+      "geometry": {
+        "width": 224,
+        "height": 40,
+        "fonts": [
+          "Inter, sans-serif"
+        ],
+        "layout": [
+          {
+            "id": "7399:46991",
+            "x": 0,
+            "y": 0,
+            "width": 224,
+            "height": 40
+          },
+          {
+            "id": "7399:46992",
+            "x": 0,
+            "y": 6,
+            "width": 224,
+            "height": 28
+          },
+          {
+            "id": "7399:46993",
+            "x": 9,
+            "y": 6,
+            "width": 206,
+            "height": 16
+          }
+        ]
+      },
+      "structural": {
+        "expectedVisualNodes": 2,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 3,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/input-focused-actual.png",
+        "diff": "diff/input-focused-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "checkbox",
+      "source": "3590:81640",
+      "width": 51,
+      "height": 32,
+      "differentPixels": 1,
+      "totalPixels": 1632,
+      "diffPercent": 0.061,
+      "referenceNonTransparent": 398,
+      "actualNonTransparent": 402,
+      "geometry": {
+        "width": 51,
+        "height": 32,
+        "fonts": [
+          "Inter, sans-serif"
+        ],
+        "layout": [
+          {
+            "id": "3590:81640",
+            "x": 0,
+            "y": 0,
+            "width": 51,
+            "height": 32
+          },
+          {
+            "id": "8006:76620",
+            "x": 0,
+            "y": 0,
+            "width": 51,
+            "height": 32
+          },
+          {
+            "id": "7944:76537",
+            "x": 0,
+            "y": 8,
+            "width": 16,
+            "height": 16
+          },
+          {
+            "id": "I7944:76537;7936:67415",
+            "x": 0,
+            "y": 0,
+            "width": 16,
+            "height": 16
+          },
+          {
+            "id": "6504:83314",
+            "x": 24,
+            "y": 8,
+            "width": 27,
+            "height": 16
+          },
+          {
+            "id": "3590:81645",
+            "x": 0,
+            "y": 0,
+            "width": 27,
+            "height": 16
+          }
+        ]
+      },
+      "structural": {
+        "expectedVisualNodes": 3,
+        "compoundSvgGroups": 1,
+        "actualDomNodes": 6,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/checkbox-actual.png",
+        "diff": "diff/checkbox-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "checkbox-unchecked",
+      "source": "3590:81636",
+      "width": 51,
+      "height": 32,
+      "differentPixels": 1,
+      "totalPixels": 1632,
+      "diffPercent": 0.061,
+      "referenceNonTransparent": 398,
+      "actualNonTransparent": 398,
+      "geometry": {
+        "width": 51,
+        "height": 32,
+        "fonts": [
+          "Inter, sans-serif"
+        ],
+        "layout": [
+          {
+            "id": "3590:81636",
+            "x": 0,
+            "y": 0,
+            "width": 51,
+            "height": 32
+          },
+          {
+            "id": "8006:74990",
+            "x": 0,
+            "y": 0,
+            "width": 51,
+            "height": 32
+          },
+          {
+            "id": "7944:75598",
+            "x": 0,
+            "y": 8,
+            "width": 16,
+            "height": 16
+          },
+          {
+            "id": "I7944:75598;7937:67873",
+            "x": 0,
+            "y": 0,
+            "width": 16,
+            "height": 16
+          },
+          {
+            "id": "I7944:75598;7937:67874",
+            "x": 0,
+            "y": 0,
+            "width": 16,
+            "height": 16
+          },
+          {
+            "id": "6504:83214",
+            "x": 24,
+            "y": 8,
+            "width": 27,
+            "height": 16
+          },
+          {
+            "id": "3590:81639",
+            "x": 0,
+            "y": 0,
+            "width": 27,
+            "height": 16
+          }
+        ]
+      },
+      "structural": {
+        "expectedVisualNodes": 3,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 7,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/checkbox-unchecked-actual.png",
+        "diff": "diff/checkbox-unchecked-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "checkbox-indeterminate",
+      "source": "3590:81646",
+      "width": 51,
+      "height": 32,
+      "differentPixels": 1,
+      "totalPixels": 1632,
+      "diffPercent": 0.061,
+      "referenceNonTransparent": 398,
+      "actualNonTransparent": 402,
+      "geometry": {
+        "width": 51,
+        "height": 32,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 3,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/checkbox-indeterminate-actual.png",
+        "diff": "diff/checkbox-indeterminate-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "toggle-on",
+      "source": "5168:84067",
+      "width": 53,
+      "height": 20,
+      "differentPixels": 1,
+      "totalPixels": 1060,
+      "diffPercent": 0.094,
+      "referenceNonTransparent": 1060,
+      "actualNonTransparent": 1056,
+      "geometry": {
+        "width": 53,
+        "height": 20,
+        "fonts": [
+          "Inter, sans-serif"
+        ],
+        "layout": [
+          {
+            "id": "5168:84067",
+            "x": 0,
+            "y": 0,
+            "width": 53,
+            "height": 20
+          },
+          {
+            "id": "5168:84068",
+            "x": 0,
+            "y": 0,
+            "width": 53,
+            "height": 20
+          },
+          {
+            "id": "5168:84069",
+            "x": 1,
+            "y": 1,
+            "width": 34,
+            "height": 18
+          },
+          {
+            "id": "5168:84070",
+            "x": 8,
+            "y": 2,
+            "width": 20,
+            "height": 16
+          }
+        ]
+      },
+      "structural": {
+        "expectedVisualNodes": 3,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 4,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/toggle-on-actual.png",
+        "diff": "diff/toggle-on-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "toggle-off",
+      "source": "5168:84071",
+      "width": 53,
+      "height": 20,
+      "differentPixels": 0,
+      "totalPixels": 1060,
+      "diffPercent": 0,
+      "referenceNonTransparent": 1060,
+      "actualNonTransparent": 1060,
+      "geometry": {
+        "width": 53,
+        "height": 20,
+        "fonts": [
+          "Inter, sans-serif"
+        ],
+        "layout": [
+          {
+            "id": "5168:84071",
+            "x": 0,
+            "y": 0,
+            "width": 53,
+            "height": 20
+          },
+          {
+            "id": "5168:84072",
+            "x": 0,
+            "y": 0,
+            "width": 53,
+            "height": 20
+          },
+          {
+            "id": "5168:84073",
+            "x": 18,
+            "y": 1,
+            "width": 34,
+            "height": 18
+          },
+          {
+            "id": "5168:84074",
+            "x": 22,
+            "y": 2,
+            "width": 26,
+            "height": 16
+          }
+        ]
+      },
+      "structural": {
+        "expectedVisualNodes": 3,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 4,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/toggle-off-actual.png",
+        "diff": "diff/toggle-off-diff.png"
+      },
+      "status": "pixel-identical"
+    },
+    {
+      "name": "dialog",
+      "source": "7070:146270",
+      "width": 963,
+      "height": 575,
+      "differentPixels": 57,
+      "totalPixels": 553725,
+      "diffPercent": 0.01,
+      "referenceNonTransparent": 541533,
+      "actualNonTransparent": 521739,
+      "geometry": {
+        "width": 963,
+        "height": 575,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 18,
+        "compoundSvgGroups": 1,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {
+        "body": {
+          "width": 883,
+          "height": 495,
+          "differentPixels": 58,
+          "diffPercent": 0.013
+        },
+        "title": {
+          "differentPixels": 12,
+          "totalPixels": 11520,
+          "diffPercent": 0.104
+        },
+        "header-left": {
+          "differentPixels": 2,
+          "totalPixels": 4000,
+          "diffPercent": 0.05
+        },
+        "footer-right": {
+          "differentPixels": 0,
+          "totalPixels": 33330,
+          "diffPercent": 0
+        },
+        "footer-left": {
+          "differentPixels": 0,
+          "totalPixels": 13200,
+          "diffPercent": 0
+        }
+      },
+      "artifacts": {
+        "actual": "diff/dialog-actual.png",
+        "diff": "diff/dialog-diff.png"
+      },
+      "status": "needs-fix"
+    }
+  ]
+}

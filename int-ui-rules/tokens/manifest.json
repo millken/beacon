@@ -1,0 +1,417 @@
+{
+  "button-secondary": {
+    "source": "146:52058",
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
+    "sourceName": "Theme=Light, Button type=Secondary, State=Active",
+    "selectedVariant": {
+      "Theme": "Light",
+      "Button type": "Secondary",
+      "State": "Active"
+    },
+    "width": 72,
+    "height": 40,
+    "variantSet": {
+      "name": "Button",
+      "axes": {
+        "Button type": [
+          "Primary",
+          "Secondary"
+        ],
+        "State": [
+          "Active",
+          "Hovered",
+          "Pressed",
+          "Focused",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/button-secondary.html"
+  },
+  "button-primary": {
+    "source": "146:52068",
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
+    "sourceName": "Theme=Light, Button type=Primary, State=Active",
+    "selectedVariant": {
+      "Theme": "Light",
+      "Button type": "Primary",
+      "State": "Active"
+    },
+    "width": 72,
+    "height": 40,
+    "variantSet": {
+      "name": "Button",
+      "axes": {
+        "Button type": [
+          "Primary",
+          "Secondary"
+        ],
+        "State": [
+          "Active",
+          "Hovered",
+          "Pressed",
+          "Focused",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/button-primary.html"
+  },
+  "button-primary-hovered": {
+    "source": "146:52071",
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
+    "sourceName": "Theme=Light, Button type=Primary, State=Hovered",
+    "selectedVariant": {
+      "Theme": "Light",
+      "Button type": "Primary",
+      "State": "Hovered"
+    },
+    "width": 72,
+    "height": 40,
+    "variantSet": {
+      "name": "Button",
+      "axes": {
+        "Button type": [
+          "Primary",
+          "Secondary"
+        ],
+        "State": [
+          "Active",
+          "Hovered",
+          "Pressed",
+          "Focused",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/button-primary-hovered.html"
+  },
+  "button-primary-pressed": {
+    "source": "733:47034",
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
+    "sourceName": "Theme=Light, Button type=Primary, State=Pressed",
+    "selectedVariant": {
+      "Theme": "Light",
+      "Button type": "Primary",
+      "State": "Pressed"
+    },
+    "width": 72,
+    "height": 40,
+    "variantSet": {
+      "name": "Button",
+      "axes": {
+        "Button type": [
+          "Primary",
+          "Secondary"
+        ],
+        "State": [
+          "Active",
+          "Hovered",
+          "Pressed",
+          "Focused",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/button-primary-pressed.html"
+  },
+  "button-primary-focused": {
+    "source": "146:52092",
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
+    "sourceName": "Theme=Light, Button type=Primary, State=Focused",
+    "selectedVariant": {
+      "Theme": "Light",
+      "Button type": "Primary",
+      "State": "Focused"
+    },
+    "width": 72,
+    "height": 40,
+    "variantSet": {
+      "name": "Button",
+      "axes": {
+        "Button type": [
+          "Primary",
+          "Secondary"
+        ],
+        "State": [
+          "Active",
+          "Hovered",
+          "Pressed",
+          "Focused",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/button-primary-focused.html"
+  },
+  "input": {
+    "source": "7399:46819",
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
+    "sourceName": "Theme=Light, State=Active, Focus=Off",
+    "selectedVariant": {
+      "Theme": "Light",
+      "State": "Active",
+      "Focus": "Off"
+    },
+    "width": 224,
+    "height": 40,
+    "variantSet": {
+      "name": "Input Field",
+      "axes": {
+        "Focus": [
+          "Off",
+          "On"
+        ],
+        "State": [
+          "Active",
+          "Invalid",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/input.html"
+  },
+  "input-focused": {
+    "source": "7399:46991",
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
+    "sourceName": "Theme=Light, State=Active, Focus=On",
+    "selectedVariant": {
+      "Theme": "Light",
+      "State": "Active",
+      "Focus": "On"
+    },
+    "width": 224,
+    "height": 40,
+    "variantSet": {
+      "name": "Input Field",
+      "axes": {
+        "Focus": [
+          "Off",
+          "On"
+        ],
+        "State": [
+          "Active",
+          "Invalid",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/input-focused.html"
+  },
+  "checkbox": {
+    "source": "3590:81640",
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
+    "sourceName": "Theme=Light, Type=Checked, State=Active",
+    "selectedVariant": {
+      "Theme": "Light",
+      "Type": "Checked",
+      "State": "Active"
+    },
+    "width": 51,
+    "height": 32,
+    "variantSet": {
+      "name": "Checkbox",
+      "axes": {
+        "State": [
+          "Active",
+          "Hovered",
+          "Focused",
+          "Invalid",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Checked",
+          "Unchecked",
+          "Indeterminate"
+        ]
+      }
+    },
+    "generated": "components/checkbox.html"
+  },
+  "checkbox-unchecked": {
+    "source": "3590:81636",
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
+    "sourceName": "Theme=Light, Type=Unchecked, State=Active",
+    "selectedVariant": {
+      "Theme": "Light",
+      "Type": "Unchecked",
+      "State": "Active"
+    },
+    "width": 51,
+    "height": 32,
+    "variantSet": {
+      "name": "Checkbox",
+      "axes": {
+        "State": [
+          "Active",
+          "Hovered",
+          "Focused",
+          "Invalid",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Checked",
+          "Unchecked",
+          "Indeterminate"
+        ]
+      }
+    },
+    "generated": "components/checkbox-unchecked.html"
+  },
+  "checkbox-indeterminate": {
+    "source": "3590:81646",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": null,
+    "sourceName": "Theme=Light, Type=Indeterminate, State=Active",
+    "selectedVariant": {
+      "Theme": "Light",
+      "Type": "Indeterminate",
+      "State": "Active"
+    },
+    "width": 51,
+    "height": 32,
+    "variantSet": {
+      "name": "Checkbox",
+      "axes": {
+        "State": [
+          "Active",
+          "Hovered",
+          "Focused",
+          "Invalid",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Checked",
+          "Unchecked",
+          "Indeterminate"
+        ]
+      }
+    },
+    "generated": "components/checkbox-indeterminate.html"
+  },
+  "toggle-on": {
+    "source": "5168:84067",
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
+    "sourceName": "Theme = Light, State=On",
+    "selectedVariant": {
+      "Theme": "Light",
+      "State": "On"
+    },
+    "width": 53,
+    "height": 20,
+    "variantSet": {
+      "name": "Toggle",
+      "axes": {
+        "State": [
+          "Off",
+          "On"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/toggle-on.html"
+  },
+  "toggle-off": {
+    "source": "5168:84071",
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
+    "sourceName": "Theme = Light, State=Off",
+    "selectedVariant": {
+      "Theme": "Light",
+      "State": "Off"
+    },
+    "width": 53,
+    "height": 20,
+    "variantSet": {
+      "name": "Toggle",
+      "axes": {
+        "State": [
+          "Off",
+          "On"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/toggle-off.html"
+  },
+  "dialog": {
+    "source": "7070:146270",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light",
+    "selectedVariant": {
+      "Theme": "Light"
+    },
+    "width": 883,
+    "height": 495,
+    "variantSet": {
+      "name": "Dialog",
+      "axes": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/dialog.html"
+  }
+}

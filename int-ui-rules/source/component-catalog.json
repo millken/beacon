@@ -1,0 +1,1889 @@
+{
+  "components": [
+    {
+      "id": "8254:111999",
+      "name": "_Figma Cover"
+    },
+    {
+      "id": "7968:72553",
+      "name": "_Header"
+    },
+    {
+      "id": "54:9456",
+      "name": "_Notification / More"
+    },
+    {
+      "id": "6336:71773",
+      "name": "Alert / Buttons"
+    },
+    {
+      "id": "8303:75283",
+      "name": "Arrow"
+    },
+    {
+      "id": "8303:75284",
+      "name": "Pointing hand"
+    },
+    {
+      "id": "8303:75285",
+      "name": "Grabbing Hand"
+    },
+    {
+      "id": "8303:75286",
+      "name": "Resize"
+    },
+    {
+      "id": "8303:75287",
+      "name": "Text"
+    },
+    {
+      "id": "8303:75225",
+      "name": "Open hand"
+    },
+    {
+      "id": "8028:81619",
+      "name": "_Tile"
+    }
+  ],
+  "componentSets": [
+    {
+      "id": "3590:81635",
+      "name": "Checkbox",
+      "variantPropMap": {
+        "State": [
+          "Active",
+          "Hovered",
+          "Focused",
+          "Invalid",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Checked",
+          "Unchecked",
+          "Indeterminate"
+        ]
+      }
+    },
+    {
+      "id": "46:11074",
+      "name": "Link",
+      "variantPropMap": {
+        "State": [
+          "Default",
+          "Disabled",
+          "Hovered"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Default",
+          "Dropdown",
+          "External"
+        ]
+      }
+    },
+    {
+      "id": "3894:82032",
+      "name": "Radio Button",
+      "variantPropMap": {
+        "Selected": [
+          "On",
+          "Off"
+        ],
+        "State": [
+          "Active",
+          "Hovered",
+          "Focused",
+          "Invalid",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "5168:84066",
+      "name": "Toggle",
+      "variantPropMap": {
+        "State": [
+          "Off",
+          "On"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6517:82733",
+      "name": "Slim Button",
+      "variantPropMap": {
+        "State": [
+          "Active",
+          "Hovered",
+          "Pressed",
+          "Focused",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7070:146182",
+      "name": "Help",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "146:52009",
+      "name": "Button",
+      "variantPropMap": {
+        "Button type": [
+          "Primary",
+          "Secondary"
+        ],
+        "State": [
+          "Active",
+          "Hovered",
+          "Pressed",
+          "Focused",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7223:45238",
+      "name": "_Button / Split",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Primary",
+          "Secondary"
+        ]
+      }
+    },
+    {
+      "id": "7281:46902",
+      "name": "Segmented Control",
+      "variantPropMap": {
+        "State": [
+          "Active",
+          "Disabled",
+          "Focused"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7281:46889",
+      "name": "_Segmented Button",
+      "variantPropMap": {
+        "Selected": [
+          "On",
+          "Off"
+        ],
+        "State": [
+          "Active",
+          "Disabled",
+          "Focused"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7936:67406",
+      "name": "_Checkbox",
+      "variantPropMap": {
+        "State": [
+          "Active",
+          "Hovered",
+          "Focused",
+          "Invalid",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Checked",
+          "Unchecked",
+          "Indeterminate"
+        ]
+      }
+    },
+    {
+      "id": "8006:72912",
+      "name": "Hint",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "3873:80233",
+      "name": "Tree / Node",
+      "variantPropMap": {
+        "Level": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "State": [
+          "Collapsed",
+          "Expanded"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6285:70854",
+      "name": "Tree",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6336:75927",
+      "name": "_Tree / Selection",
+      "variantPropMap": {
+        "State": [
+          "Inactive",
+          "Selected",
+          "Default"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "1146:54334",
+      "name": "Toolbar",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Horizontal",
+          "Vertical"
+        ]
+      }
+    },
+    {
+      "id": "5701:76416",
+      "name": "Toolbar / Icon",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Default",
+          "Inline Search"
+        ]
+      }
+    },
+    {
+      "id": "5701:76320",
+      "name": "Toolbar / Separator",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Vertical",
+          "Horizontal"
+        ]
+      }
+    },
+    {
+      "id": "5701:76161",
+      "name": "Toolbar / Button",
+      "variantPropMap": {
+        "State": [
+          "Default",
+          "Disabled",
+          "Hovered",
+          "Pressed"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "9393:66721",
+      "name": "Toolbar / Dropdown",
+      "variantPropMap": {
+        "State": [
+          "Default",
+          "Disabled",
+          "Hovered",
+          "Pressed"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6555:83459",
+      "name": "_Inline / State",
+      "variantPropMap": {
+        "State": [
+          "Default",
+          "Hovered",
+          "Pressed"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Default",
+          "Selected"
+        ]
+      }
+    },
+    {
+      "id": "6418:73915",
+      "name": "_Toolbar / State",
+      "variantPropMap": {
+        "State": [
+          "Default",
+          "Hovered",
+          "Pressed"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "9578:67127",
+      "name": "Toolbar / Search",
+      "variantPropMap": {
+        "State": [
+          "Default",
+          "Validated"
+        ],
+        "Theme": [
+          "Dark",
+          "Light"
+        ]
+      }
+    },
+    {
+      "id": "3595:83696",
+      "name": "Notification",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6289:70789",
+      "name": "_Notification / State",
+      "variantPropMap": {
+        "State": [
+          "Collapsed",
+          "Expanded"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6334:72067",
+      "name": "_Notification / Type",
+      "variantPropMap": {
+        "Theme": [
+          "Dark",
+          "Light"
+        ],
+        "Type": [
+          "Error",
+          "Info",
+          "Success",
+          "Warning"
+        ]
+      }
+    },
+    {
+      "id": "7880:81066",
+      "name": "Collapsible",
+      "variantPropMap": {
+        "Expanded": [
+          "No",
+          "Yes"
+        ]
+      }
+    },
+    {
+      "id": "461:98590",
+      "name": "Notification stack",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "3345:82978",
+      "name": "Alert",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6334:73527",
+      "name": "Alert / Type",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Info",
+          "Error",
+          "Warning",
+          "Question"
+        ]
+      }
+    },
+    {
+      "id": "56:8741",
+      "name": "Tooltip / Got It",
+      "variantPropMap": {
+        "Arrow": [
+          "Up",
+          "Right",
+          "Down",
+          "Left"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "5388:81364",
+      "name": "Tooltip / Tooltip",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7191:45452",
+      "name": "Tooltip / Help",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "71:9760",
+      "name": "Tooltip / Editor",
+      "variantPropMap": {
+        "Arrow": [
+          "Up",
+          "Right",
+          "Down",
+          "Left"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Error",
+          "Warning",
+          "Success",
+          "Info"
+        ]
+      }
+    },
+    {
+      "id": "8097:78250",
+      "name": "_Corner",
+      "variantPropMap": {
+        "Position": [
+          "Bottom",
+          "Top",
+          "Left",
+          "Right"
+        ]
+      }
+    },
+    {
+      "id": "10134:67704",
+      "name": "Tooltip / Validation",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Error",
+          "Warning"
+        ]
+      }
+    },
+    {
+      "id": "7070:146048",
+      "name": "Search",
+      "variantPropMap": {
+        "Focus": [
+          "Off",
+          "On"
+        ],
+        "State": [
+          "Active",
+          "Invalid"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7141:46623",
+      "name": "_Text",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Hint",
+          "Text"
+        ]
+      }
+    },
+    {
+      "id": "7141:46785",
+      "name": "_Close",
+      "variantPropMap": {
+        "Hovered": [
+          "Off",
+          "On"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7399:46601",
+      "name": "Input Field",
+      "variantPropMap": {
+        "Focus": [
+          "Off",
+          "On"
+        ],
+        "State": [
+          "Active",
+          "Invalid",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7944:74565",
+      "name": "Dropdown",
+      "variantPropMap": {
+        "Focus": [
+          "Off",
+          "On"
+        ],
+        "State": [
+          "Active",
+          "Invalid",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7944:74746",
+      "name": "Combobox",
+      "variantPropMap": {
+        "Focus": [
+          "Off",
+          "On"
+        ],
+        "State": [
+          "Active",
+          "Invalid",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7399:47653",
+      "name": "Labelled Input",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Text Input",
+          "Dropdown",
+          "Combobox"
+        ]
+      }
+    },
+    {
+      "id": "7399:46697",
+      "name": "_Input / Type",
+      "variantPropMap": {
+        "State": [
+          "Active",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Combobox",
+          "Dropdown"
+        ]
+      }
+    },
+    {
+      "id": "5664:79158",
+      "name": "Tab",
+      "variantPropMap": {
+        "State": [
+          "Default",
+          "Selected",
+          "Inactive"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "5664:81901",
+      "name": "Tabs",
+      "variantPropMap": {
+        "Theme": [
+          "Dark",
+          "Light"
+        ]
+      }
+    },
+    {
+      "id": "6353:72345",
+      "name": "_Tab / Background",
+      "variantPropMap": {
+        "State": [
+          "Hovered",
+          "Default"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "3346:81594",
+      "name": "Banner",
+      "variantPropMap": {
+        "Inline": [
+          "False",
+          "True"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Info",
+          "Error",
+          "Warning",
+          "Success"
+        ]
+      }
+    },
+    {
+      "id": "3815:85955",
+      "name": "Popup / Cell / Regular",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Line",
+          "Multiline",
+          "Header",
+          "Separator",
+          "Footer",
+          "Search"
+        ]
+      }
+    },
+    {
+      "id": "6437:72852",
+      "name": "Popup / Cell / Selection",
+      "variantPropMap": {
+        "State": [
+          "Off",
+          "On"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6501:80644",
+      "name": "Popup / Cell / Advanced",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "SE Search",
+          "SE Cell",
+          "SU Cell",
+          "CMP Cell",
+          "CMP Footer"
+        ]
+      }
+    },
+    {
+      "id": "6504:83612",
+      "name": "Popup / Cell / Search",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Default",
+          "Hint",
+          "Icons"
+        ]
+      }
+    },
+    {
+      "id": "4442:82590",
+      "name": "_Inline action / right side",
+      "variantPropMap": {
+        "Buttons": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ]
+      }
+    },
+    {
+      "id": "4353:82987",
+      "name": "_Inline action / button",
+      "variantPropMap": {
+        "Hover": [
+          "Off",
+          "On"
+        ]
+      }
+    },
+    {
+      "id": "4450:82431",
+      "name": "Popup / Line with actions",
+      "variantPropMap": {
+        "Run marker": [
+          "Dot"
+        ],
+        "Run state": [
+          "None",
+          "Running",
+          "Debugging"
+        ],
+        "Running": [
+          "Off",
+          "On"
+        ],
+        "Selected": [
+          "Off",
+          "On"
+        ]
+      }
+    },
+    {
+      "id": "3711:79004",
+      "name": "Code Sample",
+      "variantPropMap": {
+        "Theme": [
+          "Dark",
+          "Light"
+        ],
+        "Type": [
+          "Outline",
+          "Fill"
+        ]
+      }
+    },
+    {
+      "id": "6551:84195",
+      "name": "Shortcut",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Default",
+          "Outline"
+        ]
+      }
+    },
+    {
+      "id": "6222:73552",
+      "name": "Scrollbar",
+      "variantPropMap": {
+        "State": [
+          "Regular",
+          "Hovered"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Horizontal",
+          "Vertical"
+        ]
+      }
+    },
+    {
+      "id": "5767:82632",
+      "name": "Loader",
+      "desc": "Synonyms: spinner",
+      "variantPropMap": {
+        "Rotation": [
+          "0",
+          "45",
+          "90",
+          "135",
+          "180",
+          "225",
+          "270",
+          "315"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6565:86496",
+      "name": "Inline Search",
+      "variantPropMap": {
+        "Theme": [
+          "Dark",
+          "Light"
+        ]
+      }
+    },
+    {
+      "id": "7050:85603",
+      "name": "Editor / Tab",
+      "variantPropMap": {
+        "Hovered": [
+          "Off",
+          "On"
+        ],
+        "State": [
+          "Selected",
+          "Inactive",
+          "Default"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7054:85952",
+      "name": "Editor / Tab / Close",
+      "variantPropMap": {
+        "Hovered": [
+          "Off",
+          "On"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7054:86162",
+      "name": "Editor / Tabs",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "544:50314",
+      "name": "Status Bar / Widget",
+      "variantPropMap": {
+        "State": [
+          "Default",
+          "Hovered",
+          "Pressed"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Text",
+          "Icon"
+        ]
+      }
+    },
+    {
+      "id": "544:50321",
+      "name": "Status Bar / Breadcrumb",
+      "variantPropMap": {
+        "State": [
+          "Default",
+          "Hovered",
+          "Selected",
+          "Selected inactive"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "544:47863",
+      "name": "Status bar",
+      "variantPropMap": {
+        "Progress": [
+          "Off",
+          "On"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "4413:84474",
+      "name": "Editor Code / Gutter",
+      "variantPropMap": {
+        "Theme": [
+          "Dark",
+          "Light"
+        ]
+      }
+    },
+    {
+      "id": "7059:95513",
+      "name": "Editor Code / Snippet",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7059:95520",
+      "name": "Editor Code / Inspection Widget",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7059:95559",
+      "name": "Editor Code",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "4358:90449",
+      "name": "Main Toolbar",
+      "variantPropMap": {
+        "OS": [
+          "Windows",
+          "macOS"
+        ],
+        "Theme": [
+          "Light",
+          "Dark",
+          "Light with Light Header"
+        ]
+      }
+    },
+    {
+      "id": "217:51269",
+      "name": "Main Toolbar / MacOS Buttons",
+      "variantPropMap": {
+        "State": [
+          "Default",
+          "Hover"
+        ],
+        "Theme": [
+          "Light with Light Header",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "335:37366",
+      "name": "Main Toolbar / Windows Buttons",
+      "variantPropMap": {
+        "Icon": [
+          "winMaximize",
+          "winMinimize",
+          "winClose"
+        ],
+        "State": [
+          "Default",
+          "Hovered"
+        ],
+        "Theme": [
+          "Dark",
+          "Light with Light Header"
+        ]
+      }
+    },
+    {
+      "id": "1531:58996",
+      "name": "Main Toolbar / Win Button",
+      "variantPropMap": {
+        "Button": [
+          "Minimize",
+          "Maximize",
+          "Close"
+        ],
+        "State": [
+          "Default",
+          "Hovered"
+        ],
+        "Theme": [
+          "Light",
+          "Dark",
+          "Light with Light Header"
+        ]
+      }
+    },
+    {
+      "id": "217:55078",
+      "name": "Main Toolbar / Dropdown",
+      "variantPropMap": {
+        "State": [
+          "Default",
+          "Hovered",
+          "Pressed"
+        ],
+        "Theme": [
+          "Dark",
+          "Light",
+          "Light with Light Header"
+        ]
+      }
+    },
+    {
+      "id": "11351:34406",
+      "name": "Main Toolbar / Project Dropdown",
+      "variantPropMap": {
+        "State": [
+          "Default",
+          "Hovered",
+          "Pressed"
+        ],
+        "Theme": [
+          "Dark",
+          "Light",
+          "Light with Light Header"
+        ]
+      }
+    },
+    {
+      "id": "217:55666",
+      "name": "Main Toolbar / Icon",
+      "variantPropMap": {
+        "Badge": [
+          "Off",
+          "Dot",
+          "Counter"
+        ],
+        "State": [
+          "Default",
+          "Hovered",
+          "Pressed"
+        ],
+        "Theme": [
+          "Light",
+          "Dark",
+          "Light with Light Header"
+        ]
+      }
+    },
+    {
+      "id": "4970:88924",
+      "name": "_Split Button Dropdown",
+      "variantPropMap": {
+        "State": [
+          "Default",
+          "Hovered",
+          "Pressed"
+        ],
+        "Theme": [
+          "Light",
+          "Dark",
+          "Light with Light Header"
+        ]
+      }
+    },
+    {
+      "id": "4970:88978",
+      "name": "Main Toolbar / Split Button",
+      "variantPropMap": {
+        "State": [
+          "Default"
+        ],
+        "Theme": [
+          "Light",
+          "Dark",
+          "Light with Light Header"
+        ]
+      }
+    },
+    {
+      "id": "11348:22441",
+      "name": "Project Icon",
+      "variantPropMap": {
+        "Color": [
+          "Amber",
+          "Rust",
+          "Olive",
+          "Grass",
+          "Ocean",
+          "Sky",
+          "Cobalt",
+          "Violet",
+          "Plum",
+          "None"
+        ],
+        "Custom Icon": [
+          "Off",
+          "On"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "11351:33865",
+      "name": "_Main Toolbar / Gradient",
+      "variantPropMap": {
+        "Color": [
+          "Amber",
+          "Rust",
+          "Olive",
+          "Grass",
+          "Sky",
+          "Ocean",
+          "Cobalt",
+          "Violet",
+          "Plum"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "217:58591",
+      "name": "Stripes / Button",
+      "variantPropMap": {
+        "Badge": [
+          "Off",
+          "On"
+        ],
+        "Hovered": [
+          "Off",
+          "On"
+        ],
+        "State": [
+          "Default",
+          "Selected",
+          "Inactive"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "269:25319",
+      "name": "Vertical Stripe",
+      "variantPropMap": {
+        "Side": [
+          "Left",
+          "Right"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "605:50202",
+      "name": "Header",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Label",
+          "Tabs",
+          "Label + Separator"
+        ]
+      }
+    },
+    {
+      "id": "217:51356",
+      "name": "Tool window",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "605:45150",
+      "name": "Tool window / Project",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "605:63976",
+      "name": "Tool window / Terminal",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7070:140132",
+      "name": "Main Window",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark",
+          "Light with Light Header"
+        ]
+      }
+    },
+    {
+      "id": "7070:146218",
+      "name": "Dialog / Header",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7070:146234",
+      "name": "Dialog / Footer",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7070:146271",
+      "name": "Dialog",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7072:91227",
+      "name": "Dialog / Group",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "8006:79771",
+      "name": "_State",
+      "variantPropMap": {
+        "State": [
+          "Expanded",
+          "Collapsed"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7278:46382",
+      "name": "_Table / Header",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7278:46388",
+      "name": "_Table / Cell",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7278:47114",
+      "name": "Table",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "8259:115125",
+      "name": "_Table / Toolbar",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7040:84852",
+      "name": "Popup / Context Menu",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6444:74430",
+      "name": "Popup / Run Options",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6445:76524",
+      "name": "Popup / Projects",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6451:81293",
+      "name": "Popup / Branches",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6451:84177",
+      "name": "Popup / Run Widget / Expanded",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6451:85666",
+      "name": "Popup / Run Widget / Collapsed",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6451:86604",
+      "name": "Popup / Run Widget / More Actions",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6451:88828",
+      "name": "Popup / Run Widget / Stop",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6444:75279",
+      "name": "Popup / Generate",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6441:73645",
+      "name": "Popup / Run",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6441:72876",
+      "name": "Popup / VCS Operations",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6515:83461",
+      "name": "Popup / Run Anything",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6444:75980",
+      "name": "Popup / Breakpoint",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6515:85341",
+      "name": "Popup / Completion",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6515:90136",
+      "name": "Popup / Quick Fixes",
+      "variantPropMap": {
+        "Property 1": [
+          "Default",
+          "Variant2"
+        ]
+      }
+    },
+    {
+      "id": "6551:83679",
+      "name": "Popup / Problems",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6515:89894",
+      "name": "Popup / Documentation",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6515:83331",
+      "name": "Popup / Structure",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6515:81937",
+      "name": "Popup / Search Everywhere",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6515:81194",
+      "name": "Popup / Recent Files",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6451:83424",
+      "name": "Popup / Tool Windows / More",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6515:93124",
+      "name": "Popup / Find in Files",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "6515:80621",
+      "name": "Popup / Show Usages",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "7059:86470",
+      "name": "Progress Bar",
+      "variantPropMap": {
+        "Progress": [
+          "Regular",
+          "Indeterminate"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Single Line",
+          "Multiline"
+        ]
+      }
+    },
+    {
+      "id": "9811:67134",
+      "name": "_Indeterminate",
+      "variantPropMap": {
+        "Animation": [
+          "1",
+          "2"
+        ],
+        "Theme": [
+          "Light"
+        ]
+      }
+    },
+    {
+      "id": "9838:67943",
+      "name": "_Progress",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Regular",
+          "Indeterminate"
+        ]
+      }
+    },
+    {
+      "id": "6701:85332",
+      "name": "Run Widget / Configurations",
+      "variantPropMap": {
+        "Hover": [
+          "Off",
+          "On"
+        ],
+        "Running": [
+          "Off",
+          "On"
+        ],
+        "Theme": [
+          "Dark",
+          "Light with Light Header"
+        ]
+      }
+    },
+    {
+      "id": "6701:85384",
+      "name": "Run Widget / Run Button",
+      "variantPropMap": {
+        "Hover": [
+          "Off",
+          "On"
+        ],
+        "Rerun": [
+          "Off",
+          "On"
+        ],
+        "Theme": [
+          "Dark",
+          "Light with Light Header"
+        ]
+      }
+    },
+    {
+      "id": "6701:85766",
+      "name": "Run Widget / Simple Button",
+      "variantPropMap": {
+        "Hover": [
+          "Off",
+          "On"
+        ],
+        "Theme": [
+          "Dark",
+          "Light with Light Header"
+        ]
+      }
+    },
+    {
+      "id": "6701:85626",
+      "name": "Run Widget / Debug Button",
+      "variantPropMap": {
+        "Hover": [
+          "Off",
+          "On"
+        ],
+        "Restart": [
+          "Off",
+          "On"
+        ],
+        "Theme": [
+          "Dark",
+          "Light with Light Header"
+        ]
+      }
+    },
+    {
+      "id": "6701:85528",
+      "name": "Run Widget / Stop Button",
+      "variantPropMap": {
+        "Hover": [
+          "Off",
+          "On"
+        ],
+        "Multiple": [
+          "On",
+          "Off"
+        ],
+        "Theme": [
+          "Dark",
+          "Light with Light Header"
+        ]
+      }
+    },
+    {
+      "id": "6702:85839",
+      "name": "Run Widget",
+      "variantPropMap": {
+        "State": [
+          "Default",
+          "Running",
+          "Debugging"
+        ],
+        "Theme": [
+          "Dark",
+          "Light with Light Header"
+        ]
+      }
+    },
+    {
+      "id": "7072:91657",
+      "name": "Dialog / Settings",
+      "variantPropMap": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    {
+      "id": "11490:43848",
+      "name": "Dialog / Welcome Screen",
+      "variantPropMap": {
+        "Theme": [
+          "Dark",
+          "Light"
+        ]
+      }
+    }
+  ],
+  "instruction": "Use component ids from this result only with query_nodes(). For apply_design instance refs, first call query_nodes and use the returned real component guid."
+}

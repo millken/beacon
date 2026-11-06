@@ -1,0 +1,171 @@
+{
+  "id": "5168:84071",
+  "name": "Theme = Light, State=Off",
+  "type": "COMPONENT",
+  "width": 53,
+  "height": 20,
+  "x": 153,
+  "y": 50,
+  "visible": true,
+  "fills": [
+    {
+      "type": "SOLID",
+      "blendMode": "NORMAL",
+      "opacity": 1,
+      "visible": false,
+      "color": {
+        "r": 1,
+        "g": 1,
+        "b": 1
+      }
+    }
+  ],
+  "strokes": [],
+  "strokeWeight": 1,
+  "strokeAlign": "INSIDE",
+  "cornerRadius": 0,
+  "topLeftRadius": 0,
+  "topRightRadius": 0,
+  "bottomLeftRadius": 0,
+  "bottomRightRadius": 0,
+  "opacity": 1,
+  "effects": [],
+  "layoutMode": "NONE",
+  "primaryAxisSizingMode": "AUTO",
+  "counterAxisSizingMode": "AUTO",
+  "primaryAxisAlignItems": "MIN",
+  "counterAxisAlignItems": "MIN",
+  "itemSpacing": 0,
+  "paddingTop": 0,
+  "paddingRight": 0,
+  "paddingBottom": 0,
+  "paddingLeft": 0,
+  "clipsContent": false,
+  "fillStyleId": "",
+  "strokeStyleId": "",
+  "effectStyleId": "",
+  "children": [
+    {
+      "id": "5168:84072",
+      "name": "Background",
+      "type": "RECTANGLE",
+      "width": 53,
+      "height": 20,
+      "x": 0,
+      "y": 0,
+      "visible": true,
+      "fills": [
+        {
+          "type": "SOLID",
+          "blendMode": "NORMAL",
+          "opacity": 1,
+          "visible": true,
+          "color": {
+            "r": 0.788235294117647,
+            "g": 0.8,
+            "b": 0.8392156862745098
+          }
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 0,
+      "strokeAlign": "CENTER",
+      "cornerRadius": 3,
+      "topLeftRadius": 3,
+      "topRightRadius": 3,
+      "bottomLeftRadius": 3,
+      "bottomRightRadius": 3,
+      "opacity": 1,
+      "effects": [],
+      "fillStyleId": "724:45843",
+      "strokeStyleId": "",
+      "effectStyleId": ""
+    },
+    {
+      "id": "5168:84073",
+      "name": "Fill",
+      "type": "RECTANGLE",
+      "width": 34,
+      "height": 18,
+      "x": 18,
+      "y": 1,
+      "visible": true,
+      "fills": [
+        {
+          "type": "SOLID",
+          "blendMode": "NORMAL",
+          "opacity": 1,
+          "visible": true,
+          "color": {
+            "r": 0.9211999631395527,
+            "g": 0.9255384856579351,
+            "b": 0.9399999880323223
+          }
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 0,
+      "strokeAlign": "CENTER",
+      "cornerRadius": 0,
+      "topLeftRadius": 0,
+      "topRightRadius": 2,
+      "bottomLeftRadius": 0,
+      "bottomRightRadius": 2,
+      "opacity": 1,
+      "effects": [],
+      "fillStyleId": "724:45845",
+      "strokeStyleId": "",
+      "effectStyleId": ""
+    },
+    {
+      "id": "5168:84074",
+      "name": "OFF",
+      "type": "TEXT",
+      "width": 26,
+      "height": 16,
+      "x": 22,
+      "y": 2,
+      "visible": true,
+      "fills": [
+        {
+          "type": "SOLID",
+          "blendMode": "NORMAL",
+          "opacity": 1,
+          "visible": true,
+          "color": {
+            "r": 0.4235294117647059,
+            "g": 0.4392156862745098,
+            "b": 0.49411764705882355
+          }
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 0,
+      "strokeAlign": "CENTER",
+      "opacity": 1,
+      "effects": [],
+      "characters": "OFF",
+      "fontName": {
+        "family": "Inter",
+        "style": "Medium",
+        "hash": "279fa3c60d682531d549d0ec9ed91f1b83402d40"
+      },
+      "fontSize": 13,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 16
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": 0
+      },
+      "textAlignHorizontal": "LEFT",
+      "textAlignVertical": "TOP",
+      "textAutoResize": "WIDTH_AND_HEIGHT",
+      "fillStyleId": "724:45840",
+      "strokeStyleId": "",
+      "textStyleId": "25:2990",
+      "effectStyleId": ""
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "renderer": "Chromium / Playwright",
+  "deviceScaleFactor": 1,
+  "pixelThreshold": 0.1,
+  "includeAA": true,
+  "results": [
+    {
+      "state": "button-secondary",
+      "source": "146:52058",
+      "totalPixels": 2880,
+      "generatedDomPixels": 21,
+      "sourceAbsoluteGlyphPixels": 21,
+      "untouchedSourceSvgPixels": 36,
+      "minimumPixels": 21,
+      "note": null,
+      "minimumPercent": 0.729
+    },
+    {
+      "state": "input",
+      "source": "7399:46819",
+      "totalPixels": 8960,
+      "generatedDomPixels": 17,
+      "sourceAbsoluteGlyphPixels": 17,
+      "untouchedSourceSvgPixels": 31,
+      "minimumPixels": 17,
+      "note": null,
+      "minimumPercent": 0.19
+    },
+    {
+      "state": "input-focused",
+      "source": "7399:46991",
+      "totalPixels": 9040,
+      "generatedDomPixels": 17,
+      "sourceAbsoluteGlyphPixels": null,
+      "untouchedSourceSvgPixels": 17,
+      "minimumPixels": 17,
+      "note": "The focused ring's different root clip/compositing context means its independent root SVG is the honest comparison; a separate hybrid result is intentionally not published.",
+      "minimumPercent": 0.188
+    }
+  ]
+}

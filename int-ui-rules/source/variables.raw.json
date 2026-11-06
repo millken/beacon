@@ -1,0 +1,11 @@
+{
+  "variableSets": {
+    "Int UI Kit": {
+      "modes": [
+        "Mode 1"
+      ]
+    }
+  },
+  "variables": {},
+  "instruction": "You MUST use these variables with $ prefix instead of hardcoding. Use write_variables for variable set and variable create/update/rename/delete."
+}

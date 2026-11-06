@@ -1,0 +1,317 @@
+[
+  {
+    "guid": "6222:73687",
+    "type": "frame",
+    "name": "Getting started",
+    "top": 0,
+    "left": 0,
+    "width": 0,
+    "height": 0,
+    "childNode": [
+      {
+        "guid": "6222:74502",
+        "type": "text",
+        "name": "Int UI Kit",
+        "fillPaints": "#000000",
+        "top": -624,
+        "left": -5592,
+        "width": 415,
+        "height": 121
+      },
+      {
+        "guid": "8151:76094",
+        "type": "section",
+        "name": "How to use Figma library",
+        "fillPaints": "#F1F1F1",
+        "top": -253,
+        "left": -3822,
+        "width": 1075,
+        "height": 3632,
+        "childNode": [
+          {
+            "guid": "8151:76095",
+            "type": "text",
+            "name": "1. Get a copy of the library file from Figma Community",
+            "fillPaints": "#000000",
+            "top": 208,
+            "left": 130,
+            "width": 521,
+            "height": 24
+          },
+          {
+            "guid": "8151:76096",
+            "type": "text",
+            "name": "Get the library",
+            "fillPaints": "#000000",
+            "top": 100,
+            "left": 130,
+            "width": 280,
+            "height": 48
+          },
+          {
+            "guid": "8151:76097",
+            "type": "text",
+            "name": "Use components",
+            "fillPaints": "#000000",
+            "top": 1773,
+            "left": 130,
+            "width": 331,
+            "height": 48
+          },
+          {
+            "guid": "8151:76098",
+            "type": "text",
+            "name": "2. Publish the copied file as your local library",
+            "fillPaints": "#000000",
+            "top": 747,
+            "left": 130,
+            "width": 435,
+            "height": 24
+          },
+          {
+            "guid": "8272:114480",
+            "type": "text",
+            "name": "3. Enable the library in a new or existing Figma file",
+            "fillPaints": "#000000",
+            "top": 1197,
+            "left": 130,
+            "width": 487,
+            "height": 24
+          },
+          {
+            "guid": "8151:76102",
+            "type": "text",
+            "name": "Drag components from the Assets tab in the left panel to the file's working area. Or copy from the library file and paste to your file.",
+            "fillPaints": "#000000",
+            "top": 1911,
+            "left": 519,
+            "width": 378,
+            "height": 73
+          },
+          {
+            "guid": "8151:76103",
+            "type": "text",
+            "name": "To change a component’s state, select its instance in your file and use properties in the right panel. For what properties a component has, see component pages in this file. The example here is for the Tree node.",
+            "fillPaints": "#000000",
+            "top": 2358,
+            "left": 519,
+            "width": 416,
+            "height": 94
+          },
+          {
+            "guid": "8151:76104",
+            "type": "text",
+            "name": "If you need to edit a complex component like a popup, detach its instance from the library first.",
+            "fillPaints": "#000000",
+            "top": 2797,
+            "left": 519,
+            "width": 395,
+            "height": 42
+          },
+          {
+            "guid": "8151:76221",
+            "type": "group",
+            "name": "Libraries",
+            "top": 1253,
+            "left": 130,
+            "width": 461,
+            "height": 320,
+            "childNode": [
+              "..."
+            ]
+          },
+          {
+            "guid": "8151:76112",
+            "type": "group",
+            "name": "Figma lib",
+            "top": 264,
+            "left": 130,
+            "width": 739,
+            "height": 393,
+            "childNode": [
+              "..."
+            ]
+          },
+          {
+            "guid": "8270:115264",
+            "type": "group",
+            "name": "Publish",
+            "top": 803,
+            "left": 130,
+            "width": 462,
+            "height": 304,
+            "childNode": [
+              "..."
+            ]
+          },
+          {
+            "guid": "8151:76127",
+            "type": "group",
+            "name": "Assets",
+            "top": 1901,
+            "left": 130,
+            "width": 329,
+            "height": 374,
+            "childNode": [
+              "..."
+            ]
+          },
+          {
+            "guid": "8151:76146",
+            "type": "rectangle",
+            "name": "image 10",
+            "fillPaints": [
+              {
+                "imageThumbnail": {
+                  "hash": "70eb42bc2a9c2fc46890c4dd4bfb14f97bc56ae5",
+                  "name": "image"
+                },
+                "type": "image"
+              }
+            ],
+            "top": 2355,
+            "left": 218,
+            "width": 241,
+            "height": 332
+          },
+          {
+            "guid": "8151:76150",
+            "type": "text",
+            "name": "To open this dialog, use:",
+            "fillPaints": "#000000",
+            "top": 1263,
+            "left": 651,
+            "width": 173,
+            "height": 21
+          },
+          {
+            "guid": "8151:76151",
+            "type": "group",
+            "name": "Light",
+            "top": 1297,
+            "left": 651,
+            "width": 76,
+            "height": 20,
+            "childNode": [
+              "..."
+            ]
+          },
+          {
+            "guid": "8151:76155",
+            "type": "text",
+            "name": "on macOS",
+            "fillPaints": "#000000",
+            "top": 1296,
+            "left": 733,
+            "width": 73,
+            "height": 21
+          },
+          {
+            "guid": "8151:76156",
+            "type": "group",
+            "name": "Light",
+            "top": 1330,
+            "left": 652,
+            "width": 57,
+            "height": 20,
+            "childNode": [
+              "..."
+            ]
+          },
+          {
+            "guid": "8151:76160",
+            "type": "text",
+            "name": "on Windows",
+            "fillPaints": "#000000",
+            "top": 1329,
+            "left": 715,
+            "width": 87,
+            "height": 21
+          },
+          {
+            "guid": "8151:76234",
+            "type": "group",
+            "name": "Detach",
+            "top": 2777,
+            "left": 115,
+            "width": 344,
+            "height": 334,
+            "childNode": [
+              "..."
+            ]
+          },
+          {
+            "guid": "8270:115275",
+            "type": "group",
+            "name": "Links",
+            "top": 3389,
+            "left": 130,
+            "width": 235,
+            "height": 103,
+            "childNode": [
+              "..."
+            ]
+          },
+          {
+            "guid": "8270:115274",
+            "type": "text",
+            "name": "Links",
+            "fillPaints": "#000000",
+            "top": 3311,
+            "left": 130,
+            "width": 105,
+            "height": 48
+          }
+        ]
+      },
+      {
+        "guid": "8063:76782",
+        "type": "section",
+        "name": "Design basics",
+        "fillPaints": "#FFFFFF",
+        "top": -253,
+        "left": -5588,
+        "width": 1316,
+        "height": 320,
+        "childNode": [
+          {
+            "guid": "8063:76783",
+            "type": "group",
+            "name": "Tiles",
+            "top": 20,
+            "left": 20,
+            "width": 1280,
+            "height": 280,
+            "childNode": [
+              "..."
+            ]
+          }
+        ]
+      },
+      {
+        "guid": "8028:90897",
+        "type": "section",
+        "name": "Components",
+        "fillPaints": "#FFFFFF",
+        "top": 267,
+        "left": -5592,
+        "width": 1320,
+        "height": 2280,
+        "childNode": [
+          {
+            "guid": "8075:78787",
+            "type": "group",
+            "name": "Tiles",
+            "top": 20,
+            "left": 20,
+            "width": 1280,
+            "height": 2240,
+            "childNode": [
+              "..."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

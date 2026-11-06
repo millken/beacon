@@ -1,0 +1,3440 @@
+{
+  "styles": {
+    "$style/Light/Icon/Hover OLD": {
+      "type": "color",
+      "fillPaints": "#EDEDF0"
+    },
+    "$style/Dark/Grey/Light 5": {
+      "type": "color",
+      "fillPaints": "#62646A"
+    },
+    "$style/Light/Grey/Grey 6": {
+      "type": "color",
+      "desc": "Secondary text\nIcons on light bg",
+      "fillPaints": "#6C707E"
+    },
+    "$style/Light/Shadow/Editor Tooltip": {
+      "type": "effect",
+      "effects": [
+        {
+          "color": "#1B1F262E",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 12,
+          "spread": 0,
+          "type": "drop_shadow"
+        }
+      ]
+    },
+    "$style/UI/Default": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 500,
+      "fontSize": 13,
+      "lineHeight": "16px",
+      "letterSpacing": "0px"
+    },
+    "$style/Light/Controls/Chb border": {
+      "type": "color",
+      "fillPaints": "#13FA6F"
+    },
+    "$style/Dark/Gray/Gray 5": {
+      "type": "color",
+      "fillPaints": "#4E5157"
+    },
+    "$style/Light/Blue/Dark 10": {
+      "type": "color",
+      "fillPaints": "#031230"
+    },
+    "$style/Light/Grey/Dark 11": {
+      "type": "color",
+      "fillPaints": "#24252B"
+    },
+    "$style/Light/Grey/Primary": {
+      "type": "color",
+      "fillPaints": "#FFFFFF"
+    },
+    "$style/Dark/Grey/Grey 2": {
+      "type": "color",
+      "desc": "Tool windows bg\nDialogs bg",
+      "fillPaints": "#2B2D30"
+    },
+    "$style/Light (Current)/Yellow/Yellow 7": {
+      "type": "color",
+      "fillPaints": "#FACE70"
+    },
+    "$style/Grey/Dark 1": {
+      "type": "color",
+      "fillPaints": "#F8F8FA"
+    },
+    "$style/Editor/Light/String": {
+      "type": "color",
+      "fillPaints": "#067D17"
+    },
+    "$style/Light/Green/Green 6": {
+      "type": "color",
+      "desc": "Filled icons & modifiers",
+      "fillPaints": "#55A76A"
+    },
+    "$style/Light/Grey/Grey 1 (Primary)": {
+      "type": "color",
+      "desc": "Primary text",
+      "fillPaints": "#000000"
+    },
+    "$style/Dark/Yellow/Yellow 2": {
+      "type": "color",
+      "fillPaints": "#5E4D33"
+    },
+    "$style/Light (Current)/Purple/Purple 7": {
+      "type": "color",
+      "fillPaints": "#A978E6"
+    },
+    "$style/UI Kit Markup/Bg horizontal Gray1": {
+      "type": "color",
+      "fillPaints": [
+        {
+          "type": "gradient_linear",
+          "blendMode": "normal",
+          "opacity": 1,
+          "visible": true,
+          "colors": [
+            {
+              "color": "#FFFFFF",
+              "position": 0
+            },
+            {
+              "color": "#FFFFFF",
+              "position": 0.4999949038028717
+            },
+            {
+              "color": "#1E1F22",
+              "position": 0.500127375125885
+            },
+            {
+              "color": "#1E1F22",
+              "position": 1
+            }
+          ]
+        }
+      ]
+    },
+    "$style/Dark/Blue/Blue 11": {
+      "type": "color",
+      "fillPaints": "#99BBFF"
+    },
+    "$style/Light (Current)/Orange/Orange 10": {
+      "type": "color",
+      "fillPaints": "#FCE9D9"
+    },
+    "$style/UI/Medium": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 500,
+      "fontSize": 12,
+      "lineHeight": "16px",
+      "letterSpacing": "0px"
+    },
+    "$style/Light/Blue/Blue 4 (Primary)": {
+      "type": "color",
+      "desc": "Light, Blue, General, Stroke, Outline, Icons, Button: Default",
+      "fillPaints": "#3574F0"
+    },
+    "$style/Light (Current)/Teal/Teal 1": {
+      "type": "color",
+      "fillPaints": "#204145"
+    },
+    "$style/Shadow/Editor Tooltip/Warning": {
+      "type": "effect",
+      "effects": [
+        {
+          "color": "#A6906440",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 16,
+          "spread": 0,
+          "type": "drop_shadow"
+        },
+        {
+          "color": "#8C6A26",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 1,
+          "spread": 0,
+          "type": "drop_shadow"
+        }
+      ]
+    },
+    "$style/Light/Purple/Purple 4 (Primary)": {
+      "type": "color",
+      "desc": "Light, Purple, General, Stroke, Solid, Outline, Icons",
+      "fillPaints": "#834DF0"
+    },
+    "$style/Light/Blue/Blue 7": {
+      "type": "color",
+      "fillPaints": "#709CF5"
+    },
+    "$style/Dark/Yellow/Yellow 5": {
+      "type": "color",
+      "fillPaints": "#BA9752"
+    },
+    "$style/Light/Red/Red 7": {
+      "type": "color",
+      "fillPaints": "#ED99A1"
+    },
+    "$style/Transparent colors/Transparent icon for run button": {
+      "type": "color",
+      "fillPaints": "#FFFFFF"
+    },
+    "$style/Editor/Light/Comment": {
+      "type": "color",
+      "fillPaints": "#8C8C8C"
+    },
+    "$style/Icon / Pressed": {
+      "type": "color",
+      "fillPaints": "#DADCE3"
+    },
+    "$style/Light (Current)/Red/Red 8": {
+      "type": "color",
+      "fillPaints": "#F29191"
+    },
+    "$style/Dark/Grey (Old)/Light 1": {
+      "type": "color",
+      "fillPaints": "#2B2D30"
+    },
+    "$style/Blue / Dark 11": {
+      "type": "color",
+      "fillPaints": "#020918"
+    },
+    "$style/Light (Current)/Teal/Teal 4": {
+      "type": "color",
+      "fillPaints": "#227985"
+    },
+    "$style/Dark/Purple/Purple 7": {
+      "type": "color",
+      "desc": "Dark, Purple, General, Stroke, Solid, Outline, Icons",
+      "fillPaints": "#A571E6"
+    },
+    "$style/Dark/Gray/Gray 12": {
+      "type": "color",
+      "desc": "Primary text",
+      "fillPaints": "#DFE1E6"
+    },
+    "$style/H2": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 700,
+      "fontSize": 40,
+      "lineHeight": 1,
+      "letterSpacing": "0px"
+    },
+    "$style/Main/Accent": {
+      "type": "color",
+      "fillPaints": "#2D6FF6"
+    },
+    "$style/Description text": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 400,
+      "fontSize": 15,
+      "lineHeight": "21px",
+      "letterSpacing": "0px"
+    },
+    "$style/Light/Orange/Orange 2": {
+      "type": "color",
+      "desc": "Text",
+      "fillPaints": "#B85516"
+    },
+    "$style/IJ/text/default": {
+      "type": "color",
+      "fillPaints": "#000000"
+    },
+    "$style/Light/Secondary icon": {
+      "type": "color",
+      "fillPaints": "#FF0000"
+    },
+    "$style/Dark/Grey/Grey 2#2": {
+      "type": "color",
+      "desc": "Secondary background, tool windows, dialogs, tooltips",
+      "fillPaints": "#2B2D30"
+    },
+    "$style/Light/Control border disabled": {
+      "type": "color",
+      "fillPaints": "#E8E8E8"
+    },
+    "$style/Light/Gray/Gray 6 (Stroke)": {
+      "type": "color",
+      "desc": "Light, Grey, General, Stroke, Solid, Outline, Icons\nText, Status bar",
+      "fillPaints": "#6C707E"
+    },
+    "$style/Dark/Red/Red 3": {
+      "type": "color",
+      "fillPaints": "#7A4343"
+    },
+    "$style/New UI Markup/H1": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 600,
+      "fontSize": 40,
+      "lineHeight": 1,
+      "letterSpacing": "0px"
+    },
+    "$style/Dark/Grey (Old)/Light 4": {
+      "type": "color",
+      "fillPaints": "#56585D"
+    },
+    "$style/Light/Grey/Dark 1": {
+      "type": "color",
+      "fillPaints": "#F8F8FA"
+    },
+    "$style/Light (Current)/Red/Red 1": {
+      "type": "color",
+      "fillPaints": "#633333"
+    },
+    "$style/ARCHIVE/Controls white v0/Input fill": {
+      "type": "color",
+      "fillPaints": "#F2F3F5"
+    },
+    "$style/Editor/Default": {
+      "type": "text",
+      "fontFamily": "JetBrains Mono",
+      "fontWeight": 500,
+      "fontSize": 13,
+      "lineHeight": "22px",
+      "letterSpacing": "0px"
+    },
+    "$style/Dark/Blue (Old)/Light 2": {
+      "type": "color",
+      "fillPaints": "#5088FA"
+    },
+    "$style/Dark/Green/Green 8": {
+      "type": "color",
+      "fillPaints": "#89CC8E"
+    },
+    "$style/Light (Current)/Orange/Orange 4": {
+      "type": "color",
+      "fillPaints": "#C47233"
+    },
+    "$style/Dark/Green/Green 4": {
+      "type": "color",
+      "fillPaints": "#4E8052"
+    },
+    "$style/Editor/Light/TODO": {
+      "type": "color",
+      "fillPaints": "#008DDE"
+    },
+    "$style/Light/Green/Green 7": {
+      "type": "color",
+      "desc": "Diff added: Stripe mark",
+      "fillPaints": "#89C398"
+    },
+    "$style/Light/Gray/Gray 4": {
+      "type": "color",
+      "fillPaints": "#494B57"
+    },
+    "$style/Editor/Dark/String": {
+      "type": "color",
+      "fillPaints": "#6CAB74"
+    },
+    "$style/Dark/Yellow/Yellow 7 (Primary)": {
+      "type": "color",
+      "desc": "Dark, Yellow, Solid, Outline, Icons, Warning",
+      "fillPaints": "#F2C55C"
+    },
+    "$style/Light/Shortcut/Light": {
+      "type": "color",
+      "fillPaints": "#E1E2E5"
+    },
+    "$style/Dark/Grey (Old)/Light 9": {
+      "type": "color",
+      "fillPaints": "#C9CBCF"
+    },
+    "$style/Light/Yellow/Yellow 1": {
+      "type": "color",
+      "desc": "Text",
+      "fillPaints": "#A46704"
+    },
+    "$style/Light/Grey/Dark 3": {
+      "type": "color",
+      "fillPaints": "#DADCE3"
+    },
+    "$style/Dark/Blue/Blue 4": {
+      "type": "color",
+      "desc": "Button: Pressed",
+      "fillPaints": "#375FAD"
+    },
+    "$style/UI/H2": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 600,
+      "fontSize": 16,
+      "lineHeight": "20px",
+      "letterSpacing": "0px"
+    },
+    "$style/Light/Red/Red 11": {
+      "type": "color",
+      "desc": "General icons: Fill\nBanner fill",
+      "fillPaints": "#FFF7F7"
+    },
+    "$style/Untitled/Cover/Glass": {
+      "type": "color",
+      "fillPaints": [
+        {
+          "type": "gradient_linear",
+          "blendMode": "normal",
+          "opacity": 0.95,
+          "visible": true,
+          "colors": [
+            {
+              "color": "#2B2D30",
+              "position": 0
+            },
+            {
+              "color": "#2B2D30",
+              "position": 1
+            }
+          ]
+        }
+      ]
+    },
+    "$style/Light/Grey/Grey 2": {
+      "type": "color",
+      "desc": "Dark background / bg",
+      "fillPaints": "#27282E"
+    },
+    "$style/Light (Current)/Orange/Orange 7": {
+      "type": "color",
+      "fillPaints": "#F5A058"
+    },
+    "$style/Dark/Grey/Grey 4 (Fill)": {
+      "type": "color",
+      "fillPaints": "#43454A"
+    },
+    "$style/Light/Blue/Blue 14": {
+      "type": "color",
+      "desc": "Diff changed: Fill\nLight, Blue, General, Fill, Icons",
+      "fillPaints": "#EDF3FF"
+    },
+    "$style/Light/Blue/Dark 7": {
+      "type": "color",
+      "fillPaints": "#082D77"
+    },
+    "$style/Light (Current)/Purple/Purple 8": {
+      "type": "color",
+      "fillPaints": "#BD97EC"
+    },
+    "$style/UI/Medium#2": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 500,
+      "fontSize": 12,
+      "lineHeight": "16px",
+      "letterSpacing": "0px"
+    },
+    "$style/Light/Shadow/Popup": {
+      "type": "effect",
+      "effects": [
+        {
+          "color": "#91919178",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 20,
+          "spread": 0,
+          "type": "drop_shadow"
+        }
+      ]
+    },
+    "$style/UI / Default semibold": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 600,
+      "fontSize": 13,
+      "lineHeight": "16px",
+      "letterSpacing": "0px"
+    },
+    "$style/Light/Blue/Blue 13": {
+      "type": "color",
+      "desc": "Tree selection",
+      "fillPaints": "#D4E2FF"
+    },
+    "$style/Dark/Orange/Orange (Primary)": {
+      "type": "color",
+      "fillPaints": "#E08855"
+    },
+    "$style/Dark/Yellow/Yellow 7 (Primary)#2": {
+      "type": "color",
+      "desc": "Warning icons",
+      "fillPaints": "#F2C55C"
+    },
+    "$style/Dark/Purple/Purple 4": {
+      "type": "color",
+      "fillPaints": "#6C469C"
+    },
+    "$style/Dark/Teal/Teal 1": {
+      "type": "color",
+      "desc": "Dark, Teal, General, Fill, Icons",
+      "fillPaints": "#1D3838"
+    },
+    "$style/Light/Gray/Gray 12 (Fill)": {
+      "type": "color",
+      "desc": "Light, Grey, General, Fill, Icons\nLines, Separators",
+      "fillPaints": "#EBECF0"
+    },
+    "$style/Light (Current)/Green/Green 10": {
+      "type": "color",
+      "fillPaints": "#DFF2E0"
+    },
+    "$style/UI/H2#2": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 600,
+      "fontSize": 16,
+      "lineHeight": "20px",
+      "letterSpacing": "0px"
+    },
+    "$style/Light/Red/Red 9": {
+      "type": "color",
+      "desc": "Banner stroke\nDiff conflict: Stroke\nDiff conflict: Word",
+      "fillPaints": "#FAD4D8"
+    },
+    "$style/Light/Tooltip/Warning/Border": {
+      "type": "color",
+      "fillPaints": "#BDA96D"
+    },
+    "$style/Dark/Red/Red 9": {
+      "type": "color",
+      "fillPaints": "#F2B1AA"
+    },
+    "$style/Dark / Icon / Selected": {
+      "type": "color",
+      "fillPaints": "#FE0707"
+    },
+    "$style/Light/Text/White": {
+      "type": "color",
+      "fillPaints": "#FF0000"
+    },
+    "$style/Light (Current)/Purple/Purple 6 (Primary, Stroke)": {
+      "type": "color",
+      "desc": "Icons",
+      "fillPaints": "#955AE0"
+    },
+    "$style/Dark/Teal/Teal 2": {
+      "type": "color",
+      "fillPaints": "#1E4D4A"
+    },
+    "$style/Editor/Light/Keyword": {
+      "type": "color",
+      "fillPaints": "#0033B3"
+    },
+    "$style/Dark/Yellow/Yellow 2#2": {
+      "type": "color",
+      "fillPaints": "#5E4D33"
+    },
+    "$style/Dark/Blue/Blue 5": {
+      "type": "color",
+      "desc": "Button: Hovered",
+      "fillPaints": "#366ACF"
+    },
+    "$style/Light/Yellow/Yellow 6": {
+      "type": "color",
+      "desc": "Banner: Stroke",
+      "fillPaints": "#FED277"
+    },
+    "$style/Dark/Grey (Old)/Light 13": {
+      "type": "color",
+      "fillPaints": "#FFFFFF"
+    },
+    "$style/Editor/Light/Constant": {
+      "type": "color",
+      "fillPaints": "#871094"
+    },
+    "$style/UI/Medium#3": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 500,
+      "fontSize": 12,
+      "lineHeight": "16px",
+      "letterSpacing": "0px"
+    },
+    "$style/Dark/Gray/Gray 7": {
+      "type": "color",
+      "desc": "Secondary text & icons\nDisabled text in components",
+      "fillPaints": "#6F737A"
+    },
+    "$style/Light/Blue/Blue 9": {
+      "type": "color",
+      "fillPaints": "#709CF5"
+    },
+    "$style/Dark/Grey/Grey 12": {
+      "type": "color",
+      "desc": "Primary text",
+      "fillPaints": "#DFE1E6"
+    },
+    "$style/Exploration / Light / Header": {
+      "type": "color",
+      "fillPaints": "#27282F"
+    },
+    "$style/Light/Red/Red 12": {
+      "type": "color",
+      "fillPaints": "#FFF5F5"
+    },
+    "$style/Light/Grey/Grey 14 (White)": {
+      "type": "color",
+      "desc": "Main background / bg light",
+      "fillPaints": "#FFFFFF"
+    },
+    "$style/Light/Blue/Blue 6 (Primary)": {
+      "type": "color",
+      "desc": "Light, Blue, General, Stroke, Outline, Icons",
+      "fillPaints": "#3574F0"
+    },
+    "$style/Light/Green/Green 6 (Primary)": {
+      "type": "color",
+      "desc": "Success icons",
+      "fillPaints": "#5FB865"
+    },
+    "$style/Light/Gray/Gray 14 (White)": {
+      "type": "color",
+      "desc": "Main background / bg light",
+      "fillPaints": "#FFFFFF"
+    },
+    "$style/Light/Green/Light 1": {
+      "type": "color",
+      "fillPaints": "#EFF7F1"
+    },
+    "$style/Light (Current)/Teal/Teal 5": {
+      "type": "color",
+      "fillPaints": "#1E8D9C"
+    },
+    "$style/Dark/Blue/Blue 8 (Stroke)": {
+      "type": "color",
+      "desc": "Icons",
+      "fillPaints": "#548AF7"
+    },
+    "$style/Light/Blue/Blue 1": {
+      "type": "color",
+      "fillPaints": "#243D70"
+    },
+    "$style/Light/Orange/Orange 8": {
+      "type": "color",
+      "fillPaints": "#FCE6D6"
+    },
+    "$style/Light/Blue/Blue 5": {
+      "type": "color",
+      "fillPaints": "#3369D6"
+    },
+    "$style/Light (Current)/Orange/Orange 5": {
+      "type": "color",
+      "fillPaints": "#DB8035"
+    },
+    "$style/Light/Red/Red 10": {
+      "type": "color",
+      "fillPaints": "#FCD4D4"
+    },
+    "$style/Dark/Green/Green 3": {
+      "type": "color",
+      "fillPaints": "#436946"
+    },
+    "$style/Light/Red/Red 5": {
+      "type": "color",
+      "desc": "Light, Red, Solid, Icons\nModifiers",
+      "fillPaints": "#E55765"
+    },
+    "$style/Grey / Dark 7": {
+      "type": "color",
+      "fillPaints": "#9A9FAB"
+    },
+    "$style/Light (Current)/Yellow/Yellow 9": {
+      "type": "color",
+      "fillPaints": "#FFE7AB"
+    },
+    "$style/Light/Inverted/Text/Secondary": {
+      "type": "color",
+      "fillPaints": "#9A9FAB"
+    },
+    "$style/black/100": {
+      "type": "color",
+      "fillPaints": "#000000"
+    },
+    "$style/Light/Gray/Gray 9": {
+      "type": "color",
+      "fillPaints": "#C9CCD6"
+    },
+    "$style/Dark/Teal/Teal 9": {
+      "type": "color",
+      "fillPaints": "#7DCEC5"
+    },
+    "$style/Dark/Purple/Purple 9": {
+      "type": "color",
+      "fillPaints": "#C4A0F3"
+    },
+    "$style/Shadow / Dialog": {
+      "type": "effect",
+      "effects": [
+        {
+          "color": "#0000004D",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 40,
+          "showShadowBehindNode": true,
+          "spread": 0,
+          "type": "drop_shadow"
+        }
+      ]
+    },
+    "$style/Light/Orange/Orange 3": {
+      "type": "color",
+      "fillPaints": "#CE6117"
+    },
+    "$style/Light/Orange/Orange 9": {
+      "type": "color",
+      "desc": "Light, Orange, General, Fill, Icons",
+      "fillPaints": "#FFF4EB"
+    },
+    "$style/New UI Markup/H2": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 600,
+      "fontSize": 20,
+      "lineHeight": 1,
+      "letterSpacing": "0px"
+    },
+    "$style/Light/Grey/Dark 2": {
+      "type": "color",
+      "fillPaints": "#E9EAF0"
+    },
+    "$style/Dark/Gray/Gray 11": {
+      "type": "color",
+      "desc": "Dark, Grey, General, Stroke, Solid, Outline, Icons",
+      "fillPaints": "#CED0D6"
+    },
+    "$style/Dark/Teal/Teal 5": {
+      "type": "color",
+      "fillPaints": "#238E82"
+    },
+    "$style/header component bg": {
+      "type": "color",
+      "fillPaints": [
+        {
+          "type": "gradient_linear",
+          "blendMode": "normal",
+          "opacity": 1,
+          "visible": true,
+          "colors": [
+            {
+              "color": "#27282E",
+              "position": 0
+            },
+            {
+              "color": "#27282E",
+              "position": 0.4999949038028717
+            },
+            {
+              "color": "#1F2023",
+              "position": 0.5000948905944824
+            },
+            {
+              "color": "#1F2023",
+              "position": 1
+            }
+          ]
+        }
+      ]
+    },
+    "$style/Light/Purple/Purple 2": {
+      "type": "color",
+      "fillPaints": "#643CB8"
+    },
+    "$style/Dark/Green/Green 6 (Primary)": {
+      "type": "color",
+      "desc": "Success icons",
+      "fillPaints": "#5FAD65"
+    },
+    "$style/Dark/Purple/Purple 1": {
+      "type": "color",
+      "desc": "Dark, Purple, General, Fill, Icons",
+      "fillPaints": "#2F2936"
+    },
+    "$style/Light/Green/Green 4 (Primary)": {
+      "type": "color",
+      "desc": "Button: Default\nGeneral icons: Stroke",
+      "fillPaints": "#208A3C"
+    },
+    "$style/Dark/Grey/Grey 9": {
+      "type": "color",
+      "desc": "Current line number",
+      "fillPaints": "#9DA0A8"
+    },
+    "$style/Shadow/Notification": {
+      "type": "effect",
+      "effects": [
+        {
+          "color": "#293D6633",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 16,
+          "spread": 0,
+          "type": "drop_shadow"
+        },
+        {
+          "color": "#00000080",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 1,
+          "spread": 0,
+          "type": "drop_shadow"
+        }
+      ]
+    },
+    "$style/Light/Inverted/Main/Background": {
+      "type": "color",
+      "fillPaints": "#24252B"
+    },
+    "$style/Light/Blue/Blue 4": {
+      "type": "color",
+      "desc": "Link",
+      "fillPaints": "#315FBD"
+    },
+    "$style/Dark/Blue (Old)/Dark 4": {
+      "type": "color",
+      "fillPaints": "#31569D"
+    },
+    "$style/UI/Small semibold": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 600,
+      "fontSize": 11,
+      "lineHeight": "16px",
+      "letterSpacing": "0px"
+    },
+    "$style/Dark/Green/Green 11": {
+      "type": "color",
+      "fillPaints": "#D4FAD7"
+    },
+    "$style/Dark/Orange/Orange 7": {
+      "type": "color",
+      "fillPaints": "#E5986C"
+    },
+    "$style/Light/Red/Red 4 (Primary)": {
+      "type": "color",
+      "desc": "Button: Default\nGeneral icons: Stroke",
+      "fillPaints": "#DB3B4B"
+    },
+    "$style/Light (Current)/Yellow/Yellow 4": {
+      "type": "color",
+      "fillPaints": "#C99540"
+    },
+    "$style/Light/Blue/Blue 4#2": {
+      "type": "color",
+      "desc": "Link & Text\nButton: Pressed",
+      "fillPaints": "#315FBD"
+    },
+    "$style/Editor/Light/Warning": {
+      "type": "color",
+      "fillPaints": "#FCF4D4"
+    },
+    "$style/Dark/Blue (Old)/Primary": {
+      "type": "color",
+      "fillPaints": "#3574F0"
+    },
+    "$style/UI/Default underlined": {
+      "type": "text",
+      "desc": "Link",
+      "fontFamily": "Inter",
+      "fontWeight": 500,
+      "fontSize": 13,
+      "lineHeight": "16px",
+      "letterSpacing": "0px"
+    },
+    "$style/Light (Current)/Teal/Teal 8": {
+      "type": "color",
+      "fillPaints": "#66C7D4"
+    },
+    "$style/Dark/Gray/Gray 2": {
+      "type": "color",
+      "desc": "Secondary background, tool windows, dialogs, tooltips",
+      "fillPaints": "#2B2D30"
+    },
+    "$style/Dark/Purple/Purple 7#2": {
+      "type": "color",
+      "desc": "Dark, Purple, General, Stroke, Solid, Outline, Icons",
+      "fillPaints": "#A571E6"
+    },
+    "$style/Dark/Purple/Purple 3": {
+      "type": "color",
+      "fillPaints": "#583D7A"
+    },
+    "$style/Light/Teal/Teal 4 (Primary)": {
+      "type": "color",
+      "desc": "General icons: Stroke\nSolid icons\nOutline icons",
+      "fillPaints": "#039BA1"
+    },
+    "$style/Dark/Gray/Gray 10": {
+      "type": "color",
+      "fillPaints": "#B4B8BF"
+    },
+    "$style/Light/Grey/Dark 10": {
+      "type": "color",
+      "fillPaints": "#515463"
+    },
+    "$style/Dark/Grey (Old)/Light 6": {
+      "type": "color",
+      "fillPaints": "#6E7177"
+    },
+    "$style/Dark/Grey/Grey 3": {
+      "type": "color",
+      "desc": "Lines & separators\nTree hover",
+      "fillPaints": "#393B40"
+    },
+    "$style/Light/Grey/Grey 13": {
+      "type": "color",
+      "desc": "Main background / bg",
+      "fillPaints": "#FFFFFF"
+    },
+    "$style/Dark/Purple/Purple 2": {
+      "type": "color",
+      "fillPaints": "#433358"
+    },
+    "$style/Light/Red/Red 8": {
+      "type": "color",
+      "desc": "Diff conflict: Stripe mark",
+      "fillPaints": "#F2B6BB"
+    },
+    "$style/Light/Blue/Dark 9": {
+      "type": "color",
+      "fillPaints": "#051B48"
+    },
+    "$style/Light/Grey/Grey 6 (Stroke)": {
+      "type": "color",
+      "desc": "Light, Grey, General, Stroke, Solid, Outline, Icons\nText, Status bar",
+      "fillPaints": "#6C707E"
+    },
+    "$style/Dark/Grey (Old)/Light 12": {
+      "type": "color",
+      "fillPaints": "#F0F0F2"
+    },
+    "$style/Light/Gray/Gray 2": {
+      "type": "color",
+      "desc": "Dark background / bg",
+      "fillPaints": "#27282E"
+    },
+    "$style/Editor/Dark/Error": {
+      "type": "color",
+      "fillPaints": "#FF5263"
+    },
+    "$style/Light/Grey/Primary#2": {
+      "type": "color",
+      "fillPaints": "#FFFFFF"
+    },
+    "$style/Light/Blue/Blue 13#2": {
+      "type": "color",
+      "desc": "Editor: Current line\nBanner fill",
+      "fillPaints": "#F5F8FE"
+    },
+    "$style/New UI Markup/body": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 400,
+      "fontSize": 16,
+      "lineHeight": "24px",
+      "letterSpacing": "0px"
+    },
+    "$style/Editor/Light/Default text": {
+      "type": "color",
+      "fillPaints": "#080808"
+    },
+    "$style/Light/Gray/Gray 10": {
+      "type": "color",
+      "desc": "Diff removed: Word\nDiff removed: Stroke",
+      "fillPaints": "#D3D5DB"
+    },
+    "$style/UI/Medium#4": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 500,
+      "fontSize": 12,
+      "lineHeight": "16px",
+      "letterSpacing": "0px"
+    },
+    "$style/Light/Blue/Blue 15": {
+      "type": "color",
+      "fillPaints": "#F5F8FE"
+    },
+    "$style/Controls/Popup border": {
+      "type": "color",
+      "fillPaints": "#D5D6D9"
+    },
+    "$style/Light/Tooltip/Warning/Icon": {
+      "type": "color",
+      "fillPaints": "#FFC75B"
+    },
+    "$style/Light (Current)/Orange/Orange 11 (Fill)": {
+      "type": "color",
+      "fillPaints": "#FFF4EB"
+    },
+    "$style/Dark/Red/Red 2": {
+      "type": "color",
+      "fillPaints": "#5E3838"
+    },
+    "$style/Dark/Blue/Blue 1": {
+      "type": "color",
+      "desc": "Editor selection",
+      "fillPaints": "#25324D"
+    },
+    "$style/Blue / Primary": {
+      "type": "color",
+      "fillPaints": "#3574F0"
+    },
+    "$style/Light/Purple/Purple 5": {
+      "type": "color",
+      "fillPaints": "#A177F4"
+    },
+    "$style/Dark/Gray/Gray 14 (White)": {
+      "type": "color",
+      "fillPaints": "#FFFFFF"
+    },
+    "$style/Dark/Orange/Orange 2": {
+      "type": "color",
+      "fillPaints": "#614438"
+    },
+    "$style/Light (Current)/Red/Red 4": {
+      "type": "color",
+      "fillPaints": "#B04A4A"
+    },
+    "$style/Light/Shadow/Main window": {
+      "type": "effect",
+      "effects": [
+        {
+          "color": "#00000040",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 30,
+          "showShadowBehindNode": true,
+          "spread": 0,
+          "type": "drop_shadow"
+        }
+      ]
+    },
+    "$style/Dark/Green/Green 1": {
+      "type": "color",
+      "desc": "Icon fill",
+      "fillPaints": "#253627"
+    },
+    "$style/Dark/Teal/Teal 11": {
+      "type": "color",
+      "fillPaints": "#B9EBE6"
+    },
+    "$style/Dark/Red/Red 11": {
+      "type": "color",
+      "fillPaints": "#FAE3DE"
+    },
+    "$style/Main/Hover": {
+      "type": "color",
+      "fillPaints": "#000000"
+    },
+    "$style/Light/Shadow/Dialog": {
+      "type": "effect",
+      "effects": [
+        {
+          "color": "#0000004D",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 40,
+          "showShadowBehindNode": true,
+          "spread": 0,
+          "type": "drop_shadow"
+        }
+      ]
+    },
+    "$style/Dark/Green/Green 6 (Primary)#2": {
+      "type": "color",
+      "desc": "Success icons",
+      "fillPaints": "#5FAD65"
+    },
+    "$style/Light/Red/Red 5#2": {
+      "type": "color",
+      "desc": "Light, Red, Solid, Icons\nModifiers",
+      "fillPaints": "#E55765"
+    },
+    "$style/Light/Orange/Orange 1": {
+      "type": "color",
+      "fillPaints": "#A14916"
+    },
+    "$style/Light/Tooltip/Info/Background": {
+      "type": "color",
+      "fillPaints": "#F0F5FF"
+    },
+    "$style/Light/Blue/Blue 12": {
+      "type": "color",
+      "desc": "Diff changed: Fill\nLight, Blue, General, Fill, Icons",
+      "fillPaints": "#EDF3FF"
+    },
+    "$style/Light/Blue/Blue 11": {
+      "type": "color",
+      "desc": "Selection active",
+      "fillPaints": "#D4E2FF"
+    },
+    "$style/Light/Red/Red 11#2": {
+      "type": "color",
+      "desc": "Light, Red, General, Fill, Icons\nBanner",
+      "fillPaints": "#FFF7F7"
+    },
+    "$style/Light/Blue/Blue 14#2": {
+      "type": "color",
+      "desc": "Editor line",
+      "fillPaints": "#E7EFFD"
+    },
+    "$style/Dark/Red/Red 10": {
+      "type": "color",
+      "fillPaints": "#F7CCC6"
+    },
+    "$style/Light/Red/Red 10#2": {
+      "type": "color",
+      "desc": "Diff conflict: Fill",
+      "fillPaints": "#FFF2F3"
+    },
+    "$style/UI/Medium semibold": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 600,
+      "fontSize": 12,
+      "lineHeight": "16px",
+      "letterSpacing": "0px"
+    },
+    "$style/Light/Green/Green 10": {
+      "type": "color",
+      "desc": "Test root in project tree",
+      "fillPaints": "#E6F7E9"
+    },
+    "$style/Light (Current)/Red/Red 9": {
+      "type": "color",
+      "fillPaints": "#FAB4B4"
+    },
+    "$style/Light/Shortcut/Dark": {
+      "type": "color",
+      "fillPaints": "#4B5569"
+    },
+    "$style/Dark/Grey/Grey 1 (Primary)": {
+      "type": "color",
+      "desc": "Main background (editor)",
+      "fillPaints": "#1E1F22"
+    },
+    "$style/Light/Gray/Gray 13": {
+      "type": "color",
+      "desc": "Secondary background color, tool window,\nDiff removed: Fill",
+      "fillPaints": "#F7F8FA"
+    },
+    "$style/Light/Orange/Orange 7": {
+      "type": "color",
+      "fillPaints": "#F9D2B6"
+    },
+    "$style/Light (Current)/Run widget/Stop": {
+      "type": "color",
+      "fillPaints": "#E36864"
+    },
+    "$style/Light (Current)/Red/Red 2": {
+      "type": "color",
+      "fillPaints": "#7D3C3C"
+    },
+    "$style/Light/Blue/Blue 8": {
+      "type": "color",
+      "fillPaints": "#588CF3"
+    },
+    "$style/Editor/Light/Metadata": {
+      "type": "color",
+      "fillPaints": "#9E880D"
+    },
+    "$style/Dark/Orange/Orange 6 (Primary)": {
+      "type": "color",
+      "fillPaints": "#E08855"
+    },
+    "$style/ARCHIVE/Controls grey bg/Button border": {
+      "type": "color",
+      "fillPaints": "#D5D6DB"
+    },
+    "$style/Dark/Grey/Light 1": {
+      "type": "color",
+      "fillPaints": "#2B2D30"
+    },
+    "$style/IJ/text/default#2": {
+      "type": "color",
+      "fillPaints": "#000000"
+    },
+    "$style/Dark/Green/Green 5 (Stroke)": {
+      "type": "color",
+      "fillPaints": "#57965C"
+    },
+    "$style/Dark/Teal/Teal 6 (Primary)": {
+      "type": "color",
+      "desc": "Dark, Teal, General, Stroke, Solid, Outline, Icons",
+      "fillPaints": "#24A394"
+    },
+    "$style/Dark/Grey/Light 7": {
+      "type": "color",
+      "fillPaints": "#7A7D85"
+    },
+    "$style/Dark/Grey (Old)/Light 2": {
+      "type": "color",
+      "fillPaints": "#37393D"
+    },
+    "$style/Dark/Gray/Gray 13": {
+      "type": "color",
+      "fillPaints": "#F0F1F2"
+    },
+    "$style/Light/Tooltip/Warning/Background": {
+      "type": "color",
+      "fillPaints": "#FFF7E0"
+    },
+    "$style/Light/Grey/Grey 8": {
+      "type": "color",
+      "desc": "Disabled text & placeholders\nIcons & shortcuts on dark bg\nDiff removed: Stripe mark",
+      "fillPaints": "#A8ADBD"
+    },
+    "$style/Light/Yellow/Yellow 1#2": {
+      "type": "color",
+      "fillPaints": "#7D5020"
+    },
+    "$style/Light (Current)/Green/Green 4": {
+      "type": "color",
+      "desc": "Success messages / hints",
+      "fillPaints": "#508453"
+    },
+    "$style/Light/Grey/Grey 11": {
+      "type": "color",
+      "desc": "Lines & separators",
+      "fillPaints": "#EBECF0"
+    },
+    "$style/IJ / notification shadow": {
+      "type": "effect",
+      "effects": [
+        {
+          "color": "#00000033",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 8,
+          "showShadowBehindNode": true,
+          "spread": 0,
+          "type": "drop_shadow"
+        }
+      ]
+    },
+    "$style/Dark/Grey/Light 13": {
+      "type": "color",
+      "fillPaints": "#FFFFFF"
+    },
+    "$style/Dark/Grey/Grey 11": {
+      "type": "color",
+      "desc": "Dark, Grey, General, Stroke, Solid, Outline, Icons",
+      "fillPaints": "#CED0D6"
+    },
+    "$style/Light/Blue/Blue 2": {
+      "type": "color",
+      "desc": "Link\nButton: Pressed",
+      "fillPaints": "#315FBD"
+    },
+    "$style/Light (Current)/Purple/Purple 11": {
+      "type": "color",
+      "fillPaints": "#F8F2FF"
+    },
+    "$style/Light/Gray/Gray 60": {
+      "type": "color",
+      "desc": "Secondary text & icons\n Placeholders & disabled text\nLine numbers",
+      "fillPaints": "#A0A0A0"
+    },
+    "$style/Light/Tooltip/Dark/Background": {
+      "type": "color",
+      "fillPaints": "#242933"
+    },
+    "$style/Light/Grey/Grey 6#2": {
+      "type": "color",
+      "desc": "Secondary text\nIcons on light bg",
+      "fillPaints": "#6C707E"
+    },
+    "$style/Tooltip shadow": {
+      "type": "effect",
+      "effects": [
+        {
+          "color": "#00000033",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 40,
+          "spread": 0,
+          "type": "drop_shadow"
+        }
+      ]
+    },
+    "$style/Light/Blue/Blue 12#2": {
+      "type": "color",
+      "fillPaints": "#B7CEFA"
+    },
+    "$style/Dark/Green/Green 10": {
+      "type": "color",
+      "fillPaints": "#B9EBBD"
+    },
+    "$style/Dark/Yellow/Yellow 11": {
+      "type": "color",
+      "fillPaints": "#FFF6BD"
+    },
+    "$style/Dark/Blue/Blue 7": {
+      "type": "color",
+      "fillPaints": "#467FF2"
+    },
+    "$style/Light (Current)/Yellow/Yellow 11 (Fill)": {
+      "type": "color",
+      "fillPaints": "#FFF8E3"
+    },
+    "$style/Light/Blue/Blue 9#2": {
+      "type": "color",
+      "fillPaints": "#A0BDF8"
+    },
+    "$style/Dark/Blue/Blue 8": {
+      "type": "color",
+      "desc": "Dark, Blue, General, Stroke, Solid, Outline, Icons",
+      "fillPaints": "#548AF7"
+    },
+    "$style/Light/Blue/Blue 10": {
+      "type": "color",
+      "desc": "Banner stroke\nDiff changed: Stroke\nDiff changed: Word",
+      "fillPaints": "#C2D6FC"
+    },
+    "$style/Light/Blue/Blue 2#2": {
+      "type": "color",
+      "fillPaints": "#29498A"
+    },
+    "$style/Editor/Light/Link": {
+      "type": "color",
+      "fillPaints": "#006DCC"
+    },
+    "$style/Light (Current)/Yellow/Yellow 10": {
+      "type": "color",
+      "fillPaints": "#FFF0C7"
+    },
+    "$style/Dark/Teal/Teal 8": {
+      "type": "color",
+      "fillPaints": "#60C0B5"
+    },
+    "$style/Light/Green/Green 2": {
+      "type": "color",
+      "desc": "Button: Pressed\nText",
+      "fillPaints": "#1F7536"
+    },
+    "$style/Light/Icon/Selected": {
+      "type": "color",
+      "fillPaints": "#00FF47"
+    },
+    "$style/Grey / Dark 12": {
+      "type": "color",
+      "fillPaints": "#000000"
+    },
+    "$style/Light (Current)/Purple/Purple 4": {
+      "type": "color",
+      "fillPaints": "#7549AC"
+    },
+    "$style/Dark/Grey/Grey 2#3": {
+      "type": "color",
+      "desc": "Tool windows bg\nDialogs bg\nTooltip bg",
+      "fillPaints": "#2B2D30"
+    },
+    "$style/Light/Purple/Purple 6": {
+      "type": "color",
+      "fillPaints": "#BFA1F8"
+    },
+    "$style/Light/Blue/Blue 12#3": {
+      "type": "color",
+      "desc": "Banner stroke\nDiff changed: Stroke\nDiff changed: Word",
+      "fillPaints": "#C2D6FC"
+    },
+    "$style/IJ / text / default": {
+      "type": "color",
+      "fillPaints": "#000000"
+    },
+    "$style/IJ / panel / border": {
+      "type": "color",
+      "fillPaints": "#D1D1D1"
+    },
+    "$style/Light/Grey/Grey 12 (Fill)": {
+      "type": "color",
+      "desc": "Light, Grey, General, Fill, Icons\nLines, Separators",
+      "fillPaints": "#EBECF0"
+    },
+    "$style/Light/Grey/Dark 10#2": {
+      "type": "color",
+      "fillPaints": "#515463"
+    },
+    "$style/Main/Accent inactive": {
+      "type": "color",
+      "fillPaints": "#FF0C0C"
+    },
+    "$style/Dark/Grey/Light 9": {
+      "type": "color",
+      "fillPaints": "#C9CBCF"
+    },
+    "$style/Light/Inverted/Icon/Window circle buttons": {
+      "type": "color",
+      "fillPaints": "#747474"
+    },
+    "$style/ARCHIVE/Controls white v0/Button border": {
+      "type": "color",
+      "fillPaints": "#D0D2D9"
+    },
+    "$style/Light/Gray/Gray 11": {
+      "type": "color",
+      "desc": "Inactive selection",
+      "fillPaints": "#DFE1E5"
+    },
+    "$style/Light/Icon/Tool window": {
+      "type": "color",
+      "fillPaints": "#737580"
+    },
+    "$style/Light/Blue/Blue 13#3": {
+      "type": "color",
+      "desc": "Tree selection",
+      "fillPaints": "#CFDEFC"
+    },
+    "$style/Light/Teal/Teal 2": {
+      "type": "color",
+      "fillPaints": "#077A7F"
+    },
+    "$style/Light/Blue/Blue 14#3": {
+      "type": "color",
+      "desc": "Diff changed: Fill\nLight, Blue, General, Fill, Icons",
+      "fillPaints": "#EDF3FF"
+    },
+    "$style/Dark/Green/Green 5": {
+      "type": "color",
+      "desc": "Dark, Green, General, Stroke, Solid, Outline, Icons",
+      "fillPaints": "#57965C"
+    },
+    "$style/Light/Red/Red 5#3": {
+      "type": "color",
+      "desc": "Filled icons & modifiers",
+      "fillPaints": "#E55765"
+    },
+    "$style/Dark/Teal/Teal 10": {
+      "type": "color",
+      "fillPaints": "#9BDDD6"
+    },
+    "$style/Dark / Editor / Purple": {
+      "type": "color",
+      "fillPaints": "#B160F0"
+    },
+    "$style/Light/Disabled icon": {
+      "type": "color",
+      "fillPaints": "#A6A6A6"
+    },
+    "$style/Dark/Grey/Light 4": {
+      "type": "color",
+      "fillPaints": "#56585D"
+    },
+    "$style/Dark/Green/Green 1#2": {
+      "type": "color",
+      "desc": "Dark, Green, General, Fill, Icons",
+      "fillPaints": "#253627"
+    },
+    "$style/Light/Gray/Gray 7": {
+      "type": "color",
+      "desc": "Secondary text",
+      "fillPaints": "#818594"
+    },
+    "$style/Dark/Blue (Old)/Dark 6": {
+      "type": "color",
+      "fillPaints": "#2F4773"
+    },
+    "$style/Light/Controls/Button border": {
+      "type": "color",
+      "fillPaints": "#05FF00"
+    },
+    "$style/Light/Icon/Tool window#2": {
+      "type": "color",
+      "fillPaints": "#00FF38"
+    },
+    "$style/Light/Yellow/Yellow 8": {
+      "type": "color",
+      "fillPaints": "#FFF1D1"
+    },
+    "$style/Light/Blue/Blue 6 (Primary)#2": {
+      "type": "color",
+      "desc": "Light, Blue, General, Stroke, Outline, Icons",
+      "fillPaints": "#3574F0"
+    },
+    "$style/Light (Current)/Purple/Purple 10 (Fill)": {
+      "type": "color",
+      "fillPaints": "#EEE0FF"
+    },
+    "$style/Light/Green/Green 11": {
+      "type": "color",
+      "fillPaints": "#F2FCF3"
+    },
+    "$style/Shadow / Editor Tooltip / Success": {
+      "type": "effect",
+      "effects": [
+        {
+          "color": "#D8E6D980",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 12,
+          "spread": 0,
+          "type": "drop_shadow"
+        }
+      ]
+    },
+    "$style/Light (Current)/Green/Green 6 (Primary, Stroke)": {
+      "type": "color",
+      "desc": "Success icons",
+      "fillPaints": "#5FB865"
+    },
+    "$style/Dark/Grey/Grey 13": {
+      "type": "color",
+      "fillPaints": "#F0F1F2"
+    },
+    "$style/Dark/Grey/Grey 9#2": {
+      "type": "color",
+      "fillPaints": "#9DA0A8"
+    },
+    "$style/Noun / Grey": {
+      "type": "color",
+      "fillPaints": "#9AA7B0"
+    },
+    "$style/Light/Tooltip/Error/Border": {
+      "type": "color",
+      "fillPaints": "#CCA19B"
+    },
+    "$style/Light/Icon/Hover": {
+      "type": "color",
+      "fillPaints": "#000000"
+    },
+    "$style/Light/Grey/Grey 10": {
+      "type": "color",
+      "desc": "Inactive selection",
+      "fillPaints": "#DFE1E5"
+    },
+    "$style/Untitled/Cover/Glass 2": {
+      "type": "color",
+      "fillPaints": [
+        {
+          "type": "gradient_linear",
+          "blendMode": "normal",
+          "opacity": 0.5,
+          "visible": true,
+          "colors": [
+            {
+              "color": "#2B2D30",
+              "position": 0
+            },
+            {
+              "color": "#2B2D30",
+              "position": 1
+            }
+          ]
+        }
+      ]
+    },
+    "$style/IJ macOS / Small": {
+      "type": "text",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": 500,
+      "fontSize": 11,
+      "lineHeight": "14px",
+      "letterSpacing": "0px"
+    },
+    "$style/Dark/Grey (Old)/Light 11": {
+      "type": "color",
+      "fillPaints": "#E3E4E6"
+    },
+    "$style/Dark/Blue/Blue 11#2": {
+      "type": "color",
+      "fillPaints": "#99BBFF"
+    },
+    "$style/Light/Grey/Grey 6 (Stroke)#2": {
+      "type": "color",
+      "desc": "Secondary text\nIcons on light bg",
+      "fillPaints": "#6C707E"
+    },
+    "$style/Dark/Red/Red 1": {
+      "type": "color",
+      "fillPaints": "#422B2B"
+    },
+    "$style/Editor / Default": {
+      "type": "text",
+      "fontFamily": "JetBrains Mono",
+      "fontWeight": 500,
+      "fontSize": 13,
+      "lineHeight": "20px",
+      "letterSpacing": "0px"
+    },
+    "$style/Dark/Blue/Blue 9": {
+      "type": "color",
+      "desc": "Link",
+      "fillPaints": "#6B9BFA"
+    },
+    "$style/Light (Current)/Red/Red 7": {
+      "type": "color",
+      "fillPaints": "#EB7171"
+    },
+    "$style/Light/Text/Link": {
+      "type": "color",
+      "fillPaints": "#1656D9"
+    },
+    "$style/Light/Teal/Teal 3": {
+      "type": "color",
+      "fillPaints": "#058B90"
+    },
+    "$style/Dark/Blue (Old)/Light 1": {
+      "type": "color",
+      "fillPaints": "#407CF5"
+    },
+    "$style/IJ / toolbar / button hovered": {
+      "type": "color",
+      "fillPaints": "#DFDFDF"
+    },
+    "$style/Light (Current)/Green/Green 2": {
+      "type": "color",
+      "fillPaints": "#375239"
+    },
+    "$style/Light (Current)/Orange/Orange 3": {
+      "type": "color",
+      "fillPaints": "#AD6531"
+    },
+    "$style/Light/Green/Green 4 (Primary)#2": {
+      "type": "color",
+      "desc": "Light, Green, General, Stroke, Icons\nButton, Default",
+      "fillPaints": "#208A3C"
+    },
+    "$style/Noun / Purple 60%": {
+      "type": "color",
+      "fillPaints": "#B99BF8"
+    },
+    "$style/Dark/Green/Green 1#3": {
+      "type": "color",
+      "desc": "Dark, Green, General, Fill, Icons",
+      "fillPaints": "#253627"
+    },
+    "$style/Light/Red/Red 6": {
+      "type": "color",
+      "fillPaints": "#E46A76"
+    },
+    "$style/Light/Grey/Dark 7": {
+      "type": "color",
+      "fillPaints": "#9A9FAB"
+    },
+    "$style/Dark/Yellow/Yellow 1": {
+      "type": "color",
+      "desc": "Dark, Yellow, General, Fill, Icons",
+      "fillPaints": "#3D3223"
+    },
+    "$style/Light (Current)/Red/Red 6 (Primary, Stroke)": {
+      "type": "color",
+      "desc": "Error icons",
+      "fillPaints": "#E35252"
+    },
+    "$style/Light/Teal/Teal 7": {
+      "type": "color",
+      "fillPaints": "#B6E4E5"
+    },
+    "$style/Light (Current)/Red/Red 12 (Fill)": {
+      "type": "color",
+      "fillPaints": "#FFF5F5"
+    },
+    "$style/Light/Green/Green 6 (Primary, Stroke)": {
+      "type": "color",
+      "desc": "Success icons",
+      "fillPaints": "#5FB865"
+    },
+    "$style/Grey / Dark 2": {
+      "type": "color",
+      "fillPaints": "#E8EAF0"
+    },
+    "$style/Dark/Blue/Blue 6 (Primary)": {
+      "type": "color",
+      "fillPaints": "#3574F0"
+    },
+    "$style/Dark/Gray/Gray 8": {
+      "type": "color",
+      "desc": "Text on lighter backgrounds",
+      "fillPaints": "#868A91"
+    },
+    "$style/Dark/Grey/Grey 10": {
+      "type": "color",
+      "fillPaints": "#B4B8BF"
+    },
+    "$style/Light/Tooltip/Dark/Link": {
+      "type": "color",
+      "fillPaints": "#4F89FF"
+    },
+    "$style/Light/Green/Primary": {
+      "type": "color",
+      "fillPaints": "#5DB26F"
+    },
+    "$style/Light/Control hover": {
+      "type": "color",
+      "fillPaints": "#000000"
+    },
+    "$style/UI/Default semibold": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 600,
+      "fontSize": 13,
+      "lineHeight": "16px",
+      "letterSpacing": "0px"
+    },
+    "$style/IJ macOS / Default": {
+      "type": "text",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": 500,
+      "fontSize": 13,
+      "lineHeight": "16px",
+      "letterSpacing": "0px"
+    },
+    "$style/Grey / Dark 8": {
+      "type": "color",
+      "fillPaints": "#868B96"
+    },
+    "$style/Light/Icon/Pressed": {
+      "type": "color",
+      "fillPaints": "#DADCE3"
+    },
+    "$style/Light/Teal/Teal 8": {
+      "type": "color",
+      "fillPaints": "#DAF4F5"
+    },
+    "$style/UI / Default": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 500,
+      "fontSize": 13,
+      "lineHeight": "16px",
+      "letterSpacing": "0px"
+    },
+    "$style/Light/Blue/Blue 6": {
+      "type": "color",
+      "fillPaints": "#588CF3"
+    },
+    "$style/Dark/Gray/Gray 9": {
+      "type": "color",
+      "desc": "Current line number",
+      "fillPaints": "#9DA0A8"
+    },
+    "$style/Dark/Blue/Blue 5#2": {
+      "type": "color",
+      "desc": "Button: Hovered",
+      "fillPaints": "#366ACF"
+    },
+    "$style/Light/Teal/Teal 9": {
+      "type": "color",
+      "desc": "Light, Teal, General, Fill, Icons",
+      "fillPaints": "#F2FCFC"
+    },
+    "$style/Light/Grey/Grey 9": {
+      "type": "color",
+      "fillPaints": "#C9CCD6"
+    },
+    "$style/Light/Blue/Blue 6 (Primary, Stroke)": {
+      "type": "color",
+      "fillPaints": "#3574F0"
+    },
+    "$style/Light/Disabled text": {
+      "type": "color",
+      "fillPaints": "#A6A6A6"
+    },
+    "$style/Light/Grey/Grey 8#2": {
+      "type": "color",
+      "desc": "Disabled text & placeholders\nIcons & shortcuts on dark bg\nDiff deleted: Stripe mark",
+      "fillPaints": "#A8ADBD"
+    },
+    "$style/Light/Green/Green 5": {
+      "type": "color",
+      "desc": "Light, Green, Outline, Icons",
+      "fillPaints": "#369650"
+    },
+    "$style/ARCHIVE/Controls grey bg/Border disabled": {
+      "type": "color",
+      "fillPaints": "#D9D9D9"
+    },
+    "$style/Dark / text / selected": {
+      "type": "color",
+      "fillPaints": "#FEFEFE"
+    },
+    "$style/Dark/Red/Red 1#2": {
+      "type": "color",
+      "desc": "Dark, Red, General, Fill, Icons",
+      "fillPaints": "#402929"
+    },
+    "$style/Main/Background": {
+      "type": "color",
+      "fillPaints": "#F7F7F9"
+    },
+    "$style/Light/Teal/Teal 6": {
+      "type": "color",
+      "fillPaints": "#7BCCCF"
+    },
+    "$style/Dark/Main/Accent": {
+      "type": "color",
+      "fillPaints": "#F03535"
+    },
+    "$style/Light (Current)/Teal/Teal 11": {
+      "type": "color",
+      "fillPaints": "#EBFBFC"
+    },
+    "$style/Editor/Dark/Keyword": {
+      "type": "color",
+      "fillPaints": "#D69A6B"
+    },
+    "$style/Editor/Light/Doc comment": {
+      "type": "color",
+      "fillPaints": "#8C8C8C"
+    },
+    "$style/Noun / Black text": {
+      "type": "color",
+      "fillPaints": "#231F20"
+    },
+    "$style/Light/Grey/Grey 7": {
+      "type": "color",
+      "desc": "Secondary text",
+      "fillPaints": "#969AAB"
+    },
+    "$style/Dark/Teal/Teal 4": {
+      "type": "color",
+      "fillPaints": "#21786F"
+    },
+    "$style/Light (Current)/Yellow/Yellow 3": {
+      "type": "color",
+      "fillPaints": "#B07D35"
+    },
+    "$style/Light (Current)/Purple/Purple 5": {
+      "type": "color",
+      "fillPaints": "#8552C6"
+    },
+    "$style/Light/Purple/Purple 1": {
+      "type": "color",
+      "fillPaints": "#55339C"
+    },
+    "$style/Light/Yellow/Yellow 11": {
+      "type": "color",
+      "fillPaints": "#FFF8E3"
+    },
+    "$style/Light/Blue/Blue 3": {
+      "type": "color",
+      "desc": "Button: Hovered",
+      "fillPaints": "#3369D6"
+    },
+    "$style/Exploration / Light / Background": {
+      "type": "color",
+      "fillPaints": "#F5F5F7"
+    },
+    "$style/Light/Yellow/Yellow 8#2": {
+      "type": "color",
+      "fillPaints": "#FCDB8D"
+    },
+    "$style/Light/Grey/Dark 5": {
+      "type": "color",
+      "fillPaints": "#B6B9C2"
+    },
+    "$style/Light (Current)/Purple/Purple 3": {
+      "type": "color",
+      "fillPaints": "#654192"
+    },
+    "$style/Light/Blue/Blue 3#2": {
+      "type": "color",
+      "desc": "Button: Hovered",
+      "fillPaints": "#3369D6"
+    },
+    "$style/Light/Blue/Blue 5#2": {
+      "type": "color",
+      "desc": "Light, Blue, Solid, Icons",
+      "fillPaints": "#4682FA"
+    },
+    "$style/Dark/Grey/Grey 8": {
+      "type": "color",
+      "fillPaints": "#868A91"
+    },
+    "$style/H3": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 700,
+      "fontSize": 20,
+      "lineHeight": 1,
+      "letterSpacing": "0px"
+    },
+    "$style/Cover/Glass Fill": {
+      "type": "color",
+      "fillPaints": "#FFFFFF"
+    },
+    "$style/Dark/Gray/Gray 1 (Primary)": {
+      "type": "color",
+      "desc": "Main background (editor)",
+      "fillPaints": "#1E1F22"
+    },
+    "$style/Light/Teal/Teal 5": {
+      "type": "color",
+      "fillPaints": "#3FB3B8"
+    },
+    "$style/Dark/Gray/Gray 4": {
+      "type": "color",
+      "desc": "Dark, Grey, General, Fill, Icons, Inactive selection",
+      "fillPaints": "#43454A"
+    },
+    "$style/Light/Blue/Blue 1#2": {
+      "type": "color",
+      "fillPaints": "#2E55A3"
+    },
+    "$style/Dark/Red/Red 2#2": {
+      "type": "color",
+      "fillPaints": "#5C3838"
+    },
+    "$style/Dark/Green/Green 9": {
+      "type": "color",
+      "fillPaints": "#A0DBA5"
+    },
+    "$style/Light/Blue/Blue 8#2": {
+      "type": "color",
+      "desc": "Diff changed: Stripe mark",
+      "fillPaints": "#88ADF7"
+    },
+    "$style/Light/Tooltip/Error/Background": {
+      "type": "color",
+      "fillPaints": "#FFF1F0"
+    },
+    "$style/Light/Red/Red 3": {
+      "type": "color",
+      "desc": "Button: Hovered\nValidation (error) text",
+      "fillPaints": "#CC3645"
+    },
+    "$style/Light (Current)/Red/Red 12 (Fill)#2": {
+      "type": "color",
+      "fillPaints": "#FFF5F5"
+    },
+    "$style/Editor/Dark/Comment": {
+      "type": "color",
+      "fillPaints": "#6E798A"
+    },
+    "$style/Light/Orange/Orange 9#2": {
+      "type": "color",
+      "desc": "Light, Orange, General, Fill, Icons",
+      "fillPaints": "#FFF4EB"
+    },
+    "$style/Light/Green/Green 10#2": {
+      "type": "color",
+      "desc": "General icons: Fill\nBanner: Fill\nDiff added: Fill",
+      "fillPaints": "#F2FCF3"
+    },
+    "$style/Light/Gray/Gray 1 (Primary)": {
+      "type": "color",
+      "desc": "Primary text",
+      "fillPaints": "#000000"
+    },
+    "$style/Action / Grey": {
+      "type": "color",
+      "fillPaints": "#6E6E6E"
+    },
+    "$style/Light/Control border error": {
+      "type": "color",
+      "fillPaints": "#CE3845"
+    },
+    "$style/Dark/Blue/Blue 8#2": {
+      "type": "color",
+      "desc": "Dark, Blue, General, Stroke, Solid, Outline, Icons",
+      "fillPaints": "#548AF7"
+    },
+    "$style/Dark/Red/Red 7": {
+      "type": "color",
+      "fillPaints": "#E37774"
+    },
+    "$style/UI/H1": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 600,
+      "fontSize": 20,
+      "lineHeight": "24px",
+      "letterSpacing": "0px"
+    },
+    "$style/Light/Tooltip/Info/Border": {
+      "type": "color",
+      "fillPaints": "#DDE2ED"
+    },
+    "$style/Light/Grey/Grey 14 (White)#2": {
+      "type": "color",
+      "desc": "Main background / bg",
+      "fillPaints": "#FFFFFF"
+    },
+    "$style/Light/Grey/Grey 11#2": {
+      "type": "color",
+      "desc": "Inactive selection",
+      "fillPaints": "#DFE1E5"
+    },
+    "$style/Light (Current)/Red/Red 5": {
+      "type": "color",
+      "desc": "Error messages / hints",
+      "fillPaints": "#C94F4F"
+    },
+    "$style/Light/Grey/Grey 8#3": {
+      "type": "color",
+      "desc": "Disabled text & placeholders\nIcons & shortcuts on dark bg",
+      "fillPaints": "#A8ADBD"
+    },
+    "$style/Editor/Dark/Warning": {
+      "type": "color",
+      "fillPaints": "#FFCD59"
+    },
+    "$style/UI/Default#2": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 500,
+      "fontSize": 13,
+      "lineHeight": "16px",
+      "letterSpacing": "0px"
+    },
+    "$style/Light/Tooltip/Success/Border": {
+      "type": "color",
+      "fillPaints": "#8CA88D"
+    },
+    "$style/Light/Orange/Orange 5": {
+      "type": "color",
+      "fillPaints": "#EC8F4C"
+    },
+    "$style/Light/Orange/Orange 1#2": {
+      "type": "color",
+      "fillPaints": "#A14916"
+    },
+    "$style/Light (Current)/Green/Green 1": {
+      "type": "color",
+      "fillPaints": "#283829"
+    },
+    "$style/Shadow / Editor Tooltip / Warning": {
+      "type": "effect",
+      "effects": [
+        {
+          "color": "#E6DAC380",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 12,
+          "spread": 0,
+          "type": "drop_shadow"
+        }
+      ]
+    },
+    "$style/Light/Blue/Blue 7#2": {
+      "type": "color",
+      "fillPaints": "#709CF5"
+    },
+    "$style/Light/Red/Red 4 (Primary)#2": {
+      "type": "color",
+      "desc": "Light, Red, General, Stroke, Outline, Icons\nButton, Default",
+      "fillPaints": "#DB3B4B"
+    },
+    "$style/Dark/Orange/Orange 1": {
+      "type": "color",
+      "desc": "Dark, Orange, General, Fill, Icons",
+      "fillPaints": "#45322B"
+    },
+    "$style/Dark/Yellow/Yellow 8": {
+      "type": "color",
+      "fillPaints": "#F5D273"
+    },
+    "$style/Dark/Orange/Orange 3": {
+      "type": "color",
+      "fillPaints": "#825845"
+    },
+    "$style/Dark/Grey/Grey 8#2": {
+      "type": "color",
+      "fillPaints": "#868A91"
+    },
+    "$style/Light/Red/Red 3#2": {
+      "type": "color",
+      "desc": "Button: Hovered\nValidation (error) text",
+      "fillPaints": "#CC3645"
+    },
+    "$style/Dark/Green/Green 5#2": {
+      "type": "color",
+      "desc": "Dark, Green, General, Stroke, Solid, Outline, Icons",
+      "fillPaints": "#57965C"
+    },
+    "$style/Dark/Grey/Grey 3#2": {
+      "type": "color",
+      "desc": "Lines & separators",
+      "fillPaints": "#393B40"
+    },
+    "$style/Light/Grey/Grey 13#2": {
+      "type": "color",
+      "desc": "Secondary background color, tool window,\nDiff removed: Fill",
+      "fillPaints": "#F7F8FA"
+    },
+    "$style/Light (Current)/Green/Green 9": {
+      "type": "color",
+      "fillPaints": "#C1E5C3"
+    },
+    "$style/Dark/Orange/Orange 8": {
+      "type": "color",
+      "fillPaints": "#F0AC81"
+    },
+    "$style/Editor/Small bold": {
+      "type": "text",
+      "fontFamily": "JetBrains Mono",
+      "fontWeight": 700,
+      "fontSize": 12,
+      "lineHeight": "22px",
+      "letterSpacing": "0px"
+    },
+    "$style/Dark/Grey (Old)/Light 8": {
+      "type": "color",
+      "fillPaints": "#999CA3"
+    },
+    "$style/Light/Grey/Grey 8#4": {
+      "type": "color",
+      "desc": "Disabled text & placeholders\nIcons on dark background / bg",
+      "fillPaints": "#A8ADBD"
+    },
+    "$style/Light/Grey/Grey 13#3": {
+      "type": "color",
+      "desc": "Secondary background / bg\nDiff deleted: Fill",
+      "fillPaints": "#F7F8FA"
+    },
+    "$style/Dark/Green/Green 2": {
+      "type": "color",
+      "fillPaints": "#375239"
+    },
+    "$style/Cover/Shadow Big": {
+      "type": "effect",
+      "effects": [
+        {
+          "color": "#000000BF",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 120,
+          "spread": 0,
+          "type": "drop_shadow"
+        }
+      ]
+    },
+    "$style/Light/Tooltip/Success/Background": {
+      "type": "color",
+      "fillPaints": "#F5FEF4"
+    },
+    "$style/Light/Yellow/Yellow 3": {
+      "type": "color",
+      "fillPaints": "#DF9303"
+    },
+    "$style/Main Toolbar/Hover/Dark": {
+      "type": "color",
+      "desc": "The main toolbar needs a transparent hover because of the gradient background",
+      "fillPaints": "#FFFFFF"
+    },
+    "$style/Light/Inverted/Text/Default OLD": {
+      "type": "color",
+      "fillPaints": "#FFFFFF"
+    },
+    "$style/Dark/Orange/Orange 9": {
+      "type": "color",
+      "fillPaints": "#F5BD98"
+    },
+    "$style/Teal": {
+      "type": "color",
+      "fillPaints": [
+        {
+          "type": "gradient_linear",
+          "blendMode": "normal",
+          "opacity": 1,
+          "visible": true,
+          "colors": [
+            {
+              "color": "#24A394",
+              "position": 0
+            },
+            {
+              "color": "#279CCD",
+              "position": 1
+            }
+          ]
+        }
+      ]
+    },
+    "$style/Light (Current)/Green/Green 8": {
+      "type": "color",
+      "fillPaints": "#A1D4A4"
+    },
+    "$style/Dark/Green/Green 6 (Primary)#3": {
+      "type": "color",
+      "desc": "Success icons",
+      "fillPaints": "#5FAD65"
+    },
+    "$style/Dark/Blue/Blue 10": {
+      "type": "color",
+      "fillPaints": "#83ACFC"
+    },
+    "$style/Light/Orange/Orange 4 (Primary)": {
+      "type": "color",
+      "desc": "Light, Orange, General, Stroke, Solid, Outline, Icons",
+      "fillPaints": "#E66D17"
+    },
+    "$style/Dark/Purple/Purple 1#2": {
+      "type": "color",
+      "desc": "Dark, Purple, General, Fill, Icons",
+      "fillPaints": "#2F2936"
+    },
+    "$style/Dark/Grey/Grey 14 (White)": {
+      "type": "color",
+      "fillPaints": "#FFFFFF"
+    },
+    "$style/Dark/Purple/Purple 8": {
+      "type": "color",
+      "fillPaints": "#B589EC"
+    },
+    "$style/Light (Current)/Green/Green 3": {
+      "type": "color",
+      "fillPaints": "#456B47"
+    },
+    "$style/Dark/Red/Red 4": {
+      "type": "color",
+      "fillPaints": "#9C4E4E"
+    },
+    "$style/Light/Control hover#2": {
+      "type": "color",
+      "fillPaints": "#000000"
+    },
+    "$style/Light/Icon/Default": {
+      "type": "color",
+      "fillPaints": "#737580"
+    },
+    "$style/Light/Shadow/Notification": {
+      "type": "effect",
+      "effects": [
+        {
+          "color": "#00000029",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 12,
+          "showShadowBehindNode": true,
+          "spread": 0,
+          "type": "drop_shadow"
+        }
+      ]
+    },
+    "$style/Editor/Dark/Metadata": {
+      "type": "color",
+      "fillPaints": "#B8B167"
+    },
+    "$style/Dark/Gray/Gray 6": {
+      "type": "color",
+      "fillPaints": "#5A5D63"
+    },
+    "$style/Dark/Red/Red 8": {
+      "type": "color",
+      "fillPaints": "#EB938D"
+    },
+    "$style/Dark/Blue/Blue 5#3": {
+      "type": "color",
+      "fillPaints": "#366ACF"
+    },
+    "$style/Light/Orange/Orange 6": {
+      "type": "color",
+      "fillPaints": "#F2B181"
+    },
+    "$style/ARCHIVE/Controls grey bg/Focus error": {
+      "type": "color",
+      "fillPaints": "#E53E4D"
+    },
+    "$style/Editor/Dark/Constant": {
+      "type": "color",
+      "fillPaints": "#CF84CF"
+    },
+    "$style/Dark/Green/Green 6 (Primary)#4": {
+      "type": "color",
+      "desc": "Success icons",
+      "fillPaints": "#5FAD65"
+    },
+    "$style/Transparent colors/Hover for run button": {
+      "type": "color",
+      "fillPaints": "#FFFFFF"
+    },
+    "$style/Dark/Teal/Teal 7": {
+      "type": "color",
+      "fillPaints": "#42B1A4"
+    },
+    "$style/Light/Grey/Dark 9": {
+      "type": "color",
+      "fillPaints": "#737580"
+    },
+    "$style/Dark/Grey (Old)/Light 7": {
+      "type": "color",
+      "fillPaints": "#7A7D85"
+    },
+    "$style/Shadow / Editor Tooltip / Success#2": {
+      "type": "effect",
+      "effects": [
+        {
+          "color": "#99AD9A40",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 16,
+          "spread": 0,
+          "type": "drop_shadow"
+        },
+        {
+          "color": "#29612D",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 1,
+          "spread": 0,
+          "type": "drop_shadow"
+        }
+      ]
+    },
+    "$style/Light/Grey/Grey 7#2": {
+      "type": "color",
+      "desc": "Tertiary text",
+      "fillPaints": "#818594"
+    },
+    "$style/Exploration / Light / Accent": {
+      "type": "color",
+      "fillPaints": "#4D85FF"
+    },
+    "$style/Editor/Light/Error": {
+      "type": "color",
+      "fillPaints": "#F50000"
+    },
+    "$style/Light/Grey/Grey 12": {
+      "type": "color",
+      "desc": "Secondary background / bg",
+      "fillPaints": "#F7F8FA"
+    },
+    "$style/Main/Separator": {
+      "type": "color",
+      "fillPaints": "#E7E8EB"
+    },
+    "$style/Dark/Yellow/Yellow 1#2": {
+      "type": "color",
+      "fillPaints": "#3D3223"
+    },
+    "$style/Light/Red/Red 1": {
+      "type": "color",
+      "fillPaints": "#AD2B38"
+    },
+    "$style/Dark/Green/Green 2#2": {
+      "type": "color",
+      "fillPaints": "#375239"
+    },
+    "$style/ARCHIVE/Controls grey bg/Border disabled#2": {
+      "type": "color",
+      "fillPaints": "#D9D9D9"
+    },
+    "$style/Dark/Blue/Blue 1#2": {
+      "type": "color",
+      "desc": "Dark, Blue, General, Fill, Icons, Editor, Selection",
+      "fillPaints": "#25324D"
+    },
+    "$style/Light/Yellow/Yellow 9": {
+      "type": "color",
+      "desc": "Target root in project tree",
+      "fillPaints": "#FFF6DE"
+    },
+    "$style/Light/Grey/Grey 6#3": {
+      "type": "color",
+      "desc": "Icons on light bg",
+      "fillPaints": "#767A8A"
+    },
+    "$style/Light/Control border error#2": {
+      "type": "color",
+      "fillPaints": "#CE3845"
+    },
+    "$style/Dark/Yellow/Yellow 7 (Primary)#3": {
+      "type": "color",
+      "desc": "Dark, Yellow, Solid, Outline, Icons, Warning",
+      "fillPaints": "#F2C55C"
+    },
+    "$style/Light/Grey/Grey 7#3": {
+      "type": "color",
+      "desc": "Tertiary text",
+      "fillPaints": "#818594"
+    },
+    "$style/Light (Current)/Orange/Orange 2": {
+      "type": "color",
+      "fillPaints": "#96572D"
+    },
+    "$style/Dark/Yellow/Yellow 3": {
+      "type": "color",
+      "fillPaints": "#826A41"
+    },
+    "$style/Dark/Red/Red 1#3": {
+      "type": "color",
+      "fillPaints": "#402929"
+    },
+    "$style/Light (Current)/Yellow/Yellow 6 (Primary)": {
+      "type": "color",
+      "fillPaints": "#FCC75B"
+    },
+    "$style/Light (Current)/Red/Red 10": {
+      "type": "color",
+      "fillPaints": "#FCD4D4"
+    },
+    "$style/Light (Current)/Purple/Purple 1": {
+      "type": "color",
+      "fillPaints": "#45305E"
+    },
+    "$style/Dark/Purple/Purple 5": {
+      "type": "color",
+      "fillPaints": "#8150BE"
+    },
+    "$style/Light/Grey/Grey 6 (Stroke)#3": {
+      "type": "color",
+      "desc": "Secondary text\nIcons on light bg",
+      "fillPaints": "#6C707E"
+    },
+    "$style/ARCHIVE/Controls grey bg/Focus": {
+      "type": "color",
+      "fillPaints": "#2D6FF6"
+    },
+    "$style/Light/Green/Green 3": {
+      "type": "color",
+      "desc": "Button: Hovered",
+      "fillPaints": "#1F8039"
+    },
+    "$style/Editor/Dark/Default text": {
+      "type": "color",
+      "fillPaints": "#BDC0C9"
+    },
+    "$style/Action / Grey hovered for both themes": {
+      "type": "color",
+      "fillPaints": "#7F8B91"
+    },
+    "$style/Light/Grey/Dark 8": {
+      "type": "color",
+      "fillPaints": "#868B96"
+    },
+    "$style/Light/Red/Red 6 (Primary, Stroke)": {
+      "type": "color",
+      "desc": "Error icons",
+      "fillPaints": "#E35252"
+    },
+    "$style/Dark/Red/Red 2#3": {
+      "type": "color",
+      "fillPaints": "#5E3838"
+    },
+    "$style/Dark/Grey/Grey 8#3": {
+      "type": "color",
+      "desc": "Text on lighter backgrounds",
+      "fillPaints": "#868A91"
+    },
+    "$style/Light/Controls/Input border": {
+      "type": "color",
+      "fillPaints": "#24FF00"
+    },
+    "$style/Light/Green/Green 4 (Primary)#3": {
+      "type": "color",
+      "desc": "Light, Green, General, Stroke, Icons\nButton, Default",
+      "fillPaints": "#208A3C"
+    },
+    "$style/UI/H1#2": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 600,
+      "fontSize": 20,
+      "lineHeight": "24px",
+      "letterSpacing": "0px"
+    },
+    "$style/Cover/Shadow": {
+      "type": "effect",
+      "effects": [
+        {
+          "color": "#0000004D",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 56,
+          "spread": 0,
+          "type": "drop_shadow"
+        }
+      ]
+    },
+    "$style/Light/Grey/Dark 12": {
+      "type": "color",
+      "fillPaints": "#000000"
+    },
+    "$style/Light/Blue/Blue 10#2": {
+      "type": "color",
+      "desc": "Banner stroke\nDiff changed: Stroke\nDiff changed: Word",
+      "fillPaints": "#C2D6FC"
+    },
+    "$style/Light (Current)/Teal/Teal 2": {
+      "type": "color",
+      "fillPaints": "#235157"
+    },
+    "$style/IJ macOS / Medium": {
+      "type": "text",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": 500,
+      "fontSize": 12,
+      "lineHeight": "15px",
+      "letterSpacing": "0px"
+    },
+    "$style/Light/Blue/Dark 2": {
+      "type": "color",
+      "fillPaints": "#2A61D1"
+    },
+    "$style/Light/Blue/Blue 11#2": {
+      "type": "color",
+      "desc": "Selection active",
+      "fillPaints": "#D4E2FF"
+    },
+    "$style/Light/Inverted/Text/Default": {
+      "type": "color",
+      "fillPaints": "#FF8A00"
+    },
+    "$style/Light (Current)/Green/Green 11 (Fill)": {
+      "type": "color",
+      "fillPaints": "#F2FCF3"
+    },
+    "$style/Light/Blue/Blue 6 (Primary)#3": {
+      "type": "color",
+      "fillPaints": "#3574F0"
+    },
+    "$style/Dark/Orange/Orange 5": {
+      "type": "color",
+      "desc": "Dark, Orange, General, Stroke, Solid, Outline, Icons",
+      "fillPaints": "#C77D55"
+    },
+    "$style/Light (Current)/Red/Red 11": {
+      "type": "color",
+      "fillPaints": "#FFE8E8"
+    },
+    "$style/Light/Gray/Gray 3": {
+      "type": "color",
+      "fillPaints": "#383A42"
+    },
+    "$style/Editor/Dark/Number": {
+      "type": "color",
+      "fillPaints": "#51C0CF"
+    },
+    "$style/Light/Grey/Grey 14 (White)#3": {
+      "type": "color",
+      "desc": "Main background / bg",
+      "fillPaints": "#FFFFFF"
+    },
+    "$style/Light (Current)/Yellow/Yellow 1": {
+      "type": "color",
+      "fillPaints": "#7D5020"
+    },
+    "$style/Dark/Grey (Old)/Light 5": {
+      "type": "color",
+      "fillPaints": "#62646A"
+    },
+    "$style/Dark/Red/Red 1 (Fill)": {
+      "type": "color",
+      "fillPaints": "#402929"
+    },
+    "$style/Dark/Grey/Grey 5": {
+      "type": "color",
+      "fillPaints": "#4E5157"
+    },
+    "$style/Light (Current)/Teal/Teal 9": {
+      "type": "color",
+      "fillPaints": "#A0E2EB"
+    },
+    "$style/Light/Grey/Grey 13#4": {
+      "type": "color",
+      "desc": "Main background / bg",
+      "fillPaints": "#FFFFFF"
+    },
+    "$style/Dark/Blue/Blue 6 (Primary)#2": {
+      "type": "color",
+      "desc": "Button: Default",
+      "fillPaints": "#3574F0"
+    },
+    "$style/Light / Orange / Orange 1": {
+      "type": "color",
+      "fillPaints": "#7A4627"
+    },
+    "$style/Light (Current)/Run widget/Running": {
+      "type": "color",
+      "fillPaints": "#5DB26F"
+    },
+    "$style/Editor/Small": {
+      "type": "text",
+      "fontFamily": "JetBrains Mono",
+      "fontWeight": 500,
+      "fontSize": 12,
+      "lineHeight": "22px",
+      "letterSpacing": "0px"
+    },
+    "$style/Dark/Grey/Grey 4": {
+      "type": "color",
+      "desc": "Dark, Grey, General, Fill, Icons, Inactive selection",
+      "fillPaints": "#43454A"
+    },
+    "$style/Light/Green/Green 9": {
+      "type": "color",
+      "fillPaints": "#C1E5C3"
+    },
+    "$style/Light/Disabled icon#2": {
+      "type": "color",
+      "fillPaints": "#A6A6A6"
+    },
+    "$style/Light (Current)/Orange/Orange 9": {
+      "type": "color",
+      "fillPaints": "#FACEAA"
+    },
+    "$style/Light/Grey/Grey 6 (Stroke)#4": {
+      "type": "color",
+      "desc": "Light, Grey, General, Stroke, Solid, Outline, Icons\nText, Secondary",
+      "fillPaints": "#6C707E"
+    },
+    "$style/Light/Purple/Purple 7": {
+      "type": "color",
+      "fillPaints": "#DCCBFB"
+    },
+    "$style/Dark/Red/Red 6 (Primary, Stroke)": {
+      "type": "color",
+      "desc": "Error icons",
+      "fillPaints": "#DB5C5C"
+    },
+    "$style/Light/Purple/Purple 8": {
+      "type": "color",
+      "fillPaints": "#EFE5FF"
+    },
+    "$style/Light/Orange/Orange 4 (Primary)#2": {
+      "type": "color",
+      "desc": "Light, Orange, General, Stroke, Solid, Outline, Icons",
+      "fillPaints": "#E66D17"
+    },
+    "$style/Notification shadow": {
+      "type": "effect",
+      "effects": [
+        {
+          "color": "#00000026",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 16,
+          "spread": 0,
+          "type": "drop_shadow"
+        }
+      ]
+    },
+    "$style/Light/Grey/Grey 7#4": {
+      "type": "color",
+      "desc": "Secondary text",
+      "fillPaints": "#818594"
+    },
+    "$style/Light/Grey/Dark 6": {
+      "type": "color",
+      "fillPaints": "#AEB1BA"
+    },
+    "$style/Light/Blue/Light 2": {
+      "type": "color",
+      "fillPaints": "#588CF3"
+    },
+    "$style/Light/Blue/Blue 4 (Primary)#2": {
+      "type": "color",
+      "desc": "Light, Blue, General, Stroke, Outline, Icons, Button: Default",
+      "fillPaints": "#3574F0"
+    },
+    "$style/Light/Grey/Dark 6#2": {
+      "type": "color",
+      "fillPaints": "#AEB1BA"
+    },
+    "$style/Light/Green/Green 6#2": {
+      "type": "color",
+      "desc": "Light, Green, Solid, Icons\nModifiers",
+      "fillPaints": "#55A76A"
+    },
+    "$style/Light/Green/Green 5#2": {
+      "type": "color",
+      "desc": "Light, Green, Outline, Icons",
+      "fillPaints": "#369650"
+    },
+    "$style/Transparent colors/Dark/Layer white border": {
+      "type": "color",
+      "fillPaints": "#FFFFFF"
+    },
+    "$style/Editor/Light/Number": {
+      "type": "color",
+      "fillPaints": "#1750EB"
+    },
+    "$style/Light/Green/Green 1": {
+      "type": "color",
+      "fillPaints": "#1E6B33"
+    },
+    "$style/Light/Grey/Dark 9#2": {
+      "type": "color",
+      "fillPaints": "#737580"
+    },
+    "$style/Light/Grey/Grey 10#2": {
+      "type": "color",
+      "desc": "Diff removed: Word\nDiff removed: Stroke",
+      "fillPaints": "#D3D5DB"
+    },
+    "$style/Dark/Grey/Grey 4#2": {
+      "type": "color",
+      "fillPaints": "#43454A"
+    },
+    "$style/Light/Grey/Grey 9#2": {
+      "type": "color",
+      "fillPaints": "#C9CCD6"
+    },
+    "$style/Dark/Blue/Primary": {
+      "type": "color",
+      "fillPaints": "#3574F0"
+    },
+    "$style/Dark/Orange/Orange 11": {
+      "type": "color",
+      "fillPaints": "#FFDFC7"
+    },
+    "$style/UI/Paragraph": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 500,
+      "fontSize": 13,
+      "lineHeight": "18px",
+      "letterSpacing": "0px"
+    },
+    "$style/Dark/Purple/Purple 11": {
+      "type": "color",
+      "fillPaints": "#E4CFFF"
+    },
+    "$style/Dark/Yellow/Yellow 9": {
+      "type": "color",
+      "fillPaints": "#F7DE8B"
+    },
+    "$style/UI/Default semibold#2": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 600,
+      "fontSize": 13,
+      "lineHeight": "16px",
+      "letterSpacing": "0px"
+    },
+    "$style/Dark/Grey (Old)/Light 10": {
+      "type": "color",
+      "fillPaints": "#D7D8DB"
+    },
+    "$style/Light/Grey/Dark 7#2": {
+      "type": "color",
+      "fillPaints": "#9A9FAB"
+    },
+    "$style/Light/Red/Red 6 (Primary)": {
+      "type": "color",
+      "desc": "Error icons",
+      "fillPaints": "#E35252"
+    },
+    "$style/Light (Current)/Teal/Teal 10": {
+      "type": "color",
+      "fillPaints": "#D0F2F7"
+    },
+    "$style/Dark/Blue (Old)/Dark 3": {
+      "type": "color",
+      "fillPaints": "#325EB1"
+    },
+    "$style/Dark/Yellow/Yellow 10": {
+      "type": "color",
+      "fillPaints": "#FCEBA4"
+    },
+    "$style/Light/Controls/Dialog background": {
+      "type": "color",
+      "fillPaints": "#FFFFFF"
+    },
+    "$style/Light/Blue/Blue 7#3": {
+      "type": "color",
+      "desc": "Filled icons",
+      "fillPaints": "#4682FA"
+    },
+    "$style/Dark/Blue/Dark 1": {
+      "type": "color",
+      "fillPaints": "#386ED6"
+    },
+    "$style/UI Kit Markup/Bg horizontal Gray2": {
+      "type": "color",
+      "fillPaints": [
+        {
+          "type": "gradient_linear",
+          "blendMode": "normal",
+          "opacity": 1,
+          "visible": true,
+          "colors": [
+            {
+              "color": "#FFFFFF",
+              "position": 0
+            },
+            {
+              "color": "#FFFFFF",
+              "position": 0.4999949038028717
+            },
+            {
+              "color": "#2B2D30",
+              "position": 0.500127375125885
+            },
+            {
+              "color": "#2B2D30",
+              "position": 1
+            }
+          ]
+        }
+      ]
+    },
+    "$style/Shadow/Editor Tooltip/Error": {
+      "type": "effect",
+      "effects": [
+        {
+          "color": "#DEC7C380",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 12,
+          "spread": 0,
+          "type": "drop_shadow"
+        }
+      ]
+    },
+    "$style/Shadow/Editor Tooltip/Error#2": {
+      "type": "effect",
+      "effects": [
+        {
+          "color": "#99858240",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 16,
+          "spread": 0,
+          "type": "drop_shadow"
+        },
+        {
+          "color": "#A83728",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 1,
+          "spread": 0,
+          "type": "drop_shadow",
+          "visible": false
+        }
+      ]
+    },
+    "$style/Editor/Default bold": {
+      "type": "text",
+      "fontFamily": "JetBrains Mono",
+      "fontWeight": 700,
+      "fontSize": 13,
+      "lineHeight": "22px",
+      "letterSpacing": "0px"
+    },
+    "$style/Light/Tooltip/Success/Icon": {
+      "type": "color",
+      "fillPaints": "#55B55D"
+    },
+    "$style/Light (Current)/Orange/Orange 1": {
+      "type": "color",
+      "fillPaints": "#7A4627"
+    },
+    "$style/Dark / Editor / Orange": {
+      "type": "color",
+      "fillPaints": "#CC8314"
+    },
+    "$style/Light/Grey/Grey 5": {
+      "type": "color",
+      "fillPaints": "#5A5D6B"
+    },
+    "$style/Light (Current)/Green/Green 5": {
+      "type": "color",
+      "desc": "Run widget",
+      "fillPaints": "#599E5E"
+    },
+    "$style/Dark/Red/Red 6 (Primary)": {
+      "type": "color",
+      "desc": "Error icons",
+      "fillPaints": "#DB5C5C"
+    },
+    "$style/Light/Blue/Blue 2#3": {
+      "type": "color",
+      "desc": "Link\nButton: Pressed",
+      "fillPaints": "#315FBD"
+    },
+    "$style/H1": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 700,
+      "fontSize": 60,
+      "lineHeight": 1,
+      "letterSpacing": "0px"
+    },
+    "$style/Dark/Teal/Teal 3": {
+      "type": "color",
+      "fillPaints": "#20635D"
+    },
+    "$style/Dark/Blue/Blue 3": {
+      "type": "color",
+      "fillPaints": "#35538F"
+    },
+    "$style/UI / Small": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 500,
+      "fontSize": 11,
+      "lineHeight": "16px",
+      "letterSpacing": "0px"
+    },
+    "$style/Dark/Blue/Blue 6 (Primary)#3": {
+      "type": "color",
+      "fillPaints": "#3574F0"
+    },
+    "$style/Light (Current)/Yellow/Yellow 2": {
+      "type": "color",
+      "fillPaints": "#96662A"
+    },
+    "$style/Light/Blue/Dark 8": {
+      "type": "color",
+      "fillPaints": "#07245F"
+    },
+    "$style/Editor/Dark/TODO": {
+      "type": "color",
+      "fillPaints": "#82BA3D"
+    },
+    "$style/Light/Green/Green 6 (Primary, Stroke)#2": {
+      "type": "color",
+      "desc": "Success icons",
+      "fillPaints": "#5FB865"
+    },
+    "$style/Light/Purple/Purple 9": {
+      "type": "color",
+      "desc": "Light, Purple, General, Fill Icons",
+      "fillPaints": "#FAF5FF"
+    },
+    "$style/Dark/Yellow/Yellow 6": {
+      "type": "color",
+      "desc": "Dark, Yellow, General, Stroke, Icons",
+      "fillPaints": "#D6AE58"
+    },
+    "$style/Dark/Green/Green 1 (Fill)": {
+      "type": "color",
+      "desc": "Icon fill",
+      "fillPaints": "#253627"
+    },
+    "$style/Light/Green/Green 6#3": {
+      "type": "color",
+      "desc": "Light, Green, Solid, Icons\nModifiers",
+      "fillPaints": "#55A76A"
+    },
+    "$style/Light/Purple/Purple 4 (Primary)#2": {
+      "type": "color",
+      "desc": "Light, Purple, General, Stroke, Solid, Outline, Icons",
+      "fillPaints": "#834DF0"
+    },
+    "$style/Light/Grey/Grey 10#3": {
+      "type": "color",
+      "fillPaints": "#DFE1E5"
+    },
+    "$style/Light/Grey/Grey 1 (Primary)#2": {
+      "type": "color",
+      "desc": "Primary text",
+      "fillPaints": "#000000"
+    },
+    "$style/Dark/Orange/Orange 4": {
+      "type": "color",
+      "fillPaints": "#A36B4E"
+    },
+    "$style/Light/Red/Red 2": {
+      "type": "color",
+      "desc": "Button: Pressed",
+      "fillPaints": "#BC303E"
+    },
+    "$style/Light/Controls/Fill": {
+      "type": "color",
+      "fillPaints": "#F03333"
+    },
+    "$style/Light/Purple/Purple 9#2": {
+      "type": "color",
+      "desc": "Light, Purple, General, Fill Icons",
+      "fillPaints": "#FAF5FF"
+    },
+    "$style/Dark/Grey/Grey 11#2": {
+      "type": "color",
+      "desc": "Icons on dark bg",
+      "fillPaints": "#CED0D6"
+    },
+    "$style/Light/Grey/Grey 11 (Fill)": {
+      "type": "color",
+      "desc": "Lines & separators",
+      "fillPaints": "#EBECF0"
+    },
+    "$style/UI Kit Markup/Bg vertical Gray2": {
+      "type": "color",
+      "fillPaints": [
+        {
+          "type": "gradient_linear",
+          "blendMode": "normal",
+          "opacity": 1,
+          "visible": true,
+          "colors": [
+            {
+              "color": "#FFFFFF",
+              "position": 0
+            },
+            {
+              "color": "#FFFFFF",
+              "position": 0.4999949038028717
+            },
+            {
+              "color": "#2B2D30",
+              "position": 0.500127375125885
+            },
+            {
+              "color": "#2B2D30",
+              "position": 1
+            }
+          ]
+        }
+      ]
+    },
+    "$style/Dark/Red/Red 6 (Primary)#2": {
+      "type": "color",
+      "desc": "Dark, Red, General, Stroke, Solid, Outline, Icons, Error",
+      "fillPaints": "#DB5C5C"
+    },
+    "$style/Dark/Grey/Grey 7": {
+      "type": "color",
+      "desc": "Secondary text & icons\nDisabled text in components",
+      "fillPaints": "#6F737A"
+    },
+    "$style/Dark/Gray/Gray 3": {
+      "type": "color",
+      "desc": "Lines & separators\nTree hover",
+      "fillPaints": "#393B40"
+    },
+    "$style/Dark/Grey (Old)/Light 3": {
+      "type": "color",
+      "fillPaints": "#3D3F43"
+    },
+    "$style/Light (Current)/Teal/Teal 7": {
+      "type": "color",
+      "fillPaints": "#3AB2C2"
+    },
+    "$style/Dark/Purple/Purple 10": {
+      "type": "color",
+      "fillPaints": "#D4B8F9"
+    },
+    "$style/Dark/Grey/Grey 11 (Stroke)": {
+      "type": "color",
+      "desc": "Icons on dark bg",
+      "fillPaints": "#CED0D6"
+    },
+    "$style/Light (Current)/Orange/Orange 8": {
+      "type": "color",
+      "fillPaints": "#F7B47C"
+    },
+    "$style/Editor/Dark/Doc comment": {
+      "type": "color",
+      "fillPaints": "#648769"
+    },
+    "$style/Dark/Blue/Blue 4#2": {
+      "type": "color",
+      "fillPaints": "#375FAD"
+    },
+    "$style/Grad/50%": {
+      "type": "color",
+      "fillPaints": [
+        {
+          "type": "gradient_linear",
+          "blendMode": "normal",
+          "opacity": 0.5,
+          "visible": true,
+          "colors": [
+            {
+              "color": "#2B2D30",
+              "position": 0
+            },
+            {
+              "color": "#2B2D30",
+              "position": 1
+            }
+          ]
+        }
+      ]
+    },
+    "$style/Editor/Light/Method declaration": {
+      "type": "color",
+      "fillPaints": "#00627A"
+    },
+    "$style/Dark/Grey/Grey 6": {
+      "type": "color",
+      "fillPaints": "#5A5D63"
+    },
+    "$style/Light (Current)/Purple/Purple 2": {
+      "type": "color",
+      "fillPaints": "#553878"
+    },
+    "$style/Dark / Editor / Blue": {
+      "type": "color",
+      "fillPaints": "#578EFF"
+    },
+    "$style/Light/Red icon": {
+      "type": "color",
+      "fillPaints": "#EB0C4B"
+    },
+    "$style/Light (Current)/Teal/Teal 6 (Primary)": {
+      "type": "color",
+      "fillPaints": "#15A0B2"
+    },
+    "$style/Light/Blue/Primary": {
+      "type": "color",
+      "fillPaints": "#3574F0"
+    },
+    "$style/UI Kit Markup/Bg vertical Gray1": {
+      "type": "color",
+      "fillPaints": [
+        {
+          "type": "gradient_linear",
+          "blendMode": "normal",
+          "opacity": 1,
+          "visible": true,
+          "colors": [
+            {
+              "color": "#FFFFFF",
+              "position": 0
+            },
+            {
+              "color": "#FFFFFF",
+              "position": 0.4999949038028717
+            },
+            {
+              "color": "#1E1F22",
+              "position": 0.500127375125885
+            },
+            {
+              "color": "#1E1F22",
+              "position": 1
+            }
+          ]
+        }
+      ]
+    },
+    "$style/Dark/Green/Green 7": {
+      "type": "color",
+      "fillPaints": "#73BD79"
+    },
+    "$style/Dark/Blue (Old)/Dark 5": {
+      "type": "color",
+      "fillPaints": "#304E88"
+    },
+    "$style/Dark/Blue/Blue 2": {
+      "type": "color",
+      "desc": "tool window / tw selection",
+      "fillPaints": "#2E436E"
+    },
+    "$style/Light/Yellow/Yellow 5": {
+      "type": "color",
+      "fillPaints": "#FDBD3D"
+    },
+    "$style/Light/Green/Green 9#2": {
+      "type": "color",
+      "desc": "Diff added: Stroke\nDiff added: Word\nBanner: Stroke",
+      "fillPaints": "#C5E6CC"
+    },
+    "$style/Light/Blue/Blue 6 (Primary, Stroke)#2": {
+      "type": "color",
+      "fillPaints": "#3574F0"
+    },
+    "$style/Light/Grey/Grey 10#4": {
+      "type": "color",
+      "desc": "Diff deleted: Word\nDiff deleted: Stroke",
+      "fillPaints": "#D3D5DB"
+    },
+    "$style/ARCHIVE/Controls grey bg/Input border": {
+      "type": "color",
+      "fillPaints": "#DFE0E6"
+    },
+    "$style/Dark/Shadow/Popup": {
+      "type": "effect",
+      "effects": [
+        {
+          "color": "#00000066",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 32,
+          "spread": 0,
+          "type": "drop_shadow"
+        }
+      ]
+    },
+    "$style/Light/Yellow/Yellow 2": {
+      "type": "color",
+      "desc": "Light, Yellow, General, Stroke, Icons",
+      "fillPaints": "#C27D04"
+    },
+    "$style/Dark/Orange/Orange 10": {
+      "type": "color",
+      "fillPaints": "#FACEAF"
+    },
+    "$style/Light (Current)/Red/Red 3": {
+      "type": "color",
+      "fillPaints": "#964444"
+    },
+    "$style/Dark/Grey/Grey 11#3": {
+      "type": "color",
+      "desc": "Icons on dark bg",
+      "fillPaints": "#CED0D6"
+    },
+    "$style/Light/Red/Red 4 (Primary)#3": {
+      "type": "color",
+      "desc": "Light, Red, General, Stroke, Outline, Icons\nButton, Default",
+      "fillPaints": "#DB3B4B"
+    },
+    "$style/UI/Medium#5": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 500,
+      "fontSize": 12,
+      "lineHeight": "16px",
+      "letterSpacing": "0px"
+    },
+    "$style/Dark/Blue/Blue 6 (Primary)#4": {
+      "type": "color",
+      "desc": "Button: Default",
+      "fillPaints": "#3574F0"
+    },
+    "$style/Light/Yellow/Yellow 4 (Primary)": {
+      "type": "color",
+      "desc": "Light, Yellow, Solid, Outline, Icons",
+      "fillPaints": "#FFAF0F"
+    },
+    "$style/Light/Purple/Purple 3": {
+      "type": "color",
+      "fillPaints": "#7444D4"
+    },
+    "$style/Dark/Orange/Orange 5#2": {
+      "type": "color",
+      "desc": "Dark, Orange, General, Stroke, Solid, Outline, Icons",
+      "fillPaints": "#C77D55"
+    },
+    "$style/Light (Current)/Green/Green 7": {
+      "type": "color",
+      "fillPaints": "#7FC784"
+    },
+    "$style/Popup shadow": {
+      "type": "effect",
+      "effects": [
+        {
+          "color": "#C4C4C4B3",
+          "offset": {},
+          "progressiveStops": {},
+          "radius": 20,
+          "spread": 0,
+          "type": "drop_shadow"
+        }
+      ]
+    },
+    "$style/Light/Dialog/Border": {
+      "type": "color",
+      "fillPaints": "#00FF38"
+    },
+    "$style/light/gray 01": {
+      "type": "color",
+      "desc": "text, icons",
+      "fillPaints": "#161616"
+    },
+    "$style/Dark/Grey (Old)/Primary": {
+      "type": "color",
+      "fillPaints": "#1E2022"
+    },
+    "$style/Light/Green/Green 11#2": {
+      "type": "color",
+      "desc": "Light, Green, General, Fill, Icons\nBanner: Fill\nDiff added: Fill",
+      "fillPaints": "#F2FCF3"
+    },
+    "$style/Light/Grey/Dark 4": {
+      "type": "color",
+      "fillPaints": "#C5C8D1"
+    },
+    "$style/Light/Grey/Grey 7#5": {
+      "type": "color",
+      "desc": "Tertiary text",
+      "fillPaints": "#818594"
+    },
+    "$style/Dark/Blue/Blue 2#2": {
+      "type": "color",
+      "desc": "tool window / tw selection",
+      "fillPaints": "#2E436E"
+    },
+    "$style/Light/Blue/Blue 5#3": {
+      "type": "color",
+      "desc": "Light, Blue, Solid, Icons",
+      "fillPaints": "#4682FA"
+    },
+    "$style/Dark/Red/Red 6 (Primary)#3": {
+      "type": "color",
+      "desc": "Dark, Red, General, Stroke, Solid, Outline, Icons, Error",
+      "fillPaints": "#DB5C5C"
+    },
+    "$style/Light/Yellow/Yellow 7": {
+      "type": "color",
+      "fillPaints": "#FEE6B1"
+    },
+    "$style/Dark/Blue/Blue 4#3": {
+      "type": "color",
+      "desc": "Button: Pressed",
+      "fillPaints": "#375FAD"
+    },
+    "$style/Editor/Dark/Link": {
+      "type": "color",
+      "fillPaints": "#548AF7"
+    },
+    "$style/Dark/Yellow/Yellow 4": {
+      "type": "color",
+      "fillPaints": "#9E814A"
+    },
+    "$style/Dark/Blue (Old)/Dark 2": {
+      "type": "color",
+      "fillPaints": "#3365C6"
+    },
+    "$style/Light/Tooltip/Error/Icon": {
+      "type": "color",
+      "fillPaints": "#EB4E38"
+    },
+    "$style/Dark/Purple/Purple 6 (Primary)": {
+      "type": "color",
+      "fillPaints": "#955AE0"
+    },
+    "$style/Light (Current)/Red/Red 6 (Primary, Stroke)#2": {
+      "type": "color",
+      "desc": "Error icons",
+      "fillPaints": "#E35252"
+    },
+    "$style/Light/Yellow/Yellow 4 (Primary)#2": {
+      "type": "color",
+      "desc": "Light, Yellow, Solid, Outline, Icons",
+      "fillPaints": "#FFAF0F"
+    },
+    "$style/Light (Current)/Purple/Purple 9": {
+      "type": "color",
+      "fillPaints": "#D8BEFA"
+    },
+    "$style/Dark/Blue/Blue 3#2": {
+      "type": "color",
+      "fillPaints": "#35538F"
+    },
+    "$style/Light/Green/Green 8": {
+      "type": "color",
+      "fillPaints": "#AFDBB8"
+    },
+    "$style/Editor/Dark/Method declaration": {
+      "type": "color",
+      "fillPaints": "#70AEFF"
+    },
+    "$style/Light/Teal/Teal 1": {
+      "type": "color",
+      "fillPaints": "#096A6E"
+    },
+    "$style/Light (Current)/Yellow/Yellow 5 (Stroke)": {
+      "type": "color",
+      "fillPaints": "#E3AE4D"
+    },
+    "$style/ARCHIVE/Controls white v0/Chb border": {
+      "type": "color",
+      "fillPaints": "#C8CAD1"
+    },
+    "$style/Light (Current)/Green/Green 6 (Primary, Stroke)#2": {
+      "type": "color",
+      "desc": "Success icons",
+      "fillPaints": "#5FB865"
+    },
+    "$style/Light (Current)/Yellow/Yellow 8": {
+      "type": "color",
+      "fillPaints": "#FCDB8D"
+    },
+    "$style/Tooltip / Background / Error": {
+      "type": "color",
+      "fillPaints": "#FFF1F0"
+    },
+    "$style/Light/Blue/Blue 12#4": {
+      "type": "color",
+      "desc": "Diff changed: Fill\nLight, Blue, General, Fill, Icons",
+      "fillPaints": "#EDF3FF"
+    },
+    "$style/Light/Green/Green 11#3": {
+      "type": "color",
+      "desc": "Light, Green, General, Fill, Icons\nBanner: Fill\nDiff added: Fill",
+      "fillPaints": "#F2FCF3"
+    },
+    "$style/Grey / Primary": {
+      "type": "color",
+      "fillPaints": "#FFFFFF"
+    },
+    "$style/Dark/Orange/Orange 1#2": {
+      "type": "color",
+      "desc": "Dark, Orange, General, Fill, Icons",
+      "fillPaints": "#45322B"
+    },
+    "$style/Dark/Blue/Blue 9#2": {
+      "type": "color",
+      "desc": "Link",
+      "fillPaints": "#6B9BFA"
+    },
+    "$style/Light/Gray/Gray 5": {
+      "type": "color",
+      "fillPaints": "#5A5D6B"
+    },
+    "$style/Dark/Blue/Blue 1#3": {
+      "type": "color",
+      "desc": "Dark, Blue, General, Fill, Icons, Editor, Selection",
+      "fillPaints": "#25324D"
+    },
+    "$style/Main Toolbar/Hover/Light with Light Header": {
+      "type": "color",
+      "desc": "The main toolbar needs a transparent hover because of the gradient background",
+      "fillPaints": "#000000"
+    },
+    "$style/IJ / text / info input": {
+      "type": "color",
+      "fillPaints": "#999999"
+    },
+    "$style/Light/Yellow/Yellow 10": {
+      "type": "color",
+      "desc": "Light, Yellow, General, Fill, Icons\nBanner: Fill",
+      "fillPaints": "#FFFAEB"
+    },
+    "$style/Light/Blue/Blue 6 (Primary)#4": {
+      "type": "color",
+      "fillPaints": "#3574F0"
+    },
+    "$style/Tooltip / Icon / Error": {
+      "type": "color",
+      "fillPaints": "#EB4E38"
+    },
+    "$style/Dark/Red/Red 5": {
+      "type": "color",
+      "fillPaints": "#BD5757"
+    },
+    "$style/Light (Current)/Orange/Orange 6 (Primary, Stroke)": {
+      "type": "color",
+      "fillPaints": "#F28C35"
+    },
+    "$style/Light/Gray/Gray 8": {
+      "type": "color",
+      "desc": "Disabled text & placeholders\nIcons & shortcuts on dark bg\nDiff removed: Stripe mark",
+      "fillPaints": "#A8ADBD"
+    },
+    "$style/Dark/Grey (Old)/Dark 1": {
+      "type": "color",
+      "fillPaints": "#1B1C1F"
+    },
+    "$style/Description text#2": {
+      "type": "text",
+      "fontFamily": "Inter",
+      "fontWeight": 400,
+      "fontSize": 15,
+      "lineHeight": "21px",
+      "letterSpacing": "0px"
+    },
+    "$style/IJ / toolbar / button pressed": {
+      "type": "color",
+      "fillPaints": "#CFCFCF"
+    },
+    "$style/Light (Current)/Teal/Teal 3": {
+      "type": "color",
+      "fillPaints": "#24656E"
+    },
+    "$style/Light/Red/Red 11#3": {
+      "type": "color",
+      "desc": "Light, Red, General, Fill, Icons\nBanner",
+      "fillPaints": "#FFF7F7"
+    },
+    "$style/Light/Yellow/Yellow 6 (Primary)": {
+      "type": "color",
+      "fillPaints": "#FCC75B"
+    },
+    "$style/Dark/Blue (Old)/Dark 1": {
+      "type": "color",
+      "fillPaints": "#346DDB"
+    }
+  },
+  "instruction": "Use style keys exactly as returned, e.g. textStyle:'$style/Text/Body'. Do not use raw style guid/key."
+}
