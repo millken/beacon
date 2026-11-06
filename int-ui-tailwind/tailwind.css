@@ -1,0 +1,66 @@
+@import "tailwindcss";
+@source "../index.html";
+@source "../components";
+
+:root {
+  --int-000000: #000000;
+  --int-0000001f: #0000001f;
+  --int-0033b3: #0033b3;
+  --int-00627a: #00627a;
+  --int-039ba1: #039ba1;
+  --int-080808: #080808;
+  --int-0d99ff: #0d99ff;
+  --int-1750eb: #1750eb;
+  --int-208a3c: #208a3c;
+  --int-25324d: #25324d;
+  --int-27282e: #27282e;
+  --int-2c2c2c: #2c2c2c;
+  --int-315fbd: #315fbd;
+  --int-3574f0: #3574f0;
+  --int-4597f8: #4597f8;
+  --int-494b57: #494b57;
+  --int-548af7: #548af7;
+  --int-5fad65: #5fad65;
+  --int-6c707e: #6c707e;
+  --int-7f7f7f: #7f7f7f;
+  --int-818594: #818594;
+  --int-834df0: #834df0;
+  --int-871094: #871094;
+  --int-88adf7: #88adf7;
+  --int-8c8c8c: #8c8c8c;
+  --int-9949ff: #9949ff;
+  --int-9e880d: #9e880d;
+  --int-a0bdf8: #a0bdf8;
+  --int-a8adbd: #a8adbd;
+  --int-aaaaaa: #aaaaaa;
+  --int-aeb3c2: #aeb3c2;
+  --int-c2d6fc: #c2d6fc;
+  --int-c9ccd6: #c9ccd6;
+  --int-cfdefc: #cfdefc;
+  --int-d3d5db: #d3d5db;
+  --int-d4e2ff: #d4e2ff;
+  --int-d9d9d9: #d9d9d9;
+  --int-db3b4b: #db3b4b;
+  --int-dfe1e5: #dfe1e5;
+  --int-e5e6e6: #e5e6e6;
+  --int-e66d17: #e66d17;
+  --int-e6e6e6: #e6e6e6;
+  --int-ebecf0: #ebecf0;
+  --int-edf3ff: #edf3ff;
+  --int-f2fcfc: #f2fcfc;
+  --int-f5f8fe: #f5f8fe;
+  --int-f7f8fa: #f7f8fa;
+  --int-ffaf0f: #ffaf0f;
+  --int-ffffff: #ffffff;
+  --int-ffffff00: #ffffff00;
+  --int-white: white;
+}
+@theme inline {
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sf: "SF Pro Text", "Inter", sans-serif;
+}
+@layer base {
+  html, body { min-height: 100%; }
+  span { overflow-wrap: break-word; }
+}

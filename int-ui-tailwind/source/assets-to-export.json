@@ -1,0 +1,832 @@
+[
+  {
+    "name": "Actionsclose.svg",
+    "guid": "7:38668",
+    "type": "svg"
+  },
+  {
+    "name": "Alphabet.svg",
+    "guid": "7:66199",
+    "type": "svg"
+  },
+  {
+    "name": "Alphabet0.svg",
+    "guid": "7:65888",
+    "type": "svg"
+  },
+  {
+    "name": "Alphabet1.svg",
+    "guid": "7:65864",
+    "type": "svg"
+  },
+  {
+    "name": "Alphabet2.svg",
+    "guid": "7:43058",
+    "type": "svg"
+  },
+  {
+    "name": "Alphabet3.svg",
+    "guid": "7:43045",
+    "type": "svg"
+  },
+  {
+    "name": "Alphabet4.svg",
+    "guid": "7:22281",
+    "type": "svg"
+  },
+  {
+    "name": "Alphabet5.svg",
+    "guid": "7:11811",
+    "type": "svg"
+  },
+  {
+    "name": "Background.svg",
+    "guid": "7:51499",
+    "type": "svg"
+  },
+  {
+    "name": "Border.svg",
+    "guid": "7:51468",
+    "type": "svg"
+  },
+  {
+    "name": "Border0.svg",
+    "guid": "7:30304",
+    "type": "svg"
+  },
+  {
+    "name": "Check.svg",
+    "guid": "7:19325",
+    "type": "svg"
+  },
+  {
+    "name": "Check0.svg",
+    "guid": "7:19501",
+    "type": "svg"
+  },
+  {
+    "name": "Check1.svg",
+    "guid": "7:19578",
+    "type": "svg"
+  },
+  {
+    "name": "Check2.svg",
+    "guid": "7:19589",
+    "type": "svg"
+  },
+  {
+    "name": "Chevron.svg",
+    "guid": "7:21182",
+    "type": "svg"
+  },
+  {
+    "name": "Chevron0.svg",
+    "guid": "7:5320",
+    "type": "svg"
+  },
+  {
+    "name": "Chevron1.svg",
+    "guid": "7:12550",
+    "type": "svg"
+  },
+  {
+    "name": "Chevron2.svg",
+    "guid": "7:16341",
+    "type": "svg"
+  },
+  {
+    "name": "Chevron3.svg",
+    "guid": "7:24530",
+    "type": "svg"
+  },
+  {
+    "name": "Chevron4.svg",
+    "guid": "7:24513",
+    "type": "svg"
+  },
+  {
+    "name": "Chevron5.svg",
+    "guid": "7:39201",
+    "type": "svg"
+  },
+  {
+    "name": "Chevron6.svg",
+    "guid": "7:30302",
+    "type": "svg"
+  },
+  {
+    "name": "Close.svg",
+    "guid": "7:11814",
+    "type": "svg"
+  },
+  {
+    "name": "Content.svg",
+    "guid": "7:6863",
+    "type": "svg"
+  },
+  {
+    "name": "Cup.svg",
+    "guid": "7:1498",
+    "type": "svg"
+  },
+  {
+    "name": "Database.svg",
+    "guid": "7:66099",
+    "type": "svg"
+  },
+  {
+    "name": "Dropdown.svg",
+    "guid": "7:20475",
+    "type": "svg"
+  },
+  {
+    "name": "Ellipse379.svg",
+    "guid": "7:66198",
+    "type": "svg"
+  },
+  {
+    "name": "Ellipse3790.svg",
+    "guid": "7:65887",
+    "type": "svg"
+  },
+  {
+    "name": "Ellipse3791.svg",
+    "guid": "7:65863",
+    "type": "svg"
+  },
+  {
+    "name": "Ellipse3792.svg",
+    "guid": "7:43057",
+    "type": "svg"
+  },
+  {
+    "name": "Ellipse3793.svg",
+    "guid": "7:43044",
+    "type": "svg"
+  },
+  {
+    "name": "Ellipse3794.svg",
+    "guid": "7:22280",
+    "type": "svg"
+  },
+  {
+    "name": "Ellipse3795.svg",
+    "guid": "7:11810",
+    "type": "svg"
+  },
+  {
+    "name": "Ellipse382.svg",
+    "guid": "7:65881",
+    "type": "svg"
+  },
+  {
+    "name": "Ellipse3820.svg",
+    "guid": "7:65873",
+    "type": "svg"
+  },
+  {
+    "name": "Ellipse3821.svg",
+    "guid": "7:13314",
+    "type": "svg"
+  },
+  {
+    "name": "Ellipse3822.svg",
+    "guid": "7:2153",
+    "type": "svg"
+  },
+  {
+    "name": "Ellipse470.svg",
+    "guid": "8151:76122",
+    "type": "svg"
+  },
+  {
+    "name": "Ellipse471.svg",
+    "guid": "8151:76216",
+    "type": "svg"
+  },
+  {
+    "name": "Group10.svg",
+    "guid": "7:65402",
+    "type": "svg"
+  },
+  {
+    "name": "Group1214.svg",
+    "guid": "7:65363",
+    "type": "svg"
+  },
+  {
+    "name": "Help.svg",
+    "guid": "7:51500",
+    "type": "svg"
+  },
+  {
+    "name": "Icon.svg",
+    "guid": "7:66092",
+    "type": "svg"
+  },
+  {
+    "name": "Icon0.svg",
+    "guid": "7:65900",
+    "type": "svg"
+  },
+  {
+    "name": "Icon1.svg",
+    "guid": "7:65454",
+    "type": "svg"
+  },
+  {
+    "name": "Icon2.svg",
+    "guid": "7:65425",
+    "type": "svg"
+  },
+  {
+    "name": "Icon3.svg",
+    "guid": "7:65422",
+    "type": "svg"
+  },
+  {
+    "name": "Icon4.svg",
+    "guid": "7:21189",
+    "type": "svg"
+  },
+  {
+    "name": "Icon5.svg",
+    "guid": "7:5327",
+    "type": "svg"
+  },
+  {
+    "name": "Icon6.svg",
+    "guid": "7:12557",
+    "type": "svg"
+  },
+  {
+    "name": "Icon7.svg",
+    "guid": "7:16348",
+    "type": "svg"
+  },
+  {
+    "name": "MainToolbarMacOSButtons.svg",
+    "guid": "7:65411",
+    "type": "svg"
+  },
+  {
+    "name": "MainToolbarMacOSButtons0.svg",
+    "guid": "7:51463",
+    "type": "svg"
+  },
+  {
+    "name": "Polygon5.svg",
+    "guid": "7:2485",
+    "type": "svg"
+  },
+  {
+    "name": "Radio.svg",
+    "guid": "7:5709",
+    "type": "svg"
+  },
+  {
+    "name": "Radio0.svg",
+    "guid": "7:7709",
+    "type": "svg"
+  },
+  {
+    "name": "Radio1.svg",
+    "guid": "7:5786",
+    "type": "svg"
+  },
+  {
+    "name": "Rectangle.svg",
+    "guid": "7:2239",
+    "type": "svg"
+  },
+  {
+    "name": "Rectangle0.svg",
+    "guid": "7:2238",
+    "type": "svg"
+  },
+  {
+    "name": "Rectangle1.svg",
+    "guid": "7:2236",
+    "type": "svg"
+  },
+  {
+    "name": "Rectangle2.svg",
+    "guid": "7:2234",
+    "type": "svg"
+  },
+  {
+    "name": "Rectangle3.svg",
+    "guid": "7:2233",
+    "type": "svg"
+  },
+  {
+    "name": "Rectangle4.svg",
+    "guid": "7:2232",
+    "type": "svg"
+  },
+  {
+    "name": "Rectangle5.svg",
+    "guid": "7:2231",
+    "type": "svg"
+  },
+  {
+    "name": "Search.svg",
+    "guid": "7:31227",
+    "type": "svg"
+  },
+  {
+    "name": "Stop.svg",
+    "guid": "7:14188",
+    "type": "svg"
+  },
+  {
+    "name": "Tip.svg",
+    "guid": "7:43709",
+    "type": "svg"
+  },
+  {
+    "name": "Vector11.svg",
+    "guid": "7:65880",
+    "type": "svg"
+  },
+  {
+    "name": "Vector110.svg",
+    "guid": "7:65872",
+    "type": "svg"
+  },
+  {
+    "name": "Vector111.svg",
+    "guid": "7:13313",
+    "type": "svg"
+  },
+  {
+    "name": "Vector112.svg",
+    "guid": "7:2152",
+    "type": "svg"
+  },
+  {
+    "name": "Vector20.svg",
+    "guid": "7:65462",
+    "type": "svg"
+  },
+  {
+    "name": "Vector309.svg",
+    "guid": "7:65463",
+    "type": "svg"
+  },
+  {
+    "name": "Vector567.svg",
+    "guid": "8151:76137",
+    "type": "svg"
+  },
+  {
+    "name": "Vector5670.svg",
+    "guid": "8151:76136",
+    "type": "svg"
+  },
+  {
+    "name": "Vector5671.svg",
+    "guid": "8151:76135",
+    "type": "svg"
+  },
+  {
+    "name": "Vector5672.svg",
+    "guid": "8151:76134",
+    "type": "svg"
+  },
+  {
+    "name": "Vector5673.svg",
+    "guid": "8151:76133",
+    "type": "svg"
+  },
+  {
+    "name": "Vector5674.svg",
+    "guid": "8151:76132",
+    "type": "svg"
+  },
+  {
+    "name": "Vector5675.svg",
+    "guid": "8151:76131",
+    "type": "svg"
+  },
+  {
+    "name": "Vector5676.svg",
+    "guid": "8151:76130",
+    "type": "svg"
+  },
+  {
+    "name": "Vector568.svg",
+    "guid": "8151:76219",
+    "type": "svg"
+  },
+  {
+    "name": "Vector569.svg",
+    "guid": "8270:115268",
+    "type": "svg"
+  },
+  {
+    "name": "Vector570.svg",
+    "guid": "8270:115269",
+    "type": "svg"
+  },
+  {
+    "name": "Vector92.svg",
+    "guid": "7:65333",
+    "type": "svg"
+  },
+  {
+    "name": "Vector920.svg",
+    "guid": "7:24522",
+    "type": "svg"
+  },
+  {
+    "name": "Vector921.svg",
+    "guid": "7:24505",
+    "type": "svg"
+  },
+  {
+    "name": "Vector93.svg",
+    "guid": "7:65334",
+    "type": "svg"
+  },
+  {
+    "name": "Vector930.svg",
+    "guid": "7:24523",
+    "type": "svg"
+  },
+  {
+    "name": "Vector931.svg",
+    "guid": "7:24506",
+    "type": "svg"
+  },
+  {
+    "name": "border.svg",
+    "guid": "8151:76124",
+    "type": "svg"
+  },
+  {
+    "name": "cwmAccess20x20.svg",
+    "guid": "7:65370",
+    "type": "svg"
+  },
+  {
+    "name": "fileTypeskotlin.svg",
+    "guid": "7:24593",
+    "type": "svg"
+  },
+  {
+    "name": "fileTypeskotlin0.svg",
+    "guid": "7:2149",
+    "type": "svg"
+  },
+  {
+    "name": "generalchevronDown.svg",
+    "guid": "7:65956",
+    "type": "svg"
+  },
+  {
+    "name": "generalchevronDown0.svg",
+    "guid": "7:65409",
+    "type": "svg"
+  },
+  {
+    "name": "generalchevronDown1.svg",
+    "guid": "7:65396",
+    "type": "svg"
+  },
+  {
+    "name": "generalchevronDown2.svg",
+    "guid": "7:65338",
+    "type": "svg"
+  },
+  {
+    "name": "generalchevronDown3.svg",
+    "guid": "7:43028",
+    "type": "svg"
+  },
+  {
+    "name": "generalchevronDown4.svg",
+    "guid": "7:45275",
+    "type": "svg"
+  },
+  {
+    "name": "generalchevronDown5.svg",
+    "guid": "7:21938",
+    "type": "svg"
+  },
+  {
+    "name": "generalchevronRight.svg",
+    "guid": "7:66194",
+    "type": "svg"
+  },
+  {
+    "name": "generalchevronRight0.svg",
+    "guid": "7:66186",
+    "type": "svg"
+  },
+  {
+    "name": "generalchevronRight1.svg",
+    "guid": "7:66178",
+    "type": "svg"
+  },
+  {
+    "name": "generalchevronRight2.svg",
+    "guid": "7:66170",
+    "type": "svg"
+  },
+  {
+    "name": "generalchevronRight3.svg",
+    "guid": "7:66162",
+    "type": "svg"
+  },
+  {
+    "name": "generalchevronRight4.svg",
+    "guid": "7:66154",
+    "type": "svg"
+  },
+  {
+    "name": "generalchevronRight5.svg",
+    "guid": "7:66146",
+    "type": "svg"
+  },
+  {
+    "name": "generalchevronRight6.svg",
+    "guid": "7:66138",
+    "type": "svg"
+  },
+  {
+    "name": "generalchevronUp.svg",
+    "guid": "7:65954",
+    "type": "svg"
+  },
+  {
+    "name": "generalcloseSmall.svg",
+    "guid": "7:65892",
+    "type": "svg"
+  },
+  {
+    "name": "generalcloseSmall0.svg",
+    "guid": "7:31234",
+    "type": "svg"
+  },
+  {
+    "name": "generalcollapseAll.svg",
+    "guid": "7:20762",
+    "type": "svg"
+  },
+  {
+    "name": "generalcollapseAll0.svg",
+    "guid": "7:34844",
+    "type": "svg"
+  },
+  {
+    "name": "generalexpandAll.svg",
+    "guid": "7:20691",
+    "type": "svg"
+  },
+  {
+    "name": "generalexpandAll0.svg",
+    "guid": "7:34837",
+    "type": "svg"
+  },
+  {
+    "name": "generalexternalLink.svg",
+    "guid": "7:4744",
+    "type": "svg"
+  },
+  {
+    "name": "generalexternalLink0.svg",
+    "guid": "8101:95053",
+    "type": "svg"
+  },
+  {
+    "name": "generalhide.svg",
+    "guid": "7:47358",
+    "type": "svg"
+  },
+  {
+    "name": "generallocate.svg",
+    "guid": "7:34826",
+    "type": "svg"
+  },
+  {
+    "name": "generalmoreVertical.svg",
+    "guid": "7:65919",
+    "type": "svg"
+  },
+  {
+    "name": "generalmoreVertical0.svg",
+    "guid": "7:47350",
+    "type": "svg"
+  },
+  {
+    "name": "generalmoreVertical1.svg",
+    "guid": "7:34851",
+    "type": "svg"
+  },
+  {
+    "name": "generalrefresh.svg",
+    "guid": "7:20422",
+    "type": "svg"
+  },
+  {
+    "name": "generalremove.svg",
+    "guid": "7:34859",
+    "type": "svg"
+  },
+  {
+    "name": "generalsave.svg",
+    "guid": "8101:82439",
+    "type": "svg"
+  },
+  {
+    "name": "generalsearch.svg",
+    "guid": "8101:82441",
+    "type": "svg"
+  },
+  {
+    "name": "generalsearch20x20.svg",
+    "guid": "7:65374",
+    "type": "svg"
+  },
+  {
+    "name": "generalsettings.svg",
+    "guid": "8101:82442",
+    "type": "svg"
+  },
+  {
+    "name": "generalsettings20x20.svg",
+    "guid": "7:65380",
+    "type": "svg"
+  },
+  {
+    "name": "generalshow.svg",
+    "guid": "7:20472",
+    "type": "svg"
+  },
+  {
+    "name": "generalshow0.svg",
+    "guid": "8101:82443",
+    "type": "svg"
+  },
+  {
+    "name": "generalunlocked.svg",
+    "guid": "7:66213",
+    "type": "svg"
+  },
+  {
+    "name": "head.svg",
+    "guid": "7:65358",
+    "type": "svg"
+  },
+  {
+    "name": "inspectionsTypos.svg",
+    "guid": "7:65950",
+    "type": "svg"
+  },
+  {
+    "name": "inspectionsWarning.svg",
+    "guid": "7:65945",
+    "type": "svg"
+  },
+  {
+    "name": "leftlegs.svg",
+    "guid": "7:65354",
+    "type": "svg"
+  },
+  {
+    "name": "minwidth.svg",
+    "guid": "7:4374",
+    "type": "svg"
+  },
+  {
+    "name": "minwidth0.svg",
+    "guid": "7:4376",
+    "type": "svg"
+  },
+  {
+    "name": "minwidth1.svg",
+    "guid": "7:3887",
+    "type": "svg"
+  },
+  {
+    "name": "minwidth2.svg",
+    "guid": "7:3075",
+    "type": "svg"
+  },
+  {
+    "name": "minwidth3.svg",
+    "guid": "7:4000",
+    "type": "svg"
+  },
+  {
+    "name": "minwidth4.svg",
+    "guid": "7:4304",
+    "type": "svg"
+  },
+  {
+    "name": "nodejs_dark.svg",
+    "guid": "7:11860",
+    "type": "svg"
+  },
+  {
+    "name": "rightlegs.svg",
+    "guid": "7:65350",
+    "type": "svg"
+  },
+  {
+    "name": "runwidgetrun_stroke.svg",
+    "guid": "7:65344",
+    "type": "svg"
+  },
+  {
+    "name": "statusinfo.svg",
+    "guid": "7:45252",
+    "type": "svg"
+  },
+  {
+    "name": "statusinfo0.svg",
+    "guid": "7:38648",
+    "type": "svg"
+  },
+  {
+    "name": "statusquestionDialog.svg",
+    "guid": "7:51872",
+    "type": "svg"
+  },
+  {
+    "name": "stub.svg",
+    "guid": "7:66189",
+    "type": "svg"
+  },
+  {
+    "name": "stub0.svg",
+    "guid": "7:66181",
+    "type": "svg"
+  },
+  {
+    "name": "stub1.svg",
+    "guid": "7:66173",
+    "type": "svg"
+  },
+  {
+    "name": "stub2.svg",
+    "guid": "7:66165",
+    "type": "svg"
+  },
+  {
+    "name": "stub3.svg",
+    "guid": "7:66157",
+    "type": "svg"
+  },
+  {
+    "name": "stub4.svg",
+    "guid": "7:66149",
+    "type": "svg"
+  },
+  {
+    "name": "stub5.svg",
+    "guid": "7:66141",
+    "type": "svg"
+  },
+  {
+    "name": "toolwindowbookmarks20x20.svg",
+    "guid": "7:65437",
+    "type": "svg"
+  },
+  {
+    "name": "toolwindowcommit20x20.svg",
+    "guid": "7:65431",
+    "type": "svg"
+  },
+  {
+    "name": "toolwindowmaven20x20.svg",
+    "guid": "7:66102",
+    "type": "svg"
+  },
+  {
+    "name": "toolwindowproblems20x20.svg",
+    "guid": "7:65477",
+    "type": "svg"
+  },
+  {
+    "name": "toolwindowrun20x20.svg",
+    "guid": "7:65466",
+    "type": "svg"
+  },
+  {
+    "name": "toolwindowvcs20x20.svg",
+    "guid": "7:65469",
+    "type": "svg"
+  },
+  {
+    "name": "vcsrevert.svg",
+    "guid": "7:20768",
+    "type": "svg"
+  },
+  {
+    "name": "vcsstash.svg",
+    "guid": "7:20736",
+    "type": "svg"
+  }
+]

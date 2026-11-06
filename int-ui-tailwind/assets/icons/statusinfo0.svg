@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="41.466797 109.055542 11.288889 11.288889" width="11.288889" height="11.288889" fill="none">
+<defs>
+		<g id="pixso_custom_effect_3">
+			<effect x="0.000000" y="4.233334" visibility="visible" fill="rgb(145,145,145)" fill-opacity="0.469999999" effectType="dropShadow" stdDeviation="14.1111107" radius="0"/>
+		</g>
+		<filter id="filter_3" width="282.222656" height="104.855469" x="18.888672" y="92.122192" filterUnits="userSpaceOnUse" customEffect="url(#pixso_custom_effect_3)" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+			<feColorMatrix result="hardAlpha" in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0 "/>
+			<feOffset dx="0.000000" dy="4.233334" in="hardAlpha"/>
+			<feGaussianBlur stdDeviation="4.7037034"/>
+			<feComposite k2="-1" k3="1" in2="hardAlpha" operator="out"/>
+			<feColorMatrix type="matrix" values="0 0 0 0 0.57 0 0 0 0 0.57 0 0 0 0 0.57 0 0 0 0.47 0 "/>
+			<feBlend result="effect_dropShadow_1" in2="BackgroundImageFix" mode="normal"/>
+			<feBlend result="shape" in="SourceGraphic" in2="effect_dropShadow_1" mode="normal"/>
+		</filter>
+		<clipPath id="clipPath_159">
+			<rect width="254.000000" height="76.633331" x="33.000000" y="102.000000" rx="5.644444" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_160">
+			<rect width="230.011108" height="62.522224" x="41.466797" y="109.055542" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_161">
+			<rect width="11.288889" height="11.288889" x="41.466797" y="109.055542" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_162">
+			<rect width="11.288889" height="11.288889" x="41.466797" y="109.055542" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_163">
+			<rect width="213.077774" height="62.522224" x="58.399902" y="109.055542" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_164">
+			<rect width="213.077774" height="39.233334" x="58.399902" y="109.055542" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_165">
+			<rect width="135.866669" height="20.466667" x="58.399902" y="151.111084" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_166">
+			<rect width="76.199997" height="28.222221" x="58.399902" y="151.111084" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_167">
+			<rect width="76.199997" height="19.755556" x="58.399902" y="155.344482" rx="2.822222" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_168">
+			<rect width="76.199997" height="19.755556" x="58.399902" y="155.344482" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_169">
+			<rect width="19.755556" height="19.755556" x="109.199707" y="155.344482" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_170">
+			<rect width="11.288889" height="11.288889" x="113.433105" y="159.577759" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_171">
+			<rect width="135.866669" height="20.466667" x="58.399902" y="151.111084" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_172">
+			<rect width="34.288887" height="11.288889" x="159.977539" y="155.699951" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_173">
+			<rect width="11.288889" height="11.288889" x="182.977539" y="155.699951" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_174">
+			<rect width="36.688889" height="18.344444" x="247.488770" y="104.822266" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_175">
+			<rect width="18.344444" height="18.344444" x="247.488770" y="104.822266" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_176">
+			<rect width="18.344444" height="18.344444" x="247.488770" y="104.822266" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_177">
+			<rect width="11.288889" height="11.288889" x="251.016602" y="108.349976" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_178">
+			<rect width="11.288889" height="11.288889" x="251.722168" y="109.055542" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_179">
+			<rect width="18.344444" height="18.344444" x="265.833496" y="104.822266" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_180">
+			<rect width="18.344444" height="18.344444" x="265.833496" y="104.822266" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_181">
+			<rect width="11.288889" height="11.288889" x="269.361328" y="108.349976" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_182">
+			<rect width="11.288889" height="11.288889" x="270.066406" y="109.055542" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_183">
+			<rect width="11.288889" height="29.022221" x="267.244629" y="134.455566" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_184">
+			<rect width="11.288889" height="11.288889" x="267.244629" y="134.455566" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_185">
+			<rect width="11.288889" height="11.288889" x="267.244629" y="134.455566" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_186">
+			<rect width="11.288889" height="11.288889" x="0.000000" y="0.000000" fill="rgb(255,255,255)" transform="matrix(-1,-8.74228e-08,8.74228e-08,-1,278.533,169.733)"/>
+		</clipPath>
+		<clipPath id="clipPath_187">
+			<rect width="11.288889" height="11.288889" x="0.000000" y="0.000000" fill="rgb(255,255,255)" transform="matrix(-1,-8.74228e-08,8.74228e-08,-1,278.533,169.733)"/>
+		</clipPath>
+		<clipPath id="clipPath_188">
+			<rect width="320.000000" height="280.000000" x="0.000000" y="0.000000" fill="rgb(255,255,255)"/>
+		</clipPath>
+	</defs>
+<g id="status / info" customFrame="url(#clipPath_162)">
+						<rect id="status / info" width="11.288889" height="11.288889" x="41.466797" y="109.055542"/>
+						<circle id="Ellipse 399" cx="47.1107635" cy="114.699997" r="4.93888903" fill="rgb(70,130,250)"/>
+						<path id="Vector 21" d="M0 0L2.11667 0" stroke="rgb(255,255,255)" stroke-linecap="round" stroke-width="1.270000" transform="matrix(4.37114e-08,-1,1,4.37114e-08,47.1108,117.099)"/>
+						<circle id="Ellipse 400" cx="0.776111126" cy="0.776111126" r="0.776111126" fill="rgb(255,255,255)" transform="matrix(-1,-8.74228e-08,8.74228e-08,-1,47.8867,113.43)"/>
+					</g>
+</svg>

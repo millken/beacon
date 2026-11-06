@@ -1,0 +1,16 @@
+{
+  "title": "Int UI Kit — Tailwind CSS",
+  "components": 30,
+  "svgUses": 166,
+  "missingSvgReferences": [],
+  "undefinedMarkup": false,
+  "width": 1440,
+  "height": 6382,
+  "fonts": {
+    "inter": true,
+    "mono": true
+  },
+  "pageErrors": [],
+  "failedRequests": [],
+  "missingAssets": []
+}

@@ -1,0 +1,1182 @@
+[
+  {
+    "name": "Actionsclose.svg",
+    "guid": "7:38668",
+    "status": "recovered",
+    "source": "af6047e3545300e77f6096b695fa56ecffeb19854868450bd627afb60a895423.svg",
+    "group": "Actions / close",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "name": "Alphabet.svg",
+    "guid": "7:66199",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Alphabet",
+    "width": 3.57007,
+    "height": 3.889738
+  },
+  {
+    "name": "Alphabet0.svg",
+    "guid": "7:65888",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Alphabet",
+    "width": 3.57007,
+    "height": 3.889738
+  },
+  {
+    "name": "Alphabet1.svg",
+    "guid": "7:65864",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Alphabet",
+    "width": 3.57007,
+    "height": 3.889738
+  },
+  {
+    "name": "Alphabet2.svg",
+    "guid": "7:43058",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Alphabet",
+    "width": 3.57007,
+    "height": 3.889738
+  },
+  {
+    "name": "Alphabet3.svg",
+    "guid": "7:43045",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Alphabet",
+    "width": 3.57007,
+    "height": 3.889738
+  },
+  {
+    "name": "Alphabet4.svg",
+    "guid": "7:22281",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Alphabet",
+    "width": 3.57007,
+    "height": 3.889738
+  },
+  {
+    "name": "Alphabet5.svg",
+    "guid": "7:11811",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Alphabet",
+    "width": 3.57007,
+    "height": 3.889738
+  },
+  {
+    "name": "Background.svg",
+    "guid": "7:51499",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Background",
+    "width": 11.113538,
+    "height": 11.113538
+  },
+  {
+    "name": "Border.svg",
+    "guid": "7:51468",
+    "status": "unmatched"
+  },
+  {
+    "name": "Border0.svg",
+    "guid": "7:30304",
+    "status": "unmatched"
+  },
+  {
+    "name": "Check.svg",
+    "guid": "7:19325",
+    "status": "unmatched"
+  },
+  {
+    "name": "Check0.svg",
+    "guid": "7:19501",
+    "status": "unmatched"
+  },
+  {
+    "name": "Check1.svg",
+    "guid": "7:19578",
+    "status": "unmatched"
+  },
+  {
+    "name": "Check2.svg",
+    "guid": "7:19589",
+    "status": "unmatched"
+  },
+  {
+    "name": "Chevron.svg",
+    "guid": "7:21182",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Chevron",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "Chevron0.svg",
+    "guid": "7:5320",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Chevron",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "Chevron1.svg",
+    "guid": "7:12550",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Chevron",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "Chevron2.svg",
+    "guid": "7:16341",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Chevron",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "Chevron3.svg",
+    "guid": "7:24530",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Chevron",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "Chevron4.svg",
+    "guid": "7:24513",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Chevron",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "Chevron5.svg",
+    "guid": "7:39201",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Chevron",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "Chevron6.svg",
+    "guid": "7:30302",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Chevron",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "Close.svg",
+    "guid": "7:11814",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Close",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "Content.svg",
+    "guid": "7:6863",
+    "status": "recovered",
+    "source": "ddfecfc22ef3052ee7f9c3e3b525c53b285693fd81583f6cdb6d6a69fd9064a0.svg",
+    "group": "Content",
+    "width": 16,
+    "height": 8
+  },
+  {
+    "name": "Cup.svg",
+    "guid": "7:1498",
+    "status": "unmatched"
+  },
+  {
+    "name": "Database.svg",
+    "guid": "7:66099",
+    "status": "unmatched"
+  },
+  {
+    "name": "Dropdown.svg",
+    "guid": "7:20475",
+    "status": "recovered",
+    "source": "a3e719e46e0ce0fc167a8cef07b22330156ef0b8dcf17162ab791dbaf8871fb8.svg",
+    "group": "Dropdown",
+    "width": 14.058824,
+    "height": 14.058824
+  },
+  {
+    "name": "Ellipse379.svg",
+    "guid": "7:66198",
+    "status": "unmatched"
+  },
+  {
+    "name": "Ellipse3790.svg",
+    "guid": "7:65887",
+    "status": "unmatched"
+  },
+  {
+    "name": "Ellipse3791.svg",
+    "guid": "7:65863",
+    "status": "unmatched"
+  },
+  {
+    "name": "Ellipse3792.svg",
+    "guid": "7:43057",
+    "status": "unmatched"
+  },
+  {
+    "name": "Ellipse3793.svg",
+    "guid": "7:43044",
+    "status": "unmatched"
+  },
+  {
+    "name": "Ellipse3794.svg",
+    "guid": "7:22280",
+    "status": "unmatched"
+  },
+  {
+    "name": "Ellipse3795.svg",
+    "guid": "7:11810",
+    "status": "unmatched"
+  },
+  {
+    "name": "Ellipse382.svg",
+    "guid": "7:65881",
+    "status": "unmatched"
+  },
+  {
+    "name": "Ellipse3820.svg",
+    "guid": "7:65873",
+    "status": "unmatched"
+  },
+  {
+    "name": "Ellipse3821.svg",
+    "guid": "7:13314",
+    "status": "unmatched"
+  },
+  {
+    "name": "Ellipse3822.svg",
+    "guid": "7:2153",
+    "status": "unmatched"
+  },
+  {
+    "name": "Ellipse470.svg",
+    "guid": "8151:76122",
+    "status": "unmatched"
+  },
+  {
+    "name": "Ellipse471.svg",
+    "guid": "8151:76216",
+    "status": "unmatched"
+  },
+  {
+    "name": "Group10.svg",
+    "guid": "7:65402",
+    "status": "unmatched"
+  },
+  {
+    "name": "Group1214.svg",
+    "guid": "7:65363",
+    "status": "unmatched"
+  },
+  {
+    "name": "Help.svg",
+    "guid": "7:51500",
+    "status": "recovered",
+    "source": "3ed473eaf2b29a3b5fd00a39e91598c80f54b11dbab8db7caee5b770b42392ce.svg",
+    "group": "Help",
+    "width": 10.026109,
+    "height": 10.026109
+  },
+  {
+    "name": "Icon.svg",
+    "guid": "7:66092",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Icon",
+    "width": 11.113538,
+    "height": 11.113538
+  },
+  {
+    "name": "Icon0.svg",
+    "guid": "7:65900",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Icon",
+    "width": 11.113538,
+    "height": 11.113538
+  },
+  {
+    "name": "Icon1.svg",
+    "guid": "7:65454",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Icon",
+    "width": 11.113538,
+    "height": 11.113538
+  },
+  {
+    "name": "Icon2.svg",
+    "guid": "7:65425",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Icon",
+    "width": 11.113538,
+    "height": 11.113538
+  },
+  {
+    "name": "Icon3.svg",
+    "guid": "7:65422",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Icon",
+    "width": 11.113538,
+    "height": 11.113538
+  },
+  {
+    "name": "Icon4.svg",
+    "guid": "7:21189",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Icon",
+    "width": 11.113538,
+    "height": 11.113538
+  },
+  {
+    "name": "Icon5.svg",
+    "guid": "7:5327",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Icon",
+    "width": 11.113538,
+    "height": 11.113538
+  },
+  {
+    "name": "Icon6.svg",
+    "guid": "7:12557",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Icon",
+    "width": 11.113538,
+    "height": 11.113538
+  },
+  {
+    "name": "Icon7.svg",
+    "guid": "7:16348",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Icon",
+    "width": 11.113538,
+    "height": 11.113538
+  },
+  {
+    "name": "MainToolbarMacOSButtons.svg",
+    "guid": "7:65411",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Main Toolbar / MacOS Buttons",
+    "width": 28.895197,
+    "height": 6.668122
+  },
+  {
+    "name": "MainToolbarMacOSButtons0.svg",
+    "guid": "7:51463",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "Main Toolbar / MacOS Buttons",
+    "width": 28.895197,
+    "height": 6.668122
+  },
+  {
+    "name": "Polygon5.svg",
+    "guid": "7:2485",
+    "status": "unmatched"
+  },
+  {
+    "name": "Radio.svg",
+    "guid": "7:5709",
+    "status": "recovered",
+    "source": "bf4b269da442150e9c18674f0c453bf591bbd0e5b3fa39905c19ab871794bcd3.svg",
+    "group": "Radio",
+    "width": 17,
+    "height": 17
+  },
+  {
+    "name": "Radio0.svg",
+    "guid": "7:7709",
+    "status": "recovered",
+    "source": "bf4b269da442150e9c18674f0c453bf591bbd0e5b3fa39905c19ab871794bcd3.svg",
+    "group": "Radio",
+    "width": 17,
+    "height": 17
+  },
+  {
+    "name": "Radio1.svg",
+    "guid": "7:5786",
+    "status": "recovered",
+    "source": "bf4b269da442150e9c18674f0c453bf591bbd0e5b3fa39905c19ab871794bcd3.svg",
+    "group": "Radio",
+    "width": 17,
+    "height": 17
+  },
+  {
+    "name": "Rectangle.svg",
+    "guid": "7:2239",
+    "status": "unmatched"
+  },
+  {
+    "name": "Rectangle0.svg",
+    "guid": "7:2238",
+    "status": "unmatched"
+  },
+  {
+    "name": "Rectangle1.svg",
+    "guid": "7:2236",
+    "status": "unmatched"
+  },
+  {
+    "name": "Rectangle2.svg",
+    "guid": "7:2234",
+    "status": "unmatched"
+  },
+  {
+    "name": "Rectangle3.svg",
+    "guid": "7:2233",
+    "status": "unmatched"
+  },
+  {
+    "name": "Rectangle4.svg",
+    "guid": "7:2232",
+    "status": "unmatched"
+  },
+  {
+    "name": "Rectangle5.svg",
+    "guid": "7:2231",
+    "status": "unmatched"
+  },
+  {
+    "name": "Search.svg",
+    "guid": "7:31227",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "search",
+    "width": 22.227076,
+    "height": 22.227076
+  },
+  {
+    "name": "Stop.svg",
+    "guid": "7:14188",
+    "status": "unmatched"
+  },
+  {
+    "name": "Tip.svg",
+    "guid": "7:43709",
+    "status": "recovered",
+    "source": "cdea2986213d9b772e258db399e31af9158bbaebd0b1c8bc35090bb0f6c84bfb.svg",
+    "group": "Tip",
+    "width": 38.565517,
+    "height": 6.427584
+  },
+  {
+    "name": "Vector11.svg",
+    "guid": "7:65880",
+    "status": "unmatched"
+  },
+  {
+    "name": "Vector110.svg",
+    "guid": "7:65872",
+    "status": "unmatched"
+  },
+  {
+    "name": "Vector111.svg",
+    "guid": "7:13313",
+    "status": "unmatched"
+  },
+  {
+    "name": "Vector112.svg",
+    "guid": "7:2152",
+    "status": "unmatched"
+  },
+  {
+    "name": "Vector20.svg",
+    "guid": "7:65462",
+    "status": "unmatched"
+  },
+  {
+    "name": "Vector309.svg",
+    "guid": "7:65463",
+    "status": "unmatched"
+  },
+  {
+    "name": "Vector567.svg",
+    "guid": "8151:76137",
+    "status": "unmatched"
+  },
+  {
+    "name": "Vector5670.svg",
+    "guid": "8151:76136",
+    "status": "unmatched"
+  },
+  {
+    "name": "Vector5671.svg",
+    "guid": "8151:76135",
+    "status": "unmatched"
+  },
+  {
+    "name": "Vector5672.svg",
+    "guid": "8151:76134",
+    "status": "unmatched"
+  },
+  {
+    "name": "Vector5673.svg",
+    "guid": "8151:76133",
+    "status": "unmatched"
+  },
+  {
+    "name": "Vector5674.svg",
+    "guid": "8151:76132",
+    "status": "unmatched"
+  },
+  {
+    "name": "Vector5675.svg",
+    "guid": "8151:76131",
+    "status": "unmatched"
+  },
+  {
+    "name": "Vector5676.svg",
+    "guid": "8151:76130",
+    "status": "unmatched"
+  },
+  {
+    "name": "Vector568.svg",
+    "guid": "8151:76219",
+    "status": "unmatched"
+  },
+  {
+    "name": "Vector569.svg",
+    "guid": "8270:115268",
+    "status": "unmatched"
+  },
+  {
+    "name": "Vector570.svg",
+    "guid": "8270:115269",
+    "status": "unmatched"
+  },
+  {
+    "name": "Vector92.svg",
+    "guid": "7:65333",
+    "status": "unmatched"
+  },
+  {
+    "name": "Vector920.svg",
+    "guid": "7:24522",
+    "status": "unmatched"
+  },
+  {
+    "name": "Vector921.svg",
+    "guid": "7:24505",
+    "status": "unmatched"
+  },
+  {
+    "name": "Vector93.svg",
+    "guid": "7:65334",
+    "status": "unmatched"
+  },
+  {
+    "name": "Vector930.svg",
+    "guid": "7:24523",
+    "status": "unmatched"
+  },
+  {
+    "name": "Vector931.svg",
+    "guid": "7:24506",
+    "status": "unmatched"
+  },
+  {
+    "name": "border.svg",
+    "guid": "8151:76124",
+    "status": "unmatched"
+  },
+  {
+    "name": "cwmAccess20x20.svg",
+    "guid": "7:65370",
+    "status": "unmatched"
+  },
+  {
+    "name": "fileTypeskotlin.svg",
+    "guid": "7:24593",
+    "status": "recovered",
+    "source": "9f4ba47280842d47f477474b0cee231c35d6bd96dd7928db36bbf06893ff3b81.svg",
+    "group": "fileTypes / kotlin",
+    "width": 11.17193,
+    "height": 11.17193
+  },
+  {
+    "name": "fileTypeskotlin0.svg",
+    "guid": "7:2149",
+    "status": "recovered",
+    "source": "9f4ba47280842d47f477474b0cee231c35d6bd96dd7928db36bbf06893ff3b81.svg",
+    "group": "fileTypes / kotlin",
+    "width": 11.17193,
+    "height": 11.17193
+  },
+  {
+    "name": "generalchevronDown.svg",
+    "guid": "7:65956",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / chevronDown",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalchevronDown0.svg",
+    "guid": "7:65409",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / chevronDown",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalchevronDown1.svg",
+    "guid": "7:65396",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / chevronDown",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalchevronDown2.svg",
+    "guid": "7:65338",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / chevronDown",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalchevronDown3.svg",
+    "guid": "7:43028",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / chevronDown",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalchevronDown4.svg",
+    "guid": "7:45275",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / chevronDown",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalchevronDown5.svg",
+    "guid": "7:21938",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / chevronDown",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalchevronRight.svg",
+    "guid": "7:66194",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / chevronRight",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalchevronRight0.svg",
+    "guid": "7:66186",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / chevronRight",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalchevronRight1.svg",
+    "guid": "7:66178",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / chevronRight",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalchevronRight2.svg",
+    "guid": "7:66170",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / chevronRight",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalchevronRight3.svg",
+    "guid": "7:66162",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / chevronRight",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalchevronRight4.svg",
+    "guid": "7:66154",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / chevronRight",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalchevronRight5.svg",
+    "guid": "7:66146",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / chevronRight",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalchevronRight6.svg",
+    "guid": "7:66138",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / chevronRight",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalchevronUp.svg",
+    "guid": "7:65954",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / chevronUp",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalcloseSmall.svg",
+    "guid": "7:65892",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / closeSmall",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalcloseSmall0.svg",
+    "guid": "7:31234",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / closeSmall",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalcollapseAll.svg",
+    "guid": "7:20762",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / collapseAll",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalcollapseAll0.svg",
+    "guid": "7:34844",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / collapseAll",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalexpandAll.svg",
+    "guid": "7:20691",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / expandAll",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalexpandAll0.svg",
+    "guid": "7:34837",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / expandAll",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalexternalLink.svg",
+    "guid": "7:4744",
+    "status": "recovered",
+    "source": "1462f69d7aa39880454a2d2adf253ed963acb6ecb38ac8460cebc6ec37d5a2a5.svg",
+    "group": "general / externalLink",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "name": "generalexternalLink0.svg",
+    "guid": "8101:95053",
+    "status": "recovered",
+    "source": "1462f69d7aa39880454a2d2adf253ed963acb6ecb38ac8460cebc6ec37d5a2a5.svg",
+    "group": "general / externalLink",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "name": "generalhide.svg",
+    "guid": "7:47358",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / hide",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generallocate.svg",
+    "guid": "7:34826",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / locate",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalmoreVertical.svg",
+    "guid": "7:65919",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / moreVertical",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalmoreVertical0.svg",
+    "guid": "7:47350",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / moreVertical",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalmoreVertical1.svg",
+    "guid": "7:34851",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / moreVertical",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "generalrefresh.svg",
+    "guid": "7:20422",
+    "status": "recovered",
+    "source": "a3e719e46e0ce0fc167a8cef07b22330156ef0b8dcf17162ab791dbaf8871fb8.svg",
+    "group": "general / refresh",
+    "width": 14.058824,
+    "height": 14.058824
+  },
+  {
+    "name": "generalremove.svg",
+    "guid": "7:34859",
+    "status": "recovered",
+    "source": "6829cdb9ce45d0440a80bbe1ff466506835cc7fb46791e47dc0f3f4e0766a4fb.svg",
+    "group": "general / remove",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "name": "generalsave.svg",
+    "guid": "8101:82439",
+    "status": "recovered",
+    "source": "1462f69d7aa39880454a2d2adf253ed963acb6ecb38ac8460cebc6ec37d5a2a5.svg",
+    "group": "general/save",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "name": "generalsearch.svg",
+    "guid": "8101:82441",
+    "status": "recovered",
+    "source": "1462f69d7aa39880454a2d2adf253ed963acb6ecb38ac8460cebc6ec37d5a2a5.svg",
+    "group": "general / search",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "name": "generalsearch20x20.svg",
+    "guid": "7:65374",
+    "status": "unmatched"
+  },
+  {
+    "name": "generalsettings.svg",
+    "guid": "8101:82442",
+    "status": "recovered",
+    "source": "1462f69d7aa39880454a2d2adf253ed963acb6ecb38ac8460cebc6ec37d5a2a5.svg",
+    "group": "general / settings",
+    "width": 16,
+    "height": 16
+  },
+  {
+    "name": "generalsettings20x20.svg",
+    "guid": "7:65380",
+    "status": "unmatched"
+  },
+  {
+    "name": "generalshow.svg",
+    "guid": "7:20472",
+    "status": "recovered",
+    "source": "a3e719e46e0ce0fc167a8cef07b22330156ef0b8dcf17162ab791dbaf8871fb8.svg",
+    "group": "general / show",
+    "width": 14.058824,
+    "height": 14.058824
+  },
+  {
+    "name": "generalshow0.svg",
+    "guid": "8101:82443",
+    "status": "recovered",
+    "source": "a3e719e46e0ce0fc167a8cef07b22330156ef0b8dcf17162ab791dbaf8871fb8.svg",
+    "group": "general / show",
+    "width": 14.058824,
+    "height": 14.058824
+  },
+  {
+    "name": "generalunlocked.svg",
+    "guid": "7:66213",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "general / unlocked",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "head.svg",
+    "guid": "7:65358",
+    "status": "unmatched"
+  },
+  {
+    "name": "inspectionsTypos.svg",
+    "guid": "7:65950",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "inspectionsTypos",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "inspectionsWarning.svg",
+    "guid": "7:65945",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "inspectionsWarning",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "leftlegs.svg",
+    "guid": "7:65354",
+    "status": "unmatched"
+  },
+  {
+    "name": "minwidth.svg",
+    "guid": "7:4374",
+    "status": "unmatched"
+  },
+  {
+    "name": "minwidth0.svg",
+    "guid": "7:4376",
+    "status": "unmatched"
+  },
+  {
+    "name": "minwidth1.svg",
+    "guid": "7:3887",
+    "status": "unmatched"
+  },
+  {
+    "name": "minwidth2.svg",
+    "guid": "7:3075",
+    "status": "unmatched"
+  },
+  {
+    "name": "minwidth3.svg",
+    "guid": "7:4000",
+    "status": "unmatched"
+  },
+  {
+    "name": "minwidth4.svg",
+    "guid": "7:4304",
+    "status": "unmatched"
+  },
+  {
+    "name": "rightlegs.svg",
+    "guid": "7:65350",
+    "status": "unmatched"
+  },
+  {
+    "name": "statusinfo.svg",
+    "guid": "7:45252",
+    "status": "recovered",
+    "source": "f69a5c3aec3c12030231641561a65756ec823fdebb7ede702d08e6c78128a7b0.svg",
+    "group": "status / info",
+    "width": 11.288889,
+    "height": 11.288889
+  },
+  {
+    "name": "statusinfo0.svg",
+    "guid": "7:38648",
+    "status": "recovered",
+    "source": "f69a5c3aec3c12030231641561a65756ec823fdebb7ede702d08e6c78128a7b0.svg",
+    "group": "status / info",
+    "width": 11.288889,
+    "height": 11.288889
+  },
+  {
+    "name": "statusquestionDialog.svg",
+    "guid": "7:51872",
+    "status": "recovered",
+    "source": "931ec5d320ced106e33d47bd074b6948e245d65f7b0ce7cbbc6c59a2aa708dad.svg",
+    "group": "status / questionDialog",
+    "width": 18.616217,
+    "height": 18.616217
+  },
+  {
+    "name": "stub.svg",
+    "guid": "7:66189",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "stub",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "stub0.svg",
+    "guid": "7:66181",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "stub",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "stub1.svg",
+    "guid": "7:66173",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "stub",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "stub2.svg",
+    "guid": "7:66165",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "stub",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "stub3.svg",
+    "guid": "7:66157",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "stub",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "stub4.svg",
+    "guid": "7:66149",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "stub",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "stub5.svg",
+    "guid": "7:66141",
+    "status": "recovered",
+    "source": "08a4ffec32fc801d40ce779c23cc3696c4c444de674bd964dded52d760068f82.svg",
+    "group": "stub",
+    "width": 8.89083,
+    "height": 8.89083
+  },
+  {
+    "name": "toolwindowbookmarks20x20.svg",
+    "guid": "7:65437",
+    "status": "unmatched"
+  },
+  {
+    "name": "toolwindowcommit20x20.svg",
+    "guid": "7:65431",
+    "status": "unmatched"
+  },
+  {
+    "name": "toolwindowmaven20x20.svg",
+    "guid": "7:66102",
+    "status": "unmatched"
+  },
+  {
+    "name": "toolwindowproblems20x20.svg",
+    "guid": "7:65477",
+    "status": "unmatched"
+  },
+  {
+    "name": "toolwindowrun20x20.svg",
+    "guid": "7:65466",
+    "status": "unmatched"
+  },
+  {
+    "name": "toolwindowvcs20x20.svg",
+    "guid": "7:65469",
+    "status": "unmatched"
+  },
+  {
+    "name": "vcsrevert.svg",
+    "guid": "7:20768",
+    "status": "recovered",
+    "source": "a3e719e46e0ce0fc167a8cef07b22330156ef0b8dcf17162ab791dbaf8871fb8.svg",
+    "group": "vcs / revert",
+    "width": 14.058824,
+    "height": 14.058824
+  },
+  {
+    "name": "vcsstash.svg",
+    "guid": "7:20736",
+    "status": "recovered",
+    "source": "a3e719e46e0ce0fc167a8cef07b22330156ef0b8dcf17162ab791dbaf8871fb8.svg",
+    "group": "vcs / stash",
+    "width": 14.058824,
+    "height": 14.058824
+  }
+]

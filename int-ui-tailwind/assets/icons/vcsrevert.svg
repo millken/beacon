@@ -1,0 +1,726 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="74.268555 116.8125 14.058824 14.058824" width="14.058824" height="14.058824" fill="none">
+<defs>
+		<g id="pixso_custom_effect_10">
+			<effect x="0.000000" y="6.000000" visibility="visible" fill="rgb(145,145,145)" fill-opacity="0.469999999" effectType="dropShadow" stdDeviation="20" radius="0"/>
+		</g>
+		<filter id="filter_10" width="279.000000" height="187.490967" x="20.000000" y="58.000000" filterUnits="userSpaceOnUse" customEffect="url(#pixso_custom_effect_10)" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+			<feColorMatrix result="hardAlpha" in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0 "/>
+			<feOffset dx="0.000000" dy="6.000000" in="hardAlpha"/>
+			<feGaussianBlur stdDeviation="6.66666651"/>
+			<feComposite k2="-1" k3="1" in2="hardAlpha" operator="out"/>
+			<feColorMatrix type="matrix" values="0 0 0 0 0.57 0 0 0 0 0.57 0 0 0 0 0.57 0 0 0 0.47 0 "/>
+			<feBlend result="effect_dropShadow_1" in2="BackgroundImageFix" mode="normal"/>
+			<feBlend result="shape" in="SourceGraphic" in2="effect_dropShadow_1" mode="normal"/>
+		</filter>
+		<clipPath id="clipPath_657">
+			<rect width="239.000000" height="147.490997" x="40.000000" y="72.000000" rx="4.000000" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_658">
+			<rect width="239.000000" height="219.669113" x="40.000000" y="72.000000" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_659">
+			<rect width="237.242645" height="36.025734" x="40.878906" y="72.878662" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_660">
+			<rect width="44.000000" height="15.000000" x="51.422363" y="83.422852" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_661">
+			<rect width="10.544118" height="10.544118" x="95.356445" y="85.180176" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_662">
+			<rect width="45.691177" height="22.845589" x="226.279297" y="79.029297" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_663">
+			<rect width="22.845589" height="22.845589" x="226.279297" y="79.029297" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_664">
+			<rect width="22.845589" height="22.845589" x="226.279297" y="79.029297" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_665">
+			<rect width="14.058824" height="14.058824" x="230.672363" y="83.422852" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_666">
+			<rect width="14.058824" height="14.058824" x="231.551270" y="84.301514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_667">
+			<rect width="22.845589" height="22.845589" x="226.279297" y="79.029297" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_668">
+			<rect width="22.845589" height="22.845589" x="226.279297" y="79.029297" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_669">
+			<rect width="14.058824" height="14.058824" x="230.672363" y="83.422852" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_670">
+			<rect width="14.058824" height="14.058824" x="231.551270" y="84.301514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_671">
+			<rect width="22.845589" height="22.845589" x="249.125000" y="79.029541" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_672">
+			<rect width="22.845589" height="22.845589" x="249.125000" y="79.029541" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_673">
+			<rect width="14.058824" height="14.058824" x="253.518066" y="83.422852" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_674">
+			<rect width="14.058824" height="14.058824" x="254.396973" y="84.301758" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_675">
+			<rect width="22.845589" height="22.845589" x="226.279297" y="79.029297" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_676">
+			<rect width="22.845589" height="22.845589" x="226.279297" y="79.029297" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_677">
+			<rect width="14.058824" height="14.058824" x="230.672852" y="83.422852" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_678">
+			<rect width="14.058824" height="14.058824" x="231.551270" y="84.301758" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_679">
+			<rect width="22.845589" height="22.845589" x="249.125000" y="79.029541" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_680">
+			<rect width="22.845589" height="22.845589" x="249.125000" y="79.029541" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_681">
+			<rect width="14.058824" height="14.058824" x="253.518066" y="83.423096" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_682">
+			<rect width="14.058824" height="14.058824" x="254.396973" y="84.301758" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_683">
+			<rect width="149.375000" height="29.875000" x="40.878906" y="108.904541" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_684">
+			<rect width="22.845589" height="22.845589" x="47.029785" y="112.419189" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_685">
+			<rect width="22.845589" height="22.845589" x="46.606445" y="111.996582" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_686">
+			<rect width="14.058824" height="14.058824" x="51.422852" y="116.812500" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_687">
+			<rect width="14.058824" height="14.058824" x="52.301758" y="117.691406" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_688">
+			<rect width="22.845589" height="22.845589" x="69.875000" y="112.419189" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_689">
+			<rect width="22.845589" height="22.845589" x="69.452148" y="111.996582" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_690">
+			<rect width="14.058824" height="14.058824" x="74.268555" y="116.812500" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_691">
+			<rect width="14.058824" height="14.058824" x="75.147461" y="117.691406" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_692">
+			<rect width="22.845589" height="22.845589" x="92.720703" y="112.419189" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_693">
+			<rect width="22.845589" height="22.845589" x="92.297852" y="111.996582" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_694">
+			<rect width="14.058824" height="14.058824" x="97.114258" y="116.812500" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_695">
+			<rect width="14.058824" height="14.058824" x="97.992676" y="117.691406" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_696">
+			<rect width="22.845589" height="22.845589" x="115.566406" y="112.419189" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_697">
+			<rect width="22.845589" height="22.845589" x="115.143555" y="111.996582" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_698">
+			<rect width="14.058824" height="14.058824" x="119.959961" y="116.812500" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_699">
+			<rect width="14.058824" height="14.058824" x="120.838379" y="117.691406" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_700">
+			<rect width="22.845589" height="22.845589" x="138.412109" y="112.419189" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_701">
+			<rect width="22.845589" height="22.845589" x="137.989258" y="111.996582" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_702">
+			<rect width="14.058824" height="14.058824" x="142.805176" y="116.812500" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_703">
+			<rect width="14.058824" height="14.058824" x="143.684082" y="117.691406" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_704">
+			<rect width="22.845589" height="22.845589" x="161.257812" y="112.419189" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_705">
+			<rect width="22.845589" height="22.845589" x="160.834473" y="111.996582" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_706">
+			<rect width="14.058824" height="14.058824" x="165.650879" y="116.812500" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_707">
+			<rect width="14.058824" height="14.058824" x="166.529785" y="117.691406" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_708">
+			<rect width="239.529785" height="63.264709" x="51.422852" y="138.779541" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_709">
+			<rect width="320.000000" height="24.000000" x="51.422852" y="138.779541" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_710">
+			<rect width="9.665442" height="7.908088" x="57.573730" y="145.946777" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_711">
+			<rect width="14.058824" height="14.058824" x="55.376953" y="142.871338" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_712">
+			<rect width="151.816177" height="18.514706" x="66.360352" y="141.992676" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_713">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="143.750244" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_714">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="143.750244" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_715">
+			<rect width="239.529785" height="21.088236" x="51.422852" y="159.867676" rx="3.514706" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_716">
+			<rect width="9.665442" height="7.908088" x="73.389648" y="165.579346" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_717">
+			<rect width="14.058824" height="14.058824" x="71.193359" y="162.503906" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_718">
+			<rect width="253.147064" height="18.514706" x="82.176758" y="161.154541" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_719">
+			<rect width="14.058824" height="14.058824" x="87.448730" y="163.382568" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_720">
+			<rect width="14.058824" height="14.058824" x="87.448730" y="163.382568" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_721">
+			<rect width="5.645254" height="6.150735" x="91.655273" y="167.336426" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_722">
+			<rect width="239.529785" height="21.088236" x="51.422852" y="180.956055" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_723">
+			<rect width="7.908088" height="9.665442" x="73.389648" y="186.667480" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_724">
+			<rect width="14.058824" height="14.058824" x="70.753906" y="184.470703" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_725">
+			<rect width="253.147064" height="18.514706" x="82.176758" y="182.242676" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_726">
+			<rect width="14.058824" height="14.058824" x="87.448730" y="184.470703" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_727">
+			<rect width="14.058824" height="14.058824" x="87.448730" y="184.470703" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_728">
+			<rect width="5.645254" height="6.150735" x="91.655273" y="188.424805" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_729">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="202.044189" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_730">
+			<rect width="9.665442" height="7.908088" x="73.389648" y="207.755615" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_731">
+			<rect width="14.058824" height="14.058824" x="71.192871" y="204.680176" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_732">
+			<rect width="100.169121" height="17.573530" x="82.176758" y="203.801514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_733">
+			<rect width="14.058824" height="14.058824" x="87.448730" y="205.558838" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_734">
+			<rect width="14.058824" height="14.058824" x="87.448730" y="205.558838" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_735">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="223.132568" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_736">
+			<rect width="7.908088" height="9.665442" x="89.206055" y="228.843750" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_737">
+			<rect width="14.058824" height="14.058824" x="86.569824" y="226.647217" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_738">
+			<rect width="100.169121" height="17.573530" x="97.992676" y="224.889893" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_739">
+			<rect width="14.058824" height="14.058824" x="103.264648" y="226.647217" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_740">
+			<rect width="14.058824" height="14.058824" x="103.264648" y="226.647217" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_741">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="244.220703" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_742">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="249.932129" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_743">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="247.735352" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_744">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="245.978027" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_745">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="247.735352" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_746">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="247.735352" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_747">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="265.308838" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_748">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="271.020264" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_749">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="268.823730" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_750">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="267.066406" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_751">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="268.823730" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_752">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="268.823730" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_753">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="286.397217" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_754">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="292.108643" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_755">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="289.911865" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_756">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="288.154541" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_757">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="289.911865" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_758">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="289.911865" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_759">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="307.485352" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_760">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="313.196777" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_761">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="311.000000" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_762">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="309.242676" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_763">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="311.000000" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_764">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="311.000000" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_765">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="328.573730" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_766">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="334.285156" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_767">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="332.088379" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_768">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="330.331055" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_769">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="332.088379" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_770">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="332.088379" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_771">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="349.661865" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_772">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="355.373291" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_773">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_774">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="351.419189" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_775">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_776">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_777">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="349.661865" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_778">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="355.373291" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_779">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_780">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="351.419189" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_781">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_782">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_783">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="349.661865" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_784">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="355.373291" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_785">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_786">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="351.419189" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_787">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_788">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_789">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="349.661865" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_790">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="355.373291" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_791">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_792">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="351.419189" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_793">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_794">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_795">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="349.661865" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_796">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="355.373291" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_797">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_798">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="351.419189" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_799">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_800">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_801">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="349.661865" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_802">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="355.373291" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_803">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_804">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="351.419189" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_805">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_806">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_807">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="349.661865" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_808">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="355.373291" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_809">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_810">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="351.419189" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_811">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_812">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_813">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="349.661865" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_814">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="355.373291" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_815">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_816">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="351.419189" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_817">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_818">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_819">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="349.661865" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_820">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="355.373291" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_821">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_822">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="351.419189" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_823">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_824">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_825">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="349.661865" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_826">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="355.373291" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_827">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_828">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="351.419189" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_829">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_830">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="353.176514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_831">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="560.544189" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_832">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="566.255615" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_833">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="564.059082" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_834">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="562.301514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_835">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="564.059082" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_836">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="564.059082" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_837">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="560.544189" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_838">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="566.255615" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_839">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="564.059082" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_840">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="562.301514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_841">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="564.059082" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_842">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="564.059082" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_843">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="560.544189" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_844">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="566.255615" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_845">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="564.059082" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_846">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="562.301514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_847">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="564.059082" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_848">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="564.059082" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_849">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="560.544189" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_850">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="566.255615" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_851">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="564.059082" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_852">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="562.301514" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_853">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="564.059082" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_854">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="564.059082" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_855">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="581.632324" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_856">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="587.343750" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_857">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="585.147217" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_858">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="583.389893" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_859">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="585.147217" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_860">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="585.147217" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_861">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="581.632324" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_862">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="587.343750" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_863">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="585.147217" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_864">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="583.389893" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_865">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="585.147217" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_866">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="585.147217" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_867">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="602.720703" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_868">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="608.432129" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_869">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="606.235352" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_870">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="604.478027" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_871">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="606.235352" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_872">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="606.235352" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_873">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="602.720703" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_874">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="608.432129" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_875">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="606.235352" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_876">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="604.478027" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_877">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="606.235352" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_878">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="606.235352" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_879">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="602.720703" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_880">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="608.432129" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_881">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="606.235352" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_882">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="604.478027" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_883">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="606.235352" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_884">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="606.235352" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_885">
+			<rect width="281.176483" height="21.088236" x="51.422852" y="602.720703" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_886">
+			<rect width="7.908088" height="9.665442" x="57.573730" y="608.432129" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_887">
+			<rect width="14.058824" height="14.058824" x="54.937500" y="606.235352" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_888">
+			<rect width="100.169121" height="17.573530" x="66.360352" y="604.478027" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_889">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="606.235352" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_890">
+			<rect width="14.058824" height="14.058824" x="71.632324" y="606.235352" fill="rgb(255,255,255)"/>
+		</clipPath>
+		<clipPath id="clipPath_891">
+			<rect width="320.000000" height="280.000000" x="0.000000" y="0.000000" fill="rgb(255,255,255)"/>
+		</clipPath>
+	</defs>
+<g id="vcs / revert" customFrame="url(#clipPath_690)">
+						<rect id="vcs / revert" width="14.058824" height="14.058824" x="74.268555" y="116.812500"/>
+						<path id="Arrow" d="M79.4121 118.881C79.5837 118.709 79.5837 118.431 79.4121 118.259C79.2406 118.088 78.9624 118.088 78.7908 118.259L75.7154 121.335L75.4048 121.645L75.7154 121.956L78.7908 125.031C78.9624 125.203 79.2406 125.203 79.4121 125.031C79.5837 124.86 79.5837 124.582 79.4121 124.41L77.0868 122.085L83.4949 122.085C85.1933 122.085 86.5702 123.462 86.5702 125.16C86.5702 126.859 85.1933 128.235 83.4949 128.235L79.1015 128.235C78.8588 128.235 78.6621 128.432 78.6621 128.675C78.6621 128.917 78.8588 129.114 79.1015 129.114L83.4949 129.114C85.6786 129.114 87.4489 127.344 87.4489 125.16C87.4489 122.976 85.6786 121.206 83.4949 121.206L77.0868 121.206L79.4121 118.881Z" fill="rgb(108,112,126)" fill-rule="evenodd"/>
+					</g>
+</svg>

@@ -1,0 +1,22 @@
+{
+  "name": "int-ui-tailwind",
+  "version": "1.0.0",
+  "description": "Faithful Tailwind CSS HTML conversion of the Int UI Getting started Pixso page",
+  "scripts": {
+    "build": "node convert.mjs && node inline-sprite.mjs && node sync-component-icons.mjs && tailwindcss -i tailwind.css -o dist/tailwind.css --minify && node build-previews.mjs",
+    "serve": "node server.mjs",
+    "screenshot": "node preview.mjs && node crop-preview.mjs",
+    "previews": "node build-previews.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.4",
+    "cheerio": "^1.2.0",
+    "playwright": "^1.65.0",
+    "postcss": "^8.5.32",
+    "tailwindcss": "^4.3.4"
+  }
+}

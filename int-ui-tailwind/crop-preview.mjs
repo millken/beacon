@@ -1,0 +1,2 @@
+import {chromium} from 'playwright';
+const b=await chromium.launch({executablePath:'/usr/bin/google-chrome',headless:true,args:['--no-sandbox']});const p=await b.newPage({viewport:{width:1440,height:1000}});await p.goto('file:///workspace/int-ui-tailwind/index.html');for(let [name,sel] of [['components','[data-section="Components"]'],['basics','[data-pixso-id="8063:76782"]'],['guide','[data-pixso-id="8151:76094"]']])await p.locator(sel).screenshot({path:'screenshots/html-'+name+'.png'});await b.close();
