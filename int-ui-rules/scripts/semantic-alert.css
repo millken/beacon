@@ -43,10 +43,8 @@
 .alert-title { display: flex; align-items: flex-start; min-width: 0; }
 .alert-content { display: flex; flex: 1 1 340px; flex-direction: column; align-items: flex-start; min-width: 0; }
 .alert-content h3, .alert-content p { align-self: stretch; margin: 0; }
-.status-dot { display: grid; flex-shrink: 0; place-items: center; border-radius: 50%; color: var(--alert-on-primary); font-size: 13px; font-weight: 500; line-height: 1; }
-.status-dot.info { background: var(--alert-info); }
-.status-dot.error { background: var(--alert-error); }
-.status-dot.warning { color: var(--alert-light-ink); background: var(--alert-warning); }
+.status-dot { display: flex; flex-shrink: 0; align-items: center; justify-content: center; background: transparent; }
+.status-dot > svg { display: block; flex: none; }
 .checkline { display: flex; align-items: center; gap: 8px; min-height: 32px; margin: 0; font-size: 13px; line-height: 16px; cursor: pointer; }
 .checkline input { appearance: none; flex: 0 0 16px; width: 16px; height: 16px; margin: 0; background: var(--alert-checkbox-bg); border: 1px solid var(--alert-checkbox-border); border-radius: 3px; }
 .checkline input:checked { background: var(--alert-primary); border-color: var(--alert-primary); }

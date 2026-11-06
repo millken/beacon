@@ -8,7 +8,7 @@
 .micro-alert .window-actions { min-height: 32px; }
 .micro-alert .alert-content h3 { font-size: 14px; line-height: 18px; }
 .micro-alert .alert-content p, .micro-alert .checkline { font-size: 11px; line-height: 16px; }
-.micro-alert .status-dot { width: 20px; height: 20px; flex-basis: 20px; margin: 0; font-size: 11px; }
+.micro-alert .status-dot { width: 20px; height: 20px; flex-basis: 20px; margin: 0; }
 .micro-alert .window-actions .btn { min-width: 56px; min-height: 26px; padding: 4px 10px; }
 .alert-stack { display: grid; gap: 22px; margin-top: 20px; }
 [data-alert-demo].wide { max-width: 440px; }

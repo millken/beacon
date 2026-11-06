@@ -29,9 +29,9 @@ export function walk(node) {
   return [node, ...(node.children || []).flatMap(walk)];
 }
 export function semanticAlertDemo({ title, body, status = "info", theme = "light", check = false, actions = ["Cancel", "OK"], micro = false, wide = false }, id = "alert-demo") {
-  const symbol = status === "info" ? "?" : "!";
   // Semantic reference examples; not additional Pixso-verified masters and not modal dialogs.
-  return `<div class="window ${micro ? "micro-alert" : "alert"}${wide ? " wide" : ""}${theme === "dark" ? " dark" : ""}" data-alert-demo="${id}" role="group" aria-labelledby="${id}-title" aria-describedby="${id}-body"><div class="window-body"><div class="alert-title"><span class="status-dot ${status}" aria-label="${status === "info" ? "Information" : status === "warning" ? "Warning" : "Error"}">${symbol}</span><div class="alert-content"><h3 id="${id}-title">${esc(title)}</h3><p id="${id}-body">${esc(body)}</p>${check ? `<label class="checkline"><input type="checkbox"> Do not ask again</label>` : ""}</div></div></div><div class="window-actions">${actions.map((label, index) => `<button class="btn${index === actions.length - 1 ? " primary" : ""}" type="button">${esc(label)}</button>`).join("")}</div></div>`;
+  const icon = bannerStatusIcon(status, theme, micro ? 20 : 28);
+  return `<div class="window ${micro ? "micro-alert" : "alert"}${wide ? " wide" : ""}${theme === "dark" ? " dark" : ""}" data-alert-demo="${id}" role="group" aria-labelledby="${id}-title" aria-describedby="${id}-body"><div class="window-body"><div class="alert-title"><span class="status-dot ${status}" data-pixso-id="${bannerStatusSources[theme][status].id}" aria-label="${status === "info" ? "Information" : status === "warning" ? "Warning" : "Error"}">${icon}</span><div class="alert-content"><h3 id="${id}-title">${esc(title)}</h3><p id="${id}-body">${esc(body)}</p>${check ? `<label class="checkline"><input type="checkbox"> Do not ask again</label>` : ""}</div></div></div><div class="window-actions">${actions.map((label, index) => `<button class="btn${index === actions.length - 1 ? " primary" : ""}" type="button">${esc(label)}</button>`).join("")}</div></div>`;
 }
 export function readAlertMaster(master, rules, tokens) {
   const nodes = walk(master), find = (name) => nodes.find((node) => node.name === name && node.visible !== false);
@@ -80,23 +80,68 @@ export function readAlertMaster(master, rules, tokens) {
     rootSource: `${master.id.replace(":", "-")}.json`,
   };
 }
+const vectorsById = new Map(JSON.parse(fs.readFileSync(new URL("../source/vectors-extra.json", import.meta.url), "utf8")).map(item => [item.id, item.svg]));
 function sourcePaths(nodes, vectors) {
   return nodes.filter(node => node.type === "VECTOR" && node.visible !== false).map(node => {
-    const svg=vectors.get(node.id);
-    if(!svg)throw new Error(`Missing source glyph ${node.id}`);
-    const paths=[...svg.matchAll(/<path\b[^>]+\/>/g)].map(match=>match[0].replace('customFrame=', 'data-source-frame='));
-    if(!paths.length)throw new Error(`Empty source glyph ${node.id}`);
+    const svg = vectors.get(node.id);
+    if (!svg) throw new Error(`Missing source glyph ${node.id}`);
+    const paths = [...svg.matchAll(/<path\b[^>]+\/>/g)].map(match => match[0].replace("customFrame=", "data-source-frame="));
+    if (!paths.length) throw new Error(`Empty source glyph ${node.id}`);
     return `<g transform="translate(${node.x} ${node.y})" data-pixso-id="${node.id}">${paths.join("")}</g>`;
   }).join("");
 }
-function questionIcon(model, vectors) {
-  const glyphs=sourcePaths(walk(model.status),vectors);
-  return `<svg viewBox="0 0 28 28" width="28" height="28" fill="none" aria-hidden="true" data-layer="small-icon"><circle cx="14" cy="14" r="12.5" fill="var(--alert-info)" data-pixso-id="${model.statusColor.id}"/>${glyphs}</svg>`;
+function ellipseSvg(node, fill) {
+  return `<ellipse cx="${node.x + node.width / 2}" cy="${node.y + node.height / 2}" rx="${node.width / 2}" ry="${node.height / 2}" fill="${fill}" data-pixso-id="${node.id}"/>`;
 }
-const vectorsById = new Map(JSON.parse(fs.readFileSync(new URL("../source/vectors-extra.json",import.meta.url),"utf8")).map(item=>[item.id,item.svg]));
+function questionIcon(model, vectors) {
+  const background = walk(model.status).find(node => node.type === "ELLIPSE" && node.visible !== false);
+  if (background?.id !== model.statusColor.id) throw new Error(`Alert ${model.id}: status must use its source questionDialog ellipse`);
+  const glyphs = sourcePaths(walk(model.status), vectors);
+  return `<svg viewBox="0 0 ${model.statusWidth} ${model.statusHeight}" width="${model.statusWidth}" height="${model.statusHeight}" fill="none" aria-hidden="true" data-layer="small-icon">${ellipseSvg(background, model.info)}${glyphs}</svg>`;
+}
+const bannerStatusIds = {
+  light: { info: "11163-19910", error: "11163-20351", warning: "11163-69185" },
+  dark: { info: "11163-69299", error: "11163-69571", warning: "11163-69649" },
+};
+const bannerStatusSources = {};
+for (const [theme, statuses] of Object.entries(bannerStatusIds)) {
+  bannerStatusSources[theme] = {};
+  for (const [status, file] of Object.entries(statuses)) {
+    const master = JSON.parse(fs.readFileSync(new URL(`../source/components/${file}.json`, import.meta.url), "utf8"));
+    const nodes = walk(master);
+    const source = nodes.find(node => node.name === `status / ${status}` && node.visible !== false);
+    if (source?.width !== 16 || source.height !== 16 || !new RegExp(`^Theme=${theme === "dark" ? "Dark" : "Light"}(?:,|$)`).test(master.name)) throw new Error(`Unexpected Banner status source: ${file}`);
+    bannerStatusSources[theme][status] = source;
+  }
+}
+// Compose only measured Banner geometry with the extracted vectors; no hand-drawn paths.
+function bannerStatusIcon(status, theme, size) {
+  const source = bannerStatusSources[theme]?.[status];
+  if (!source || ![20, 28].includes(size)) throw new Error(`Unsupported Alert status icon: ${theme}/${status}/${size}`);
+  const nodes = walk(source), background = nodes.find(node => node.visible !== false && (node.type === "ELLIPSE" && node.name === "Ellipse 399" || node.type === "POLYGON"));
+  if (!background) throw new Error(`Missing Banner ${status} background ${source.id}`);
+  const shapes = [`<g data-pixso-id="${background.id}">`];
+  if (background.type === "ELLIPSE") shapes.push(ellipseSvg(background, hex(paint(background))));
+  else {
+    // Pixso's regular source polygon has three points, with its measured one-pixel corner radius.
+    if (background.pointCount !== undefined && background.pointCount !== 3) throw new Error(`Unexpected warning polygon ${background.id}`);
+    const { x, y, width, height } = background;
+    const fill = hex(paint(background));
+    shapes.push(`<polygon points="${x + width / 2},${y} ${x + width},${y + height} ${x},${y + height}" fill="${fill}" stroke="${fill}" stroke-width="${2 * (background.cornerRadius || 0)}" stroke-linejoin="round"/>`);
+  }
+  shapes.push("</g>");
+  const ellipses = nodes.filter(node => node !== background && node.type === "ELLIPSE" && node.visible !== false).map(node => ellipseSvg(node, hex(paint(node))));
+  return `<svg viewBox="0 0 ${source.width} ${source.height}" width="${size}" height="${size}" fill="none" aria-hidden="true" data-layer="small-icon" data-status-source="${source.id}">${shapes.join("")}${sourcePaths(nodes, vectorsById)}${ellipses.join("")}</svg>`;
+}
 export function assertSemanticAlert(html, file = "Alert") {
   if (/position\s*:\s*(?:absolute|fixed|sticky)/i.test(html)) throw new Error(`${file}: Alert must use flow/flex/grid layout only`);
-  for (const marker of [...html.matchAll(/<svg\b[^>]*>/gi)].map(match=>match[0])) if(!/data-layer="small-icon"/.test(marker)||/data-stroke-align/i.test(marker)) throw new Error(`${file}: SVG shell forbidden; only small source glyph icons are allowed`);
+  for (const marker of [...html.matchAll(/<svg\b[^>]*>/gi)].map(match => match[0])) if (!/data-layer="small-icon"/.test(marker) || /data-stroke-align/i.test(marker)) throw new Error(`${file}: SVG shell forbidden; only small source glyph icons are allowed`);
+  const statusDots = [...html.matchAll(/<span\b[^>]*class="status-dot\b[^>]*>([\s\S]*?)<\/span>/gi)];
+  if (!statusDots.length) throw new Error(`${file}: missing status icon layer`);
+  for (const [, content] of statusDots) {
+    const icons = [...content.matchAll(/<svg\b[^>]*data-layer="small-icon"[^>]*>[\s\S]*?<\/svg>/gi)];
+    if (icons.length !== 1 || content.replace(icons[0][0], "").trim()) throw new Error(`${file}: status-dot must contain exactly one SVG icon and no text/HTML glyph layer`);
+  }
   for (const marker of ['role="alertdialog"', 'class="window-body"', 'class="alert-title"', 'class="status-dot info"', 'class="checkline"', 'class="window-actions"', 'class="btn primary"']) if (!html.includes(marker)) throw new Error(`${file}: missing semantic layer ${marker}`);
 }
 export function renderSemanticAlert({ model, key }) {
@@ -127,11 +172,6 @@ function helpIcon(model,vectors) {
 }
 export function semanticAlertCss(tokens, masters) {
   if (masters.length !== 2 || new Set(masters.map(m => m.theme)).size !== 2) throw new Error("Both extracted Light and Dark Alert masters are required");
-  const color = (theme, family, name) => {
-    const match = Object.entries(tokens.color).find(([key, value]) => key.startsWith(`${theme}/${family}/`) && key.includes(name));
-    if (!match) throw new Error(`Missing extracted ${theme}/${family}/${name} token`);
-    return `var(${match[1].css})`;
-  };
   const themes = masters.map(m => [
     `--alert-${m.theme}-surface:${m.surface}`,
     `--alert-${m.theme}-border:${m.border}`,
@@ -165,7 +205,7 @@ export function semanticAlertCss(tokens, masters) {
   for (const master of masters.slice(1))
     for (const [key, value] of Object.entries(light))
       if (JSON.stringify(geometry(master)[key]) !== JSON.stringify(value)) throw new Error(`Alert ${master.id} ${key}: measure a per-theme value instead of inventing a shared metric`);
-  const tokensCss = `${themes};--alert-shadow:${masters[0].shadow};--alert-error:${color("Light", "Red", "4 (Primary)")};--alert-warning:${color("Light", "Yellow", "6 (Primary)")}`;
+  const tokensCss = `${themes};--alert-shadow:${masters[0].shadow}`;
   const metricsCss = `
 .window {
   width: min(${light.width}px, 100%);

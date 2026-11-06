@@ -15,7 +15,7 @@
 | Tab | 3 | 3 | 4.99% | 4.626%–5.355% | PASS |
 | Segmented Control | 3 | 3 | 7.608% | 2.044%–16.553% | PASS |
 | Banner | 8 | 8 | 3.451% | 1.215%–9.162% | PASS |
-| Alert | 1 | 1 | 9.6% | 9.425%–9.775% | PASS |
+| Alert | 1 | 1 | 9.563% | 9.392%–9.735% | PASS |
 | Dialog | 1 | 1 | 3.224% | 3.182%–3.265% | FAIL: dialog, dialog-dark |
 
 Every extracted state master has a matching native Pixso PNG and is embedded in the documentation. On/off duplicate aliases share their exact measured node and reference. Remaining pixel differences are reported in `diff/report.json`; no `needs-fix` state is described as visually exact.

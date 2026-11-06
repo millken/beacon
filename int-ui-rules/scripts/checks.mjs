@@ -146,13 +146,14 @@ for (const name of ["alert", "alert-dark"]) {
   const layout = await page.locator(".window").evaluate(root => ({
     width:root.offsetWidth, height:root.offsetHeight, dialog:root.getAttribute("role"),
     layers:Boolean(root.querySelector(".window-body .alert-title .status-dot") && root.querySelector(".window-body h3") && root.querySelector(".window-body p") && root.querySelector(".checkline input[type=checkbox]") && root.querySelector(".window-actions button.btn.primary")),
+    status:[...root.querySelectorAll(".status-dot")].every(slot=>slot.children.length===1&&slot.firstElementChild?.matches('svg[data-layer="small-icon"]')&&slot.textContent.trim()===""&&getComputedStyle(slot).backgroundColor==="rgba(0, 0, 0, 0)"&&getComputedStyle(slot).color===getComputedStyle(root).color),
     svg:[...root.querySelectorAll("svg")].some(icon=>!icon.closest(".status-dot")&&!icon.closest(".window-help")),
     flow:[root,...root.querySelectorAll("*")].every(el=>getComputedStyle(el).position === "static"),
   }));
   assert.equal(layout.width,420,`${name}: measured root width`);
   assert.equal(layout.height,172,`${name}: measured root height`);
   assert.equal(layout.dialog,"alertdialog");
-  assert.ok(layout.layers && layout.flow && !layout.svg,`${name}: semantic flow-only browser verification`);
+  assert.ok(layout.layers && layout.status && layout.flow && !layout.svg,`${name}: semantic flow-only browser verification with SVG-only status icons`);
   await browser.close();
 }
 console.log("PASS: Alert masters browser-verified at 420×172; semantic layers and every descendant use static flow-only layout.");
@@ -164,7 +165,7 @@ await (async()=>{
   for(const width of [1440,390]){
     const page=await browser.newPage({viewport:{width,height:900}});
     await page.goto(`${docsBaseUrl}/pages/alert.html`);
-    const result=await page.evaluate(()=>({horizontalOverflow:document.documentElement.scrollWidth>innerWidth,alerts:[...document.querySelectorAll("main .window")].map(root=>({flow:[root,...root.querySelectorAll("*")].every(el=>getComputedStyle(el).position==="static"),overflow:root.scrollWidth>root.clientWidth,svg:[...root.querySelectorAll("svg")].some(icon=>!(icon.closest(".status-dot")||icon.closest(".window-help"))||!icon.hasAttribute("aria-hidden"))})).filter(result=>!result.flow||result.overflow||result.svg||result.right>innerWidth+1||result.left<0||result.statusWidth<18)}));
+    const result=await page.evaluate(()=>({horizontalOverflow:document.documentElement.scrollWidth>innerWidth,alerts:[...document.querySelectorAll("main .window")].map(root=>({flow:[root,...root.querySelectorAll("*")].every(el=>getComputedStyle(el).position==="static"),overflow:root.scrollWidth>root.clientWidth,svg:[...root.querySelectorAll("svg")].some(icon=>!(icon.closest(".status-dot")||icon.closest(".window-help"))||!icon.hasAttribute("aria-hidden")),status:[...root.querySelectorAll(".status-dot")].every(slot=>slot.children.length===1&&slot.firstElementChild?.matches('svg[data-layer="small-icon"]')&&slot.textContent.trim()===""&&getComputedStyle(slot).backgroundColor==="rgba(0, 0, 0, 0)")})).filter(result=>!result.flow||result.overflow||result.svg||!result.status||result.right>innerWidth+1||result.left<0||result.statusWidth<18)}));
     assert.equal(result.horizontalOverflow,false,`Alert docs ${width}px viewport must not overflow`);
     assert.deepEqual(result.alerts,[],`All Alert docs descendants use flow at ${width}px`);
     await page.close();

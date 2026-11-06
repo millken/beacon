@@ -22893,9 +22893,9 @@
       "source": "3342:83343",
       "width": 500,
       "height": 252,
-      "differentPixels": 12316,
+      "differentPixels": 12266,
       "totalPixels": 126000,
-      "diffPercent": 9.775,
+      "diffPercent": 9.735,
       "referenceNonTransparent": 118504,
       "actualNonTransparent": 123611,
       "geometry": {
@@ -22984,9 +22984,9 @@
       "source": "3346:80911",
       "width": 500,
       "height": 252,
-      "differentPixels": 11876,
+      "differentPixels": 11834,
       "totalPixels": 126000,
-      "diffPercent": 9.425,
+      "diffPercent": 9.392,
       "referenceNonTransparent": 118504,
       "actualNonTransparent": 123611,
       "geometry": {

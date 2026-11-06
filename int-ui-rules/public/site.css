@@ -1,5 +1,5 @@
 /* Semantic Alert: flow/flex/grid only. The chrome is CSS, never SVG. */
-:root { --alert-light-surface:var(--light-gray-gray-13);--alert-light-border:var(--light-gray-gray-10);--alert-light-ink:var(--light-gray-gray-1-primary);--alert-light-button-border:var(--light-gray-gray-9);--alert-light-button-bg:var(--light-gray-gray-14-white);--alert-light-on-primary:var(--light-gray-gray-14-white);--alert-light-info:var(--light-blue-blue-5);--alert-light-primary:var(--light-blue-blue-4-primary);--alert-light-checkbox-border:var(--light-gray-gray-8);--alert-light-checkbox-bg:var(--light-gray-gray-14-white);--alert-light-help-bg:var(--light-gray-gray-14-white);--alert-light-help-border:var(--light-gray-gray-9);--alert-dark-surface:var(--dark-gray-gray-2);--alert-dark-border:var(--dark-gray-gray-4);--alert-dark-ink:var(--dark-gray-gray-12);--alert-dark-button-border:var(--dark-gray-gray-5);--alert-dark-button-bg:transparent;--alert-dark-on-primary:var(--dark-gray-gray-14-white);--alert-dark-info:var(--dark-blue-blue-6-primary);--alert-dark-primary:var(--dark-blue-blue-6-primary);--alert-dark-checkbox-border:var(--dark-gray-gray-6);--alert-dark-checkbox-bg:transparent;--alert-dark-help-bg:transparent;--alert-dark-help-border:var(--dark-gray-gray-5);--alert-shadow:var(--shadow-dialog);--alert-error:var(--light-red-red-4-primary);--alert-warning:var(--light-yellow-yellow-6-primary) }
+:root { --alert-light-surface:var(--light-gray-gray-13);--alert-light-border:var(--light-gray-gray-10);--alert-light-ink:var(--light-gray-gray-1-primary);--alert-light-button-border:var(--light-gray-gray-9);--alert-light-button-bg:var(--light-gray-gray-14-white);--alert-light-on-primary:var(--light-gray-gray-14-white);--alert-light-info:var(--light-blue-blue-5);--alert-light-primary:var(--light-blue-blue-4-primary);--alert-light-checkbox-border:var(--light-gray-gray-8);--alert-light-checkbox-bg:var(--light-gray-gray-14-white);--alert-light-help-bg:var(--light-gray-gray-14-white);--alert-light-help-border:var(--light-gray-gray-9);--alert-dark-surface:var(--dark-gray-gray-2);--alert-dark-border:var(--dark-gray-gray-4);--alert-dark-ink:var(--dark-gray-gray-12);--alert-dark-button-border:var(--dark-gray-gray-5);--alert-dark-button-bg:transparent;--alert-dark-on-primary:var(--dark-gray-gray-14-white);--alert-dark-info:var(--dark-blue-blue-6-primary);--alert-dark-primary:var(--dark-blue-blue-6-primary);--alert-dark-checkbox-border:var(--dark-gray-gray-6);--alert-dark-checkbox-bg:transparent;--alert-dark-help-bg:transparent;--alert-dark-help-border:var(--dark-gray-gray-5);--alert-shadow:var(--shadow-dialog) }
 .window {
   --alert-surface: var(--alert-light-surface);
   --alert-border: var(--alert-light-border);
@@ -43,10 +43,8 @@
 .alert-title { display: flex; align-items: flex-start; min-width: 0; }
 .alert-content { display: flex; flex: 1 1 340px; flex-direction: column; align-items: flex-start; min-width: 0; }
 .alert-content h3, .alert-content p { align-self: stretch; margin: 0; }
-.status-dot { display: grid; flex-shrink: 0; place-items: center; border-radius: 50%; color: var(--alert-on-primary); font-size: 13px; font-weight: 500; line-height: 1; }
-.status-dot.info { background: var(--alert-info); }
-.status-dot.error { background: var(--alert-error); }
-.status-dot.warning { color: var(--alert-light-ink); background: var(--alert-warning); }
+.status-dot { display: flex; flex-shrink: 0; align-items: center; justify-content: center; background: transparent; }
+.status-dot > svg { display: block; flex: none; }
 .checkline { display: flex; align-items: center; gap: 8px; min-height: 32px; margin: 0; font-size: 13px; line-height: 16px; cursor: pointer; }
 .checkline input { appearance: none; flex: 0 0 16px; width: 16px; height: 16px; margin: 0; background: var(--alert-checkbox-bg); border: 1px solid var(--alert-checkbox-border); border-radius: 3px; }
 .checkline input:checked { background: var(--alert-primary); border-color: var(--alert-primary); }
@@ -80,7 +78,7 @@
 .micro-alert .window-actions { min-height: 32px; }
 .micro-alert .alert-content h3 { font-size: 14px; line-height: 18px; }
 .micro-alert .alert-content p, .micro-alert .checkline { font-size: 11px; line-height: 16px; }
-.micro-alert .status-dot { width: 20px; height: 20px; flex-basis: 20px; margin: 0; font-size: 11px; }
+.micro-alert .status-dot { width: 20px; height: 20px; flex-basis: 20px; margin: 0; }
 .micro-alert .window-actions .btn { min-width: 56px; min-height: 26px; padding: 4px 10px; }
 .alert-stack { display: grid; gap: 22px; margin-top: 20px; }
 [data-alert-demo].wide { max-width: 440px; }

@@ -1,7 +1,7 @@
 {
   "renderer": "HTML+CSS DOM / native HTML text; extracted local SVG icons and stroke primitives only",
   "variants": 172,
-  "canvasDiffMeanPercent": 5.393,
+  "canvasDiffMeanPercent": 5.392,
   "note": "Strict RGBA pixelmatch threshold 0.1 including antialiasing. Documentation coverage and generated-DOM status are not pixel-identity claims.",
   "rows": [
     {
@@ -139,9 +139,9 @@
       "variants": 2,
       "light": 1,
       "dark": 1,
-      "meanDiffPercent": 9.6,
-      "minDiffPercent": 9.425,
-      "maxDiffPercent": 9.775,
+      "meanDiffPercent": 9.563,
+      "minDiffPercent": 9.392,
+      "maxDiffPercent": 9.735,
       "geometryFailures": []
     },
     {
