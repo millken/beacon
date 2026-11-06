@@ -301,7 +301,7 @@ fs.writeFileSync(
     {
       renderer: "Chromium / Playwright",
       glyphMode:
-        process.env.INT_UI_VECTOR_TEXT !== "0"
+        process.env.INT_UI_VECTOR_TEXT === "1"
           ? "source-svg-paths-with-accessible-labels"
           : "native-html-text",
       deviceScaleFactor: 1,

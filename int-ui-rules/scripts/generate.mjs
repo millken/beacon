@@ -53,7 +53,7 @@ const sourceTextOutlines = Object.fromEntries(
 const sourceVectorExports = JSON.parse(
   fs.readFileSync("source/svg.json", "utf8"),
 );
-const nativeScene = process.env.INT_UI_NATIVE_SCENE !== "0";
+const nativeScene = process.env.INT_UI_NATIVE_SCENE === "1";
 const vectorSceneRules = new Set([
   "7944:74792", "3894:82043", "3894:82033", "7944:74566", "7070:146044",
   "6517:82734", "7059:86469", "5767:82631",
@@ -63,7 +63,7 @@ const vectorSceneRules = new Set([
   "6222:73548", "3711:79011", "5875:79108", "1146:54209", "7278:46644",
   "7040:84853", "217:51357", "605:47011", "6551:84194", "7070:138481",
 ]);
-const glyphMode = process.env.INT_UI_VECTOR_TEXT !== "0";
+const glyphMode = process.env.INT_UI_VECTOR_TEXT === "1";
 const prompts = {
   checkbox: "Text",
   toggle: "",

@@ -1,11 +1,8 @@
 {
   "tree": {
     "source": "5875:79108",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light",
     "selectedVariant": {
       "Theme": "Light"
@@ -25,11 +22,8 @@
   },
   "toolbar": {
     "source": "1146:54209",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light, Type=Horizontal",
     "selectedVariant": {
       "Theme": "Light",
@@ -54,11 +48,8 @@
   },
   "table": {
     "source": "7278:46644",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light",
     "selectedVariant": {
       "Theme": "Light"
@@ -78,17 +69,14 @@
   },
   "context-menu": {
     "source": "7040:84853",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light",
     "selectedVariant": {
       "Theme": "Light"
     },
-    "width": 333,
-    "height": 593,
+    "width": 293,
+    "height": 553,
     "variantSet": {
       "name": "Popup / Context Menu",
       "axes": {
@@ -102,11 +90,8 @@
   },
   "tool-window": {
     "source": "217:51357",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light",
     "selectedVariant": {
       "Theme": "Light"
@@ -126,11 +111,8 @@
   },
   "group-header": {
     "source": "605:47011",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light, Type=Label + Separator",
     "selectedVariant": {
       "Theme": "Light",
@@ -156,11 +138,8 @@
   },
   "shortcut": {
     "source": "6551:84194",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light, Type=Default",
     "selectedVariant": {
       "Theme": "Light",
@@ -185,17 +164,14 @@
   },
   "main-window": {
     "source": "7070:138481",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light",
     "selectedVariant": {
       "Theme": "Light"
     },
-    "width": 1596,
-    "height": 1020,
+    "width": 1536,
+    "height": 960,
     "variantSet": {
       "name": "Main Window",
       "axes": {
@@ -210,17 +186,14 @@
   },
   "alert": {
     "source": "3342:83343",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light",
     "selectedVariant": {
       "Theme": "Light"
     },
-    "width": 500,
-    "height": 252,
+    "width": 420,
+    "height": 172,
     "variantSet": {
       "name": "Alert",
       "axes": {
@@ -234,11 +207,8 @@
   },
   "banner": {
     "source": "3346:81595",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light, Type=Info, Inline=False",
     "selectedVariant": {
       "Theme": "Light",
@@ -270,11 +240,8 @@
   },
   "combobox": {
     "source": "7944:74792",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light, State=Active, Focus=Off",
     "selectedVariant": {
       "Theme": "Light",
@@ -305,11 +272,8 @@
   },
   "link": {
     "source": "46:11087",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light, Type=Default, State=Default",
     "selectedVariant": {
       "Theme": "Light",
@@ -341,18 +305,15 @@
   },
   "radio-button": {
     "source": "3894:82043",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light, Selected=On, State=Active",
     "selectedVariant": {
       "Theme": "Light",
       "Selected": "On",
       "State": "Active"
     },
-    "width": 51.5,
+    "width": 51,
     "height": 32,
     "variantSet": {
       "name": "Radio Button",
@@ -378,18 +339,15 @@
   },
   "radio-button-off": {
     "source": "3894:82033",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light, Selected=Off, State=Active",
     "selectedVariant": {
       "Theme": "Light",
       "Selected": "Off",
       "State": "Active"
     },
-    "width": 51.5,
+    "width": 51,
     "height": 32,
     "variantSet": {
       "name": "Radio Button",
@@ -415,11 +373,8 @@
   },
   "dropdown": {
     "source": "7944:74566",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light, State=Active, Focus=Off",
     "selectedVariant": {
       "Theme": "Light",
@@ -450,11 +405,8 @@
   },
   "search": {
     "source": "7070:146044",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light, State=Active, Focus=Off",
     "selectedVariant": {
       "Theme": "Light",
@@ -484,11 +436,8 @@
   },
   "slim-button": {
     "source": "6517:82734",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light, State=Active",
     "selectedVariant": {
       "Theme": "Light",
@@ -516,11 +465,8 @@
   },
   "segmented-control": {
     "source": "7281:46903",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light, State=Active",
     "selectedVariant": {
       "Theme": "Light",
@@ -546,11 +492,8 @@
   },
   "progress-bar": {
     "source": "7059:86469",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light, Type=Single Line, Progress=Regular",
     "selectedVariant": {
       "Theme": "Light",
@@ -580,11 +523,8 @@
   },
   "loader": {
     "source": "5767:82631",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme = Light, Rotation = 0",
     "selectedVariant": {
       "Theme": "Light",
@@ -615,17 +555,14 @@
   },
   "notification": {
     "source": "3595:83697",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light",
     "selectedVariant": {
       "Theme": "Light"
     },
-    "width": 400,
-    "height": 158,
+    "width": 360,
+    "height": 118,
     "variantSet": {
       "name": "Notification",
       "axes": {
@@ -639,17 +576,14 @@
   },
   "tooltip": {
     "source": "55:9038",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light",
     "selectedVariant": {
       "Theme": "Light"
     },
-    "width": 175,
-    "height": 56,
+    "width": 151,
+    "height": 32,
     "variantSet": {
       "name": "Tooltip / Tooltip",
       "axes": {
@@ -663,18 +597,15 @@
   },
   "tooltip-got-it": {
     "source": "56:8740",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light, Arrow=Left",
     "selectedVariant": {
       "Theme": "Light",
       "Arrow": "Left"
     },
-    "width": 312,
-    "height": 162,
+    "width": 288,
+    "height": 138,
     "variantSet": {
       "name": "Tooltip / Got It",
       "axes": {
@@ -694,19 +625,16 @@
   },
   "tooltip-editor": {
     "source": "71:11758",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light, Type=Error, Arrow=Up",
     "selectedVariant": {
       "Theme": "Light",
       "Type": "Error",
       "Arrow": "Up"
     },
-    "width": 407,
-    "height": 118,
+    "width": 383,
+    "height": 94,
     "variantSet": {
       "name": "Tooltip / Editor",
       "axes": {
@@ -732,11 +660,8 @@
   },
   "tab": {
     "source": "5664:79159",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light, State=Selected",
     "selectedVariant": {
       "Theme": "Light",
@@ -762,11 +687,8 @@
   },
   "scrollbar": {
     "source": "6222:73548",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light, Type=Horizontal, State=Regular",
     "selectedVariant": {
       "Theme": "Light",
@@ -796,11 +718,8 @@
   },
   "code-sample": {
     "source": "3711:79011",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light, Type=Fill",
     "selectedVariant": {
       "Theme": "Light",
@@ -990,11 +909,8 @@
   },
   "checkbox-indeterminate": {
     "source": "3590:81646",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light, Type=Indeterminate, State=Active",
     "selectedVariant": {
       "Theme": "Light",
@@ -1033,17 +949,14 @@
   },
   "dialog": {
     "source": "7070:146270",
-    "renderMode": "source-svg-scene",
-    "sceneOrigin": {
-      "x": 0,
-      "y": 0
-    },
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
     "sourceName": "Theme=Light",
     "selectedVariant": {
       "Theme": "Light"
     },
-    "width": 963,
-    "height": 575,
+    "width": 883,
+    "height": 495,
     "variantSet": {
       "name": "Dialog",
       "axes": {

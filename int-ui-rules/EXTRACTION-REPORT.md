@@ -1,3 +1,55 @@
+# Generated DOM switch · 2026-11-06
+
+All 40 specimens now ship as `renderMode: generated-dom` (zero `source-svg-scene`). Whole-component SVG scenes are opt-in only (`INT_UI_NATIVE_SCENE=1`); text is real HTML (`INT_UI_VECTOR_TEXT=1` re-enables glyph outlines as a probe). SVG remains only in extracted icon/vector paths and rounded-stroke primitives. Scores below are the new honest DOM+text measurements; old scores are the whole-scene/glyph baseline in the next section.
+
+| Specimen | DOM diff | Old scene/glyph diff |
+|---|---:|---:|
+| tree | 2.269% | 0.254% |
+| toolbar | 6.127% | 0% |
+| table | 2.447% | 0.195% |
+| context-menu | 10.475% | 0.563% |
+| tool-window | 0.272% | 0.048% |
+| group-header | 0.775% | 0.027% |
+| shortcut | 23.333% | 1.667% |
+| main-window | 6.014% | 0.476% |
+| alert | 9.726% | 0.129% |
+| banner | 4.096% | 0.117% |
+| combobox | 1.529% | 0.435% |
+| link | 3.016% | 0% |
+| radio-button | 5.649% | 0% |
+| radio-button-off | 6.13% | 0.24% |
+| dropdown | 1.239% | 0.435% |
+| search | 0.882% | 0.19% |
+| slim-button | 7.6% | 1.389% |
+| segmented-control | 14.947% | 1.049% |
+| progress-bar | 17.275% | 0.082% |
+| loader | 28.516% | 0% |
+| notification | 15.473% | 0.155% |
+| tooltip | 17.184% | 0.184% |
+| tooltip-got-it | 13.527% | 0.198% |
+| tooltip-editor | 7.404% | 0.104% |
+| tab | 91.926% | 0.028% |
+| scrollbar | 0.533% | 0.533% |
+| code-sample | 20.227% | 0.409% |
+| button-secondary | 6.84% | 0.729% |
+| button-primary | 5.66% | 0.069% |
+| button-primary-hovered | 5.764% | 0.069% |
+| button-primary-pressed | 5.938% | 0.104% |
+| button-primary-focused | 5.256% | 0.096% |
+| input | 1.083% | 0.19% |
+| input-focused | 1.073% | 0.188% |
+| checkbox | 2.941% | 0.061% |
+| checkbox-unchecked | 2.941% | 0.061% |
+| checkbox-indeterminate | 3.309% | 0.061% |
+| toggle-on | 5% | 0.094% |
+| toggle-off | 7.736% | 0% |
+| dialog | 3.186% | 0.01% |
+
+Mean DOM diff: 9.383% across 40 specimens (was 0.266%). `npm run verify` passes: tokens, inline docs identity, 30-card overview, and rebindable paint tokens unchanged.
+
+Outstanding known outlier: `tab` 91.926% — the source SVG scene serialized an invisible background and a nested close path that source rule extraction does not reproduce as CSS; structural geometry is intact but paint coverage differs. It is left visible rather than patched with an invented style. `progress-bar` keeps its source colors; the unfilled track (a BOOLEAN_OPERATION path) is not yet reconstructed.
+
+---
 # Light extraction batch · 2026-11-06
 
 `npm run verify`: generated 40 specimens. 27 new Light specimens cover every one of the 30 catalog cards, including a second Radio state and Code Sample. The same 30 entries previously had visible `Not extracted yet` placeholders; none remain in generated docs.

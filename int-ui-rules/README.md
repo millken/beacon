@@ -2,7 +2,7 @@
 
 `/workspace/int-ui-rules` is a **new** implementation, not a repair of `/workspace/int-ui-tailwind`. It consumes none of the rejected HTML. Target: Pixso `iPHNpHZoWc6Grn6DanoQDg`, _Getting started_ (`6222:73687`).
 
-**Status: 40 Light specimens (13 original unchanged + 27 new specimens covering the full 30-card docs library); strict pixel comparisons remain nonzero for some glyphs and native SVG shadows. See EXTRACTION-REPORT.md.** The source shadow's asymmetric native padding is included in the diff; Dialog is 0.010%, but nonzero. Current verified metrics are in [diff/report.md](diff/report.md); all 13 variants have a native-size comparison, including focused and shadow overflow. Visual differences are not filtered as antialias to inflate the score.
+**Status: all 40 Light specimens render as generated DOM HTML + CSS tokens (`renderMode: generated-dom`), with real HTML text. SVG remains only for extracted icon/vector paths and rounded stroke primitives — never a whole-component scene or a text glyph dump. Diff scores rose versus the old whole-scene SVG baseline (mean ≈9.4% vs ≈0.27%) because text rasterization and vector geometry are now reconstructed in HTML/CSS; this is the intended tradeoff. See EXTRACTION-REPORT.md and diff/report.md.** The source shadow's asymmetric native padding is included in the diff; Dialog is 0.010%, but nonzero. Current verified metrics are in [diff/report.md](diff/report.md); all 13 variants have a native-size comparison, including focused and shadow overflow. Visual differences are not filtered as antialias to inflate the score.
 
 ## Design-rule inventory
 
@@ -23,8 +23,8 @@ Pixso reports **no local variables** (`variables: {}`). The authoritative token 
 cd /workspace/int-ui-rules
 npm install
 npm run verify
-# source glyph geometry is the default; INT_UI_VECTOR_TEXT=0 opts into native browser text
-# native source-vector scenes for Dialog, indeterminate and the new Light library; INT_UI_NATIVE_SCENE=0 compares DOM reconstruction
+# native HTML text is the default; INT_UI_VECTOR_TEXT=1 opts back into source glyph outlines
+# INT_UI_NATIVE_SCENE=1 re-enables whole-scene SVG only as a pixel-comparison probe
 # generate every component, preview and documentation page
 npm run generate
 # preview the reference-shaped docs at http://localhost:3000 (or the printed URL)
@@ -52,7 +52,7 @@ npm run preview
 
 - **Overview / Components:** all 30 reference library entries now have inline source-generated Light specimens; there are no `Not extracted yet` catalog entries.
 - **Button / Checkbox / Input / Toggle:** reference-like Light state matrix and right-hand usage panel; missing states and Dark zones stay explicit placeholders. Small usage demonstrations switch the source On/Off specimens; the design partial itself remains non-interactive. Source/provenance is in collapsed details below each state panel.
-- **Dialog:** responsive inline source-vector scene inside the same design-guide layout.
+- **Dialog:** responsive inline generated DOM specimen inside the same design-guide layout.
 - **Alert / Banner / Combo box:** actual measured Light specimens are embedded in their detail pages, with source links and a usage description.
 - **Colors:** all source tokens bound to CSS variables in compact family ramps, grouped Light, Editor and Dark; additional source styles are collapsible. **Typography:** UI/Editor columns plus all other source styles. **Spacing:** compact measured gap/padding bars using only `tokens/inventory.json` values.
 
@@ -73,19 +73,19 @@ Structural evidence is in [diff/structural-report.json](diff/structural-report.j
 
 ## Current work / remaining gaps
 
-- **Typography:** native HTML text uses source Inter Medium 500, 13/16px, letter-spacing 0; no manual stretch/tracking. Exact-match mode embeds the source SVG glyph paths with accessible labels (not bitmap text). `INT_UI_VECTOR_TEXT=0 npm run verify` retains native text, with larger differences. See [diff/README.md](diff/README.md).
+- **Typography:** native HTML text uses source Inter Medium 500, 13/16px, letter-spacing 0; no manual stretch/tracking. Text is real `<span>` content, not glyph outlines. Optional `INT_UI_VECTOR_TEXT=1 npm run verify` compares against source SVG glyph paths (with accessible labels) as a raster floor probe; its older scores are in git history. See [diff/README.md](diff/README.md).
 - **Source perimeters:** focused Input's `2px CENTER` ring now uses half stroke outside/inside source geometry. Its strict mismatch improved from **13.186% to 0.188%**. The remaining 17 pixels are counted glyph coverage, not silently excluded AA.
 - **Buttons:** Secondary and default Input duplicate CSS perimeter paint was removed in favor of source rounded-rect SVG. Secondary is **0.729%**, active primary **0.069%**; no claim of native-font raster parity is made.
 - **Dialog:** measured shadow bounds are `(40,32,883,495)` inside a `963×575` export. Correcting alignment reduced generated DOM from 3.189% to 0.154%. The original source **vector** scene preserves the exact instance paths, filter, compositing and clip context and further reduces strict mismatch to **0.010% (57/553725)**. Full-canvas and regional differences remain reported; no close control is invented.
-- **Native vector scene provenance:** `source/svg.json` stores all 40 original root exports. A measured opt-in list chooses Dialog and indeterminate Checkbox plus the new Light library as `source-svg-scene`; their semantic outer wrappers retain source IDs and accessible labels. The other 11 original DOM specimens are byte-identical to their baseline. Full export bounds (including effects) are retained rather than clipping to the component root. `tokens/manifest.json` records this split. This tradeoff preserves exact source vectors rather than reconstructing every Dialog child as HTML.
-- **Vectors:** complex checkbox/help glyphs use source SVGs; source native SVG scenes retain all `path`, `rect`, `clipPath` and `filter` definitions. No screenshot flattening or rasterization is used. Opt out with `INT_UI_NATIVE_SCENE=0 npm run verify`. Source-vector scenes do not claim production interactions or full token-layer rebindability of every nested primitive.
+- **Generated DOM for every specimen:** `tokens/manifest.json` now reports `renderMode: generated-dom` for all 40 components. Source trees (FRAME/INSTANCE/TEXT/RECTANGLE/ELLIPSE…) become absolutely positioned div/span elements with CSS-token paints, extracted font styles and `box-shadow` from effect styles. Only true VECTOR/BOOLEAN_OPERATION geometry and CENTER/INSIDE rounded-stroke primitives keep SVG. `source/svg.json` still stores the 40 original root exports and `INT_UI_NATIVE_SCENE=1` can still emit whole-scene SVG for pixel diagnostics, but that mode is no longer a deliverable.
+- **Vectors:** complex checkbox/help glyphs use source SVG icon paths; `path`, `rect`, `clipPath` and `filter` definitions are retained only inside those icons. No screenshot flattening or rasterization is used, and no TEXT node emits SVG by default. Pure-CSS reconstruction currently misses some vector-path gap fills (e.g. the progress-bar unfilled track drawn as a BOOLEAN_OPERATION shape) and close-via-path icons; scores report these honestly.
 - **Scope:** 13 selected Light variants of Button, Input, Checkbox, Toggle and Dialog. Not yet Dark, all other components/states, or production form interactions/state toggling. Generated doc chrome and the Overview are not a claim that the complete reference landing page has been reconstructed. No branch/commit is created by this work.
 
 ## Important file map
 
 ```
 source/                     raw variables, styles, catalog, vector/glyph data, measured trees
-source/svg.json             13 original root SVG exports (source-svg-scene provenance)
+source/svg.json             original root SVG exports (opt-in pixel probe only)
 scripts/export-svg.mjs      read-only Pixso evaluator source-SVG exporter
 scripts/generate-docs.mjs   generated reference-style Overview, foundations, catalogs and component pages
 index.html                  generated Overview at the repository root

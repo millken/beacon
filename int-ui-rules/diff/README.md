@@ -4,7 +4,7 @@ All scores are opaque-RGBA comparisons at source export scale 1, DPR 1, `pixelma
 
 ## Text policy
 
-Native HTML Inter is `Inter 13px/16px Medium / 500, letterSpacing=0` from source. A separate fetched local font did not reproduce the source's exact widths and rasterization. Exact match mode therefore uses `source/text-geometry.json`, read-only SVG exports of the **original nodes' glyph vector paths**, wrapped in the generated positioned DOM with `role=img aria-label` and an aria-hidden graphic. These are not whole-component images. Opt out with `INT_UI_VECTOR_TEXT=0 npm run verify` to retain native text. Source glyph geometry is the default so plain `npm run verify` reproduces the current results.
+Native HTML Inter is `Inter 13px/16px Medium / 500, letterSpacing=0` from source. A separate fetched local font did not reproduce the source's exact widths and rasterization. Exact match mode therefore uses `source/text-geometry.json`, read-only SVG exports of the **original nodes' glyph vector paths**, wrapped in the generated positioned DOM with `role=img aria-label` and an aria-hidden graphic. These are not whole-component images. Opt in with `INT_UI_VECTOR_TEXT=1 npm run verify` for the glyph-outline probe. **Native HTML text is now the default** (real `<span>` content, Inter 13px/16px Medium from extracted styles); the historical exact-match scores below used the opt-in glyph mode and whole-scene SVG and are kept only as a raster floor reference.
 
 ## Verified source-rule corrections
 
