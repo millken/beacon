@@ -60,7 +60,7 @@ console.log(
   "PASS: 603 tokens unique and emitted; partial CSS vars resolve; secondary button token paint rebinds.",
 );
 
-// Documentation structure is generated too; no hand-maintained docs or illustrative controls.
+// Documentation architecture and source specimens are generated together.
 assert.ok(fs.existsSync("public/index.html"), "Missing generated Overview");
 assert.deepEqual(fs.readdirSync("public/pages").filter((f) => f.endsWith(".html")).sort(), [
   "alert.html", "banner.html", "button.html", "checkbox.html", "colors.html",
@@ -73,24 +73,30 @@ for (const file of docs) {
   const html = fs.readFileSync(file, "utf8");
   assert.ok(!html.includes("/workspace/ref-zip"), `${file}: depends on reference zip`);
   assert.ok(!/\bclass="(?:btn|check|combo|banner|alert|mini-)/.test(html), `${file}: contains reference illustrative controls`);
-  const navEnd = html.indexOf("</nav>");
-  for (const href of html.slice(0, navEnd).matchAll(/href="([^"#]+)"/g)) {
-    if (href[1] === "/") continue;
+  assert.ok(!html.includes("<iframe"), `${file}: primary demos must be inline`);
+  const navStart = html.indexOf('<nav id="site-nav"');
+  const navEnd = html.indexOf("</nav>", navStart);
+  for (const href of html.slice(navStart, navEnd).matchAll(/href="([^"#]+)"/g)) {
+    if (["/", "/site.css", "/site.js"].includes(href[1])) continue;
     assert.ok(fs.existsSync(href[1].startsWith('/pages/') ? `public${href[1]}` : href[1].slice(1)), `${file}: broken nav target ${href[1]}`);
   }
 }
 for (const [name, item] of Object.entries(manifest)) {
-  const preview = fs.readFileSync(`previews/${name}.html`, "utf8");
-  assert.ok(preview.includes(fs.readFileSync(item.generated, "utf8")), `${name}: preview is not its generated partial`);
+  const partial = fs.readFileSync(item.generated, "utf8");
+  assert.ok(fs.readFileSync(`previews/${name}.html`, "utf8").includes(partial), `${name}: preview is not its generated partial`);
+  const sourceDoc = name.startsWith("button-") ? "public/pages/button.html" : ["input", "input-focused"].includes(name) ? "public/pages/input.html" : name.startsWith("checkbox") ? "public/pages/checkbox.html" : name.startsWith("toggle-") ? "public/pages/toggle.html" : "public/pages/dialog.html";
+  assert.ok(fs.readFileSync(sourceDoc, "utf8").includes(partial), `${name}: ${sourceDoc} does not embed its generated partial`);
 }
 for (const [file, name] of [["public/pages/button.html", "button-primary"], ["public/pages/input.html", "input"], ["public/pages/checkbox.html", "checkbox"], ["public/pages/toggle.html", "toggle-on"], ["public/pages/dialog.html", "dialog"]]) {
   const html = fs.readFileSync(file, "utf8");
-  assert.ok(html.includes(`src="/previews/${name}.html"`), `${file}: missing verified specimen`);
   assert.ok(html.includes(`data-generated-partial="/components/${name}.html"`), `${file}: missing generated source link`);
+  assert.ok(html.includes(fs.readFileSync(`components/${name}.html`, "utf8")), `${file}: missing inline verified specimen`);
 }
+const overview = fs.readFileSync("public/index.html", "utf8");
+assert.equal([...overview.matchAll(/class="doc-component-card"/g)].length, 30, "Overview must contain the full 30 entry library");
 for (const file of ["public/pages/alert.html", "public/pages/banner.html", "public/pages/combo-box.html"])
-  assert.ok(fs.readFileSync(file, "utf8").includes('Not yet extracted'), `${file}: missing explicit stub`);
+  assert.ok(fs.readFileSync(file, "utf8").includes('Not extracted yet'), `${file}: missing explicit extraction placeholders`);
 for (const [name, value] of Object.entries(tokens.color).filter(([name]) => name.startsWith("Light/") && !name.includes("(Current)")))
   assert.ok(fs.readFileSync("public/pages/colors.html", "utf8").includes(`var(${value.css})`), `Missing source color ${name}`);
 for (const style of Object.values(tokens.typography))
-  assert.ok(fs.readFileSync("public/pages/typography.html", "utf8").includes(`font-size:${style.fontSize}px`), `Missing source text style ${style.css}`);
+  assert.ok(fs.readFileSync("public/pages/typography.html", "utf8").includes(`font-size:${Math.min(style.fontSize, 40)}px`), `Missing source text style ${style.css}`);

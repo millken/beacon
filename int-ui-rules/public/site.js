@@ -1,6 +1,8 @@
-const toggle = document.querySelector(".nav-toggle");
-const nav = document.querySelector("#site-nav");
-toggle?.addEventListener("click", () => {
-  const open = nav.classList.toggle("open");
-  toggle.setAttribute("aria-expanded", String(open));
-});
+const navToggle=document.querySelector(".nav-toggle"),nav=document.querySelector("#site-nav");
+navToggle?.addEventListener("click",()=>{const open=nav.classList.toggle("open");navToggle.setAttribute("aria-expanded",String(open));});
+// Thumbnails scale the original inline generated DOM, never substitute another component.
+const fitDialog=()=>document.querySelectorAll(".doc-dialog-stage").forEach(stage=>stage.style.setProperty("--dialog-scale",String((stage.clientWidth-56)/963)));
+new ResizeObserver(fitDialog).observe(document.documentElement);fitDialog();
+document.querySelectorAll("[data-checkbox-demo]").forEach(demo=>{const b=demo.querySelector("button");b?.addEventListener("click",()=>{const on=b.getAttribute("aria-pressed")!=="true";b.setAttribute("aria-pressed",String(on));demo.querySelectorAll(".doc-check-state").forEach((el,i)=>el.hidden=Boolean(on&&i!==1));b.textContent=on?"Show all source states":"Switch interactive example";});});
+document.querySelectorAll("[data-switch-demo]").forEach(demo=>{const b=demo.querySelector("button");b?.addEventListener("click",()=>{const on=b.getAttribute("aria-pressed")!=="true";b.setAttribute("aria-pressed",String(on));demo.querySelector(".doc-switch-off").hidden=Boolean(on);demo.querySelector(".doc-switch-on").hidden=!on;});});
+document.querySelectorAll(".chip").forEach(chip=>{chip.tabIndex=0;chip.setAttribute("role","button");const copy=()=>{const value=chip.querySelector("span:last-child")?.textContent;if(value&&navigator.clipboard)navigator.clipboard.writeText(value).catch(()=>{});chip.classList.add("copied");setTimeout(()=>chip.classList.remove("copied"),700);};chip.addEventListener("click",copy);chip.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();copy();}});});

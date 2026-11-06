@@ -48,36 +48,17 @@ npm run preview
 
 ## Generated documentation
 
-The information architecture follows the supplied Int UI Kit reference—top navigation, Overview, foundation pages, a component catalog, and per-component Light/state showcases—without consuming the reference's illustrative `.btn`, checkbox, combo or other runtime styles. `scripts/generate-docs.mjs` is imported by `scripts/generate.mjs`; regeneration never depends on the reference zip or a React/Vite rewrite.
+`scripts/generate-docs.mjs` regenerates the reference-style static documentation shell: top navigation, dense Foundations cards, a five-column 30-entry component overview, a visual catalog, and state/usage component pages. It reads `components/*.html` at generation time and embeds those exact partials inline; there are no primary-demo iframes or independently authored `.btn`/checkbox/combo approximations. The original `previews/*.html` remain isolated and are the only pixel-diff targets.
 
-`npm run preview` uses a small local-only Node server. It serves the ref-style `/pages/…` URLs from `public/pages/`, the root Overview from `public/index.html`, and shared generated assets directly from their natural `/dist/…`, `/tokens/…`, `/previews/…` and `/components/…` paths. This keeps docs standalone without copying assets or rewriting the accepted pixel specimens:
+- **Overview / Components:** all 30 reference library entries. Ready thumbnails use the generated partial. Pending thumbnails are neutral catalog placeholders labelled **Not extracted yet**, not claim-to-be-designed components.
+- **Button / Checkbox / Input / Toggle:** reference-like Light state matrix and right-hand usage panel; missing states and Dark zones stay explicit placeholders. Small usage demonstrations switch the source On/Off specimens; the design partial itself remains non-interactive. Source/provenance is in collapsed details below each state panel.
+- **Dialog:** responsive inline source-vector scene inside the same design-guide layout.
+- **Alert / Banner / Combo box:** complete state/usage page architecture with labelled pending specimen cells. No substitute visual component is inserted before rule extraction.
+- **Colors:** all source tokens bound to CSS variables in compact family ramps, grouped Light, Editor and Dark; additional source styles are collapsible. **Typography:** UI/Editor columns plus all other source styles. **Spacing:** compact measured gap/padding bars using only `tokens/inventory.json` values.
 
-```bash
-cd /workspace/int-ui-rules
-npm install
-npm run generate
-npm run preview
-# http://127.0.0.1:3000 (override: npm run preview -- --port 4321)
-```
+`npm run preview` serves the Overview at `/`, component pages at `/pages/*.html`, and shared assets at `/dist`, `/tokens`, `/components` and `/previews`. Run `npm run generate && npm run preview`; `-- --port 4321` overrides the port. Both root `index.html` and `public/index.html` are generated.
 
-Alternatively, serve the project root (`npx serve . --no-clean-urls`) and open `/` or `/public/`. The preview command supplies the same routes without a third-party package. Root `index.html` and `public/index.html` are both the generated Overview; `scripts/diff.mjs` uses each independent preview as its unchanged token/font host.
-
-### Generated pages
-
-| Page | Content |
-| ---- | ------- |
-| Overview | Source scope, foundation links, generation workflow, and five extracted component links |
-| Colors | Every selected Light shared color, grouped by source family and bound to generated CSS variables |
-| Typography | All 36 shared text styles, with extracted weight, size, line height and letter spacing |
-| Spacing | Observed `itemSpacing` and padding values from `tokens/inventory.json`; explicitly not a universal scale |
-| Components | Catalog for Button, Input field, Checkbox, Toggle and Dialog using real specimen previews |
-| Button | Primary Active/Hovered/Pressed/Focused and Secondary Active, with state captions and source nodes |
-| Input / Checkbox / Toggle / Dialog | The remaining 8 selected Light states/specimens and their render provenance |
-| Alert / Banner / Combo box | Explicit **Not yet extracted** stubs, with no fabricated controls |
-
-Every specimen iframe points to the corresponding `previews/<name>.html`, which contains exactly the generated `components/<name>.html` partial. `data-generated-partial` makes that source relationship inspectable. Iframes isolate component styles from documentation chrome; they are static, non-interactive specimens rather than an additional implementation. Missing Light/Dark states are labelled instead of fabricated.
-
-`npm run check` verifies the page inventory, navigation targets, preview/partial identity, specimen wiring, stub text, generated palette coverage and the absence of reference-style illustrative controls. Component pages are not a claim that all documentation text or component states are pixel-identical; the existing 13-state visual report remains the visual success metric.
+`npm run check` verifies page inventory, navigation targets, inline partial identity, the full 30-card library, pending placeholders, token/style coverage, and absence of reference demo controls. `public/site.css` styles documentation chrome only; `public/site.js` supplies navigation and adjacent usage demo controls. These docs do not imply completeness of unextracted components.
 
 ## Generate → diff → fix loop
 
@@ -106,17 +87,17 @@ Structural evidence is in [diff/structural-report.json](diff/structural-report.j
 source/                     raw variables, styles, catalog, vector/glyph data, measured trees
 source/svg.json             13 original root SVG exports (source-svg-scene provenance)
 scripts/export-svg.mjs      read-only Pixso evaluator source-SVG exporter
-scripts/generate-docs.mjs   generated Overview, nav, foundations, component docs and stubs
+scripts/generate-docs.mjs   generated reference-style Overview, foundations, catalogs and component pages
 index.html                  generated Overview at the repository root
 public/index.html           same generated Overview for conventional doc-site hosting
 public/site.css             token-bound doc chrome; excluded from isolated specimen pages
-public/site.js              responsive top-navigation toggle only
+public/site.js              navigation, compact token copying and usage-demo controls
 public/pages/*.html         generated foundation/component pages and explicit stubs
 tokens/tokens.json          normalized color/text/effect inputs
 tokens/manifest.json        generated component ↔ source master ↔ variant axis map
 components/<name>.html      generated partials (never edit as the source of truth)
 components/rules.json       machine-readable selected component rules
-previews/<name>.html        independently loadable specimens (embedded by docs iframes)
+previews/<name>.html        independently loadable isolated pixel-diff specimens
 dist/tokens.css             variable layer
 dist/tailwind.theme.css     Tailwind color-variable bridge
 reference/                  source native-scale transparent PNG baselines
