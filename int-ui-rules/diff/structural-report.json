@@ -1,5 +1,275 @@
 [
   {
+    "name": "tree",
+    "source": "5875:79108",
+    "geometry": {
+      "width": 292,
+      "height": 256,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "toolbar",
+    "source": "1146:54209",
+    "geometry": {
+      "width": 144,
+      "height": 34,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "table",
+    "source": "7278:46644",
+    "geometry": {
+      "width": 717,
+      "height": 172,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "context-menu",
+    "source": "7040:84853",
+    "geometry": {
+      "width": 333,
+      "height": 593,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "tool-window",
+    "source": "217:51357",
+    "geometry": {
+      "width": 360,
+      "height": 191,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "group-header",
+    "source": "605:47011",
+    "geometry": {
+      "width": 359,
+      "height": 41,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "shortcut",
+    "source": "6551:84194",
+    "geometry": {
+      "width": 36,
+      "height": 20,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "main-window",
+    "source": "7070:138481",
+    "geometry": {
+      "width": 1596,
+      "height": 1020,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "alert",
+    "source": "3342:83343",
+    "geometry": {
+      "width": 500,
+      "height": 252,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "banner",
+    "source": "3346:81595",
+    "geometry": {
+      "width": 600,
+      "height": 40,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "combobox",
+    "source": "7944:74792",
+    "geometry": {
+      "width": 224,
+      "height": 40,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "link",
+    "source": "46:11087",
+    "geometry": {
+      "width": 45,
+      "height": 28,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "radio-button",
+    "source": "3894:82043",
+    "geometry": {
+      "width": 52,
+      "height": 32,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "radio-button-off",
+    "source": "3894:82033",
+    "geometry": {
+      "width": 52,
+      "height": 32,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "dropdown",
+    "source": "7944:74566",
+    "geometry": {
+      "width": 224,
+      "height": 40,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "search",
+    "source": "7070:146044",
+    "geometry": {
+      "width": 224,
+      "height": 40,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "slim-button",
+    "source": "6517:82734",
+    "geometry": {
+      "width": 72,
+      "height": 36,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "segmented-control",
+    "source": "7281:46903",
+    "geometry": {
+      "width": 378,
+      "height": 28,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "progress-bar",
+    "source": "7059:86469",
+    "geometry": {
+      "width": 305,
+      "height": 16,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "loader",
+    "source": "5767:82631",
+    "geometry": {
+      "width": 16,
+      "height": 16,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "notification",
+    "source": "3595:83697",
+    "geometry": {
+      "width": 400,
+      "height": 158,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "tooltip",
+    "source": "55:9038",
+    "geometry": {
+      "width": 175,
+      "height": 56,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "tooltip-got-it",
+    "source": "56:8740",
+    "geometry": {
+      "width": 312,
+      "height": 162,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "tooltip-editor",
+    "source": "71:11758",
+    "geometry": {
+      "width": 407,
+      "height": 118,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "tab",
+    "source": "5664:79159",
+    "geometry": {
+      "width": 87,
+      "height": 41,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "scrollbar",
+    "source": "6222:73548",
+    "geometry": {
+      "width": 100,
+      "height": 15,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
+    "name": "code-sample",
+    "source": "3711:79011",
+    "geometry": {
+      "width": 110,
+      "height": 20,
+      "fonts": [],
+      "layout": []
+    }
+  },
+  {
     "name": "button-secondary",
     "source": "146:52058",
     "geometry": {

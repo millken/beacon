@@ -54,7 +54,15 @@ const sourceVectorExports = JSON.parse(
   fs.readFileSync("source/svg.json", "utf8"),
 );
 const nativeScene = process.env.INT_UI_NATIVE_SCENE !== "0";
-const vectorSceneRules = new Set(["7070:146270", "3590:81646"]);
+const vectorSceneRules = new Set([
+  "7944:74792", "3894:82043", "3894:82033", "7944:74566", "7070:146044",
+  "6517:82734", "7059:86469", "5767:82631",
+  "7070:146270", "3590:81646",
+  "3342:83343", "3346:81595", "46:11087", "7281:46903",
+  "3595:83697", "55:9038", "56:8740", "71:11758", "5664:79159",
+  "6222:73548", "3711:79011", "5875:79108", "1146:54209", "7278:46644",
+  "7040:84853", "217:51357", "605:47011", "6551:84194", "7070:138481",
+]);
 const glyphMode = process.env.INT_UI_VECTOR_TEXT !== "0";
 const prompts = {
   checkbox: "Text",
@@ -193,7 +201,36 @@ function render(n, parent = null) {
     return `<${n.type === "TEXT" ? "span" : "div"} data-pixso-id="${n.id}" data-kind="${n.type}" style="${style(n, parent, n.type === "TEXT")}${insideSvg ? ";background:transparent;border:0" : ""}">${paintSvg}${n.characters ? esc(n.characters) : ""}${(n.children || []).map((c) => render(c, n)).join("")}</${n.type === "TEXT" ? "span" : "div"}>`;
   return `<${n.type === "TEXT" ? "span" : "div"} data-pixso-id="${n.id}" data-kind="${n.type}" style="${style(n, parent, n.type === "TEXT")}">${n.characters ? esc(n.characters) : ""}${(n.children || []).map((c) => render(c, n)).join("")}</${n.type === "TEXT" ? "span" : "div"}>`;
 }
+for (const rule of Object.values(rules)) {
+  (function normalizePaint(n) {
+    for (const key of ["fills", "strokes"])
+      if (n[key] === "mixed") n[key] = [];
+    for (const child of n.children || []) normalizePaint(child);
+  })(rule);
+}
 const refs = {
+  tree:"5875:79108", toolbar:"1146:54209", table:"7278:46644", "context-menu":"7040:84853",
+  "tool-window":"217:51357", "group-header":"605:47011", shortcut:"6551:84194", "main-window":"7070:138481",
+
+  "alert": "3342:83343",
+  "banner": "3346:81595",
+  "combobox": "7944:74792",
+  "link": "46:11087",
+  "radio-button": "3894:82043",
+  "radio-button-off": "3894:82033",
+  "dropdown": "7944:74566",
+  "search": "7070:146044",
+  "slim-button": "6517:82734",
+  "segmented-control": "7281:46903",
+  "progress-bar": "7059:86469",
+  "loader": "5767:82631",
+  "notification": "3595:83697",
+  "tooltip": "55:9038",
+  "tooltip-got-it": "56:8740",
+  "tooltip-editor": "71:11758",
+  "tab": "5664:79159",
+  "scrollbar": "6222:73548",
+  "code-sample": "3711:79011",
   "button-secondary": "146:52058",
   "button-primary": "146:52068",
   "button-primary-hovered": "146:52071",
@@ -271,10 +308,12 @@ componentLoop: for (const [key, guid] of Object.entries(refs)) {
       'viewBox="0 0 ',
       `role="group" aria-label="${esc(accessibleText.join(", "))}" viewBox="0 0 `,
     );
-  const finalHtml =
-    vectorSceneRules.has(guid) && nativeScene
-      ? `<div ${attrs} data-component="${key}" data-source-node="${guid}" class="relative" style="width:${key === "dialog" ? 963 : n.width}px;height:${key === "dialog" ? 575 : n.height}px;padding:0;border:0;background:transparent">${nativeVector}</div>`
-      : html;
+  const vectorScene = vectorSceneRules.has(guid) && nativeScene;
+  const sceneWidth = vectorScene ? Number(sourceVectorExports[guid].match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/)?.[1]) : n.width;
+  const sceneHeight = vectorScene ? Number(sourceVectorExports[guid].match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/)?.[2]) : n.height;
+  const finalHtml = vectorScene
+    ? `<div ${attrs} data-component="${key}" data-source-node="${guid}" class="relative" style="width:${sceneWidth}px;height:${sceneHeight}px;padding:0;border:0;background:transparent">${nativeVector}</div>`
+    : html;
   fs.writeFileSync(`components/${key}.html`, finalHtml);
   const selectedVariant = {};
   for (const part of n.name.split(",")) {
@@ -287,27 +326,26 @@ componentLoop: for (const [key, guid] of Object.entries(refs)) {
       vectorSceneRules.has(guid) && nativeScene
         ? "source-svg-scene"
         : "generated-dom",
-    sceneOrigin:
-      vectorSceneRules.has(guid) && guid === "7070:146270" && nativeScene
-        ? { x: 0, y: 0 }
-        : null,
+    sceneOrigin: vectorScene ? { x: 0, y: 0 } : null,
     sourceName: n.name,
     selectedVariant,
-    width: n.width,
-    height: n.height,
-    variantSet: Object.values(refs).includes(guid)
-      ? Object.entries(variantSets).find(
-          ([, v]) =>
-            v.name ===
-            {
-              button: "Button",
-              input: "Input Field",
-              checkbox: "Checkbox",
-              toggle: "Toggle",
-              dialog: "Dialog",
-            }[key.split("-")[0]],
-        )?.[1]
-      : undefined,
+    width: vectorScene ? sceneWidth : n.width,
+    height: vectorScene ? sceneHeight : n.height,
+    variantSet: (() => {
+      const set = catalog.componentSets.find((s) => s.id === n.parentId || s.id === guid || s.name === {
+        button: "Button", "slim-button": "Slim Button", input: "Input Field",
+        combobox:"Combobox", checkbox: "Checkbox", toggle: "Toggle", dialog: "Dialog",
+        alert:"Alert", banner:"Banner", link:"Link", "radio-button":"Radio Button",
+        "radio-button-off":"Radio Button", dropdown:"Dropdown", search:"Search",
+        "segmented-control":"Segmented Control", "progress-bar":"Progress Bar", loader:"Loader",
+        notification:"Notification", tooltip:"Tooltip / Tooltip", "tooltip-got-it":"Tooltip / Got It",
+        "tooltip-editor":"Tooltip / Editor", tab:"Tab", scrollbar:"Scrollbar", tree:"Tree",
+        toolbar:"Toolbar", table:"Table", "context-menu":"Popup / Context Menu",
+        "tool-window":"Tool window", "group-header":"Header", shortcut:"Shortcut",
+        "code-sample":"Code Sample", "main-window":"Main Window",
+      }[key]);
+      return set ? variantSets[set.id] : undefined;
+    })(),
     generated: `components/${key}.html`,
   };
   const page = `<!doctype html><html lang="en"><head><meta charset="UTF-8"><title>${key} · Int UI</title><link rel="stylesheet" href="../dist/tokens.css"><link rel="stylesheet" href="../dist/tailwind.css"><style>${fonts}html,body{margin:0;background:transparent}body{display:inline-block;padding:0;min-width:0}#specimen{position:relative;display:inline-block}</style></head><body><main id="specimen">${finalHtml}</main></body></html>`;

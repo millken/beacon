@@ -1,0 +1,99 @@
+{
+  "id": "3711:79011",
+  "name": "Theme=Light, Type=Fill",
+  "type": "COMPONENT",
+  "width": 110,
+  "height": 20,
+  "x": 50,
+  "y": 120,
+  "visible": true,
+  "fills": [
+    {
+      "type": "SOLID",
+      "blendMode": "NORMAL",
+      "opacity": 1,
+      "visible": true,
+      "color": {
+        "r": 0.9294117647058824,
+        "g": 0.9529411764705882,
+        "b": 1
+      }
+    }
+  ],
+  "strokes": [],
+  "strokeWeight": 1,
+  "strokeAlign": "INSIDE",
+  "cornerRadius": 4,
+  "topLeftRadius": 4,
+  "topRightRadius": 4,
+  "bottomLeftRadius": 4,
+  "bottomRightRadius": 4,
+  "opacity": 1,
+  "effects": [],
+  "layoutMode": "VERTICAL",
+  "primaryAxisSizingMode": "AUTO",
+  "counterAxisSizingMode": "AUTO",
+  "primaryAxisAlignItems": "CENTER",
+  "counterAxisAlignItems": "CENTER",
+  "itemSpacing": 0,
+  "paddingTop": 1,
+  "paddingRight": 4,
+  "paddingBottom": 1,
+  "paddingLeft": 4,
+  "clipsContent": true,
+  "fillStyleId": "294:28486",
+  "strokeStyleId": "",
+  "effectStyleId": "",
+  "children": [
+    {
+      "id": "3711:79012",
+      "name": "public static",
+      "type": "TEXT",
+      "width": 102,
+      "height": 18,
+      "x": 4,
+      "y": 1,
+      "visible": true,
+      "fills": [
+        {
+          "type": "SOLID",
+          "blendMode": "NORMAL",
+          "opacity": 1,
+          "visible": true,
+          "color": {
+            "r": 0.20160001866957722,
+            "g": 0.4132241641773897,
+            "b": 0.8399999880323223
+          }
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "strokeAlign": "OUTSIDE",
+      "opacity": 1,
+      "effects": [],
+      "characters": "public static",
+      "fontName": {
+        "family": "JetBrains Mono",
+        "style": "Medium",
+        "hash": "a66083b524f75bd67b418bad047c5edb105952ae"
+      },
+      "fontSize": 13,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 18
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": 0
+      },
+      "textAlignHorizontal": "RIGHT",
+      "textAlignVertical": "TOP",
+      "textAutoResize": "WIDTH_AND_HEIGHT",
+      "fillStyleId": "294:28495",
+      "strokeStyleId": "",
+      "textStyleId": "",
+      "effectStyleId": ""
+    }
+  ]
+}

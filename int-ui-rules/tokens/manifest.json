@@ -1,23 +1,504 @@
 {
-  "button-secondary": {
-    "source": "146:52058",
-    "renderMode": "generated-dom",
-    "sceneOrigin": null,
-    "sourceName": "Theme=Light, Button type=Secondary, State=Active",
+  "tree": {
+    "source": "5875:79108",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light",
+    "selectedVariant": {
+      "Theme": "Light"
+    },
+    "width": 292,
+    "height": 256,
+    "variantSet": {
+      "name": "Tree",
+      "axes": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/tree.html"
+  },
+  "toolbar": {
+    "source": "1146:54209",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light, Type=Horizontal",
     "selectedVariant": {
       "Theme": "Light",
-      "Button type": "Secondary",
+      "Type": "Horizontal"
+    },
+    "width": 144,
+    "height": 34,
+    "variantSet": {
+      "name": "Toolbar",
+      "axes": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Horizontal",
+          "Vertical"
+        ]
+      }
+    },
+    "generated": "components/toolbar.html"
+  },
+  "table": {
+    "source": "7278:46644",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light",
+    "selectedVariant": {
+      "Theme": "Light"
+    },
+    "width": 717,
+    "height": 172,
+    "variantSet": {
+      "name": "Table",
+      "axes": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/table.html"
+  },
+  "context-menu": {
+    "source": "7040:84853",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light",
+    "selectedVariant": {
+      "Theme": "Light"
+    },
+    "width": 333,
+    "height": 593,
+    "variantSet": {
+      "name": "Popup / Context Menu",
+      "axes": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/context-menu.html"
+  },
+  "tool-window": {
+    "source": "217:51357",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light",
+    "selectedVariant": {
+      "Theme": "Light"
+    },
+    "width": 360,
+    "height": 191,
+    "variantSet": {
+      "name": "Tool window",
+      "axes": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/tool-window.html"
+  },
+  "group-header": {
+    "source": "605:47011",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light, Type=Label + Separator",
+    "selectedVariant": {
+      "Theme": "Light",
+      "Type": "Label + Separator"
+    },
+    "width": 359,
+    "height": 41,
+    "variantSet": {
+      "name": "Header",
+      "axes": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Label",
+          "Tabs",
+          "Label + Separator"
+        ]
+      }
+    },
+    "generated": "components/group-header.html"
+  },
+  "shortcut": {
+    "source": "6551:84194",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light, Type=Default",
+    "selectedVariant": {
+      "Theme": "Light",
+      "Type": "Default"
+    },
+    "width": 36,
+    "height": 20,
+    "variantSet": {
+      "name": "Shortcut",
+      "axes": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Default",
+          "Outline"
+        ]
+      }
+    },
+    "generated": "components/shortcut.html"
+  },
+  "main-window": {
+    "source": "7070:138481",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light",
+    "selectedVariant": {
+      "Theme": "Light"
+    },
+    "width": 1596,
+    "height": 1020,
+    "variantSet": {
+      "name": "Main Window",
+      "axes": {
+        "Theme": [
+          "Light",
+          "Dark",
+          "Light with Light Header"
+        ]
+      }
+    },
+    "generated": "components/main-window.html"
+  },
+  "alert": {
+    "source": "3342:83343",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light",
+    "selectedVariant": {
+      "Theme": "Light"
+    },
+    "width": 500,
+    "height": 252,
+    "variantSet": {
+      "name": "Alert",
+      "axes": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/alert.html"
+  },
+  "banner": {
+    "source": "3346:81595",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light, Type=Info, Inline=False",
+    "selectedVariant": {
+      "Theme": "Light",
+      "Type": "Info",
+      "Inline": "False"
+    },
+    "width": 600,
+    "height": 40,
+    "variantSet": {
+      "name": "Banner",
+      "axes": {
+        "Inline": [
+          "False",
+          "True"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Info",
+          "Error",
+          "Warning",
+          "Success"
+        ]
+      }
+    },
+    "generated": "components/banner.html"
+  },
+  "combobox": {
+    "source": "7944:74792",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light, State=Active, Focus=Off",
+    "selectedVariant": {
+      "Theme": "Light",
+      "State": "Active",
+      "Focus": "Off"
+    },
+    "width": 224,
+    "height": 40,
+    "variantSet": {
+      "name": "Combobox",
+      "axes": {
+        "Focus": [
+          "Off",
+          "On"
+        ],
+        "State": [
+          "Active",
+          "Invalid",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/combobox.html"
+  },
+  "link": {
+    "source": "46:11087",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light, Type=Default, State=Default",
+    "selectedVariant": {
+      "Theme": "Light",
+      "Type": "Default",
+      "State": "Default"
+    },
+    "width": 45,
+    "height": 28,
+    "variantSet": {
+      "name": "Link",
+      "axes": {
+        "State": [
+          "Default",
+          "Disabled",
+          "Hovered"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Default",
+          "Dropdown",
+          "External"
+        ]
+      }
+    },
+    "generated": "components/link.html"
+  },
+  "radio-button": {
+    "source": "3894:82043",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light, Selected=On, State=Active",
+    "selectedVariant": {
+      "Theme": "Light",
+      "Selected": "On",
+      "State": "Active"
+    },
+    "width": 51.5,
+    "height": 32,
+    "variantSet": {
+      "name": "Radio Button",
+      "axes": {
+        "Selected": [
+          "On",
+          "Off"
+        ],
+        "State": [
+          "Active",
+          "Hovered",
+          "Focused",
+          "Invalid",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/radio-button.html"
+  },
+  "radio-button-off": {
+    "source": "3894:82033",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light, Selected=Off, State=Active",
+    "selectedVariant": {
+      "Theme": "Light",
+      "Selected": "Off",
+      "State": "Active"
+    },
+    "width": 51.5,
+    "height": 32,
+    "variantSet": {
+      "name": "Radio Button",
+      "axes": {
+        "Selected": [
+          "On",
+          "Off"
+        ],
+        "State": [
+          "Active",
+          "Hovered",
+          "Focused",
+          "Invalid",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/radio-button-off.html"
+  },
+  "dropdown": {
+    "source": "7944:74566",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light, State=Active, Focus=Off",
+    "selectedVariant": {
+      "Theme": "Light",
+      "State": "Active",
+      "Focus": "Off"
+    },
+    "width": 224,
+    "height": 40,
+    "variantSet": {
+      "name": "Dropdown",
+      "axes": {
+        "Focus": [
+          "Off",
+          "On"
+        ],
+        "State": [
+          "Active",
+          "Invalid",
+          "Disabled"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/dropdown.html"
+  },
+  "search": {
+    "source": "7070:146044",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light, State=Active, Focus=Off",
+    "selectedVariant": {
+      "Theme": "Light",
+      "State": "Active",
+      "Focus": "Off"
+    },
+    "width": 224,
+    "height": 40,
+    "variantSet": {
+      "name": "Search",
+      "axes": {
+        "Focus": [
+          "Off",
+          "On"
+        ],
+        "State": [
+          "Active",
+          "Invalid"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/search.html"
+  },
+  "slim-button": {
+    "source": "6517:82734",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light, State=Active",
+    "selectedVariant": {
+      "Theme": "Light",
       "State": "Active"
     },
     "width": 72,
-    "height": 40,
+    "height": 36,
     "variantSet": {
-      "name": "Button",
+      "name": "Slim Button",
       "axes": {
-        "Button type": [
-          "Primary",
-          "Secondary"
-        ],
         "State": [
           "Active",
           "Hovered",
@@ -31,6 +512,329 @@
         ]
       }
     },
+    "generated": "components/slim-button.html"
+  },
+  "segmented-control": {
+    "source": "7281:46903",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light, State=Active",
+    "selectedVariant": {
+      "Theme": "Light",
+      "State": "Active"
+    },
+    "width": 378,
+    "height": 28,
+    "variantSet": {
+      "name": "Segmented Control",
+      "axes": {
+        "State": [
+          "Active",
+          "Disabled",
+          "Focused"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/segmented-control.html"
+  },
+  "progress-bar": {
+    "source": "7059:86469",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light, Type=Single Line, Progress=Regular",
+    "selectedVariant": {
+      "Theme": "Light",
+      "Type": "Single Line",
+      "Progress": "Regular"
+    },
+    "width": 305,
+    "height": 16,
+    "variantSet": {
+      "name": "Progress Bar",
+      "axes": {
+        "Progress": [
+          "Regular",
+          "Indeterminate"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Single Line",
+          "Multiline"
+        ]
+      }
+    },
+    "generated": "components/progress-bar.html"
+  },
+  "loader": {
+    "source": "5767:82631",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme = Light, Rotation = 0",
+    "selectedVariant": {
+      "Theme": "Light",
+      "Rotation": "0"
+    },
+    "width": 16,
+    "height": 16,
+    "variantSet": {
+      "name": "Loader",
+      "axes": {
+        "Rotation": [
+          "0",
+          "45",
+          "90",
+          "135",
+          "180",
+          "225",
+          "270",
+          "315"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/loader.html"
+  },
+  "notification": {
+    "source": "3595:83697",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light",
+    "selectedVariant": {
+      "Theme": "Light"
+    },
+    "width": 400,
+    "height": 158,
+    "variantSet": {
+      "name": "Notification",
+      "axes": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/notification.html"
+  },
+  "tooltip": {
+    "source": "55:9038",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light",
+    "selectedVariant": {
+      "Theme": "Light"
+    },
+    "width": 175,
+    "height": 56,
+    "variantSet": {
+      "name": "Tooltip / Tooltip",
+      "axes": {
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/tooltip.html"
+  },
+  "tooltip-got-it": {
+    "source": "56:8740",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light, Arrow=Left",
+    "selectedVariant": {
+      "Theme": "Light",
+      "Arrow": "Left"
+    },
+    "width": 312,
+    "height": 162,
+    "variantSet": {
+      "name": "Tooltip / Got It",
+      "axes": {
+        "Arrow": [
+          "Up",
+          "Right",
+          "Down",
+          "Left"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/tooltip-got-it.html"
+  },
+  "tooltip-editor": {
+    "source": "71:11758",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light, Type=Error, Arrow=Up",
+    "selectedVariant": {
+      "Theme": "Light",
+      "Type": "Error",
+      "Arrow": "Up"
+    },
+    "width": 407,
+    "height": 118,
+    "variantSet": {
+      "name": "Tooltip / Editor",
+      "axes": {
+        "Arrow": [
+          "Up",
+          "Right",
+          "Down",
+          "Left"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Error",
+          "Warning",
+          "Success",
+          "Info"
+        ]
+      }
+    },
+    "generated": "components/tooltip-editor.html"
+  },
+  "tab": {
+    "source": "5664:79159",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light, State=Selected",
+    "selectedVariant": {
+      "Theme": "Light",
+      "State": "Selected"
+    },
+    "width": 87,
+    "height": 41,
+    "variantSet": {
+      "name": "Tab",
+      "axes": {
+        "State": [
+          "Default",
+          "Selected",
+          "Inactive"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ]
+      }
+    },
+    "generated": "components/tab.html"
+  },
+  "scrollbar": {
+    "source": "6222:73548",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light, Type=Horizontal, State=Regular",
+    "selectedVariant": {
+      "Theme": "Light",
+      "Type": "Horizontal",
+      "State": "Regular"
+    },
+    "width": 100,
+    "height": 15,
+    "variantSet": {
+      "name": "Scrollbar",
+      "axes": {
+        "State": [
+          "Regular",
+          "Hovered"
+        ],
+        "Theme": [
+          "Light",
+          "Dark"
+        ],
+        "Type": [
+          "Horizontal",
+          "Vertical"
+        ]
+      }
+    },
+    "generated": "components/scrollbar.html"
+  },
+  "code-sample": {
+    "source": "3711:79011",
+    "renderMode": "source-svg-scene",
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
+    "sourceName": "Theme=Light, Type=Fill",
+    "selectedVariant": {
+      "Theme": "Light",
+      "Type": "Fill"
+    },
+    "width": 110,
+    "height": 20,
+    "variantSet": {
+      "name": "Code Sample",
+      "axes": {
+        "Theme": [
+          "Dark",
+          "Light"
+        ],
+        "Type": [
+          "Outline",
+          "Fill"
+        ]
+      }
+    },
+    "generated": "components/code-sample.html"
+  },
+  "button-secondary": {
+    "source": "146:52058",
+    "renderMode": "generated-dom",
+    "sceneOrigin": null,
+    "sourceName": "Theme=Light, Button type=Secondary, State=Active",
+    "selectedVariant": {
+      "Theme": "Light",
+      "Button type": "Secondary",
+      "State": "Active"
+    },
+    "width": 72,
+    "height": 40,
     "generated": "components/button-secondary.html"
   },
   "button-primary": {
@@ -45,26 +849,6 @@
     },
     "width": 72,
     "height": 40,
-    "variantSet": {
-      "name": "Button",
-      "axes": {
-        "Button type": [
-          "Primary",
-          "Secondary"
-        ],
-        "State": [
-          "Active",
-          "Hovered",
-          "Pressed",
-          "Focused",
-          "Disabled"
-        ],
-        "Theme": [
-          "Light",
-          "Dark"
-        ]
-      }
-    },
     "generated": "components/button-primary.html"
   },
   "button-primary-hovered": {
@@ -79,26 +863,6 @@
     },
     "width": 72,
     "height": 40,
-    "variantSet": {
-      "name": "Button",
-      "axes": {
-        "Button type": [
-          "Primary",
-          "Secondary"
-        ],
-        "State": [
-          "Active",
-          "Hovered",
-          "Pressed",
-          "Focused",
-          "Disabled"
-        ],
-        "Theme": [
-          "Light",
-          "Dark"
-        ]
-      }
-    },
     "generated": "components/button-primary-hovered.html"
   },
   "button-primary-pressed": {
@@ -113,26 +877,6 @@
     },
     "width": 72,
     "height": 40,
-    "variantSet": {
-      "name": "Button",
-      "axes": {
-        "Button type": [
-          "Primary",
-          "Secondary"
-        ],
-        "State": [
-          "Active",
-          "Hovered",
-          "Pressed",
-          "Focused",
-          "Disabled"
-        ],
-        "Theme": [
-          "Light",
-          "Dark"
-        ]
-      }
-    },
     "generated": "components/button-primary-pressed.html"
   },
   "button-primary-focused": {
@@ -147,26 +891,6 @@
     },
     "width": 72,
     "height": 40,
-    "variantSet": {
-      "name": "Button",
-      "axes": {
-        "Button type": [
-          "Primary",
-          "Secondary"
-        ],
-        "State": [
-          "Active",
-          "Hovered",
-          "Pressed",
-          "Focused",
-          "Disabled"
-        ],
-        "Theme": [
-          "Light",
-          "Dark"
-        ]
-      }
-    },
     "generated": "components/button-primary-focused.html"
   },
   "input": {
@@ -213,24 +937,6 @@
     },
     "width": 224,
     "height": 40,
-    "variantSet": {
-      "name": "Input Field",
-      "axes": {
-        "Focus": [
-          "Off",
-          "On"
-        ],
-        "State": [
-          "Active",
-          "Invalid",
-          "Disabled"
-        ],
-        "Theme": [
-          "Light",
-          "Dark"
-        ]
-      }
-    },
     "generated": "components/input-focused.html"
   },
   "checkbox": {
@@ -280,33 +986,15 @@
     },
     "width": 51,
     "height": 32,
-    "variantSet": {
-      "name": "Checkbox",
-      "axes": {
-        "State": [
-          "Active",
-          "Hovered",
-          "Focused",
-          "Invalid",
-          "Disabled"
-        ],
-        "Theme": [
-          "Light",
-          "Dark"
-        ],
-        "Type": [
-          "Checked",
-          "Unchecked",
-          "Indeterminate"
-        ]
-      }
-    },
     "generated": "components/checkbox-unchecked.html"
   },
   "checkbox-indeterminate": {
     "source": "3590:81646",
     "renderMode": "source-svg-scene",
-    "sceneOrigin": null,
+    "sceneOrigin": {
+      "x": 0,
+      "y": 0
+    },
     "sourceName": "Theme=Light, Type=Indeterminate, State=Active",
     "selectedVariant": {
       "Theme": "Light",
@@ -315,27 +1003,6 @@
     },
     "width": 51,
     "height": 32,
-    "variantSet": {
-      "name": "Checkbox",
-      "axes": {
-        "State": [
-          "Active",
-          "Hovered",
-          "Focused",
-          "Invalid",
-          "Disabled"
-        ],
-        "Theme": [
-          "Light",
-          "Dark"
-        ],
-        "Type": [
-          "Checked",
-          "Unchecked",
-          "Indeterminate"
-        ]
-      }
-    },
     "generated": "components/checkbox-indeterminate.html"
   },
   "toggle-on": {
@@ -349,19 +1016,6 @@
     },
     "width": 53,
     "height": 20,
-    "variantSet": {
-      "name": "Toggle",
-      "axes": {
-        "State": [
-          "Off",
-          "On"
-        ],
-        "Theme": [
-          "Light",
-          "Dark"
-        ]
-      }
-    },
     "generated": "components/toggle-on.html"
   },
   "toggle-off": {
@@ -375,19 +1029,6 @@
     },
     "width": 53,
     "height": 20,
-    "variantSet": {
-      "name": "Toggle",
-      "axes": {
-        "State": [
-          "Off",
-          "On"
-        ],
-        "Theme": [
-          "Light",
-          "Dark"
-        ]
-      }
-    },
     "generated": "components/toggle-off.html"
   },
   "dialog": {
@@ -401,8 +1042,8 @@
     "selectedVariant": {
       "Theme": "Light"
     },
-    "width": 883,
-    "height": 495,
+    "width": 963,
+    "height": 575,
     "variantSet": {
       "name": "Dialog",
       "axes": {

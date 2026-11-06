@@ -1,0 +1,143 @@
+{
+  "id": "6551:84194",
+  "name": "Theme=Light, Type=Default",
+  "type": "COMPONENT",
+  "width": 36,
+  "height": 20,
+  "x": 50,
+  "y": 50,
+  "visible": true,
+  "fills": [
+    {
+      "type": "SOLID",
+      "blendMode": "NORMAL",
+      "opacity": 1,
+      "visible": true,
+      "color": {
+        "r": 0.8745098039215686,
+        "g": 0.8823529411764706,
+        "b": 0.8980392156862745
+      }
+    }
+  ],
+  "strokes": [],
+  "strokeWeight": 1,
+  "strokeAlign": "INSIDE",
+  "cornerRadius": 4,
+  "topLeftRadius": 4,
+  "topRightRadius": 4,
+  "bottomLeftRadius": 4,
+  "bottomRightRadius": 4,
+  "opacity": 1,
+  "effects": [],
+  "layoutMode": "VERTICAL",
+  "primaryAxisSizingMode": "AUTO",
+  "counterAxisSizingMode": "AUTO",
+  "primaryAxisAlignItems": "CENTER",
+  "counterAxisAlignItems": "CENTER",
+  "itemSpacing": 0,
+  "paddingTop": 2,
+  "paddingRight": 4,
+  "paddingBottom": 2,
+  "paddingLeft": 4,
+  "clipsContent": true,
+  "fillStyleId": "724:45844",
+  "strokeStyleId": "",
+  "effectStyleId": "",
+  "children": [
+    {
+      "id": "6551:84192",
+      "name": "Text",
+      "type": "TEXT",
+      "width": 28,
+      "height": 16,
+      "x": 4,
+      "y": 2,
+      "visible": true,
+      "fills": [
+        {
+          "type": "SOLID",
+          "blendMode": "NORMAL",
+          "opacity": 1,
+          "visible": true,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          }
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "strokeAlign": "OUTSIDE",
+      "opacity": 1,
+      "effects": [],
+      "characters": "Text",
+      "fontName": {
+        "family": "Inter",
+        "style": "Semi Bold",
+        "hash": "ce2ccd0b91ffb1f8c894b6d60f21443e0769217c"
+      },
+      "fontSize": 13,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 16
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": 0
+      },
+      "textAlignHorizontal": "RIGHT",
+      "textAlignVertical": "TOP",
+      "textAutoResize": "WIDTH_AND_HEIGHT",
+      "fillStyleId": "724:45836",
+      "strokeStyleId": "",
+      "textStyleId": "28:2586",
+      "effectStyleId": ""
+    },
+    {
+      "id": "6551:84193",
+      "name": "min-width",
+      "type": "VECTOR",
+      "width": 14,
+      "height": 0,
+      "x": 11,
+      "y": 18,
+      "visible": true,
+      "fills": [
+        {
+          "type": "SOLID",
+          "blendMode": "NORMAL",
+          "opacity": 1,
+          "visible": true,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          }
+        }
+      ],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "blendMode": "NORMAL",
+          "opacity": 1,
+          "visible": false,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0
+          }
+        }
+      ],
+      "strokeWeight": 1,
+      "strokeAlign": "CENTER",
+      "cornerRadius": 0,
+      "opacity": 1,
+      "effects": [],
+      "fillStyleId": "724:45836",
+      "strokeStyleId": "",
+      "effectStyleId": ""
+    }
+  ]
+}

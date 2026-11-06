@@ -2,7 +2,7 @@
 
 `/workspace/int-ui-rules` is a **new** implementation, not a repair of `/workspace/int-ui-tailwind`. It consumes none of the rejected HTML. Target: Pixso `iPHNpHZoWc6Grn6DanoQDg`, _Getting started_ (`6222:73687`).
 
-**Status: a reproducible extraction/generation/diff baseline for 13 Light variants, not a completed 1:1 conversion.** The source shadow's asymmetric native padding is included in the diff; Dialog is 0.010%, but nonzero. Current verified metrics are in [diff/report.md](diff/report.md); all 13 variants have a native-size comparison, including focused and shadow overflow. Visual differences are not filtered as antialias to inflate the score.
+**Status: 40 Light specimens (13 original unchanged + 27 new specimens covering the full 30-card docs library); strict pixel comparisons remain nonzero for some glyphs and native SVG shadows. See EXTRACTION-REPORT.md.** The source shadow's asymmetric native padding is included in the diff; Dialog is 0.010%, but nonzero. Current verified metrics are in [diff/report.md](diff/report.md); all 13 variants have a native-size comparison, including focused and shadow overflow. Visual differences are not filtered as antialias to inflate the score.
 
 ## Design-rule inventory
 
@@ -12,7 +12,7 @@ Pixso reports **no local variables** (`variables: {}`). The authoritative token 
 - **36** text styles → font family/size/weight/line-height/letter-spacing tokens
 - **20** effect styles → CSS box-shadow variables
 - **11** components and **131** component sets → `source/component-catalog.json`
-- **13 extracted variants**, with properties, dimensions and variant axes → `source/components/*.json`, `components/rules.json`, `tokens/manifest.json`
+- **40 extracted variants (13 original unchanged, 27 newly wired)**, with properties, dimensions and variant axes → `source/components/*.json`, `components/rules.json`, `tokens/manifest.json`
 - Source style IDs (paint/text/effect) are preserved in each design node. Stable CSS names include a hash of the source style name, because same-color duplicates are _not_ always the same semantic token. Strokes resolve the actual node color; matching Light Gray/Grey values are linked to generated tokens. Exact style identity remains on each node for future complete ID→style mapping.
 - Observed geometry: outer Button/Input row allocation `6px; content 28px`; checkbox padding `8px; 16px icon; 8px gap; 16px text`; toggle `53x20px`; Button min content width `48px, 12px horizontal, 6px vertical`; radii depend on source (`4px` controls, `3px` checkbox/toggle, `8px` Dialog); font `Inter 13px/16px 500` (Dialog title 600). These are extracted values, not a new generic design system.
 - Exact original SVG path geometry is retained for complex checkbox/help glyphs and available _pure_ icons. Component containers and text geometry are generated with source node IDs and accessible labels. **No entire component is replaced by an exported PNG.**
@@ -24,7 +24,7 @@ cd /workspace/int-ui-rules
 npm install
 npm run verify
 # source glyph geometry is the default; INT_UI_VECTOR_TEXT=0 opts into native browser text
-# native source-vector scenes for Dialog + indeterminate: default; INT_UI_NATIVE_SCENE=0 compares reconstructed DOM
+# native source-vector scenes for Dialog, indeterminate and the new Light library; INT_UI_NATIVE_SCENE=0 compares DOM reconstruction
 # generate every component, preview and documentation page
 npm run generate
 # preview the reference-shaped docs at http://localhost:3000 (or the printed URL)
@@ -50,15 +50,15 @@ npm run preview
 
 `scripts/generate-docs.mjs` regenerates the reference-style static documentation shell: top navigation, dense Foundations cards, a five-column 30-entry component overview, a visual catalog, and state/usage component pages. It reads `components/*.html` at generation time and embeds those exact partials inline; there are no primary-demo iframes or independently authored `.btn`/checkbox/combo approximations. The original `previews/*.html` remain isolated and are the only pixel-diff targets.
 
-- **Overview / Components:** all 30 reference library entries. Ready thumbnails use the generated partial. Pending thumbnails are neutral catalog placeholders labelled **Not extracted yet**, not claim-to-be-designed components.
+- **Overview / Components:** all 30 reference library entries now have inline source-generated Light specimens; there are no `Not extracted yet` catalog entries.
 - **Button / Checkbox / Input / Toggle:** reference-like Light state matrix and right-hand usage panel; missing states and Dark zones stay explicit placeholders. Small usage demonstrations switch the source On/Off specimens; the design partial itself remains non-interactive. Source/provenance is in collapsed details below each state panel.
 - **Dialog:** responsive inline source-vector scene inside the same design-guide layout.
-- **Alert / Banner / Combo box:** complete state/usage page architecture with labelled pending specimen cells. No substitute visual component is inserted before rule extraction.
+- **Alert / Banner / Combo box:** actual measured Light specimens are embedded in their detail pages, with source links and a usage description.
 - **Colors:** all source tokens bound to CSS variables in compact family ramps, grouped Light, Editor and Dark; additional source styles are collapsible. **Typography:** UI/Editor columns plus all other source styles. **Spacing:** compact measured gap/padding bars using only `tokens/inventory.json` values.
 
 `npm run preview` serves the Overview at `/`, component pages at `/pages/*.html`, and shared assets at `/dist`, `/tokens`, `/components` and `/previews`. Run `npm run generate && npm run preview`; `-- --port 4321` overrides the port. Both root `index.html` and `public/index.html` are generated.
 
-`npm run check` verifies page inventory, navigation targets, inline partial identity, the full 30-card library, pending placeholders, token/style coverage, and absence of reference demo controls. `public/site.css` styles documentation chrome only; `public/site.js` supplies navigation and adjacent usage demo controls. These docs do not imply completeness of unextracted components.
+`npm run check` verifies page inventory, navigation targets, inline partial identity, the full 30-card library, catalog completeness, token/style coverage, and absence of reference demo controls. `public/site.css` styles documentation chrome only; `public/site.js` supplies navigation and adjacent usage demo controls. Additional Dark and state variants remain explicitly marked as pending, not complete.
 
 ## Generate → diff → fix loop
 
@@ -77,7 +77,7 @@ Structural evidence is in [diff/structural-report.json](diff/structural-report.j
 - **Source perimeters:** focused Input's `2px CENTER` ring now uses half stroke outside/inside source geometry. Its strict mismatch improved from **13.186% to 0.188%**. The remaining 17 pixels are counted glyph coverage, not silently excluded AA.
 - **Buttons:** Secondary and default Input duplicate CSS perimeter paint was removed in favor of source rounded-rect SVG. Secondary is **0.729%**, active primary **0.069%**; no claim of native-font raster parity is made.
 - **Dialog:** measured shadow bounds are `(40,32,883,495)` inside a `963×575` export. Correcting alignment reduced generated DOM from 3.189% to 0.154%. The original source **vector** scene preserves the exact instance paths, filter, compositing and clip context and further reduces strict mismatch to **0.010% (57/553725)**. Full-canvas and regional differences remain reported; no close control is invented.
-- **Native vector scene provenance:** `source/svg.json` stores all 13 original root exports. A measured opt-in list chooses only Dialog and indeterminate Checkbox as `source-svg-scene`; their semantic outer wrappers retain source IDs and accessible labels. The other 11 keep the better-or-equal generated DOM geometry—whole-root SVG was not assumed to improve every state. `tokens/manifest.json` records this split. This tradeoff preserves exact source vectors rather than reconstructing every Dialog child as HTML.
+- **Native vector scene provenance:** `source/svg.json` stores all 40 original root exports. A measured opt-in list chooses Dialog and indeterminate Checkbox plus the new Light library as `source-svg-scene`; their semantic outer wrappers retain source IDs and accessible labels. The other 11 original DOM specimens are byte-identical to their baseline. Full export bounds (including effects) are retained rather than clipping to the component root. `tokens/manifest.json` records this split. This tradeoff preserves exact source vectors rather than reconstructing every Dialog child as HTML.
 - **Vectors:** complex checkbox/help glyphs use source SVGs; source native SVG scenes retain all `path`, `rect`, `clipPath` and `filter` definitions. No screenshot flattening or rasterization is used. Opt out with `INT_UI_NATIVE_SCENE=0 npm run verify`. Source-vector scenes do not claim production interactions or full token-layer rebindability of every nested primitive.
 - **Scope:** 13 selected Light variants of Button, Input, Checkbox, Toggle and Dialog. Not yet Dark, all other components/states, or production form interactions/state toggling. Generated doc chrome and the Overview are not a claim that the complete reference landing page has been reconstructed. No branch/commit is created by this work.
 

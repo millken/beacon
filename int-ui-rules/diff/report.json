@@ -5,6 +5,843 @@
   "pixelThreshold": 0.1,
   "results": [
     {
+      "name": "tree",
+      "source": "5875:79108",
+      "width": 292,
+      "height": 256,
+      "differentPixels": 190,
+      "totalPixels": 74752,
+      "diffPercent": 0.254,
+      "referenceNonTransparent": 74752,
+      "actualNonTransparent": 74752,
+      "geometry": {
+        "width": 292,
+        "height": 256,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 41,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/tree-actual.png",
+        "diff": "diff/tree-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "toolbar",
+      "source": "1146:54209",
+      "width": 144,
+      "height": 34,
+      "differentPixels": 0,
+      "totalPixels": 4896,
+      "diffPercent": 0,
+      "referenceNonTransparent": 480,
+      "actualNonTransparent": 480,
+      "geometry": {
+        "width": 144,
+        "height": 34,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 5,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/toolbar-actual.png",
+        "diff": "diff/toolbar-diff.png"
+      },
+      "status": "pixel-identical"
+    },
+    {
+      "name": "table",
+      "source": "7278:46644",
+      "width": 717,
+      "height": 172,
+      "differentPixels": 241,
+      "totalPixels": 123324,
+      "diffPercent": 0.195,
+      "referenceNonTransparent": 123324,
+      "actualNonTransparent": 123324,
+      "geometry": {
+        "width": 717,
+        "height": 172,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 25,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/table-actual.png",
+        "diff": "diff/table-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "context-menu",
+      "source": "7040:84853",
+      "width": 333,
+      "height": 593,
+      "differentPixels": 1112,
+      "totalPixels": 197469,
+      "diffPercent": 0.563,
+      "referenceNonTransparent": 193021,
+      "actualNonTransparent": 189517,
+      "geometry": {
+        "width": 333,
+        "height": 593,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 79,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/context-menu-actual.png",
+        "diff": "diff/context-menu-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "tool-window",
+      "source": "217:51357",
+      "width": 360,
+      "height": 191,
+      "differentPixels": 33,
+      "totalPixels": 68760,
+      "diffPercent": 0.048,
+      "referenceNonTransparent": 68760,
+      "actualNonTransparent": 68760,
+      "geometry": {
+        "width": 360,
+        "height": 191,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 10,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/tool-window-actual.png",
+        "diff": "diff/tool-window-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "group-header",
+      "source": "605:47011",
+      "width": 359,
+      "height": 41,
+      "differentPixels": 4,
+      "totalPixels": 14719,
+      "diffPercent": 0.027,
+      "referenceNonTransparent": 682,
+      "actualNonTransparent": 681,
+      "geometry": {
+        "width": 359,
+        "height": 41,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 6,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/group-header-actual.png",
+        "diff": "diff/group-header-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "shortcut",
+      "source": "6551:84194",
+      "width": 36,
+      "height": 20,
+      "differentPixels": 12,
+      "totalPixels": 720,
+      "diffPercent": 1.667,
+      "referenceNonTransparent": 716,
+      "actualNonTransparent": 716,
+      "geometry": {
+        "width": 36,
+        "height": 20,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 3,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/shortcut-actual.png",
+        "diff": "diff/shortcut-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "main-window",
+      "source": "7070:138481",
+      "width": 1596,
+      "height": 1020,
+      "differentPixels": 7741,
+      "totalPixels": 1627920,
+      "diffPercent": 0.476,
+      "referenceNonTransparent": 1600338,
+      "actualNonTransparent": 1580124,
+      "geometry": {
+        "width": 1596,
+        "height": 1020,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 299,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/main-window-actual.png",
+        "diff": "diff/main-window-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "alert",
+      "source": "3342:83343",
+      "width": 500,
+      "height": 252,
+      "differentPixels": 163,
+      "totalPixels": 126000,
+      "diffPercent": 0.129,
+      "referenceNonTransparent": 118504,
+      "actualNonTransparent": 108512,
+      "geometry": {
+        "width": 500,
+        "height": 252,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 15,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/alert-actual.png",
+        "diff": "diff/alert-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "banner",
+      "source": "3346:81595",
+      "width": 600,
+      "height": 40,
+      "differentPixels": 28,
+      "totalPixels": 24000,
+      "diffPercent": 0.117,
+      "referenceNonTransparent": 24000,
+      "actualNonTransparent": 24000,
+      "geometry": {
+        "width": 600,
+        "height": 40,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 8,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/banner-actual.png",
+        "diff": "diff/banner-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "combobox",
+      "source": "7944:74792",
+      "width": 224,
+      "height": 40,
+      "differentPixels": 39,
+      "totalPixels": 8960,
+      "diffPercent": 0.435,
+      "referenceNonTransparent": 6268,
+      "actualNonTransparent": 6268,
+      "geometry": {
+        "width": 224,
+        "height": 40,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 5,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/combobox-actual.png",
+        "diff": "diff/combobox-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "link",
+      "source": "46:11087",
+      "width": 45,
+      "height": 28,
+      "differentPixels": 0,
+      "totalPixels": 1260,
+      "diffPercent": 0,
+      "referenceNonTransparent": 267,
+      "actualNonTransparent": 270,
+      "geometry": {
+        "width": 45,
+        "height": 28,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 1,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/link-actual.png",
+        "diff": "diff/link-diff.png"
+      },
+      "status": "pixel-identical"
+    },
+    {
+      "name": "radio-button",
+      "source": "3894:82043",
+      "width": 52,
+      "height": 32,
+      "differentPixels": 0,
+      "totalPixels": 1664,
+      "diffPercent": 0,
+      "referenceNonTransparent": 400,
+      "actualNonTransparent": 406,
+      "geometry": {
+        "width": 52,
+        "height": 32,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 3,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/radio-button-actual.png",
+        "diff": "diff/radio-button-diff.png"
+      },
+      "status": "pixel-identical"
+    },
+    {
+      "name": "radio-button-off",
+      "source": "3894:82033",
+      "width": 52,
+      "height": 32,
+      "differentPixels": 4,
+      "totalPixels": 1664,
+      "diffPercent": 0.24,
+      "referenceNonTransparent": 400,
+      "actualNonTransparent": 406,
+      "geometry": {
+        "width": 52,
+        "height": 32,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 2,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/radio-button-off-actual.png",
+        "diff": "diff/radio-button-off-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "dropdown",
+      "source": "7944:74566",
+      "width": 224,
+      "height": 40,
+      "differentPixels": 39,
+      "totalPixels": 8960,
+      "diffPercent": 0.435,
+      "referenceNonTransparent": 6268,
+      "actualNonTransparent": 6268,
+      "geometry": {
+        "width": 224,
+        "height": 40,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 4,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/dropdown-actual.png",
+        "diff": "diff/dropdown-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "search",
+      "source": "7070:146044",
+      "width": 224,
+      "height": 40,
+      "differentPixels": 17,
+      "totalPixels": 8960,
+      "diffPercent": 0.19,
+      "referenceNonTransparent": 6268,
+      "actualNonTransparent": 6268,
+      "geometry": {
+        "width": 224,
+        "height": 40,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 7,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/search-actual.png",
+        "diff": "diff/search-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "slim-button",
+      "source": "6517:82734",
+      "width": 72,
+      "height": 36,
+      "differentPixels": 36,
+      "totalPixels": 2592,
+      "diffPercent": 1.389,
+      "referenceNonTransparent": 1724,
+      "actualNonTransparent": 1724,
+      "geometry": {
+        "width": 72,
+        "height": 36,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 2,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/slim-button-actual.png",
+        "diff": "diff/slim-button-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "segmented-control",
+      "source": "7281:46903",
+      "width": 378,
+      "height": 28,
+      "differentPixels": 111,
+      "totalPixels": 10584,
+      "diffPercent": 1.049,
+      "referenceNonTransparent": 10580,
+      "actualNonTransparent": 10580,
+      "geometry": {
+        "width": 378,
+        "height": 28,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 11,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/segmented-control-actual.png",
+        "diff": "diff/segmented-control-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "progress-bar",
+      "source": "7059:86469",
+      "width": 305,
+      "height": 16,
+      "differentPixels": 4,
+      "totalPixels": 4880,
+      "diffPercent": 0.082,
+      "referenceNonTransparent": 1357,
+      "actualNonTransparent": 1361,
+      "geometry": {
+        "width": 305,
+        "height": 16,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 7,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/progress-bar-actual.png",
+        "diff": "diff/progress-bar-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "loader",
+      "source": "5767:82631",
+      "width": 16,
+      "height": 16,
+      "differentPixels": 0,
+      "totalPixels": 256,
+      "diffPercent": 0,
+      "referenceNonTransparent": 98,
+      "actualNonTransparent": 100,
+      "geometry": {
+        "width": 16,
+        "height": 16,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 8,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/loader-actual.png",
+        "diff": "diff/loader-diff.png"
+      },
+      "status": "pixel-identical"
+    },
+    {
+      "name": "notification",
+      "source": "3595:83697",
+      "width": 400,
+      "height": 158,
+      "differentPixels": 98,
+      "totalPixels": 63200,
+      "diffPercent": 0.155,
+      "referenceNonTransparent": 60136,
+      "actualNonTransparent": 57244,
+      "geometry": {
+        "width": 400,
+        "height": 158,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 13,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/notification-actual.png",
+        "diff": "diff/notification-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "tooltip",
+      "source": "55:9038",
+      "width": 175,
+      "height": 56,
+      "differentPixels": 18,
+      "totalPixels": 9800,
+      "diffPercent": 0.184,
+      "referenceNonTransparent": 8644,
+      "actualNonTransparent": 8302,
+      "geometry": {
+        "width": 175,
+        "height": 56,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 3,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/tooltip-actual.png",
+        "diff": "diff/tooltip-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "tooltip-got-it",
+      "source": "56:8740",
+      "width": 312,
+      "height": 162,
+      "differentPixels": 100,
+      "totalPixels": 50544,
+      "diffPercent": 0.198,
+      "referenceNonTransparent": 46443,
+      "actualNonTransparent": 46307,
+      "geometry": {
+        "width": 312,
+        "height": 162,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 8,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/tooltip-got-it-actual.png",
+        "diff": "diff/tooltip-got-it-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "tooltip-editor",
+      "source": "71:11758",
+      "width": 407,
+      "height": 118,
+      "differentPixels": 50,
+      "totalPixels": 48026,
+      "diffPercent": 0.104,
+      "referenceNonTransparent": 42487,
+      "actualNonTransparent": 42476,
+      "geometry": {
+        "width": 407,
+        "height": 118,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 9,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/tooltip-editor-actual.png",
+        "diff": "diff/tooltip-editor-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "tab",
+      "source": "5664:79159",
+      "width": 87,
+      "height": 41,
+      "differentPixels": 1,
+      "totalPixels": 3567,
+      "diffPercent": 0.028,
+      "referenceNonTransparent": 539,
+      "actualNonTransparent": 543,
+      "geometry": {
+        "width": 87,
+        "height": 41,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 7,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/tab-actual.png",
+        "diff": "diff/tab-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "scrollbar",
+      "source": "6222:73548",
+      "width": 100,
+      "height": 15,
+      "differentPixels": 8,
+      "totalPixels": 1500,
+      "diffPercent": 0.533,
+      "referenceNonTransparent": 412,
+      "actualNonTransparent": 412,
+      "geometry": {
+        "width": 100,
+        "height": 15,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 1,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/scrollbar-actual.png",
+        "diff": "diff/scrollbar-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
+      "name": "code-sample",
+      "source": "3711:79011",
+      "width": 110,
+      "height": 20,
+      "differentPixels": 9,
+      "totalPixels": 2200,
+      "diffPercent": 0.409,
+      "referenceNonTransparent": 2196,
+      "actualNonTransparent": 2196,
+      "geometry": {
+        "width": 110,
+        "height": 20,
+        "fonts": [],
+        "layout": []
+      },
+      "structural": {
+        "expectedVisualNodes": 2,
+        "compoundSvgGroups": 0,
+        "actualDomNodes": 0,
+        "geometryMismatch": [],
+        "note": "Source SVG subpaths have no HTML element; browser geometry is checked separately.",
+        "pass": true
+      },
+      "extraDiffs": {},
+      "artifacts": {
+        "actual": "diff/code-sample-actual.png",
+        "diff": "diff/code-sample-diff.png"
+      },
+      "status": "needs-fix"
+    },
+    {
       "name": "button-secondary",
       "source": "146:52058",
       "width": 72,

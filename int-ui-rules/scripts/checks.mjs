@@ -68,6 +68,16 @@ assert.deepEqual(fs.readdirSync("public/pages").filter((f) => f.endsWith(".html"
   "toggle.html", "typography.html",
 ]);
 const manifest = JSON.parse(fs.readFileSync("tokens/manifest.json", "utf8"));
+const docBySpecimen = {
+  alert:"alert", banner:"banner", combobox:"combo-box", link:"components",
+  "radio-button":"components", "radio-button-off":"components", dropdown:"components",
+  search:"components", "slim-button":"button", "segmented-control":"components",
+  "progress-bar":"components", loader:"components", notification:"components",
+  tooltip:"components", "tooltip-got-it":"components", "tooltip-editor":"components",
+  tab:"components", scrollbar:"components", "code-sample":"components", tree:"components", toolbar:"components", table:"components",
+  "context-menu":"components", "tool-window":"components", "group-header":"components",
+  shortcut:"components", "main-window":"components",
+};
 const docs = ["public/index.html", ...fs.readdirSync("public/pages").filter((f) => f.endsWith(".html")).map((f) => `public/pages/${f}`)];
 for (const file of docs) {
   const html = fs.readFileSync(file, "utf8");
@@ -84,7 +94,7 @@ for (const file of docs) {
 for (const [name, item] of Object.entries(manifest)) {
   const partial = fs.readFileSync(item.generated, "utf8");
   assert.ok(fs.readFileSync(`previews/${name}.html`, "utf8").includes(partial), `${name}: preview is not its generated partial`);
-  const sourceDoc = name.startsWith("button-") ? "public/pages/button.html" : ["input", "input-focused"].includes(name) ? "public/pages/input.html" : name.startsWith("checkbox") ? "public/pages/checkbox.html" : name.startsWith("toggle-") ? "public/pages/toggle.html" : "public/pages/dialog.html";
+  const sourceDoc = name.startsWith("button-") ? "public/pages/button.html" : ["input", "input-focused"].includes(name) ? "public/pages/input.html" : name.startsWith("checkbox") ? "public/pages/checkbox.html" : name.startsWith("toggle-") ? "public/pages/toggle.html" : docBySpecimen[name] ? `public/pages/${docBySpecimen[name]}.html` : "public/pages/dialog.html";
   assert.ok(fs.readFileSync(sourceDoc, "utf8").includes(partial), `${name}: ${sourceDoc} does not embed its generated partial`);
 }
 for (const [file, name] of [["public/pages/button.html", "button-primary"], ["public/pages/input.html", "input"], ["public/pages/checkbox.html", "checkbox"], ["public/pages/toggle.html", "toggle-on"], ["public/pages/dialog.html", "dialog"]]) {
@@ -94,8 +104,6 @@ for (const [file, name] of [["public/pages/button.html", "button-primary"], ["pu
 }
 const overview = fs.readFileSync("public/index.html", "utf8");
 assert.equal([...overview.matchAll(/class="doc-component-card"/g)].length, 30, "Overview must contain the full 30 entry library");
-for (const file of ["public/pages/alert.html", "public/pages/banner.html", "public/pages/combo-box.html"])
-  assert.ok(fs.readFileSync(file, "utf8").includes('Not extracted yet'), `${file}: missing explicit extraction placeholders`);
 for (const [name, value] of Object.entries(tokens.color).filter(([name]) => name.startsWith("Light/") && !name.includes("(Current)")))
   assert.ok(fs.readFileSync("public/pages/colors.html", "utf8").includes(`var(${value.css})`), `Missing source color ${name}`);
 for (const style of Object.values(tokens.typography))
