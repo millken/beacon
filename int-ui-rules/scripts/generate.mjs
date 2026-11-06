@@ -2,7 +2,7 @@
  * Roots wrap measured primitive descendants. SVG is used only for exact source vectors. */
 import fs from "node:fs";
 import { generateDocs } from "./generate-docs.mjs";
-import { esc as escapeHtml, hex, readAlertMaster, semanticAlertCss, textStyle, assertSemanticAlert, renderSemanticAlert } from "./semantic-alert.mjs";
+import { esc as escapeHtml, hex, readAlertMaster, semanticAlertCss, textStyle, assertSemanticAlert, renderSemanticAlert, configureAlertMasters } from "./semantic-alert.mjs";
 const master = JSON.parse(fs.readFileSync("tokens/tokens.json", "utf8"));
 const catalog = JSON.parse(fs.readFileSync("source/component-catalog.json"));
 const sourceStyles = JSON.parse(
@@ -258,6 +258,7 @@ const refs = {
 for (const family of Object.values(stateInventory)) for (const variant of family.variants) refs[variant.key]=variant.id;
 const stateRefs = Object.fromEntries(Object.entries(stateInventory).flatMap(([familyName, family]) => family.variants.map((variant) => [variant.key,{...variant,family:stateInventory[familyName]?.name || familyName,familyId:family.id,sourceName:variant.name}])));
 const alertMasters = ["3342:83343", "3346:80911"].map((id) => readAlertMaster(rules[id.replace(":", "-")], sourceStyles, master));
+configureAlertMasters(alertMasters);
 const tokens = fs.readFileSync("dist/tokens.css", "utf8"),
   fonts = `@font-face{font-family:Inter;src:url('../tokens/Inter-Variable.ttf') format('truetype');font-weight:100 900;font-optical-sizing:auto}`;
 const manifest = {};
