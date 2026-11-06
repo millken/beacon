@@ -1,111 +1,13 @@
-/** Read-only Pixso extraction. Run `node scripts/extract-component.mjs` to print the eval script,
- * Pass its output to user-Pixso/eval_script. Save returned roots individually as
- * source/components/<id-with-colon-replaced-by-dash>.json; no prior HTML is read. */
+/** Read-only measured extraction. Paste this evaluator into user-Pixso.eval_script;
+ * save each root as source/components/<id-dash>.json. No prior HTML is read.
+ * Source axes and IDs are in source/state-inventory.json.
+ */
 export async function extractComponents() {
-const ids = [
-
-  "5875:79108",,
-  "1146:54209",,
-  "7278:46644",,
-  "7040:84853",,
-  "217:51357",,
-  "605:47011",,
-  "6551:84194",,
-  "7070:138481",,
-  "3342:83343",,
-  "3346:81595",,
-  "7944:74792",,
-  "46:11087",,
-  "3894:82043",,
-  "3894:82033",,
-  "7944:74566",,
-  "7070:146044",,
-  "6517:82734",,
-  "7281:46903",,
-  "7059:86469",,
-  "5767:82631",,
-  "3595:83697",,
-  "55:9038",,
-  "56:8740",,
-  "71:11758",,
-  "5664:79159",,
-  "6222:73548",,
-  "3711:79011",,
-  "146:52058",,
-  "146:52068",,
-  "146:52071",,
-  "733:47034",,
-  "146:52092",,
-  "7399:46819",,
-  "7399:46991",,
-  "3590:81640",,
-  "3590:81636",,
-  "3590:81646",,
-  "5168:84067",,
-  "5168:84071",,
-  "7070:146270",
-];
-const fields = [
-  "fills",
-  "strokes",
-  "strokeWeight",
-  "strokeAlign",
-  "cornerRadius",
-  "topLeftRadius",
-  "topRightRadius",
-  "bottomLeftRadius",
-  "bottomRightRadius",
-  "opacity",
-  "effects",
-  "layoutMode",
-  "primaryAxisSizingMode",
-  "counterAxisSizingMode",
-  "primaryAxisAlignItems",
-  "counterAxisAlignItems",
-  "itemSpacing",
-  "paddingTop",
-  "paddingRight",
-  "paddingBottom",
-  "paddingLeft",
-  "clipsContent",
-  "characters",
-  "fontName",
-  "fontSize",
-  "fontWeight",
-  "lineHeight",
-  "letterSpacing",
-  "textAlignHorizontal",
-  "textAlignVertical",
-  "textAutoResize",
-  "fillStyleId",
-  "strokeStyleId",
-  "textStyleId",
-  "effectStyleId",
-];
-function pick(n, depth) {
-  const o = {
-    id: n.id,
-    name: n.name,
-    type: n.type,
-    width: n.width,
-    height: n.height,
-    x: n.x,
-    y: n.y,
-    visible: n.visible,
-  };
-  for (const k of fields) {
-    try {
-      if (n[k] !== undefined) o[k] = n[k];
-    } catch {}
-  }
-  if (depth > 0 && "children" in n)
-    o.children = n.children.map((c) => pick(c, depth - 1));
-  return o;
-}
-// For eval_script, paste the contents of this file. No document mutations are performed.
-const roots = [];
-for (const id of ids) roots.push(pick(await pixso.getNodeByIdAsync(id), 12));
-return { roots };
+const ids = ["146:52058", "742:45907", "146:52061", "742:45770", "146:52068", "742:45744", "146:52071", "733:47034", "146:52092", "146:52084", "6517:82734", "6517:82738", "6517:82742", "6517:82746", "6517:82812", "3590:81636", "3590:81640", "3590:81646", "3590:81652", "3590:81658", "3590:81664", "3590:81670", "3590:81678", "3590:81686", "3590:81694", "3590:81702", "3590:81708", "3590:81712", "3590:81716", "3590:81720", "7399:46819", "7399:47183", "7399:47103", "7399:46991", "7399:47106", "5168:84067", "5168:84071", "7944:74792", "7944:74796", "7944:74800", "7944:74804", "7944:74808", "7944:74566", "7944:74571", "7944:74576", "7944:74581", "7944:74586", "2380:61746", "46:11079", "6441:76959", "46:11081", "6441:76963", "2380:61750", "46:11087", "6441:76967", "2380:61754", "3894:82033", "3894:82043", "3894:82055", "3894:82067", "3894:82081", "3894:82095", "3894:82107", "3894:82117", "3894:82127", "3894:82137", "7070:146044", "7141:47188", "7141:47212", "7141:47236", "5664:79159", "5664:79192", "5664:79228", "7281:46903", "7281:46911", "7281:46919", "3346:81595", "11163:19910", "11163:20351", "11163:69185", "11163:69243", "3350:81479", "3350:81509", "3350:81539", "3342:83343", "7070:146270"];
+const fields = ["fills", "strokes", "strokeWeight", "strokeAlign", "cornerRadius", "topLeftRadius", "topRightRadius", "bottomLeftRadius", "bottomRightRadius", "opacity", "effects", "layoutMode", "primaryAxisSizingMode", "counterAxisSizingMode", "primaryAxisAlignItems", "counterAxisAlignItems", "itemSpacing", "paddingTop", "paddingRight", "paddingBottom", "paddingLeft", "clipsContent", "characters", "fontName", "fontSize", "fontWeight", "lineHeight", "letterSpacing", "textAlignHorizontal", "textAlignVertical", "textAutoResize", "fillStyleId", "strokeStyleId", "textStyleId", "effectStyleId"];
+function pick(n, depth) { const o={id:n.id,parentId:n.parent?.id,name:n.name,type:n.type,width:n.width,height:n.height,x:n.x,y:n.y,visible:n.visible}; for(const k of fields){try{if(n[k]!==undefined)o[k]=n[k]}catch{}} if(depth>0&&'children'in n)o.children=n.children.map(c=>pick(c,depth-1));return o; }
+const roots=[]; for(const id of ids) { const node=await pixso.getNodeByIdAsync(id); if(node) roots.push(pick(node,12)); }
+return {roots};
 
 }
 if (process.argv[1]?.endsWith("extract-component.mjs")) console.log(`(${extractComponents})()`);

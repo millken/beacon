@@ -1,0 +1,172 @@
+{
+  "id": "6517:82812",
+  "parentId": "6517:82733",
+  "name": "Theme=Light, State=Focused",
+  "type": "COMPONENT",
+  "width": 72,
+  "height": 36,
+  "x": 416,
+  "y": 50,
+  "visible": true,
+  "fills": [],
+  "strokes": [],
+  "strokeWeight": 1,
+  "strokeAlign": "INSIDE",
+  "cornerRadius": 0,
+  "topLeftRadius": 0,
+  "topRightRadius": 0,
+  "bottomLeftRadius": 0,
+  "bottomRightRadius": 0,
+  "opacity": 1,
+  "effects": [],
+  "layoutMode": "HORIZONTAL",
+  "primaryAxisSizingMode": "AUTO",
+  "counterAxisSizingMode": "AUTO",
+  "primaryAxisAlignItems": "MIN",
+  "counterAxisAlignItems": "MAX",
+  "itemSpacing": 0,
+  "paddingTop": 6,
+  "paddingRight": 0,
+  "paddingBottom": 6,
+  "paddingLeft": 0,
+  "clipsContent": false,
+  "fillStyleId": "",
+  "strokeStyleId": "",
+  "effectStyleId": "",
+  "children": [
+    {
+      "id": "6517:82813",
+      "parentId": "6517:82812",
+      "name": "Button",
+      "type": "FRAME",
+      "width": 72,
+      "height": 24,
+      "x": 0,
+      "y": 6,
+      "visible": true,
+      "fills": [
+        {
+          "type": "SOLID",
+          "blendMode": "NORMAL",
+          "opacity": 1,
+          "visible": true,
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1
+          }
+        }
+      ],
+      "strokes": [
+        {
+          "type": "SOLID",
+          "blendMode": "NORMAL",
+          "opacity": 1,
+          "visible": true,
+          "color": {
+            "r": 0.2070588504566866,
+            "g": 0.45298826928232233,
+            "b": 0.9411764705882353
+          }
+        }
+      ],
+      "strokeWeight": 2,
+      "strokeAlign": "CENTER",
+      "cornerRadius": 4,
+      "topLeftRadius": 4,
+      "topRightRadius": 4,
+      "bottomLeftRadius": 4,
+      "bottomRightRadius": 4,
+      "opacity": 1,
+      "effects": [],
+      "layoutMode": "VERTICAL",
+      "primaryAxisSizingMode": "AUTO",
+      "counterAxisSizingMode": "AUTO",
+      "primaryAxisAlignItems": "MIN",
+      "counterAxisAlignItems": "CENTER",
+      "itemSpacing": 0,
+      "paddingTop": 4,
+      "paddingRight": 12,
+      "paddingBottom": 4,
+      "paddingLeft": 12,
+      "clipsContent": false,
+      "fillStyleId": "724:45847",
+      "strokeStyleId": "217:55450",
+      "effectStyleId": "",
+      "children": [
+        {
+          "id": "6517:82814",
+          "parentId": "6517:82813",
+          "name": "Text",
+          "type": "TEXT",
+          "width": 42,
+          "height": 16,
+          "x": 15,
+          "y": 4,
+          "visible": true,
+          "fills": [
+            {
+              "type": "SOLID",
+              "blendMode": "NORMAL",
+              "opacity": 1,
+              "visible": true,
+              "color": {
+                "r": 0,
+                "g": 0,
+                "b": 0
+              }
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 0,
+          "strokeAlign": "CENTER",
+          "opacity": 1,
+          "effects": [],
+          "characters": "Button",
+          "fontName": {
+            "family": "Inter",
+            "style": "Medium",
+            "hash": "279fa3c60d682531d549d0ec9ed91f1b83402d40"
+          },
+          "fontSize": 13,
+          "lineHeight": {
+            "unit": "PIXELS",
+            "value": 16
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          },
+          "textAlignHorizontal": "LEFT",
+          "textAlignVertical": "TOP",
+          "textAutoResize": "WIDTH_AND_HEIGHT",
+          "fillStyleId": "724:45836",
+          "strokeStyleId": "",
+          "textStyleId": "25:2990",
+          "effectStyleId": ""
+        },
+        {
+          "id": "6517:82815",
+          "parentId": "6517:82813",
+          "name": "min-width",
+          "type": "VECTOR",
+          "width": 48,
+          "height": 0,
+          "x": 12,
+          "y": 20,
+          "visible": true,
+          "fills": [],
+          "strokes": [],
+          "strokeWeight": 1,
+          "strokeAlign": "CENTER",
+          "cornerRadius": 0,
+          "opacity": 0,
+          "effects": [],
+          "fillStyleId": "",
+          "strokeStyleId": "",
+          "effectStyleId": ""
+        }
+      ]
+    }
+  ]
+}

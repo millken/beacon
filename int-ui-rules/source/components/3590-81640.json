@@ -1,5 +1,6 @@
 {
   "id": "3590:81640",
+  "parentId": "3590:81635",
   "name": "Theme=Light, Type=Checked, State=Active",
   "type": "COMPONENT",
   "width": 51,
@@ -35,6 +36,7 @@
   "children": [
     {
       "id": "8006:76620",
+      "parentId": "3590:81640",
       "name": "Checkbox",
       "type": "FRAME",
       "width": 51,
@@ -70,6 +72,7 @@
       "children": [
         {
           "id": "7944:76537",
+          "parentId": "8006:76620",
           "name": "_Checkbox",
           "type": "INSTANCE",
           "width": 16,
@@ -105,6 +108,7 @@
           "children": [
             {
               "id": "I7944:76537;7936:67415",
+              "parentId": "7944:76537",
               "name": "Checkbox",
               "type": "FRAME",
               "width": 16,
@@ -152,6 +156,7 @@
               "children": [
                 {
                   "id": "I7944:76537;7936:67416",
+                  "parentId": "I7944:76537;7936:67415",
                   "name": "Checkbox",
                   "type": "RECTANGLE",
                   "width": 16,
@@ -188,6 +193,7 @@
                 },
                 {
                   "id": "I7944:76537;7936:67417",
+                  "parentId": "I7944:76537;7936:67415",
                   "name": "Check",
                   "type": "VECTOR",
                   "width": 8.5,
@@ -224,6 +230,7 @@
         },
         {
           "id": "6504:83314",
+          "parentId": "8006:76620",
           "name": "Content",
           "type": "FRAME",
           "width": 27,
@@ -259,6 +266,7 @@
           "children": [
             {
               "id": "3590:81645",
+              "parentId": "6504:83314",
               "name": "Text",
               "type": "TEXT",
               "width": 27,
@@ -309,6 +317,7 @@
             },
             {
               "id": "8295:75102",
+              "parentId": "6504:83314",
               "name": "Hint",
               "type": "FRAME",
               "width": 24,
@@ -344,6 +353,7 @@
               "children": [
                 {
                   "id": "6504:82878",
+                  "parentId": "8295:75102",
                   "name": "Hint",
                   "type": "TEXT",
                   "width": 24,
@@ -400,6 +410,7 @@
     },
     {
       "id": "8006:77631",
+      "parentId": "3590:81640",
       "name": "Hint",
       "type": "INSTANCE",
       "width": 83,
@@ -447,6 +458,7 @@
       "children": [
         {
           "id": "I8006:77631;8006:72905",
+          "parentId": "8006:77631",
           "name": "Hint",
           "type": "TEXT",
           "width": 59,

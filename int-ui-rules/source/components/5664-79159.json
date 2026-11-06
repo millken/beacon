@@ -1,5 +1,6 @@
 {
   "id": "5664:79159",
+  "parentId": "5664:79158",
   "name": "Theme=Light, State=Selected",
   "type": "COMPONENT",
   "width": 87,
@@ -35,6 +36,7 @@
   "children": [
     {
       "id": "6353:72353",
+      "parentId": "5664:79159",
       "name": "Background",
       "type": "INSTANCE",
       "width": 87,
@@ -83,6 +85,7 @@
     },
     {
       "id": "5664:79161",
+      "parentId": "5664:79159",
       "name": "Content",
       "type": "FRAME",
       "width": 87,
@@ -118,6 +121,7 @@
       "children": [
         {
           "id": "5664:79162",
+          "parentId": "5664:79161",
           "name": "Content",
           "type": "FRAME",
           "width": 53,
@@ -153,6 +157,7 @@
           "children": [
             {
               "id": "5664:79163",
+              "parentId": "5664:79162",
               "name": "Icon",
               "type": "INSTANCE",
               "width": 16,
@@ -188,6 +193,7 @@
               "children": [
                 {
                   "id": "I5664:79163;9965:67687",
+                  "parentId": "5664:79163",
                   "name": "Union",
                   "type": "VECTOR",
                   "width": 12,
@@ -222,6 +228,7 @@
             },
             {
               "id": "5664:79164",
+              "parentId": "5664:79162",
               "name": "Text",
               "type": "TEXT",
               "width": 27,
@@ -274,6 +281,7 @@
         },
         {
           "id": "5664:79566",
+          "parentId": "5664:79161",
           "name": "Close",
           "type": "INSTANCE",
           "width": 16,
@@ -309,6 +317,7 @@
           "children": [
             {
               "id": "I5664:79566;9045:66540",
+              "parentId": "5664:79566",
               "name": "Union",
               "type": "BOOLEAN_OPERATION",
               "width": 7.254664421081543,
@@ -341,6 +350,7 @@
               "children": [
                 {
                   "id": "I5664:79566;9045:66541",
+                  "parentId": "I5664:79566;9045:66540",
                   "name": "Rectangle 25",
                   "type": "VECTOR",
                   "width": 1.4142135381698608,
@@ -373,6 +383,7 @@
                 },
                 {
                   "id": "I5664:79566;9045:66542",
+                  "parentId": "I5664:79566;9045:66540",
                   "name": "Rectangle 24",
                   "type": "VECTOR",
                   "width": 1.4142135381698608,
@@ -411,6 +422,7 @@
     },
     {
       "id": "5664:79166",
+      "parentId": "5664:79159",
       "name": "Underline",
       "type": "RECTANGLE",
       "width": 87,

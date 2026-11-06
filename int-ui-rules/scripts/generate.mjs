@@ -4,11 +4,6 @@ import fs from "node:fs";
 import { generateDocs } from "./generate-docs.mjs";
 const master = JSON.parse(fs.readFileSync("tokens/tokens.json", "utf8"));
 const catalog = JSON.parse(fs.readFileSync("source/component-catalog.json"));
-const knownIds = new Set(
-  JSON.parse(
-    fs.readFileSync("source/component-catalog.json"),
-  ).componentSets.flatMap((s) => [...Object.values(s.variantPropMap).flat()]),
-);
 const sourceStyles = JSON.parse(
   fs.readFileSync("source/vector-and-styles.json", "utf8"),
 );
@@ -25,15 +20,14 @@ for (const v of JSON.parse(
   fs.readFileSync("source/vectors-extra.json", "utf8"),
 ))
   if (v.svg) vectors[v.id] = v.svg;
-const tokenForColor = Object.fromEntries(
-  Object.entries(master.color)
-    .filter(
-      ([name]) => name.startsWith("Light/") && !name.includes("(Current)"),
-    )
-    .map(([name, v]) => [String(v.value).toUpperCase(), v.css]),
-);
-const token = (color) =>
-  tokenForColor[color] ? `var(${tokenForColor[color]})` : color;
+const tokenForColor = {};
+for (const theme of ["Light", "Dark"])
+  for (const [name, value] of Object.entries(master.color))
+    if (name.startsWith(theme + "/") && !name.includes("(Current)"))
+      (tokenForColor[theme] ||= {})[String(value.value).toUpperCase()] = value.css;
+let rootTheme = "Light";
+const token = (color) => tokenForColor[rootTheme]?.[color] ? `var(${tokenForColor[rootTheme][color]})` : color;
+const isDarkName = (name) => /^Theme\s*=\s*Dark(?:,|$)/.test(name || "");
 const ids = fs
   .readdirSync("source/components")
   .filter((f) => f.endsWith(".json"))
@@ -99,7 +93,7 @@ const paints = (p) =>
     .at(-1) || "transparent";
 function style(n, parent, isText = false, isVector = false) {
   const textStyle = master.texts[n.textStyleId] || {},
-    f = n.fontName || textStyle.fontName || {};
+    f = n.fontName?.family ? n.fontName : (textStyle.fontName || {});
   const fill = n.fills?.find((p) => p.visible !== false);
   const cPaint = fill?.color;
   const p = cPaint ? rgba(cPaint) : "transparent";
@@ -111,15 +105,19 @@ function style(n, parent, isText = false, isVector = false) {
     `height:${n.height}px`,
   ];
   if (n.opacity !== 1) s.push(`opacity:${n.opacity ?? 1}`);
-  if (isText || (!isVector && fill))
+  const fillVisible = fill && (fill.opacity ?? 1) > 0;
+  if (isText || (!isVector && fillVisible))
     s.push(`${isText ? "color" : "background-color"}:${token(p)}`);
-  const stroke = n.strokes?.find((v) => v.visible !== false);
+  if (!isVector && fill && !fillVisible) s.push("background:transparent");
+  if (!isVector && fill?.type && fill.type !== "SOLID" && fillVisible)
+    s.push(`background-image:${cssGradient(fill)}`);
+  const stroke = n.strokes?.find((v) => v.visible !== false && (v.opacity ?? 1) > 0);
   if (stroke) {
     const color = rgba(stroke.color?.color ?? stroke.color ?? null);
     const match = Object.entries(master.color).find(
       ([name, v]) =>
         v.value === color &&
-        name.startsWith("Light/") &&
+        name.startsWith(rootTheme + "/") &&
         (name.toLowerCase().includes("gray") ||
           name.toLowerCase().includes("grey")),
     );
@@ -154,8 +152,8 @@ function style(n, parent, isText = false, isVector = false) {
   if (isText)
     s.push(
       `font-family:${f.family || "Inter"},sans-serif`,
-      `font-size:${n.fontSize ?? textStyle.fontSize}px`,
-      `font-weight:${weight(f.style)}`,
+      `font-size:${n.fontSize ?? textStyle.fontSize ?? 13}px`,
+      `font-weight:${weight(f.style || "Medium")}`,
       `line-height:${n.lineHeight?.value ?? textStyle.lineHeight?.value ?? 16}px`,
       `letter-spacing:${n.letterSpacing?.value ?? 0}px`,
       "padding:0",
@@ -167,20 +165,56 @@ function style(n, parent, isText = false, isVector = false) {
     );
   return s.join(";");
 }
+function cssGradient(paint) {
+  const list = paint.gradientStops || [];
+  if (!list.length) return "none";
+  const stops = list.map((stop) => `rgba(${Math.round(stop.color.r*255)},${Math.round(stop.color.g*255)},${Math.round(stop.color.b*255)},${stop.color.a ?? 1}) ${Math.round(stop.position*100)}%`).join(",");
+  return `linear-gradient(180deg,${stops})`;
+}
+function vectorPaint(n) {
+  const fill = n.fills?.find((p) => p.visible !== false && (p.opacity ?? 1) > 0);
+  const stroke = n.strokes?.find((p) => p.visible !== false && (p.opacity ?? 1) > 0);
+  const fillColor = fill?.type === "SOLID" ? rgba(fill.color) : null;
+  const strokeColor = stroke?.type === "SOLID" ? rgba(stroke.color) : null;
+  const shape = n.type === "ELLIPSE" ? "ellipse" : "rect";
+  const dimensions = shape === "ellipse" ? `cx="${n.width/2}" cy="${n.height/2}" rx="${n.width/2}" ry="${n.height/2}"` : `width="${n.width}" height="${n.height}" rx="${n.cornerRadius || 0}"`;
+  return `<svg width="${n.width}" height="${n.height}" viewBox="0 0 ${n.width} ${n.height}" xmlns="http://www.w3.org/2000/svg"><${shape} ${dimensions} fill="${fillColor || "none"}" stroke="${strokeColor || "none"}" stroke-width="${n.strokeWeight || 0}"/></svg>`;
+}
+function smallCompound(n) {
+  if (!vectors[n.id] || !n.children?.length) return false;
+  const descendants = [];
+  function walk(node) { descendants.push(node); for (const child of node.children || []) walk(child); }
+  walk(n);
+  return ["FRAME", "INSTANCE"].includes(n.type) &&
+    descendants.filter((node) => node.visible !== false).every((node) => node === n || !(node.fills||[]).some((p)=>p.visible!==false) || ["VECTOR","ELLIPSE","RECTANGLE"].includes(node.type));
+}
+function collectCoords(n, axis) { return [...(n.children || []).flatMap((child) => collectCoords(child,axis)),n[axis] || 0]; }
 function render(n, parent = null) {
   if (n.visible === false || n.opacity === 0) return "";
   // Complex overlapping instance content stays as source SVG rather than fake checkmark rectangles.
   if (
     [
-      "I7944:76537;7936:67415",
       "I7070:146280;7070:146213;7070:146172",
       "I7070:146280;7070:146213",
     ].includes(n.id)
   ) {
     return `<div data-pixso-id="${n.id}" data-kind="${n.type}" style="${style(n, parent, false, true)}">${vectors[n.id] || ""}</div>`;
   }
+  if (smallCompound(n)) {
+    const exportedInset = Number(vectors[n.id].match(/<rect id="(?:Checkbox|Radio)"[^>]*\bx="([\d.-]+)"/)?.[1] || 0);
+    const minX = -exportedInset;
+    const minY = minX;
+    const raw = vectors[n.id];
+    if (minX === 0 && minY === 0)
+      return `<div data-pixso-id="${n.id}" data-kind="${n.type}" style="${style(n,parent,false,true)};overflow:visible">${raw.replace("customFrame=","data-source-frame=")}</div>`;
+    // The source widget frame precedes its actual painted bounds. Preserving the
+    // measured negative x/y accounts for the exported ring without moving the label.
+    return `<div data-pixso-id="${n.id}" data-kind="${n.type}" style="${style(n,parent,false,true)};overflow:visible">${raw.replace("<svg ", `<svg style="position:absolute;left:${minX}px;top:${minY}px;overflow:visible" `).replace("customFrame=","data-source-frame=")}</div>`;
+  }
+
+
   if (["VECTOR", "BOOLEAN_OPERATION"].includes(n.type)) {
-    return `<span data-pixso-id="${n.id}" data-kind="${n.type}" style="${style(n, parent, false, true)}">${vectors[n.id] || ""}</span>`;
+    return `<span data-pixso-id="${n.id}" data-kind="${n.type}" style="${style(n, parent, false, true)}">${vectors[n.id] || vectorPaint(n)}</span>`;
   }
   if (glyphMode && n.type === "TEXT" && sourceTextOutlines[n.id]?.svg) {
     return `<span data-pixso-id="${n.id}" data-kind="TEXT" role="img" aria-label="${esc(n.characters)}" style="${style(n, parent, false, true)};line-height:0;overflow:visible"><span aria-hidden="true" style="display:block;width:${n.width}px;height:${n.height}px">${sourceTextOutlines[n.id].svg}</span></span>`;
@@ -194,7 +228,7 @@ function render(n, parent = null) {
       : "";
   const svg =
     n.strokeAlign === "CENTER" && n.strokes?.some((p) => p.visible !== false)
-      ? `<svg data-stroke-align="CENTER" width="${n.width + n.strokeWeight}" height="${n.height + n.strokeWeight}" viewBox="0 0 ${n.width + n.strokeWeight} ${n.height + n.strokeWeight}" style="position:absolute;left:${-n.strokeWeight / 2}px;top:${-n.strokeWeight / 2}px;overflow:visible"><rect x="${n.strokeWeight / 2}" y="${n.strokeWeight / 2}" width="${n.width}" height="${n.height}" rx="${n.cornerRadius || 0}" fill="${token(paints(n.fills))}" stroke="${token(rgba(n.strokes.find((p) => p.visible !== false).color))}" stroke-width="${n.strokeWeight}"/></svg>`
+      ? `<svg data-stroke-align="CENTER" width="${n.width + n.strokeWeight}" height="${n.height + n.strokeWeight}" viewBox="0 0 ${n.width + n.strokeWeight} ${n.height + n.strokeWeight}" style="position:absolute;left:${-n.strokeWeight / 2}px;top:${-n.strokeWeight / 2}px;overflow:visible"><rect x="${n.strokeWeight / 2}" y="${n.strokeWeight / 2}" width="${n.width}" height="${n.height}" rx="${n.type === "ELLIPSE" ? (n.width+1)/2 : n.cornerRadius || 0}" fill="${token(paints(n.fills))}" stroke="${token(rgba(n.strokes.find((p) => p.visible !== false).color))}" stroke-width="${n.strokeWeight}"/></svg>`
       : "";
   const paintSvg = svg || insideSvg;
   if (paintSvg)
@@ -208,43 +242,20 @@ for (const rule of Object.values(rules)) {
     for (const child of n.children || []) normalizePaint(child);
   })(rule);
 }
-const refs = {
-  tree:"5875:79108", toolbar:"1146:54209", table:"7278:46644", "context-menu":"7040:84853",
-  "tool-window":"217:51357", "group-header":"605:47011", shortcut:"6551:84194", "main-window":"7070:138481",
 
-  "alert": "3342:83343",
-  "banner": "3346:81595",
-  "combobox": "7944:74792",
-  "link": "46:11087",
-  "radio-button": "3894:82043",
-  "radio-button-off": "3894:82033",
-  "dropdown": "7944:74566",
-  "search": "7070:146044",
-  "slim-button": "6517:82734",
-  "segmented-control": "7281:46903",
-  "progress-bar": "7059:86469",
-  "loader": "5767:82631",
-  "notification": "3595:83697",
-  "tooltip": "55:9038",
-  "tooltip-got-it": "56:8740",
-  "tooltip-editor": "71:11758",
-  "tab": "5664:79159",
-  "scrollbar": "6222:73548",
-  "code-sample": "3711:79011",
-  "button-secondary": "146:52058",
-  "button-primary": "146:52068",
-  "button-primary-hovered": "146:52071",
-  "button-primary-pressed": "733:47034",
-  "button-primary-focused": "146:52092",
-  input: "7399:46819",
-  "input-focused": "7399:46991",
-  checkbox: "3590:81640",
-  "checkbox-unchecked": "3590:81636",
-  "checkbox-indeterminate": "3590:81646",
-  "toggle-on": "5168:84067",
-  "toggle-off": "5168:84071",
-  dialog: "7070:146270",
+const stateInventory = JSON.parse(fs.readFileSync("source/state-inventory.json","utf8"));
+for (const family of Object.values(stateInventory)) {
+  const set=catalog.componentSets.find(s=>s.id===family.id);
+  if(set)family.variantPropMap=set.variantPropMap;
+}
+const refs = {
+  tree:"5875:79108",toolbar:"1146:54209",table:"7278:46644","context-menu":"7040:84853",
+  "tool-window":"217:51357","group-header":"605:47011",shortcut:"6551:84194","main-window":"7070:138481",
+  "progress-bar":"7059:86469",loader:"5767:82631",notification:"3595:83697",tooltip:"55:9038",
+  "tooltip-got-it":"56:8740","tooltip-editor":"71:11758",scrollbar:"6222:73548","code-sample":"3711:79011",
 };
+for (const family of Object.values(stateInventory)) for (const variant of family.variants) refs[variant.key]=variant.id;
+const stateRefs = Object.fromEntries(Object.entries(stateInventory).flatMap(([familyName, family]) => family.variants.map((variant) => [variant.key,{...variant,family:stateInventory[familyName]?.name || familyName,familyId:family.id,sourceName:variant.name}])));
 const tokens = fs.readFileSync("dist/tokens.css", "utf8"),
   fonts = `@font-face{font-family:Inter;src:url('../tokens/Inter-Variable.ttf') format('truetype');font-weight:100 900;font-optical-sizing:auto}`;
 const manifest = {};
@@ -254,6 +265,10 @@ const variantSets = Object.fromEntries(
     { name: s.name, axes: s.variantPropMap },
   ]),
 );
+refs.link = refs["link-light-default-default"];
+stateRefs.link = stateRefs["link-light-default-default"];
+refs["button-focused"] = refs["button-light-primary-focused"];
+stateRefs["button-focused"] = stateRefs["button-light-primary-focused"];
 for (const file of fs.readdirSync("components"))
   if (file.endsWith(".html") || ["rules.json", "emitted.json"].includes(file))
     fs.rmSync("components/" + file);
@@ -263,23 +278,19 @@ componentLoop: for (const [key, guid] of Object.entries(refs)) {
     console.warn("Missing extraction", key, guid);
     continue;
   }
+  rootTheme = isDarkName(n.name) ? "Dark" : "Light";
   const tag = "div";
-  const type = key.startsWith("button")
-    ? "button"
-    : key.startsWith("input")
-      ? "textbox"
-      : key.startsWith("checkbox")
-        ? "checkbox"
-        : key.startsWith("toggle")
-          ? "switch"
-          : key === "dialog"
-            ? "dialog"
-            : null;
+  const type = key.startsWith("button") ? "button"
+    : key.startsWith("input") ? "textbox" : key.startsWith("checkbox") ? "checkbox"
+    : key.startsWith("toggle") ? "switch" : key.startsWith("radio-button") ? "radio"
+    : /^(combobox|dropdown|search)(-|$)/.test(key) ? "combobox"
+    : key.startsWith("dialog") ? "dialog" : null;
   const checked = key.startsWith("checkbox")
-    ? !key.includes("unchecked")
+    ? key.includes("indeterminate") ? "mixed" : !key.includes("unchecked")
     : key.startsWith("toggle")
-      ? key.endsWith("-on")
-      : null;
+      ? key === "toggle-on" || key.endsWith("dark-on")
+      : key.startsWith("radio-button") ? !(key === "radio-button-off" || key.includes("-off-"))
+      : key.startsWith("button") ? false : null;
   const centerStroke = (node) => {
     const paint = node.strokes?.find((p) => p.visible !== false);
     if (!paint) return "";
@@ -302,25 +313,23 @@ componentLoop: for (const [key, guid] of Object.entries(refs)) {
     for (const child of node.children || []) collectText(child);
   }
   collectText(n);
-  const nativeVector = sourceVectorExports[guid]
-    .replace("customFrame=", "data-source-frame=")
+  const nativeVector = sourceVectorExports[guid];
+  const nativeSceneSvg = nativeVector
+    ?.replace("customFrame=", "data-source-frame=")
     .replace(
       'viewBox="0 0 ',
       `role="group" aria-label="${esc(accessibleText.join(", "))}" viewBox="0 0 `,
     );
   const vectorScene = vectorSceneRules.has(guid) && nativeScene;
-  const sceneWidth = vectorScene ? Number(sourceVectorExports[guid].match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/)?.[1]) : n.width;
-  const sceneHeight = vectorScene ? Number(sourceVectorExports[guid].match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/)?.[2]) : n.height;
+  const sceneWidth = vectorScene ? Number(nativeVector?.match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/)?.[1]) : n.width;
+  const sceneHeight = vectorScene ? Number(nativeVector?.match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/)?.[2]) : n.height;
   const finalHtml = vectorScene
-    ? `<div ${attrs} data-component="${key}" data-source-node="${guid}" class="relative" style="width:${sceneWidth}px;height:${sceneHeight}px;padding:0;border:0;background:transparent">${nativeVector}</div>`
+    ? `<div ${attrs} data-component="${key}" data-source-node="${guid}" class="relative" style="width:${sceneWidth}px;height:${sceneHeight}px;padding:0;border:0;background:transparent">${nativeSceneSvg}</div>`
     : html;
   fs.writeFileSync(`components/${key}.html`, finalHtml);
-  const selectedVariant = {};
-  for (const part of n.name.split(",")) {
-    const match = part.trim().match(/^(.+?)\s*=\s*(.+)$/);
-    if (match) selectedVariant[match[1].replace(/^Theme$/, "Theme")] = match[2];
-  }
+  const selectedVariant = { ...(stateRefs[key]?.properties || {}) };
   manifest[key] = {
+    ...(key === "link" || key === "button-focused" ? { aliasOf: key === "link" ? "link-light-default-default" : "button-light-primary-focused" } : {}),
     source: guid,
     renderMode:
       vectorSceneRules.has(guid) && nativeScene
@@ -332,19 +341,9 @@ componentLoop: for (const [key, guid] of Object.entries(refs)) {
     width: vectorScene ? sceneWidth : n.width,
     height: vectorScene ? sceneHeight : n.height,
     variantSet: (() => {
-      const set = catalog.componentSets.find((s) => s.id === n.parentId || s.id === guid || s.name === {
-        button: "Button", "slim-button": "Slim Button", input: "Input Field",
-        combobox:"Combobox", checkbox: "Checkbox", toggle: "Toggle", dialog: "Dialog",
-        alert:"Alert", banner:"Banner", link:"Link", "radio-button":"Radio Button",
-        "radio-button-off":"Radio Button", dropdown:"Dropdown", search:"Search",
-        "segmented-control":"Segmented Control", "progress-bar":"Progress Bar", loader:"Loader",
-        notification:"Notification", tooltip:"Tooltip / Tooltip", "tooltip-got-it":"Tooltip / Got It",
-        "tooltip-editor":"Tooltip / Editor", tab:"Tab", scrollbar:"Scrollbar", tree:"Tree",
-        toolbar:"Toolbar", table:"Table", "context-menu":"Popup / Context Menu",
-        "tool-window":"Tool window", "group-header":"Header", shortcut:"Shortcut",
-        "code-sample":"Code Sample", "main-window":"Main Window",
-      }[key]);
-      return set ? variantSets[set.id] : undefined;
+      const family = stateRefs[key]?.family;
+      const set = catalog.componentSets.find((s) => s.id===stateRefs[key]?.familyId || s.name===family || s.name===({tree:"Tree",toolbar:"Toolbar",table:"Table","context-menu":"Popup / Context Menu","tool-window":"Tool window","group-header":"Header",shortcut:"Shortcut","main-window":"Main Window","progress-bar":"Progress Bar",loader:"Loader",notification:"Notification",tooltip:"Tooltip / Tooltip","tooltip-got-it":"Tooltip / Got It","tooltip-editor":"Tooltip / Editor",scrollbar:"Scrollbar","code-sample":"Code Sample"}[key]));
+      return set ? {name:set.name,axes:set.variantPropMap} : undefined;
     })(),
     generated: `components/${key}.html`,
   };

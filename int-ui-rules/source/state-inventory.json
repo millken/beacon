@@ -1,0 +1,2107 @@
+{
+  "Button": {
+    "id": "146:52009",
+    "variants": [
+      {
+        "id": "146:52058",
+        "name": "Theme=Light, Button type=Secondary, State=Active",
+        "width": 72,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "Button type": "Secondary",
+          "State": "Active"
+        },
+        "key": "button-secondary"
+      },
+      {
+        "id": "742:45907",
+        "name": "Theme=Light, Button type=Secondary, State=Disabled",
+        "width": 72,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "Button type": "Secondary",
+          "State": "Disabled"
+        },
+        "key": "button-light-secondary-disabled"
+      },
+      {
+        "id": "146:52061",
+        "name": "Theme=Light, Button type=Secondary, State=Hovered",
+        "width": 72,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "Button type": "Secondary",
+          "State": "Hovered"
+        },
+        "key": "button-light-secondary-hovered"
+      },
+      {
+        "id": "742:45770",
+        "name": "Theme=Light, Button type=Secondary, State=Pressed",
+        "width": 72,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "Button type": "Secondary",
+          "State": "Pressed"
+        },
+        "key": "button-light-secondary-pressed"
+      },
+      {
+        "id": "146:52068",
+        "name": "Theme=Light, Button type=Primary, State=Active",
+        "width": 72,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "Button type": "Primary",
+          "State": "Active"
+        },
+        "key": "button-primary"
+      },
+      {
+        "id": "742:45744",
+        "name": "Theme=Light, Button type=Primary, State=Disabled",
+        "width": 72,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "Button type": "Primary",
+          "State": "Disabled"
+        },
+        "key": "button-light-primary-disabled"
+      },
+      {
+        "id": "146:52071",
+        "name": "Theme=Light, Button type=Primary, State=Hovered",
+        "width": 72,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "Button type": "Primary",
+          "State": "Hovered"
+        },
+        "key": "button-light-primary-hovered"
+      },
+      {
+        "id": "733:47034",
+        "name": "Theme=Light, Button type=Primary, State=Pressed",
+        "width": 72,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "Button type": "Primary",
+          "State": "Pressed"
+        },
+        "key": "button-light-primary-pressed"
+      },
+      {
+        "id": "358:48013",
+        "name": "Theme=Dark, Button type=Secondary, State=Hovered",
+        "width": 72,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "Button type": "Secondary",
+          "State": "Hovered"
+        },
+        "key": "button-dark-secondary-hovered"
+      },
+      {
+        "id": "358:48010",
+        "name": "Theme=Dark, Button type=Secondary, State=Active",
+        "width": 72,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "Button type": "Secondary",
+          "State": "Active"
+        },
+        "key": "button-dark-secondary-active"
+      },
+      {
+        "id": "769:54387",
+        "name": "Theme=Dark, Button type=Secondary, State=Pressed",
+        "width": 72,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "Button type": "Secondary",
+          "State": "Pressed"
+        },
+        "key": "button-dark-secondary-pressed"
+      },
+      {
+        "id": "358:48020",
+        "name": "Theme=Dark, Button type=Primary, State=Active",
+        "width": 72,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "Button type": "Primary",
+          "State": "Active"
+        },
+        "key": "button-dark-primary-active"
+      },
+      {
+        "id": "358:48017",
+        "name": "Theme=Dark, Button type=Secondary, State=Disabled",
+        "width": 72,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "Button type": "Secondary",
+          "State": "Disabled"
+        },
+        "key": "button-dark-secondary-disabled"
+      },
+      {
+        "id": "769:54213",
+        "name": "Theme=Dark, Button type=Primary, State=Disabled",
+        "width": 72,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "Button type": "Primary",
+          "State": "Disabled"
+        },
+        "key": "button-dark-primary-disabled"
+      },
+      {
+        "id": "358:48023",
+        "name": "Theme=Dark, Button type=Primary, State=Hovered",
+        "width": 72,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "Button type": "Primary",
+          "State": "Hovered"
+        },
+        "key": "button-dark-primary-hovered"
+      },
+      {
+        "id": "766:54141",
+        "name": "Theme=Dark, Button type=Primary, State=Pressed",
+        "width": 72,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "Button type": "Primary",
+          "State": "Pressed"
+        },
+        "key": "button-dark-primary-pressed"
+      },
+      {
+        "id": "358:48027",
+        "name": "Theme=Dark, Button type=Secondary, State=Focused",
+        "width": 72,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "Button type": "Secondary",
+          "State": "Focused"
+        },
+        "key": "button-dark-secondary-focused"
+      },
+      {
+        "id": "358:48031",
+        "name": "Theme=Dark, Button type=Primary, State=Focused",
+        "width": 72,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "Button type": "Primary",
+          "State": "Focused"
+        },
+        "key": "button-dark-primary-focused"
+      },
+      {
+        "id": "146:52092",
+        "name": "Theme=Light, Button type=Primary, State=Focused",
+        "width": 72,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "Button type": "Primary",
+          "State": "Focused"
+        },
+        "key": "button-light-primary-focused"
+      },
+      {
+        "id": "146:52084",
+        "name": "Theme=Light, Button type=Secondary, State=Focused",
+        "width": 72,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "Button type": "Secondary",
+          "State": "Focused"
+        },
+        "key": "button-light-secondary-focused"
+      }
+    ]
+  },
+  "Slim Button": {
+    "id": "6517:82733",
+    "variants": [
+      {
+        "id": "6517:82734",
+        "name": "Theme=Light, State=Active",
+        "width": 72,
+        "height": 36,
+        "properties": {
+          "Theme": "Light",
+          "State": "Active"
+        },
+        "key": "slim-button"
+      },
+      {
+        "id": "6517:82738",
+        "name": "Theme=Light, State=Disabled",
+        "width": 72,
+        "height": 36,
+        "properties": {
+          "Theme": "Light",
+          "State": "Disabled"
+        },
+        "key": "slim-button-light-disabled"
+      },
+      {
+        "id": "6517:82742",
+        "name": "Theme=Light, State=Hovered",
+        "width": 72,
+        "height": 36,
+        "properties": {
+          "Theme": "Light",
+          "State": "Hovered"
+        },
+        "key": "slim-button-light-hovered"
+      },
+      {
+        "id": "6517:82746",
+        "name": "Theme=Light, State=Pressed",
+        "width": 72,
+        "height": 36,
+        "properties": {
+          "Theme": "Light",
+          "State": "Pressed"
+        },
+        "key": "slim-button-light-pressed"
+      },
+      {
+        "id": "6517:82766",
+        "name": "Theme=Dark, State=Hovered",
+        "width": 72,
+        "height": 36,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Hovered"
+        },
+        "key": "slim-button-dark-hovered"
+      },
+      {
+        "id": "6517:82770",
+        "name": "Theme=Dark, State=Active",
+        "width": 72,
+        "height": 36,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Active"
+        },
+        "key": "slim-button-dark-active"
+      },
+      {
+        "id": "6517:82774",
+        "name": "Theme=Dark, State=Pressed",
+        "width": 72,
+        "height": 36,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Pressed"
+        },
+        "key": "slim-button-dark-pressed"
+      },
+      {
+        "id": "6517:82782",
+        "name": "Theme=Dark, State=Disabled",
+        "width": 72,
+        "height": 36,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Disabled"
+        },
+        "key": "slim-button-dark-disabled"
+      },
+      {
+        "id": "6517:82798",
+        "name": "Theme=Dark, State=Focused",
+        "width": 72,
+        "height": 36,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Focused"
+        },
+        "key": "slim-button-dark-focused"
+      },
+      {
+        "id": "6517:82812",
+        "name": "Theme=Light, State=Focused",
+        "width": 72,
+        "height": 36,
+        "properties": {
+          "Theme": "Light",
+          "State": "Focused"
+        },
+        "key": "slim-button-light-focused"
+      }
+    ]
+  },
+  "Checkbox": {
+    "id": "3590:81635",
+    "variants": [
+      {
+        "id": "3590:81636",
+        "name": "Theme=Light, Type=Unchecked, State=Active",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Unchecked",
+          "State": "Active"
+        },
+        "key": "checkbox-unchecked"
+      },
+      {
+        "id": "3590:81640",
+        "name": "Theme=Light, Type=Checked, State=Active",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Checked",
+          "State": "Active"
+        },
+        "key": "checkbox"
+      },
+      {
+        "id": "3590:81646",
+        "name": "Theme=Light, Type=Indeterminate, State=Active",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Indeterminate",
+          "State": "Active"
+        },
+        "key": "checkbox-indeterminate"
+      },
+      {
+        "id": "3590:81652",
+        "name": "Theme=Light, Type=Indeterminate, State=Hovered",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Indeterminate",
+          "State": "Hovered"
+        },
+        "key": "checkbox-light-indeterminate-hovered"
+      },
+      {
+        "id": "3590:81658",
+        "name": "Theme=Light, Type=Checked, State=Disabled",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Checked",
+          "State": "Disabled"
+        },
+        "key": "checkbox-light-checked-disabled"
+      },
+      {
+        "id": "3590:81664",
+        "name": "Theme=Light, Type=Indeterminate, State=Disabled",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Indeterminate",
+          "State": "Disabled"
+        },
+        "key": "checkbox-light-indeterminate-disabled"
+      },
+      {
+        "id": "3590:81670",
+        "name": "Theme=Light, Type=Checked, State=Focused",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Checked",
+          "State": "Focused"
+        },
+        "key": "checkbox-light-checked-focused"
+      },
+      {
+        "id": "3590:81678",
+        "name": "Theme=Light, Type=Checked, State=Invalid",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Checked",
+          "State": "Invalid"
+        },
+        "key": "checkbox-light-checked-invalid"
+      },
+      {
+        "id": "3590:81686",
+        "name": "Theme=Light, Type=Indeterminate, State=Focused",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Indeterminate",
+          "State": "Focused"
+        },
+        "key": "checkbox-light-indeterminate-focused"
+      },
+      {
+        "id": "3590:81694",
+        "name": "Theme=Light, Type=Indeterminate, State=Invalid",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Indeterminate",
+          "State": "Invalid"
+        },
+        "key": "checkbox-light-indeterminate-invalid"
+      },
+      {
+        "id": "3590:81702",
+        "name": "Theme=Light, Type=Checked, State=Hovered",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Checked",
+          "State": "Hovered"
+        },
+        "key": "checkbox-light-checked-hovered"
+      },
+      {
+        "id": "3590:81708",
+        "name": "Theme=Light, Type=Unchecked, State=Disabled",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Unchecked",
+          "State": "Disabled"
+        },
+        "key": "checkbox-light-unchecked-disabled"
+      },
+      {
+        "id": "3590:81712",
+        "name": "Theme=Light, Type=Unchecked, State=Hovered",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Unchecked",
+          "State": "Hovered"
+        },
+        "key": "checkbox-light-unchecked-hovered"
+      },
+      {
+        "id": "3590:81716",
+        "name": "Theme=Light, Type=Unchecked, State=Focused",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Unchecked",
+          "State": "Focused"
+        },
+        "key": "checkbox-light-unchecked-focused"
+      },
+      {
+        "id": "3590:81720",
+        "name": "Theme=Light, Type=Unchecked, State=Invalid",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Unchecked",
+          "State": "Invalid"
+        },
+        "key": "checkbox-light-unchecked-invalid"
+      },
+      {
+        "id": "3590:81797",
+        "name": "Theme=Dark, Type=Unchecked, State=Active",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Unchecked",
+          "State": "Active"
+        },
+        "key": "checkbox-dark-unchecked-active"
+      },
+      {
+        "id": "3590:81801",
+        "name": "Theme=Dark, Type=Unchecked, State=Disabled",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Unchecked",
+          "State": "Disabled"
+        },
+        "key": "checkbox-dark-unchecked-disabled"
+      },
+      {
+        "id": "3590:81805",
+        "name": "Theme=Dark, Type=Unchecked, State=Hovered",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Unchecked",
+          "State": "Hovered"
+        },
+        "key": "checkbox-dark-unchecked-hovered"
+      },
+      {
+        "id": "3590:81809",
+        "name": "Theme=Dark, Type=Unchecked, State=Focused",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Unchecked",
+          "State": "Focused"
+        },
+        "key": "checkbox-dark-unchecked-focused"
+      },
+      {
+        "id": "3590:81813",
+        "name": "Theme=Dark, Type=Unchecked, State=Invalid",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Unchecked",
+          "State": "Invalid"
+        },
+        "key": "checkbox-dark-unchecked-invalid"
+      },
+      {
+        "id": "3590:81817",
+        "name": "Theme=Dark, Type=Checked, State=Active",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Checked",
+          "State": "Active"
+        },
+        "key": "checkbox-dark-checked-active"
+      },
+      {
+        "id": "3590:81823",
+        "name": "Theme=Dark, Type=Indeterminate, State=Active",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Indeterminate",
+          "State": "Active"
+        },
+        "key": "checkbox-dark-indeterminate-active"
+      },
+      {
+        "id": "3590:81829",
+        "name": "Theme=Dark, Type=Indeterminate, State=Hovered",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Indeterminate",
+          "State": "Hovered"
+        },
+        "key": "checkbox-dark-indeterminate-hovered"
+      },
+      {
+        "id": "3590:81835",
+        "name": "Theme=Dark, Type=Checked, State=Disabled",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Checked",
+          "State": "Disabled"
+        },
+        "key": "checkbox-dark-checked-disabled"
+      },
+      {
+        "id": "3590:81841",
+        "name": "Theme=Dark, Type=Indeterminate, State=Disabled",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Indeterminate",
+          "State": "Disabled"
+        },
+        "key": "checkbox-dark-indeterminate-disabled"
+      },
+      {
+        "id": "3590:81847",
+        "name": "Theme=Dark, Type=Checked, State=Focused",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Checked",
+          "State": "Focused"
+        },
+        "key": "checkbox-dark-checked-focused"
+      },
+      {
+        "id": "3590:81854",
+        "name": "Theme=Dark, Type=Indeterminate, State=Focused",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Indeterminate",
+          "State": "Focused"
+        },
+        "key": "checkbox-dark-indeterminate-focused"
+      },
+      {
+        "id": "3590:81861",
+        "name": "Theme=Dark, Type=Indeterminate, State=Invalid",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Indeterminate",
+          "State": "Invalid"
+        },
+        "key": "checkbox-dark-indeterminate-invalid"
+      },
+      {
+        "id": "3590:81868",
+        "name": "Theme=Dark, Type=Checked, State=Invalid",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Checked",
+          "State": "Invalid"
+        },
+        "key": "checkbox-dark-checked-invalid"
+      },
+      {
+        "id": "3590:81875",
+        "name": "Theme=Dark, Type=Checked, State=Hovered",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Checked",
+          "State": "Hovered"
+        },
+        "key": "checkbox-dark-checked-hovered"
+      }
+    ]
+  },
+  "Input Field": {
+    "id": "7399:46601",
+    "variants": [
+      {
+        "id": "7399:46819",
+        "name": "Theme=Light, State=Active, Focus=Off",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "State": "Active",
+          "Focus": "Off"
+        },
+        "key": "input"
+      },
+      {
+        "id": "7399:47183",
+        "name": "Theme=Light, State=Disabled, Focus=Off",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "State": "Disabled",
+          "Focus": "Off"
+        },
+        "key": "input-light-disabled-off"
+      },
+      {
+        "id": "7399:47103",
+        "name": "Theme=Light, State=Invalid, Focus=Off",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "State": "Invalid",
+          "Focus": "Off"
+        },
+        "key": "input-light-invalid-off"
+      },
+      {
+        "id": "7399:46991",
+        "name": "Theme=Light, State=Active, Focus=On",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "State": "Active",
+          "Focus": "On"
+        },
+        "key": "input-focused"
+      },
+      {
+        "id": "7399:47106",
+        "name": "Theme=Light, State=Invalid, Focus=On",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "State": "Invalid",
+          "Focus": "On"
+        },
+        "key": "input-light-invalid-on"
+      },
+      {
+        "id": "7399:46885",
+        "name": "Theme=Dark, State=Active, Focus=Off",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Active",
+          "Focus": "Off"
+        },
+        "key": "input-dark-active-off"
+      },
+      {
+        "id": "7399:47186",
+        "name": "Theme=Dark, State=Disabled, Focus=Off",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Disabled",
+          "Focus": "Off"
+        },
+        "key": "input-dark-disabled-off"
+      },
+      {
+        "id": "7399:47109",
+        "name": "Theme=Dark, State=Invalid, Focus=Off",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Invalid",
+          "Focus": "Off"
+        },
+        "key": "input-dark-invalid-off"
+      },
+      {
+        "id": "7399:46994",
+        "name": "Theme=Dark, State=Active, Focus=On",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Active",
+          "Focus": "On"
+        },
+        "key": "input-dark-active-on"
+      },
+      {
+        "id": "7399:47112",
+        "name": "Theme=Dark, State=Invalid, Focus=On",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Invalid",
+          "Focus": "On"
+        },
+        "key": "input-dark-invalid-on"
+      }
+    ]
+  },
+  "Toggle": {
+    "id": "5168:84066",
+    "variants": [
+      {
+        "id": "5168:84067",
+        "name": "Theme = Light, State=On",
+        "width": 53,
+        "height": 20,
+        "properties": {
+          "Theme": "Light",
+          "State": "On"
+        },
+        "key": "toggle-on"
+      },
+      {
+        "id": "5168:84071",
+        "name": "Theme = Light, State=Off",
+        "width": 53,
+        "height": 20,
+        "properties": {
+          "Theme": "Light",
+          "State": "Off"
+        },
+        "key": "toggle-off"
+      },
+      {
+        "id": "5168:84084",
+        "name": "Theme = Dark, State=On",
+        "width": 53,
+        "height": 20,
+        "properties": {
+          "Theme": "Dark",
+          "State": "On"
+        },
+        "key": "toggle-dark-on"
+      },
+      {
+        "id": "5168:84088",
+        "name": "Theme = Dark, State=Off",
+        "width": 53,
+        "height": 20,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Off"
+        },
+        "key": "toggle-dark-off"
+      }
+    ]
+  },
+  "Combobox": {
+    "id": "7944:74746",
+    "variants": [
+      {
+        "id": "7944:74792",
+        "name": "Theme=Light, State=Active, Focus=Off",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "State": "Active",
+          "Focus": "Off"
+        },
+        "key": "combobox"
+      },
+      {
+        "id": "7944:74796",
+        "name": "Theme=Light, State=Disabled, Focus=Off",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "State": "Disabled",
+          "Focus": "Off"
+        },
+        "key": "combobox-light-disabled-off"
+      },
+      {
+        "id": "7944:74800",
+        "name": "Theme=Light, State=Invalid, Focus=Off",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "State": "Invalid",
+          "Focus": "Off"
+        },
+        "key": "combobox-light-invalid-off"
+      },
+      {
+        "id": "7944:74804",
+        "name": "Theme=Light, State=Active, Focus=On",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "State": "Active",
+          "Focus": "On"
+        },
+        "key": "combobox-light-active-on"
+      },
+      {
+        "id": "7944:74808",
+        "name": "Theme=Light, State=Invalid, Focus=On",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "State": "Invalid",
+          "Focus": "On"
+        },
+        "key": "combobox-light-invalid-on"
+      },
+      {
+        "id": "7944:74812",
+        "name": "Theme=Dark, State=Active, Focus=Off",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Active",
+          "Focus": "Off"
+        },
+        "key": "combobox-dark-active-off"
+      },
+      {
+        "id": "7944:74816",
+        "name": "Theme=Dark, State=Disabled, Focus=Off",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Disabled",
+          "Focus": "Off"
+        },
+        "key": "combobox-dark-disabled-off"
+      },
+      {
+        "id": "7944:74820",
+        "name": "Theme=Dark, State=Invalid, Focus=Off",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Invalid",
+          "Focus": "Off"
+        },
+        "key": "combobox-dark-invalid-off"
+      },
+      {
+        "id": "7944:74824",
+        "name": "Theme=Dark, State=Active, Focus=On",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Active",
+          "Focus": "On"
+        },
+        "key": "combobox-dark-active-on"
+      },
+      {
+        "id": "7944:74828",
+        "name": "Theme=Dark, State=Invalid, Focus=On",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Invalid",
+          "Focus": "On"
+        },
+        "key": "combobox-dark-invalid-on"
+      }
+    ]
+  },
+  "Dropdown": {
+    "id": "7944:74565",
+    "variants": [
+      {
+        "id": "7944:74566",
+        "name": "Theme=Light, State=Active, Focus=Off",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "State": "Active",
+          "Focus": "Off"
+        },
+        "key": "dropdown"
+      },
+      {
+        "id": "7944:74571",
+        "name": "Theme=Light, State=Disabled, Focus=Off",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "State": "Disabled",
+          "Focus": "Off"
+        },
+        "key": "dropdown-light-disabled-off"
+      },
+      {
+        "id": "7944:74576",
+        "name": "Theme=Light, State=Invalid, Focus=Off",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "State": "Invalid",
+          "Focus": "Off"
+        },
+        "key": "dropdown-light-invalid-off"
+      },
+      {
+        "id": "7944:74581",
+        "name": "Theme=Light, State=Active, Focus=On",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "State": "Active",
+          "Focus": "On"
+        },
+        "key": "dropdown-light-active-on"
+      },
+      {
+        "id": "7944:74586",
+        "name": "Theme=Light, State=Invalid, Focus=On",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "State": "Invalid",
+          "Focus": "On"
+        },
+        "key": "dropdown-light-invalid-on"
+      },
+      {
+        "id": "7944:74591",
+        "name": "Theme=Dark, State=Active, Focus=Off",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Active",
+          "Focus": "Off"
+        },
+        "key": "dropdown-dark-active-off"
+      },
+      {
+        "id": "7944:74595",
+        "name": "Theme=Dark, State=Disabled, Focus=Off",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Disabled",
+          "Focus": "Off"
+        },
+        "key": "dropdown-dark-disabled-off"
+      },
+      {
+        "id": "7944:74599",
+        "name": "Theme=Dark, State=Invalid, Focus=Off",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Invalid",
+          "Focus": "Off"
+        },
+        "key": "dropdown-dark-invalid-off"
+      },
+      {
+        "id": "7944:74603",
+        "name": "Theme=Dark, State=Active, Focus=On",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Active",
+          "Focus": "On"
+        },
+        "key": "dropdown-dark-active-on"
+      },
+      {
+        "id": "7944:74607",
+        "name": "Theme=Dark, State=Invalid, Focus=On",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Invalid",
+          "Focus": "On"
+        },
+        "key": "dropdown-dark-invalid-on"
+      }
+    ]
+  },
+  "Link": {
+    "id": "46:11074",
+    "variants": [
+      {
+        "id": "2380:61746",
+        "name": "Theme=Light, Type=Dropdown, State=Disabled",
+        "width": 81,
+        "height": 28,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Dropdown",
+          "State": "Disabled"
+        },
+        "key": "link-light-dropdown-disabled"
+      },
+      {
+        "id": "46:11079",
+        "name": "Theme=Light, Type=Dropdown, State=Default",
+        "width": 81,
+        "height": 28,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Dropdown",
+          "State": "Default"
+        },
+        "key": "link-light-dropdown-default"
+      },
+      {
+        "id": "6441:76959",
+        "name": "Theme=Light, Type=Dropdown, State=Hovered",
+        "width": 81,
+        "height": 28,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Dropdown",
+          "State": "Hovered"
+        },
+        "key": "link-light-dropdown-hovered"
+      },
+      {
+        "id": "46:11081",
+        "name": "Theme=Light, Type=External, State=Default",
+        "width": 67,
+        "height": 28,
+        "properties": {
+          "Theme": "Light",
+          "Type": "External",
+          "State": "Default"
+        },
+        "key": "link-light-external-default"
+      },
+      {
+        "id": "6441:76963",
+        "name": "Theme=Light, Type=External, State=Hovered",
+        "width": 67,
+        "height": 28,
+        "properties": {
+          "Theme": "Light",
+          "Type": "External",
+          "State": "Hovered"
+        },
+        "key": "link-light-external-hovered"
+      },
+      {
+        "id": "2380:61750",
+        "name": "Theme=Light, Type=External, State=Disabled",
+        "width": 67,
+        "height": 28,
+        "properties": {
+          "Theme": "Light",
+          "Type": "External",
+          "State": "Disabled"
+        },
+        "key": "link-light-external-disabled"
+      },
+      {
+        "id": "46:11087",
+        "name": "Theme=Light, Type=Default, State=Default",
+        "width": 45,
+        "height": 28,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Default",
+          "State": "Default"
+        },
+        "key": "link-light-default-default"
+      },
+      {
+        "id": "6441:76967",
+        "name": "Theme=Light, Type=Default, State=Hovered",
+        "width": 45,
+        "height": 28,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Default",
+          "State": "Hovered"
+        },
+        "key": "link-light-default-hovered"
+      },
+      {
+        "id": "2380:61754",
+        "name": "Theme=Light, Type=Default, State=Disabled",
+        "width": 45,
+        "height": 28,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Default",
+          "State": "Disabled"
+        },
+        "key": "link-light-default-disabled"
+      },
+      {
+        "id": "2381:61857",
+        "name": "Theme=Dark, Type=Dropdown, State=Disabled",
+        "width": 81,
+        "height": 28,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Dropdown",
+          "State": "Disabled"
+        },
+        "key": "link-dark-dropdown-disabled"
+      },
+      {
+        "id": "358:48096",
+        "name": "Theme=Dark, Type=Dropdown, State=Default",
+        "width": 81,
+        "height": 28,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Dropdown",
+          "State": "Default"
+        },
+        "key": "link-dark-dropdown-default"
+      },
+      {
+        "id": "6441:76990",
+        "name": "Theme=Dark, Type=Dropdown, State=Hovered",
+        "width": 81,
+        "height": 28,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Dropdown",
+          "State": "Hovered"
+        },
+        "key": "link-dark-dropdown-hovered"
+      },
+      {
+        "id": "358:48100",
+        "name": "Theme=Dark, Type=External, State=Default",
+        "width": 67,
+        "height": 28,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "External",
+          "State": "Default"
+        },
+        "key": "link-dark-external-default"
+      },
+      {
+        "id": "6441:76994",
+        "name": "Theme=Dark, Type=External, State=Hovered",
+        "width": 67,
+        "height": 28,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "External",
+          "State": "Hovered"
+        },
+        "key": "link-dark-external-hovered"
+      },
+      {
+        "id": "2381:61861",
+        "name": "Theme=Dark, Type=External, State=Disabled",
+        "width": 67,
+        "height": 28,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "External",
+          "State": "Disabled"
+        },
+        "key": "link-dark-external-disabled"
+      },
+      {
+        "id": "358:48112",
+        "name": "Theme=Dark, Type=Default, State=Default",
+        "width": 45,
+        "height": 28,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Default",
+          "State": "Default"
+        },
+        "key": "link-dark-default-default"
+      },
+      {
+        "id": "6441:76998",
+        "name": "Theme=Dark, Type=Default, State=Hovered",
+        "width": 45,
+        "height": 28,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Default",
+          "State": "Hovered"
+        },
+        "key": "link-dark-default-hovered"
+      },
+      {
+        "id": "2381:61865",
+        "name": "Theme=Dark, Type=Default, State=Disabled",
+        "width": 45,
+        "height": 28,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Default",
+          "State": "Disabled"
+        },
+        "key": "link-dark-default-disabled"
+      }
+    ]
+  },
+  "Radio Button": {
+    "id": "3894:82032",
+    "variants": [
+      {
+        "id": "3894:82033",
+        "name": "Theme=Light, Selected=Off, State=Active",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Selected": "Off",
+          "State": "Active"
+        },
+        "key": "radio-button-off"
+      },
+      {
+        "id": "3894:82043",
+        "name": "Theme=Light, Selected=On, State=Active",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Selected": "On",
+          "State": "Active"
+        },
+        "key": "radio-button"
+      },
+      {
+        "id": "3894:82038",
+        "name": "Theme=Dark, Selected=Off, State=Active",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Selected": "Off",
+          "State": "Active"
+        },
+        "key": "radio-button-dark-off-active"
+      },
+      {
+        "id": "3894:82049",
+        "name": "Theme=Dark, Selected=On, State=Active",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Selected": "On",
+          "State": "Active"
+        },
+        "key": "radio-button-dark-on-active"
+      },
+      {
+        "id": "3894:82055",
+        "name": "Theme=Light, Selected=On, State=Disabled",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Selected": "On",
+          "State": "Disabled"
+        },
+        "key": "radio-button-light-on-disabled"
+      },
+      {
+        "id": "3894:82061",
+        "name": "Theme=Dark, Selected=On, State=Disabled",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Selected": "On",
+          "State": "Disabled"
+        },
+        "key": "radio-button-dark-on-disabled"
+      },
+      {
+        "id": "3894:82067",
+        "name": "Theme=Light, Selected=On, State=Focused",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Selected": "On",
+          "State": "Focused"
+        },
+        "key": "radio-button-light-on-focused"
+      },
+      {
+        "id": "3894:82074",
+        "name": "Theme=Dark, Selected=On, State=Focused",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Selected": "On",
+          "State": "Focused"
+        },
+        "key": "radio-button-dark-on-focused"
+      },
+      {
+        "id": "3894:82081",
+        "name": "Theme=Light, Selected=On, State=Invalid",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Selected": "On",
+          "State": "Invalid"
+        },
+        "key": "radio-button-light-on-invalid"
+      },
+      {
+        "id": "3894:82088",
+        "name": "Theme=Dark, Selected=On, State=Invalid",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Selected": "On",
+          "State": "Invalid"
+        },
+        "key": "radio-button-dark-on-invalid"
+      },
+      {
+        "id": "3894:82095",
+        "name": "Theme=Light, Selected=On, State=Hovered",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Selected": "On",
+          "State": "Hovered"
+        },
+        "key": "radio-button-light-on-hovered"
+      },
+      {
+        "id": "3894:82101",
+        "name": "Theme=Dark, Selected=On, State=Hovered",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Selected": "On",
+          "State": "Hovered"
+        },
+        "key": "radio-button-dark-on-hovered"
+      },
+      {
+        "id": "3894:82107",
+        "name": "Theme=Light, Selected=Off, State=Disabled",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Selected": "Off",
+          "State": "Disabled"
+        },
+        "key": "radio-button-light-off-disabled"
+      },
+      {
+        "id": "3894:82112",
+        "name": "Theme=Dark, Selected=Off, State=Disabled",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Selected": "Off",
+          "State": "Disabled"
+        },
+        "key": "radio-button-dark-off-disabled"
+      },
+      {
+        "id": "3894:82117",
+        "name": "Theme=Light, Selected=Off, State=Focused",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Selected": "Off",
+          "State": "Focused"
+        },
+        "key": "radio-button-light-off-focused"
+      },
+      {
+        "id": "3894:82122",
+        "name": "Theme=Dark, Selected=Off, State=Focused",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Selected": "Off",
+          "State": "Focused"
+        },
+        "key": "radio-button-dark-off-focused"
+      },
+      {
+        "id": "3894:82127",
+        "name": "Theme=Light, Selected=Off, State=Invalid",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Selected": "Off",
+          "State": "Invalid"
+        },
+        "key": "radio-button-light-off-invalid"
+      },
+      {
+        "id": "3894:82132",
+        "name": "Theme=Dark, Selected=Off, State=Invalid",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Selected": "Off",
+          "State": "Invalid"
+        },
+        "key": "radio-button-dark-off-invalid"
+      },
+      {
+        "id": "3894:82137",
+        "name": "Theme=Light, Selected=Off, State=Hovered",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Light",
+          "Selected": "Off",
+          "State": "Hovered"
+        },
+        "key": "radio-button-light-off-hovered"
+      },
+      {
+        "id": "3894:82142",
+        "name": "Theme=Dark, Selected=Off, State=Hovered",
+        "width": 51,
+        "height": 32,
+        "properties": {
+          "Theme": "Dark",
+          "Selected": "Off",
+          "State": "Hovered"
+        },
+        "key": "radio-button-dark-off-hovered"
+      }
+    ]
+  },
+  "Search": {
+    "id": "7070:146048",
+    "variants": [
+      {
+        "id": "7070:146044",
+        "name": "Theme=Light, State=Active, Focus=Off",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "State": "Active",
+          "Focus": "Off"
+        },
+        "key": "search"
+      },
+      {
+        "id": "7141:47296",
+        "name": "Theme=Dark, State=Active, Focus=Off",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Active",
+          "Focus": "Off"
+        },
+        "key": "search-dark-active-off"
+      },
+      {
+        "id": "7141:47188",
+        "name": "Theme=Light, State=Active, Focus=On",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "State": "Active",
+          "Focus": "On"
+        },
+        "key": "search-light-active-on"
+      },
+      {
+        "id": "7141:47301",
+        "name": "Theme=Dark, State=Active, Focus=On",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Active",
+          "Focus": "On"
+        },
+        "key": "search-dark-active-on"
+      },
+      {
+        "id": "7141:47212",
+        "name": "Theme=Light, State=Invalid, Focus=Off",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "State": "Invalid",
+          "Focus": "Off"
+        },
+        "key": "search-light-invalid-off"
+      },
+      {
+        "id": "7141:47306",
+        "name": "Theme=Dark, State=Invalid, Focus=Off",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Invalid",
+          "Focus": "Off"
+        },
+        "key": "search-dark-invalid-off"
+      },
+      {
+        "id": "7141:47236",
+        "name": "Theme=Light, State=Invalid, Focus=On",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "State": "Invalid",
+          "Focus": "On"
+        },
+        "key": "search-light-invalid-on"
+      },
+      {
+        "id": "7141:47311",
+        "name": "Theme=Dark, State=Invalid, Focus=On",
+        "width": 224,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Invalid",
+          "Focus": "On"
+        },
+        "key": "search-dark-invalid-on"
+      }
+    ]
+  },
+  "Tab": {
+    "id": "5664:79158",
+    "variants": [
+      {
+        "id": "5664:79159",
+        "name": "Theme=Light, State=Selected",
+        "width": 87,
+        "height": 41,
+        "properties": {
+          "Theme": "Light",
+          "State": "Selected"
+        },
+        "key": "tab"
+      },
+      {
+        "id": "5664:81181",
+        "name": "Theme=Dark, State=Selected",
+        "width": 87,
+        "height": 41,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Selected"
+        },
+        "key": "tab-dark-selected"
+      },
+      {
+        "id": "5664:79192",
+        "name": "Theme=Light, State=Default",
+        "width": 87,
+        "height": 41,
+        "properties": {
+          "Theme": "Light",
+          "State": "Default"
+        },
+        "key": "tab-light-default"
+      },
+      {
+        "id": "5664:81197",
+        "name": "Theme=Dark, State=Default",
+        "width": 87,
+        "height": 41,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Default"
+        },
+        "key": "tab-dark-default"
+      },
+      {
+        "id": "5664:79228",
+        "name": "Theme=Light, State=Inactive",
+        "width": 87,
+        "height": 41,
+        "properties": {
+          "Theme": "Light",
+          "State": "Inactive"
+        },
+        "key": "tab-light-inactive"
+      },
+      {
+        "id": "5664:81211",
+        "name": "Theme=Dark, State=Inactive",
+        "width": 87,
+        "height": 41,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Inactive"
+        },
+        "key": "tab-dark-inactive"
+      }
+    ]
+  },
+  "Segmented Control": {
+    "id": "7281:46902",
+    "variants": [
+      {
+        "id": "7281:46903",
+        "name": "Theme=Light, State=Active",
+        "width": 378,
+        "height": 28,
+        "properties": {
+          "Theme": "Light",
+          "State": "Active"
+        },
+        "key": "segmented-control"
+      },
+      {
+        "id": "7278:47578",
+        "name": "Theme=Dark, State=Active",
+        "width": 378,
+        "height": 28,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Active"
+        },
+        "key": "segmented-control-dark-active"
+      },
+      {
+        "id": "7281:46911",
+        "name": "Theme=Light, State=Disabled",
+        "width": 378,
+        "height": 28,
+        "properties": {
+          "Theme": "Light",
+          "State": "Disabled"
+        },
+        "key": "segmented-control-light-disabled"
+      },
+      {
+        "id": "7278:47584",
+        "name": "Theme=Dark, State=Disabled",
+        "width": 378,
+        "height": 28,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Disabled"
+        },
+        "key": "segmented-control-dark-disabled"
+      },
+      {
+        "id": "7281:46919",
+        "name": "Theme=Light, State=Focused",
+        "width": 378,
+        "height": 28,
+        "properties": {
+          "Theme": "Light",
+          "State": "Focused"
+        },
+        "key": "segmented-control-light-focused"
+      },
+      {
+        "id": "7278:47590",
+        "name": "Theme=Dark, State=Focused",
+        "width": 378,
+        "height": 28,
+        "properties": {
+          "Theme": "Dark",
+          "State": "Focused"
+        },
+        "key": "segmented-control-dark-focused"
+      }
+    ]
+  },
+  "Banner": {
+    "id": "3346:81594",
+    "variants": [
+      {
+        "id": "3346:81595",
+        "name": "Theme=Light, Type=Info, Inline=False",
+        "width": 600,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Info",
+          "Inline": "False"
+        },
+        "key": "banner"
+      },
+      {
+        "id": "11163:19910",
+        "name": "Theme=Light, Type=Info, Inline=True",
+        "width": 400,
+        "height": 64,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Info",
+          "Inline": "True"
+        },
+        "key": "banner-light-info-inline"
+      },
+      {
+        "id": "11163:20351",
+        "name": "Theme=Light, Type=Error, Inline=True",
+        "width": 400,
+        "height": 64,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Error",
+          "Inline": "True"
+        },
+        "key": "banner-light-error-inline"
+      },
+      {
+        "id": "11163:69185",
+        "name": "Theme=Light, Type=Warning, Inline=True",
+        "width": 400,
+        "height": 64,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Warning",
+          "Inline": "True"
+        },
+        "key": "banner-light-warning-inline"
+      },
+      {
+        "id": "11163:69243",
+        "name": "Theme=Light, Type=Success, Inline=True",
+        "width": 400,
+        "height": 64,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Success",
+          "Inline": "True"
+        },
+        "key": "banner-light-success-inline"
+      },
+      {
+        "id": "11163:69299",
+        "name": "Theme=Dark, Type=Info, Inline=True",
+        "width": 400,
+        "height": 64,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Info",
+          "Inline": "True"
+        },
+        "key": "banner-dark-info-inline"
+      },
+      {
+        "id": "11163:69571",
+        "name": "Theme=Dark, Type=Error, Inline=True",
+        "width": 400,
+        "height": 64,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Error",
+          "Inline": "True"
+        },
+        "key": "banner-dark-error-inline"
+      },
+      {
+        "id": "11163:69649",
+        "name": "Theme=Dark, Type=Warning, Inline=True",
+        "width": 400,
+        "height": 64,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Warning",
+          "Inline": "True"
+        },
+        "key": "banner-dark-warning-inline"
+      },
+      {
+        "id": "11168:69699",
+        "name": "Theme=Dark, Type=Success, Inline=True",
+        "width": 400,
+        "height": 64,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Success",
+          "Inline": "True"
+        },
+        "key": "banner-dark-success-inline"
+      },
+      {
+        "id": "3350:81479",
+        "name": "Theme=Light, Type=Success, Inline=False",
+        "width": 600,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Success",
+          "Inline": "False"
+        },
+        "key": "banner-light-success-floating"
+      },
+      {
+        "id": "3350:81748",
+        "name": "Theme=Dark, Type=Info, Inline=False",
+        "width": 600,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Info",
+          "Inline": "False"
+        },
+        "key": "banner-dark-info-floating"
+      },
+      {
+        "id": "3350:81509",
+        "name": "Theme=Light, Type=Warning, Inline=False",
+        "width": 600,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Warning",
+          "Inline": "False"
+        },
+        "key": "banner-light-warning-floating"
+      },
+      {
+        "id": "3350:81539",
+        "name": "Theme=Light, Type=Error, Inline=False",
+        "width": 600,
+        "height": 40,
+        "properties": {
+          "Theme": "Light",
+          "Type": "Error",
+          "Inline": "False"
+        },
+        "key": "banner-light-error-floating"
+      },
+      {
+        "id": "3350:81758",
+        "name": "Theme=Dark, Type=Success, Inline=False",
+        "width": 600,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Success",
+          "Inline": "False"
+        },
+        "key": "banner-dark-success-floating"
+      },
+      {
+        "id": "3350:81768",
+        "name": "Theme=Dark, Type=Warning, Inline=False",
+        "width": 600,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Warning",
+          "Inline": "False"
+        },
+        "key": "banner-dark-warning-floating"
+      },
+      {
+        "id": "3350:81778",
+        "name": "Theme=Dark, Type=Error, Inline=False",
+        "width": 600,
+        "height": 40,
+        "properties": {
+          "Theme": "Dark",
+          "Type": "Error",
+          "Inline": "False"
+        },
+        "key": "banner-dark-error-floating"
+      }
+    ]
+  },
+  "Alert": {
+    "id": "3345:82978",
+    "variants": [
+      {
+        "id": "3342:83343",
+        "name": "Theme=Light",
+        "width": 420,
+        "height": 172,
+        "properties": {
+          "Theme": "Light"
+        },
+        "key": "alert"
+      },
+      {
+        "id": "3346:80911",
+        "name": "Theme=Dark",
+        "width": 420,
+        "height": 172,
+        "properties": {
+          "Theme": "Dark"
+        },
+        "key": "alert-dark"
+      }
+    ]
+  },
+  "Dialog": {
+    "id": "7070:146271",
+    "variants": [
+      {
+        "id": "7070:146270",
+        "name": "Theme=Light",
+        "width": 883,
+        "height": 495,
+        "properties": {
+          "Theme": "Light"
+        },
+        "key": "dialog"
+      },
+      {
+        "id": "7070:146272",
+        "name": "Theme=Dark",
+        "width": 883,
+        "height": 495,
+        "properties": {
+          "Theme": "Dark"
+        },
+        "key": "dialog-dark"
+      }
+    ]
+  }
+}

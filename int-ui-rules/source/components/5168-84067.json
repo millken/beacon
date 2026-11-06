@@ -1,5 +1,6 @@
 {
   "id": "5168:84067",
+  "parentId": "5168:84066",
   "name": "Theme = Light, State=On",
   "type": "COMPONENT",
   "width": 53,
@@ -47,6 +48,7 @@
   "children": [
     {
       "id": "5168:84068",
+      "parentId": "5168:84067",
       "name": "Background",
       "type": "RECTANGLE",
       "width": 53,
@@ -95,6 +97,7 @@
     },
     {
       "id": "5168:84069",
+      "parentId": "5168:84067",
       "name": "Fill",
       "type": "RECTANGLE",
       "width": 34,
@@ -131,6 +134,7 @@
     },
     {
       "id": "5168:84070",
+      "parentId": "5168:84067",
       "name": "ON",
       "type": "TEXT",
       "width": 20,

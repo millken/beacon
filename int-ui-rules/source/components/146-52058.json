@@ -1,5 +1,6 @@
 {
   "id": "146:52058",
+  "parentId": "146:52009",
   "name": "Theme=Light, Button type=Secondary, State=Active",
   "type": "COMPONENT",
   "width": 72,
@@ -35,6 +36,7 @@
   "children": [
     {
       "id": "7260:46059",
+      "parentId": "146:52058",
       "name": "Content",
       "type": "FRAME",
       "width": 72,
@@ -94,6 +96,7 @@
       "children": [
         {
           "id": "146:52059",
+          "parentId": "7260:46059",
           "name": "Button",
           "type": "FRAME",
           "width": 72,
@@ -129,6 +132,7 @@
           "children": [
             {
               "id": "146:52060",
+              "parentId": "146:52059",
               "name": "Text",
               "type": "TEXT",
               "width": 42,
@@ -179,6 +183,7 @@
             },
             {
               "id": "836:57658",
+              "parentId": "146:52059",
               "name": "min-width",
               "type": "VECTOR",
               "width": 48,
@@ -201,6 +206,7 @@
         },
         {
           "id": "7260:46584",
+          "parentId": "7260:46059",
           "name": "Split",
           "type": "INSTANCE",
           "width": 28,
@@ -236,6 +242,7 @@
           "children": [
             {
               "id": "I7260:46584;7191:45593",
+              "parentId": "7260:46584",
               "name": "general / chevronDown",
               "type": "INSTANCE",
               "width": 16,
@@ -271,6 +278,7 @@
               "children": [
                 {
                   "id": "I7260:46584;7191:45593;9965:67831",
+                  "parentId": "I7260:46584;7191:45593",
                   "name": "Icon / Dropdown",
                   "type": "VECTOR",
                   "width": 7,
@@ -305,6 +313,7 @@
             },
             {
               "id": "I7260:46584;7191:45596",
+              "parentId": "7260:46584",
               "name": "Border",
               "type": "VECTOR",
               "width": 1,

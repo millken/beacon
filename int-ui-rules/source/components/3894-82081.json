@@ -1,0 +1,566 @@
+{
+  "id": "3894:82081",
+  "parentId": "3894:82032",
+  "name": "Theme=Light, Selected=On, State=Invalid",
+  "type": "COMPONENT",
+  "width": 51,
+  "height": 32,
+  "x": 353,
+  "y": 122,
+  "visible": true,
+  "fills": [],
+  "strokes": [],
+  "strokeWeight": 1,
+  "strokeAlign": "INSIDE",
+  "cornerRadius": 0,
+  "topLeftRadius": 0,
+  "topRightRadius": 0,
+  "bottomLeftRadius": 0,
+  "bottomRightRadius": 0,
+  "opacity": 1,
+  "effects": [],
+  "layoutMode": "VERTICAL",
+  "primaryAxisSizingMode": "AUTO",
+  "counterAxisSizingMode": "AUTO",
+  "primaryAxisAlignItems": "CENTER",
+  "counterAxisAlignItems": "MIN",
+  "itemSpacing": 0,
+  "paddingTop": 0,
+  "paddingRight": 0,
+  "paddingBottom": 0,
+  "paddingLeft": 0,
+  "clipsContent": false,
+  "fillStyleId": "",
+  "strokeStyleId": "",
+  "effectStyleId": "",
+  "children": [
+    {
+      "id": "8006:78883",
+      "parentId": "3894:82081",
+      "name": "Radio",
+      "type": "FRAME",
+      "width": 51,
+      "height": 32,
+      "x": 0,
+      "y": 0,
+      "visible": true,
+      "fills": [],
+      "strokes": [],
+      "strokeWeight": 1,
+      "strokeAlign": "INSIDE",
+      "cornerRadius": 0,
+      "topLeftRadius": 0,
+      "topRightRadius": 0,
+      "bottomLeftRadius": 0,
+      "bottomRightRadius": 0,
+      "opacity": 1,
+      "effects": [],
+      "layoutMode": "HORIZONTAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "AUTO",
+      "primaryAxisAlignItems": "MIN",
+      "counterAxisAlignItems": "MIN",
+      "itemSpacing": 8,
+      "paddingTop": 8,
+      "paddingRight": 0,
+      "paddingBottom": 8,
+      "paddingLeft": 0,
+      "clipsContent": false,
+      "fillStyleId": "",
+      "strokeStyleId": "",
+      "effectStyleId": "",
+      "children": [
+        {
+          "id": "3894:82082",
+          "parentId": "8006:78883",
+          "name": "Icon",
+          "type": "FRAME",
+          "width": 16,
+          "height": 16,
+          "x": 0,
+          "y": 8,
+          "visible": true,
+          "fills": [
+            {
+              "type": "SOLID",
+              "blendMode": "NORMAL",
+              "opacity": 1,
+              "visible": false,
+              "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1
+              }
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "strokeAlign": "INSIDE",
+          "cornerRadius": 0,
+          "topLeftRadius": 0,
+          "topRightRadius": 0,
+          "bottomLeftRadius": 0,
+          "bottomRightRadius": 0,
+          "opacity": 1,
+          "effects": [],
+          "layoutMode": "NONE",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "primaryAxisAlignItems": "MIN",
+          "counterAxisAlignItems": "MIN",
+          "itemSpacing": 0,
+          "paddingTop": 0,
+          "paddingRight": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "clipsContent": false,
+          "fillStyleId": "",
+          "strokeStyleId": "",
+          "effectStyleId": "",
+          "children": [
+            {
+              "id": "3894:82083",
+              "parentId": "3894:82082",
+              "name": "Radio",
+              "type": "FRAME",
+              "width": 17,
+              "height": 17,
+              "x": 0.5,
+              "y": -0.5,
+              "visible": true,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "blendMode": "NORMAL",
+                  "opacity": 1,
+                  "visible": false,
+                  "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                  }
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 1,
+              "strokeAlign": "INSIDE",
+              "cornerRadius": 0,
+              "topLeftRadius": 0,
+              "topRightRadius": 0,
+              "bottomLeftRadius": 0,
+              "bottomRightRadius": 0,
+              "opacity": 1,
+              "effects": [],
+              "layoutMode": "NONE",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "AUTO",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "itemSpacing": 0,
+              "paddingTop": 0,
+              "paddingRight": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "clipsContent": false,
+              "fillStyleId": "",
+              "strokeStyleId": "",
+              "effectStyleId": "",
+              "children": [
+                {
+                  "id": "3894:82084",
+                  "parentId": "3894:82083",
+                  "name": "Radio",
+                  "type": "ELLIPSE",
+                  "width": 17,
+                  "height": 17,
+                  "x": 0,
+                  "y": 0,
+                  "visible": true,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "blendMode": "NORMAL",
+                      "opacity": 1,
+                      "visible": true,
+                      "color": {
+                        "r": 0.2070588504566866,
+                        "g": 0.45298826928232233,
+                        "b": 0.9411764705882353
+                      }
+                    }
+                  ],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "blendMode": "NORMAL",
+                      "opacity": 1,
+                      "visible": true,
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      }
+                    }
+                  ],
+                  "strokeWeight": 1,
+                  "strokeAlign": "OUTSIDE",
+                  "cornerRadius": 0,
+                  "opacity": 1,
+                  "effects": [],
+                  "fillStyleId": "217:55450",
+                  "strokeStyleId": "724:45847",
+                  "effectStyleId": ""
+                },
+                {
+                  "id": "3894:82085",
+                  "parentId": "3894:82083",
+                  "name": "Dot",
+                  "type": "VECTOR",
+                  "width": 6,
+                  "height": 6,
+                  "x": 5.5,
+                  "y": 5.5,
+                  "visible": true,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "blendMode": "NORMAL",
+                      "opacity": 1,
+                      "visible": true,
+                      "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1
+                      }
+                    }
+                  ],
+                  "strokes": [],
+                  "strokeWeight": 0,
+                  "strokeAlign": "CENTER",
+                  "cornerRadius": 1,
+                  "opacity": 1,
+                  "effects": [],
+                  "fillStyleId": "724:45847",
+                  "strokeStyleId": "",
+                  "effectStyleId": ""
+                },
+                {
+                  "id": "3894:82086",
+                  "parentId": "3894:82083",
+                  "name": "Focus",
+                  "type": "ELLIPSE",
+                  "width": 20,
+                  "height": 20,
+                  "x": -1.5,
+                  "y": -1.5,
+                  "visible": true,
+                  "fills": [],
+                  "strokes": [
+                    {
+                      "type": "SOLID",
+                      "blendMode": "NORMAL",
+                      "opacity": 1,
+                      "visible": true,
+                      "color": {
+                        "r": 0.8600000119676777,
+                        "g": 0.23219996433632045,
+                        "b": 0.2929547478170956
+                      }
+                    }
+                  ],
+                  "strokeWeight": 2,
+                  "strokeAlign": "OUTSIDE",
+                  "cornerRadius": 0,
+                  "opacity": 1,
+                  "effects": [],
+                  "fillStyleId": "",
+                  "strokeStyleId": "6173:73611",
+                  "effectStyleId": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "6504:83427",
+          "parentId": "8006:78883",
+          "name": "Content",
+          "type": "FRAME",
+          "width": 27,
+          "height": 16,
+          "x": 24,
+          "y": 8,
+          "visible": true,
+          "fills": [],
+          "strokes": [],
+          "strokeWeight": 1,
+          "strokeAlign": "INSIDE",
+          "cornerRadius": 0,
+          "topLeftRadius": 0,
+          "topRightRadius": 0,
+          "bottomLeftRadius": 0,
+          "bottomRightRadius": 0,
+          "opacity": 1,
+          "effects": [],
+          "layoutMode": "HORIZONTAL",
+          "primaryAxisSizingMode": "AUTO",
+          "counterAxisSizingMode": "AUTO",
+          "primaryAxisAlignItems": "MIN",
+          "counterAxisAlignItems": "MIN",
+          "itemSpacing": 6,
+          "paddingTop": 0,
+          "paddingRight": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "clipsContent": false,
+          "fillStyleId": "",
+          "strokeStyleId": "",
+          "effectStyleId": "",
+          "children": [
+            {
+              "id": "3894:82087",
+              "parentId": "6504:83427",
+              "name": "Text",
+              "type": "TEXT",
+              "width": 27,
+              "height": 16,
+              "x": 0,
+              "y": 0,
+              "visible": true,
+              "fills": [
+                {
+                  "type": "SOLID",
+                  "blendMode": "NORMAL",
+                  "opacity": 1,
+                  "visible": true,
+                  "color": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 0
+                  }
+                }
+              ],
+              "strokes": [],
+              "strokeWeight": 0,
+              "strokeAlign": "CENTER",
+              "opacity": 1,
+              "effects": [],
+              "characters": "Text",
+              "fontName": {
+                "family": "Inter",
+                "style": "Medium",
+                "hash": "279fa3c60d682531d549d0ec9ed91f1b83402d40"
+              },
+              "fontSize": 13,
+              "lineHeight": {
+                "unit": "PIXELS",
+                "value": 16
+              },
+              "letterSpacing": {
+                "unit": "PIXELS",
+                "value": 0
+              },
+              "textAlignHorizontal": "LEFT",
+              "textAlignVertical": "TOP",
+              "textAutoResize": "WIDTH_AND_HEIGHT",
+              "fillStyleId": "724:45836",
+              "strokeStyleId": "",
+              "textStyleId": "25:2990",
+              "effectStyleId": ""
+            },
+            {
+              "id": "8300:75086",
+              "parentId": "6504:83427",
+              "name": "Hint",
+              "type": "FRAME",
+              "width": 24,
+              "height": 16,
+              "x": 33,
+              "y": 0,
+              "visible": false,
+              "fills": [],
+              "strokes": [],
+              "strokeWeight": 1,
+              "strokeAlign": "INSIDE",
+              "cornerRadius": 0,
+              "topLeftRadius": 0,
+              "topRightRadius": 0,
+              "bottomLeftRadius": 0,
+              "bottomRightRadius": 0,
+              "opacity": 1,
+              "effects": [],
+              "layoutMode": "HORIZONTAL",
+              "primaryAxisSizingMode": "AUTO",
+              "counterAxisSizingMode": "FIXED",
+              "primaryAxisAlignItems": "MIN",
+              "counterAxisAlignItems": "MIN",
+              "itemSpacing": 10,
+              "paddingTop": 1,
+              "paddingRight": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "clipsContent": false,
+              "fillStyleId": "",
+              "strokeStyleId": "",
+              "effectStyleId": "",
+              "children": [
+                {
+                  "id": "6504:82977",
+                  "parentId": "8300:75086",
+                  "name": "Hint",
+                  "type": "TEXT",
+                  "width": 24,
+                  "height": 16,
+                  "x": 0,
+                  "y": 1,
+                  "visible": true,
+                  "fills": [
+                    {
+                      "type": "SOLID",
+                      "blendMode": "NORMAL",
+                      "opacity": 1,
+                      "visible": true,
+                      "color": {
+                        "r": 0.4235294117647059,
+                        "g": 0.4392156862745098,
+                        "b": 0.49411764705882355
+                      }
+                    }
+                  ],
+                  "strokes": [],
+                  "strokeWeight": 0,
+                  "strokeAlign": "CENTER",
+                  "opacity": 1,
+                  "effects": [],
+                  "characters": "Hint",
+                  "fontName": {
+                    "family": "Inter",
+                    "style": "Medium",
+                    "hash": "279fa3c60d682531d549d0ec9ed91f1b83402d40"
+                  },
+                  "fontSize": 12,
+                  "lineHeight": {
+                    "unit": "PIXELS",
+                    "value": 16
+                  },
+                  "letterSpacing": {
+                    "unit": "PIXELS",
+                    "value": 0
+                  },
+                  "textAlignHorizontal": "LEFT",
+                  "textAlignVertical": "TOP",
+                  "textAutoResize": "WIDTH_AND_HEIGHT",
+                  "fillStyleId": "724:45840",
+                  "strokeStyleId": "",
+                  "textStyleId": "7881:55316",
+                  "effectStyleId": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "8006:79363",
+      "parentId": "3894:82081",
+      "name": "Hint",
+      "type": "INSTANCE",
+      "width": 83,
+      "height": 18,
+      "x": 0,
+      "y": 32,
+      "visible": false,
+      "fills": [
+        {
+          "type": "SOLID",
+          "blendMode": "NORMAL",
+          "opacity": 1,
+          "visible": false,
+          "color": {
+            "r": 1,
+            "g": 1,
+            "b": 1
+          }
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 1,
+      "strokeAlign": "INSIDE",
+      "cornerRadius": 0,
+      "topLeftRadius": 0,
+      "topRightRadius": 0,
+      "bottomLeftRadius": 0,
+      "bottomRightRadius": 0,
+      "opacity": 1,
+      "effects": [],
+      "layoutMode": "HORIZONTAL",
+      "primaryAxisSizingMode": "FIXED",
+      "counterAxisSizingMode": "AUTO",
+      "primaryAxisAlignItems": "MIN",
+      "counterAxisAlignItems": "MIN",
+      "itemSpacing": 10,
+      "paddingTop": 0,
+      "paddingRight": 0,
+      "paddingBottom": 2,
+      "paddingLeft": 24,
+      "clipsContent": false,
+      "fillStyleId": "",
+      "strokeStyleId": "",
+      "effectStyleId": "",
+      "children": [
+        {
+          "id": "I8006:79363;8006:72905",
+          "parentId": "8006:79363",
+          "name": "Hint",
+          "type": "TEXT",
+          "width": 59,
+          "height": 16,
+          "x": 24,
+          "y": 0,
+          "visible": true,
+          "fills": [
+            {
+              "type": "SOLID",
+              "blendMode": "NORMAL",
+              "opacity": 1,
+              "visible": true,
+              "color": {
+                "r": 0.4235294117647059,
+                "g": 0.4392156862745098,
+                "b": 0.49411764705882355
+              }
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "strokeAlign": "OUTSIDE",
+          "opacity": 1,
+          "effects": [],
+          "characters": "Hint",
+          "fontName": {
+            "family": "Inter",
+            "style": "Medium",
+            "hash": "279fa3c60d682531d549d0ec9ed91f1b83402d40"
+          },
+          "fontSize": 12,
+          "lineHeight": {
+            "unit": "PIXELS",
+            "value": 16
+          },
+          "letterSpacing": {
+            "unit": "PIXELS",
+            "value": 0
+          },
+          "textAlignHorizontal": "LEFT",
+          "textAlignVertical": "TOP",
+          "textAutoResize": "HEIGHT",
+          "fillStyleId": "724:45840",
+          "strokeStyleId": "",
+          "textStyleId": "144:38182",
+          "effectStyleId": ""
+        }
+      ]
+    }
+  ]
+}

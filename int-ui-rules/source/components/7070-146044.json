@@ -1,5 +1,6 @@
 {
   "id": "7070:146044",
+  "parentId": "7070:146048",
   "name": "Theme=Light, State=Active, Focus=Off",
   "type": "COMPONENT",
   "width": 224,
@@ -35,6 +36,7 @@
   "children": [
     {
       "id": "7141:47039",
+      "parentId": "7070:146044",
       "name": "Content",
       "type": "FRAME",
       "width": 224,
@@ -94,6 +96,7 @@
       "children": [
         {
           "id": "7070:146037",
+          "parentId": "7141:47039",
           "name": "Search",
           "type": "INSTANCE",
           "width": 16,
@@ -129,6 +132,7 @@
           "children": [
             {
               "id": "I7070:146037;5751:82858",
+              "parentId": "7070:146037",
               "name": "Ellipse 385",
               "type": "ELLIPSE",
               "width": 10,
@@ -161,6 +165,7 @@
             },
             {
               "id": "I7070:146037;5751:82859",
+              "parentId": "7070:146037",
               "name": "Vector 45",
               "type": "VECTOR",
               "width": 3.299999952316284,
@@ -195,6 +200,7 @@
         },
         {
           "id": "7141:46634",
+          "parentId": "7141:47039",
           "name": "Text",
           "type": "INSTANCE",
           "width": 158,
@@ -230,6 +236,7 @@
           "children": [
             {
               "id": "I7141:46634;7141:46625",
+              "parentId": "7141:46634",
               "name": "Text",
               "type": "TEXT",
               "width": 27,
@@ -282,6 +289,7 @@
         },
         {
           "id": "8043:85891",
+          "parentId": "7141:47039",
           "name": "Actions",
           "type": "FRAME",
           "width": 26,
@@ -317,6 +325,7 @@
           "children": [
             {
               "id": "7141:46845",
+              "parentId": "8043:85891",
               "name": "Close",
               "type": "INSTANCE",
               "width": 26,
@@ -352,6 +361,7 @@
               "children": [
                 {
                   "id": "I7141:46845;7141:46710",
+                  "parentId": "7141:46845",
                   "name": "general / closeSmall",
                   "type": "INSTANCE",
                   "width": 16,
@@ -387,6 +397,7 @@
                   "children": [
                     {
                       "id": "I7141:46845;7141:46710;9045:66540",
+                      "parentId": "I7141:46845;7141:46710",
                       "name": "Union",
                       "type": "BOOLEAN_OPERATION",
                       "width": 7.254664421081543,
@@ -419,6 +430,7 @@
                       "children": [
                         {
                           "id": "I7141:46845;7141:46710;9045:66541",
+                          "parentId": "I7141:46845;7141:46710;9045:66540",
                           "name": "Rectangle 25",
                           "type": "VECTOR",
                           "width": 1.4142135381698608,
@@ -451,6 +463,7 @@
                         },
                         {
                           "id": "I7141:46845;7141:46710;9045:66542",
+                          "parentId": "I7141:46845;7141:46710;9045:66540",
                           "name": "Rectangle 24",
                           "type": "VECTOR",
                           "width": 1.4142135381698608,
@@ -489,6 +502,7 @@
             },
             {
               "id": "8043:85409",
+              "parentId": "8043:85891",
               "name": "Toolbar / Icon",
               "type": "INSTANCE",
               "width": 26,
@@ -524,6 +538,7 @@
               "children": [
                 {
                   "id": "I8043:85409;6559:86227",
+                  "parentId": "8043:85409",
                   "name": "State",
                   "type": "INSTANCE",
                   "width": 26,
@@ -560,6 +575,7 @@
                 },
                 {
                   "id": "I8043:85409;6559:86228",
+                  "parentId": "8043:85409",
                   "name": "Icon",
                   "type": "INSTANCE",
                   "width": 16,
@@ -595,6 +611,7 @@
                   "children": [
                     {
                       "id": "I8043:85409;6559:86228;6882:85626",
+                      "parentId": "I8043:85409;6559:86228",
                       "name": "\u0421\u0441",
                       "type": "VECTOR",
                       "width": 15.800000190734863,
@@ -631,6 +648,7 @@
             },
             {
               "id": "8043:85410",
+              "parentId": "8043:85891",
               "name": "Toolbar / Icon",
               "type": "INSTANCE",
               "width": 26,
@@ -666,6 +684,7 @@
               "children": [
                 {
                   "id": "I8043:85410;6559:86227",
+                  "parentId": "8043:85410",
                   "name": "State",
                   "type": "INSTANCE",
                   "width": 26,
@@ -702,6 +721,7 @@
                 },
                 {
                   "id": "I8043:85410;6559:86228",
+                  "parentId": "8043:85410",
                   "name": "Icon",
                   "type": "INSTANCE",
                   "width": 16,
@@ -737,6 +757,7 @@
                   "children": [
                     {
                       "id": "I8043:85410;6559:86228;5751:81703",
+                      "parentId": "I8043:85410;6559:86228",
                       "name": ".",
                       "type": "TEXT",
                       "width": 4,
@@ -787,6 +808,7 @@
                     },
                     {
                       "id": "I8043:85410;6559:86228;5751:81704",
+                      "parentId": "I8043:85410;6559:86228",
                       "name": "*",
                       "type": "TEXT",
                       "width": 10,

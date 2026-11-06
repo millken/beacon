@@ -10,8 +10,11 @@ const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
 })[char]);
 
+const stateInventory = JSON.parse(fs.readFileSync(new URL("../source/state-inventory.json", import.meta.url), "utf8"));
 export function generateDocs({ tokens, manifest, root }) {
   const inventory = JSON.parse(fs.readFileSync(path.join(root, "tokens/inventory.json"), "utf8"));
+  inventory.stateComponents = stateInventory;
+  fs.writeFileSync(path.join(root,"tokens/inventory.json"), JSON.stringify(inventory, null, 2) + "\n");
   const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
   const color = (name, fallback) => tokens.color[name]?.css ? `var(${tokens.color[name].css})` : fallback;
   const chrome = {
@@ -30,27 +33,27 @@ export function generateDocs({ tokens, manifest, root }) {
     { slug: "button", title: "Button", thumb: "Button", specimen: "button-primary", caption: "Trigger actions" },
     { slug: "checkbox", title: "Checkbox", thumb: "Checked", specimen: "checkbox", caption: "Select options" },
     { slug: "combo-box", title: "Combo box", thumb: "Combo box", caption: "Choose a value" },
+    { slug: "input-field", title: "Input field", specimen: "input", caption: "Enter text" },
+    { slug: "toggle", title: "Toggle", specimen: "toggle-on", caption: "Enable a setting" },
+    { slug: "dialog", title: "Dialog", specimen: "dialog", caption: "Focused tasks" },
+    { slug: "link", title: "Link", specimen: "link", caption: "Navigate" },
+    { slug: "radio-button", title: "Radio button", specimen: "radio-button", caption: "Choose one" },
+    { slug: "dropdown", title: "Dropdown", specimen: "dropdown", caption: "Fixed choices" },
+    { slug: "search", title: "Search", specimen: "search", caption: "Find content" },
+    { slug: "tab", title: "Tab", specimen: "tab", caption: "Switch documents" },
+    { slug: "segmented-control", title: "Segmented control", specimen: "segmented-control", caption: "Switch views" },
   ];
   const library = [
     ...detailPages,
     { slug: "context-menu", title: "Context menu", caption: "Context commands" },
-    { slug: "dialog", title: "Dialog", specimen: "dialog", caption: "Focused tasks" },
-    { slug: "dropdown", title: "Dropdown", caption: "Fixed choices" },
     { slug: "group-header", title: "Group header", caption: "Separate content" },
-    { slug: "input-field", title: "Input field", specimen: "input", caption: "Enter text" },
-    { slug: "link", title: "Link", caption: "Navigate" },
     { slug: "loader", title: "Loader", caption: "Background work" },
     { slug: "notification", title: "Notification", caption: "System feedback" },
     { slug: "popup", title: "Popup", caption: "Temporary content" },
     { slug: "progress-bar", title: "Progress bar", caption: "Task completion" },
-    { slug: "radio-button", title: "Radio button", caption: "Choose one" },
-    { slug: "segmented-control", title: "Segmented control", caption: "Switch views" },
-    { slug: "search", title: "Search", caption: "Find content" },
     { slug: "scrollbar", title: "Scrollbar", caption: "Navigate overflow" },
     { slug: "shortcut-code", title: "Shortcut & code", caption: "Technical notation" },
-    { slug: "tab", title: "Tab", caption: "Switch documents" },
     { slug: "table", title: "Table", caption: "Structured data" },
-    { slug: "toggle", title: "Toggle", specimen: "toggle-on", caption: "Enable a setting" },
     { slug: "toolbar", title: "Toolbar", caption: "Frequent actions" },
     { slug: "tooltip", title: "Tooltip", caption: "Brief explanation" },
     { slug: "tooltip-editor", title: "Tooltip: Editor", caption: "Code information" },
@@ -92,15 +95,12 @@ export function generateDocs({ tokens, manifest, root }) {
     return `<section class="page-head">${eyebrow ? `<p class="eyebrow">${esc(eyebrow)}</p>` : ""}<h1>${esc(title)}</h1><p>${esc(description)}</p><a class="usage" href="#examples">When and how to use</a></section>`;
   }
   function inline(name, title = name, extra = "") {
-    if (!manifest[name]) return `<span class="doc-pending-mark" aria-label="Additional state pending">—</span>`;
+    if (!manifest[name]) return `<span class="doc-missing" aria-label="Source variant absent">—</span>`;
     const item = manifest[name];
     const width = name === "dialog" ? 963 : item.width;
     const height = name === "dialog" ? 575 : item.height;
     const html = read(`components/${name}.html`);
     return `<span class="doc-specimen ${extra}" data-generated-partial="/components/${name}.html" style="--specimen-width:${width}px;--specimen-height:${height}px" role="group" aria-label="${esc(title)}">${html}</span>`;
-  }
-  function pending(label = "Additional state pending") {
-    return `<div class="doc-pending"><span class="doc-pending-icon" aria-hidden="true">—</span><strong>${esc(label)}</strong></div>`;
   }
   function overviewCard(item) {
     const href = detailPages.some(({ slug }) => slug === item.slug) ? `/pages/${item.slug}.html` : `/pages/components.html#${item.slug}`;
@@ -108,26 +108,22 @@ export function generateDocs({ tokens, manifest, root }) {
     if (item.specimen && manifest[item.specimen]) {
       const m=manifest[item.specimen];
       preview=`<span class="doc-card-preview"><span class="doc-fit-scene" style="--fit:${Math.min(240/m.width,70/m.height)};width:${m.width}px;height:${m.height}px">${inline(item.specimen,item.title,"doc-card-specimen")}</span></span>`;
-    } else preview=`<span class="doc-card-preview doc-thumbnail-pending"><span aria-hidden="true">${esc(item.thumb||item.title)}</span><span class="doc-pending-tag">Not extracted yet</span></span>`;
+    } else throw new Error(`Catalog source specimen missing: ${item.title}`);
     return `<a class="doc-component-card" href="${href}">${preview}<strong>${esc(item.title)}</strong><small>${esc(item.caption)}</small><span class="doc-card-state">Verified source specimen ↗</span></a>`;
   }
   function provenance(names) {
+    names = [...new Set(names)].filter((name) => manifest[name]);
     return `<details class="provenance"><summary>Design sources and verification</summary><div>${names.map((name) => {
       const item = manifest[name];
       return `<p><strong>${esc(name)}</strong> · Pixso <code>${esc(item.source)}</code> · ${esc(item.renderMode)}<br><a href="/components/${name}.html">Generated HTML</a> · <a href="/previews/${name}.html">Isolated specimen</a></p>`;
     }).join("")}<p><code>npm run verify</code> checks the isolated component previews.</p></div></details>`;
   }
   function stateCell(name, label) {
-    return `<div class="doc-state-cell">${name ? inline(name, label) : pending()}<span class="sr-only">${esc(label)}</span></div>`;
+    if (!name) throw new Error(`No extracted Pixso master matched: ${label}`);
+    return `<div class="doc-state-cell">${inline(name, label)}<span class="sr-only">${esc(label)}</span></div>`;
   }
   function matrix(columns, rows, className = "") {
     return `<div class="doc-matrix ${className}"><span></span>${columns.map((label) => `<span class="caption">${esc(label)}</span>`).join("")}${rows.map((row) => `<span class="label">${esc(row.label)}</span>${row.names.map((name, i) => stateCell(name, `${row.label} · ${columns[i]}`)).join("")}`).join("")}</div>`;
-  }
-  function themeZone(title, content, dark = false) {
-    return `<section class="${dark ? "sample-dark" : "sample-light"}"><div class="doc-zone-head"><h2>${esc(title)}</h2>${dark ? '<span class="doc-pending-tag">Dark · pending</span>' : '<span class="doc-ready-tag">Light · available</span>'}</div>${content}</section>`;
-  }
-  function unavailableMatrix(columns, rows) {
-    return matrix(columns, rows.map((label) => ({ label, names: columns.map(() => null) })));
   }
   function usageSection(title, content, description = "") {
     return `<section class="subsection"><h2>${esc(title)}</h2>${description ? `<p>${esc(description)}</p>` : ""}${content}</section>`;
@@ -140,58 +136,95 @@ export function generateDocs({ tokens, manifest, root }) {
   const overviewBody = `<section class="hero"><p class="eyebrow">JetBrains interface library</p><h1>Int UI Kit</h1><p class="lead">A practical foundation for building clear, compact interfaces for developer tools.</p></section>
 <section class="overview-grid"><article class="panel intro-card"><div><p class="kicker">Foundations</p><h2>Design with shared rules</h2><p>Explore the colors, typography and spacing that keep every tool window and dialog consistent.</p></div><div><div class="swatches" aria-label="Brand color swatches">${foundationSwatches.map((v) => `<span style="--sw:var(${v.css})" title="${esc(v.value)}"></span>`).join("")}</div><div class="type-preview"><strong>Default</strong><strong>Default semibold</strong><code>Medium mono</code></div><div class="foundation-links"><a href="/pages/colors.html">Colors ↗</a><a href="/pages/typography.html">Typography ↗</a><a href="/pages/spacing.html">Spacing ↗</a></div></div></article>
 <article class="panel get-card"><div><p class="kicker">How to use</p><h2>Start with the essentials</h2></div><ol class="steps"><li><span>1</span><div><strong>Explore the foundations</strong><p>Use shared colors, text styles and spacing.</p></div></li><li><span>2</span><div><strong>Browse the catalog</strong><p>Find a component and compare its available states.</p></div></li><li><span>3</span><div><strong>Use the generated HTML</strong><p>Open a component page for inline demos and source links.</p></div></li></ol></article></section>
-<section><div class="section-heading"><p class="kicker">Library</p><h2>Components</h2><p>Explore the kit. Available components include inline design specimens; pending entries are marked.</p></div><div class="component-links component-catalog">${library.map(overviewCard).join("")}</div></section>`;
+<section><div class="section-heading"><p class="kicker">Library</p><h2>Components</h2><p>Explore the kit. Available components include inline design specimens; source variants are shown.</p></div><div class="component-links component-catalog">${library.map(overviewCard).join("")}</div></section>`;
 
   function catalogCard(item) {
     const m=item.specimen?manifest[item.specimen]:null;
     const preview=m?`<span class="doc-fit-scene" style="--fit:${Math.min(300/m.width,125/m.height)};width:${m.width}px;height:${m.height}px">${inline(item.specimen,item.title,"doc-catalog-specimen")}</span>`:"";
-    return `<article class="catalog-item${item.specimen ? "" : " doc-catalog-pending"}" id="${item.slug}"><div><h2>${esc(item.title)}</h2><p>${esc(item.caption)}.</p></div><div class="catalog-demo">${item.specimen ? preview : pending()}${item.slug === "radio-button" ? `<span class="sr-only">Radio off and on states</span>${inline("radio-button-off", "Unselected radio button", "doc-catalog-context-specimen")}` : ""}${item.slug === "shortcut-code" ? `<span class="sr-only">Shortcut and code states</span>${inline("code-sample", "Code sample", "doc-catalog-context-specimen")}` : ""}</div><footer class="doc-card-footer"><span>${item.specimen ? "Inline generated specimen" : "Not extracted yet"}</span>${item.specimen && detailPages.some(({ slug }) => slug === item.slug) ? `<a href="/pages/${item.slug}.html">View states ↗</a>` : `<a href="/pages/${({ dialog: "dialog", "input-field": "input", toggle: "toggle" })[item.slug] || "components"}.html"${item.specimen ? "" : ' aria-label="Library entry; no detail page yet"'}>${item.specimen ? "View states ↗" : "Library entry"}</a>`}</footer></article>`;
+    return `<article class="catalog-item${item.specimen ? "" : " doc-catalog-pending"}" id="${item.slug}"><div><h2>${esc(item.title)}</h2><p>${esc(item.caption)}.</p></div><div class="catalog-demo">${item.specimen ? preview : "<span class=\"doc-missing\">No catalog preview</span>"}${item.slug === "radio-button" ? `<span class="sr-only">Radio off and on states</span>${inline("radio-button-off", "Unselected radio button", "doc-catalog-context-specimen")}` : ""}${item.slug === "shortcut-code" ? `<span class="sr-only">Shortcut and code states</span>${inline("code-sample", "Code sample", "doc-catalog-context-specimen")}` : ""}</div><footer class="doc-card-footer"><span>${item.specimen ? "Inline generated specimen" : "Catalog unavailable"}</span>${item.specimen && detailPages.some(({ slug }) => slug === item.slug) ? `<a href="/pages/${item.slug}.html">View states ↗</a>` : `<a href="/pages/${({ dialog: "dialog", "input-field": "input", toggle: "toggle" })[item.slug] || "components"}.html"${item.specimen ? "" : ' aria-label="Library entry; no detail page yet"'}>${item.specimen ? "View states ↗" : "Library entry"}</a>`}</footer></article>`;
   }
   const catalogBody = `${head("Components", "Browse the Int UI component catalog. Every entry shows a source-generated Light specimen with links to its measured design origin.", "Complete library")}<section class="catalog-grid">${library.map(catalogCard).join("")}</section>`;
 
   const buttonColumns = ["Active", "Hovered", "Pressed", "Focused", "Disabled"];
-  const buttonNames = ["button-primary", "button-primary-hovered", "button-primary-pressed", "button-primary-focused"];
-  const buttonBody = `${head("Button", "Buttons are used to initiate an action.")}<section class="showcase" id="examples"><div><div class="sample-card">${themeZone("Button states", matrix(buttonColumns, [{ label: "Primary", names: [...buttonNames, null] }, { label: "Secondary", names: ["button-secondary", null, null, null, null] }], "button-grid"))}${themeZone("Dark theme", unavailableMatrix(buttonColumns, ["Primary", "Secondary"]), true)}</div>${provenance([...buttonNames, "button-secondary"])}</div><article class="doc-panel">${usageSection("Default buttons", `<div class="doc-usage-stage"><div>${inline("button-secondary", "Secondary action")}${inline("button-primary", "Primary action")}</div></div>`, "Use a primary button for the main action and secondary buttons for supporting actions.")}${usageSection("Primary button state specimens", `<div class="doc-usage-grid">${buttonColumns.map((state, i) => `<div><span class="caption">${esc(state)}</span>${stateCell(buttonNames[i] || null, `Split button · ${state}`)}</div>`).join("")}</div>`, "Measured Light variants of the primary button; disabled and split variants are outside this batch.")}${usageSection("Slim buttons", `<div class="doc-placeholder-row">${inline("slim-button", "Slim button")}</div>`, "Light Active Slim Button generated from the same measured Pixso rules.")}</article></section>`;
-
   const checkboxColumns = ["Active", "Hovered", "Focused", "Invalid", "Disabled"];
+  const inventoryVariants = Object.fromEntries(
+    Object.entries(inventory.stateComponents || {}).map(([name, family]) => [name, family.variants]),
+  );
+  function specimenKey(component, theme, properties = {}) {
+    const family = inventoryVariants[component];
+    const variant = family?.find((variant) =>
+      variant.properties.Theme === theme &&
+      Object.entries(properties).every(([key, value]) => variant.properties[key] === value),
+    );
+    return variant && manifest[variant.key] ? variant.key : null;
+  }
+  function variantMatrix(component, columns, rows) {
+    return matrix(columns, rows.map(({ label, ...properties }) => ({
+      label,
+      names: columns.map((state) => specimenKey(component, "Light", { ...properties, State:state })),
+    })));
+  }
+  function darkDefault(component, properties = {}) {
+    return specimenKey(component, "Dark", properties);
+  }
+  function themeDefaults(title, component, states) {
+    const rows = states.map(({ label, ...properties }) => ({ label, name:darkDefault(component, properties) })).filter((r) => r.name);
+    return rows.length ? `<div class="doc-control-matrix">${rows.map((row) => `<div><span class="caption">${esc(row.label)}</span>${inline(row.name, `${title} · Dark · ${row.label}`)}</div>`).join("")}</div>` : `<p class="caption">No separate Dark variant is present on this Pixso master.</p>`;
+  }
+  function themePanel(title, content, dark = false) {
+    return `<section class="${dark ? "sample-dark" : "sample-light"}"><div class="doc-zone-head"><h2>${esc(title)}</h2><span class="doc-ready-tag">${dark ? "Dark · source" : "Light · source"}</span></div>${content}</section>`;
+  }
+  function statePage({ title, description, component, properties, columns, rows, defaults, usage }) {
+    const lightNames = [];
+    for (const props of defaults) {
+      const key = specimenKey(component, "Light", props);
+      if (key) lightNames.push(key);
+    }
+    const content = (theme) => `<div class="doc-control-matrix">${columns.map((column) => {
+      const key = specimenKey(component, theme, column.props);
+      return key ? `<div><span class="caption">${esc(column.label)}</span>${inline(key, `${title} · ${theme} · ${column.label}`)}</div>` : "";
+    }).join("")}</div>`;
+    return `${head(title, description)}<section class="showcase" id="examples"><div><div class="sample-card">${themePanel(`${title} states`, content("Light"))}${themePanel("Dark theme", content("Dark"), true)}</div>${provenance(lightNames)}</div><article class="doc-panel">${usageSection("Available variants", `<div class="doc-option-stage">${defaults.map((props) => {
+      const key = specimenKey(component, "Light", props);
+      return key ? `<div>${inline(key, `${title} · ${props.label || props.Type || props.State || "Default"}`)}<span class="caption">${esc(props.label || props.Type || props.State || "Default")}</span></div>` : "";
+    }).join("")}</div>`, usage || "Every specimen is generated from its own measured Pixso master; there are no synthesized interaction styles.")}</article></section>`;
+  }
+  const buttonRows = (theme) => ["Primary", "Secondary"].map((type) => `<tr><th>${type}</th>${buttonColumns.map((state) => `<td>${inline(specimenKey("Button",theme,{"Button type":type,State:state}),`${theme} ${type} ${state}`)}</td>`).join("")}</tr>`).join("");
+  const buttonTable = (theme) => `<div class="doc-table-wrap"><table class="doc-state-table"><thead><tr><th>Type</th>${buttonColumns.map((s) => `<th>${s}</th>`).join("")}</tr></thead><tbody>${buttonRows(theme)}</tbody></table></div>`;
+  const buttonLightNames = buttonColumns.flatMap((state) => ["Primary","Secondary"].map((type) => specimenKey("Button","Light",{"Button type":type,State:state})));
+  const slimNames = buttonColumns.map((state) => specimenKey("Slim Button","Light",{State:state}));
+  const slimMatrix = (theme) => `<div class="doc-control-matrix slim-state-row">${buttonColumns.map((state) => `<div><span class="caption">${state}</span>${inline(specimenKey("Slim Button",theme,{State:state}),`${theme} Slim ${state}`)}</div>`).join("")}</div>`;
+  const darkButtonSpecimens = buttonColumns.flatMap((state) => ["Primary", "Secondary"].map((type) => specimenKey("Button", "Dark", { "Button type": type, State: state })));
+  const buttonBody = `${head("Button", "Buttons are used to initiate an action.")}<section class="showcase" id="examples"><div><div class="sample-card">${themePanel("Button states",buttonTable("Light"))}${themePanel("Dark theme",buttonTable("Dark"),true)}</div>${provenance([...buttonLightNames, ...darkButtonSpecimens])}</div><article class="doc-panel">${usageSection("Slim button states",slimMatrix("Light"),"All five measured Light states are available; the Dark Slim Button master includes the same five states.")}${usageSection("Slim · Dark",slimMatrix("Dark"))}${provenance(slimNames)}</article></section>`;
   const checkboxRows = [
-    { label: "Unchecked", names: ["checkbox-unchecked", null, null, null, null] },
-    { label: "Checked", names: ["checkbox", null, null, null, null] },
-    { label: "Indeterminate", names: ["checkbox-indeterminate", null, null, null, null] },
+    { label:"Unchecked",names:checkboxColumns.map((state) => specimenKey("Checkbox","Light",{Type:"Unchecked",State:state})) },
+    { label:"Checked",names:checkboxColumns.map((state) => specimenKey("Checkbox","Light",{Type:"Checked",State:state})) },
+    { label:"Indeterminate",names:checkboxColumns.map((state) => specimenKey("Checkbox","Light",{Type:"Indeterminate",State:state})) },
   ];
-  const checkboxBody = `${head("Checkbox", "Checkbox is used when you need to select multiple items in a list. Users can select all, any, or none of the items.")}<section class="showcase" id="examples"><div><div class="sample-card">${themeZone("Checkbox states", matrix(checkboxColumns, checkboxRows, "checkbox-grid"))}${themeZone("Dark theme", unavailableMatrix(checkboxColumns, checkboxRows.map((r) => r.label)), true)}</div>${provenance(["checkbox-unchecked", "checkbox", "checkbox-indeterminate"])}</div><article class="doc-panel">${usageSection("Variations", `<div class="doc-option-stage">${checkboxRows.map((row) => `<div><span class="caption">${esc(row.label)}</span>${inline(row.names[0], `${row.label} checkbox`)}</div>`).join("")}</div>`, "Use a checkbox for independent options. Indeterminate communicates a mixed group selection.")}${usageSection("Checkbox group", `<div class="doc-demo-toggle" data-checkbox-demo><div class="doc-check-state">${inline("checkbox-unchecked", "Option A")}</div><div class="doc-check-state">${inline("checkbox", "Option B")}</div><div class="doc-check-state">${inline("checkbox-indeterminate", "Mixed group")}</div><button type="button" aria-pressed="false">Switch interactive example</button><p class="caption">The specimen is the source design; the adjacent label and switch control change only this usage demo.</p></div>`)}${usageSection("Nesting", `<div class="doc-placeholder-row">${pending("Nested group · Not extracted yet")}</div>`, "Nested examples will reuse source-generated checkbox states.")}</article></section>`;
-
-  function simplePage({ title, description, names, mode }) {
-    const cols = mode === "input" ? ["Active", "Focused", "Invalid", "Disabled"] : ["Off", "On", "Disabled"];
-    const values = mode === "input" ? ["input", "input-focused", null, null] : ["toggle-off", "toggle-on", null];
-    return `${head(title, description)}<section class="showcase" id="examples"><div><div class="sample-card">${themeZone(`${title} states`, `<div class="doc-control-matrix">${values.map((name, i) => `<div><span class="caption">${esc(cols[i])}</span>${stateCell(name, `${title} · ${cols[i]}`)}</div>`).join("")}</div>`)}${themeZone("Dark theme", `<div class="doc-control-matrix">${cols.map((label) => `<div><span class="caption">${esc(label)}</span>${pending()}</div>`).join("")}</div>`, true)}</div>${provenance(names)}</div><article class="doc-panel">${usageSection("When to use", mode === "input" ? `<div class="doc-usage-stage">${inline("input", "Input field")}</div><div class="doc-usage-stage">${inline("input-focused", "Focused input field")}</div>` : `<div class="doc-switch-demo" data-switch-demo><div class="doc-switch-off">${inline("toggle-off", "Off")}</div><div class="doc-switch-on">${inline("toggle-on", "On")}</div><button type="button" aria-pressed="false">Toggle setting</button></div>`, mode === "input" ? "Use an input field to enter or edit a single line of text." : "Use a toggle to enable or disable a single setting.")}${usageSection("More states", pending("Additional variants · pending"), "This focused specimen covers a Light default state; additional states are not included in this batch.")}</article></section>`;
+  const checkboxDarkRows = ["Unchecked","Checked","Indeterminate"].map((Type) => ({ label:Type,names:checkboxColumns.map((state) => specimenKey("Checkbox","Dark",{Type,State:state})) }));
+  const checkboxNames = checkboxRows.flatMap((r) => r.names).filter(Boolean);
+  const checkboxBody = `${head("Checkbox", "Checkbox is used when you need to select multiple items in a list. Users can select all, any, or none of the items.")}<section class="showcase" id="examples"><div><div class="sample-card">${themePanel("Checkbox states",matrix(checkboxColumns,checkboxRows,"checkbox-grid"))}${themePanel("Dark theme",matrix(checkboxColumns,checkboxDarkRows,"checkbox-grid"),true)}</div>${provenance([...checkboxNames,...checkboxDarkRows.flatMap((r) => r.names)])}</div><article class="doc-panel">${usageSection("Variations",`<div class="doc-option-stage">${checkboxRows.map((row) => `<div><span class="caption">${esc(row.label)}</span>${inline(row.names[0],`${row.label} checkbox`)}</div>`).join("")}</div>`,"Checked, Unchecked and Indeterminate each have Active, Hovered, Focused, Invalid and Disabled measured masters.")}</article></section>`;
+  const inputPage = statePage({ title:"Input field",description:"Input fields are used to enter or edit text.",component:"Input Field",columns:[{label:"Active",props:{State:"Active"}},{label:"Focused",props:{State:"Active",Focus:"On"}},{label:"Invalid",props:{State:"Invalid"}},{label:"Invalid focused",props:{State:"Invalid",Focus:"On"}},{label:"Invalid unfocused",props:{State:"Invalid",Focus:"Off"}},{label:"Disabled",props:{State:"Disabled"}}],defaults:[{label:"Active",State:"Active"},{label:"Focused",State:"Active",Focus:"On"},{label:"Invalid",State:"Invalid"},{label:"Disabled",State:"Disabled"}],usage:"Active includes optional Focus; Active, Invalid and Disabled also have measured Dark variants." });
+  const fieldPage = (title, description, component) => statePage({ title,description,component,columns:[{label:"Active",props:{State:"Active"}},{label:"Focused",props:{State:"Active",Focus:"On"}},{label:"Invalid",props:{State:"Invalid"}},{label:"Invalid focused",props:{State:"Invalid",Focus:"On"}},{label:"Invalid unfocused",props:{State:"Invalid",Focus:"Off"}},{label:"Disabled",props:{State:"Disabled"}}],defaults:[{label:"Active",State:"Active"},{label:"Focused",State:"Active",Focus:"On"},{label:"Invalid",State:"Invalid"},{label:"Disabled",State:"Disabled"}],usage:"Focus Off/On, Invalid and Disabled values come from this component's own Pixso master." });
+  const comboBoxBody = fieldPage("Combo box","A combo box combines a drop-down list and an input field, allowing the user to select a value or enter a custom value.","Combobox");
+  const dropdownBody = fieldPage("Dropdown","A dropdown provides a fixed list of choices.","Dropdown");
+  const searchDefaults = [{label:"Active",State:"Active"},{label:"Focused",State:"Active",Focus:"On"},{label:"Invalid",State:"Invalid"},{label:"Invalid focused",State:"Invalid",Focus:"On"}];
+  const searchBody = statePage({ title:"Search",description:"Search fields locate matching content.",component:"Search",columns:[{label:"Active",props:{State:"Active"}},{label:"Focused",props:{State:"Active",Focus:"On"}},{label:"Invalid",props:{State:"Invalid"}},{label:"Invalid focused",props:{State:"Invalid",Focus:"On"}}],defaults:searchDefaults,usage:"This master includes Active and Invalid; it does not define a Disabled variant, so none is invented." });
+  const toggleBody = `${head("Toggle","Toggles are used to enable or disable a setting.")}<section class="showcase" id="examples"><div><div class="sample-card">${["Light","Dark"].map((theme) => themePanel(`${theme} theme`,`<div class="doc-control-matrix">${["Off","On"].map((state) => `<div><span class="caption">${state}</span>${inline(specimenKey("Toggle",theme,{State:state}),`${theme} toggle ${state}`)}</div>`).join("")}</div>`,theme === "Dark")).join("")}</div>${provenance(["toggle-on","toggle-off","toggle-dark-on","toggle-dark-off"])}</div><article class="doc-panel">${usageSection("When to use",`<p>Toggle changes one setting between Off and On.</p><p class="caption">The Pixso Toggle master defines only Off/On; no Disabled axis is present.</p>`)}</article></section>`;
+  const earlierComboBoxBody = fieldPage("Combo box","A combo box combines a drop-down list and an input field, allowing the user to select a value or enter a custom value.","Combobox");
+  const radioBody = `${head("Radio button","Radio buttons allow one selection from a group.")}<section class="showcase" id="examples"><div><div class="sample-card">${["Light","Dark"].map((theme) => themePanel(`${theme} theme`,variantMatrixForTheme("Radio Button",theme,["Active","Hovered","Focused","Invalid","Disabled"],[{label:"Off",Selected:"Off"},{label:"On",Selected:"On"}]),theme === "Dark")).join("")}</div>${provenance(["radio-button-off","radio-button",...["Active","Hovered","Focused","Invalid","Disabled"].flatMap((state) => ["Off","On"].map((Selected) => specimenKey("Radio Button","Light",{Selected,State:state})))])}</div><article class="doc-panel"><h2>Source-defined states</h2><p>Both selected and unselected variants include Active, Hovered, Focused, Invalid and Disabled. All ten are also available in the Dark master.</p></article></section>`;
+  function variantMatrixForTheme(component,theme,columns,rows) {
+    return matrix(columns, rows.map(({label,...properties}) => ({label,names:columns.map((State) => specimenKey(component,theme,{...properties,State}))})));
   }
-  const inputBody = simplePage({ title: "Input field", description: "Input fields are used to enter or edit text.", names: ["input", "input-focused"], mode: "input" });
-  const toggleBody = simplePage({ title: "Toggle", description: "Toggles are used to enable or disable a setting.", names: ["toggle-off", "toggle-on"], mode: "toggle" });
-  const dialogBody = `${head("Dialog", "Dialogs focus attention on a task or decision.")}<section class="showcase single" id="examples"><article class="doc-panel"><div class="doc-zone-head"><h2>Light dialog</h2><span class="doc-ready-tag">Available</span></div><div class="doc-dialog-stage">${inline("dialog", "Dialog · Light")}</div>${provenance(["dialog"])}</article><article class="doc-panel"><h2>When to use</h2><p>Use a dialog for focused setup, confirmation or a decision that needs the user’s attention.</p><h3>Dark theme</h3>${pending("Dark · additional variant pending")}</article></section>`;
+  const linkBody = `${head("Link","Links navigate to related content.")}<section class="showcase" id="examples"><div><div class="sample-card">${["Light","Dark"].map((theme) => themePanel(`${theme} theme`,variantMatrixForTheme("Link",theme,["Default","Hovered","Disabled"],[{label:"Default",Type:"Default"},{label:"Dropdown",Type:"Dropdown"},{label:"External",Type:"External"}]),theme === "Dark")).join("")}</div>${provenance(["link","link","link-light-default-disabled","link-light-dropdown-default","link-light-external-default","link-dark-default-default"])}</div><article class="doc-panel"><h2>Link types</h2><p>Default, Dropdown and External links each have Default, Hovered and Disabled source masters in both themes.</p></article></section>`;
+  const tabBody = `${head("Tab","Tabs switch between documents or views.")}<section class="showcase" id="examples"><div><div class="sample-card">${["Light","Dark"].map((theme) => themePanel(`${theme} theme`,variantMatrixForTheme("Tab",theme,["Default","Selected","Inactive"],[{label:"Tab"}]),theme === "Dark")).join("")}</div>${provenance(["tab","tab-light-default","tab-light-inactive","tab-dark-selected"])}</div><article class="doc-panel"><h2>Measured states</h2><p>Default, Selected and Inactive are the three axes available on the Tab master.</p></article></section>`;
+  const segmentedBody = `${head("Segmented control","Segmented controls switch between related views.")}<section class="showcase" id="examples"><div><div class="sample-card">${["Light","Dark"].map((theme) => themePanel(`${theme} theme`,variantMatrixForTheme("Segmented Control",theme,["Active","Focused","Disabled"],[{label:"Control"}]),theme === "Dark")).join("")}</div>${provenance(["segmented-control","segmented-control-light-focused","segmented-control-light-disabled","segmented-control-dark-active"])}</div><article class="doc-panel"><h2>Measured states</h2><p>Active, Focused and Disabled are extracted for both Light and Dark.</p></article></section>`;
+  const bannerMatrix = (theme,inlineValue) => `<div class="doc-banner-grid">${["Info","Success","Warning","Error"].map((Type) => `<div><span class="caption">${Type}</span>${inline(specimenKey("Banner",theme,{Type,Inline:inlineValue}),`${theme} ${Type} banner`)}</div>`).join("")}</div>`;
+  const bannerBody = `${head("Banner","A banner notification informs the user about the state of a specific context.")}<section class="showcase" id="examples"><div><div class="sample-card">${["Light","Dark"].map((theme) => themePanel(`${theme} · floating`,bannerMatrix(theme,"False"),theme === "Dark")).join("")}</div>${provenance(["banner","banner-light-success-floating","banner-light-warning-floating","banner-light-error-floating","banner-dark-info-floating"])}</div><article class="doc-panel">${usageSection("Inline banners",bannerMatrix("Light","True"),"All four notification types exist in floating (600×40) and inline (400×64) sizes, with source-generated Dark equivalents.")}${usageSection("Dark · inline",bannerMatrix("Dark","True"))}</article></section>`;
+  const alertBody = `${head("Alert","An alert informs users about the status of user- or system-initiated operations.")}<section class="showcase single" id="examples"><article class="doc-panel"><h2>Alert themes</h2><div class="doc-alert-pair">${["Light","Dark"].map((theme) => `<div><span class="caption">${theme}</span>${inline(specimenKey("Alert",theme),`${theme} alert`)}</div>`).join("")}</div>${provenance(["alert","alert-dark"])}</article><article class="doc-panel"><h2>Source coverage</h2><p>The Alert master has Light and Dark themes. It does not expose Info/Warning/Error type axes; those axes belong to other masters and are not invented here.</p></article></section>`;
+  const dialogBody = `${head("Dialog","Dialogs focus attention on a task or decision.")}<section class="showcase single" id="examples"><article class="doc-panel"><h2>Dialog themes</h2><div class="doc-dialog-themes">${["Light","Dark"].map((theme) => `<section><h3>${theme}</h3><div class="doc-doc">${inline(specimenKey("Dialog",theme),`${theme} dialog`)}</div></section>`).join("")}</div>${provenance(["dialog","dialog-dark"])}</article></section>`;
 
-  function reservedPage(kind) {
-    const configs = {
-      alert: { title: "Alert", description: "An alert informs users about the status of user- or system-initiated operations.", headings: ["States", "Types", "Sizes"], states: ["Information", "Warning", "Error", "Confirmation"] },
-      banner: { title: "Banner", description: "A banner notification informs the user about the state of a specific context.", headings: ["Default or inline banner", "Actions", "Close and settings"], states: ["Information", "Success", "Warning", "Error"] },
-      "combo-box": { title: "Combo box", description: "A combo box combines a drop-down list and an input field, allowing the user to select a value from the list or enter a custom value.", headings: ["States", "Label and hint patterns", "Options"], states: ["Default", "Focused", "Validated", "Validated focused", "Disabled"] },
-    };
-    const c = configs[kind];
-    const specMatrix = `<div class="sample-light"><div class="doc-zone-head"><h2>${c.headings[0]}</h2><span class="doc-pending-tag">Not extracted yet</span></div><div class="doc-reserved-states">${c.states.map((s) => `<div><span class="caption">${esc(s)}</span>${pending()}</div>`).join("")}</div></div><div class="sample-dark"><div class="doc-zone-head"><h2>Dark theme</h2></div>${pending()}</div>`;
-    return `${head(c.title, c.description)}<section class="showcase" id="examples"><div class="sample-card">${specMatrix}</div><article class="doc-panel">${usageSection(c.headings[1], pending("Variants · Not extracted yet"), kind === "banner" ? "Actions and dismissal will be available after the source states are extracted." : "The page structure is ready for source-generated variants.")}${usageSection(c.headings[2], `<div class="doc-placeholder-row">${pending("Dark · additional variant pending")}</div>`, "No illustrative component styles are substituted for the missing source design.")}</article></section>`;
-  }
 
-  function sourcePage(kind) {
-    const names={alert:"alert",banner:"banner","combo-box":"combobox"};
-    const descriptions={
-      alert:"An alert informs users about the status of user- or system-initiated operations.",
-      banner:"A banner notification informs the user about the state of a specific context.",
-      "combo-box":"A combo box combines a drop-down list and an input field, allowing the user to select a value or enter a custom value.",
-    };
-    const title=names[kind]==="combobox"?"Combo box":names[kind][0].toUpperCase()+names[kind].slice(1);
-    const name=names[kind];
-    return `${head(title, descriptions[kind])}<section class="showcase single" id="examples"><article class="doc-panel"><div class="doc-zone-head"><h2>Light · default</h2><span class="doc-ready-tag">Source generated</span></div><div class="doc-source-stage">${inline(name,title)}</div>${provenance([name])}</article><article class="doc-panel"><h2>When and how to use</h2><p>${esc(descriptions[kind])}</p><p class="caption">The specimen is generated from the measured Pixso component. Its geometry and native vectors are retained without a hand-drawn demo substitute. More Light states can reuse the same source pipeline.</p><a href="/pages/components.html#${kind}">Open the full component catalog ↗</a></article></section>`;
-  }
   const colorGroups = Map.groupBy(Object.entries(tokens.color).filter(([name]) => !name.startsWith("ARCHIVE/")), ([name]) => {
     const [space, family, ...rest] = name.split("/");
     if (["Light", "Dark", "Editor", "Light (Current)"].includes(space)) return `${space}/${family}`;
@@ -217,22 +250,30 @@ export function generateDocs({ tokens, manifest, root }) {
 
   const pages = {
     "button.html": page("button", "Button", buttonBody),
-    "input.html": page("components", "Input field", inputBody),
+    "input-field.html": page("input-field", "Input field", inputPage),
     "checkbox.html": page("checkbox", "Checkbox", checkboxBody),
-    "toggle.html": page("components", "Toggle", toggleBody),
-    "dialog.html": page("components", "Dialog", dialogBody),
+    "toggle.html": page("toggle", "Toggle", toggleBody),
+    "dialog.html": page("dialog", "Dialog", dialogBody),
     "colors.html": page("colors", "Colors", colorsBody),
     "typography.html": page("typography", "Typography", typographyBody),
     "spacing.html": page("spacing", "Spacing", spacingBody),
     "components.html": page("components", "Components", catalogBody),
-    "alert.html": page("alert", "Alert", sourcePage("alert")),
-    "banner.html": page("banner", "Banner", sourcePage("banner")),
-    "combo-box.html": page("combo-box", "Combo box", sourcePage("combo-box")),
+    "alert.html": page("alert", "Alert", alertBody),
+    "banner.html": page("banner", "Banner", bannerBody),
+    "combo-box.html": page("combo-box", "Combo box", comboBoxBody),
+    "link.html": page("link", "Link", linkBody),
+    "radio-button.html": page("radio-button", "Radio button", radioBody),
+    "dropdown.html": page("dropdown", "Dropdown", dropdownBody),
+    "search.html": page("search", "Search", searchBody),
+    "tab.html": page("tab", "Tab", tabBody),
+    "segmented-control.html": page("segmented-control", "Segmented control", segmentedBody),
   };
   const out = path.join(root, "public");
   fs.mkdirSync(path.join(out, "pages"), { recursive: true });
   for (const file of fs.readdirSync(path.join(out, "pages"))) if (file.endsWith(".html")) fs.rmSync(path.join(out, "pages", file));
   for (const [name, html] of Object.entries(pages)) fs.writeFileSync(path.join(out, "pages", name), html);
+  // Keep the historical Input URL with the same full matrix, not a redirect placeholder.
+  fs.writeFileSync(path.join(out,"pages","input.html"),page("input-field","Input field",inputPage));
   const overviewHtml = page("overview", "Overview", overviewBody);
   fs.writeFileSync(path.join(out, "index.html"), overviewHtml);
   fs.writeFileSync(path.join(root, "index.html"), overviewHtml);

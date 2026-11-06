@@ -1,0 +1,161 @@
+{
+  "renderer": "HTML+CSS DOM / native HTML text; extracted local SVG icons and stroke primitives only",
+  "variants": 172,
+  "canvasDiffMeanPercent": 5.393,
+  "note": "Strict RGBA pixelmatch threshold 0.1 including antialiasing. Documentation coverage and generated-DOM status are not pixel-identity claims.",
+  "rows": [
+    {
+      "family": "Button",
+      "variants": 20,
+      "light": 10,
+      "dark": 10,
+      "meanDiffPercent": 5.879,
+      "minDiffPercent": 2.361,
+      "maxDiffPercent": 13.48,
+      "geometryFailures": []
+    },
+    {
+      "family": "Slim Button",
+      "variants": 10,
+      "light": 5,
+      "dark": 5,
+      "meanDiffPercent": 6.03,
+      "minDiffPercent": 2.623,
+      "maxDiffPercent": 7.6,
+      "geometryFailures": []
+    },
+    {
+      "family": "Checkbox",
+      "variants": 30,
+      "light": 15,
+      "dark": 15,
+      "meanDiffPercent": 6.825,
+      "minDiffPercent": 1.225,
+      "maxDiffPercent": 17.245,
+      "geometryFailures": []
+    },
+    {
+      "family": "Input Field",
+      "variants": 10,
+      "light": 5,
+      "dark": 5,
+      "meanDiffPercent": 1.913,
+      "minDiffPercent": 0.223,
+      "maxDiffPercent": 11.792,
+      "geometryFailures": []
+    },
+    {
+      "family": "Toggle",
+      "variants": 4,
+      "light": 2,
+      "dark": 2,
+      "meanDiffPercent": 5.307,
+      "minDiffPercent": 3.585,
+      "maxDiffPercent": 7.736,
+      "geometryFailures": []
+    },
+    {
+      "family": "Combobox",
+      "variants": 10,
+      "light": 5,
+      "dark": 5,
+      "meanDiffPercent": 2.663,
+      "minDiffPercent": 0.513,
+      "maxDiffPercent": 12.611,
+      "geometryFailures": []
+    },
+    {
+      "family": "Dropdown",
+      "variants": 10,
+      "light": 5,
+      "dark": 5,
+      "meanDiffPercent": 2.143,
+      "minDiffPercent": 0.402,
+      "maxDiffPercent": 12.035,
+      "geometryFailures": []
+    },
+    {
+      "family": "Link",
+      "variants": 18,
+      "light": 9,
+      "dark": 9,
+      "meanDiffPercent": 4.609,
+      "minDiffPercent": 1.852,
+      "maxDiffPercent": 9.206,
+      "geometryFailures": []
+    },
+    {
+      "family": "Radio Button",
+      "variants": 20,
+      "light": 10,
+      "dark": 10,
+      "meanDiffPercent": 9.962,
+      "minDiffPercent": 2.163,
+      "maxDiffPercent": 23.611,
+      "geometryFailures": []
+    },
+    {
+      "family": "Search",
+      "variants": 8,
+      "light": 4,
+      "dark": 4,
+      "meanDiffPercent": 2.235,
+      "minDiffPercent": 0.664,
+      "maxDiffPercent": 11.814,
+      "geometryFailures": []
+    },
+    {
+      "family": "Tab",
+      "variants": 6,
+      "light": 3,
+      "dark": 3,
+      "meanDiffPercent": 4.99,
+      "minDiffPercent": 4.626,
+      "maxDiffPercent": 5.355,
+      "geometryFailures": []
+    },
+    {
+      "family": "Segmented Control",
+      "variants": 6,
+      "light": 3,
+      "dark": 3,
+      "meanDiffPercent": 7.608,
+      "minDiffPercent": 2.044,
+      "maxDiffPercent": 16.553,
+      "geometryFailures": []
+    },
+    {
+      "family": "Banner",
+      "variants": 16,
+      "light": 8,
+      "dark": 8,
+      "meanDiffPercent": 3.451,
+      "minDiffPercent": 1.215,
+      "maxDiffPercent": 9.162,
+      "geometryFailures": []
+    },
+    {
+      "family": "Alert",
+      "variants": 2,
+      "light": 1,
+      "dark": 1,
+      "meanDiffPercent": 9.598,
+      "minDiffPercent": 9.439,
+      "maxDiffPercent": 9.756,
+      "geometryFailures": []
+    },
+    {
+      "family": "Dialog",
+      "variants": 2,
+      "light": 1,
+      "dark": 1,
+      "meanDiffPercent": 3.224,
+      "minDiffPercent": 3.182,
+      "maxDiffPercent": 3.265,
+      "geometryFailures": [
+        "dialog",
+        "dialog-dark"
+      ]
+    }
+  ]
+}

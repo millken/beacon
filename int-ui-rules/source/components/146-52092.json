@@ -1,5 +1,6 @@
 {
   "id": "146:52092",
+  "parentId": "146:52009",
   "name": "Theme=Light, Button type=Primary, State=Focused",
   "type": "COMPONENT",
   "width": 72,
@@ -35,6 +36,7 @@
   "children": [
     {
       "id": "6204:74319",
+      "parentId": "146:52092",
       "name": "Border",
       "type": "FRAME",
       "width": 78,
@@ -83,6 +85,7 @@
     },
     {
       "id": "7260:51310",
+      "parentId": "146:52092",
       "name": "Content",
       "type": "FRAME",
       "width": 72,
@@ -130,6 +133,7 @@
       "children": [
         {
           "id": "146:52095",
+          "parentId": "7260:51310",
           "name": "Button",
           "type": "FRAME",
           "width": 72,
@@ -165,6 +169,7 @@
           "children": [
             {
               "id": "146:52096",
+              "parentId": "146:52095",
               "name": "Text",
               "type": "TEXT",
               "width": 42,
@@ -215,6 +220,7 @@
             },
             {
               "id": "836:57656",
+              "parentId": "146:52095",
               "name": "min-width",
               "type": "VECTOR",
               "width": 48,
@@ -237,6 +243,7 @@
         },
         {
           "id": "7260:51311",
+          "parentId": "7260:51310",
           "name": "Split",
           "type": "INSTANCE",
           "width": 28,
@@ -272,6 +279,7 @@
           "children": [
             {
               "id": "I7260:51311;7223:45240",
+              "parentId": "7260:51311",
               "name": "general / chevronDown",
               "type": "INSTANCE",
               "width": 16,
@@ -307,6 +315,7 @@
               "children": [
                 {
                   "id": "I7260:51311;7223:45240;9965:67831",
+                  "parentId": "I7260:51311;7223:45240",
                   "name": "Icon / Dropdown",
                   "type": "VECTOR",
                   "width": 7,
@@ -341,6 +350,7 @@
             },
             {
               "id": "I7260:51311;7223:45241",
+              "parentId": "7260:51311",
               "name": "Border",
               "type": "VECTOR",
               "width": 1,

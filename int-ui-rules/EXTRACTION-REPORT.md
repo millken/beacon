@@ -1,3 +1,46 @@
+# Complete state extraction · 2026-11-06
+
+**172 unique state masters: 86 Light + 86 Dark, 15 families; 190 manifest entries including compatibility aliases and 16 legacy component specimens.** All 172 masters use HTML+CSS DOM and real HTML text. No whole-component SVG scenes are emitted by default; exported vectors remain only in local icons and stroke primitives. Exact source-node geometry and CSS tokens are preserved in `source/components/*.json` and `tokens/manifest.json`.
+
+All requested additional-state cells and Dark themes represented in the Pixso masters are now embedded. Generated pages contain no `Additional state pending`, `Not extracted yet`, or pending Dark matrix cells. Input's canonical `/pages/input-field.html` contains the full matrix; `/pages/input.html` retains the same full page for legacy links. A throw occurs rather than silently omitting a requested matrix state.
+
+# State coverage (final run)
+
+| Family | Light | Dark | Mean diff | Range | Geometry checks |
+|---|---:|---:|---:|---:|---|
+| Button | 10 | 10 | 5.879% | 2.361%–13.48% | PASS |
+| Slim Button | 5 | 5 | 6.03% | 2.623%–7.6% | PASS |
+| Checkbox | 15 | 15 | 6.825% | 1.225%–17.245% | PASS |
+| Input Field | 5 | 5 | 1.913% | 0.223%–11.792% | PASS |
+| Toggle | 2 | 2 | 5.307% | 3.585%–7.736% | PASS |
+| Combobox | 5 | 5 | 2.663% | 0.513%–12.611% | PASS |
+| Dropdown | 5 | 5 | 2.143% | 0.402%–12.035% | PASS |
+| Link | 9 | 9 | 4.609% | 1.852%–9.206% | PASS |
+| Radio Button | 10 | 10 | 9.962% | 2.163%–23.611% | PASS |
+| Search | 4 | 4 | 2.235% | 0.664%–11.814% | PASS |
+| Tab | 3 | 3 | 4.99% | 4.626%–5.355% | PASS |
+| Segmented Control | 3 | 3 | 7.608% | 2.044%–16.553% | PASS |
+| Banner | 8 | 8 | 3.451% | 1.215%–9.162% | PASS |
+| Alert | 1 | 1 | 9.598% | 9.439%–9.756% | PASS |
+| Dialog | 1 | 1 | 3.224% | 3.182%–3.265% | FAIL: dialog, dialog-dark |
+
+Every extracted state master has a matching native Pixso PNG and is embedded in the documentation. On/off duplicate aliases share their exact measured node and reference. Remaining pixel differences are reported in `diff/report.json`; no `needs-fix` state is described as visually exact.
+
+
+- Strict pixel differences remain in all 172 state comparisons (mean 5.393%, antialiasing included); this is generated-DOM acceptance, not pixel identity. Exact scores and artifacts are in `diff/report.json`, `diff/report.md`, `diff/*-actual.png` and `diff/*-diff.png`.
+- Checkbox example: active Checked 2.941%; focused Checked 15.856% (previously 18.056%); invalid Checked 17.014%. Tab was brought from its earlier 91–99% reconstruction error to 4.626–5.355%.
+- Radio focused/invalid still has ring alignment/size residuals (up to 23.611%). Unfocused invalid Light Input / Combo / Dropdown / Search borders remain 11.792 / 12.611 / 12.035 / 11.814%.
+- Dialog body visual diff is 3.182% Light, 3.265% Dark. Structural geometry reports a source 1px separator as 2px in Chrome (`I7070:146273;7070:146086`, `I7070:146300;7070:146220`); other state geometries pass.
+- Source-defined absence remains: Toggle has Off/On only; Search has Active/Invalid with Focus; no Disabled axes exist. Banner covers Type (Info/Success/Warning/Error) × Inline, not interaction states. Alert and Dialog are Theme only. Nothing is synthesized for those missing axes.
+- Older composite catalog specimens have residual DOM reconstruction differences, e.g. Toolbar 11.438%. They are outside the new state matrix scope and stay visible in reports.
+- Verification includes native-scale Pixso PNGs, DPR 1 Chrome, `pixelmatch threshold=0.1, includeAA=true`, structural geometry, DOM mode, native text, source-ID mapping, linked navigation and token checks. UI was browser-inspected on Button, Checkbox and Input (30/33/12 demos, no empty cells, 1800px desktop).
+
+Run `npm run build && npm run check && npm run diff && node scripts/summarize-states.mjs`, or `npm run verify && node scripts/summarize-states.mjs`. An exit-zero diff harness still reports individual `needs-fix` entries, by design. The 2 compatibility aliases point to identical measured source nodes and their baselines.
+
+---
+
+# Historical logs (not current counts or scores)
+
 # Generated DOM switch · 2026-11-06
 
 All 40 specimens now ship as `renderMode: generated-dom` (zero `source-svg-scene`). Whole-component SVG scenes are opt-in only (`INT_UI_NATIVE_SCENE=1`); text is real HTML (`INT_UI_VECTOR_TEXT=1` re-enables glyph outlines as a probe). SVG remains only in extracted icon/vector paths and rounded-stroke primitives. Scores below are the new honest DOM+text measurements; old scores are the whole-scene/glyph baseline in the next section.

@@ -1,5 +1,6 @@
 {
   "id": "46:11087",
+  "parentId": "46:11074",
   "name": "Theme=Light, Type=Default, State=Default",
   "type": "COMPONENT",
   "width": 45,
@@ -35,6 +36,7 @@
   "children": [
     {
       "id": "70:8723",
+      "parentId": "46:11087",
       "name": "Text",
       "type": "TEXT",
       "width": 45,
@@ -85,6 +87,7 @@
     },
     {
       "id": "70:8724",
+      "parentId": "46:11087",
       "name": "linkDropTriangle",
       "type": "INSTANCE",
       "width": 14,
@@ -132,6 +135,7 @@
       "children": [
         {
           "id": "I70:8724;5:4222",
+          "parentId": "70:8724",
           "name": "Path 3",
           "type": "VECTOR",
           "width": 7.599999904632568,

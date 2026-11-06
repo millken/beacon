@@ -1,5 +1,6 @@
 {
   "id": "3894:82033",
+  "parentId": "3894:82032",
   "name": "Theme=Light, Selected=Off, State=Active",
   "type": "COMPONENT",
   "width": 51,
@@ -35,6 +36,7 @@
   "children": [
     {
       "id": "8006:78492",
+      "parentId": "3894:82033",
       "name": "Radio",
       "type": "FRAME",
       "width": 51,
@@ -70,6 +72,7 @@
       "children": [
         {
           "id": "7944:79104",
+          "parentId": "8006:78492",
           "name": "Icon",
           "type": "FRAME",
           "width": 16,
@@ -117,6 +120,7 @@
           "children": [
             {
               "id": "7944:79105",
+              "parentId": "7944:79104",
               "name": "Radio",
               "type": "FRAME",
               "width": 17,
@@ -164,6 +168,7 @@
               "children": [
                 {
                   "id": "7944:79106",
+                  "parentId": "7944:79105",
                   "name": "Ellipse 4",
                   "type": "ELLIPSE",
                   "width": 17,
@@ -212,6 +217,7 @@
         },
         {
           "id": "6504:83435",
+          "parentId": "8006:78492",
           "name": "Content",
           "type": "FRAME",
           "width": 27,
@@ -247,6 +253,7 @@
           "children": [
             {
               "id": "3894:82037",
+              "parentId": "6504:83435",
               "name": "Text",
               "type": "TEXT",
               "width": 27,
@@ -297,6 +304,7 @@
             },
             {
               "id": "8300:74982",
+              "parentId": "6504:83435",
               "name": "Hint",
               "type": "FRAME",
               "width": 24,
@@ -332,6 +340,7 @@
               "children": [
                 {
                   "id": "6504:82969",
+                  "parentId": "8300:74982",
                   "name": "Hint",
                   "type": "TEXT",
                   "width": 24,
@@ -388,6 +397,7 @@
     },
     {
       "id": "8006:79027",
+      "parentId": "3894:82033",
       "name": "Hint",
       "type": "INSTANCE",
       "width": 83,
@@ -435,6 +445,7 @@
       "children": [
         {
           "id": "I8006:79027;8006:72905",
+          "parentId": "8006:79027",
           "name": "Hint",
           "type": "TEXT",
           "width": 59,

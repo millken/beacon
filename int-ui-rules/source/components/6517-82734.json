@@ -1,5 +1,6 @@
 {
   "id": "6517:82734",
+  "parentId": "6517:82733",
   "name": "Theme=Light, State=Active",
   "type": "COMPONENT",
   "width": 72,
@@ -35,6 +36,7 @@
   "children": [
     {
       "id": "6517:82735",
+      "parentId": "6517:82734",
       "name": "Button",
       "type": "FRAME",
       "width": 72,
@@ -94,6 +96,7 @@
       "children": [
         {
           "id": "6517:82736",
+          "parentId": "6517:82735",
           "name": "Text",
           "type": "TEXT",
           "width": 42,
@@ -144,6 +147,7 @@
         },
         {
           "id": "6517:82737",
+          "parentId": "6517:82735",
           "name": "min-width",
           "type": "VECTOR",
           "width": 48,

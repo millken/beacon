@@ -1,0 +1,194 @@
+{
+  "id": "46:11081",
+  "parentId": "46:11074",
+  "name": "Theme=Light, Type=External, State=Default",
+  "type": "COMPONENT",
+  "width": 67,
+  "height": 28,
+  "x": 276,
+  "y": 50,
+  "visible": true,
+  "fills": [],
+  "strokes": [],
+  "strokeWeight": 1,
+  "strokeAlign": "INSIDE",
+  "cornerRadius": 0,
+  "topLeftRadius": 0,
+  "topRightRadius": 0,
+  "bottomLeftRadius": 0,
+  "bottomRightRadius": 0,
+  "opacity": 1,
+  "effects": [],
+  "layoutMode": "HORIZONTAL",
+  "primaryAxisSizingMode": "AUTO",
+  "counterAxisSizingMode": "AUTO",
+  "primaryAxisAlignItems": "MIN",
+  "counterAxisAlignItems": "CENTER",
+  "itemSpacing": 0,
+  "paddingTop": 6,
+  "paddingRight": 0,
+  "paddingBottom": 6,
+  "paddingLeft": 0,
+  "clipsContent": false,
+  "fillStyleId": "",
+  "strokeStyleId": "",
+  "effectStyleId": "",
+  "children": [
+    {
+      "id": "70:8705",
+      "parentId": "46:11081",
+      "name": "Text",
+      "type": "TEXT",
+      "width": 51,
+      "height": 16,
+      "x": 0,
+      "y": 6,
+      "visible": true,
+      "fills": [
+        {
+          "type": "SOLID",
+          "blendMode": "NORMAL",
+          "opacity": 1,
+          "visible": true,
+          "color": {
+            "r": 0.19239998611749387,
+            "g": 0.3739247340782016,
+            "b": 0.7399999880323223
+          }
+        }
+      ],
+      "strokes": [],
+      "strokeWeight": 0,
+      "strokeAlign": "CENTER",
+      "opacity": 1,
+      "effects": [],
+      "characters": "External",
+      "fontName": {
+        "family": "Inter",
+        "style": "Medium",
+        "hash": "279fa3c60d682531d549d0ec9ed91f1b83402d40"
+      },
+      "fontSize": 13,
+      "lineHeight": {
+        "unit": "PIXELS",
+        "value": 16
+      },
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": 0
+      },
+      "textAlignHorizontal": "LEFT",
+      "textAlignVertical": "TOP",
+      "textAutoResize": "WIDTH_AND_HEIGHT",
+      "fillStyleId": "294:28497",
+      "strokeStyleId": "",
+      "textStyleId": "25:2990",
+      "effectStyleId": ""
+    },
+    {
+      "id": "5751:76442",
+      "parentId": "46:11081",
+      "name": "general / externalLink",
+      "type": "INSTANCE",
+      "width": 16,
+      "height": 16,
+      "x": 51,
+      "y": 6,
+      "visible": true,
+      "fills": [],
+      "strokes": [],
+      "strokeWeight": 0.800000011920929,
+      "strokeAlign": "INSIDE",
+      "cornerRadius": 0,
+      "topLeftRadius": 0,
+      "topRightRadius": 0,
+      "bottomLeftRadius": 0,
+      "bottomRightRadius": 0,
+      "opacity": 1,
+      "effects": [],
+      "layoutMode": "NONE",
+      "primaryAxisSizingMode": "AUTO",
+      "counterAxisSizingMode": "AUTO",
+      "primaryAxisAlignItems": "MIN",
+      "counterAxisAlignItems": "MIN",
+      "itemSpacing": 0,
+      "paddingTop": 0,
+      "paddingRight": 0,
+      "paddingBottom": 0,
+      "paddingLeft": 0,
+      "clipsContent": false,
+      "fillStyleId": "",
+      "strokeStyleId": "",
+      "effectStyleId": "",
+      "children": [
+        {
+          "id": "I5751:76442;5751:76592",
+          "parentId": "5751:76442",
+          "name": "Union",
+          "type": "BOOLEAN_OPERATION",
+          "width": 0.0010000000474974513,
+          "height": 0.0010000000474974513,
+          "x": 0,
+          "y": 0,
+          "visible": true,
+          "fills": [
+            {
+              "type": "SOLID",
+              "blendMode": "NORMAL",
+              "opacity": 1,
+              "visible": true,
+              "color": {
+                "r": 0.5058823529411764,
+                "g": 0.5215686274509804,
+                "b": 0.5803921568627451
+              }
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "strokeAlign": "INSIDE",
+          "cornerRadius": 0,
+          "opacity": 1,
+          "effects": [],
+          "fillStyleId": "724:45841",
+          "strokeStyleId": "",
+          "effectStyleId": "",
+          "children": []
+        },
+        {
+          "id": "I5751:76442;5751:76593",
+          "parentId": "5751:76442",
+          "name": "Vector 523 (Stroke)",
+          "type": "VECTOR",
+          "width": 7,
+          "height": 7,
+          "x": 4,
+          "y": 5,
+          "visible": true,
+          "fills": [
+            {
+              "type": "SOLID",
+              "blendMode": "NORMAL",
+              "opacity": 1,
+              "visible": true,
+              "color": {
+                "r": 0.5058823529411764,
+                "g": 0.5215686274509804,
+                "b": 0.5803921568627451
+              }
+            }
+          ],
+          "strokes": [],
+          "strokeWeight": 1,
+          "strokeAlign": "CENTER",
+          "cornerRadius": 0,
+          "opacity": 1,
+          "effects": [],
+          "fillStyleId": "724:45841",
+          "strokeStyleId": "",
+          "effectStyleId": ""
+        }
+      ]
+    }
+  ]
+}

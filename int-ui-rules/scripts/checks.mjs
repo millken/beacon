@@ -61,29 +61,16 @@ console.log(
 );
 
 // Documentation architecture and source specimens are generated together.
-assert.ok(fs.existsSync("public/index.html"), "Missing generated Overview");
-assert.deepEqual(fs.readdirSync("public/pages").filter((f) => f.endsWith(".html")).sort(), [
-  "alert.html", "banner.html", "button.html", "checkbox.html", "colors.html",
-  "combo-box.html", "components.html", "dialog.html", "input.html", "spacing.html",
-  "toggle.html", "typography.html",
-]);
 const manifest = JSON.parse(fs.readFileSync("tokens/manifest.json", "utf8"));
-const docBySpecimen = {
-  alert:"alert", banner:"banner", combobox:"combo-box", link:"components",
-  "radio-button":"components", "radio-button-off":"components", dropdown:"components",
-  search:"components", "slim-button":"button", "segmented-control":"components",
-  "progress-bar":"components", loader:"components", notification:"components",
-  tooltip:"components", "tooltip-got-it":"components", "tooltip-editor":"components",
-  tab:"components", scrollbar:"components", "code-sample":"components", tree:"components", toolbar:"components", table:"components",
-  "context-menu":"components", "tool-window":"components", "group-header":"components",
-  shortcut:"components", "main-window":"components",
-};
 const docs = ["public/index.html", ...fs.readdirSync("public/pages").filter((f) => f.endsWith(".html")).map((f) => `public/pages/${f}`)];
 for (const file of docs) {
   const html = fs.readFileSync(file, "utf8");
   assert.ok(!html.includes("/workspace/ref-zip"), `${file}: depends on reference zip`);
   assert.ok(!/\bclass="(?:btn|check|combo|banner|alert|mini-)/.test(html), `${file}: contains reference illustrative controls`);
   assert.ok(!html.includes("<iframe"), `${file}: primary demos must be inline`);
+  assert.ok(!/Additional state pending|Dark · pending/.test(html), `${file}: pending state cells remain`);
+  for(const value of [...html.matchAll(/data-generated-partial="\/components\/([^"/]+)\.html"/g)]) assert.ok(fs.existsSync(`components/${value[1]}.html`), `${file}: absent embedded variant ${value[1]}`);
+  assert.ok(!html.includes("Additional state pending"));
   const navStart = html.indexOf('<nav id="site-nav"');
   const navEnd = html.indexOf("</nav>", navStart);
   for (const href of html.slice(navStart, navEnd).matchAll(/href="([^"#]+)"/g)) {
@@ -91,16 +78,41 @@ for (const file of docs) {
     assert.ok(fs.existsSync(href[1].startsWith('/pages/') ? `public${href[1]}` : href[1].slice(1)), `${file}: broken nav target ${href[1]}`);
   }
 }
+const stateInventory = JSON.parse(fs.readFileSync("source/state-inventory.json", "utf8"));
+const variants = Object.values(stateInventory).flatMap((family) => family.variants);
+const docInventory = JSON.parse(fs.readFileSync("tokens/inventory.json", "utf8")).stateComponents;
+assert.deepEqual(docInventory, stateInventory, "Docs use a different variant inventory");
+for (const variant of variants) {
+  assert.ok(manifest[variant.key], `${variant.key}: missing manifest source node`);
+  assert.equal(manifest[variant.key].source, variant.id, `${variant.key}: wrong source node`);
+  assert.ok(fs.existsSync(`reference/${variant.key}.png`), `${variant.key}: missing native PNG`);
+}
+const familyPages = {
+  Button:"button", "Slim Button":"button", Checkbox:"checkbox", "Input Field":"input-field",
+  Toggle:"toggle", Combobox:"combo-box", Dropdown:"dropdown", Link:"link",
+  "Radio Button":"radio-button", Search:"search", Tab:"tab", "Segmented Control":"segmented-control",
+  Banner:"banner", Alert:"alert", Dialog:"dialog",
+};
+const componentPage = (name, item) => `public/pages/${familyPages[item.variantSet?.name] || "components"}.html`;
+
 for (const [name, item] of Object.entries(manifest)) {
+  assert.equal(item.renderMode, "generated-dom", `${name}: whole-scene SVG must be strictly opt-in`);
   const partial = fs.readFileSync(item.generated, "utf8");
+  assert.ok(!/role="img" aria-label="[^"]*(text|Text)/.test(partial), `${name}: text must remain real HTML`);
   assert.ok(fs.readFileSync(`previews/${name}.html`, "utf8").includes(partial), `${name}: preview is not its generated partial`);
-  const sourceDoc = name.startsWith("button-") ? "public/pages/button.html" : ["input", "input-focused"].includes(name) ? "public/pages/input.html" : name.startsWith("checkbox") ? "public/pages/checkbox.html" : name.startsWith("toggle-") ? "public/pages/toggle.html" : docBySpecimen[name] ? `public/pages/${docBySpecimen[name]}.html` : "public/pages/dialog.html";
+  const sourceDoc = componentPage(name, item);
+  if (item.aliasOf) {
+    const target=manifest[item.aliasOf];
+    assert.ok(fs.readFileSync(sourceDoc,"utf8").includes(fs.readFileSync(target.generated,"utf8")), `${name}: alias target missing from ${sourceDoc}`);
+    continue;
+  }
+  assert.ok(fs.existsSync(sourceDoc), `${name}: missing detail page ${sourceDoc}`);
   assert.ok(fs.readFileSync(sourceDoc, "utf8").includes(partial), `${name}: ${sourceDoc} does not embed its generated partial`);
 }
-for (const [file, name] of [["public/pages/button.html", "button-primary"], ["public/pages/input.html", "input"], ["public/pages/checkbox.html", "checkbox"], ["public/pages/toggle.html", "toggle-on"], ["public/pages/dialog.html", "dialog"]]) {
-  const html = fs.readFileSync(file, "utf8");
+for (const name of ["button-primary", "input", "checkbox", "toggle-on", "dialog"]) {
+  const item=manifest[name];
+  const file=componentPage(name,item),html=fs.readFileSync(file,"utf8");
   assert.ok(html.includes(`data-generated-partial="/components/${name}.html"`), `${file}: missing generated source link`);
-  assert.ok(html.includes(fs.readFileSync(`components/${name}.html`, "utf8")), `${file}: missing inline verified specimen`);
 }
 const overview = fs.readFileSync("public/index.html", "utf8");
 assert.equal([...overview.matchAll(/class="doc-component-card"/g)].length, 30, "Overview must contain the full 30 entry library");
@@ -108,3 +120,4 @@ for (const [name, value] of Object.entries(tokens.color).filter(([name]) => name
   assert.ok(fs.readFileSync("public/pages/colors.html", "utf8").includes(`var(${value.css})`), `Missing source color ${name}`);
 for (const style of Object.values(tokens.typography))
   assert.ok(fs.readFileSync("public/pages/typography.html", "utf8").includes(`font-size:${Math.min(style.fontSize, 40)}px`), `Missing source text style ${style.css}`);
+console.log(`PASS: ${variants.length} Light/Dark state masters mapped and embedded; no pending matrix cells.`);

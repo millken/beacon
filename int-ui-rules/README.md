@@ -2,9 +2,10 @@
 
 `/workspace/int-ui-rules` is a **new** implementation, not a repair of `/workspace/int-ui-tailwind`. It consumes none of the rejected HTML. Target: Pixso `iPHNpHZoWc6Grn6DanoQDg`, _Getting started_ (`6222:73687`).
 
-**Status: all 40 Light specimens render as generated DOM HTML + CSS tokens (`renderMode: generated-dom`), with real HTML text. SVG remains only for extracted icon/vector paths and rounded stroke primitives — never a whole-component scene or a text glyph dump. Diff scores rose versus the old whole-scene SVG baseline (mean ≈9.4% vs ≈0.27%) because text rasterization and vector geometry are now reconstructed in HTML/CSS; this is the intended tradeoff. See EXTRACTION-REPORT.md and diff/report.md.** The source shadow's asymmetric native padding is included in the diff; Dialog is 0.010%, but nonzero. Current verified metrics are in [diff/report.md](diff/report.md); all 13 variants have a native-size comparison, including focused and shadow overflow. Visual differences are not filtered as antialias to inflate the score.
+**Rules-driven DOM state coverage: 172 variants (86 Light / 86 Dark), plus legacy catalog defaults. Current verification metrics are in [diff/state-coverage.md](diff/state-coverage.md) and [diff/report.md](diff/report.md).**
 
 ## Design-rule inventory
+
 
 Pixso reports **no local variables** (`variables: {}`). The authoritative token input is thus the file's **668 shared styles**, plus measured component geometry—not invented spacing tokens. [tokens/inventory.json](tokens/inventory.json) records these counts and the geometry inventory.
 
@@ -12,10 +13,18 @@ Pixso reports **no local variables** (`variables: {}`). The authoritative token 
 - **36** text styles → font family/size/weight/line-height/letter-spacing tokens
 - **20** effect styles → CSS box-shadow variables
 - **11** components and **131** component sets → `source/component-catalog.json`
-- **40 extracted variants (13 original unchanged, 27 newly wired)**, with properties, dimensions and variant axes → `source/components/*.json`, `components/rules.json`, `tokens/manifest.json`
+- **189 extracted trees, including 172 canonical state variants**, with properties, dimensions and variant axes → `source/components/*.json`, `components/rules.json`, `tokens/manifest.json`
 - Source style IDs (paint/text/effect) are preserved in each design node. Stable CSS names include a hash of the source style name, because same-color duplicates are _not_ always the same semantic token. Strokes resolve the actual node color; matching Light Gray/Grey values are linked to generated tokens. Exact style identity remains on each node for future complete ID→style mapping.
 - Observed geometry: outer Button/Input row allocation `6px; content 28px`; checkbox padding `8px; 16px icon; 8px gap; 16px text`; toggle `53x20px`; Button min content width `48px, 12px horizontal, 6px vertical`; radii depend on source (`4px` controls, `3px` checkbox/toggle, `8px` Dialog); font `Inter 13px/16px 500` (Dialog title 600). These are extracted values, not a new generic design system.
 - Exact original SVG path geometry is retained for complex checkbox/help glyphs and available _pure_ icons. Component containers and text geometry are generated with source node IDs and accessible labels. **No entire component is replaced by an exported PNG.**
+
+## Current coverage
+
+- **172 measured state variants across 15 families (86 Light / 86 Dark) and 190 manifest entries** including aliases/legacy specimens. Family counts and strict pixel scores: [diff/state-coverage.md](diff/state-coverage.md), [diff/report.md](diff/report.md).
+- All state variants and legacy defaults use `renderMode: generated-dom`; whole-scene SVG and vector text remain diagnostic opt-ins. No zip HTML, raster specimens or invented missing-variant styles are used.
+- All available Light state axes and Dark counterparts are shown. No visible `Additional state pending` / `Not extracted yet` cells remain in the docs. Some families deliberately have fewer variants because their masters expose no further axis (Toggle Off/On; Search Active/Invalid × Focus; Alert and Dialog Theme only).
+- Mean strict state diff is **5.393%**, with residual Radio/focus/invalid, text raster and composite/Dialog geometry differences. This does **not** mean pixel identity; every nonzero result is marked `needs-fix`. See [EXTRACTION-REPORT.md](EXTRACTION-REPORT.md) for current details.
+- Manifest keys are unique for all primary/secondary Button states. The historical `button-focused` and `link` aliases retain measured metadata and reference baselines.
 
 ## Commands
 
@@ -48,17 +57,13 @@ npm run preview
 
 ## Generated documentation
 
-`scripts/generate-docs.mjs` regenerates the reference-style static documentation shell: top navigation, dense Foundations cards, a five-column 30-entry component overview, a visual catalog, and state/usage component pages. It reads `components/*.html` at generation time and embeds those exact partials inline; there are no primary-demo iframes or independently authored `.btn`/checkbox/combo approximations. The original `previews/*.html` remain isolated and are the only pixel-diff targets.
+`public/` and root `index.html` contain the generated static site: top navigation, five-column 30-entry component overview, foundations, component catalog and 18 state/detail/foundation pages. It embeds the same `components/*.html` partials used by isolated tests. Every canonical state master maps to its exact node ID and matching native PNG.
 
-- **Overview / Components:** all 30 reference library entries now have inline source-generated Light specimens; there are no `Not extracted yet` catalog entries.
-- **Button / Checkbox / Input / Toggle:** reference-like Light state matrix and right-hand usage panel; missing states and Dark zones stay explicit placeholders. Small usage demonstrations switch the source On/Off specimens; the design partial itself remains non-interactive. Source/provenance is in collapsed details below each state panel.
-- **Dialog:** responsive inline generated DOM specimen inside the same design-guide layout.
-- **Alert / Banner / Combo box:** actual measured Light specimens are embedded in their detail pages, with source links and a usage description.
-- **Colors:** all source tokens bound to CSS variables in compact family ramps, grouped Light, Editor and Dark; additional source styles are collapsible. **Typography:** UI/Editor columns plus all other source styles. **Spacing:** compact measured gap/padding bars using only `tokens/inventory.json` values.
-
-`npm run preview` serves the Overview at `/`, component pages at `/pages/*.html`, and shared assets at `/dist`, `/tokens`, `/components` and `/previews`. Run `npm run generate && npm run preview`; `-- --port 4321` overrides the port. Both root `index.html` and `public/index.html` are generated.
-
-`npm run check` verifies page inventory, navigation targets, inline partial identity, the full 30-card library, catalog completeness, token/style coverage, and absence of reference demo controls. `public/site.css` styles documentation chrome only; `public/site.js` supplies navigation and adjacent usage demo controls. Additional Dark and state variants remain explicitly marked as pending, not complete.
+- Primary/Secondary and Slim Button cover all five states in Light/Dark.
+- Checkbox (Unchecked/Checked/Indeterminate) and Radio (Off/On) cover Active/Hovered/Focused/Invalid/Disabled in Light/Dark.
+- Input, Combo, Dropdown and Search cover their measured state/Focus axes; Link Default/Dropdown/External cover Default/Hovered/Disabled; Tab and Segmented cover source-defined selected/focus/Other axes; Banner covers four types × Inline.
+- Dark source styles are actual extracted Dark styles, never inverted Light; source-measured SVG focus-ring insets and stroke overflow are supported without moving labels.
+- The full state list is [diff/state-coverage.md](diff/state-coverage.md). `npm run check` verifies every node, generated DOM mode, embedded demos and absence of visible pending cells. Browser-preview CSS is served by `npm run preview`, not a basic root-level `python -m http.server /public` shortcut.
 
 ## Generate → diff → fix loop
 
@@ -73,13 +78,11 @@ Structural evidence is in [diff/structural-report.json](diff/structural-report.j
 
 ## Current work / remaining gaps
 
-- **Typography:** native HTML text uses source Inter Medium 500, 13/16px, letter-spacing 0; no manual stretch/tracking. Text is real `<span>` content, not glyph outlines. Optional `INT_UI_VECTOR_TEXT=1 npm run verify` compares against source SVG glyph paths (with accessible labels) as a raster floor probe; its older scores are in git history. See [diff/README.md](diff/README.md).
-- **Source perimeters:** focused Input's `2px CENTER` ring now uses half stroke outside/inside source geometry. Its strict mismatch improved from **13.186% to 0.188%**. The remaining 17 pixels are counted glyph coverage, not silently excluded AA.
-- **Buttons:** Secondary and default Input duplicate CSS perimeter paint was removed in favor of source rounded-rect SVG. Secondary is **0.729%**, active primary **0.069%**; no claim of native-font raster parity is made.
-- **Dialog:** measured shadow bounds are `(40,32,883,495)` inside a `963×575` export. Correcting alignment reduced generated DOM from 3.189% to 0.154%. The original source **vector** scene preserves the exact instance paths, filter, compositing and clip context and further reduces strict mismatch to **0.010% (57/553725)**. Full-canvas and regional differences remain reported; no close control is invented.
-- **Generated DOM for every specimen:** `tokens/manifest.json` now reports `renderMode: generated-dom` for all 40 components. Source trees (FRAME/INSTANCE/TEXT/RECTANGLE/ELLIPSE…) become absolutely positioned div/span elements with CSS-token paints, extracted font styles and `box-shadow` from effect styles. Only true VECTOR/BOOLEAN_OPERATION geometry and CENTER/INSIDE rounded-stroke primitives keep SVG. `source/svg.json` still stores the 40 original root exports and `INT_UI_NATIVE_SCENE=1` can still emit whole-scene SVG for pixel diagnostics, but that mode is no longer a deliverable.
-- **Vectors:** complex checkbox/help glyphs use source SVG icon paths; `path`, `rect`, `clipPath` and `filter` definitions are retained only inside those icons. No screenshot flattening or rasterization is used, and no TEXT node emits SVG by default. Pure-CSS reconstruction currently misses some vector-path gap fills (e.g. the progress-bar unfilled track drawn as a BOOLEAN_OPERATION shape) and close-via-path icons; scores report these honestly.
-- **Scope:** 13 selected Light variants of Button, Input, Checkbox, Toggle and Dialog. Not yet Dark, all other components/states, or production form interactions/state toggling. Generated doc chrome and the Overview are not a claim that the complete reference landing page has been reconstructed. No branch/commit is created by this work.
+- Text is real HTML (Inter, source sizes), no glyph outline substitution by default.
+- All current state pixels are in `diff/report.`; no exact-match claim is made for nonzero scores. Highest residuals include focused/invalid Radio and some unfocused Light invalid field rings. Line-separator geometry for Dialog is reported explicitly.
+- Older catalog specimens remain but their DOM reconstruction may differ from Pixso (e.g. Toolbar); they are not new state coverage.
+- The Pixso masters expose no Disabled Toggle, Disabled Search, or Alert/Banner interaction-state axes; absence is documented, not fabricated.
+- `.mjs` probes retained in the package are reproducible; root exported Pixso SVG images and obsolete historical log scores are visibly marked historical.
 
 ## Important file map
 
@@ -92,7 +95,7 @@ index.html                  generated Overview at the repository root
 public/index.html           same generated Overview for conventional doc-site hosting
 public/site.css             token-bound doc chrome; excluded from isolated specimen pages
 public/site.js              navigation, compact token copying and usage-demo controls
-public/pages/*.html         generated foundation/component pages and explicit stubs
+public/pages/*.html         generated complete state matrices, catalog and foundation pages
 tokens/tokens.json          normalized color/text/effect inputs
 tokens/manifest.json        generated component ↔ source master ↔ variant axis map
 components/<name>.html      generated partials (never edit as the source of truth)

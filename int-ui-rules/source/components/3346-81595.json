@@ -1,5 +1,6 @@
 {
   "id": "3346:81595",
+  "parentId": "3346:81594",
   "name": "Theme=Light, Type=Info, Inline=False",
   "type": "COMPONENT",
   "width": 600,
@@ -59,6 +60,7 @@
   "children": [
     {
       "id": "3350:81420",
+      "parentId": "3346:81595",
       "name": "Message",
       "type": "FRAME",
       "width": 540,
@@ -106,6 +108,7 @@
       "children": [
         {
           "id": "3350:81613",
+          "parentId": "3350:81420",
           "name": "status / info",
           "type": "INSTANCE",
           "width": 16,
@@ -141,6 +144,7 @@
           "children": [
             {
               "id": "I3350:81613;6250:72725",
+              "parentId": "3350:81613",
               "name": "Ellipse 399",
               "type": "ELLIPSE",
               "width": 14,
@@ -173,6 +177,7 @@
             },
             {
               "id": "I3350:81613;6250:72726",
+              "parentId": "3350:81613",
               "name": "Vector 21",
               "type": "VECTOR",
               "width": 3,
@@ -205,6 +210,7 @@
             },
             {
               "id": "I3350:81613;6250:72727",
+              "parentId": "3350:81613",
               "name": "Ellipse 400",
               "type": "ELLIPSE",
               "width": 2.200000047683716,
@@ -239,6 +245,7 @@
         },
         {
           "id": "11221:21233",
+          "parentId": "3350:81420",
           "name": "Text & Actions",
           "type": "FRAME",
           "width": 516,
@@ -274,6 +281,7 @@
           "children": [
             {
               "id": "3346:81599",
+              "parentId": "11221:21233",
               "name": "Text",
               "type": "TEXT",
               "width": 375,
@@ -324,6 +332,7 @@
             },
             {
               "id": "11221:21569",
+              "parentId": "11221:21233",
               "name": "Actions",
               "type": "FRAME",
               "width": 121,
@@ -359,6 +368,7 @@
               "children": [
                 {
                   "id": "3346:81602",
+                  "parentId": "11221:21569",
                   "name": "Action A",
                   "type": "TEXT",
                   "width": 53,
@@ -409,6 +419,7 @@
                 },
                 {
                   "id": "3346:81601",
+                  "parentId": "11221:21569",
                   "name": "Action B",
                   "type": "TEXT",
                   "width": 52,
@@ -459,6 +470,7 @@
                 },
                 {
                   "id": "11271:28442",
+                  "parentId": "11221:21569",
                   "name": "Link",
                   "type": "INSTANCE",
                   "width": 48,
@@ -494,6 +506,7 @@
                   "children": [
                     {
                       "id": "I11271:28442;70:8685",
+                      "parentId": "11271:28442",
                       "name": "Text",
                       "type": "TEXT",
                       "width": 32,
@@ -544,6 +557,7 @@
                     },
                     {
                       "id": "I11271:28442;1038:55736",
+                      "parentId": "11271:28442",
                       "name": "general / chevronDown",
                       "type": "INSTANCE",
                       "width": 16,
@@ -579,6 +593,7 @@
                       "children": [
                         {
                           "id": "I11271:28442;1038:55736;9965:67831",
+                          "parentId": "I11271:28442;1038:55736",
                           "name": "Icon / Dropdown",
                           "type": "VECTOR",
                           "width": 7,
@@ -621,6 +636,7 @@
     },
     {
       "id": "11221:22011",
+      "parentId": "3346:81595",
       "name": "Icons",
       "type": "FRAME",
       "width": 16,
@@ -656,6 +672,7 @@
       "children": [
         {
           "id": "5501:78900",
+          "parentId": "11221:22011",
           "name": "Actions / settings",
           "type": "INSTANCE",
           "width": 16,
@@ -691,6 +708,7 @@
           "children": [
             {
               "id": "I5501:78900;4745:117956",
+              "parentId": "5501:78900",
               "name": "Subtract (Stroke)",
               "type": "VECTOR",
               "width": 13.129210472106934,
@@ -725,6 +743,7 @@
         },
         {
           "id": "5501:79061",
+          "parentId": "11221:22011",
           "name": "Actions / more",
           "type": "INSTANCE",
           "width": 16,
@@ -760,6 +779,7 @@
           "children": [
             {
               "id": "I5501:79061;9965:67721",
+              "parentId": "5501:79061",
               "name": "Ellipse 376",
               "type": "ELLIPSE",
               "width": 2,
@@ -792,6 +812,7 @@
             },
             {
               "id": "I5501:79061;9965:67722",
+              "parentId": "5501:79061",
               "name": "Ellipse 377",
               "type": "ELLIPSE",
               "width": 2,
@@ -824,6 +845,7 @@
             },
             {
               "id": "I5501:79061;9965:67723",
+              "parentId": "5501:79061",
               "name": "Ellipse 378",
               "type": "ELLIPSE",
               "width": 2,
@@ -858,6 +880,7 @@
         },
         {
           "id": "3346:81603",
+          "parentId": "11221:22011",
           "name": "Actions / close",
           "type": "INSTANCE",
           "width": 16,
@@ -893,6 +916,7 @@
           "children": [
             {
               "id": "I3346:81603;11163:19687",
+              "parentId": "3346:81603",
               "name": "Vector",
               "type": "VECTOR",
               "width": 10,
