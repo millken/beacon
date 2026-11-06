@@ -25,19 +25,59 @@ npm install
 npm run verify
 # source glyph geometry is the default; INT_UI_VECTOR_TEXT=0 opts into native browser text
 # native source-vector scenes for Dialog + indeterminate: default; INT_UI_NATIVE_SCENE=0 compares reconstructed DOM
-# index.html is the gallery; previews/<component>.html is an isolated specimen
+# generate every component, preview and documentation page
+npm run generate
+# preview the reference-shaped docs at http://localhost:3000 (or the printed URL)
+npm run preview
+# serve Overview at / plus shared dist/tokens/previews without copying assets
+# previews/<component>.html remains an isolated pixel specimen
 ```
 
 | Entry point            | Purpose                                                                   |
 | ---------------------- | ------------------------------------------------------------------------- |
 | `npm run tokens`       | Normalize source shared styles to JSON, CSS variables and Tailwind theme  |
-| `npm run generate`     | Generate semantic partials, full selected-variant rules and preview pages |
+| `npm run generate`     | Generate partials, rules, isolated previews, and the `public/` documentation site |
+| `npm run docs`         | Alias for `npm run generate`; docs are not authored or diffed independently       |
+| `npm run preview`      | Serve Overview, pages and shared generated assets at `http://127.0.0.1:3000` |
 | `npm run diff`         | Render each partial in isolated Chromium and compare against Pixso PNG    |
 | `npm run check`        | Verify all CSS token names resolve and token paint is actually rebindable |
 | `npm run build`        | Tokens → generated HTML → Tailwind utilities/theme                        |
 | `npm run extract:help` | Print the read-only Pixso Plugin API extraction script used by this run   |
 
 `extract-component.mjs` is an evaluator script, not a standalone Node importer. Pass its output to `user-Pixso.eval_script(file_key="iPHNpHZoWc6Grn6DanoQDg", script=...)` (read-only; no design mutations), save each root to `source/components/<id-with-dash>.json`, and run `npm run generate` again. For native vector extraction, `scripts/export-svg.mjs` defines async `exportSourceSvg()`; append its invocation and pass that complete script to `user-Pixso.eval_script(file_key="iPHNpHZoWc6Grn6DanoQDg", script=...)`, then save its return map as `source/svg.json`. It cannot run standalone in Node because the evaluator supplies the `pixso` global. No design mutation is performed. For screenshots use `get_export_image(guid=sourceNode, exportSettings={constraint:{type:1,value:1},imageType:1})`, saving PNGs under `reference`. `tokens/manifest.json` names each component's exact stable master node ID.
+
+## Generated documentation
+
+The information architecture follows the supplied Int UI Kit reference—top navigation, Overview, foundation pages, a component catalog, and per-component Light/state showcases—without consuming the reference's illustrative `.btn`, checkbox, combo or other runtime styles. `scripts/generate-docs.mjs` is imported by `scripts/generate.mjs`; regeneration never depends on the reference zip or a React/Vite rewrite.
+
+`npm run preview` uses a small local-only Node server. It serves the ref-style `/pages/…` URLs from `public/pages/`, the root Overview from `public/index.html`, and shared generated assets directly from their natural `/dist/…`, `/tokens/…`, `/previews/…` and `/components/…` paths. This keeps docs standalone without copying assets or rewriting the accepted pixel specimens:
+
+```bash
+cd /workspace/int-ui-rules
+npm install
+npm run generate
+npm run preview
+# http://127.0.0.1:3000 (override: npm run preview -- --port 4321)
+```
+
+Alternatively, serve the project root (`npx serve . --no-clean-urls`) and open `/` or `/public/`. The preview command supplies the same routes without a third-party package. Root `index.html` and `public/index.html` are both the generated Overview; `scripts/diff.mjs` uses each independent preview as its unchanged token/font host.
+
+### Generated pages
+
+| Page | Content |
+| ---- | ------- |
+| Overview | Source scope, foundation links, generation workflow, and five extracted component links |
+| Colors | Every selected Light shared color, grouped by source family and bound to generated CSS variables |
+| Typography | All 36 shared text styles, with extracted weight, size, line height and letter spacing |
+| Spacing | Observed `itemSpacing` and padding values from `tokens/inventory.json`; explicitly not a universal scale |
+| Components | Catalog for Button, Input field, Checkbox, Toggle and Dialog using real specimen previews |
+| Button | Primary Active/Hovered/Pressed/Focused and Secondary Active, with state captions and source nodes |
+| Input / Checkbox / Toggle / Dialog | The remaining 8 selected Light states/specimens and their render provenance |
+| Alert / Banner / Combo box | Explicit **Not yet extracted** stubs, with no fabricated controls |
+
+Every specimen iframe points to the corresponding `previews/<name>.html`, which contains exactly the generated `components/<name>.html` partial. `data-generated-partial` makes that source relationship inspectable. Iframes isolate component styles from documentation chrome; they are static, non-interactive specimens rather than an additional implementation. Missing Light/Dark states are labelled instead of fabricated.
+
+`npm run check` verifies the page inventory, navigation targets, preview/partial identity, specimen wiring, stub text, generated palette coverage and the absence of reference-style illustrative controls. Component pages are not a claim that all documentation text or component states are pixel-identical; the existing 13-state visual report remains the visual success metric.
 
 ## Generate → diff → fix loop
 
@@ -58,7 +98,7 @@ Structural evidence is in [diff/structural-report.json](diff/structural-report.j
 - **Dialog:** measured shadow bounds are `(40,32,883,495)` inside a `963×575` export. Correcting alignment reduced generated DOM from 3.189% to 0.154%. The original source **vector** scene preserves the exact instance paths, filter, compositing and clip context and further reduces strict mismatch to **0.010% (57/553725)**. Full-canvas and regional differences remain reported; no close control is invented.
 - **Native vector scene provenance:** `source/svg.json` stores all 13 original root exports. A measured opt-in list chooses only Dialog and indeterminate Checkbox as `source-svg-scene`; their semantic outer wrappers retain source IDs and accessible labels. The other 11 keep the better-or-equal generated DOM geometry—whole-root SVG was not assumed to improve every state. `tokens/manifest.json` records this split. This tradeoff preserves exact source vectors rather than reconstructing every Dialog child as HTML.
 - **Vectors:** complex checkbox/help glyphs use source SVGs; source native SVG scenes retain all `path`, `rect`, `clipPath` and `filter` definitions. No screenshot flattening or rasterization is used. Opt out with `INT_UI_NATIVE_SCENE=0 npm run verify`. Source-vector scenes do not claim production interactions or full token-layer rebindability of every nested primitive.
-- **Scope:** 13 selected Light variants of Button, Input, Checkbox, Toggle and Dialog. Not yet Dark, all other components/states, the entire landing page, or production form interactions/state toggling. No branch/commit is created by this work.
+- **Scope:** 13 selected Light variants of Button, Input, Checkbox, Toggle and Dialog. Not yet Dark, all other components/states, or production form interactions/state toggling. Generated doc chrome and the Overview are not a claim that the complete reference landing page has been reconstructed. No branch/commit is created by this work.
 
 ## Important file map
 
@@ -66,11 +106,17 @@ Structural evidence is in [diff/structural-report.json](diff/structural-report.j
 source/                     raw variables, styles, catalog, vector/glyph data, measured trees
 source/svg.json             13 original root SVG exports (source-svg-scene provenance)
 scripts/export-svg.mjs      read-only Pixso evaluator source-SVG exporter
+scripts/generate-docs.mjs   generated Overview, nav, foundations, component docs and stubs
+index.html                  generated Overview at the repository root
+public/index.html           same generated Overview for conventional doc-site hosting
+public/site.css             token-bound doc chrome; excluded from isolated specimen pages
+public/site.js              responsive top-navigation toggle only
+public/pages/*.html         generated foundation/component pages and explicit stubs
 tokens/tokens.json          normalized color/text/effect inputs
 tokens/manifest.json        generated component ↔ source master ↔ variant axis map
 components/<name>.html      generated partials (never edit as the source of truth)
 components/rules.json       machine-readable selected component rules
-previews/<name>.html        independently loadable specimens
+previews/<name>.html        independently loadable specimens (embedded by docs iframes)
 dist/tokens.css             variable layer
 dist/tailwind.theme.css     Tailwind color-variable bridge
 reference/                  source native-scale transparent PNG baselines

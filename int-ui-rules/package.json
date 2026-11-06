@@ -6,12 +6,13 @@
   "scripts": {
     "tokens": "node scripts/normalize-tokens.mjs",
     "generate": "node scripts/generate.mjs",
+    "docs": "npm run generate",
+    "preview": "node scripts/serve-docs.mjs",
     "build": "npm run tokens && npm run generate && tailwindcss -i dist/tailwind.input.css -o dist/tailwind.css --minify",
     "diff": "node scripts/diff.mjs",
     "verify": "npm run build && npm run check && npm run diff",
     "check": "node scripts/checks.mjs",
     "extract:help": "node scripts/extract-component.mjs",
-    "verify": "npm run build && npm run check && npm run diff",
     "raster:floor": "node scripts/raster-floor-probe.mjs"
   },
   "dependencies": {

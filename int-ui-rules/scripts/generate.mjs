@@ -1,6 +1,7 @@
 /** Rules -> semantic HTML partials; no old conversion output is consumed.
  * Roots wrap measured primitive descendants. SVG is used only for exact source vectors. */
 import fs from "node:fs";
+import { generateDocs } from "./generate-docs.mjs";
 const master = JSON.parse(fs.readFileSync("tokens/tokens.json", "utf8"));
 const catalog = JSON.parse(fs.readFileSync("source/component-catalog.json"));
 const knownIds = new Set(
@@ -323,11 +324,9 @@ fs.writeFileSync(
   ),
 );
 fs.writeFileSync("dist/component-preview.css", `${fonts}`);
-let gallery = `<!doctype html><html lang="en"><head><meta charset="UTF-8"><title>Int UI · rule-generated</title><link rel="stylesheet" href="dist/tokens.css"><link rel="stylesheet" href="dist/tailwind.css"><style>${fonts}*{box-sizing:border-box}body{margin:0;padding:24px;font:13px/16px Inter,sans-serif;background:#fff}h1{font-size:20px;line-height:28px;margin:0 0 24px}h2{font-size:13px;font-weight:500;line-height:24px;margin:16px 0 8px}.display-grid{display:flex;align-items:flex-start;gap:40px;flex-wrap:wrap;max-width:1200px}.specimen{position:relative;display:inline-block}</style></head><body><h1>Int UI · rules-generated Light specimens</h1><p><a href="diff/report.md">Current diff report</a></p><main class="display-grid">`;
-for (const name of Object.keys(manifest).sort())
-  gallery += `<section><h2>${name}</h2><div class="specimen">${fs.readFileSync(`components/${name}.html`, "utf8")}</div></section>`;
-gallery += "</main></body></html>";
-fs.writeFileSync("index.html", gallery);
+// Overview is emitted at both index.html and public/index.html.
+// Pixel tests load the isolated specimen preview itself as their asset host.
+generateDocs({ tokens: master, manifest, root: process.cwd() });
 // Tailwind is an additive utility layer; exact measurements stay tied to rule JSON.
 fs.writeFileSync(
   "dist/tailwind.input.css",

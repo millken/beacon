@@ -99,7 +99,7 @@ for (const [name, item] of Object.entries(map)) {
     paddingTop = sourceOrigin
       ? sourceOrigin.y
       : (stageHeight - rule.height) / 2;
-  await testPage.goto("file://" + process.cwd() + "/index.html");
+  await testPage.goto("file://" + process.cwd() + `/previews/${item.node}.html`);
   await testPage.evaluate(
     ({ html, stageWidth, stageHeight, left, top }) => {
       document.body.replaceChildren();

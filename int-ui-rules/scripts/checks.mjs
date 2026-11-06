@@ -4,6 +4,7 @@ import { chromium } from "playwright";
 for (const script of [
   "extract-component.mjs",
   "generate.mjs",
+  "generate-docs.mjs",
   "normalize-tokens.mjs",
   "diff.mjs",
 ]) {
@@ -58,3 +59,38 @@ await b.close();
 console.log(
   "PASS: 603 tokens unique and emitted; partial CSS vars resolve; secondary button token paint rebinds.",
 );
+
+// Documentation structure is generated too; no hand-maintained docs or illustrative controls.
+assert.ok(fs.existsSync("public/index.html"), "Missing generated Overview");
+assert.deepEqual(fs.readdirSync("public/pages").filter((f) => f.endsWith(".html")).sort(), [
+  "alert.html", "banner.html", "button.html", "checkbox.html", "colors.html",
+  "combo-box.html", "components.html", "dialog.html", "input.html", "spacing.html",
+  "toggle.html", "typography.html",
+]);
+const manifest = JSON.parse(fs.readFileSync("tokens/manifest.json", "utf8"));
+const docs = ["public/index.html", ...fs.readdirSync("public/pages").filter((f) => f.endsWith(".html")).map((f) => `public/pages/${f}`)];
+for (const file of docs) {
+  const html = fs.readFileSync(file, "utf8");
+  assert.ok(!html.includes("/workspace/ref-zip"), `${file}: depends on reference zip`);
+  assert.ok(!/\bclass="(?:btn|check|combo|banner|alert|mini-)/.test(html), `${file}: contains reference illustrative controls`);
+  const navEnd = html.indexOf("</nav>");
+  for (const href of html.slice(0, navEnd).matchAll(/href="([^"#]+)"/g)) {
+    if (href[1] === "/") continue;
+    assert.ok(fs.existsSync(href[1].startsWith('/pages/') ? `public${href[1]}` : href[1].slice(1)), `${file}: broken nav target ${href[1]}`);
+  }
+}
+for (const [name, item] of Object.entries(manifest)) {
+  const preview = fs.readFileSync(`previews/${name}.html`, "utf8");
+  assert.ok(preview.includes(fs.readFileSync(item.generated, "utf8")), `${name}: preview is not its generated partial`);
+}
+for (const [file, name] of [["public/pages/button.html", "button-primary"], ["public/pages/input.html", "input"], ["public/pages/checkbox.html", "checkbox"], ["public/pages/toggle.html", "toggle-on"], ["public/pages/dialog.html", "dialog"]]) {
+  const html = fs.readFileSync(file, "utf8");
+  assert.ok(html.includes(`src="/previews/${name}.html"`), `${file}: missing verified specimen`);
+  assert.ok(html.includes(`data-generated-partial="/components/${name}.html"`), `${file}: missing generated source link`);
+}
+for (const file of ["public/pages/alert.html", "public/pages/banner.html", "public/pages/combo-box.html"])
+  assert.ok(fs.readFileSync(file, "utf8").includes('Not yet extracted'), `${file}: missing explicit stub`);
+for (const [name, value] of Object.entries(tokens.color).filter(([name]) => name.startsWith("Light/") && !name.includes("(Current)")))
+  assert.ok(fs.readFileSync("public/pages/colors.html", "utf8").includes(`var(${value.css})`), `Missing source color ${name}`);
+for (const style of Object.values(tokens.typography))
+  assert.ok(fs.readFileSync("public/pages/typography.html", "utf8").includes(`font-size:${style.fontSize}px`), `Missing source text style ${style.css}`);
